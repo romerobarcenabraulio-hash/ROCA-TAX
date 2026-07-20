@@ -1,0 +1,13 @@
+.vercel
+.env*
+node_modules/
+.next/
+dist/
+coverage/
+.DS_Store
+.codex/
+
+# Archivos de trabajo local que no se publican durante el bootstrap
+findings.md
+progress.md
+task_plan.md
