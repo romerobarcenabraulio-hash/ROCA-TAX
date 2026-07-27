@@ -1,8 +1,8 @@
 # ROCA TAX — Inventario del sitio oficial anterior y modelo de edición mínima
 
-**Fuente principal:** `https://pruebasomosorigen.com/roca-taxidermia/`  
-**Fecha de revisión:** 27 de julio de 2026  
-**Estado:** contrato complementario de `CONTRATO_REPLICA_HTML_1_A_1.md`  
+**Fuente principal:** `https://pruebasomosorigen.com/roca-taxidermia/`
+**Fecha de revisión:** 27 de julio de 2026
+**Estado:** contrato complementario de `CONTRATO_REPLICA_HTML_1_A_1.md`
 **Regla:** el HTML heredado es la línea base estructural; el sitio oficial anterior es una fuente suplementaria de contenido. Ninguna contradicción se resuelve inventando.
 
 ## 1. Decisión de producto
@@ -237,4 +237,3 @@ Para el MVP sólo existen `owner` y `admin`. Roles Editor, Comercial, Biblioteca
 ## 10. Límite de evidencia
 
 La inspección estructural y de contenido se realizó sobre páginas públicas indexadas. La captura directa del flujo visual no pudo completarse porque el controlador del navegador no inicializó. Por ello este documento no afirma una auditoría visual completa; la comparación visual queda como evidencia obligatoria en ROC-38.
-

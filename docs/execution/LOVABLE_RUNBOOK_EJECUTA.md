@@ -94,4 +94,3 @@ la anterior puede restaurarse; producción no muestra upload parcial.
 ## Fin real
 
 Lovable “terminó” sólo cuando el PR tiene CI, Greptile, preview, criterios del issue y evidencia. La generación de código por sí sola no cuenta.
-
