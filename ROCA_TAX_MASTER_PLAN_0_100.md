@@ -8,6 +8,7 @@
 
 **Anexo obligatorio de frontend:** `FRONTEND_EXIGENCIA_CERO_OMISIONES.md`
 **Contrato obligatorio de réplica:** `docs/product/CONTRATO_REPLICA_HTML_1_A_1.md`
+**Inventario del sitio oficial y edición mínima:** `docs/product/INVENTARIO_SITIO_OFICIAL_Y_MODELO_EDICION.md`
 
 ---
 
@@ -431,6 +432,8 @@ Invitación por correo, rol preseleccionado, vencimiento, reenvío y revocación
 
 ## 7. Roles y permisos
 
+La tabla siguiente es la arquitectura objetivo posterior. Durante el MVP de 14 días se implementan únicamente `owner` y `admin`; las capacidades de Editor, Comercial, Biblioteca y Viewer se absorben en Admin y no crean roles, UI o políticas adicionales.
+
 | Capacidad | Owner | Admin | Editor | Comercial | Biblioteca | Viewer |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
 | Ver panel | Sí | Sí | Sí | Sí | Sí | Sí |
@@ -531,7 +534,7 @@ Si falla la publicación, la versión pública anterior permanece intacta. Publi
 ### F1.2 — Acceso y permisos
 
 - login, recuperación e invitación;
-- perfiles y seis roles;
+- perfiles y dos roles MVP: Owner y Admin;
 - RLS por capacidad;
 - MFA obligatorio para Owner/Admin;
 - sesiones, revocación y auditoría;

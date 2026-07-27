@@ -81,6 +81,8 @@ No agregar CMS externo, Clerk, Cloudinary, Shopify, WordPress, Render, Redux o l
 
 No existe registro público. El último `owner` no puede desactivarse.
 
+El correo de Supabase Auth es el identificador de acceso. No se crean usernames manuales. `full_name` es sólo el nombre visible. Durante el MVP no existen roles adicionales.
+
 ## 5. Rutas exactas
 
 ### Públicas
@@ -201,6 +203,8 @@ Inicio presenta seis botones: `Editar página`, `Colección`, `Formas`, `Catálo
 ### Paso 2 — Cambiar
 
 Lista de secciones con nombre humano y miniatura. Al abrir una sección aparecen únicamente sus campos. Nada de JSON, Markdown, colores, grid o nombres técnicos.
+
+El modo predeterminado es `Cambiar fotografías`: elegir slot por miniatura, subir, recortar, confirmar alt, previsualizar y publicar. `Editar textos y datos` es secundario. La operación normal no muestra una biblioteca de medios ni conceptos técnicos.
 
 ### Paso 3 — Revisar y publicar
 

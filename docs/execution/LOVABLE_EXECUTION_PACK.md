@@ -83,6 +83,9 @@ ESTADOS: loading, empty, validation, save_error, conflict, session_expired.
 ACEPTACIÓN: borrador sobrevive reload; producción no cambia; límites exactos.
 ```
 
+Los prompts complementarios P03A y P04A y la secuencia operativa están en
+`docs/execution/LOVABLE_RUNBOOK_EJECUTA.md`. No ejecutar P04A antes de P04/P05.
+
 ## P05 — Imágenes administrables
 
 ```text
