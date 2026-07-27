@@ -21,7 +21,7 @@ El modo inicial del editor es **Cambiar fotografías**. `Editar textos y datos` 
 | 2 | HTML heredado inspeccionado | Estructura, mensajes y registros base | Publicable después de validación |
 | 3 | Sitio oficial anterior | Historia, servicios, equipo, taxonomías y claims | `pending_review` |
 | 4 | Excel provisional | Pruebas de importación | Nunca producción |
-| 5 | Excel original de Drive | Biblioteca definitiva posterior | Importación auditada |
+| 5 | Excel original de Drive | Biblioteca privada de lanzamiento | Importación auditada |
 
 Cada registro importado debe conservar `source_type`, `source_url`, `source_key`, `source_captured_at`, `validation_status`, `validated_by` y `validated_at`.
 
@@ -206,11 +206,11 @@ Flujo Owner:
 
 El invitado abre un enlace, establece contraseña y MFA cuando corresponda. Estados visibles: `Invitación enviada`, `Activo`, `Suspendido`, `Vencida`. Acciones: reenviar, copiar enlace seguro cuando esté permitido, suspender y reactivar. El último Owner no puede suspenderse ni degradarse.
 
-Para el MVP sólo existen `owner` y `admin`. Roles Editor, Comercial, Biblioteca y Viewer quedan fuera hasta que una necesidad real los justifique.
+Para lanzamiento sólo existen `owner` y `admin`. Roles Editor, Comercial, Biblioteca y Viewer no se implementan hasta que una necesidad real justifique aumentar la complejidad.
 
 ## 8. Integración de base de datos fácil y reproducible
 
-- Supabase es la única base de datos del MVP.
+- Supabase es la única base de datos del servicio.
 - Migraciones SQL viven en Git y son aditivas.
 - Un seed idempotente carga textos, slots y registros heredados.
 - El seed nunca publica automáticamente datos `pending_review`.

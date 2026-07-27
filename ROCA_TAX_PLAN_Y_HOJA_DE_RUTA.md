@@ -84,7 +84,7 @@ Antes de implementar se producirán tres direcciones visuales basadas en los act
 ### Piezas disponibles
 
 - Catálogo con inventario, precio o "solicitar precio", dimensiones, estado, envío y CTA.
-- El carrito se pospone hasta confirmar que habrá venta en línea. Para MVP, cotización/reserva evita fingir e-commerce.
+- El carrito no forma parte del servicio mientras no exista una decisión aprobada de venta en línea. Cotización/reserva evita fingir e-commerce.
 
 ## 5. Consola administrativa
 
@@ -212,7 +212,7 @@ flowchart LR
 
 **Salida:** esqueleto navegable, login admin y componentes aprobados.
 
-### Hito 2 — Sitio público MVP
+### Hito 2 — Sitio público operativo
 
 - Inicio, taller, portafolio, servicios, piezas y contacto.
 - Formulario real + WhatsApp con datos prellenados.
@@ -304,7 +304,7 @@ flowchart LR
 - Lighthouse y pruebas manuales cumplen los presupuestos acordados de rendimiento y accesibilidad.
 - `main` no recibe cambios sin PR, CI y revisión.
 
-## 11. Lo que no entra en el MVP
+## 11. Exclusiones deliberadas del producto
 
 - Editor libre de layouts, colores o tipografías.
 - Edición de PDF equivalente a Acrobat.

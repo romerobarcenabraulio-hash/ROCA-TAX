@@ -9,6 +9,7 @@
 **Anexo obligatorio de frontend:** `FRONTEND_EXIGENCIA_CERO_OMISIONES.md`
 **Contrato obligatorio de réplica:** `docs/product/CONTRATO_REPLICA_HTML_1_A_1.md`
 **Inventario del sitio oficial y edición mínima:** `docs/product/INVENTARIO_SITIO_OFICIAL_Y_MODELO_EDICION.md`
+**Contrato mínimo de producción:** `docs/product/PRODUCTION_RELEASE_SPEC.md`
 
 ---
 
@@ -19,11 +20,11 @@ ROCA TAX se construirá como una plataforma editorial y comercial con dos experi
 1. **Sitio público sin cuenta:** elegante, reservado y visual; explica el oficio, demuestra calidad, presenta trabajos y formas de poliuretano, y conduce a una cotización.
 2. **Panel administrativo con acceso por invitación:** literal, guiado y tolerante a errores; permite editar contenido, administrar catálogos y biblioteca, generar PDFs, revisar cotizaciones, publicar y restaurar versiones sin tocar código.
 
-La prioridad de Fase 1 no es “hacer toda la página”. Es construir el sistema operativo editorial que impedirá que cada actualización futura se convierta en trabajo técnico.
+La Fase 1 es un corte interno de construcción, no una entrega comercial ni un MVP publicable. El lanzamiento ocurre únicamente después de completar sitio público, biblioteca, importación, generador PDF, solicitudes, seguridad y operación conforme al contrato de producción.
 
 La experiencia pública no parte de una reinterpretación libre: replica de forma verificable el HTML heredado conforme al contrato 1:1. Conserva inventario, estructura, identidad y propósito; corrige sus simulaciones y defectos técnicos.
 
-### Resultado de Fase 1
+### Resultado interno de Fase 1
 
 Fase 1 termina únicamente cuando un administrador no técnico puede:
 
@@ -37,15 +38,17 @@ Fase 1 termina únicamente cuando un administrador no técnico puede:
 - restaurar la versión anterior;
 - invitar o desactivar a otro administrador según sus permisos.
 
-### No se hará en Fase 1
+### No se libera producción al terminar Fase 1
+
+Los siguientes elementos no pertenecen a este corte interno. Biblioteca e importación definitiva y generación PDF sí son obligatorios antes del lanzamiento operativo:
 
 - venta en línea con pago y logística;
 - cuentas para visitantes o clientes;
 - edición libre del layout;
 - IA que publique sin revisión humana;
 - OCR masivo o procesamiento pesado en Render;
-- migración definitiva de la biblioteca desde un Excel provisional;
-- generación de PDFs finales sin una plantilla comercial aprobada.
+- migración definitiva de la biblioteca hasta recibir el Excel original;
+- generación de PDFs finales hasta recibir una plantilla comercial aprobada.
 
 ---
 
@@ -324,7 +327,7 @@ En un menú secundario: `Usuarios · Historial · Configuración · Ayuda`.
 | ID | Pantalla | Razón de existir | Acción principal | Permiso mínimo | Criterio de aceptación |
 |---|---|---|---|---|---|
 | A-01 | Acceso | Autenticar sólo al equipo invitado | Entrar | Invitado | No existe registro público; recuperación y MFA funcionan |
-| A-02 | Inicio | Traducir el sistema en seis tareas | Elegir tarea | Viewer | Una persona nueva encuentra una tarea en menos de 30 s |
+| A-02 | Inicio | Traducir el sistema en siete tareas | Elegir tarea | Admin | Una persona nueva encuentra una tarea en menos de 30 s |
 | A-03 | Páginas | Mostrar qué está publicado o pendiente | Editar | Editor | Cada página tiene miniatura, estado, responsable y fecha |
 | A-04 | Editor de página | Editar contenido sin romper layout | Guardar borrador | Editor | Campos guiados, autoguardado y validación sin código |
 | A-05 | Vista previa | Revisar el resultado real | Aprobar revisión | Editor | Desktop/móvil y tema claro/oscuro usan el mismo borrador |
@@ -432,7 +435,7 @@ Invitación por correo, rol preseleccionado, vencimiento, reenvío y revocación
 
 ## 7. Roles y permisos
 
-La tabla siguiente es la arquitectura objetivo posterior. Durante el MVP de 14 días se implementan únicamente `owner` y `admin`; las capacidades de Editor, Comercial, Biblioteca y Viewer se absorben en Admin y no crean roles, UI o políticas adicionales.
+La tabla siguiente documenta capacidades potenciales, pero el lanzamiento operativo implementa únicamente `owner` y `admin`; las capacidades de Editor, Comercial, Biblioteca y Viewer se absorben en Admin y no crean roles, UI o políticas adicionales.
 
 | Capacidad | Owner | Admin | Editor | Comercial | Biblioteca | Viewer |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -534,7 +537,7 @@ Si falla la publicación, la versión pública anterior permanece intacta. Publi
 ### F1.2 — Acceso y permisos
 
 - login, recuperación e invitación;
-- perfiles y dos roles MVP: Owner y Admin;
+- perfiles y dos roles de producción: Owner y Admin;
 - RLS por capacidad;
 - MFA obligatorio para Owner/Admin;
 - sesiones, revocación y auditoría;
@@ -545,7 +548,7 @@ Si falla la publicación, la versión pública anterior permanece intacta. Publi
 ### F1.3 — Shell administrativo
 
 - navegación;
-- inicio de seis tareas;
+- inicio de siete tareas;
 - estados globales;
 - diseño responsive;
 - claro/oscuro, con claro por defecto;
@@ -616,7 +619,7 @@ Si falla la publicación, la versión pública anterior permanece intacta. Publi
 | 26–32 | Acceso, usuarios, roles y MFA | Seguridad funcional por rol |
 | 33–38 | Shell e inicio administrativo | Navegación validada con usuarios |
 | 39–45 | Editor y medios | Borradores estables y sin pérdida de datos |
-| 46–50 | Preview, publicación, versiones y rollback | **Cierre de Fase 1** |
+| 46–50 | Preview, publicación, versiones y rollback | **Cierre interno de Fase 1; no producción** |
 | 51–57 | Inicio y El Estudio | Marca y narrativa aprobadas |
 | 58–63 | Taxidermia y valoración | Solicitud completa con folio |
 | 64–70 | Colección pública | Archivo curado y fichas |
@@ -638,12 +641,12 @@ Si falla la publicación, la versión pública anterior permanece intacta. Publi
 
 ### Hitos
 
-1. `M0 — Decisiones y contenido`
+1. `M0 — Contratos y contenido de producción`
 2. `M1 — Administrador seguro`
 3. `M2 — Editor y publicación`
-4. `M3 — Sitio público`
-5. `M4 — Catálogos, PDF y biblioteca`
-6. `M5 — Lanzamiento`
+4. `M3 — Sitio público y solicitudes`
+5. `M4 — Biblioteca y catálogos PDF`
+6. `M5 — Lanzamiento operativo`
 
 ### Epics de Fase 1
 

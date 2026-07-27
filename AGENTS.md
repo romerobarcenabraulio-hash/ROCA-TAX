@@ -5,12 +5,12 @@ Este repositorio adopta la disciplina operativa probada en ALQUIMIA, pero es un 
 ## 1. Fuente de verdad
 
 - Producto: `ROCA_TAX_MASTER_PLAN_0_100.md`.
-- MVP de 14 días: `docs/product/MVP_14_DIAS_ADMIN_SPEC.md`.
+- Lanzamiento operativo: `docs/product/PRODUCTION_RELEASE_SPEC.md`.
 - Frontend: `FRONTEND_EXIGENCIA_CERO_OMISIONES.md`.
 - Instrucciones Lovable: `docs/execution/LOVABLE_EXECUTION_PACK.md`.
 - Linear: proyecto `ROCA TAX — Plataforma web y administración`.
 
-Si dos documentos se contradicen, gana el más específico y reciente. La especificación MVP limita el alcance del plan 0–100 durante las dos primeras semanas.
+Si dos documentos se contradicen, gana el más específico y reciente. La especificación de lanzamiento operativo es el contrato mínimo de producción: no se acepta una entrega parcial etiquetada como MVP.
 
 ## 2. Separación con ALQUIMIA
 
@@ -36,6 +36,9 @@ Si dos documentos se contradicen, gana el más específico y reciente. La especi
 - Editar sólo los archivos permitidos por el prompt.
 - No inventar campos, rutas, contenido, colores, imágenes, métricas o dependencias.
 - No sustituir datos reales por mocks persistentes.
+- Un prompt corresponde a un issue y un presupuesto de cambio.
+- Si falta una precondición, Lovable se detiene; no rellena huecos ni improvisa.
+- Lovable no inicia un segundo intento abierto: reporta el fallo para producir una corrección acotada.
 - Al terminar: listar archivos, pruebas, supuestos y cualquier desviación.
 
 ## 5. Regla de administración
@@ -65,4 +68,5 @@ Si dos documentos se contradicen, gana el más específico y reciente. La especi
 - Preview Vercel revisado.
 - Greptile sin bloqueo crítico.
 - Linear actualizado con evidencia y PR.
-
+- Backup y restauración ensayados cuando el cambio toca datos o publicación.
+- Smoke test de producción y observabilidad activa para el lanzamiento.

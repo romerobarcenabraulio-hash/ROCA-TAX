@@ -35,7 +35,7 @@ Correspondencia nueva:
 | Servicios | `/taxidermia` y `/valoracion` | Separa explicación del servicio y solicitud real |
 | Tienda | `/formas` | Conserva intención comercial sin fingir checkout |
 | Contacto | `/contacto` | Conserva datos y los centraliza |
-| Carrito (0) | No aparece en MVP | No se replica una función falsa; sólo regresa con checkout real aprobado |
+| Carrito (0) | No forma parte del servicio | No se replica una función falsa; sólo regresa con checkout real aprobado |
 
 ### 2.2 Inicio heredado: orden obligatorio
 
@@ -56,7 +56,7 @@ Los cinco mensajes del hero se preservan como contenido inicial administrable:
 4. `Que tu trofeo sea algo extraordinario`
 5. `Conserva el recuerdo único de tu aventura`
 
-En el MVP no se conserva el cambio automático cada cinco segundos. Los cinco mensajes pueden presentarse en una composición editorial o carrusel manual accesible; ninguno se elimina sin decisión editorial registrada.
+En producción no se conserva el cambio automático cada cinco segundos. Los cinco mensajes pueden presentarse en una composición editorial o carrusel manual accesible; ninguno se elimina sin decisión editorial registrada.
 
 ### 2.3 Galería heredada
 
@@ -76,7 +76,7 @@ El comentario del código dice “52 especies”, pero el arreglo contiene 37. L
 - campos fuente: tipo de animal, nombre completo, teléfono y comentarios;
 - acción `Enviar Cotización`.
 
-La nueva solicitud añade únicamente los campos y consentimientos exigidos por la especificación MVP, genera folio y persiste antes de notificar.
+La nueva solicitud añade únicamente los campos y consentimientos exigidos por la especificación de lanzamiento, genera folio y persiste antes de notificar.
 
 ### 2.5 Tienda heredada
 
@@ -94,7 +94,7 @@ La nueva solicitud añade únicamente los campos y consentimientos exigidos por 
 | Ajedrez Premium de Asta | 32,000 |
 | Domino Hueso Natural | 8,500 |
 
-Estos registros se migran como **datos pendientes de validación comercial**, nunca como disponibilidad confirmada. En MVP se muestran sólo cuando un administrador confirma nombre, categoría, precio, disponibilidad, imagen y política comercial. La acción es solicitar información o valoración; no hay carrito, pago ni promesa de envío automático.
+Estos registros se migran como **datos pendientes de validación comercial**, nunca como disponibilidad confirmada. En producción se muestran sólo cuando un administrador confirma nombre, categoría, precio, disponibilidad, imagen y política comercial. La acción es solicitar información o valoración; no hay carrito, pago ni promesa de envío automático.
 
 ### 2.6 Contacto y footer heredados
 
@@ -205,4 +205,3 @@ Reglas:
 4. Lovable recibe un prompt numerado que cita ruta, IDs R-xxx, archivos permitidos y criterios exactos.
 5. Ningún prompt puede pedir “moderniza”, “haz elegante” o “replica” sin la matriz correspondiente.
 6. `Done` requiere evidencia real de los gates aplicables; un screenshot aislado no basta.
-

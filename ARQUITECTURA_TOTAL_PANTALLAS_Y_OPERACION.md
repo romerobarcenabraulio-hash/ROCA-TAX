@@ -456,7 +456,7 @@ Sólo cuando las pruebas demuestren que OCR, importaciones muy grandes o generac
 
 ### Decisión de despliegue
 
-Usar Vercel + Supabase para MVP. El PDF se genera como trabajo asíncrono y se almacena; si las ejecuciones se vuelven pesadas, mover únicamente el worker a Render sin migrar toda la aplicación.
+Usar Vercel + Supabase para el servicio operativo. El PDF se genera como trabajo asíncrono y se almacena; si las mediciones reales exceden los límites de Vercel, mover únicamente el worker a Render sin migrar toda la aplicación.
 
 ## 8. Crítica de riesgos antes de construir
 
