@@ -1,5 +1,6 @@
 (function(){
   const data = window.ROCA_DATA;
+  if (Array.isArray(window.ROCA_EXTRA_SECTIONS)) data.sections.push(...window.ROCA_EXTRA_SECTIONS);
   const nav = document.getElementById('nav');
   const page = document.getElementById('page');
   const contentsPane = document.getElementById('contentsPane');
@@ -59,25 +60,25 @@
       <p class="lead">Usar esta vista como libreta de campo: medir, fotografiar, comprobar y cerrar. El documento final permanece limpio.</p>
       <h2>Plano y medidas</h2>
       <ul>
-        <li>Confirmar medidas dudosas y faltantes del croquis.</li>
-        <li>Puertas, vanos, pasillos y accesos principales.</li>
-        <li>Retoque, Carpintería, Comedor, WC y bodegas pequeñas.</li>
-        <li>Equipos fijos, tinas, drenajes, tableros, ventilación y servicios.</li>
+        <li>Braulio hará el levantamiento físico: dimensiones generales, puertas, vanos, pasillos y accesos.</li>
+        <li>Registrar equipos fijos, tinas, drenajes, tableros, ventilación/extracción y servicios.</li>
+        <li>No convertir croquis en plano definitivo hasta cerrar medidas dudosas.</li>
       </ul>
       <h2>Fotos de campo</h2>
       <ul>
-        <li>Panorámica de cada área.</li>
-        <li>Estaciones de trabajo y almacenamiento abierto.</li>
-        <li>Extintores, rutas y salidas.</li>
-        <li>Químicos/HDS, residuos, drenajes y equipos críticos.</li>
+        <li>Braulio tomará panorámicas de cada área y estaciones individuales.</li>
+        <li>Capturar almacenamiento abierto, botes, químicos, rutas, extintores y equipos críticos.</li>
+        <li>Una foto acredita sólo lo visible; lux, caudal, recorrido, vigencias y cumplimiento requieren otra evidencia.</li>
       </ul>
+      <h2>Entrevistas</h2>
+      <ul><li>Ricardo queda diferido a la próxima semana. No bloquear mobiliario general, implementación ni control documental por esa entrevista.</li></ul>
       <h2>Documentos pendientes</h2>
       <ul>
         <li>Expediente corporativo / legal solicitado.</li>
         <li>Inmueble, funcionamiento, seguros, fiscal y permisos aplicables.</li>
         <li>Evidencia técnica que no puede cerrarse sólo con fotografía.</li>
       </ul>
-      <div class="callout">Regla simple: me mandas foto o medida → se registra en NOTAS → cuando queda sustentado, pasa al DOC FINAL.</div>
+      <div class="callout">Regla simple: foto, medida o documento entra primero como evidencia; sólo después de comprobarse modifica el estándar publicado.</div>
     </article>`;
     document.title='Notas · ROCA Live';
     window.scrollTo({top:0,left:0,behavior:'auto'});
