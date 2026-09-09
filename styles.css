@@ -1,0 +1,59 @@
+:root{
+  --ink:#171717;
+  --paper:#f5f1e8;
+  --paper2:#fbfaf6;
+  --nav:#ece7dd;
+  --line:#c9c0b3;
+  --bronze:#8a5a34;
+  --navy:#17232e;
+  --muted:#6d675f;
+  --white:#ffffff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#d8d3ca;color:var(--ink);font-family:Georgia,"Times New Roman",serif}
+.topbar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:#efeae1;border-bottom:1px solid #c7beb0}
+.kicker{font:700 10px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.18em;color:var(--bronze)}
+.title{font-size:27px;line-height:1.05;font-weight:700}
+.workspace-switch{display:flex;gap:7px;align-items:center}
+.mode{appearance:none;border:1px solid #bfb5a6;background:transparent;padding:8px 11px;font:700 10px/1 Arial,Helvetica,sans-serif;letter-spacing:.08em;cursor:pointer}
+.mode.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.layout{display:grid;grid-template-columns:248px minmax(0,1fr);max-width:1500px;margin:0 auto;min-height:calc(100vh - 80px)}
+.contents{padding:28px 20px 40px 24px;background:var(--nav);border-right:1px solid #c7beb0}
+.contents-title{font:700 11px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.13em;text-transform:uppercase;margin-bottom:16px}
+.contents nav{display:flex;flex-direction:column;gap:1px}
+.contents button{appearance:none;border:0;border-bottom:1px solid transparent;background:transparent;text-align:left;padding:7px 0;font:13px/1.3 Arial,Helvetica,sans-serif;cursor:pointer;color:#37322e}
+.contents button:hover,.contents button.active{color:var(--bronze);border-bottom-color:var(--bronze)}
+.rule-note{margin-top:26px;padding-top:14px;border-top:1px solid #c7beb0;font:10.5px/1.5 Arial,Helvetica,sans-serif;color:var(--muted)}
+.page{padding:34px 4vw 70px;min-width:0;background:#ded8ce}
+.paper{position:relative;width:min(816px,100%);min-height:1056px;margin:0 auto;background:var(--paper2);box-shadow:0 8px 30px rgba(0,0,0,.14);padding:72px 54px 62px}
+.page-head{display:flex;justify-content:space-between;gap:20px;font:700 8px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#7c7267;margin-bottom:34px}
+.eyebrow{font:700 9px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze);margin-bottom:12px}
+h1{font-size:31px;line-height:1.08;letter-spacing:-.015em;margin:0 0 12px;max-width:690px}
+.lead{font-size:15px;line-height:1.5;max-width:64ch;margin:0 0 15px;color:#38332e}
+.bronze-rule{height:2px;width:180px;background:var(--bronze);margin:12px 0 30px}
+.bronze-rule.short{width:130px}
+.master-content{font-size:12.5px;line-height:1.5}
+h2{font-size:19px;line-height:1.2;margin:30px 0 10px;padding-top:7px;border-top:1px solid #c7bbaa}
+h3{font-size:15px;margin:22px 0 8px}
+p{margin:0 0 12px}
+ul,ol{padding-left:22px;margin:10px 0 18px}
+li{margin:5px 0}
+table{width:100%;border-collapse:collapse;margin:16px 0 26px;font:11px/1.35 Arial,Helvetica,sans-serif}
+th{padding:7px 6px;text-align:left;border-bottom:2px solid #2b2723;font-size:8px;letter-spacing:.09em;text-transform:uppercase;color:#6a625a}
+td{padding:8px 6px;border-bottom:1px solid #d4ccbf;vertical-align:top}
+.callout{margin:20px 0;padding:13px 16px;background:#f0eadf;border-left:3px solid var(--bronze);font-size:12px;line-height:1.45}
+.poster{border:1px solid #2f2a26;padding:26px 30px;margin:20px 0 30px;background:#fffdf8;break-inside:avoid}.poster h2{border:0;margin:0 0 8px;padding:0;font-size:22px}.poster .poster-sub{font:9px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#766d63;margin-bottom:16px}.poster ol{font-size:14px;line-height:1.4}
+.folio{position:absolute;left:54px;right:54px;bottom:22px;display:flex;justify-content:space-between;gap:20px;padding-top:8px;border-top:1px solid #d8d0c5;font:7px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.03em;color:#8b8379}
+.cover-paper{background:var(--navy);color:#f8f4ec;padding:54px 52px 48px}
+.cover-kicker{font:700 8px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.16em;color:#d9d1c6}
+.cover-main{margin-top:74px}.cover-main h1{font-size:42px;line-height:1.02;color:#fff;margin-bottom:18px}.cover-main p{font:12px/1.4 Arial,Helvetica,sans-serif;color:#ece6dd;letter-spacing:.02em}.cover-main .bronze-rule{width:145px;height:2px;margin-top:15px}
+.cover-bottom{position:absolute;left:52px;right:52px;bottom:70px;display:flex;flex-direction:column;gap:5px;font:8px/1.35 Arial,Helvetica,sans-serif;color:#e6dfd5}.cover-bottom strong{letter-spacing:.08em}.cover-paper .folio{left:52px;right:52px;color:#b8b0a7;border-top-color:#34414d}
+.notes-paper{background:#fffdf8}
+.master-pdf-actions{display:flex;justify-content:space-between;gap:16px;align-items:center;margin:16px 0;font:10px/1.3 Arial,Helvetica,sans-serif;color:var(--muted)}
+.pdf-link{display:inline-block;padding:9px 12px;background:var(--navy);color:#fff;text-decoration:none;font:700 9px/1 Arial,Helvetica,sans-serif;letter-spacing:.09em}
+.master-pdf-shell{width:100%;height:760px;border:1px solid #bdb3a5;background:#cfc8bc;overflow:hidden}
+.master-pdf-frame{width:100%;height:100%;border:0;background:#fff}
+footer{display:none}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.contents{border-right:0;border-bottom:1px solid #c7beb0;padding:17px 20px}.contents nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 15px}.page{padding:18px}.paper{min-height:auto;padding:44px 28px 54px}.folio{left:28px;right:28px}.cover-paper{min-height:900px;padding:42px 30px}.cover-bottom{left:30px;right:30px}.topbar{align-items:flex-start;flex-direction:column;gap:10px}.workspace-switch{flex-wrap:wrap}.cover-main h1{font-size:34px}.master-pdf-shell{height:70vh}.master-pdf-actions{align-items:flex-start;flex-direction:column}}
+@media print{body,.page{background:#fff}.topbar,.contents{display:none!important}.layout{display:block;max-width:none}.page{padding:0}.paper{width:100%;min-height:11in;box-shadow:none;margin:0;page-break-after:always}.paper:last-child{page-break-after:auto}.master-pdf-shell{display:none}.master-pdf-actions{display:none}}

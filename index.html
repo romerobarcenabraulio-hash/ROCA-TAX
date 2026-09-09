@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>ROCA Live · Documento final</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="kicker">ROCA TAXIDERMY</div>
+      <div class="title">ROCA Live</div>
+    </div>
+    <div class="workspace-switch" aria-label="Vista de trabajo">
+      <button id="finalMode" class="mode active" type="button">DOC FINAL</button>
+      <button id="notesMode" class="mode" type="button">NOTAS</button>
+      <button id="printDoc" class="mode print-action" type="button">IMPRIMIR / PDF</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside id="contentsPane" class="contents" aria-label="Índice">
+      <div class="contents-title">Documento final</div>
+      <nav id="nav"></nav>
+      <div class="rule-note">Esta es la vista que importa. Las notas de trabajo quedan separadas.</div>
+    </aside>
+
+    <main id="page" class="page" tabindex="-1"></main>
+  </div>
+
+  <footer>
+    ROCA · Documento de trabajo controlado.
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="master-data.js"></script>
+  <script src="extra-data.js"></script>
+  <script src="legal-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
