@@ -1,6 +1,8 @@
 (function(){
   const data = window.ROCA_DATA;
+  if (Array.isArray(window.ROCA_EDITORIAL_SECTIONS)) data.sections.push(...window.ROCA_EDITORIAL_SECTIONS);
   if (Array.isArray(window.ROCA_EXTRA_SECTIONS)) data.sections.push(...window.ROCA_EXTRA_SECTIONS);
+
   const nav = document.getElementById('nav');
   const page = document.getElementById('page');
   const contentsPane = document.getElementById('contentsPane');
@@ -8,8 +10,19 @@
   const notesMode = document.getElementById('notesMode');
   const printDoc = document.getElementById('printDoc');
 
-  const excluded = ['estado','implementacion','evidencia','editorial'];
-  const finalSections = data.sections.filter(s => !excluded.includes(s.id));
+  const finalOrder = [
+    'roca',
+    'heritage',
+    'personas',
+    'areas',
+    'procesos',
+    'trazabilidad',
+    'cumplimiento',
+    'machotes-guias'
+  ];
+
+  const byId = new Map(data.sections.map(s => [s.id, s]));
+  const finalSections = finalOrder.map(id => byId.get(id)).filter(Boolean);
 
   function buildNav(){
     nav.innerHTML='';
@@ -27,41 +40,49 @@
     });
   }
 
-  function footer(pageNo){
-    return `<div class="folio"><span>ROCA TAXIDERMY · MASTER INTEGRAL · PRE-CAMPO / PENDIENTES ABIERTOS</span><span>${pageNo || '—'} / 391</span></div>`;
+  function footer(label){
+    return `<div class="folio"><span>ROCA TAXIDERMY · DOCUMENTO MAESTRO · EDICIÓN DE TRABAJO</span><span>${label || ''}</span></div>`;
   }
 
-  function renderCover(){
-    page.innerHTML = `<article class="paper cover-paper">
+  function coverMarkup(){
+    return `<article class="paper cover-paper">
       <div class="cover-kicker">ROCA TAXIDERMY · ARTE Y TRADICIÓN · DESDE 1946</div>
       <div class="cover-main">
-        <h1>Manual integral<br>de dirección y operación</h1>
-        <p>Taller completo · personas · áreas · procesos · evidencia · permisos · entrega</p>
+        <h1>ROCA TAXIDERMY<br>Documento maestro</h1>
+        <p>Empresa · personas · taller · procesos · normas · machotes · heritage</p>
         <div class="bronze-rule"></div>
       </div>
       <div class="cover-bottom">
-        <strong>EDICIÓN DE TRABAJO · PRE-CAMPO / PRE-CIERRE</strong>
-        <span>31 AGO 2026 · Lo ausente se conserva como PENDIENTE; nunca se rellena con supuestos.</span>
+        <strong>EDICIÓN DE TRABAJO · PRE-CIERRE</strong>
+        <span>La lectura final resume ROCA; Drive conserva el respaldo integral y la evidencia de cada caso.</span>
       </div>
-      ${footer('1')}
+      ${footer('PORTADA')}
     </article>`;
-    document.title='Manual integral · ROCA Live';
+  }
+
+  function sectionMarkup(section){
+    const posters = section.posters ? section.posters.map(([name, items]) => `
+      <section class="poster"><div class="poster-sub">ROCA · condición de área</div><h2>${name}</h2><ol>${items.map(x=>`<li>${x}</li>`).join('')}</ol></section>`).join('') : '';
+    return `<article class="paper master-paper">
+      <div class="page-head"><span>${section.eyebrow || 'ROCA / DOCUMENTO MAESTRO'}</span><span>ROCA TAXIDERMY</span></div>
+      <div class="eyebrow">${section.eyebrow || ''}</div>
+      <h1>${section.title}</h1>
+      <p class="lead">${section.lead || ''}</p>
+      <div class="bronze-rule short"></div>
+      <div class="master-content">${section.body||''}${posters}</div>
+      ${footer(section.nav ? section.nav.toUpperCase() : '')}
+    </article>`;
+  }
+
+  function renderCover(){
+    page.innerHTML = coverMarkup();
+    document.title='ROCA TAXIDERMY · Documento maestro';
     markActive('portada');
   }
 
   function render(section){
-    const posters = section.posters ? section.posters.map(([name, items]) => `
-      <section class="poster"><div class="poster-sub">ROCA · condición de área</div><h2>${name}</h2><ol>${items.map(x=>`<li>${x}</li>`).join('')}</ol></section>`).join('') : '';
-    page.innerHTML = `<article class="paper master-paper">
-      <div class="page-head"><span>${section.eyebrow || 'ROCA / MANUAL INTEGRAL'}</span><span>ROCA TAXIDERMY</span></div>
-      <div class="eyebrow">${section.eyebrow}</div>
-      <h1>${section.title}</h1>
-      <p class="lead">${section.lead}</p>
-      <div class="bronze-rule short"></div>
-      <div class="master-content">${section.body||''}${posters}</div>
-      ${footer('—')}
-    </article>`;
-    document.title = `${section.nav} · ROCA Live`;
+    page.innerHTML = sectionMarkup(section);
+    document.title = `${section.nav} · ROCA TAXIDERMY`;
     markActive(section.id);
   }
 
@@ -84,40 +105,55 @@
   }
 
   function showFinal(){
-    document.body.classList.remove('notes-mode');
+    document.body.classList.remove('notes-mode','print-all-mode');
     finalMode.classList.add('active');
     notesMode.classList.remove('active');
-    contentsPane.querySelector('.contents-title').textContent='Documento final';
-    contentsPane.querySelector('.rule-note').textContent='Reconstrucción editorial del master de 391 páginas. Pendientes y evidencia se mantienen fuera de la lectura final.';
+    contentsPane.querySelector('.contents-title').textContent='Documento maestro';
+    contentsPane.querySelector('.rule-note').textContent='Recap esencial de ROCA TAXIDERMY. El respaldo profundo, originales y evidencia de cada caso permanecen fuera de esta lectura.';
     buildNav();
     go(location.hash.slice(1)||'portada');
   }
 
   function showNotes(){
     document.body.classList.add('notes-mode');
+    document.body.classList.remove('print-all-mode');
     notesMode.classList.add('active');
     finalMode.classList.remove('active');
     contentsPane.querySelector('.contents-title').textContent='Notas para trabajo';
-    contentsPane.querySelector('.rule-note').textContent='Sólo pendientes, fotografías, medidas, documentos y validaciones.';
+    contentsPane.querySelector('.rule-note').textContent='Pendientes, evidencia, fuente maestra y validaciones que no forman parte de la lectura editorial.';
     nav.innerHTML='';
     page.innerHTML=`<article class="paper notes-paper">
       <div class="page-head"><span>ROCA / NOTAS INTERNAS</span><span>NO IMPRIMIR EN FINAL</span></div>
       <div class="eyebrow">NOTAS INTERNAS</div>
       <h1>Lo que falta para cerrar</h1>
-      <p class="lead">Esta vista funciona como libreta de integración. Nada pasa al documento final sin fuente o evidencia suficiente.</p>
+      <p class="lead">Nada pasa al documento maestro como hecho cerrado sin fuente, evidencia o validación suficiente.</p>
       <div class="bronze-rule short"></div>
+      <h2>Fuente maestra preservada</h2><p>El PDF integral de 391 páginas permanece como referencia editorial y documental. Se consulta para recuperar contenido, no como primer capítulo de la lectura final.</p>
       <h2>Plano y medidas</h2><ul><li>Completar medidas dudosas y faltantes.</li><li>Puertas, vanos, pasillos, accesos, equipos fijos, tinas, drenajes, tableros, ventilación y servicios.</li></ul>
-      <h2>Fotografías</h2><ul><li>Panorámicas por área y estaciones.</li><li>Almacenamiento, residuos, químicos, rutas, extintores y equipos críticos.</li></ul>
-      <h2>Documentos</h2><ul><li>Expediente corporativo, inmueble, funcionamiento, seguros, fiscal y permisos aplicables.</li><li>PDFs legales se insertarán en su sección y quedarán previstos para una sola impresión final.</li></ul>
+      <h2>Fotografías / Heritage</h2><ul><li>Panorámicas por área y estaciones.</li><li>Personas, herramientas, oficio, almacenamiento, residuos, químicos, rutas, extintores y equipos críticos.</li></ul>
+      <h2>Documentos / cumplimiento</h2><ul><li>Preservar documentos base, controlar normas/estándares por versión y aplicabilidad, y cerrar licencias/permisos reales.</li><li>Conservar machotes útiles para decisiones; mantener evidencia real de cada caso en Drive/BIWO.</li></ul>
       ${footer('NOTAS')}
     </article>`;
-    document.title='Notas · ROCA Live';
+    document.title='Notas · ROCA TAXIDERMY';
     window.scrollTo({top:0,left:0,behavior:'auto'});
+  }
+
+  function renderAllForPrint(){
+    document.body.classList.remove('notes-mode');
+    document.body.classList.add('print-all-mode');
+    page.innerHTML = coverMarkup() + finalSections.map(sectionMarkup).join('');
+    document.title='ROCA TAXIDERMY · Documento maestro';
   }
 
   finalMode.addEventListener('click',showFinal);
   notesMode.addEventListener('click',showNotes);
-  printDoc.addEventListener('click',()=>{ if(document.body.classList.contains('notes-mode')) showFinal(); setTimeout(()=>window.print(),80); });
-  window.addEventListener('hashchange',()=>{ if(!document.body.classList.contains('notes-mode')) go(location.hash.slice(1)); });
+  printDoc.addEventListener('click',()=>{
+    renderAllForPrint();
+    setTimeout(()=>{
+      window.print();
+      setTimeout(()=>showFinal(),150);
+    },80);
+  });
+  window.addEventListener('hashchange',()=>{ if(!document.body.classList.contains('notes-mode') && !document.body.classList.contains('print-all-mode')) go(location.hash.slice(1)); });
   showFinal();
 })();
