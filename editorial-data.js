@@ -7,7 +7,7 @@ window.ROCA_EDITORIAL_SECTIONS = [
       <p>La operación integra dirección de taller, curtiduría, formas y moldes, montaje, retoque, soldadura y adaptación, carpintería/embalaje, bodegas, control de materiales, trazabilidad y entrega.</p>
       <h2>Qué debe permitir este master</h2>
       <ul>
-        <li>Entender quién integra la empresa y qué función cumple.</li>
+        <li>Entender qué funciones integran la empresa y cómo se conectan.</li>
         <li>Entender cómo está dividido el taller y para qué sirve cada área.</li>
         <li>Seguir el recorrido general de una pieza desde que entra hasta que se entrega.</li>
         <li>Conservar la forma correcta de ejecutar decisiones y tareas mediante machotes y guías.</li>
@@ -35,19 +35,19 @@ window.ROCA_EDITORIAL_SECTIONS = [
     `
   },
   {
-    id:"personas", nav:"Personas y estructura", title:"Quién hace ROCA", eyebrow:"Estructura actual de la empresa",
-    lead:"La estructura se presenta por funciones reales y por el trabajo que ocurre en el taller, sin recuperar organigramas que ya no representan la operación.",
+    id:"personas", nav:"Personas y estructura", title:"Cómo se organiza ROCA", eyebrow:"Estructura funcional actual",
+    lead:"La estructura pública se presenta por funciones reales y por el trabajo que ocurre en el taller. Los nombres y expedientes individuales permanecen en las fuentes privadas controladas.",
     body:`
-      <table><thead><tr><th>Función / área</th><th>Integrantes o referencia actual</th><th>Papel dentro de ROCA</th></tr></thead><tbody>
-        <tr><td>Dirección de taller / Producción</td><td>José Luis “Guicho” Gonzales Tiscareño</td><td>Coordina producción, decisiones de montaje, compras programadas, cobranza operativa y seguimiento del taller.</td></tr>
-        <tr><td>ERP / Compras / Inventarios</td><td>César Morales</td><td>Control operativo de inventarios, compras, ERP y seguimiento de cuentas por cobrar junto con Guicho.</td></tr>
-        <tr><td>Curtiduría</td><td>Rodolfo Sr., David y Eduardo/Lalo</td><td>Preparación, hidratación, pickle, rebajado, bateado y control físico del proceso de curtido.</td></tr>
-        <tr><td>Montaje</td><td>Guicho coordina; equipo de montadores; Ricardo trabaja con Eugenio como asistente directo.</td><td>Medición, selección/modificación de formas, preparación, colocación de piel, reparación y armado de la pieza.</td></tr>
-        <tr><td>Retoque</td><td>Sr. Pez, Rodolfo Jr., Emiliano y Valerio</td><td>Limpieza, resane, color, aerografía, acabado y preparación final.</td></tr>
-        <tr><td>Formas y Moldes</td><td>Omar</td><td>Fabricación y ajuste de formas, moldes, fibra, resina, insertos y componentes.</td></tr>
-        <tr><td>Soldadura / Adaptación</td><td>Flaco</td><td>Adaptaciones metálicas, estructuras y trabajo de soldadura requerido por las piezas o formas.</td></tr>
+      <table><thead><tr><th>Función / área</th><th>Referencia pública</th><th>Papel dentro de ROCA</th></tr></thead><tbody>
+        <tr><td>Dirección de taller / Producción</td><td>Dirección operativa</td><td>Coordina producción, decisiones de montaje, compras programadas, cobranza operativa y seguimiento del taller.</td></tr>
+        <tr><td>ERP / Compras / Inventarios</td><td>Responsable administrativo-operativo</td><td>Control de inventarios, compras, ERP y seguimiento de cuentas por cobrar junto con dirección.</td></tr>
+        <tr><td>Curtiduría</td><td>Responsable de curtiduría + equipo</td><td>Preparación, hidratación, pickle, rebajado, bateado y control físico del proceso de curtido.</td></tr>
+        <tr><td>Montaje</td><td>Dirección de taller + equipo de montaje</td><td>Medición, selección/modificación de formas, preparación, colocación de piel, reparación y armado de la pieza.</td></tr>
+        <tr><td>Retoque</td><td>Responsable de retoque + equipo</td><td>Limpieza, resane, color, aerografía, acabado y preparación final.</td></tr>
+        <tr><td>Formas y Moldes</td><td>Responsable de formas y moldes</td><td>Fabricación y ajuste de formas, moldes, fibra, resina, insertos y componentes.</td></tr>
+        <tr><td>Soldadura / Adaptación</td><td>Responsable de soldadura y adaptación</td><td>Adaptaciones metálicas, estructuras y trabajo de soldadura requerido por las piezas o formas.</td></tr>
       </tbody></table>
-      <div class="callout">Los expedientes personales, INE, comprobantes, contratos firmados y demás documentación individual se conservan en Drive. El master conserva únicamente la matriz funcional de la empresa.</div>
+      <div class="callout">Los nombres completos, expedientes personales, identificaciones, comprobantes, contratos firmados y demás documentación individual se conservan fuera del repositorio público. El master público conserva únicamente la matriz funcional.</div>
     `
   },
   {
