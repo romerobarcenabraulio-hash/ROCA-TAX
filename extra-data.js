@@ -4,17 +4,17 @@ window.ROCA_EXTRA_SECTIONS = [
     lead:"Cada responsable recibe una condición física que mantener, acciones de mejora que ejecutar y evidencia concreta que devolver. La dirección no delega el criterio técnico: delega tareas observables.",
     body:`
       <h2>Regla común</h2>
-      <table><thead><tr><th>Responsable de área</th><th>Mantiene</th><th>Corrige</th><th>Escala a Guicho</th></tr></thead><tbody>
+      <table><thead><tr><th>Responsable de área</th><th>Mantiene</th><th>Corrige</th><th>Escala a dirección</th></tr></thead><tbody>
       <tr><td>Todos</td><td>Orden, estación utilizable, identificación de pieza, herramienta en su lugar, residuos segregados, pasillo libre.</td><td>Desorden, objetos fuera de lugar, recipientes sin identificación, acumulación evitable, condición de cierre.</td><td>Falta de mueble/rack/bote, instalación, riesgo, reparación, compra o cambio que requiera decisión.</td></tr>
       </tbody></table>
-      <h2>Asignación inicial</h2>
+      <h2>Asignación funcional</h2>
       <table><thead><tr><th>Área</th><th>Responsabilidad operativa</th><th>Primer bloque de implementación</th></tr></thead><tbody>
-      <tr><td>Montaje</td><td>Guicho coordina; cada montador mantiene su estación. Ricardo y Eugenio se documentarán como célula de trabajo separada cuando se haga la entrevista.</td><td>Estaciones, cajones, herramienta, adhesivos/barro/Bondo, secado/espera, residuos, rutas.</td></tr>
-      <tr><td>Curtiduría</td><td>Rodolfo Sr. como referencia de área; David y Eduardo/Lalo ejecutan bajo estándar común.</td><td>Húmedo/seco, tinas, dosificación, químicos, rebaja, derrames, residuos, tránsito.</td></tr>
+      <tr><td>Montaje</td><td>Dirección coordina; cada montador mantiene su estación. Las células de trabajo individuales se documentan en fuentes privadas cuando corresponda.</td><td>Estaciones, cajones, herramienta, adhesivos/barro/Bondo, secado/espera, residuos, rutas.</td></tr>
+      <tr><td>Curtiduría</td><td>Responsable de área y equipo operan bajo estándar común.</td><td>Húmedo/seco, tinas, dosificación, químicos, rebaja, derrames, residuos, tránsito.</td></tr>
       <tr><td>Retoque</td><td>Responsable de área mantiene superficie de detalle, almacenamiento y condición de cierre.</td><td>Pinturas/solventes, aerografía, iluminación de detalle, residuos, almacenamiento y extracción.</td></tr>
-      <tr><td>Formas y Moldes</td><td>Omar mantiene mezcla, moldes, insertos, fibra/resina y almacenamiento estable.</td><td>Zona de mezcla, almacenamiento, residuos, herramientas compartidas y superficies.</td></tr>
-      <tr><td>Soldadura</td><td>Flaco mantiene zona de trabajo en caliente y sus controles físicos.</td><td>Separación de combustibles, cables, ventilación, cilindros si existen y acceso a extinción.</td></tr>
-      <tr><td>Carpintería / Embalaje</td><td>Responsable por definir; debe operar separado de Retoque cuando haya polvo/corte.</td><td>Máquinas/guardas, polvo/aserrín, almacenamiento, corte, embalaje y residuos.</td></tr>
+      <tr><td>Formas y Moldes</td><td>Responsable de área mantiene mezcla, moldes, insertos, fibra/resina y almacenamiento estable.</td><td>Zona de mezcla, almacenamiento, residuos, herramientas compartidas y superficies.</td></tr>
+      <tr><td>Soldadura</td><td>Responsable de área mantiene zona de trabajo en caliente y sus controles físicos.</td><td>Separación de combustibles, cables, ventilación, cilindros si existen y acceso a extinción.</td></tr>
+      <tr><td>Carpintería / Embalaje</td><td>Responsable designado; debe operar separado de Retoque cuando haya polvo/corte.</td><td>Máquinas/guardas, polvo/aserrín, almacenamiento, corte, embalaje y residuos.</td></tr>
       <tr><td>Bodegas / Recepción</td><td>Responsable de recepción controla identificación, ubicación y espera física de piezas.</td><td>Segregación, estabilidad, pasillos, piezas sin ubicación, entradas/salidas y evidencia.</td></tr>
       </tbody></table>
     `
