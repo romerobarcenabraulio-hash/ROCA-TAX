@@ -7,6 +7,7 @@
   const page = document.getElementById('page');
   const contentsPane = document.getElementById('contentsPane');
   const finalMode = document.getElementById('finalMode');
+  const compendiumMode = document.getElementById('compendiumMode');
   const notesMode = document.getElementById('notesMode');
   const printDoc = document.getElementById('printDoc');
 
@@ -23,19 +24,22 @@
 
   const byId = new Map(data.sections.map(s => [s.id, s]));
   const finalSections = finalOrder.map(id => byId.get(id)).filter(Boolean);
+  const compendiumExcluded = ['estado','implementacion','evidencia','editorial'];
+  const compendiumSections = data.sections.filter(s => !compendiumExcluded.includes(s.id));
+  let activeMode = 'final';
 
-  function buildNav(){
+  function buildNav(sections = finalSections){
     nav.innerHTML='';
     const cover = document.createElement('button');
     cover.textContent='00  Portada';
     cover.dataset.id='portada';
-    cover.addEventListener('click',()=>go('portada'));
+    cover.addEventListener('click',()=>go('portada', sections));
     nav.appendChild(cover);
-    finalSections.forEach((section, i) => {
+    sections.forEach((section, i) => {
       const b = document.createElement('button');
       b.textContent = `${String(i+1).padStart(2,'0')}  ${section.nav}`;
       b.dataset.id = section.id;
-      b.addEventListener('click', () => go(section.id));
+      b.addEventListener('click', () => go(section.id, sections));
       nav.appendChild(b);
     });
   }
@@ -92,33 +96,50 @@
     window.scrollTo({top:0,left:0,behavior:'auto'});
   }
 
-  function go(id){
+  function go(id, sections = finalSections){
     if(id==='portada' || !id){
       history.replaceState(null,'','#portada');
       renderCover();
       return;
     }
-    const target = finalSections.find(s=>s.id===id);
+    const target = sections.find(s=>s.id===id);
     if(!target){ renderCover(); return; }
     if(location.hash.slice(1)!==target.id) history.replaceState(null,'',`#${target.id}`);
     render(target);
   }
 
   function showFinal(){
-    document.body.classList.remove('notes-mode','print-all-mode');
+    activeMode='final';
+    document.body.classList.remove('notes-mode','print-all-mode','compendium-mode');
     finalMode.classList.add('active');
+    if(compendiumMode) compendiumMode.classList.remove('active');
     notesMode.classList.remove('active');
     contentsPane.querySelector('.contents-title').textContent='Documento maestro';
     contentsPane.querySelector('.rule-note').textContent='Recap esencial de ROCA TAXIDERMY. El respaldo profundo, originales y evidencia de cada caso permanecen fuera de esta lectura.';
-    buildNav();
-    go(location.hash.slice(1)||'portada');
+    buildNav(finalSections);
+    go(location.hash.slice(1)||'portada', finalSections);
+  }
+
+  function showCompendium(){
+    activeMode='compendium';
+    document.body.classList.remove('notes-mode','print-all-mode');
+    document.body.classList.add('compendium-mode');
+    finalMode.classList.remove('active');
+    if(compendiumMode) compendiumMode.classList.add('active');
+    notesMode.classList.remove('active');
+    contentsPane.querySelector('.contents-title').textContent='Compendio completo';
+    contentsPane.querySelector('.rule-note').textContent='Vista de preservación: reúne los capítulos sustantivos del HTML y mantiene disponible el contenido anterior mientras se reconstruye fielmente desde el master de 367 páginas.';
+    buildNav(compendiumSections);
+    go(location.hash.slice(1)||'portada', compendiumSections);
   }
 
   function showNotes(){
+    activeMode='notes';
     document.body.classList.add('notes-mode');
     document.body.classList.remove('print-all-mode');
     notesMode.classList.add('active');
     finalMode.classList.remove('active');
+    if(compendiumMode) compendiumMode.classList.remove('active');
     contentsPane.querySelector('.contents-title').textContent='Notas para trabajo';
     contentsPane.querySelector('.rule-note').textContent='Pendientes, evidencia, fuente maestra y validaciones que no forman parte de la lectura editorial.';
     nav.innerHTML='';
@@ -138,22 +159,25 @@
     window.scrollTo({top:0,left:0,behavior:'auto'});
   }
 
-  function renderAllForPrint(){
+  function renderAllForPrint(sections){
     document.body.classList.remove('notes-mode');
     document.body.classList.add('print-all-mode');
-    page.innerHTML = coverMarkup() + finalSections.map(sectionMarkup).join('');
+    page.innerHTML = coverMarkup() + sections.map(sectionMarkup).join('');
     document.title='ROCA TAXIDERMY · Documento maestro';
   }
 
   finalMode.addEventListener('click',showFinal);
+  if(compendiumMode) compendiumMode.addEventListener('click',showCompendium);
   notesMode.addEventListener('click',showNotes);
   printDoc.addEventListener('click',()=>{
-    renderAllForPrint();
+    const printSections = activeMode==='compendium' ? compendiumSections : finalSections;
+    const returnMode = activeMode;
+    renderAllForPrint(printSections);
     setTimeout(()=>{
       window.print();
-      setTimeout(()=>showFinal(),150);
+      setTimeout(()=> returnMode==='compendium' ? showCompendium() : showFinal(),150);
     },80);
   });
-  window.addEventListener('hashchange',()=>{ if(!document.body.classList.contains('notes-mode') && !document.body.classList.contains('print-all-mode')) go(location.hash.slice(1)); });
+  window.addEventListener('hashchange',()=>{ if(!document.body.classList.contains('notes-mode') && !document.body.classList.contains('print-all-mode')) go(location.hash.slice(1), activeMode==='compendium' ? compendiumSections : finalSections); });
   showFinal();
 })();
