@@ -149,7 +149,7 @@
       <h1>Lo que falta para cerrar</h1>
       <p class="lead">Nada pasa al documento maestro como hecho cerrado sin fuente, evidencia o validación suficiente.</p>
       <div class="bronze-rule short"></div>
-      <h2>Fuente maestra preservada</h2><p>El PDF integral de 391 páginas permanece como referencia editorial y documental. Se consulta para recuperar contenido, no como primer capítulo de la lectura final.</p>
+      <h2>Fuente maestra preservada</h2><p>El PDF integral de 367 páginas permanece como referencia editorial y documental. Se consulta para recuperar contenido, no como primer capítulo de la lectura final.</p>
       <h2>Plano y medidas</h2><ul><li>Completar medidas dudosas y faltantes.</li><li>Puertas, vanos, pasillos, accesos, equipos fijos, tinas, drenajes, tableros, ventilación y servicios.</li></ul>
       <h2>Fotografías / Heritage</h2><ul><li>Panorámicas por área y estaciones.</li><li>Personas, herramientas, oficio, almacenamiento, residuos, químicos, rutas, extintores y equipos críticos.</li></ul>
       <h2>Documentos / cumplimiento</h2><ul><li>Preservar documentos base, controlar normas/estándares por versión y aplicabilidad, y cerrar licencias/permisos reales.</li><li>Conservar machotes útiles para decisiones; mantener evidencia real de cada caso en Drive/BIWO.</li></ul>
