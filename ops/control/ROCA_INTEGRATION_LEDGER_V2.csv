@@ -1,0 +1,17 @@
+ID,SOURCE,SOURCE_LOCATOR,SUBJECT,CANONICAL_HOME,ACTION,RISK,CONFLICT,PROOF,NOTES
+SRC-001,User correction,2026-09-21,No replicar HTML/PDF 1:1; consolidar sistema audit,Architecture global,CORRECT,R2,,User correction,Overrides earlier replica framing
+SRC-002,HTML v22.1,index.html,Process methods by area,III/Area books/2 Methodology,MERGE_WITHOUT_LOSS,R2,,v22.1 stages,Preserve strongest supported technical stages
+SRC-003,HTML v22.1,PHOTO_PLAN_v22.md,Technical photo shot list,III/Area books/1 and 6 + V Heritage,MERGE_WITHOUT_LOSS,R2,,Specific shot briefs,Separate EVIDENCE from HERITAGE purpose
+SRC-004,HTML v22.1,Interview annexes,Interviews and legacy,V Heritage/evidence,PRESERVE,R2,,Interview source,Integrate facts into canonical homes and keep source annex
+SRC-005,HTML v22.1,Tools/material catalogs,III/Area books/3 and 4,MERGE_WITHOUT_LOSS,R2,,Catalog sections,Correct identifications with newer evidence
+SRC-006,Master integral 391p,Area governance pages,III/Area books/0,PRESERVE,R2,,Handoffs/decisions/ERP,Update roster from latest corrections
+SRC-007,Master integral 391p,Area de trabajo standards,III/Area books/1,PRESERVE,R1,,Physical control criteria,Applicability and measurements remain evidence-gated
+SRC-008,Master integral 391p,Area verification,III/Area books/7,PRESERVE,R2,,Audit semantics,Audit verifies existing standards only
+SRC-009,Master integral 391p,Assurance/legal,IV Assurance,MERGE_WITHOUT_LOSS,R1,,Requirement/status structure,Use current official source before current-law claim
+SRC-010,Master canonic 367p,Whole document,Preservation cross-check,HOLD_PENDING_EVIDENCE,R3,,Comparison source,Not a mandatory architecture
+SRC-011,ROCA Live current,index/app/styles,Shell/navigation/working modes,HTML infrastructure,PRESERVE,R3,,Current repo,Content authority remains section-based
+SRC-012,Drive,Original evidence and sensitive docs,Drive controlled evidence,PRESERVE,R1,,Primary files,Do not copy sensitive originals into public repo
+SRC-013,BIWO,Commercial and piece states,II Governance + III/6 Controls,MERGE_WITHOUT_LOSS,R2,,System of record,Avoid parallel customer database
+SRC-014,ClickUp,Tasks/status/owners,Execution workboard,PRESERVE,R2,,Operational task system,Not technical source
+SRC-015,External norms/standards,Official primary sources,IV Assurance + area controls,MERGE_WITHOUT_LOSS,R1,,Source/vigency/applicability,Translate requirement into operator action
+SRC-016,Machotes,Controlled templates,V Annex index + controlled Drive folder,PRESERVE,R2,,Template rule,Decision/event templates remain reusable
