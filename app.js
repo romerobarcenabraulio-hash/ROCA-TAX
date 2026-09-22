@@ -3,6 +3,7 @@
   if (Array.isArray(window.ROCA_EDITORIAL_SECTIONS)) data.sections.push(...window.ROCA_EDITORIAL_SECTIONS);
   if (Array.isArray(window.ROCA_WORKSHOP_SECTIONS)) data.sections.push(...window.ROCA_WORKSHOP_SECTIONS);
   if (Array.isArray(window.ROCA_CONTROL_SECTIONS)) data.sections.push(...window.ROCA_CONTROL_SECTIONS);
+  if (Array.isArray(window.ROCA_ASSURANCE_SECTIONS)) data.sections.push(...window.ROCA_ASSURANCE_SECTIONS);
   if (Array.isArray(window.ROCA_EXTRA_SECTIONS)) data.sections.push(...window.ROCA_EXTRA_SECTIONS);
 
   const nav = document.getElementById('nav');
@@ -26,7 +27,7 @@
 
   const byId = new Map(data.sections.map(s => [s.id, s]));
   const finalSections = finalOrder.map(id => byId.get(id)).filter(Boolean);
-  const compendiumExcluded = ['estado','implementacion','evidencia','editorial','areas','residuos','erp','posters','responsabilidades','documentos','internacional'];
+  const compendiumExcluded = ['estado','implementacion','evidencia','editorial','areas','residuos','erp','posters','responsabilidades','documentos','internacional','legal'];
   const compendiumSections = data.sections.filter(s => !compendiumExcluded.includes(s.id));
   let activeMode = 'final';
 
