@@ -94,6 +94,8 @@ window.ROCA_EDITORIAL_SECTIONS = [
         <tr><td>Vida silvestre / comercio exterior</td><td>CITES, PROFEPA, SENASICA, TRACES y documentación de importación/exportación cuando el caso lo requiera.</td><td>Decisión por especie/origen/operación; no checklist universal.</td></tr>
       </tbody></table>
       <div class="callout">Una norma o estándar puede cambiar. ROCA conserva la fuente oficial, su versión y aplicabilidad; si cambia el requisito, se actualiza la guía asociada sin alterar innecesariamente el resto del master.</div>
+      <h2>Estado de preauditoría</h2>
+      <p>La matriz de revisión contiene 106 candidatos de control: 80 permanecen NOT_CHECKED y 26 APPLICABILITY_PENDING; todavía no existe ningún renglón marcado VERIFIED. Estos estados describen preparación de auditoría, no cumplimiento.</p>
     `
   },
   {
