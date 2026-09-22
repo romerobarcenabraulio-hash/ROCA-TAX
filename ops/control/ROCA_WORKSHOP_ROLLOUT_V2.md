@@ -35,13 +35,13 @@ Un archivo redactado no gana por sí solo los puntos de evidencia de campo.
 - metodología: 17/20
 - arquitectura integral: 25/25
 - estándar físico/implementación: 11/20
-- evidencia/competencia/BIWO/auditoría: 11/15
-- Assurance: 6/10
+- evidencia/competencia/BIWO/auditoría: 12/15
+- Assurance: 8/10
 - HTML/QA: 6/10
 
-**AVANCE V2 DEL TALLER: 76/100 — ESTIMATE CONTROLADO.**
+**AVANCE V2 DEL TALLER: 79/100 — ESTIMATE CONTROLADO.**
 
-Este 76% significa que además de la arquitectura integral ya existen controles estructurados de activos/mantenimiento, competencia/autorización, flujo de materiales, evidencia y reconciliación de duplicados dentro del HTML. No significa implementación física ni cumplimiento.
+Este 79% significa que la arquitectura, trazabilidad, evidencia y Assurance ya tienen estructura operable y fuentes primarias actualizadas; el cuello de botella principal ya es evidencia de campo, BIWO real, validación técnica y QA de navegador/impresión. No significa implementación física ni cumplimiento.
 
 ## Próximos puntos que mueven porcentaje real
 1. reconciliar duplicaciones restantes entre libros y estándar común;
@@ -77,3 +77,12 @@ Este 76% significa que además de la arquitectura integral ya existen controles 
 - capa transversal compacta añadida al COMPENDIO;
 - se retiraron de navegación los bloques legacy duplicados sólo después de asignarles hogar canónico;
 - source-integrity check de la ronda: PASS estructural, no release.
+
+
+## Cambio de esta ronda · preaudit/Assurance
+- se ejecutó el preaudit pack sobre 106 candidatos de control;
+- resultado: 80 NOT_CHECKED, 26 APPLICABILITY_PENDING, 0 VERIFIED;
+- gate determinista sin errores de formato, pero BLOCKED para cualquier claim complete/compliant;
+- fuentes primarias actuales refrescadas para STPS, municipio/funcionamiento, Protección Civil, SEGAM, SEMARNAT y SENASICA;
+- capa Assurance compacta integrada al COMPENDIO y capítulo legal legacy retirado de navegación;
+- orden de ejecución de campo definido por olas para cerrar varios REQ con una misma visita sin duplicar evidencia.
