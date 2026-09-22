@@ -1,14 +1,18 @@
 window.ROCA_MASTER_SECTION = {
   id:"master-exacto",
-  nav:"Master exacto 367p",
-  title:"Master integral exacto · 367 páginas",
-  eyebrow:"Fuente maestra preservada",
-  lead:"La referencia visual y editorial obligatoria permanece preservada en el repositorio privado de evidencia. La web pública no enlaza ni embebe la fuente maestra privada.",
+  nav:"Fuentes maestras",
+  title:"Fuentes maestras y autoridad por sección",
+  eyebrow:"Preservación · reconciliación · no pérdida",
+  lead:"ROCA conserva múltiples fuentes históricas y operativas. Ningún HTML o PDF se considera globalmente canónico por conveniencia; para cada tema prevalece la evidencia más fuerte y la corrección explícita más reciente.",
   body:`
-    <div class="master-pdf-actions">
-      <span>367 páginas · fuente privada controlada en Drive</span>
-    </div>
-    <div class="callout">Regla: cualquier bloque reconstruido en HTML debe ser igual o mejor que la fuente maestra aprobada. Si existe conflicto visual o de contenido, prevalece el master salvo corrección explícita posterior del usuario.</div>
+    <h2>Jerarquía de trabajo</h2>
+    <ol>
+      <li>Corrección explícita más reciente.</li>
+      <li>Evidencia primaria, entrevista literal o fuente oficial vigente para el hecho.</li>
+      <li>Tratamiento ROCA previo más fuerte de ese tema.</li>
+      <li>Versión derivada sólo cuando conserva o mejora la información sin pérdida silenciosa.</li>
+    </ol>
+    <div class="callout">Los masters de 391 y 367 páginas, el HTML editable histórico, ROCA Live, entrevistas, Drive y BIWO se preservan como fuentes con fortalezas distintas. Una integración sólo elimina duplicación cuando nombra dónde sobrevive la información.</div>
   `
 };
 if (window.ROCA_DATA && window.ROCA_MASTER_SECTION) {
