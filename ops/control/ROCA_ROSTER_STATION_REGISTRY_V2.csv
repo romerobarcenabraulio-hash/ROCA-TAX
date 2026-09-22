@@ -1,0 +1,29 @@
+AREA_ID,AREA,PERSON_REF,ROLE,STATUS,STATION_STATUS,SOURCE_NOTE
+AREA-REC,Recepción,Responsable vigente por confirmar,Ingreso e identificación,OPEN,NOT_VERIFIED,Asignaciones históricas de Ricardo quedan superadas por corrección posterior que lo ubica en Montaje
+AREA-CUR,Curtiduría,Rodolfo Sr.,Referencia técnica,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-CUR,Curtiduría,David,Equipo de Curtiduría,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-CUR,Curtiduría,Lalo/Eduardo,Equipo de Curtiduría,CONFIRMED_LATEST,NAME_ALIAS_TO_RECONCILE,Corrección vigente del proyecto
+AREA-FMR,Formas/Moldes/Réplicas,Omar,Encargado,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-MON,Montaje,Guicho,Dirección de taller / coordinación de Montaje,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-MON,Montaje,Don Gustavo,Montador,CONFIRMED_LATEST,NOT_VERIFIED,Fuentes técnicas + corrección vigente
+AREA-MON,Montaje,Ezequiel,Montador,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-MON,Montaje,Manuel Rivera,Montador,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-MON,Montaje,Rodolfo,Montador,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-MON,Montaje,Raimundo,Montador,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-MON,Montaje,Rubén,Montador,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-MON,Montaje,Lalo,Montaje / taxidermia,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-MON,Montaje,Ricardo,Montador,CONFIRMED_LATEST,NOT_VERIFIED,Corrección explícita posterior
+AREA-MON,Montaje,Eugenio,Asistente directo de Ricardo,CONFIRMED_LATEST,NOT_VERIFIED,Corrección explícita posterior
+AREA-RET,Retoque,Rodolfo Jr.,Encargado,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-RET,Retoque,Emiliano,Equipo de Retoque,CONFIRMED_LATEST,NOT_VERIFIED,Corrección vigente del proyecto
+AREA-RET,Retoque,Valerio/Valentino,Equipo de Retoque,NAME_CONFLICT,NOT_VERIFIED,Nombre correcto pendiente de reconciliar
+AREA-RET,Retoque,Señor Pez,Equipo de Retoque / pedacera,CONFIRMED_LATEST,NOT_VERIFIED,Pedacera únicamente en Retoque
+AREA-BAS,Bases,Responsable vigente por confirmar,Responsable de Bases,OPEN,NOT_VERIFIED,No duplicar automáticamente personal de Retoque/Bases histórico
+AREA-CAR,Carpintería/Corte/Embalaje,Puesto por cerrar,Frente dedicado,PLANNED,NOT_IMPLEMENTED,No presentar como área implementada
+AREA-SOL,Soldadura/Adaptación,Flaco,Soldador / adaptación,CONFIRMED_LATEST,NOT_VERIFIED,Alias operativo confirmado
+AREA-BLA,Blanqueado,Responsable vigente por confirmar,Operación térmica,OPEN,NOT_VERIFIED,Fuente insuficiente
+AREA-SUP,Espacios de soporte,Por función,Responsables por subespacio,PARTIAL,NOT_VERIFIED,Asignar sólo cuando operación real esté confirmada
+GOV-ERP,BIWO/ERP,César,ERP / compras / inventarios,CONFIRMED_LATEST,NA,Corrección vigente: César + Guicho operan ERP
+GOV-ERP,BIWO/ERP,Guicho,Dirección operativa / seguimiento,CONFIRMED_LATEST,NA,Corrección vigente: César + Guicho operan ERP
+GOV-ERP,BIWO/ERP,Patricio Cueto,No vigente en gobernanza actual,OUT_OF_CURRENT_GOVERNANCE,NA,No reintroducir desde masters históricos
+GOV-GEN,Gobernanza,Patricio Maurer,Fuera de operación actual; conservar sólo trazabilidad legal donde corresponda,OUT_OF_CURRENT_OPERATION,NA,No presentar como responsable operativo actual
