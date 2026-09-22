@@ -1,0 +1,21 @@
+FLOW_ID,AREA_ID,MATERIAL_OR_SERVICE,INPUT,INCORPORATED,RECOVERABLE_OR_REUSE,RESIDUE_OR_OUTPUT,DESTINATION_STATUS,STATUS
+FLOW-REC-01,AREA-REC,Etiquetas/cinchos/embalaje temporal,consumible nuevo,etiqueta queda con trabajo cuando aplica,embalaje reutilizable si existe,recorte/envase/residuo común según material,DESTINATION_PENDING,PARTIAL
+FLOW-CUR-01,AREA-CUR,Agua de proceso,agua de red/fuente real,humedad absorbida en proceso,no aplica como recuperable salvo sistema real,baño/agua residual,ROUTE_AND_APPLICABILITY_PENDING,PARTIAL
+FLOW-CUR-02,AREA-CUR,Sal,producto de proceso,parte queda en baño/piel según etapa,no documentado,baño agotado/sobrante/envase,CLASSIFICATION_PENDING,PARTIAL
+FLOW-CUR-03,AREA-CUR,Ácidos y productos de curtido,producto identificado pendiente HDS,incorporación/reacción según proceso,no asumir recuperación,baño agotado/sobrante/envase,CLASSIFICATION_PENDING,PARTIAL
+FLOW-CUR-04,AREA-CUR,Aserrín,material para tamboreo,puede quedar impregnado/no incorporado útil,recuperación no confirmada,aserrín usado,DESTINATION_PENDING,PARTIAL
+FLOW-FMR-01,AREA-FMR,Poliuretano A/B,componentes de mezcla,forma producida,mezcla no reaccionada no asumir recuperable,mezcla reaccionada/recortes/envases,CLASSIFICATION_PENDING,PARTIAL
+FLOW-FMR-02,AREA-FMR,Resina/fibra/talco/cargas,materiales de molde/réplica,molde/réplica/refuerzo,retal útil sólo si realmente se reutiliza,recortes/mezcla curada/envases,CLASSIFICATION_PENDING,PARTIAL
+FLOW-FMR-03,AREA-FMR,Cera/desmoldante,producto de preparación,capa sobre molde,envase/producto remanente utilizable,residuo/paño/envase,DESTINATION_PENDING,PARTIAL
+FLOW-MON-01,AREA-MON,Bondo/fibra/catalizador,mezcla para orejas/reparaciones/material técnico,parte incorporada a pieza,no asumir recuperación de mezcla activa,mezcla curada/sobrante/envases,CLASSIFICATION_PENDING,PARTIAL
+FLOW-MON-02,AREA-MON,Barro LR300,material de modelado,parte queda en pieza,sobrante limpio potencialmente reutilizable sólo si práctica real,sobrante contaminado/envase,DESTINATION_PENDING,PARTIAL
+FLOW-MON-03,AREA-MON,Adhesivo,producto de fijación,incorporado a pieza,remanente en envase utilizable según vida útil,envase/sobrante curado,CLASSIFICATION_PENDING,PARTIAL
+FLOW-MON-04,AREA-MON,Hilo/alfileres/consumibles,hilo y fijación temporal,hilo queda / alfiler temporal,alfiler recuperable si práctica segura y real,recorte/hilo/alfiler fuera de condición,DESTINATION_PENDING,PARTIAL
+FLOW-RET-01,AREA-RET,Pinturas/barniz/solventes,productos de acabado,parte incorporada a pieza,producto cerrado/remanente utilizable,solvente/paños/envases/sobrante,CLASSIFICATION_PENDING,PARTIAL
+FLOW-RET-02,AREA-RET,Salvo/Roma/Suavitel,productos de limpieza/acondicionado,uso sobre pieza/agua,no documentado,agua usada/envases,DESTINATION_PENDING,PARTIAL
+FLOW-RET-03,AREA-RET,Resanadores/Resistol/barro/aserrín,material de reparación,incorporado cuando aplica,pedacera/material útil sólo en ubicación definida,sobrante/envase/mezcla curada,CLASSIFICATION_PENDING,PARTIAL
+FLOW-BAS-01,AREA-BAS,Madera/triplay/herrajes,material estructural,base terminada,retales recuperables si clasificados,aserrín/recortes/herrajes dañados,DESTINATION_PENDING,PARTIAL
+FLOW-BAS-02,AREA-BAS,Malla/costal/dextrina/terreno,material de volumen/acabado,incorporado a base,material natural/retal útil si limpio,sobrantes/envases,DESTINATION_PENDING,PARTIAL
+FLOW-CAR-01,AREA-CAR,Madera/protección/embalaje,material futuro,embalaje terminado,retal/material reutilizable si se implementa,aserrín/recorte/envase,NOT_IMPLEMENTED,NOT_IMPLEMENTED
+FLOW-SOL-01,AREA-SOL,Metal/consumible de unión,material real pendiente,adaptación terminada,recorte metálico potencialmente recuperable,escoria/disco/consumible/recorte,CLASSIFICATION_PENDING,PARTIAL
+FLOW-BLA-01,AREA-BLA,Agua/calor,agua + energía,tratamiento de pieza,no aplica,agua usada/tejido retirado,DESTINATION_PENDING,PARTIAL
