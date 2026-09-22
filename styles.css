@@ -81,3 +81,22 @@ footer{display:none}
   .paper[data-section="taller"] .callout{margin:8px 0;padding:8px 10px}
   .paper[data-section="taller"] ul{margin:6px 0 8px}
 }
+
+/* Field mode: optimized for execution on phone/tablet */
+.field-mode .contents{background:#e9e3d8}
+.field-mode .contents-title{color:var(--bronze)}
+.field-mode .rule-note{font-size:11px}
+.field-mode .master-content h2{margin-top:22px}
+.field-mode .callout{background:#eee6d8}
+@media(max-width:900px){
+  .field-mode .topbar{position:static}
+  .field-mode .contents{padding:14px 18px}
+  .field-mode .contents nav{grid-template-columns:1fr 1fr}
+  .field-mode .contents button{padding:9px 0;font-size:12px}
+  .field-mode .page{padding:10px}
+  .field-mode .paper{padding:34px 22px 48px}
+  .field-mode .page-head{margin-bottom:20px}
+  .field-mode h1{font-size:28px}
+  .field-mode .lead{font-size:14px}
+  .field-mode .master-content{font-size:13px;line-height:1.5}
+}
