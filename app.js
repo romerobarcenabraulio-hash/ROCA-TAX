@@ -52,7 +52,7 @@
   }
 
   function coverMarkup(){
-    return `<article class="paper cover-paper">
+    return `<article class="paper cover-paper" data-section="portada">
       <div class="cover-kicker">ROCA TAXIDERMY · ARTE Y TRADICIÓN · DESDE 1946</div>
       <div class="cover-main">
         <h1>ROCA TAXIDERMY<br>Documento maestro</h1>
@@ -70,7 +70,7 @@
   function sectionMarkup(section){
     const posters = section.posters ? section.posters.map(([name, items]) => `
       <section class="poster"><div class="poster-sub">ROCA · condición de área</div><h2>${name}</h2><ol>${items.map(x=>`<li>${x}</li>`).join('')}</ol></section>`).join('') : '';
-    return `<article class="paper master-paper">
+    return `<article class="paper master-paper" data-section="${section.id}">
       <div class="page-head"><span>${section.eyebrow || 'ROCA / DOCUMENTO MAESTRO'}</span><span>ROCA TAXIDERMY</span></div>
       <div class="eyebrow">${section.eyebrow || ''}</div>
       <h1>${section.title}</h1>
