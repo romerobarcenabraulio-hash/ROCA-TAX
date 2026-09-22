@@ -1,0 +1,27 @@
+COMP_ID,AREA_ID,OPERATION,WHO_MAY_PERFORM,AUTHORITY_EVIDENCE,EVALUATOR_STATUS,STATUS,NOTES
+COMP-REC-01,AREA-REC,Relacionar pieza↔orden/ID,Por confirmar,demostración observada + registro de handoff,OPEN,NOT_VERIFIED,Responsable de Recepción vigente pendiente
+COMP-REC-02,AREA-REC,Capturar foto/etiqueta/documentación,Por confirmar,muestra correcta + revisión de trazabilidad,OPEN,NOT_VERIFIED,No incluye validación legal de permisos
+COMP-CUR-01,AREA-CUR,Preparar baño/picle,Personal autorizado de Curtiduría,demostración + receta controlada + HDS/EPP aplicable,OPEN,NOT_VERIFIED,Rodolfo Sr./David/Lalo-Eduardo son roster no autorización automática
+COMP-CUR-02,AREA-CUR,Operar tambor,Personal autorizado de Curtiduría,demostración + preuso + criterio de paro,OPEN,NOT_VERIFIED,
+COMP-CUR-03,AREA-CUR,Operar rebajadora,Personal autorizado de Curtiduría,demostración + equipo/EPP + pieza de referencia,OPEN,NOT_VERIFIED,
+COMP-CUR-04,AREA-CUR,Calcular/pesar fórmula,Personal autorizado de Curtiduría,ejercicio/registro correcto + báscula identificada,OPEN,NOT_VERIFIED,
+COMP-FMR-01,AREA-FMR,Dosificar/mezclar poliuretano,Personal autorizado por Omar o responsable técnico,prueba de lote + dosificación demostrada,OPEN,NOT_VERIFIED,
+COMP-FMR-02,AREA-FMR,Construir/abrir molde,Personal autorizado,demostración de preparación/cierre/apertura sin daño,OPEN,NOT_VERIFIED,
+COMP-FMR-03,AREA-FMR,Liberar forma/molde/réplica,Responsable técnico,criterio de aceptación demostrado,OPEN,NOT_VERIFIED,
+COMP-MON-01,AREA-MON,Medir/seleccionar forma,Montador autorizado,demostración con pieza/medidas y decisión correcta,OPEN,NOT_VERIFIED,
+COMP-MON-02,AREA-MON,Modificar forma,Montador autorizado,demostración + re-presentación sin compensaciones indebidas,OPEN,NOT_VERIFIED,
+COMP-MON-03,AREA-MON,Fijar cuernos/astas,Montador autorizado,demostración del sistema real + estabilidad,OPEN,NOT_VERIFIED,Sistema exacto aún OPEN TECHNICAL
+COMP-MON-04,AREA-MON,Conformar orejas,Montador autorizado,demostración con mezcla/material real + criterio anatómico,OPEN,NOT_VERIFIED,
+COMP-MON-05,AREA-MON,Posicionar ojos/anatomía,Montador autorizado,demostración + referencia anatómica,OPEN,NOT_VERIFIED,
+COMP-MON-06,AREA-MON,Vestir/coser/fijar piel,Montador autorizado,demostración de cierre/asentado,OPEN,NOT_VERIFIED,
+COMP-MON-07,AREA-MON,Liberar a Retoque,Responsable de liberación por cerrar,sequedad/estabilidad + registro de transferencia,OPEN,NOT_VERIFIED,
+COMP-RET-01,AREA-RET,Resane menor,Personal autorizado de Retoque,demostración + defecto compatible con Retoque,OPEN,NOT_VERIFIED,
+COMP-RET-02,AREA-RET,Aerógrafo/color,Personal autorizado de Retoque,pieza de referencia/resultado revisado,OPEN,NOT_VERIFIED,
+COMP-RET-03,AREA-RET,Acabado fino/textura,Personal autorizado de Retoque,demostración + criterio visual,OPEN,NOT_VERIFIED,
+COMP-RET-04,AREA-RET,Liberación visual,Responsable por cerrar,revisión contra criterios + retrabajo resuelto,OPEN,NOT_VERIFIED,
+COMP-BAS-01,AREA-BAS,Corte/fijación estructural,Responsable autorizado,demostración + estabilidad,OPEN,NOT_VERIFIED,Responsable vigente pendiente
+COMP-BAS-02,AREA-BAS,Ambientación/acabado,Personal autorizado,resultado contra referencia aprobada,OPEN,NOT_VERIFIED,
+COMP-CAR-01,AREA-CAR,Corte/armado/embalaje,Puesto futuro,demostración del método cuando se implemente,OPEN,NOT_IMPLEMENTED,
+COMP-SOL-01,AREA-SOL,Operar proceso de soldadura,Flaco / personal autorizado,demostración real + equipo/proceso/EPP,OPEN,NOT_VERIFIED,No sustituye entrevista/demostración faltante
+COMP-SOL-02,AREA-SOL,Liberar adaptación estructural,Responsable técnico por cerrar,inspección/estabilidad definida,OPEN,NOT_VERIFIED,
+COMP-BLA-01,AREA-BLA,Operar tratamiento térmico,Responsable por confirmar,demostración + control de calor/manipulación,OPEN,NOT_VERIFIED,
