@@ -116,7 +116,7 @@
 
   function showFinal(){
     activeMode='final';
-    document.body.classList.remove('notes-mode','print-all-mode','compendium-mode');
+    document.body.classList.remove('notes-mode','print-all-mode','compendium-mode','field-mode');
     finalMode.classList.add('active');
     if(compendiumMode) compendiumMode.classList.remove('active');
     if(fieldMode) fieldMode.classList.remove('active');
@@ -129,7 +129,7 @@
 
   function showCompendium(){
     activeMode='compendium';
-    document.body.classList.remove('notes-mode','print-all-mode');
+    document.body.classList.remove('notes-mode','print-all-mode','field-mode');
     document.body.classList.add('compendium-mode');
     finalMode.classList.remove('active');
     if(compendiumMode) compendiumMode.classList.add('active');
@@ -158,7 +158,7 @@
   function showNotes(){
     activeMode='notes';
     document.body.classList.add('notes-mode');
-    document.body.classList.remove('print-all-mode');
+    document.body.classList.remove('print-all-mode','field-mode','compendium-mode');
     notesMode.classList.add('active');
     finalMode.classList.remove('active');
     if(compendiumMode) compendiumMode.classList.remove('active');
@@ -183,7 +183,7 @@
   }
 
   function renderAllForPrint(sections){
-    document.body.classList.remove('notes-mode');
+    document.body.classList.remove('notes-mode','field-mode','compendium-mode');
     document.body.classList.add('print-all-mode');
     page.innerHTML = coverMarkup() + sections.map(sectionMarkup).join('');
     document.title='ROCA TAXIDERMY · Documento maestro';
