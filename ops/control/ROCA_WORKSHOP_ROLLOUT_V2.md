@@ -35,13 +35,13 @@ Un archivo redactado no gana por sí solo los puntos de evidencia de campo.
 - metodología: 17/20
 - arquitectura integral: 25/25
 - estándar físico/implementación: 11/20
-- evidencia/competencia/BIWO/auditoría: 12/15
+- evidencia/competencia/BIWO/auditoría: 13/15
 - Assurance: 8/10
 - HTML/QA: 8/10
 
-**AVANCE V2 DEL TALLER: 81/100 — ESTIMATE CONTROLADO.**
+**AVANCE V2 DEL TALLER: 82/100 — ESTIMATE CONTROLADO.**
 
-Este 81% significa que la arquitectura, trazabilidad, evidencia y Assurance ya tienen estructura operable, y el HTML pasó una ronda real de navegador/mobile/print con dos regresiones corregidas. El cuello de botella principal ya es evidencia de campo, BIWO real, validación técnica y cierre documental. No significa implementación física ni cumplimiento.
+Este 82% significa que además de la arquitectura, trazabilidad, evidencia, Assurance y QA previo, ya existe una vista CAMPO y un registro de intake para ejecutar el levantamiento sin crear otro manual. El cuello de botella principal sigue siendo evidencia real, BIWO real, validación técnica y cierre documental. No significa implementación física ni cumplimiento.
 
 ## Próximos puntos que mueven porcentaje real
 1. reconciliar duplicaciones restantes entre libros y estándar común;
@@ -95,3 +95,12 @@ Este 81% significa que la arquitectura, trazabilidad, evidencia y Assurance ya t
 - se detectó y corrigió overflow móvil de Taller;
 - se detectó y corrigió paginación de Taller: 9 artículos del DOC FINAL → 9 páginas Letter;
 - deployment público y regresión pixel-a-pixel siguen pendientes.
+
+
+## Cambio de esta ronda · modo CAMPO
+- nueva vista CAMPO integrada al HTML con 6 olas de cierre;
+- navegación de campo separada de DOC FINAL y COMPENDIO;
+- intake estructurado EVID_ID → prueba → hallazgo → acción → responsable → revisión;
+- optimización móvil específica para levantamiento en teléfono/tablet;
+- chequeo sintáctico de app.js, field-data.js, control-data.js, assurance-data.js, workshop-data.js y editorial-data.js: OK;
+- QA de navegador específico del nuevo modo CAMPO todavía pendiente, por lo que HTML/QA no sube de 8/10.
