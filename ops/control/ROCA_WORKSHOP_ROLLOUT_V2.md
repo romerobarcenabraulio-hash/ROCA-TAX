@@ -34,14 +34,14 @@ Un archivo redactado no gana por sí solo los puntos de evidencia de campo.
 ## Estado de esta ronda
 - metodología: 17/20
 - arquitectura integral: 25/25
-- estándar físico/implementación: 10/20
-- evidencia/competencia/BIWO/auditoría: 9/15
-- Assurance: 5/10
-- HTML/QA: 5/10
+- estándar físico/implementación: 11/20
+- evidencia/competencia/BIWO/auditoría: 11/15
+- Assurance: 6/10
+- HTML/QA: 6/10
 
-**AVANCE V2 DEL TALLER: 71/100 — ESTIMATE CONTROLADO.**
+**AVANCE V2 DEL TALLER: 76/100 — ESTIMATE CONTROLADO.**
 
-Este 71% significa que la arquitectura integral ya cubre todo el taller, la trazabilidad se volvió operable por eventos semánticos, existe un plan de evidencia de campo y la narrativa HTML ya refleja los cuatro flujos sincronizados; no significa implementación física ni cumplimiento.
+Este 76% significa que además de la arquitectura integral ya existen controles estructurados de activos/mantenimiento, competencia/autorización, flujo de materiales, evidencia y reconciliación de duplicados dentro del HTML. No significa implementación física ni cumplimiento.
 
 ## Próximos puntos que mueven porcentaje real
 1. reconciliar duplicaciones restantes entre libros y estándar común;
@@ -68,3 +68,12 @@ Este 71% significa que la arquitectura integral ya cubre todo el taller, la traz
 - crosswalk Assurance ↔ área creado;
 - paquete de cierre de campo preparado para pedir sólo evidencia que mueve gates;
 - DOC FINAL ahora comunica pieza + BIWO + dinero/cliente + evidencia como cuatro flujos sincronizados.
+
+
+## Cambio de esta ronda · 22 SEP
+- registro maestro preliminar de activos/mantenimiento por área;
+- matriz operación × competencia/autorización preparada sin asumir autorización por puesto;
+- balance preliminar de materiales/servicios/residuos por área;
+- capa transversal compacta añadida al COMPENDIO;
+- se retiraron de navegación los bloques legacy duplicados sólo después de asignarles hogar canónico;
+- source-integrity check de la ronda: PASS estructural, no release.
