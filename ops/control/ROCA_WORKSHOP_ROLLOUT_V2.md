@@ -33,22 +33,29 @@ Un archivo redactado no gana por sí solo los puntos de evidencia de campo.
 
 ## Estado de esta ronda
 - metodología: 17/20
-- arquitectura integral: 21/25
+- arquitectura integral: 25/25
 - estándar físico/implementación: 9/20
 - evidencia/competencia/BIWO/auditoría: 6/15
 - Assurance: 4/10
-- HTML/QA: 1/10
+- HTML/QA: 4/10
 
-**AVANCE V2 DEL TALLER: 58/100 — ESTIMATE CONTROLADO.**
+**AVANCE V2 DEL TALLER: 65/100 — ESTIMATE CONTROLADO.**
 
-Este 58% significa estructura y conocimiento consolidados, no implementación física ni cumplimiento.
+Este 65% significa que la arquitectura integral ya cubre todo el taller y comenzó su integración real al HTML; no significa implementación física ni cumplimiento.
 
 ## Próximos puntos que mueven porcentaje real
-1. reconciliar Montaje con estándar común y eliminar repetición;
-2. convertir los nueve libros nuevos en estructura de datos/HTML sin duplicar contenido;
+1. reconciliar duplicaciones restantes entre libros y estándar común;
+2. completar la capa de datos/HTML de detalle sin volver el DOC FINAL masivo;
 3. cerrar fuente/roster/estación por área;
 4. levantar evidencia física: estaciones, químicos, ventilación, iluminación, residuos, rutas, secado/espera;
 5. vincular BIWO real;
 6. cerrar competencia/autorización;
 7. Assurance/aplicabilidad;
 8. browser + print QA.
+
+
+## Cambio de esta ronda
+- workshop-data.js integra el mapa completo del taller y las diez áreas en el HTML de trabajo;
+- DOC FINAL usa una síntesis del taller; COMPENDIO conserva el detalle de área;
+- la afirmación de un único “master exacto” se sustituyó por autoridad de fuente por sección;
+- no se otorgaron puntos adicionales por evidencia física porque aún no existe el cierre de campo.
