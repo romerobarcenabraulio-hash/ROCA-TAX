@@ -57,3 +57,27 @@ td{padding:8px 6px;border-bottom:1px solid #d4ccbf;vertical-align:top}
 footer{display:none}
 @media(max-width:900px){.layout{grid-template-columns:1fr}.contents{border-right:0;border-bottom:1px solid #c7beb0;padding:17px 20px}.contents nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 15px}.page{padding:18px}.paper{min-height:auto;padding:44px 28px 54px}.folio{left:28px;right:28px}.cover-paper{min-height:900px;padding:42px 30px}.cover-bottom{left:30px;right:30px}.topbar{align-items:flex-start;flex-direction:column;gap:10px}.workspace-switch{flex-wrap:wrap}.cover-main h1{font-size:34px}.master-pdf-shell{height:70vh}.master-pdf-actions{align-items:flex-start;flex-direction:column}}
 @media print{body,.page{background:#fff}.topbar,.contents{display:none!important}.layout{display:block;max-width:none}.page{padding:0}.paper{width:100%;min-height:11in;box-shadow:none;margin:0;page-break-after:always}.paper:last-child{page-break-after:auto}.master-pdf-shell{display:none}.master-pdf-actions{display:none}}
+
+@media(max-width:900px){
+  .master-content{min-width:0;overflow-wrap:anywhere}
+  table{table-layout:fixed;width:100%;font-size:9px}
+  th,td{min-width:0;overflow-wrap:anywhere;word-break:normal;padding:6px 4px}
+}
+@media print{
+  .paper{padding:52px 50px 48px;break-inside:avoid-page;page-break-inside:avoid}
+  .page-head{margin-bottom:24px}
+  h2{margin-top:22px}
+  table{margin:12px 0 18px}
+  .callout{margin:14px 0;padding:10px 13px}
+  ul,ol{margin:8px 0 14px}
+  li{margin:3px 0}
+  .paper[data-section="taller"]{padding-top:42px;padding-bottom:42px}
+  .paper[data-section="taller"] .lead{font-size:13px;line-height:1.4}
+  .paper[data-section="taller"] .master-content{font-size:10.5px;line-height:1.28}
+  .paper[data-section="taller"] h2{font-size:17px;margin-top:14px;margin-bottom:7px;padding-top:5px}
+  .paper[data-section="taller"] table{font-size:8px;line-height:1.22;margin:8px 0 10px}
+  .paper[data-section="taller"] th{padding:5px 4px}
+  .paper[data-section="taller"] td{padding:5px 4px}
+  .paper[data-section="taller"] .callout{margin:8px 0;padding:8px 10px}
+  .paper[data-section="taller"] ul{margin:6px 0 8px}
+}
