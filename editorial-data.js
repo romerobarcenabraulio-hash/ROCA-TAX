@@ -66,13 +66,19 @@ window.ROCA_EDITORIAL_SECTIONS = [
     id:"trazabilidad", nav:"Control y trazabilidad", title:"Control físico, comercial y documental", eyebrow:"Una sola realidad operativa",
     lead:"ROCA evita bases paralelas. BIWO conserva la operación comercial; Drive conserva documentos y evidencia; el taller conserva la realidad física que ambos sistemas deben representar.",
     body:`
-      <h2>Cadena de control</h2>
-      <p class="callout">Cliente → cotización / venta → pago → lote o pieza → etapa productiva → cambio de etapa → entrega / cierre</p>
+      <h2>Una orden; cuatro flujos sincronizados</h2>
+      <table><thead><tr><th>Flujo</th><th>Qué debe contar</th></tr></thead><tbody>
+        <tr><td>Pieza</td><td>Ingreso → Curtiduría → Forma cuando aplica → Montaje → Retoque/Base cuando aplica → liberación → entrega.</td></tr>
+        <tr><td>BIWO / ERP</td><td>ID → etapa/incidencia → necesidad/forma → asignación/avance → cierre técnico → lista para entrega → entrega/cierre.</td></tr>
+        <tr><td>Dinero / cliente</td><td>Alcance/autorización → compromiso/saldo → definición de forma → condición de entrega → recepción/cierre.</td></tr>
+        <tr><td>Evidencia</td><td>Documentación/fotos de ingreso → incidencias → medidas/forma → retrabajo → fotos/check final → acuse de entrega cuando corresponda.</td></tr>
+      </tbody></table>
+      <div class="callout">El control existe cuando los cuatro flujos cuentan la misma historia. Un cambio de pantalla no prueba que la pieza se movió; una foto no prueba que un permiso esté vigente.</div>
       <ul>
-        <li>La pieza física debe coincidir con la etapa registrada.</li>
-        <li>Los documentos reales del cliente no se duplican en el HTML.</li>
-        <li>Las fotografías sirven como evidencia visible, no como sustituto de una vigencia, una medición o una autorización.</li>
-        <li>Drive funciona como respaldo integral de ROCA; el master sólo presenta el resumen necesario para entender la empresa.</li>
+        <li>Venta no equivale a cobro.</li>
+        <li>Montar requiere pago y forma definida/lista.</li>
+        <li>Entregar requiere pago completo.</li>
+        <li>Los nombres exactos de estados BIWO se incorporan sólo después de verificarlos en el sistema real.</li>
       </ul>
     `
   },
