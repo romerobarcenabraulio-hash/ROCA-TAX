@@ -4,6 +4,7 @@
   if (Array.isArray(window.ROCA_WORKSHOP_SECTIONS)) data.sections.push(...window.ROCA_WORKSHOP_SECTIONS);
   if (Array.isArray(window.ROCA_CONTROL_SECTIONS)) data.sections.push(...window.ROCA_CONTROL_SECTIONS);
   if (Array.isArray(window.ROCA_ASSURANCE_SECTIONS)) data.sections.push(...window.ROCA_ASSURANCE_SECTIONS);
+  if (Array.isArray(window.ROCA_FIELD_SECTIONS)) data.sections.push(...window.ROCA_FIELD_SECTIONS);
   if (Array.isArray(window.ROCA_EXTRA_SECTIONS)) data.sections.push(...window.ROCA_EXTRA_SECTIONS);
 
   const nav = document.getElementById('nav');
@@ -11,6 +12,7 @@
   const contentsPane = document.getElementById('contentsPane');
   const finalMode = document.getElementById('finalMode');
   const compendiumMode = document.getElementById('compendiumMode');
+  const fieldMode = document.getElementById('fieldMode');
   const notesMode = document.getElementById('notesMode');
   const printDoc = document.getElementById('printDoc');
 
@@ -28,7 +30,8 @@
   const byId = new Map(data.sections.map(s => [s.id, s]));
   const finalSections = finalOrder.map(id => byId.get(id)).filter(Boolean);
   const compendiumExcluded = ['estado','implementacion','evidencia','editorial','areas','residuos','erp','posters','responsabilidades','documentos','internacional','legal'];
-  const compendiumSections = data.sections.filter(s => !compendiumExcluded.includes(s.id));
+  const compendiumSections = data.sections.filter(s => !compendiumExcluded.includes(s.id) && !s.id.startsWith('campo-'));
+  const fieldSections = Array.isArray(window.ROCA_FIELD_SECTIONS) ? window.ROCA_FIELD_SECTIONS : [];
   let activeMode = 'final';
 
   function buildNav(sections = finalSections){
@@ -116,6 +119,7 @@
     document.body.classList.remove('notes-mode','print-all-mode','compendium-mode');
     finalMode.classList.add('active');
     if(compendiumMode) compendiumMode.classList.remove('active');
+    if(fieldMode) fieldMode.classList.remove('active');
     notesMode.classList.remove('active');
     contentsPane.querySelector('.contents-title').textContent='Documento maestro';
     contentsPane.querySelector('.rule-note').textContent='Recap esencial de ROCA TAXIDERMY. El respaldo profundo, originales y evidencia de cada caso permanecen fuera de esta lectura.';
@@ -129,11 +133,26 @@
     document.body.classList.add('compendium-mode');
     finalMode.classList.remove('active');
     if(compendiumMode) compendiumMode.classList.add('active');
+    if(fieldMode) fieldMode.classList.remove('active');
     notesMode.classList.remove('active');
     contentsPane.querySelector('.contents-title').textContent='Compendio completo';
     contentsPane.querySelector('.rule-note').textContent='Vista de trabajo: conserva contenido sustantivo y agrega los libros integrales V2. La autoridad se decide por tema y fuente; ningún PDF o HTML histórico manda globalmente.';
     buildNav(compendiumSections);
     go(location.hash.slice(1)||'portada', compendiumSections);
+  }
+
+  function showField(){
+    activeMode='field';
+    document.body.classList.remove('notes-mode','print-all-mode','compendium-mode');
+    document.body.classList.add('field-mode');
+    finalMode.classList.remove('active');
+    if(compendiumMode) compendiumMode.classList.remove('active');
+    if(fieldMode) fieldMode.classList.add('active');
+    notesMode.classList.remove('active');
+    contentsPane.querySelector('.contents-title').textContent='Cierre de campo';
+    contentsPane.querySelector('.rule-note').textContent='Vista operativa para capturar evidencia útil sin convertir el levantamiento en otro manual.';
+    buildNav(fieldSections);
+    go(location.hash.slice(1)||'campo-inicio', fieldSections);
   }
 
   function showNotes(){
@@ -143,6 +162,7 @@
     notesMode.classList.add('active');
     finalMode.classList.remove('active');
     if(compendiumMode) compendiumMode.classList.remove('active');
+    if(fieldMode) fieldMode.classList.remove('active');
     contentsPane.querySelector('.contents-title').textContent='Notas para trabajo';
     contentsPane.querySelector('.rule-note').textContent='Pendientes, evidencia, fuente maestra y validaciones que no forman parte de la lectura editorial.';
     nav.innerHTML='';
@@ -171,16 +191,17 @@
 
   finalMode.addEventListener('click',showFinal);
   if(compendiumMode) compendiumMode.addEventListener('click',showCompendium);
+  if(fieldMode) fieldMode.addEventListener('click',showField);
   notesMode.addEventListener('click',showNotes);
   printDoc.addEventListener('click',()=>{
-    const printSections = activeMode==='compendium' ? compendiumSections : finalSections;
+    const printSections = activeMode==='compendium' ? compendiumSections : activeMode==='field' ? fieldSections : finalSections;
     const returnMode = activeMode;
     renderAllForPrint(printSections);
     setTimeout(()=>{
       window.print();
-      setTimeout(()=> returnMode==='compendium' ? showCompendium() : showFinal(),150);
+      setTimeout(()=> returnMode==='compendium' ? showCompendium() : returnMode==='field' ? showField() : showFinal(),150);
     },80);
   });
-  window.addEventListener('hashchange',()=>{ if(!document.body.classList.contains('notes-mode') && !document.body.classList.contains('print-all-mode')) go(location.hash.slice(1), activeMode==='compendium' ? compendiumSections : finalSections); });
+  window.addEventListener('hashchange',()=>{ if(!document.body.classList.contains('notes-mode') && !document.body.classList.contains('print-all-mode')) go(location.hash.slice(1), activeMode==='compendium' ? compendiumSections : activeMode==='field' ? fieldSections : finalSections); });
   showFinal();
 })();
