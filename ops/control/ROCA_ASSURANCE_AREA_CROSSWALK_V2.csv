@@ -1,0 +1,11 @@
+CONTROL_FAMILY,CANONICAL_HOME,AREA_TOUCHPOINTS,OPERATOR_LAYER,ASSURANCE_STATUS,EVIDENCE_NEEDED
+Inmueble/funcionamiento,Assurance,ALL,No se descarga texto legal al operador; sólo condición física aplicable,OPEN,Instrumento vigente + ruta/permiso aplicable
+Protección Civil/incendio,Assurance,ALL,Circulación salidas extinción señalización y acciones de emergencia según evaluación,APPLICABILITY_PENDING,Plano/rutas/equipos/documento técnico vigente
+Seguridad y salud laboral,Assurance,ALL,EPP por tarea equipo seguro orden servicios e iluminación/ventilación donde aplique,APPLICABILITY_PENDING,Matriz de riesgo + evidencia técnica/entrega/capacitación
+Químicos/HDS/exposición,Assurance,AREA-CUR;AREA-FMR;AREA-MON;AREA-RET;AREA-SOL;AREA-BLA,Producto identificado HDS accesible punto de uso/almacenamiento controlado,APPLICABILITY_PENDING,Inventario producto HDS exposición/ventilación real
+Ambiental/residuos,Assurance,ALL,Separar residuo recuperable y material útil por corriente/destino real,APPLICABILITY_PENDING,Inventario de corrientes + clasificación/destino/comprobantes cuando correspondan
+Iluminación,Assurance,AREA-CUR;AREA-FMR;AREA-MON;AREA-RET;AREA-BAS;AREA-CAR;AREA-SOL,Medir en plano real cuando la tarea dependa de detalle/seguridad,APPLICABILITY_PENDING,Levantamiento por tarea/plano/fecha/instrumento
+Ventilación/extracción,Assurance,AREA-CUR;AREA-FMR;AREA-MON;AREA-RET;AREA-CAR;AREA-SOL;AREA-BLA,Control en fuente real según operación/producto,APPLICABILITY_PENDING,Producto/proceso + reconocimiento + evidencia técnica
+Vida silvestre/CITES/SENASICA/TRACES,Assurance,AREA-REC;GOV-ERP,Confirmar documentación requerida por caso sin checklist universal,APPLICABILITY_PENDING,Especie origen destino operación + fuente oficial vigente + expediente
+Privacidad/documentos,Assurance,AREA-REC;AREA-SUP;GOV-ERP,Datos sólo por necesidad y originales fuera del HTML público,PARTIAL,Mapa de datos/accesos/retención y evidencia de control
+Mantenimiento/metrología,Assurance,AREA-CUR;AREA-FMR;AREA-MON;AREA-RET;AREA-BAS;AREA-CAR;AREA-SOL;AREA-BLA,Equipo crítico utilizable y medición identificable,PARTIAL,Inventario de activos/dispositivos + plan/verificación
