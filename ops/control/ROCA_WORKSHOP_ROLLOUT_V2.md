@@ -37,11 +37,11 @@ Un archivo redactado no gana por sí solo los puntos de evidencia de campo.
 - estándar físico/implementación: 11/20
 - evidencia/competencia/BIWO/auditoría: 12/15
 - Assurance: 8/10
-- HTML/QA: 6/10
+- HTML/QA: 8/10
 
-**AVANCE V2 DEL TALLER: 79/100 — ESTIMATE CONTROLADO.**
+**AVANCE V2 DEL TALLER: 81/100 — ESTIMATE CONTROLADO.**
 
-Este 79% significa que la arquitectura, trazabilidad, evidencia y Assurance ya tienen estructura operable y fuentes primarias actualizadas; el cuello de botella principal ya es evidencia de campo, BIWO real, validación técnica y QA de navegador/impresión. No significa implementación física ni cumplimiento.
+Este 81% significa que la arquitectura, trazabilidad, evidencia y Assurance ya tienen estructura operable, y el HTML pasó una ronda real de navegador/mobile/print con dos regresiones corregidas. El cuello de botella principal ya es evidencia de campo, BIWO real, validación técnica y cierre documental. No significa implementación física ni cumplimiento.
 
 ## Próximos puntos que mueven porcentaje real
 1. reconciliar duplicaciones restantes entre libros y estándar común;
@@ -86,3 +86,12 @@ Este 79% significa que la arquitectura, trazabilidad, evidencia y Assurance ya t
 - fuentes primarias actuales refrescadas para STPS, municipio/funcionamiento, Protección Civil, SEGAM, SEMARNAT y SENASICA;
 - capa Assurance compacta integrada al COMPENDIO y capítulo legal legacy retirado de navegación;
 - orden de ejecución de campo definido por olas para cerrar varios REQ con una misma visita sin duplicar evidencia.
+
+
+## Cambio de esta ronda · browser/print QA
+- Chromium QA sobre los archivos controlados de la rama;
+- DOC FINAL navega portada + 8 secciones; COMPENDIO portada + 21 secciones;
+- sin errores/warnings de consola en el harness;
+- se detectó y corrigió overflow móvil de Taller;
+- se detectó y corrigió paginación de Taller: 9 artículos del DOC FINAL → 9 páginas Letter;
+- deployment público y regresión pixel-a-pixel siguen pendientes.
