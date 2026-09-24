@@ -56,7 +56,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
         <li>Químicos permanecen identificados, cerrados cuando no se usan y con HDS accesible.</li>
         <li>Almacenamiento químico corresponde a compatibilidad y riesgo real del producto.</li>
         <li>Preparación y transferencia de productos se realiza sin invadir circulación ni exponer otras áreas.</li>
-        <li>Drenaje, agua y ventilación corresponden a los baños y operaciones reales.</li>
+        <li>Agua y drenaje corresponden a las operaciones reales; cada punto de descarga tiene ruta conocida y el agua de proceso se distingue de sanitaria/pluvial.</li>
         <li>Báscula e instrumento de pH están identificados y disponibles para la operación.</li>
         <li>La piel conserva su ID durante baños, rebajado, secado y acondicionamiento.</li>
         <li>Baños agotados, envases, residuos y material recuperable se separan por destino.</li>
