@@ -125,10 +125,20 @@
     if(!related.length) return '<p class="source-empty">Sin relaciones registradas todavia.</p>';
     return related.map(item => {
       const selected = item.sectionId && item.sectionId === activeCompareSectionId;
+      const ids = []
+        .concat(item.areaId ? [item.areaId] : [])
+        .concat(Array.isArray(item.controlIds) ? item.controlIds : [])
+        .concat(Array.isArray(item.evidenceIds) ? item.evidenceIds : []);
+      const pageRange = item.page ? ('p. ' + item.page + (item.pageEnd && item.pageEnd !== item.page ? '-' + item.pageEnd : '')) : 'página pendiente';
       return '<div class="source-check-row' + (selected ? ' selected' : '') + '">' +
         '<div><strong>' + esc(item.label || item.sectionId) + '</strong>' +
-        '<span>' + esc(item.locator || 'Locator pendiente') + '</span></div>' +
+        '<span>' + esc(item.locator || 'Locator pendiente') + '</span>' +
+        (ids.length ? '<span class="source-id-line">' + esc(ids.join(' · ')) + '</span>' : '') +
+        (item.proof ? '<span class="source-proof-line">PRUEBA: ' + esc(item.proof) + '</span>' : '') +
+        '</div>' +
         '<div class="source-check-actions"><span class="source-action-chip">' + esc(item.action || 'PRESERVE') + '</span>' +
+        '<span class="source-page-chip">' + esc(pageRange) + '</span>' +
+        (item.page ? '<button type="button" class="source-open-page" data-page="' + esc(item.page) + '">VER PÁGINA</button>' : '') +
         (item.sectionId ? '<button type="button" class="source-compare-section" data-section="' + esc(item.sectionId) + '">COMPARAR AQUÍ</button>' : '') +
         (item.sectionId ? '<button type="button" class="source-jump-section" data-section="' + esc(item.sectionId) + '">ABRIR EN COMPENDIO</button>' : '') +
         '</div></div>';
@@ -208,6 +218,13 @@
         renderSource(doc, Number.isFinite(value) && value > 0 ? value : null);
       });
     }
+
+    page.querySelectorAll('.source-open-page').forEach(button => {
+      button.addEventListener('click', () => {
+        const value = Number.parseInt(button.dataset.page,10);
+        renderSource(doc, Number.isFinite(value) && value > 0 ? value : null);
+      });
+    });
 
     page.querySelectorAll('.source-compare-section').forEach(button => {
       button.addEventListener('click', () => {
