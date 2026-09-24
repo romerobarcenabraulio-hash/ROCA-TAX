@@ -58,7 +58,7 @@ window.ROCA_SOURCE_DOCS = [
         label: "Formas, Moldes y Réplicas",
         areaId: "AREA-FMR",
         controlIds: ["REQ-COM-01..15","FMR-AREA-01..09"],
-        evidenceIds: ["EVID-FMR-02"],
+        evidenceIds: ["EVID-FMR-01","EVID-FMR-02","EVID-FMR-03"],
         action: "MERGE_WITHOUT_LOSS",
         page: 86,
         pageEnd: 128,
@@ -67,7 +67,7 @@ window.ROCA_SOURCE_DOCS = [
         subLocators: [
           { id:"FMR-GOV", label:"Gobernanza local", page:88, pageEnd:88, action:"PRESERVE" },
           { id:"FMR-AREA", label:"Área de trabajo y estación", page:89, pageEnd:91, action:"MERGE_WITHOUT_LOSS", controlIds:["FMR-AREA-01..09"] },
-          { id:"EVID-FMR", label:"Evidencia fotográfica", page:92, pageEnd:92, action:"MERGE_WITHOUT_LOSS", evidenceIds:["EVID-FMR-02"] },
+          { id:"EVID-FMR", label:"Evidencia / prueba / curado", page:92, pageEnd:92, action:"MERGE_WITHOUT_LOSS", evidenceIds:["EVID-FMR-01","EVID-FMR-02","EVID-FMR-03"] },
           { id:"FMR-VERIFY-AREA", label:"Verificación del área", page:93, pageEnd:95, action:"PRESERVE" },
           { id:"FMR-METHOD", label:"Metodología", page:96, pageEnd:125, action:"MERGE_WITHOUT_LOSS" },
           { id:"FMR-TOOLS", label:"Herramientas, equipo y consumibles", page:106, pageEnd:125, action:"PRESERVE" },
@@ -378,7 +378,7 @@ window.ROCA_SOURCE_LEDGER = [
     subject: "Dosificación A/B por condición climática",
     action: "PRESERVE",
     canonicalHome: "AREA-FMR / metodología técnica controlada",
-    destinationState: "FMR V2 conserva prueba de 20 g y 50/50 en condición cálida; remite variaciones climáticas al método técnico controlado.",
+    destinationState: "RECOVERED IN BRANCH: FMR V2 conserva prueba de 20 g, relaciones cálido/fresco, oreado, referencias de curado, criterios físicos, cera/gelcoat/capas de Moldes y EVID-FMR-03.",
     summary: "Las cuatro versiones comparadas conservan 50/50 en clima cálido y 30/70 en fresco/húmedo. Mantener el contexto climático; no convertir la relación en regla global descontextualizada.",
     sources: [
       { docId:"precampo-v24-7", locator:"FMR > Dosificar, mezclar y vaciar", fact:"cálido 50/50; fresco/húmedo 30/70" },
@@ -386,7 +386,7 @@ window.ROCA_SOURCE_LEDGER = [
       { docId:"pre-entrevistas-26ago", locator:"FMR > Dosificar, mezclar y vaciar", fact:"cálido 50/50; fresco/húmedo 30/70" },
       { docId:"canonico-pendientes-31ago", locator:"FMR > Metodología", fact:"cálido 50/50; fresco/húmedo 30/70" }
     ],
-    proof: "Parámetro repetido de forma consistente; V2 lo preserva sin elevarlo a regla universal."
+    proof: "Parámetros repetidos en fuentes y recuperados en FORMAS_MOLDES_REPLICAS_AREA_BOOK_V2.md + EVID-FMR-02/03 + CAMPO. Se mantiene separación técnica entre Formas, Moldes y Réplicas."
   },
   {
     id: "LEDGER-RET-PRODUCTS",
