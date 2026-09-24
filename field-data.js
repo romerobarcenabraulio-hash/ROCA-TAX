@@ -35,7 +35,7 @@ window.ROCA_FIELD_SECTIONS = [
         <li>Activos críticos.</li>
       </ul>
       <h2>Evidence IDs principales</h2>
-      <p>EVID-REC-01 · EVID-CUR-01 · EVID-MON-01 · EVID-MON-02 · EVID-RET-01 · EVID-RET-03 · EVID-BAS-01 · EVID-CAR-01 · EVID-SOL-01 · EVID-BLA-01 · EVID-SUP-01.</p>
+      <p>EVID-REC-01 · EVID-CUR-01 · EVID-MON-01 · EVID-MON-02 · EVID-RET-01 · EVID-RET-03 · EVID-BAS-01 · EVID-BAS-02 · EVID-BAS-03 · EVID-CAR-01 · EVID-SOL-01 · EVID-BLA-01 · EVID-SUP-01.</p>
       <h2>Salida</h2>
       <p>Panorámicas dirigidas + mapa de faltantes + lista real de estaciones/activos/subespacios.</p>
     `
@@ -63,7 +63,7 @@ window.ROCA_FIELD_SECTIONS = [
     id:"campo-3", nav:"Ola 3 · Estaciones", title:"Ola 3 · Estaciones y competencia", eyebrow:"Persona ↔ puesto ↔ operación",
     lead:"Cerrar quién trabaja dónde y qué puede ejecutar sin acompañamiento.",
     body:`
-      <h2>Montaje y Retoque primero</h2>
+      <h2>Bases · maniobra y estructura</h2><p>Levantar responsable/estación real; plancha/bancos/fijaciones; herramientas de corte; punto de poliuretano/adhesivo; almacenamiento de malla/triplay/herrajes; y una maniobra real de pieza/base pesada sólo si ocurre naturalmente y puede observarse sin crear riesgo.</p><h2>Montaje y Retoque primero</h2>
       <ul>
         <li>Persona ↔ estación real.</li>
         <li>Tareas que ejecuta.</li>
