@@ -16,6 +16,8 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 - PASS — Restricted-personal/financial/wildlife document classes are explicitly excluded from publication in the public repo.
 - PASS — Direct page-jump is disabled for Drive preview and reserved for a controlled local-served PDF.
 - PASS — Source-mode print interception prevents the existing master-print handler from silently printing another workspace; in FUENTES the action opens the original PDF instead.
+- PASS — Source document IDs are unique after reconciliation; the duplicate `v24-7-precampo-rigor` manifest entry was removed.
+- PASS — Ten area books expose inline cross-check links to exact 391p source pages without duplicating source prose or changing printable output.
 
 ## Functional state
 - SOURCE-CONFIRMED — Controlled Drive copy `ROCA_MASTER_WEB_391P_SOURCE.pdf` exists inside `ROCA AUDIT - FUENTES DOCUMENTALES`, is readable through the authenticated Drive connector, and Drive reports it as `not_shared`.
@@ -32,4 +34,4 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 Do not add customer CITES/SEMARNAT/PROFEPA permit PDFs, IDs, financial records or other restricted originals to this public GitHub repository. Restricted source reading belongs in a private authenticated evidence surface.
 
 ## Release state
-PARTIAL — code, private Drive master copy, Vercel deployment and static contract are present; authenticated iframe/mobile visual QA remains required before merge.
+PARTIAL — code, private Drive master copy, Vercel deployment, unique source IDs, and section→source cross-check links are present. Authenticated iframe/mobile visual QA remains required before merge.
