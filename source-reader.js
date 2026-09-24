@@ -120,6 +120,22 @@
     });
   }
 
+  function subLocatorMarkup(item){
+    const subs = Array.isArray(item && item.subLocators) ? item.subLocators : [];
+    if(!subs.length) return '';
+    return '<div class="source-subnav">' + subs.map(sub => {
+      const ids = []
+        .concat(sub.id ? [sub.id] : [])
+        .concat(Array.isArray(sub.controlIds) ? sub.controlIds : [])
+        .concat(Array.isArray(sub.evidenceIds) ? sub.evidenceIds : []);
+      const range = sub.page ? ('p. ' + sub.page + (sub.pageEnd && sub.pageEnd !== sub.page ? '-' + sub.pageEnd : '')) : 'página pendiente';
+      return '<button type="button" class="source-sub-page" data-page="' + esc(sub.page || '') + '" title="' + esc(sub.action || '') + '">' +
+        '<span class="source-sub-title">' + esc(sub.label || sub.id || 'Sección') + '</span>' +
+        '<span class="source-sub-meta">' + esc(range + (ids.length ? ' · ' + ids.join(' · ') : '')) + '</span>' +
+      '</button>';
+    }).join('') + '</div>';
+  }
+
   function relatedMarkup(doc){
     const related = Array.isArray(doc.related) ? doc.related : [];
     if(!related.length) return '<p class="source-empty">Sin relaciones registradas todavia.</p>';
@@ -135,6 +151,7 @@
         '<span>' + esc(item.locator || 'Locator pendiente') + '</span>' +
         (ids.length ? '<span class="source-id-line">' + esc(ids.join(' · ')) + '</span>' : '') +
         (item.proof ? '<span class="source-proof-line">PRUEBA: ' + esc(item.proof) + '</span>' : '') +
+        subLocatorMarkup(item) +
         '</div>' +
         '<div class="source-check-actions"><span class="source-action-chip">' + esc(item.action || 'PRESERVE') + '</span>' +
         '<span class="source-page-chip">' + esc(pageRange) + '</span>' +
@@ -219,7 +236,7 @@
       });
     }
 
-    page.querySelectorAll('.source-open-page').forEach(button => {
+    page.querySelectorAll('.source-open-page, .source-sub-page').forEach(button => {
       button.addEventListener('click', () => {
         const value = Number.parseInt(button.dataset.page,10);
         renderSource(doc, Number.isFinite(value) && value > 0 ? value : null);
