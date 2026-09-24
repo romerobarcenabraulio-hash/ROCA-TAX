@@ -28,11 +28,11 @@
   function sourceUrl(doc, pageNumber){
     if(!doc) return '';
     const page = Number(pageNumber) > 0 ? Number(pageNumber) : null;
-    if(doc.previewUrl){
-      return doc.previewUrl + (page ? '#page=' + page : '');
-    }
-    if(doc.localPath){
+    if(doc.localAvailable && doc.localPath){
       return doc.localPath + (page ? '#page=' + page : '');
+    }
+    if(doc.previewUrl){
+      return doc.previewUrl;
     }
     return '';
   }
@@ -90,7 +90,7 @@
       return;
     }
 
-    const available = Boolean(activeDoc.previewUrl);
+    const available = Boolean(activeDoc.previewUrl || (activeDoc.localAvailable && activeDoc.localPath));
     const status = activeDoc.status === 'AVAILABLE_PRIVATE_LINK' ? 'Disponible' : 'Locator pendiente';
     const open = activeDoc.openUrl ? `<a class="pdf-link" href="${escapeHtml(activeDoc.openUrl)}" target="_blank" rel="noopener noreferrer">ABRIR EN VENTANA</a>` : '';
     const frame = available
@@ -120,7 +120,7 @@
         <div class="source-actions">${open}</div>
       </div>
       ${refsMarkup(activeDoc)}
-      <div class="source-note">${escapeHtml(activeDoc.note || '')}</div>
+      <div class="source-note">${escapeHtml(activeDoc.note || '')}${activeDoc.localAvailable ? '' : ' · En Drive, usa los controles del visor para ir a una página exacta; el salto rápido se activará al servir una copia local controlada.'}</div>
       <div class="source-viewer-shell">${frame}</div>
       <div class="source-privacy-note">${escapeHtml(rules.warning || '')}</div>
     </article>`;
@@ -155,11 +155,12 @@
   });
 
   if(printDoc){
-    printDoc.addEventListener('click',()=>{
-      if(document.body.classList.contains('source-mode')){
-        setTimeout(showSources,250);
-      }
-    });
+    printDoc.addEventListener('click',(event)=>{
+      if(!document.body.classList.contains('source-mode')) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      window.print();
+    },true);
   }
 
   window.ROCA_SOURCE_READER = {
