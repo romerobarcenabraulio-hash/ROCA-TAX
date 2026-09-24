@@ -44,11 +44,8 @@ Requiere demostración real para cerrar herramientas, uniones, criterio por tipo
 Madera/triplay, tornillería, materiales de protección y herramientas de corte son familias previstas; marca/equipo/inventario real permanecen NOT_CHECKED.
 
 Evidencia futura:
-- panorámica del puesto implementado y su límite;
-- herramienta de corte/protecciones y retiro de polvo;
-- almacenamiento de madera/herrajes;
-- embalaje en proceso y pieza protegida con ID;
-- ruta de salida despejada.
+- **EVID-CAR-01:** panorámica del puesto implementado, límite, embalaje en proceso, pieza protegida con ID y ruta de salida.
+- **EVID-CAR-02:** herramienta de corte/protecciones, retiro de polvo y almacenamiento de madera/herrajes.
 
 ## 7. Auditoría específica
 CAR-AUD-01 puesto realmente implementado y separado de acabado químico.  
