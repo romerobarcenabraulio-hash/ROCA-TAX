@@ -116,7 +116,13 @@ window.ROCA_FIELD_SECTIONS = [
       </ul>
       <h2>Registro mínimo</h2>
       <p>Área · estación/punto · tarea/etapa · valor · unidad · fecha · instrumento/método · ID/estado · foto o registro contextual · criterio asociado.</p>
-      <h2>Evidence IDs</h2><p>EVID-CUR-03 · EVID-CUR-04 · EVID-RET-02 y cualquier medición asociada a un REQ específico.</p>
+      <h2>FMR · prueba y curado</h2>
+      <ul>
+        <li>Prueba de lote: masa total, relación A/B, recipiente patrón, condición climática observada y resultado.</li>
+        <li>Curado/desmolde: familia/tamaño, hora de vaciado, referencia usada, hora de revisión y condición física antes de abrir.</li>
+        <li>No liberar por reloj solamente; si está caliente, blando o deformable, registrar NOT_VERIFIED / continuar curado.</li>
+      </ul>
+      <h2>Evidence IDs</h2><p>EVID-CUR-03 · EVID-CUR-04 · EVID-FMR-02 · EVID-FMR-03 · EVID-RET-02 y cualquier medición asociada a un REQ específico.</p>
     `
   },
   {
