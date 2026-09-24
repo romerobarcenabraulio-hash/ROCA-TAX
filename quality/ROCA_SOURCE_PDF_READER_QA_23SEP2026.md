@@ -12,13 +12,13 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 - PASS — `source-reader.js` loads after the existing application.
 - PASS — JavaScript syntax compiles for `source-data.js`.
 - PASS — JavaScript syntax compiles for `source-reader.js`.
-- PASS — Master 391-page source is registered through its existing private Drive link.
+- PASS — Master 391-page source is registered through a controlled private Drive copy; the public repo contains only the locator, not PDF bytes.
 - PASS — Restricted-personal/financial/wildlife document classes are explicitly excluded from publication in the public repo.
 - PASS — Direct page-jump is disabled for Drive preview and reserved for a controlled local-served PDF.
-- PASS — Source-mode print interception prevents the existing master-print handler from silently printing another workspace.
+- PASS — Source-mode print interception prevents the existing master-print handler from silently printing another workspace; in FUENTES the action opens the original PDF instead.
 
 ## Functional state
-- SOURCE-CONFIRMED — Drive file `ROCA_MASTER_WEB.pdf` exists and is readable through the authenticated Drive connector.
+- SOURCE-CONFIRMED — Controlled Drive copy `ROCA_MASTER_WEB_391P_SOURCE.pdf` exists inside `ROCA AUDIT - FUENTES DOCUMENTALES`, is readable through the authenticated Drive connector, and Drive reports it as `not_shared`.
 - NOT-CHECKED — rendering the private Drive preview inside the deployed/public HTML iframe has not been browser-tested in an authenticated user session.
 - NOT-CHECKED — mobile visual behavior has not been screenshot-tested.
 - LOCATOR_PENDING — `ROCA_TAXIDERMY_MASTER_CANONICO_PENDIENTES_31AGO2026.pdf`.
