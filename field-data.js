@@ -35,7 +35,7 @@ window.ROCA_FIELD_SECTIONS = [
         <li>Activos críticos.</li>
       </ul>
       <h2>Evidence IDs principales</h2>
-      <p>EVID-REC-01 · EVID-CUR-01 · EVID-MON-01 · EVID-MON-02 · EVID-RET-01 · EVID-BAS-01 · EVID-CAR-01 · EVID-SOL-01 · EVID-BLA-01 · EVID-SUP-01.</p>
+      <p>EVID-REC-01 · EVID-CUR-01 · EVID-MON-01 · EVID-MON-02 · EVID-RET-01 · EVID-RET-03 · EVID-BAS-01 · EVID-CAR-01 · EVID-SOL-01 · EVID-BLA-01 · EVID-SUP-01.</p>
       <h2>Salida</h2>
       <p>Panorámicas dirigidas + mapa de faltantes + lista real de estaciones/activos/subespacios.</p>
     `
@@ -55,7 +55,7 @@ window.ROCA_FIELD_SECTIONS = [
         <li>Ventilación/extracción existente.</li>
         <li>Envase, sobrante, recuperable y residuo.</li>
       </ul>
-      <h2>Evidence IDs</h2><p>EVID-CUR-02 · EVID-FMR-02 · EVID-RET-01 y registros de materiales V2.</p>
+      <h2>Evidence IDs</h2><p>EVID-CUR-02 · EVID-FMR-02 · EVID-RET-01 y registros de materiales V2.</p><h2>Retoque · productos a identificar</h2><p>Salvo · Roma · Suavitel cuando exista · resanador/catalizador · pinturas · gasolina blanca · barniz · Resistol blanco 800 · manchas/aceite de cuerno. Capturar producto real; la lista histórica no prueba uso actual.</p>
       <div class="callout">No clasificar un residuo por apariencia. Producto + proceso + condición del residuo + cantidad/frecuencia + destino gobiernan la decisión.</div>
     `
   },
@@ -67,7 +67,7 @@ window.ROCA_FIELD_SECTIONS = [
       <ul>
         <li>Persona ↔ estación real.</li>
         <li>Tareas que ejecuta.</li>
-        <li>Herramienta/equipo que usa.</li>
+        <li>Herramienta/equipo que usa.</li><li>En Retoque: compresor/placa, regulador, mangueras/conexiones, aerógrafo/pistola y punto real de aplicación cuando existan.</li>
         <li>Operaciones que puede realizar sin acompañamiento.</li>
         <li>Qué condición obliga a parar o pedir apoyo.</li>
         <li>Demostración breve o evidencia equivalente.</li>
@@ -122,7 +122,7 @@ window.ROCA_FIELD_SECTIONS = [
         <li>Curado/desmolde: familia/tamaño, hora de vaciado, referencia usada, hora de revisión y condición física antes de abrir.</li>
         <li>No liberar por reloj solamente; si está caliente, blando o deformable, registrar NOT_VERIFIED / continuar curado.</li>
       </ul>
-      <h2>Evidence IDs</h2><p>EVID-CUR-03 · EVID-CUR-04 · EVID-FMR-02 · EVID-FMR-03 · EVID-RET-02 y cualquier medición asociada a un REQ específico.</p>
+      <h2>Evidence IDs</h2><p>EVID-CUR-03 · EVID-CUR-04 · EVID-FMR-02 · EVID-FMR-03 · EVID-RET-02 · EVID-RET-03 y cualquier medición asociada a un REQ específico.</p>
     `
   },
   {
