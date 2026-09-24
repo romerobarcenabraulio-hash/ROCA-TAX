@@ -94,6 +94,7 @@
     const directPageJump = Boolean(activeDoc.localAvailable && activeDoc.localPath);
     const status = activeDoc.status === 'AVAILABLE_PRIVATE_LINK' ? 'Disponible' : 'Locator pendiente';
     const open = activeDoc.openUrl ? `<a class="pdf-link" href="${escapeHtml(activeDoc.openUrl)}" target="_blank" rel="noopener noreferrer">ABRIR EN VENTANA</a>` : '';
+    const folder = rules.sourceFolderUrl ? `<a class="pdf-link secondary" href="${escapeHtml(rules.sourceFolderUrl)}" target="_blank" rel="noopener noreferrer">CARPETA DE FUENTES</a>` : '';
     const frame = available
       ? `<iframe id="sourcePdfFrame" class="source-pdf-frame" src="${escapeHtml(sourceUrl(activeDoc,pageNumber))}" title="${escapeHtml(activeDoc.title)}"></iframe>`
       : unavailableMarkup(activeDoc);
@@ -118,7 +119,7 @@
           <input id="sourcePageInput" type="number" min="1" ${activeDoc.pages ? `max="${activeDoc.pages}"` : ''} value="${pageNumber || ''}" placeholder="ej. 133">
           <button id="sourceGoPage" type="button" ${directPageJump ? '' : 'disabled'}>IR</button>
         </div>
-        <div class="source-actions">${open}</div>
+        <div class="source-actions">${open}${folder}</div>
       </div>
       ${refsMarkup(activeDoc)}
       <div class="source-note">${escapeHtml(activeDoc.note || '')}${activeDoc.localAvailable ? '' : ' · En Drive, usa los controles del visor para ir a una página exacta; el salto rápido se activará al servir una copia local controlada.'}</div>
