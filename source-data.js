@@ -95,6 +95,20 @@ window.ROCA_SOURCE_DOCUMENTS = [
     note: "Fuente nominal v24.8 recuperada. No confundir automáticamente con PreEntrevistas: comparten rótulo interno v24.8, pero tienen distinta paginación y tamaño; requieren diff antes de declararlas duplicadas."
   },
   {
+    id: "v22-1-editable",
+    nav: "v22.1 Editable",
+    title: "ROCA_TAXIDERMY_v22_1_Editable.zip",
+    subtitle: "HTML editable histórico · fuente requerida para cierre de integridad",
+    sourceKind: "Fuente histórica identificada por trazabilidad",
+    privacy: "INTERNAL_OPERATIONAL",
+    status: "SOURCE_INTEGRITY_BLOCKER",
+    pages: null,
+    previewUrl: "",
+    openUrl: "",
+    localPath: "",
+    note: "Su existencia y contenido general están documentados en la trazabilidad histórica, pero los bytes del ZIP/HTML editable aún no se han recuperado en Library, Drive ni GitHub. No declarar saturación de fuentes hasta recuperarlo o demostrar equivalencia sección por sección."
+  },
+  {
     id: "v24-7-precampo-rigor",
     nav: "v24.7 Pre-Campo",
     title: "ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf",
