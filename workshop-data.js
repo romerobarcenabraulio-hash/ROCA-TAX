@@ -1,140 +1,181 @@
 window.ROCA_WORKSHOP_SECTIONS = [
   {
-    id:"taller", nav:"Taller", title:"El taller como sistema", eyebrow:"Áreas · handoffs · condición de trabajo",
-    lead:"ROCA se documenta por áreas integrales. La metodología conserva el oficio; cada área añade condición física, recursos, competencia, registros, evidencia y auditoría sin repetir el mismo requisito en cinco capítulos.",
+    id:"taller", nav:"Taller", title:"El taller como sistema", eyebrow:"Estándar permanente · áreas físicas",
+    lead:"Cada área muestra únicamente cómo debe estar el espacio cuando ROCA opera correctamente. Implementación, pendientes y auditoría viven fuera de estas páginas.",
     body:`
-      <h2>Una sola arquitectura para todo el taller</h2>
-      <p class="callout">Gobernanza local → área de trabajo → metodología → herramientas/equipo → materiales/flujo → competencia → control/evidencia → auditoría.</p>
-      <p>El estándar común vive una sola vez. Cada área hereda circulación, estación lista, almacenamiento, identidad, iluminación, ventilación, servicios, químicos, EPP, residuos, limpieza, emergencia, mantenimiento y evidencia; después agrega únicamente lo específico de su operación.</p>
-      <h2>Mapa de áreas</h2>
-      <table><thead><tr><th>Área</th><th>Qué resuelve</th><th>Estado de integración</th></tr></thead><tbody>
-        <tr><td>Recepción</td><td>Identidad, condición de ingreso, documentación y ruta inicial.</td><td>Arquitectura aplicada · responsable/BIWO por cerrar.</td></tr>
-        <tr><td>Curtiduría</td><td>Preservar, curtir y acondicionar piel sin perder identidad.</td><td>Método fuerte · químicos/servicios/evidencia física pendientes.</td></tr>
-        <tr><td>Formas, Moldes y Réplicas</td><td>Convertir medidas/geometría en formas, moldes o réplicas utilizables.</td><td>Método fuerte · productos/HDS/racks/mantenimiento pendientes.</td></tr>
-        <tr><td>Montaje</td><td>Integrar piel, forma y componentes hasta una pieza estable para Retoque.</td><td>Piloto integral más desarrollado · campo/BIWO/competencia pendientes.</td></tr>
-        <tr><td>Retoque</td><td>Recuperar superficie, color, textura y presentación final.</td><td>Método fuerte · ventilación/químicos/competencia pendientes.</td></tr>
-        <tr><td>Bases</td><td>Resolver soporte, fijación y ambientación cuando la orden lo requiere.</td><td>Método parcial fuerte · responsable/estructura/evidencia pendientes.</td></tr>
-        <tr><td>Carpintería / Embalaje</td><td>Corte, cajas y protección de transporte.</td><td>Control preparado · puesto/método real no implementados.</td></tr>
-        <tr><td>Soldadura / Adaptación</td><td>Uniones y adaptaciones metálicas requeridas por la pieza.</td><td>Estándar de área preparado · método técnico no liberado.</td></tr>
-        <tr><td>Blanqueado</td><td>Tratamiento de cráneo protegiendo cuernos y superficie.</td><td>Método parcial · responsable/parámetros/evidencia pendientes.</td></tr>
-        <tr><td>Espacios de soporte</td><td>Bodegas, BIWO, exhibición, comedor, sanitarios, circulación, carga y residuos.</td><td>Estándar estructurado · levantamiento físico pendiente.</td></tr>
-      </tbody></table>
-      <h2>Cómo se evita la bola de nieve</h2>
+      <h2>Regla de lectura</h2>
+      <p class="callout"><strong>Área = deber ser permanente.</strong> Nada de pendientes, compras o listas temporales.</p>
       <ul>
-        <li>Un requisito común se define una vez y las áreas lo referencian.</li>
-        <li>La metodología no absorbe mantenimiento, legal, capacitación ni auditoría.</li>
-        <li>Assurance conserva fuente, vigencia y aplicabilidad; el área conserva la acción observable.</li>
-        <li>La evidencia demuestra una condición concreta; no se convierte en prosa repetida.</li>
-        <li>Los detalles operativos viven en los libros controlados; esta lectura comunica lo esencial.</li>
+        <li>El espacio físico se define por flujo, estación, almacenamiento, servicios, seguridad, limpieza y evidencia observable.</li>
+        <li>La metodología del oficio vive en su libro/proceso, no dentro de la descripción física del área.</li>
+        <li>IMPLEMENTAR contiene las acciones temporales para llegar al estándar.</li>
+        <li>AUDITAR contiene evidencia, resultado, revisor y fecha.</li>
       </ul>
     `
   },
   {
-    id:"area-recepcion", nav:"Área · Recepción", title:"Recepción", eyebrow:"Libro de área · control de ingreso",
-    lead:"Abrir una identidad única del trabajo y transferirlo sin perder documentación, condición de ingreso, evidencia ni siguiente acción.",
+    id:"area-recepcion", nav:"Área · Recepción", title:"Recepción", eyebrow:"Estándar permanente · ingreso y trazabilidad",
+    lead:"Zona de ingreso limpia, identificable y capaz de abrir una sola identidad del trabajo sin mezclar piezas, documentos o destinos.",
     body:`
-      <h2>Handoff</h2><p><strong>Recibe:</strong> pieza o piel + documentación disponible + condición física. <strong>Entrega:</strong> trabajo identificado y ruta definida.</p>
-      <h2>Método preservado</h2><p>Inspección inicial → registro de especie/referencia/documento → etiqueta → fotografía cuando corresponda → condición de ingreso → espera controlada → transferencia.</p>
-      <h2>Controles que importan</h2><ul><li>Ningún trabajo sin ID.</li><li>Foto/documento ligados al mismo trabajo.</li><li>Espera separada y siguiente acción visible.</li><li>No convertir Recepción en una decisión legal sobre permisos; esa aplicabilidad vive en Assurance.</li></ul>
-      <h2>Por cerrar</h2><p>Responsable vigente, estación real, estados BIWO exactos, estándar físico de espera y evidencia fotográfica del área.</p>
+      <h2>Cómo debe estar</h2>
+      <ul>
+        <li>Ingreso, inspección y espera se distinguen físicamente.</li>
+        <li>Superficie de inspección limpia, despejada y utilizable.</li>
+        <li>Piezas en espera están separadas, identificadas y con siguiente acción visible.</li>
+        <li>Etiquetas, fotografías y documentación se vinculan a la misma pieza.</li>
+        <li>Material húmedo, salado o sucio no contamina documentos, equipo ni circulación.</li>
+        <li>Estación BIWO/registro está disponible sin exponer datos innecesarios.</li>
+        <li>Pasillos, salida y medios de emergencia permanecen libres y visibles.</li>
+      </ul>
     `
   },
   {
-    id:"area-curtiduria", nav:"Área · Curtiduría", title:"Curtiduría", eyebrow:"Libro de área · piel y baños",
-    lead:"Preservar, curtir y acondicionar la piel hasta dejarla manipulable, identificada y lista para producción.",
+    id:"area-curtiduria", nav:"Área · Curtiduría", title:"Curtiduría", eyebrow:"Estándar permanente · pieles, baños y químicos",
+    lead:"Flujo claro de pieles y baños, identidad preservada, químicos controlados y equipos accesibles para operar, limpiar y mantener.",
     body:`
-      <h2>Handoff</h2><p><strong>Recibe:</strong> piel identificada y condición conocida. <strong>Entrega:</strong> piel tratada, manipulable e identificada hacia la siguiente ruta.</p>
-      <h2>Método preservado</h2><p>Hidratación → marcado físico → ruta por espesor → picle → rebajado manual/disco → pesado + ALUM-Tan → neutralización/repiclado → escurrido → tamboreo/aserrín → sacudido → engrase → pateado selectivo cuando aplica.</p>
-      <h2>Parámetros rescatados</h2><p>Hidratación 1 kg sal/10 L y 10–12 h; salinidad ALUM-Tan 2.2–2.3; pH 3.6–3.8 al inicio del día 2 y 4.2–4.3 al final; segunda adición de alumbre a 1 h 30 min; bicarbonato dividido en 5 adiciones horarias; escurrido 12 h con calor o 14–16 h en invierno/lluvia; tamboreo 4 h; sacudido 15 min. Estas referencias no sustituyen el criterio físico de salida.</p>
-      <h2>Controles que importan</h2><ul><li>El ID sobrevive baños, rebajado y secado.</li><li>Peso de báscula y peso capturado en ALUM-Tan corresponden a la misma carga.</li><li>Los dos puntos de pH se registran en etapas distintas y con instrumento/método identificable.</li><li>La piel avanza por condición física, no sólo por reloj.</li><li>Tinas, tambor y rebajadora tienen acceso para carga, limpieza y mantenimiento.</li><li>Químicos, baños agotados y residuos no se clasifican por intuición.</li></ul>
-      <h2>Piloto separado</h2><p>El descarnado/limpieza con agua a presión sigue como piloto NO LIBERADO; no sustituye la rebajadora ni entra a rutina sin validar parámetros, EPP, drenaje, residuos y corridas sin daño.</p>
-      <h2>Por cerrar</h2><p>Conflicto 6.0/6.4 L de ácido fórmico; instrumento/método real de pH y su estado; fuente controlada ALUM-Tan; productos/HDS; balance de baños; ventilación; drenaje; activos; competencia y evidencia física.</p>
+      <h2>Cómo debe estar</h2>
+      <ul>
+        <li>Tinas, tambor, rebajadora, báscula, tendido y acondicionamiento tienen ubicación definida y acceso libre.</li>
+        <li>Químicos permanecen identificados, cerrados cuando no se usan y con HDS accesible.</li>
+        <li>Almacenamiento químico corresponde a compatibilidad y riesgo real del producto.</li>
+        <li>Preparación y transferencia de productos se realiza sin invadir circulación ni exponer otras áreas.</li>
+        <li>Drenaje, agua y ventilación corresponden a los baños y operaciones reales.</li>
+        <li>Báscula e instrumento de pH están identificados y disponibles para la operación.</li>
+        <li>La piel conserva su ID durante baños, rebajado, secado y acondicionamiento.</li>
+        <li>Baños agotados, envases, residuos y material recuperable se separan por destino.</li>
+        <li>Rutas, señalización y medios de emergencia permanecen visibles y accesibles.</li>
+      </ul>
     `
   },
   {
-    id:"area-fmr", nav:"Área · Formas/Moldes", title:"Formas, Moldes y Réplicas", eyebrow:"Libro de área · geometría y materiales reactivos",
-    lead:"Convertir medidas, geometría y referencias en formas, moldes o réplicas estables y utilizables.",
+    id:"area-fmr", nav:"Área · Formas/Moldes", title:"Formas, Moldes y Réplicas", eyebrow:"Estándar permanente · geometría y materiales reactivos",
+    lead:"Materiales identificados, dosificación verificable, moldes/racks trazables y polvo, fibra y vapores controlados.",
     body:`
-      <h2>Métodos preservados</h2>
-      <p><strong>Formas:</strong> preparar estructura/molde → encerar → orear 20–30 min → cerrar/sellar → probar lote → dosificar → mezclar → vaciar → curar/enfriar → desmoldar/revisar.</p>
-      <p><strong>Prueba y dosificación de Formas:</strong> 20 g totales en botella patrón ~600 mL; cálido 10+10 / 50:50; fresco-húmedo 6+14 / 30:70. Cabeza 1 h 30 min mínimo; cuerpo 4 h mínimo; la condición física manda antes de abrir.</p>
-      <p><strong>Moldes de fibra:</strong> definir divisiones → 10 pasadas de cera → orear 20–30 min → gelcoat → separaciones → laminado/refuerzo → curado → apertura/acabado. Gelcoat: referencia 1 kg resina : ~2 kg talco hasta pasta que no escurra; 6 capas base y 7 sólo por mayor exigencia.</p>
-      <p><strong>Réplicas:</strong> preparar molde → mezcla controlada → vaciar/distribuir → curar/desmoldar → corregir unión → acabado contra referencia. No heredar automáticamente parámetros de Formas/Moldes.</p>
-      <h2>Controles que importan</h2><ul><li>Forma/molde/réplica con código y ubicación.</li><li>Lote nuevo se prueba antes de producción.</li><li>A/B se pesan por separado; proporción no se corrige a ojo.</li><li>Curado combina referencia de tiempo + rigidez + condición térmica.</li><li>La cera de 10 pasadas pertenece a Moldes de fibra, no a Formas.</li><li>Fibra/polvo/vapores no migran a acabado.</li></ul>
-      <h2>Por cerrar</h2><p>Inventario/codificación real, rack, productos/HDS, ventilación, mantenimiento, evidencia real de prueba/curado, criterios de aceptación y estados BIWO.</p>
+      <h2>Cómo debe estar</h2>
+      <ul>
+        <li>Formas, moldes y réplicas tienen código y ubicación recuperable.</li>
+        <li>Componentes A/B, resina, fibra, gelcoat, cargas y desmoldeantes están identificados y almacenados por compatibilidad.</li>
+        <li>Báscula, recipientes y herramientas de mezcla permanecen limpios y utilizables.</li>
+        <li>Zona de mezcla y vaciado está definida y separada de corte, polvo y acabado fino.</li>
+        <li>Ventilación/extracción corresponde a los vapores, fibra y polvo realmente generados.</li>
+        <li>Racks y superficies sostienen moldes y formas sin deformación, caída o bloqueo de circulación.</li>
+        <li>Residuos reaccionados, recortes, envases y material recuperable tienen separación definida.</li>
+      </ul>
     `
   },
   {
-    id:"area-montaje", nav:"Área · Montaje", title:"Montaje", eyebrow:"Libro de área · integración de la pieza",
-    lead:"Integrar piel, forma y componentes hasta obtener una pieza seca, estable y lista para Retoque.",
+    id:"area-montaje", nav:"Área · Montaje", title:"Montaje", eyebrow:"Estándar permanente · estaciones individuales",
+    lead:"Estaciones claras, almacenamiento recuperable, punzantes y químicos controlados y espacio suficiente para montar, secar y transferir piezas.",
     body:`
-      <h2>Área de trabajo</h2><p>Se preservan los significados del 391P para <strong>MON-AREA-01..10</strong>: circulación, estación/almacenamiento, iluminación, ventilación, emergencia, identidad/espera, estación del montador, punzantes/costura, químicos y secado. Los controles posteriores quedan como <strong>MON-AREA-11..13</strong>: cables/electricidad, residuos/recuperables y reset de estación.</p>
-      <h2>Método preservado</h2><p>Recuperar flexibilidad/medir → seleccionar y corregir forma → preparar boca/nariz → cuernos/astas → orejas → ojos → barro localizado → adhesivo/vestido → costura/fijación → secado/liberación.</p>
-      <h2>Detalle recuperado del 391P</h2><ul><li>Antes de medir la piel debe desplazarse y recuperar forma sin quedar al límite de tensión.</li><li>Después de cada corrección de forma se revalida cara, cuello, largo, ancho y volumen como conjunto.</li><li>Oreja: fibra cortada + Bondo + catalizador hasta masa homogénea; modelar mientras sea trabajable y sin borrar anatomía.</li><li>Costura conserva cuatro familias: zapatero grueso/delgado y pesca trenzado grueso/delgado; el criterio de selección sigue abierto.</li><li>Alfileres son fijación temporal y se retiran al iniciar Retoque.</li><li>24 h es referencia mínima de primera revisión, nunca liberación automática; se libera por sequedad y estabilidad.</li></ul>
-      <h2>Control de fuente</h2><p>Las referencias históricas de 300/500/750 lux quedan en HOLD; no se usan como umbral canónico hasta reconciliar tarea, medición y Assurance vigente. La matriz genérica de mantenimiento del 391P tampoco se aplica mecánicamente a toda herramienta manual.</p>
-      <h2>Por cerrar</h2><p>Estaciones persona↔puesto, iluminación real, ventilación, HDS/productos, fijación exacta de cuernos, tabla de selección de hilos, Bondo/catalizador, herramienta de medición, competencia y estados/eventos BIWO.</p>
+      <h2>Cómo debe estar</h2>
+      <ul>
+        <li>Pasillos y accesos permanecen libres; piezas y cajas no se almacenan en circulación.</li>
+        <li>Cada montador tiene estación identificable, superficie utilizable y almacenamiento propio.</li>
+        <li>Herramientas se guardan por categoría y sin amontonamiento que impida encontrarlas o devolverlas.</li>
+        <li>Punzantes, agujas, cuchillos y alfileres tienen ubicación definida y se protegen cuando no se usan.</li>
+        <li>Bondo, catalizador, fibra, adhesivos y otros productos permanecen identificados en su punto de uso.</li>
+        <li>Cables, extensiones y mangueras no cruzan circulación sin control.</li>
+        <li>Piezas en secado permanecen estables, identificadas y fuera de rutas de paso.</li>
+        <li>Residuo, sobrante recuperable y material útil se separan.</li>
+        <li>La estación vuelve a condición lista al cierre.</li>
+      </ul>
     `
   },
   {
-    id:"area-retoque", nav:"Área · Retoque", title:"Retoque", eyebrow:"Libro de área · superficie y acabado",
-    lead:"Recuperar superficie, color, textura y presentación sin esconder defectos estructurales ni duplicar el trabajo de Bases.",
+    id:"area-retoque", nav:"Área · Retoque", title:"Retoque", eyebrow:"Estándar permanente · acabado y superficie",
+    lead:"Zona de acabado limpia y controlada, sin contaminación de polvo, con pintura, solventes, aire y pedacera claramente contenidos.",
     body:`
-      <h2>Área de trabajo</h2><p>Se preservan los significados del 391P para <strong>RET-AREA-01..09</strong>. Los controles posteriores quedan como <strong>RET-AREA-10..12</strong>: separar resane/lijado del acabado, pedacera sólo en Retoque y contención de alfileres retirados.</p>
-      <h2>Fuente primaria</h2><p>Entrevista de Rodolfo · 18 AGO 2026: limpieza/cepillado; Salvo + Roma; Suavitel sólo cuando el pelo lo necesita; resanador automotriz, barro o aserrín + Resistol; color de oscuros a claros; gasolina blanca para pelo; Resistol blanco 800 con jeringa para nariz; aceite al cierre de cuernos.</p>
-      <h2>Método preservado</h2><p>Retirar alfileres → limpiar/cepillar → inspeccionar y devolver defecto estructural → resanar → recuperar color → acabar pelo → brillo localizado → textura de nariz cuando aplique → acabado de cuernos → Bases/Revisión.</p>
-      <h2>Separación Retoque / Bases</h2><p>Dextrina 2:1 con Blanco España, malla 8x8 y separación de 3 mm junto a la pata se trasladan a Bases. No se duplican como método de Retoque.</p>
-      <h2>Control de fuente</h2><p>750/1000 lux del 391P quedan en HOLD hasta reconciliar tarea y Assurance. La placa del compresor se captura para evaluar aplicabilidad; no demuestra cumplimiento por sí sola.</p>
-      <h2>Por cerrar</h2><p>Productos/HDS vigentes, ventilación, compresor/sistema de aire, paleta real, nombre Valerio/Valentino, estaciones/competencia, criterios de liberación y estados BIWO.</p>
+      <h2>Cómo debe estar</h2>
+      <ul>
+        <li>Estación de acabado permite inspeccionar color, textura y detalle sin obstrucciones.</li>
+        <li>Resane, lijado o polvo no contaminan el punto de pintura/acabado fino.</li>
+        <li>Pinturas, gasolina blanca, barnices, adhesivos y otros productos están identificados y cerrados cuando no se usan.</li>
+        <li>Compresor, regulador, mangueras y conexiones están identificados y fuera de circulación.</li>
+        <li>Aerógrafos, pistolas, pinceles y herramientas de detalle tienen ubicación definida.</li>
+        <li>Pedacera está contenida, clasificada y ubicada únicamente en Retoque.</li>
+        <li>Alfileres y fijaciones retiradas se concentran en un lugar definido.</li>
+        <li>Ventilación y control de vapores corresponden a los productos realmente usados.</li>
+        <li>Piezas en espera conservan ID y siguiente acción.</li>
+      </ul>
     `
   },
   {
-    id:"area-bases", nav:"Área · Bases", title:"Bases", eyebrow:"Libro de área · soporte y ambientación",
-    lead:"Construir una base estable, transportable y coherente con la pieza sin usar terreno o pintura para esconder una fijación deficiente.",
+    id:"area-bases", nav:"Área · Bases", title:"Bases", eyebrow:"Estándar permanente · soporte y ambientación",
+    lead:"Zona de armado estable, con madera, fijaciones, malla, poliuretano y maniobras controladas sin ocultar defectos estructurales.",
     body:`
-      <h2>Área de trabajo</h2><p>Se preservan <strong>BAS-AREA-01..09</strong> con el significado del 391P. Los controles posteriores pasan a <strong>BAS-AREA-10..12</strong>: separar polvo/acabado, almacenamiento/ruta de material pesado y método de manipulación.</p>
-      <h2>Método completo recuperado</h2><p>08 medir/plancha → 09 bancos/fijación → 10 poliuretano protección/vertido cuando aplique → 11 recorte/pintura → 12 dextrina/terreno → 13 costillas+malla 8x8 → 14 costal+dextrina+terreno → 15 vegetación/detalles.</p>
-      <h2>Fuente primaria</h2><p>Rodolfo confirma dextrina:Blanco España <strong>2:1</strong>, malla <strong>8x8</strong> y <strong>3 mm</strong> entre pata y malla.</p>
-      <h2>Conflicto bloqueado</h2><p>El 391P derivado dice poliuretano 50/50 en cálido y 30/70 en fresco/húmedo; Omar documenta 50/50 como relación base y aumento de cantidad total con frío. <strong>30/70 no queda canónico en Bases</strong> hasta identificar producto y receta real.</p>
-      <h2>No convertir propuesta en estándar</h2><p>Los “4 kits”, cantidades mínimas y puntos de reposición históricos son propuestas de planeación, no cantidades vigentes hasta cerrar personal, estaciones, consumo y stock real.</p>
-      <h2>Por cerrar</h2><p>Responsable, layout, frontera con Carpintería, herramienta real, fijación/capacidad estructural, poliuretano/HDS, manipulación, BIWO y evidencia de estabilidad.</p>
+      <h2>Cómo debe estar</h2>
+      <ul>
+        <li>Plancha, bancos, piezas y materiales pesados se almacenan estables y sin invadir rutas.</li>
+        <li>Madera, malla, herrajes, tornillería y consumibles tienen ubicación recuperable.</li>
+        <li>Banco y superficies de armado son estables y permiten presentar la pieza antes de fijarla.</li>
+        <li>Herramientas de corte, perforación y fijación se guardan con accesorios y guardas correspondientes.</li>
+        <li>Polvo y recortes se separan de poliuretano, adhesivos, pintura y acabado.</li>
+        <li>Componentes reactivos permanecen identificados y contenidos en su punto de uso.</li>
+        <li>Existe ruta suficiente para mover y girar piezas/base sin improvisar maniobras.</li>
+        <li>Residuo, retal recuperable y material útil se separan por destino.</li>
+      </ul>
     `
   },
   {
-    id:"area-carpinteria", nav:"Área · Carpintería / Embalaje", title:"Carpintería, Corte y Embalaje", eyebrow:"Área propuesta · NO IMPLEMENTADA",
-    lead:"Preparar un frente dedicado de corte, cajas y protección sólo si la operación real justifica implementarlo; hoy no existe método liberado.",
+    id:"area-carpinteria", nav:"Área · Carpintería / Embalaje", title:"Carpintería, Corte y Embalaje", eyebrow:"Estándar permanente · corte y protección",
+    lead:"Cuando exista como frente dedicado, debe operar separado de Retoque y con polvo, madera, herramientas y ruta de carga controlados.",
     body:`
-      <h2>Estado real</h2><p><strong>PLANNED / NOT_IMPLEMENTED / NO LIBERAR.</strong> No se localizó entrevista ni demostración primaria. El propio 391P declara el método como no liberado.</p>
-      <h2>Corrección de ubicación</h2><p>La propuesta histórica de usar “el espacio del Sr. Pes” queda superada. Señor Pez/pedacera pertenecen a Retoque; la ubicación de Carpintería permanece <strong>OPEN</strong> y debe definirse sin invadir Retoque, circulación o carga.</p>
-      <h2>Controles preparados</h2><p>CAR-AREA-01..10 conservan circulación, estación, iluminación, ventilación, emergencia, identidad, ubicación/separación, corte/polvo, madera/herrajes y embalaje. 300/500 lux quedan como referencia histórica en HOLD.</p>
-      <h2>Sin método inventado</h2><p>La secuencia genérica anterior se conserva sólo como hipótesis para entrevista. El método se construirá después de observar una orden real, decisiones, dimensiones, uniones, protección, condición de salida y carga.</p>
-      <h2>Por cerrar</h2><p>Decisión de implementar, ubicación, responsable, equipo, interfaz con Bases/Logística, método demostrado, materiales, criterios de protección/liberación, BIWO y evidencia.</p>
+      <h2>Cómo debe estar</h2>
+      <ul>
+        <li>El espacio está separado de pintura, solventes y acabado fino.</li>
+        <li>Banco de corte/armado y racks son estables y no bloquean circulación.</li>
+        <li>Madera y paneles se almacenan contra vuelco o deslizamiento.</li>
+        <li>Tornillos, clavos, bisagras y herrajes se separan por tipo/tamaño.</li>
+        <li>Polvo y aserrín se contienen o retiran en el punto de generación.</li>
+        <li>Equipo eléctrico se usa con cables, guardas y accesorios en condición.</li>
+        <li>Material de embalaje conserva ubicación propia y no invade rutas.</li>
+        <li>Cajas y embalajes permanecen ligados a la orden/pieza correspondiente.</li>
+        <li>Ruta de carga y manipulación permanece libre.</li>
+      </ul>
     `
   },
   {
-    id:"area-soldadura", nav:"Área · Soldadura", title:"Soldadura y Adaptación", eyebrow:"Libro de área · método pendiente",
-    lead:"Resolver uniones y adaptaciones metálicas con control de estabilidad, chispas, humos y entorno.",
+    id:"area-soldadura", nav:"Área · Soldadura", title:"Soldadura y Adaptación", eyebrow:"Estándar permanente · trabajo en caliente",
+    lead:"Zona de unión metálica controlada para chispas, humos, cables, cilindros/equipo y protección de personas y materiales cercanos.",
     body:`
-      <h2>Estado real</h2><p>El estándar físico puede prepararse, pero la metodología técnica permanece <strong>NO LIBERADA</strong>. La fuente existente dice expresamente que falta demostración/entrevista suficiente.</p>
-      <h2>Lo que sí está definido</h2><ul><li>Combustibles/solventes fuera de proyección.</li><li>Protección a terceros cuando aplique.</li><li>Ventilación según humo/material real.</li><li>Equipo/cables en condición.</li><li>Adaptación ligada a la orden cuando modifica estructuralmente la pieza.</li></ul>
-      <h2>Por cerrar</h2><p>Proceso real, consumibles, EPP, ventilación, incendio/trabajo en caliente, mantenimiento, criterio de inspección y evidencia.</p>
+      <h2>Cómo debe estar</h2>
+      <ul>
+        <li>Combustibles, solventes y materiales incompatibles permanecen fuera de proyección de chispas/calor.</li>
+        <li>La zona de trabajo protege a terceros de radiación, chispas y partículas.</li>
+        <li>Ventilación corresponde al humo y material realmente trabajado.</li>
+        <li>Máquina, cables, pinzas y conexiones están identificados y en condición utilizable.</li>
+        <li>Equipo y consumibles tienen almacenamiento definido y estable.</li>
+        <li>Medios de respuesta aplicables permanecen accesibles.</li>
+        <li>La pieza y su adaptación conservan identificación hasta entrega.</li>
+      </ul>
     `
   },
   {
-    id:"area-blanqueado", nav:"Área · Blanqueado", title:"Blanqueado / tratamiento de cráneos", eyebrow:"Libro de área · método parcial",
-    lead:"Tratar el cráneo controlando calor y agua mientras se protege el color y superficie de los cuernos.",
+    id:"area-blanqueado", nav:"Área · Blanqueado", title:"Blanqueado / tratamiento de cráneos", eyebrow:"Estándar permanente · agua y calor",
+    lead:"Puesto estable para tratamiento de cráneo, con calor, agua, drenaje y protección de cuernos controlados.",
     body:`
-      <h2>Conocimiento preservado</h2><p>La fuente fuerte confirma tratamiento con agua caliente sobre el cráneo manteniendo los cuernos fuera de la zona térmica. No se añaden químicos, tiempos o temperaturas sin evidencia.</p>
-      <h2>Controles que importan</h2><ul><li>Recipiente y fuente de calor estables.</li><li>Nivel de agua visible y cuerno fuera de la zona térmica.</li><li>Ruta de agua caliente sin cruzar circulación.</li><li>ID se conserva durante tratamiento/espera.</li></ul>
-      <h2>Por cerrar</h2><p>Responsable, secuencia completa, parámetros si realmente gobiernan, ventilación, drenaje, herramienta/producto auxiliar y evidencia de puesto.</p>
+      <h2>Cómo debe estar</h2>
+      <ul>
+        <li>Recipiente y fuente de calor permanecen estables durante la operación.</li>
+        <li>Cuernos quedan fuera de la zona térmica cuando el tratamiento lo requiere.</li>
+        <li>Ruta de agua caliente no cruza circulación.</li>
+        <li>Drenaje permite retirar agua sin crear encharcamiento o contaminación cruzada.</li>
+        <li>Ventilación corresponde al calor, vapor y productos realmente usados.</li>
+        <li>Herramientas y recipientes auxiliares tienen ubicación definida.</li>
+        <li>Pieza en proceso conserva ID durante tratamiento y espera.</li>
+      </ul>
     `
   },
   {
-    id:"area-soporte", nav:"Área · Soporte", title:"Espacios de soporte", eyebrow:"Bodegas · BIWO · circulación · carga · residuos",
-    lead:"Los espacios de soporte sostienen al taller; no se fuerzan a parecer un proceso técnico cuando lo que requieren es condición, rutina y control.",
+    id:"area-soporte", nav:"Área · Soporte", title:"Espacios de soporte", eyebrow:"Estándar permanente · bodegas, oficina, rutas y servicios",
+    lead:"Los espacios de soporte sostienen al taller mediante orden, separación, privacidad, higiene, circulación y almacenamiento estable.",
     body:`
-      <h2>Subespacios</h2><p>Bodegas · oficina/BIWO · exhibición · comedor · sanitarios · circulaciones · exterior/carga · residuos.</p>
-      <h2>Reglas</h2><ul><li>Circulación no es bodega.</li><li>Espera de pieza conserva ID y siguiente acción.</li><li>Archivo sensible no se expone en HTML.</li><li>Químicos incompatibles no comparten espacio por conveniencia.</li><li>Residuo, recuperable y material útil se separan por destino real.</li></ul>
-      <h2>Por cerrar</h2><p>Plano y límites, capacidades/racks, rutas, residuos/destinos, privacidad/archivo, servicios, carga y evidencia fotográfica.</p>
+      <h2>Bodegas</h2><ul><li>Ubicación y categoría reconocibles.</li><li>Racks estables y accesibles.</li><li>Material pesado abajo y protegido contra caída.</li><li>Pieza/material con ID y siguiente acción.</li></ul>
+      <h2>Oficina / BIWO</h2><ul><li>Estación y archivo protegidos.</li><li>Acceso por necesidad.</li><li>Documentos sensibles fuera de exposición pública.</li></ul>
+      <h2>Exhibición</h2><ul><li>Pieza estable y protegida.</li><li>Visitantes no invaden operación.</li><li>Exhibición no funciona como bodega temporal.</li></ul>
+      <h2>Comedor y sanitarios</h2><ul><li>Separados de químicos, residuos y piezas de proceso.</li><li>Superficies limpias, insumos disponibles y privacidad.</li></ul>
+      <h2>Circulaciones y exterior/carga</h2><ul><li>Rutas y accesos libres.</li><li>Carga, descarga y maniobra no mezclan residuos, químicos y piezas terminadas.</li></ul>
+      <h2>Residuos</h2><ul><li>Separación en punto de generación.</li><li>Contenedor e identificación por material real.</li><li>Almacenamiento temporal y destino controlados.</li></ul>
     `
   }
 ];
