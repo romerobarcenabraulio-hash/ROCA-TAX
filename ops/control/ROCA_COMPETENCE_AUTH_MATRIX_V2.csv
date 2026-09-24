@@ -24,7 +24,11 @@ COMP-BAS-02,AREA-BAS,Ambientación/acabado,Personal autorizado,resultado contra 
 COMP-BAS-03,AREA-BAS,Preparar/usar poliuretano de base,Personal autorizado por responsable técnico,producto identificado + dosificación demostrada + control de mezcla,OPEN,NOT_VERIFIED,Receta exacta en HOLD por conflicto 50/50 vs 30/70
 COMP-BAS-04,AREA-BAS,Manipular pieza/base pesada,Personal autorizado o equipo de apoyo según maniobra,demostración observada + método de asistencia,OPEN,NOT_VERIFIED,
 COMP-BAS-05,AREA-BAS,Liberar estabilidad/terminación,Responsable por cerrar,revisión de fijación estabilidad identidad y traslado,OPEN,NOT_VERIFIED,
-COMP-CAR-01,AREA-CAR,Corte/armado/embalaje,Puesto futuro,demostración del método cuando se implemente,OPEN,NOT_IMPLEMENTED,
+COMP-CAR-01,AREA-CAR,Medición/trazo y preparación de corte,Puesto futuro autorizado,demostración real cuando se implemente,OPEN,NOT_IMPLEMENTED,
+COMP-CAR-02,AREA-CAR,Operar equipo de corte real,Puesto futuro autorizado,demostración por activo + preuso + criterio de paro,OPEN,NOT_IMPLEMENTED,
+COMP-CAR-03,AREA-CAR,Armado/uniones y protección de pieza,Puesto futuro autorizado,demostración con orden real + criterio de salida,OPEN,NOT_IMPLEMENTED,
+COMP-CAR-04,AREA-CAR,Manipulación/carga,Puesto futuro autorizado o apoyo definido,demostración observada + método de asistencia,OPEN,NOT_IMPLEMENTED,
+COMP-CAR-05,AREA-CAR,Liberar caja/embalaje,Responsable técnico por cerrar,revisión de identidad protección estabilidad y carga,OPEN,NOT_IMPLEMENTED,
 COMP-SOL-01,AREA-SOL,Operar proceso de soldadura,Flaco / personal autorizado,demostración real + equipo/proceso/EPP,OPEN,NOT_VERIFIED,No sustituye entrevista/demostración faltante
 COMP-SOL-02,AREA-SOL,Liberar adaptación estructural,Responsable técnico por cerrar,inspección/estabilidad definida,OPEN,NOT_VERIFIED,
 COMP-BLA-01,AREA-BLA,Operar tratamiento térmico,Responsable por confirmar,demostración + control de calor/manipulación,OPEN,NOT_VERIFIED,
