@@ -16,6 +16,9 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 - PASS — Restricted-personal/financial/wildlife document classes are explicitly excluded from publication in the public repo.
 - PASS — Direct page-jump is disabled for Drive preview and reserved for a controlled local-served PDF.
 - PASS — Source-mode print interception prevents the existing master-print handler from silently printing another workspace; in FUENTES the action opens the original PDF instead.
+- PASS — Source manifest contains 5 unique source IDs; no duplicate navigation IDs remain.
+- PASS — 10 source-to-current cross-check targets resolve to real V2 area section IDs.
+- PASS — `ops/control/ROCA_SOURCE_CROSSCHECK_V1.csv` records source locator, subject, current canonical home and integration action.
 - PASS — Source document IDs are unique after reconciliation; the duplicate `v24-7-precampo-rigor` manifest entry was removed.
 - PASS — Ten area books expose inline cross-check links to exact 391p source pages without duplicating source prose or changing printable output.
 
@@ -23,7 +26,6 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 - SOURCE-CONFIRMED — Controlled Drive copy `ROCA_MASTER_WEB_391P_SOURCE.pdf` exists inside `ROCA AUDIT - FUENTES DOCUMENTALES`, is readable through the authenticated Drive connector, and Drive reports it as `not_shared`.
 - BLOCKED-EXTERNAL — Vercel deployment is Ready, but this session's Vercel connector is not authorized for project `roca-tax`; authenticated iframe/browser QA cannot be completed from this connection.
 - NOT-CHECKED — mobile visual behavior has not been screenshot-tested.
-- LOCATOR_PENDING — `ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf` (Library/raw bytes confirmed; deployed private locator missing).
 - SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_MASTER_CANONICO_PENDIENTES_31AGO2026 2.pdf`, 367 pages, 60,294,089 bytes.
 - SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_v24_8_PreCampo_Control.pdf`, 198 pages, 31,591,373 bytes.
 - SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_MASTER_PreEntrevistas_26AGO2026.pdf`, internally labeled v24.8, 208 pages, 31,643,065 bytes. Do not deduplicate against nominal v24.8 without diff.
@@ -32,6 +34,11 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 
 ## Privacy gate
 Do not add customer CITES/SEMARNAT/PROFEPA permit PDFs, IDs, financial records or other restricted originals to this public GitHub repository. Restricted source reading belongs in a private authenticated evidence surface.
+
+## Cross-check state
+- SOURCE-CROSSCHECK — Master 391p maps Recepción, Curtiduría, FMR, Montaje, Retoque, Bases, Carpintería, Soldadura, Blanqueado and Espacios de soporte to their current V2 sections.
+- SOURCE-CROSSCHECK — UI exposes the source page/reference plus `VER V2` navigation without replacing or rewriting the PDF.
+- OPEN — Remaining historical source mappings will be added only after their page-level locators are established from the recovered originals.
 
 ## Release state
 PARTIAL — code, private Drive master copy, Vercel deployment, unique source IDs, and section→source cross-check links are present. Authenticated iframe/mobile visual QA remains required before merge.
