@@ -3,6 +3,7 @@ EVID-REC-01,AREA-REC,Ingreso y espera,Foto panorámica + detalle ID,Separación 
 EVID-CUR-01,AREA-CUR,Zonas húmeda/seca/baños/espera,Panorámicas dirigidas,Distribución física y accesibilidad,Concentraciones químicas o cumplimiento legal,REQUEST_DEFINED
 EVID-CUR-02,AREA-CUR,Químicos/HDS,Foto de producto + HDS/registro,Identidad del producto y disponibilidad documental,Aplicabilidad normativa o exposición real,REQUEST_DEFINED
 EVID-CUR-03,AREA-CUR,Iluminación/ventilación/servicios,Medición + foto contextual,Condición medida en punto/fecha concreta,Condición permanente sin repetición/criterio técnico,REQUEST_DEFINED
+EVID-CUR-04,AREA-CUR,Peso/pH de proceso + instrumento/método,Registro de lectura + ID/estado del instrumento o método,Valor registrado en punto/fecha y trazabilidad de la medición,Exactitud metrológica permanente o cumplimiento sin verificación aplicable,REQUEST_DEFINED
 EVID-FMR-01,AREA-FMR,Racks/códigos de formas y moldes,Foto + inventario,Ubicación e identificación,Exactitud dimensional o estado BIWO,REQUEST_DEFINED
 EVID-FMR-02,AREA-FMR,Prueba/dosificación,Registro de lote/prueba + foto,Que se ejecutó el control documentado,Que toda la producción cumple sin muestreo,REQUEST_DEFINED
 EVID-MON-01,AREA-MON,Estaciones reales,3 fotos por estación,Superficie almacenamiento cierre y pieza identificada,Competencia del montador o iluminación medida,REQUEST_DEFINED
