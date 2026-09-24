@@ -23,13 +23,9 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 - PASS — Ten area books expose inline cross-check links to exact 391p source pages without duplicating source prose or changing printable output.
 
 ## Functional state
-- SOURCE-CONFIRMED — Controlled Drive copy `ROCA_MASTER_WEB_391P_SOURCE.pdf` exists inside `ROCA AUDIT - FUENTES DOCUMENTALES`, is readable through the authenticated Drive connector, and Drive reports it as `not_shared`.
+- SOURCE-CONFIRMED — Five PDF sources now exist inside `ROCA AUDIT - FUENTES DOCUMENTALES` as private `not_shared` Drive files: 391p, 367p, PreEntrevistas 26 AGO, v24.8 Pre-Campo Control and v24.7 Pre-Campo Rigor.
 - BLOCKED-EXTERNAL — Vercel deployment is Ready, but this session's Vercel connector is not authorized for project `roca-tax`; authenticated iframe/browser QA cannot be completed from this connection.
 - NOT-CHECKED — mobile visual behavior has not been screenshot-tested.
-- SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_MASTER_CANONICO_PENDIENTES_31AGO2026 2.pdf`, 367 pages, 60,294,089 bytes.
-- SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_v24_8_PreCampo_Control.pdf`, 198 pages, 31,591,373 bytes.
-- SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_MASTER_PreEntrevistas_26AGO2026.pdf`, internally labeled v24.8, 208 pages, 31,643,065 bytes. Do not deduplicate against nominal v24.8 without diff.
-- SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf`, 194 pages, 26,262,426 bytes.
 - SOURCE-INTEGRITY-BLOCKER — raw `ROCA_TAXIDERMY_v22_1_Editable.zip` bytes still not recovered after targeted Library and Google Drive searches for `v22`, `ROCA_TAXIDERMY_v22`, `Editable ROCA TAXIDERMY`, and `PHOTO_PLAN_v22`.
 
 ## Privacy gate
