@@ -35,10 +35,10 @@ Las fuentes 391p documentan una estación/punto real de Flaco. Recuperar como ob
 **Estado:** NOT_VERIFIED en campo actual.
 
 ### Evidencia dirigida
-- **SOL-EVID-01:** panorámica del punto de trabajo con límite/mampara, sujeción, soldadora y recorrido.
-- **SOL-EVID-02:** equipo/cables/pinza/antorcha o porta-electrodo + ventilación/extracción real.
-- **SOL-EVID-03:** adaptación real con sujeción estable y zona protegida frente a terceros/material combustible.
-- **SOL-EVID-04:** medio de respuesta visible/accesible como evidencia física; no demuestra por sí solo clasificación/cobertura legal.
+- **EVID-SOL-01 · Panorámica:** panorámica del punto de trabajo con límite/mampara, sujeción, soldadora y recorrido.
+- **EVID-SOL-02:** equipo/cables/pinza/antorcha o porta-electrodo + ventilación/extracción real.
+- **EVID-SOL-01 · Operación real:** adaptación real con sujeción estable y zona protegida frente a terceros/material combustible.
+- **Evidencia complementaria de EVID-SOL-01:** medio de respuesta visible/accesible como evidencia física; no demuestra por sí solo clasificación/cobertura legal.
 
 ## 2. Metodología
 NO LIBERADA.
