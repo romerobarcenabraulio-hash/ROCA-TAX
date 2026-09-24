@@ -73,7 +73,29 @@
       <div id="luxResult" class="result">Mide donde realmente se ve y ejecuta la tarea.</div>
     </div>
   </div>
+  
+<div class="tools">
   <div class="tool">
+    <h2>Ventilación / extracción · decisión</h2>
+    <label>¿La tarea usa/genera químico, vapor, aerosol, polvo o humo?</label>
+    <select id="ventHaz"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+    <label>¿Existe HDS o fuente técnica del producto/proceso?</label>
+    <select id="ventSds"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+    <label>¿La fuente pide control técnico / extracción local / cabina?</label>
+    <select id="ventLocal"><option value="">Selecciona</option><option value="unknown">No revisado</option><option value="no">No</option><option value="yes">Sí</option></select>
+    <div id="ventResult" class="result">Primero identifica proceso y producto.</div>
+  </div>
+  <div class="tool">
+    <h2>Corriente de material / residuo</h2>
+    <label>Material o corriente</label><input id="wasteName" type="text" placeholder="Ej. trapo con gasolina blanca">
+    <label>¿Puede volver a usarse sin convertirse en residuo?</label>
+    <select id="wasteReuse"><option value="">Selecciona</option><option value="yes">Sí</option><option value="no">No</option></select>
+    <label>¿Proviene de químico/producto con HDS o proceso que requiere clasificación?</label>
+    <select id="wasteChem"><option value="">Selecciona</option><option value="yes">Sí / posible</option><option value="no">No</option></select>
+    <div id="wasteResult" class="result">No clasifiques por color del bote.</div>
+  </div>
+</div>
+<div class="tool">
     <h2>Geometría P-00 rescatada del 391P</h2>
     <table class="geometry"><thead><tr><th>Zona</th><th>Dimensión fuente</th><th>Superficie</th><th>Mínimo por área · ordinario</th><th>Mínimo por área · alto</th></tr></thead><tbody>
       <tr><td>Área principal</td><td>40 × 20 m</td><td>800 m²</td><td>3</td><td>4</td></tr>
@@ -1177,4 +1199,9 @@ function calcLux(){const tar=Number(document.getElementById("luxTarget").value),
 ["egressDistance","egressTime"].forEach(id=>document.getElementById(id).addEventListener("input",calcEgress));
 ["luxTarget","luxActual"].forEach(id=>document.getElementById(id).addEventListener("input",calcLux));
 calcFire();
+function calcVent(){const h=document.getElementById("ventHaz").value,s=document.getElementById("ventSds").value,l=document.getElementById("ventLocal").value;let x="";if(!h)x="Primero identifica proceso y producto.";else if(h==="no")x="No aparece una fuente aérea evidente en esta tarea. Verifica operación real antes de cerrar.";else if(s!=="yes")x="<b>PRIMERO HDS / FUENTE TÉCNICA.</b> No comprar extractor todavía.";else if(l==="yes")x="<b>DISEÑAR CAPTURA EN ORIGEN.</b> Definir punto de generación, descarga, operación y mantenimiento.";else if(l==="unknown"||!l)x="<b>REVISAR SECCIÓN DE CONTROLES DE EXPOSICIÓN.</b> No decidir por intuición.";else x="La fuente revisada no pide extracción local; confirmar si evaluación de exposición u otro control técnico aplica.";document.getElementById("ventResult").innerHTML=x}
+function calcWaste(){const n=document.getElementById("wasteName").value.trim(),r=document.getElementById("wasteReuse").value,c=document.getElementById("wasteChem").value;let x="";if(!n)x="Nombra la corriente real.";else if(r==="yes")x="<b>RECUPERABLE / MATERIAL ÚTIL CANDIDATO.</b> Sepáralo del residuo y define ubicación de retorno.";else if(!r)x="Define primero si realmente es recuperable.";else if(c==="yes")x="<b>CLASIFICACIÓN PENDIENTE.</b> Revisar producto/HDS/proceso y ruta ambiental antes de etiquetar como residuo peligroso.";else if(c==="no")x="Definir corriente y destino real aplicable; conservarla separada de recuperables y otras corrientes.";document.getElementById("wasteResult").innerHTML=x}
+["ventHaz","ventSds","ventLocal"].forEach(id=>document.getElementById(id).addEventListener("input",calcVent));
+["wasteName","wasteReuse","wasteChem"].forEach(id=>document.getElementById(id).addEventListener("input",calcWaste));
+
 </script></body></html>
