@@ -198,3 +198,10 @@ footer{display:none}
 @media print{
   .source-backlinks{display:none!important}
 }
+
+
+/* Source locator details */
+.source-id-line{font:700 7px/1.35 Arial,Helvetica,sans-serif;letter-spacing:.04em;color:#4f4740!important}
+.source-proof-line{font:8px/1.4 Arial,Helvetica,sans-serif;color:#756b61!important}
+.source-page-chip{display:inline-block;padding:4px 6px;border:1px solid #c2b6a7;background:#f7f2e9;font:700 7px/1 Arial,Helvetica,sans-serif;color:#50483f!important}
+.source-open-page{appearance:none;border:1px solid #8a5a34;background:#fffdf8;color:#8a5a34;padding:5px 7px;font:700 8px/1 Arial,Helvetica,sans-serif;letter-spacing:.04em;cursor:pointer}
