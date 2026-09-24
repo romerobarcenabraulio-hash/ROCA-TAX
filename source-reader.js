@@ -69,6 +69,28 @@
     ).join('')}</div>`;
   }
 
+  function crossChecksMarkup(doc){
+    if(!Array.isArray(doc.crossChecks) || !doc.crossChecks.length) return '';
+    return `<section class="source-crosschecks">
+      <div class="source-crosschecks-head">
+        <div><div class="eyebrow">CROSS-CHECK</div><h2>Fuente ↔ Compendio actual</h2></div>
+        <p>La página fuente no se sustituye: abre el PDF y contrástala con la sección V2 correspondiente.</p>
+      </div>
+      <div class="source-crosscheck-list">${doc.crossChecks.map(item => `
+        <div class="source-crosscheck-row">
+          <div>
+            <strong>${escapeHtml(item.label)}</strong>
+            <span>PDF p. ${escapeHtml(item.sourcePage)} · ${escapeHtml(item.action || '')}</span>
+          </div>
+          <p>${escapeHtml(item.focus || '')}</p>
+          <div class="source-crosscheck-actions">
+            <button type="button" class="source-ref source-page-ref" data-page="${escapeHtml(item.sourcePage)}"><strong>PDF</strong><span>p. ${escapeHtml(item.sourcePage)}</span></button>
+            <button type="button" class="source-v2-link" data-target="${escapeHtml(item.targetSection || '')}">VER V2</button>
+          </div>
+        </div>`).join('')}</div>
+    </section>`;
+  }
+
   function unavailableMarkup(doc){
     return `<div class="source-empty">
       <div class="eyebrow">LOCATOR PENDIENTE</div>
@@ -125,6 +147,7 @@
         <div class="source-actions">${open}${folder}</div>
       </div>
       ${refsMarkup(activeDoc)}
+      ${crossChecksMarkup(activeDoc)}
       <div class="source-note">${escapeHtml(activeDoc.note || '')}${activeDoc.localAvailable ? '' : ' · En Drive, usa los controles del visor para ir a una página exacta; el salto rápido se activará al servir una copia local controlada.'}</div>
       <div class="source-viewer-shell">${frame}</div>
       <div class="source-privacy-note">${escapeHtml(rules.warning || '')}</div>
@@ -139,6 +162,14 @@
       if(!directPageJump) return;
       const frame=document.getElementById('sourcePdfFrame');
       if(frame) frame.src=sourceUrl(activeDoc,p);
+    }));
+
+
+    page.querySelectorAll('.source-v2-link').forEach(btn=>btn.addEventListener('click',()=>{
+      const target=btn.dataset.target;
+      if(!target || !compendiumMode) return;
+      history.replaceState(null,'','#'+target);
+      compendiumMode.click();
     }));
 
     const go=document.getElementById('sourceGoPage');
