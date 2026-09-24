@@ -27,6 +27,15 @@ Definir referencia/medir → cortar plancha → definir apoyos/bancos → presen
 
 La fuente registra triplay industrial preferentemente 18 mm como práctica de trabajo, y ajustes según escala/peso. Los montajes de una o dos patas requieren una fijación capaz de resistir el esfuerzo; no usar relleno para ocultar una fijación inestable.
 
+### Datos primarios ya trasladados desde la entrevista de Rodolfo
+
+La entrevista literal de “Retoque y bases” del 18 AGO 2026 conserva tres parámetros que pertenecen canónicamente a Bases:
+- dextrina : Blanco España = **2 : 1**;
+- malla **8x8**;
+- separación entre pata y malla = **3 mm**.
+
+Se preservan aquí para evitar pérdida entre libros. Su integración completa con el método de Bases se hará en la ronda específica de Bases; no se duplican como metodología de Retoque.
+
 ## 3. Herramientas/equipo
 Corte de madera, medición/trazo, fijación, herramientas de malla/ambientación y apoyo para manipulación. Inventario real: NOT_CHECKED.
 
