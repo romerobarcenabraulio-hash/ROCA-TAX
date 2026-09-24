@@ -14,7 +14,7 @@ Condición:
 - etiquetas/categorías y niveles de reposición se mantienen legibles cuando existan;
 - inventario y ubicación física se reconcilian con BIWO/registro cuando aplique.
 
-Evidencia:
+Evidencia — EVID-SUP-BOD:
 1. panorámica longitudinal de cada bodega con pasillo, racks/estantería, iluminación y acceso;
 2. categorías/rótulos + material pesado estable + separación física de incompatibles;
 3. ejemplo inventariable: etiqueta + contenido + cantidad/posición visible sin mover otra categoría.
@@ -31,7 +31,7 @@ Condición:
 
 La estación histórica de César se conserva como antecedente; la gobernanza vigente se rige por el roster/correcciones actuales, no por el master histórico.
 
-Evidencia:
+Evidencia — EVID-SUP-ERP:
 1. panorámica del puesto con pantalla sanitizada y archivo;
 2. orden BIWO/ERP anonimizada mostrando ID/estado y campos necesarios para el control que se esté verificando;
 3. archivo/resguardo documental sin datos sensibles expuestos.
@@ -44,7 +44,7 @@ Condición:
 - exhibición no se usa como bodega temporal;
 - identificación comercial no expone datos privados.
 
-Evidencia:
+Evidencia — EVID-SUP-EXH:
 1. panorámica completa con circulación;
 2. pieza/base estable, limpia y accesible para inspección/traslado;
 3. vista general de iluminación/condición sin almacenamiento temporal mezclado.
@@ -57,7 +57,7 @@ Condición:
 - recipientes de basura definidos y sin invadir circulación;
 - alimentos/utensilios se resguardan al cierre.
 
-Evidencia:
+Evidencia — EVID-SUP-COM:
 1. panorámica mostrando separación física respecto de producción;
 2. zona de preparación/lavado si existe;
 3. cierre: mesa utilizable, piso limpio y alimentos/utensilios resguardados.
@@ -71,7 +71,7 @@ Condición:
 - puerta/cerradura y papelera se verifican según existan;
 - la evidencia respeta privacidad.
 
-Evidencia:
+Evidencia — EVID-SUP-SAN:
 1. sanitario completo y **vacío**, mostrando servicios, piso, paredes y acceso;
 2. lavamanos mostrando agua, jabón y medio de secado;
 3. iluminación/ventilación y condición de cierre.
@@ -86,7 +86,7 @@ Condición:
 - puntos temporales se retiran al terminar;
 - la transición entre áreas no reduce el paso por almacenamiento temporal.
 
-Evidencia:
+Evidencia — EVID-SUP-CIR:
 1. secuencia longitudinal de rutas principales desde dos extremos;
 2. contexto de salida/extintor/tablero mostrando acceso;
 3. cruces entre áreas y cualquier servicio temporal.
@@ -101,7 +101,7 @@ Condición:
 - espera de entrega protege contra intemperie/golpe según el caso real;
 - ruta desde taller a carga permanece definida y transitable.
 
-Evidencia:
+Evidencia — EVID-SUP-EXT:
 1. vista amplia de maniobra y circulación;
 2. pieza embalada/en espera con ID y protección;
 3. secuencia de ruta desde salida del taller hasta punto de carga.
@@ -115,7 +115,7 @@ Condición:
 - destino físico/documental queda definido o explícitamente pendiente;
 - material útil/recuperable no se descarta por comodidad.
 
-Evidencia:
+Evidencia — EVID-SUP-RES:
 1. panorámica del punto de concentración con recipientes separados/identificados;
 2. ejemplos de corrientes distintas con condición de cierre correspondiente;
 3. ruta de retiro + zona después del retiro + evidencia/registro de destino cuando aplique.
