@@ -237,3 +237,20 @@ Worker-facing standard:
 - failed/leaking/damaged pressure equipment is removed from normal service until corrected.
 
 Primary basis: NOM-020-STPS-2011, conditional on actual pressure-equipment data and scope.
+
+
+## PHYS-WASTEWATER-01 · Drainage / wastewater route
+
+Worker-facing standard:
+- sanitary, stormwater and process-water routes are not assumed to be the same; each real discharge point has a known route/destination;
+- process water is not disposed by habit into a drain whose destination/applicability is unknown;
+- solids, tissue, grease or concentrated chemical/product are not intentionally pushed to drains as a substitute for waste control;
+- when a process discharge is subject to sampling, conditions or authorization, the point remains identifiable and accessible for the required control/evidence.
+
+Current local applicability candidate:
+- NTE-SLP-AR-001/2026, published 15 Sep 2026, establishes general discharge conditions for wastewater to drainage/sewer systems in San Luis Potosí and listed municipalities, plus the route for particular discharge conditions.
+- NOM-002-SEMARNAT-1996 remains a federal applicability reference for wastewater to urban/municipal sewer systems while its 2026 modification process remains under development.
+
+Do not insert numerical discharge limits into workshop pages. Keep technical limits, sampling and authority correspondence in Assurance.
+
+Primary sources: Periódico Oficial del Estado de San Luis Potosí (15 Sep 2026 publication); current federal DOF/NOM-002-SEMARNAT-1996.
