@@ -1,10 +1,10 @@
 window.ROCA_WORKSHOP_SECTIONS = [
   {
     id:"taller", nav:"Taller", title:"El taller como sistema", eyebrow:"Estándar permanente · áreas físicas",
-    lead:"Cada área muestra únicamente cómo debe estar el espacio cuando ROCA opera correctamente. Implementación, pendientes y auditoría viven fuera de estas páginas.",
+    lead:"Cada área muestra únicamente cómo debe estar el espacio cuando ROCA opera correctamente. El trabajo de implementación y la verificación viven fuera de estas páginas.",
     body:`
       <h2>Regla de lectura</h2>
-      <p class="callout"><strong>Área = deber ser permanente.</strong> Nada de pendientes, compras o listas temporales.</p>
+      <p class="callout"><strong>Área = deber ser permanente.</strong> Sólo permanece la condición correcta del espacio.</p>
       <ul>
         <li>El espacio físico se define por flujo, estación, almacenamiento, servicios, seguridad, limpieza y evidencia observable.</li>
         <li>La metodología del oficio vive en su libro/proceso, no dentro de la descripción física del área.</li>
