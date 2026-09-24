@@ -100,12 +100,14 @@ window.ROCA_WORKSHOP_SECTIONS = [
     `
   },
   {
-    id:"area-carpinteria", nav:"Área · Carpintería", title:"Carpintería, Corte y Embalaje", eyebrow:"Libro de área · frente propuesto",
-    lead:"Concentrar corte, cajas y embalaje en un puesto dedicado sin quitar tiempo técnico ni contaminar áreas de acabado.",
+    id:"area-carpinteria", nav:"Área · Carpintería / Embalaje", title:"Carpintería, Corte y Embalaje", eyebrow:"Área propuesta · NO IMPLEMENTADA",
+    lead:"Preparar un frente dedicado de corte, cajas y protección sólo si la operación real justifica implementarlo; hoy no existe método liberado.",
     body:`
-      <h2>Estado real</h2><p>Es un frente preparado, no una operación liberada. No se presenta como área implementada hasta confirmar espacio, persona y método.</p>
-      <h2>Control preparado</h2><p>Requerimiento/dimensiones → elegir protección → cortar/preparar → ensamblar → proteger pieza → identificar → dejar lista para carga.</p>
-      <h2>Por cerrar</h2><p>Decisión de implementación, puesto/persona, equipo, método demostrado, criterio por tipo de envío, control de polvo y ruta de carga.</p>
+      <h2>Estado real</h2><p><strong>PLANNED / NOT_IMPLEMENTED / NO LIBERAR.</strong> No se localizó entrevista ni demostración primaria. El propio 391P declara el método como no liberado.</p>
+      <h2>Corrección de ubicación</h2><p>La propuesta histórica de usar “el espacio del Sr. Pes” queda superada. Señor Pez/pedacera pertenecen a Retoque; la ubicación de Carpintería permanece <strong>OPEN</strong> y debe definirse sin invadir Retoque, circulación o carga.</p>
+      <h2>Controles preparados</h2><p>CAR-AREA-01..10 conservan circulación, estación, iluminación, ventilación, emergencia, identidad, ubicación/separación, corte/polvo, madera/herrajes y embalaje. 300/500 lux quedan como referencia histórica en HOLD.</p>
+      <h2>Sin método inventado</h2><p>La secuencia genérica anterior se conserva sólo como hipótesis para entrevista. El método se construirá después de observar una orden real, decisiones, dimensiones, uniones, protección, condición de salida y carga.</p>
+      <h2>Por cerrar</h2><p>Decisión de implementar, ubicación, responsable, equipo, interfaz con Bases/Logística, método demostrado, materiales, criterios de protección/liberación, BIWO y evidencia.</p>
     `
   },
   {
