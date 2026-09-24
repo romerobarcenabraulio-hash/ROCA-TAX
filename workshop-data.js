@@ -190,7 +190,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
       <h2>Bodegas</h2><ul><li>Ubicación y categoría reconocibles.</li><li>Racks estables y accesibles.</li><li>Material pesado abajo y protegido contra caída.</li><li>Pieza/material con ID y siguiente acción.</li></ul>
       <h2>Oficina / BIWO</h2><ul><li>Estación y archivo protegidos.</li><li>Acceso por necesidad.</li><li>Documentos sensibles fuera de exposición pública.</li></ul>
       <h2>Exhibición</h2><ul><li>Pieza estable y protegida.</li><li>Visitantes no invaden operación.</li><li>Exhibición no funciona como bodega temporal.</li></ul>
-      <h2>Comedor y sanitarios</h2><ul><li>Separados de químicos, residuos y piezas de proceso.</li><li>Superficies limpias, insumos disponibles y privacidad.</li></ul>
+      <h2>Comedor y sanitarios</h2><ul><li>Existe agua potable disponible para el personal.</li><li>El lugar para consumir alimentos permanece limpio y físicamente separado de químicos, residuos, piezas y contaminación de proceso.</li><li>Sanitarios y lavabos permanecen limpios, seguros, utilizables y no se usan como almacenamiento técnico.</li><li>Regaderas/vestidores existen cuando la actividad o la descontaminación real lo requieren; su condición conserva higiene, separación y privacidad.</li></ul>
       <h2>Circulaciones y exterior/carga</h2><ul><li>Rutas y accesos libres.</li><li>Carga, descarga y maniobra no mezclan residuos, químicos y piezas terminadas.</li></ul>
       <h2>Residuos</h2><ul><li>Separación en punto de generación.</li><li>Contenedor e identificación por material real.</li><li>Almacenamiento temporal y destino controlados.</li></ul>
     `
