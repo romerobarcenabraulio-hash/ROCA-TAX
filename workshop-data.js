@@ -5,6 +5,18 @@ window.ROCA_WORKSHOP_SECTIONS = [
     body:`
       <h2>Regla de lectura</h2>
       <p class="callout"><strong>Área = deber ser permanente.</strong> Sólo permanece la condición correcta del espacio.</p>
+      <h2>Estándar físico común</h2>
+      <ul>
+        <li><strong>Rutas y salidas:</strong> continuas, visibles y libres; ninguna pieza, caja, cable o material se almacena en la ruta. La salida de emergencia permanece identificada y operable desde dentro.</li>
+        <li><strong>Extintores:</strong> del tipo adecuado al fuego posible, visibles, accesibles y señalizados; la parte más alta queda a máximo 1.50 m del piso y la cobertura se define por riesgo, superficie y recorrido real.</li>
+        <li><strong>Señalización:</strong> rojo para equipo contra incendio/prohibición, amarillo para advertencia o delimitación, verde para condición segura/ruta/salida y azul para obligación.</li>
+        <li><strong>Iluminación:</strong> se mide en el plano real de trabajo; el nivel objetivo se selecciona por la tarea visual real.</li>
+        <li><strong>Químicos:</strong> producto identificable, HDS disponible donde se maneja, señal legible y almacenamiento compatible con el producto real.</li>
+        <li><strong>Estación y almacenamiento:</strong> superficies estables, acceso recuperable y materiales pesados o inestables controlados sin invadir circulación.</li>
+        <li><strong>Servicios:</strong> energía, agua, drenaje, aire y ventilación se usan sin improvisaciones, humedad peligrosa, obstrucción o contaminación cruzada.</li>
+        <li><strong>Residuos:</strong> residuo, sobrante recuperable y material útil se separan por destino real.</li>
+        <li><strong>Activos:</strong> equipo fuera de condición se separa del uso; activos críticos conservan identidad e inspección/mantenimiento verificable.</li>
+      </ul>
       <ul>
         <li>El espacio físico se define por flujo, estación, almacenamiento, servicios, seguridad, limpieza y evidencia observable.</li>
         <li>La metodología del oficio vive en su libro/proceso, no dentro de la descripción física del área.</li>
