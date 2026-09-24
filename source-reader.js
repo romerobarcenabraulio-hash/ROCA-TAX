@@ -15,6 +15,7 @@
   if(!sourceMode || !contentsPane || !nav || !page) return;
 
   let activeDoc = docs[0] || null;
+  let returnSection = null;
 
   function escapeHtml(value){
     return String(value == null ? '' : value)
@@ -144,7 +145,7 @@
           <input id="sourcePageInput" type="number" min="1" ${activeDoc.pages ? `max="${activeDoc.pages}"` : ''} value="${pageNumber || ''}" placeholder="ej. 133">
           <button id="sourceGoPage" type="button" ${directPageJump ? '' : 'disabled'}>IR</button>
         </div>
-        <div class="source-actions">${open}${folder}</div>
+        <div class="source-actions">${returnSection ? `<button id="sourceReturn" class="pdf-link secondary source-return" type="button">VOLVER A ${escapeHtml(returnSection.title)}</button>` : ''}${open}${folder}</div>
       </div>
       ${refsMarkup(activeDoc)}
       ${crossChecksMarkup(activeDoc)}
@@ -171,6 +172,17 @@
       history.replaceState(null,'','#'+target);
       compendiumMode.click();
     }));
+
+    const back=document.getElementById('sourceReturn');
+    if(back) back.addEventListener('click',()=>{
+      const id=returnSection && returnSection.id;
+      if(!id) return;
+      if(compendiumMode) compendiumMode.click();
+      setTimeout(()=>{
+        const target=[...document.querySelectorAll('#nav button')].find(btn=>btn.dataset.id===id);
+        if(target) target.click();
+      },0);
+    });
 
     const go=document.getElementById('sourceGoPage');
     if(go) go.addEventListener('click',()=>{
@@ -213,6 +225,11 @@
     event.preventDefault();
     const sourceId = trigger.dataset.sourceId;
     const sourcePage = Number(trigger.dataset.sourcePage) || undefined;
+    const paper = trigger.closest('.master-paper[data-section]');
+    returnSection = paper ? {
+      id: paper.dataset.section,
+      title: (paper.querySelector('h1') && paper.querySelector('h1').textContent) || paper.dataset.section
+    } : null;
     renderSource(sourceId,sourcePage);
   });
 
