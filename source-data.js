@@ -1,0 +1,882 @@
+window.ROCA_SOURCE_DOCUMENTS = [
+  {
+    "id": "master-web-391",
+    "nav": "Master integral 391p",
+    "title": "ROCA_MASTER_WEB.pdf",
+    "subtitle": "Master integral · lectura histórica consolidada",
+    "sourceKind": "Google Drive / copia privada controlada",
+    "privacy": "INTERNAL_OPERATIONAL",
+    "status": "AVAILABLE_PRIVATE_LINK",
+    "pages": 391,
+    "driveId": "1ZbBmnudrO7m7aGCtFGTSXuljy1Sg5AJO",
+    "previewUrl": "https://drive.google.com/file/d/1ZbBmnudrO7m7aGCtFGTSXuljy1Sg5AJO/preview",
+    "openUrl": "https://drive.google.com/file/d/1ZbBmnudrO7m7aGCtFGTSXuljy1Sg5AJO/view",
+    "localPath": "sources/pdfs/ROCA_MASTER_WEB.pdf",
+    "note": "Fuente consolidada que conserva la paginación 391p y referencias históricas 367p. La copia de Drive permanece no compartida; el repo público conserva sólo el locator.",
+    "quickRefs": [
+      [
+        "Recepción",
+        42
+      ],
+      [
+        "Curtiduría",
+        52
+      ],
+      [
+        "Formas / Moldes / Réplicas",
+        90
+      ],
+      [
+        "Montaje",
+        133
+      ],
+      [
+        "Retoque",
+        163
+      ],
+      [
+        "Bases",
+        188
+      ],
+      [
+        "Carpintería / Embalaje",
+        213
+      ],
+      [
+        "Soldadura",
+        227
+      ],
+      [
+        "Blanqueado",
+        241
+      ],
+      [
+        "Oficina / BIWO",
+        266
+      ],
+      [
+        "Bodegas",
+        277
+      ],
+      [
+        "Comedor",
+        296
+      ],
+      [
+        "Sanitarios",
+        305
+      ],
+      [
+        "Circulaciones",
+        314
+      ],
+      [
+        "Residuos",
+        323
+      ]
+    ],
+    "crossChecks": [
+      {
+        "label": "Recepción",
+        "sourcePage": 42,
+        "targetSection": "area-recepcion",
+        "action": "MERGE_WITHOUT_LOSS",
+        "focus": "Área física, ingreso controlado, privacidad y evidencia."
+      },
+      {
+        "label": "Curtiduría",
+        "sourcePage": 52,
+        "targetSection": "area-curtiduria",
+        "action": "MERGE_WITHOUT_LOSS",
+        "focus": "Zona húmeda, drenaje, química, maquinaria, báscula/pH y estaciones."
+      },
+      {
+        "label": "Formas / Moldes / Réplicas",
+        "sourcePage": 90,
+        "targetSection": "area-fmr",
+        "action": "MERGE_WITHOUT_LOSS",
+        "focus": "Punto de mezcla, racks, curado, estación de Omar y evidencia."
+      },
+      {
+        "label": "Montaje",
+        "sourcePage": 133,
+        "targetSection": "area-montaje",
+        "action": "PRESERVE",
+        "focus": "Piloto V2 ya conserva la mayor resolución física; revisar regresiones."
+      },
+      {
+        "label": "Retoque",
+        "sourcePage": 163,
+        "targetSection": "area-retoque",
+        "action": "MERGE_WITHOUT_LOSS",
+        "focus": "Pintura/solventes, aire comprimido, acabado fino y estaciones reales."
+      },
+      {
+        "label": "Bases",
+        "sourcePage": 188,
+        "targetSection": "area-bases",
+        "action": "MERGE_WITHOUT_LOSS",
+        "focus": "Armado estable, PU/adhesivos, corte, polvo y evidencia."
+      },
+      {
+        "label": "Carpintería / Embalaje",
+        "sourcePage": 213,
+        "targetSection": "area-carpinteria",
+        "action": "CORRECT",
+        "focus": "Preservar condiciones; no conservar la vieja ubicación en espacio del Sr. Pez como vigente."
+      },
+      {
+        "label": "Soldadura",
+        "sourcePage": 227,
+        "targetSection": "area-soldadura",
+        "action": "MERGE_WITHOUT_LOSS",
+        "focus": "Trabajo en caliente, humos, equipo, estación de Flaco y evidencia."
+      },
+      {
+        "label": "Blanqueado",
+        "sourcePage": 241,
+        "targetSection": "area-blanqueado",
+        "action": "MERGE_WITHOUT_LOSS",
+        "focus": "Calor/agua, protección de cuernos, ventilación y evidencia."
+      },
+      {
+        "label": "Espacios de soporte",
+        "sourcePage": 277,
+        "targetSection": "area-soporte",
+        "action": "MERGE_WITHOUT_LOSS",
+        "focus": "Bodegas, BIWO, exhibición, comedor, sanitarios, rutas, exterior y residuos."
+      }
+    ]
+  },
+  {
+    "id": "master-canonico-31ago",
+    "nav": "Master canónico 31 AGO",
+    "title": "ROCA_TAXIDERMY_MASTER_CANONICO_PENDIENTES_31AGO2026.pdf",
+    "subtitle": "Master canónico · 367 páginas",
+    "sourceKind": "ROCA Library + Google Drive privado",
+    "privacy": "INTERNAL_OPERATIONAL",
+    "status": "AVAILABLE_PRIVATE_LINK",
+    "pages": 367,
+    "libraryFileId": "libfile_5f1d42e7698c8191aff9c5858669bbc4",
+    "sourceFileId": "file_00000000ca6c822fab83c0ba7167e03e",
+    "sizeBytes": 60294089,
+    "driveId": "10Ta3MqKgpnRN94gUoQY-UreG5AH6LfSe",
+    "previewUrl": "https://drive.google.com/file/d/10Ta3MqKgpnRN94gUoQY-UreG5AH6LfSe/preview",
+    "openUrl": "https://drive.google.com/file/d/10Ta3MqKgpnRN94gUoQY-UreG5AH6LfSe/view",
+    "localPath": "sources/pdfs/ROCA_TAXIDERMY_MASTER_CANONICO_PENDIENTES_31AGO2026.pdf",
+    "note": "Fuente recuperada físicamente en Library y copiada a la carpeta privada controlada de Drive. Mantener por provenance; no publicar bytes en GitHub.",
+    "quickRefs": [
+      [
+        "Recepción",
+        34
+      ],
+      [
+        "Curtiduría",
+        43
+      ],
+      [
+        "Formas / Moldes / Réplicas",
+        80
+      ],
+      [
+        "Montaje",
+        122
+      ],
+      [
+        "Retoque",
+        151
+      ],
+      [
+        "Bases",
+        174
+      ],
+      [
+        "Carpintería / Embalaje",
+        198
+      ],
+      [
+        "Soldadura",
+        211
+      ],
+      [
+        "Blanqueado",
+        224
+      ],
+      [
+        "Espacios de soporte",
+        238
+      ]
+    ],
+    "crossChecks": [
+      {
+        "label": "Recepción",
+        "sourcePage": 34,
+        "targetSection": "area-recepcion",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Curtiduría",
+        "sourcePage": 43,
+        "targetSection": "area-curtiduria",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Formas / Moldes / Réplicas",
+        "sourcePage": 80,
+        "targetSection": "area-fmr",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Montaje",
+        "sourcePage": 122,
+        "targetSection": "area-montaje",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Retoque",
+        "sourcePage": 151,
+        "targetSection": "area-retoque",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Bases",
+        "sourcePage": 174,
+        "targetSection": "area-bases",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Carpintería / Embalaje",
+        "sourcePage": 198,
+        "targetSection": "area-carpinteria",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Soldadura",
+        "sourcePage": 211,
+        "targetSection": "area-soldadura",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Blanqueado",
+        "sourcePage": 224,
+        "targetSection": "area-blanqueado",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Espacios de soporte",
+        "sourcePage": 238,
+        "targetSection": "area-soporte",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      }
+    ]
+  },
+  {
+    "id": "preentrevistas-26ago",
+    "nav": "Pre-entrevistas 26 AGO",
+    "title": "ROCA_TAXIDERMY_MASTER_PreEntrevistas_26AGO2026.pdf",
+    "subtitle": "Actualización histórica · 208 páginas",
+    "sourceKind": "ROCA Library + Google Drive privado",
+    "privacy": "INTERNAL_OPERATIONAL",
+    "status": "AVAILABLE_PRIVATE_LINK",
+    "pages": 208,
+    "libraryFileId": "libfile_c4a856ce0038819198a470b9707bc649",
+    "sourceFileId": "file_000000002b3081fd9d262ad4ad4a25ca",
+    "sizeBytes": 31643065,
+    "driveId": "1kDvKFE77HRy4sPu_vSN_I4gEQXtIAYZH",
+    "previewUrl": "https://drive.google.com/file/d/1kDvKFE77HRy4sPu_vSN_I4gEQXtIAYZH/preview",
+    "openUrl": "https://drive.google.com/file/d/1kDvKFE77HRy4sPu_vSN_I4gEQXtIAYZH/view",
+    "localPath": "sources/pdfs/ROCA_TAXIDERMY_MASTER_PreEntrevistas_26AGO2026.pdf",
+    "note": "Actualización aditiva sobre v24.8 según el diff normalizado registrado en el rescate. Conservar como fuente separada; no deduplicar sin equivalencia documental demostrada.",
+    "quickRefs": [
+      [
+        "Recepción",
+        138
+      ],
+      [
+        "Curtiduría",
+        142
+      ],
+      [
+        "Formas / Moldes / Réplicas",
+        146
+      ],
+      [
+        "Montaje",
+        150
+      ],
+      [
+        "Retoque",
+        154
+      ],
+      [
+        "Bases",
+        158
+      ],
+      [
+        "Soldadura",
+        162
+      ],
+      [
+        "Carpintería / Embalaje",
+        166
+      ],
+      [
+        "Espacios de soporte",
+        171
+      ],
+      [
+        "Blanqueado",
+        199
+      ]
+    ],
+    "crossChecks": [
+      {
+        "label": "Recepción",
+        "sourcePage": 138,
+        "targetSection": "area-recepcion",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2 y revisar los bloques aditivos sin asumir que sustituyen toda la versión anterior."
+      },
+      {
+        "label": "Curtiduría",
+        "sourcePage": 142,
+        "targetSection": "area-curtiduria",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2 y revisar los bloques aditivos sin asumir que sustituyen toda la versión anterior."
+      },
+      {
+        "label": "Formas / Moldes / Réplicas",
+        "sourcePage": 146,
+        "targetSection": "area-fmr",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2 y revisar los bloques aditivos sin asumir que sustituyen toda la versión anterior."
+      },
+      {
+        "label": "Montaje",
+        "sourcePage": 150,
+        "targetSection": "area-montaje",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2 y revisar los bloques aditivos sin asumir que sustituyen toda la versión anterior."
+      },
+      {
+        "label": "Retoque",
+        "sourcePage": 154,
+        "targetSection": "area-retoque",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2 y revisar los bloques aditivos sin asumir que sustituyen toda la versión anterior."
+      },
+      {
+        "label": "Bases",
+        "sourcePage": 158,
+        "targetSection": "area-bases",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2 y revisar los bloques aditivos sin asumir que sustituyen toda la versión anterior."
+      },
+      {
+        "label": "Soldadura",
+        "sourcePage": 162,
+        "targetSection": "area-soldadura",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2 y revisar los bloques aditivos sin asumir que sustituyen toda la versión anterior."
+      },
+      {
+        "label": "Carpintería / Embalaje",
+        "sourcePage": 166,
+        "targetSection": "area-carpinteria",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2 y revisar los bloques aditivos sin asumir que sustituyen toda la versión anterior."
+      },
+      {
+        "label": "Espacios de soporte",
+        "sourcePage": 171,
+        "targetSection": "area-soporte",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2 y revisar los bloques aditivos sin asumir que sustituyen toda la versión anterior."
+      },
+      {
+        "label": "Blanqueado",
+        "sourcePage": 199,
+        "targetSection": "area-blanqueado",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2 y revisar los bloques aditivos sin asumir que sustituyen toda la versión anterior."
+      }
+    ]
+  },
+  {
+    "id": "v24-8-precampo-control",
+    "nav": "v24.8 Pre-Campo",
+    "title": "ROCA_TAXIDERMY_v24_8_PreCampo_Control.pdf",
+    "subtitle": "v24.8 PRE-CAMPO CONTROL · 198 páginas",
+    "sourceKind": "ROCA Library + Google Drive privado",
+    "privacy": "INTERNAL_OPERATIONAL",
+    "status": "AVAILABLE_PRIVATE_LINK",
+    "pages": 198,
+    "libraryFileId": "libfile_f1fb6fbf08ac8191993e9810bfde8bb5",
+    "sourceFileId": "file_00000000c0c081fda8ab236f00ad4018",
+    "sizeBytes": 31591373,
+    "driveId": "1NuoEJP1anytDc80w9qABeowsa7eJc6_t",
+    "previewUrl": "https://drive.google.com/file/d/1NuoEJP1anytDc80w9qABeowsa7eJc6_t/preview",
+    "openUrl": "https://drive.google.com/file/d/1NuoEJP1anytDc80w9qABeowsa7eJc6_t/view",
+    "localPath": "sources/pdfs/ROCA_TAXIDERMY_v24_8_PreCampo_Control.pdf",
+    "note": "Fuente nominal v24.8 recuperada y conservada por provenance; comparar con PreEntrevistas en lugar de asumir duplicación.",
+    "quickRefs": [
+      [
+        "Recepción",
+        129
+      ],
+      [
+        "Curtiduría",
+        133
+      ],
+      [
+        "Formas / Moldes / Réplicas",
+        137
+      ],
+      [
+        "Montaje",
+        141
+      ],
+      [
+        "Retoque",
+        145
+      ],
+      [
+        "Bases",
+        149
+      ],
+      [
+        "Soldadura",
+        153
+      ],
+      [
+        "Carpintería / Embalaje",
+        157
+      ],
+      [
+        "Espacios de soporte",
+        162
+      ],
+      [
+        "Blanqueado",
+        190
+      ]
+    ],
+    "crossChecks": [
+      {
+        "label": "Recepción",
+        "sourcePage": 129,
+        "targetSection": "area-recepcion",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Curtiduría",
+        "sourcePage": 133,
+        "targetSection": "area-curtiduria",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Formas / Moldes / Réplicas",
+        "sourcePage": 137,
+        "targetSection": "area-fmr",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Montaje",
+        "sourcePage": 141,
+        "targetSection": "area-montaje",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Retoque",
+        "sourcePage": 145,
+        "targetSection": "area-retoque",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Bases",
+        "sourcePage": 149,
+        "targetSection": "area-bases",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Soldadura",
+        "sourcePage": 153,
+        "targetSection": "area-soldadura",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Carpintería / Embalaje",
+        "sourcePage": 157,
+        "targetSection": "area-carpinteria",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Espacios de soporte",
+        "sourcePage": 162,
+        "targetSection": "area-soporte",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Blanqueado",
+        "sourcePage": 190,
+        "targetSection": "area-blanqueado",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      }
+    ]
+  },
+  {
+    "id": "v22-1-editable",
+    "nav": "v22.1 Editable",
+    "title": "ROCA_TAXIDERMY_v22_1_Editable.zip",
+    "subtitle": "HTML editable histórico · fuente requerida para cierre de integridad",
+    "sourceKind": "Fuente histórica identificada por trazabilidad",
+    "privacy": "INTERNAL_OPERATIONAL",
+    "status": "SOURCE_INTEGRITY_BLOCKER",
+    "pages": null,
+    "previewUrl": "",
+    "openUrl": "",
+    "localPath": "",
+    "note": "Su existencia y contenido general están documentados en la trazabilidad histórica, pero los bytes del ZIP/HTML editable aún no se han recuperado en Library, Drive ni GitHub. No declarar saturación de fuentes hasta recuperarlo o demostrar equivalencia sección por sección."
+  },
+  {
+    "id": "v24-7-precampo-rigor",
+    "nav": "v24.7 Pre-Campo",
+    "title": "ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf",
+    "subtitle": "v24.7 PRE-CAMPO RIGOR · 194 páginas",
+    "sourceKind": "ROCA Library + Google Drive privado",
+    "privacy": "INTERNAL_OPERATIONAL",
+    "status": "AVAILABLE_PRIVATE_LINK",
+    "pages": 194,
+    "libraryFileId": "libfile_c448d2e524948191b32d73aef05a801e",
+    "sourceFileId": "file_0000000079748230a80c37a197ff5d3e",
+    "sizeBytes": 26262426,
+    "driveId": "1I4KuFH_UEW6K4RqTUBca4IBKP0Lf96aV",
+    "previewUrl": "https://drive.google.com/file/d/1I4KuFH_UEW6K4RqTUBca4IBKP0Lf96aV/preview",
+    "openUrl": "https://drive.google.com/file/d/1I4KuFH_UEW6K4RqTUBca4IBKP0Lf96aV/view",
+    "localPath": "sources/pdfs/ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf",
+    "note": "Fuente fuerte de metodología y pre-campo recuperada físicamente y copiada a Drive privado.",
+    "quickRefs": [
+      [
+        "Recepción",
+        125
+      ],
+      [
+        "Curtiduría",
+        129
+      ],
+      [
+        "Formas / Moldes / Réplicas",
+        133
+      ],
+      [
+        "Montaje",
+        137
+      ],
+      [
+        "Retoque",
+        141
+      ],
+      [
+        "Bases",
+        145
+      ],
+      [
+        "Soldadura",
+        149
+      ],
+      [
+        "Carpintería / Embalaje",
+        153
+      ],
+      [
+        "Espacios de soporte",
+        158
+      ],
+      [
+        "Blanqueado",
+        186
+      ]
+    ],
+    "crossChecks": [
+      {
+        "label": "Recepción",
+        "sourcePage": 125,
+        "targetSection": "area-recepcion",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Curtiduría",
+        "sourcePage": 129,
+        "targetSection": "area-curtiduria",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Formas / Moldes / Réplicas",
+        "sourcePage": 133,
+        "targetSection": "area-fmr",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Montaje",
+        "sourcePage": 137,
+        "targetSection": "area-montaje",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Retoque",
+        "sourcePage": 141,
+        "targetSection": "area-retoque",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Bases",
+        "sourcePage": 145,
+        "targetSection": "area-bases",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Soldadura",
+        "sourcePage": 149,
+        "targetSection": "area-soldadura",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Carpintería / Embalaje",
+        "sourcePage": 153,
+        "targetSection": "area-carpinteria",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Espacios de soporte",
+        "sourcePage": 158,
+        "targetSection": "area-soporte",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      },
+      {
+        "label": "Blanqueado",
+        "sourcePage": 186,
+        "targetSection": "area-blanqueado",
+        "action": "COMPARE_SOURCE",
+        "focus": "Comparar tratamiento histórico contra el hogar V2; preservar hechos soportados y corregir sólo por fuente más fuerte."
+      }
+    ]
+  }
+];
+
+window.ROCA_SOURCE_CROSSCHECK = {
+  "area-recepcion": [
+    {
+      "sourceId": "master-web-391",
+      "label": "Área de trabajo",
+      "page": 42
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Estación / evidencia",
+      "page": 44
+    }
+  ],
+  "area-curtiduria": [
+    {
+      "sourceId": "master-web-391",
+      "label": "Área de trabajo",
+      "page": 52
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Estaciones",
+      "page": 54
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Evidencia",
+      "page": 56
+    }
+  ],
+  "area-fmr": [
+    {
+      "sourceId": "master-web-391",
+      "label": "Área de trabajo",
+      "page": 90
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Estación de Omar",
+      "page": 92
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Evidencia",
+      "page": 93
+    }
+  ],
+  "area-montaje": [
+    {
+      "sourceId": "master-web-391",
+      "label": "Área de trabajo",
+      "page": 133
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Estaciones",
+      "page": 135
+    }
+  ],
+  "area-retoque": [
+    {
+      "sourceId": "master-web-391",
+      "label": "Área de trabajo",
+      "page": 163
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Estación",
+      "page": 165
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Evidencia",
+      "page": 166
+    }
+  ],
+  "area-bases": [
+    {
+      "sourceId": "master-web-391",
+      "label": "Área de trabajo",
+      "page": 188
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Estaciones",
+      "page": 189
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Evidencia",
+      "page": 191
+    }
+  ],
+  "area-carpinteria": [
+    {
+      "sourceId": "master-web-391",
+      "label": "Área de trabajo",
+      "page": 213
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Estación",
+      "page": 214
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Evidencia",
+      "page": 215
+    }
+  ],
+  "area-soldadura": [
+    {
+      "sourceId": "master-web-391",
+      "label": "Área de trabajo",
+      "page": 227
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Estación",
+      "page": 228
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Evidencia",
+      "page": 229
+    }
+  ],
+  "area-blanqueado": [
+    {
+      "sourceId": "master-web-391",
+      "label": "Área de trabajo",
+      "page": 241
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Estación",
+      "page": 242
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Evidencia",
+      "page": 243
+    }
+  ],
+  "area-soporte": [
+    {
+      "sourceId": "master-web-391",
+      "label": "Oficina / BIWO",
+      "page": 266
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Bodegas",
+      "page": 277
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Comedor",
+      "page": 296
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Sanitarios",
+      "page": 305
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Circulaciones",
+      "page": 314
+    },
+    {
+      "sourceId": "master-web-391",
+      "label": "Residuos",
+      "page": 323
+    }
+  ]
+};
+
+window.ROCA_SOURCE_RULES = {
+  "publicRepo": true,
+  "restrictedKinds": [
+    "RESTRICTED_PERSONAL",
+    "RESTRICTED_FINANCIAL",
+    "RESTRICTED_LEGAL_WILDLIFE"
+  ],
+  "sourceFolderUrl": "https://drive.google.com/drive/folders/1vdG8UOTpmq1NEDh5ndzTKfXAuF9aVQjj",
+  "warning": "ROCA-TAX es un repositorio público. No publicar expedientes de clientes, permisos, CITES, identificaciones ni otros originales restringidos."
+};
