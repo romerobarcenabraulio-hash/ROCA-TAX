@@ -6,6 +6,7 @@ EVID-CUR-03,AREA-CUR,NOT_VERIFIED,,,,,,,Condición medida de iluminación/ventil
 EVID-CUR-04,AREA-CUR,NOT_VERIFIED,,,,,,,Peso/pH de proceso con punto de medición e instrumento/método trazable,,,,,,NOT_REVIEWED
 EVID-FMR-01,AREA-FMR,NOT_VERIFIED,,,,,,,Ubicación e identificación de formas/moldes,,,,,,NOT_REVIEWED
 EVID-FMR-02,AREA-FMR,NOT_VERIFIED,,,,,,,Ejecución de prueba/dosificación documentada,,,,,,NOT_REVIEWED
+EVID-FMR-03,AREA-FMR,NOT_VERIFIED,,,,,,,Curado/desmolde con referencia y condición física documentadas,,,,,,NOT_REVIEWED
 EVID-MON-01,AREA-MON,NOT_VERIFIED,,,,,,,Condición real de estaciones de Montaje,,,,,,NOT_REVIEWED
 EVID-MON-02,AREA-MON,NOT_VERIFIED,,,,,,,Secado/espera estable e identificada,,,,,,NOT_REVIEWED
 EVID-RET-01,AREA-RET,NOT_VERIFIED,,,,,,,Punto real de pintura/solventes/pedacera,,,,,,NOT_REVIEWED
