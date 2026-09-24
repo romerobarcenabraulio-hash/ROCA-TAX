@@ -1,4 +1,80 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ROCA · Implementar</title><style>body{margin:0;font-family:Arial,sans-serif;background:#ece7de;color:#171717}header{position:sticky;top:0;z-index:5;background:#17232e;color:#fff;padding:16px 20px}header a{color:#fff}.wrap{max-width:1700px;margin:auto;padding:20px}.note{background:#fff4d8;border:1px solid #d0b46f;padding:12px;margin:0 0 14px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 14px}.filters button{border:1px solid #999;background:#fff;padding:7px 10px;cursor:pointer}.filters button.active{background:#17232e;color:#fff}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;background:#fff;font-size:12px}th,td{border:1px solid #c8c2b7;padding:8px;vertical-align:top;text-align:left}th{position:sticky;top:73px;background:#f7f4ee}.blank{color:#9a6f21;font-weight:700}.small{font-size:12px;color:#ddd}</style></head><body><header><b>ROCA · IMPLEMENTAR</b><div class="small">Trabajo temporal para llegar al estándar. Cuando se corrige, deja de ser pendiente. <a href="../../index.html">Volver al manual</a> · <a href="audit.html">AUDITAR</a></div></header><main class="wrap"><div class="note"><b>Esta vista NO forma parte del estándar permanente.</b> Sólo registra brechas, acciones, mediciones y cálculos necesarios para llegar al “cómo debe estar”.</div><div class="filters"><button class="active" data-area="ALL">TODAS</button><button data-area="area-recepcion">Recepción</button><button data-area="area-curtiduria">Curtiduría</button><button data-area="area-fmr">Formas, Moldes y Réplicas</button><button data-area="area-montaje">Montaje</button><button data-area="area-retoque">Retoque</button><button data-area="area-bases">Bases</button><button data-area="area-carpinteria">Carpintería / Embalaje</button><button data-area="area-soldadura">Soldadura / Adaptación</button><button data-area="area-blanqueado">Blanqueado</button><button data-area="area-soporte">Espacios de soporte</button></div><div class="tablewrap"><table><thead><tr><th>ID</th><th>Área</th><th>Elemento</th><th>Estándar permanente</th><th>Cómo está hoy</th><th>Qué hacer</th><th>Dato / cálculo</th><th>Estado</th></tr></thead><tbody><tr data-area="area-recepcion">
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ROCA · Implementar</title><style>body{margin:0;font-family:Arial,sans-serif;background:#ece7de;color:#171717}header{position:sticky;top:0;z-index:5;background:#17232e;color:#fff;padding:16px 20px}header a{color:#fff}.wrap{max-width:1700px;margin:auto;padding:20px}.note{background:#fff4d8;border:1px solid #d0b46f;padding:12px;margin:0 0 14px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 14px}.filters button{border:1px solid #999;background:#fff;padding:7px 10px;cursor:pointer}.filters button.active{background:#17232e;color:#fff}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;background:#fff;font-size:12px}th,td{border:1px solid #c8c2b7;padding:8px;vertical-align:top;text-align:left}th{position:sticky;top:73px;background:#f7f4ee}.blank{color:#9a6f21;font-weight:700}.small{font-size:12px;color:#ddd}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:0 0 18px}
+.tool{background:#fff;border:1px solid #c8c2b7;padding:14px}
+.tool h2{font-size:16px;margin:0 0 8px}
+.tool label{display:block;font-size:11px;font-weight:700;margin:8px 0 4px}
+.tool input,.tool select{width:100%;box-sizing:border-box;padding:8px;border:1px solid #aaa;background:#fff}
+.result{margin-top:10px;padding:10px;background:#f3efe7;min-height:36px}
+.geometry{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.geometry td,.geometry th{border:1px solid #ccc;padding:6px;text-align:left}
+.tool-links{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.tool-links a{display:inline-block;padding:8px 10px;background:#fff;border:1px solid #999;color:#17232e;text-decoration:none}
+</style></head><body><header><b>ROCA · IMPLEMENTAR</b><div class="small">Trabajo temporal para llegar al estándar. Cuando se corrige, deja de ser pendiente. <a href="../../index.html">Volver al manual</a> · <a href="audit.html">AUDITAR</a></div></header><main class="wrap"><div class="note"><b>Esta vista NO forma parte del estándar permanente.</b> Sólo registra brechas, acciones, mediciones y cálculos necesarios para llegar al “cómo debe estar”.</div>
+<section>
+  <h1>Fast Track · cálculo y preparación</h1>
+  <div class="note"><b>Estas herramientas son de implementación.</b> No cambian el estándar permanente y no sustituyen la clasificación de riesgo, el levantamiento ni la auditoría.</div>
+  <div class="tool-links">
+    <a href="poster-pack.html">POSTERS PROVISIONALES</a>
+    <a href="audit.html">IR A AUDITAR</a>
+  </div>
+  <div class="tools">
+    <div class="tool">
+      <h2>Extintores · mínimo por superficie</h2>
+      <label>Superficie a proteger (m²)</label><input id="fireArea" type="number" min="0" step="0.01" value="800">
+      <label>Riesgo de incendio</label><select id="fireRisk"><option value="300">Ordinario · 1 / 300 m² o fracción</option><option value="200">Alto · 1 / 200 m² o fracción</option></select>
+      <div id="fireResult" class="result"></div>
+      <small>Después hay que revisar clase de fuego, distribución y recorrido real; cualquiera de ellos puede exigir más equipos.</small>
+    </div>
+    <div class="tool">
+      <h2>Recorrido al extintor</h2>
+      <label>Clase / condición</label><select id="travelLimit">
+        <option value="23">A / C / D · máximo 23 m</option>
+        <option value="15">B riesgo ordinario · máximo 15 m</option>
+        <option value="10">B riesgo alto · máximo 10 m</option>
+        <option value="10">K · máximo 10 m</option>
+      </select>
+      <label>Recorrido real medido (m)</label><input id="travelActual" type="number" min="0" step="0.1">
+      <div id="travelResult" class="result">Mide el recorrido real, no la distancia en línea recta.</div>
+    </div>
+    <div class="tool">
+      <h2>Ruta de evacuación</h2>
+      <label>Recorrido desde punto más alejado (m)</label><input id="egressDistance" type="number" min="0" step="0.1">
+      <label>Tiempo real a lugar seguro (min)</label><input id="egressTime" type="number" min="0" step="0.1">
+      <div id="egressResult" class="result">Captura distancia y tiempo del recorrido real.</div>
+      <small>El chequeo usa el umbral de 40 m y, cuando corresponde, la demostración de evacuación a lugar seguro en máximo 3 min.</small>
+    </div>
+    <div class="tool">
+      <h2>Iluminación · tarea real</h2>
+      <label>Tipo de tarea visual</label><select id="luxTarget">
+        <option value="20">Exterior / circulación general · 20 lux</option>
+        <option value="50">Tránsito interior / almacén bajo movimiento / escaleras · 50 lux</option>
+        <option value="100">Circulación / espera / almacén / plataforma · 100 lux</option>
+        <option value="200">Tarea visual simple / recepción-despacho / compresor / pailería · 200 lux</option>
+        <option value="300">Detalle moderado / ensamble simple / oficina / empaque · 300 lux</option>
+        <option value="500">Detalle claro / laboratorio / dibujo / cómputo · 500 lux</option>
+        <option value="750">Detalle fino / pintura y acabado superficial / QC · 750 lux</option>
+        <option value="1000">Alta exactitud / partes pequeñas complejas / pulido fino · 1000 lux</option>
+        <option value="2000">Tarea especializada de muy bajo contraste · 2000 lux</option>
+      </select>
+      <label>Lectura medida en plano de trabajo (lux)</label><input id="luxActual" type="number" min="0" step="1">
+      <div id="luxResult" class="result">Mide donde realmente se ve y ejecuta la tarea.</div>
+    </div>
+  </div>
+  <div class="tool">
+    <h2>Geometría P-00 rescatada del 391P</h2>
+    <table class="geometry"><thead><tr><th>Zona</th><th>Dimensión fuente</th><th>Superficie</th><th>Mínimo por área · ordinario</th><th>Mínimo por área · alto</th></tr></thead><tbody>
+      <tr><td>Área principal</td><td>40 × 20 m</td><td>800 m²</td><td>3</td><td>4</td></tr>
+      <tr><td>Moldes oeste</td><td>10 × 15 m</td><td>150 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Sala de exhibición</td><td>11 × 6 m</td><td>66 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Oficina</td><td>10 × 4.5 m</td><td>45 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Bodega sur</td><td>16.5 × 6.7 m</td><td>110.55 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Bodega norte A</td><td>14 × 4 m</td><td>56 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Bodega norte B</td><td>14 × 4 m</td><td>56 m²</td><td>1</td><td>1</td></tr>
+    </tbody></table>
+    <p><small>Estos mínimos son sólo el cociente por superficie. No se suman automáticamente ni definen la ubicación final: primero hay que confirmar si las zonas son independientes/continuas, clasificación de riesgo, clase de fuego y recorrido real.</small></p>
+  </div>
+</section>
+<div class="filters"><button class="active" data-area="ALL">TODAS</button><button data-area="area-recepcion">Recepción</button><button data-area="area-curtiduria">Curtiduría</button><button data-area="area-fmr">Formas, Moldes y Réplicas</button><button data-area="area-montaje">Montaje</button><button data-area="area-retoque">Retoque</button><button data-area="area-bases">Bases</button><button data-area="area-carpinteria">Carpintería / Embalaje</button><button data-area="area-soldadura">Soldadura / Adaptación</button><button data-area="area-blanqueado">Blanqueado</button><button data-area="area-soporte">Espacios de soporte</button></div><div class="tablewrap"><table><thead><tr><th>ID</th><th>Área</th><th>Elemento</th><th>Estándar permanente</th><th>Cómo está hoy</th><th>Qué hacer</th><th>Dato / cálculo</th><th>Estado</th></tr></thead><tbody><tr data-area="area-recepcion">
 <td>REC-FT-01</td>
 <td>Recepción</td>
 <td>Límite, flujo y circulación</td>
@@ -1078,4 +1154,14 @@
 <td><span class="blank">POR DEFINIR</span></td>
 <td><span class="blank">POR CALCULAR / MEDIR</span></td>
 <td>NOT_CHECKED</td>
-</tr></tbody></table></div></main><script>let area="ALL";function apply(){document.querySelectorAll("tbody tr").forEach(r=>r.hidden=area!=="ALL"&&r.dataset.area!==area)}document.querySelectorAll("[data-area]").forEach(b=>b.onclick=()=>{area=b.dataset.area;document.querySelectorAll("[data-area]").forEach(x=>x.classList.toggle("active",x===b));apply();});</script></body></html>
+</tr></tbody></table></div></main><script>let area="ALL";function apply(){document.querySelectorAll("tbody tr").forEach(r=>r.hidden=area!=="ALL"&&r.dataset.area!==area)}document.querySelectorAll("[data-area]").forEach(b=>b.onclick=()=>{area=b.dataset.area;document.querySelectorAll("[data-area]").forEach(x=>x.classList.toggle("active",x===b));apply();});
+function calcFire(){const a=Number(document.getElementById("fireArea").value||0),d=Number(document.getElementById("fireRisk").value);document.getElementById("fireResult").innerHTML=a>0?"Mínimo por superficie: <b>"+Math.ceil(a/d)+" extintor(es)</b>. Falta validar recorrido, clase y distribución.":"Captura superficie."}
+function calcTravel(){const lim=Number(document.getElementById("travelLimit").value),a=Number(document.getElementById("travelActual").value||0);document.getElementById("travelResult").innerHTML=!a?"Mide el recorrido real, no la distancia en línea recta.":a<=lim?"Recorrido dentro del límite de referencia: <b>"+a+" m ≤ "+lim+" m</b>.":"<b>REUBICAR / AÑADIR COBERTURA:</b> "+a+" m > "+lim+" m."}
+function calcEgress(){const d=Number(document.getElementById("egressDistance").value||0),t=Number(document.getElementById("egressTime").value||0);let s="";if(!d)s="Captura distancia real.";else if(d<=40)s="Recorrido capturado: <b>"+d+" m</b>. Revisar además continuidad, señalización, puerta y obstrucciones.";else s="<b>Recorrido mayor de 40 m.</b> Documentar que el recorrido a lugar seguro se realiza en ≤ 3 min.";if(d>40&&t)s+=" Tiempo medido: <b>"+t+" min</b> → "+(t<=3?"dentro":"fuera")+" de la referencia.";document.getElementById("egressResult").innerHTML=s}
+function calcLux(){const tar=Number(document.getElementById("luxTarget").value),a=Number(document.getElementById("luxActual").value||0);document.getElementById("luxResult").innerHTML=!a?"Mide donde realmente se ejecuta la tarea.":a>=tar?"Lectura <b>"+a+" lux</b> frente a referencia <b>"+tar+" lux</b>: alcanza el nivel seleccionado.":"<b>MEJORAR / REUBICAR / MEDIR DE NUEVO:</b> "+a+" lux frente a "+tar+" lux."}
+["fireArea","fireRisk"].forEach(id=>document.getElementById(id).addEventListener("input",calcFire));
+["travelLimit","travelActual"].forEach(id=>document.getElementById(id).addEventListener("input",calcTravel));
+["egressDistance","egressTime"].forEach(id=>document.getElementById(id).addEventListener("input",calcEgress));
+["luxTarget","luxActual"].forEach(id=>document.getElementById(id).addEventListener("input",calcLux));
+calcFire();
+</script></body></html>
