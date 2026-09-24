@@ -70,7 +70,7 @@ No fotografiar identificaciones personales, documentos sensibles completos, pert
 - No inferir tiempo/temperatura si no se usan como criterio controlado.
 
 ## Espacios de soporte
-- EVID-SUP-01: una panorámica útil por bodega, circulación, carga, residuos, oficina/BIWO y demás subespacios que realmente existan.
+- EVID-SUP-BOD/ERP/EXH/COM/SAN/CIR/EXT/RES: capturar cada subespacio con su Evidence ID específico; no usar una panorámica genérica como sustituto.
 - Capturar rutas y obstrucciones desde perspectiva de circulación.
 - No exponer pantallas BIWO con datos de clientes.
 
