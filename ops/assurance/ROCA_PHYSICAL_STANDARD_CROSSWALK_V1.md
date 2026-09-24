@@ -18,6 +18,20 @@ Purpose: keep the legal/normative basis out of worker-facing area prose while pr
 
 Source: ROCA_MASTER_WEB_391P_SOURCE.pdf, P-00 master geometry page. Dimensions not shown in P-00 remain unmeasured.
 
+## PHYS-FIRE-00 · Fire-risk classification thresholds
+
+NOM-002-STPS-2010 uses these individual high-risk thresholds:
+- constructed area: >= 3000 m2;
+- flammable gases: >= 3000 L;
+- flammable liquids: >= 1400 L;
+- combustible liquids: >= 2000 L;
+- combustible solids including furniture: >= 15000 kg;
+- pyrophoric/explosive materials: any quantity.
+
+Below all individual thresholds does not by itself close the classification: complete and retain the official combined calculation and maximum annual inventories. Recalculate when maximum inventories change.
+
+ROCA register: ops/control/ROCA_FIRE_RISK_CLASSIFICATION_V1.csv
+
 ## PHYS-FIRE-01 · Fire extinguishers
 
 Worker-facing standard:
