@@ -71,6 +71,23 @@
   }
 
 
+
+  function inheritedPhysicalStandardMarkup(section){
+    if(!section || !String(section.id||'').startsWith('area-') || !Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)) return '';
+    const rows = window.ROCA_AREA_PHYSICAL_STANDARD.filter(r => r.areas==='ALL' || (Array.isArray(r.areas) && r.areas.includes(section.id)));
+    if(!rows.length) return '';
+    return `
+      <section class="inherited-standard">
+        <div class="eyebrow">ESTÁNDAR FÍSICO PERMANENTE</div>
+        <h2>Condiciones que debe conservar esta área</h2>
+        <p>Estas condiciones describen el estado correcto del espacio. No son pendientes ni una lista de implementación.</p>
+        <table class="permanent-standard-table">
+          <thead><tr><th>ID</th><th>Condición permanente</th><th>Cómo se demuestra</th></tr></thead>
+          <tbody>${rows.map(r=>`<tr><td><strong>${r.id}</strong><br><span>${r.label}</span></td><td>${r.standard}</td><td>${r.evidence}</td></tr>`).join('')}</tbody>
+        </table>
+      </section>`;
+  }
+
   function sectionMarkup(section){
     const posters = section.posters ? section.posters.map(([name, items]) => `
       <section class="poster"><div class="poster-sub">ROCA · condición de área</div><h2>${name}</h2><ol>${items.map(x=>`<li>${x}</li>`).join('')}</ol></section>`).join('') : '';
@@ -80,7 +97,7 @@
       <h1>${section.title}</h1>
       <p class="lead">${section.lead || ''}</p>
       <div class="bronze-rule short"></div>
-      <div class="master-content">${section.body||''}${posters}</div>
+      <div class="master-content">${section.body||''}${inheritedPhysicalStandardMarkup(section)}${posters}</div>
       ${footer(section.nav ? section.nav.toUpperCase() : '')}
     </article>`;
   }
