@@ -19,8 +19,9 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 
 ## Functional state
 - SOURCE-CONFIRMED — Controlled Drive copy `ROCA_MASTER_WEB_391P_SOURCE.pdf` exists inside `ROCA AUDIT - FUENTES DOCUMENTALES`, is readable through the authenticated Drive connector, and Drive reports it as `not_shared`.
-- NOT-CHECKED — rendering the private Drive preview inside the deployed/public HTML iframe has not been browser-tested in an authenticated user session.
+- BLOCKED-EXTERNAL — Vercel deployment is Ready, but this session's Vercel connector is not authorized for project `roca-tax`; authenticated iframe/browser QA cannot be completed from this connection.
 - NOT-CHECKED — mobile visual behavior has not been screenshot-tested.
+- LOCATOR_PENDING — `ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf` (Library/raw bytes confirmed; deployed private locator missing).
 - LOCATOR_PENDING — `ROCA_TAXIDERMY_MASTER_CANONICO_PENDIENTES_31AGO2026.pdf`.
 - LOCATOR_PENDING — `ROCA_TAXIDERMY_MASTER_PreEntrevistas_26AGO2026.pdf`.
 
@@ -28,4 +29,4 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 Do not add customer CITES/SEMARNAT/PROFEPA permit PDFs, IDs, financial records or other restricted originals to this public GitHub repository. Restricted source reading belongs in a private authenticated evidence surface.
 
 ## Release state
-PARTIAL — code and static contract are present; browser/Vercel QA remains required before merge.
+PARTIAL — code, private Drive master copy, Vercel deployment and static contract are present; authenticated iframe/mobile visual QA remains required before merge.
