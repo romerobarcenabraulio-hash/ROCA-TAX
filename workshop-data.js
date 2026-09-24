@@ -56,11 +56,12 @@ window.ROCA_WORKSHOP_SECTIONS = [
     lead:"Convertir medidas, geometría y referencias en formas, moldes o réplicas estables y utilizables.",
     body:`
       <h2>Métodos preservados</h2>
-      <p><strong>Formas:</strong> preparar → encerar → orear → probar lote → dosificar → mezclar → vaciar → curar/enfriar → desmoldar.</p>
-      <p><strong>Moldes:</strong> preparar forma → cera → oreado → gelcoat → separaciones → laminado/refuerzo → curado → apertura/acabado.</p>
-      <p><strong>Réplicas:</strong> preparar molde → mezcla controlada → vaciar/distribuir → curar/desmoldar → corregir unión → acabado contra referencia.</p>
-      <h2>Controles que importan</h2><ul><li>Forma/molde/réplica con código y ubicación.</li><li>Proporción y lote no se ajustan a ojo.</li><li>Curado gobierna apertura.</li><li>Fibra/polvo/vapores no migran a acabado.</li></ul>
-      <h2>Por cerrar</h2><p>Inventario/codificación real, rack, productos/HDS, ventilación, mantenimiento, criterios de aceptación y estados BIWO.</p>
+      <p><strong>Formas:</strong> preparar estructura/molde → encerar → orear 20–30 min → cerrar/sellar → probar lote → dosificar → mezclar → vaciar → curar/enfriar → desmoldar/revisar.</p>
+      <p><strong>Prueba y dosificación de Formas:</strong> 20 g totales en botella patrón ~600 mL; cálido 10+10 / 50:50; fresco-húmedo 6+14 / 30:70. Cabeza 1 h 30 min mínimo; cuerpo 4 h mínimo; la condición física manda antes de abrir.</p>
+      <p><strong>Moldes de fibra:</strong> definir divisiones → 10 pasadas de cera → orear 20–30 min → gelcoat → separaciones → laminado/refuerzo → curado → apertura/acabado. Gelcoat: referencia 1 kg resina : ~2 kg talco hasta pasta que no escurra; 6 capas base y 7 sólo por mayor exigencia.</p>
+      <p><strong>Réplicas:</strong> preparar molde → mezcla controlada → vaciar/distribuir → curar/desmoldar → corregir unión → acabado contra referencia. No heredar automáticamente parámetros de Formas/Moldes.</p>
+      <h2>Controles que importan</h2><ul><li>Forma/molde/réplica con código y ubicación.</li><li>Lote nuevo se prueba antes de producción.</li><li>A/B se pesan por separado; proporción no se corrige a ojo.</li><li>Curado combina referencia de tiempo + rigidez + condición térmica.</li><li>La cera de 10 pasadas pertenece a Moldes de fibra, no a Formas.</li><li>Fibra/polvo/vapores no migran a acabado.</li></ul>
+      <h2>Por cerrar</h2><p>Inventario/codificación real, rack, productos/HDS, ventilación, mantenimiento, evidencia real de prueba/curado, criterios de aceptación y estados BIWO.</p>
     `
   },
   {
