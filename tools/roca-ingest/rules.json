@@ -10,7 +10,15 @@
     "CAR": "Carpintería / Embalaje",
     "SOL": "Soldadura / Adaptación",
     "BLA": "Blanqueado",
-    "SUP": "Espacios de soporte"
+    "SUP": "Espacios de soporte",
+    "BOD": "Bodegas y almacenamiento",
+    "COM": "Comedor",
+    "ERP": "Oficina / BIWO / ERP / Comercio",
+    "EXH": "Sala de exhibición",
+    "EXT": "Exterior, carga y preparación",
+    "RES": "Sistema de residuos",
+    "RUT": "Circulaciones, accesos y rutas",
+    "SAN": "Servicios sanitarios"
   },
   "risk": {
     "R1": [
