@@ -136,6 +136,31 @@
     }).join('') + '</div>';
   }
 
+  function ledgerForSection(sectionId){
+    const ledger = Array.isArray(window.ROCA_SOURCE_LEDGER) ? window.ROCA_SOURCE_LEDGER : [];
+    return ledger.filter(item => Array.isArray(item.sectionIds) && item.sectionIds.includes(sectionId));
+  }
+
+  function ledgerMarkup(sectionId){
+    const rows = ledgerForSection(sectionId);
+    if(!rows.length) return '';
+    return '<div class="source-ledger"><h3>EVOLUCIÓN / INTEGRIDAD</h3>' +
+      rows.map(item => '<div class="source-ledger-row">' +
+        '<div class="source-ledger-head"><strong>' + esc(item.subject || item.id) + '</strong><span class="source-action-chip">' + esc(item.action || '') + '</span></div>' +
+        '<p>' + esc(item.summary || '') + '</p>' +
+        '<div class="source-ledger-destination"><b>Destino:</b> ' + esc(item.canonicalHome || '') + '</div>' +
+        '<div class="source-ledger-state"><b>Estado actual:</b> ' + esc(item.destinationState || '') + '</div>' +
+        '<details><summary>Ver fuentes comparadas</summary>' +
+          (Array.isArray(item.sources) ? item.sources.map(src => '<div class="source-ledger-source">' +
+            '<span>' + esc(src.docId || '') + '</span><span>' + esc(src.locator || '') + '</span><span>' + esc(src.fact || '') + '</span>' +
+            (src.page ? '<button type="button" class="source-ledger-open" data-doc="' + esc(src.docId) + '" data-page="' + esc(src.page) + '" data-section="' + esc(sectionId || '') + '">VER</button>' : '') +
+          '</div>').join('') : '') +
+        '</details>' +
+        (item.proof ? '<div class="source-proof-line">PRUEBA: ' + esc(item.proof) + '</div>' : '') +
+      '</div>').join('') +
+    '</div>';
+  }
+
   function relatedMarkup(doc){
     const related = Array.isArray(doc.related) ? doc.related : [];
     if(!related.length) return '<p class="source-empty">Sin relaciones registradas todavia.</p>';
@@ -222,6 +247,8 @@
           '<h3>Secciones relacionadas</h3>' +
           relatedMarkup(doc) +
           '<div class="source-compare-divider"></div>' +
+          ledgerMarkup(activeCompareSectionId) +
+          '<div class="source-compare-divider"></div>' +
           compareSectionMarkup(activeCompareSectionId) +
         '</aside>' +
       '</section>';
@@ -240,6 +267,20 @@
       button.addEventListener('click', () => {
         const value = Number.parseInt(button.dataset.page,10);
         renderSource(doc, Number.isFinite(value) && value > 0 ? value : null);
+      });
+    });
+
+    page.querySelectorAll('.source-ledger-open').forEach(button => {
+      button.addEventListener('click', () => {
+        const targetDoc = docs.find(x => x.id === button.dataset.doc);
+        const value = Number.parseInt(button.dataset.page,10);
+        const sectionId = button.dataset.section || activeCompareSectionId;
+        if(targetDoc){
+          activeDocId = targetDoc.id;
+          activeCompareSectionId = sectionId;
+          buildSourceNav('');
+          renderSource(targetDoc, Number.isFinite(value) && value > 0 ? value : null);
+        }
       });
     });
 
