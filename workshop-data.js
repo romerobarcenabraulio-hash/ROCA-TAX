@@ -77,11 +77,14 @@ window.ROCA_WORKSHOP_SECTIONS = [
   },
   {
     id:"area-retoque", nav:"Área · Retoque", title:"Retoque", eyebrow:"Libro de área · superficie y acabado",
-    lead:"Recuperar superficie, color, textura y presentación sin esconder defectos estructurales.",
+    lead:"Recuperar superficie, color, textura y presentación sin esconder defectos estructurales ni duplicar el trabajo de Bases.",
     body:`
-      <h2>Método preservado</h2><p>Retiro de alfileres/limpieza → resane → preparación → color por zonas → cepillado/acabado de pelo → brillo/texturas especiales → liberar o regresar.</p>
-      <h2>Controles que importan</h2><ul><li>No pintar sobre un defecto estructural sin resolver.</li><li>Aerógrafo, pinturas y solventes tienen punto definido.</li><li>Pedacera contenida y sólo en Retoque.</li><li>Iluminación permite comparar color y detalle.</li></ul>
-      <h2>Por cerrar</h2><p>Productos/HDS, ventilación, nombre correcto Valerio/Valentino, competencia por operación, criterios finales y evidencia por estación.</p>
+      <h2>Área de trabajo</h2><p>Se preservan los significados del 391P para <strong>RET-AREA-01..09</strong>. Los controles posteriores quedan como <strong>RET-AREA-10..12</strong>: separar resane/lijado del acabado, pedacera sólo en Retoque y contención de alfileres retirados.</p>
+      <h2>Fuente primaria</h2><p>Entrevista de Rodolfo · 18 AGO 2026: limpieza/cepillado; Salvo + Roma; Suavitel sólo cuando el pelo lo necesita; resanador automotriz, barro o aserrín + Resistol; color de oscuros a claros; gasolina blanca para pelo; Resistol blanco 800 con jeringa para nariz; aceite al cierre de cuernos.</p>
+      <h2>Método preservado</h2><p>Retirar alfileres → limpiar/cepillar → inspeccionar y devolver defecto estructural → resanar → recuperar color → acabar pelo → brillo localizado → textura de nariz cuando aplique → acabado de cuernos → Bases/Revisión.</p>
+      <h2>Separación Retoque / Bases</h2><p>Dextrina 2:1 con Blanco España, malla 8x8 y separación de 3 mm junto a la pata se trasladan a Bases. No se duplican como método de Retoque.</p>
+      <h2>Control de fuente</h2><p>750/1000 lux del 391P quedan en HOLD hasta reconciliar tarea y Assurance. La placa del compresor se captura para evaluar aplicabilidad; no demuestra cumplimiento por sí sola.</p>
+      <h2>Por cerrar</h2><p>Productos/HDS vigentes, ventilación, compresor/sistema de aire, paleta real, nombre Valerio/Valentino, estaciones/competencia, criterios de liberación y estados BIWO.</p>
     `
   },
   {
