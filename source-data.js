@@ -32,6 +32,20 @@ window.ROCA_SOURCE_DOCUMENTS = [
     ]
   },
   {
+    id: "v24-7-precampo-rigor",
+    nav: "v24.7 Pre-Campo Rigor",
+    title: "ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf",
+    subtitle: "Fuente técnica fuerte · Library confirmada · locator web pendiente",
+    sourceKind: "ROCA Library / archivo histórico",
+    privacy: "INTERNAL_OPERATIONAL",
+    status: "LOCATOR_PENDING",
+    pages: null,
+    previewUrl: "",
+    openUrl: "",
+    localPath: "sources/pdfs/ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf",
+    note: "Archivo bruto recuperado en Library y materializado durante el rescate. Falta un locator privado compatible con el HTML desplegado antes de habilitar lectura embebida."
+  },
+  {
     id: "master-canonico-31ago",
     nav: "Master canónico 31 AGO",
     title: "ROCA_TAXIDERMY_MASTER_CANONICO_PENDIENTES_31AGO2026.pdf",
