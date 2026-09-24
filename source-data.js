@@ -78,6 +78,40 @@ window.ROCA_SOURCE_DOCUMENTS = [
     openUrl: "",
     localPath: "sources/pdfs/ROCA_TAXIDERMY_MASTER_PreEntrevistas_26AGO2026.pdf",
     note: "Fuente recuperada físicamente en ROCA Library y materializada para control de integridad. Falta una URL privada estable para servirla dentro del visor; no publicar sus bytes en el repo público."
+  },
+  {
+    id: "v24-8-precampo-control",
+    nav: "v24.8 Pre-Campo",
+    title: "ROCA_TAXIDERMY_v24_8_PreCampo_Control.pdf",
+    subtitle: "v24.8 PRE-CAMPO CONTROL · 198 páginas",
+    sourceKind: "ROCA Library / archivo histórico",
+    privacy: "INTERNAL_OPERATIONAL",
+    status: "SOURCE_RECOVERED_LOCATOR_PENDING",
+    pages: 198,
+    libraryFileId: "libfile_f1fb6fbf08ac8191993e9810bfde8bb5",
+    sourceFileId: "file_00000000c0c081fda8ab236f00ad4018",
+    sizeBytes: 31591373,
+    previewUrl: "",
+    openUrl: "",
+    localPath: "sources/pdfs/ROCA_TAXIDERMY_v24_8_PreCampo_Control.pdf",
+    note: "Fuente nominal v24.8 recuperada. No confundir automáticamente con PreEntrevistas: comparten rótulo interno v24.8, pero tienen distinta paginación y tamaño; requieren diff antes de declararlas duplicadas."
+  },
+  {
+    id: "v24-7-precampo-rigor",
+    nav: "v24.7 Pre-Campo",
+    title: "ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf",
+    subtitle: "v24.7 PRE-CAMPO RIGOR · 194 páginas",
+    sourceKind: "ROCA Library / archivo histórico",
+    privacy: "INTERNAL_OPERATIONAL",
+    status: "SOURCE_RECOVERED_LOCATOR_PENDING",
+    pages: 194,
+    libraryFileId: "libfile_c448d2e524948191b32d73aef05a801e",
+    sourceFileId: "file_0000000079748230a80c37a197ff5d3e",
+    sizeBytes: 26262426,
+    previewUrl: "",
+    openUrl: "",
+    localPath: "sources/pdfs/ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf",
+    note: "Fuente fuerte de metodología y pre-campo recuperada físicamente. Falta URL privada estable para el visor."
   }
 ];
 
