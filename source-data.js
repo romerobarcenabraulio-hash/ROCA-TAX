@@ -8,9 +8,9 @@ window.ROCA_SOURCE_DOCUMENTS = [
     privacy: "INTERNAL_OPERATIONAL",
     status: "AVAILABLE_PRIVATE_LINK",
     pages: 391,
-    driveId: "1TX54ljmSfImxIeSrqmb9mV3VZU1wXPko",
-    previewUrl: "https://drive.google.com/file/d/1TX54ljmSfImxIeSrqmb9mV3VZU1wXPko/preview",
-    openUrl: "https://drive.google.com/file/d/1TX54ljmSfImxIeSrqmb9mV3VZU1wXPko/view",
+    driveId: "1ZbBmnudrO7m7aGCtFGTSXuljy1Sg5AJO",
+    previewUrl: "https://drive.google.com/file/d/1ZbBmnudrO7m7aGCtFGTSXuljy1Sg5AJO/preview",
+    openUrl: "https://drive.google.com/file/d/1ZbBmnudrO7m7aGCtFGTSXuljy1Sg5AJO/view",
     localPath: "sources/pdfs/ROCA_MASTER_WEB.pdf",
     note: "Fuente consolidada que conserva la paginación 391p y referencias históricas 367p. El enlace no cambia permisos de Drive.",
     quickRefs: [
@@ -64,5 +64,6 @@ window.ROCA_SOURCE_DOCUMENTS = [
 window.ROCA_SOURCE_RULES = {
   publicRepo: true,
   restrictedKinds: ["RESTRICTED_PERSONAL", "RESTRICTED_FINANCIAL", "RESTRICTED_LEGAL_WILDLIFE"],
+  sourceFolderUrl: "https://drive.google.com/drive/folders/1vdG8UOTpmq1NEDh5ndzTKfXAuF9aVQjj",
   warning: "ROCA-TAX es un repositorio público. No publicar expedientes de clientes, permisos, CITES, identificaciones ni otros originales restringidos."
 };
