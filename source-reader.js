@@ -92,6 +92,46 @@
     </section>`;
   }
 
+  function versionCompareMarkup(){
+    const labels=[];
+    docs.forEach(doc=>(doc.crossChecks||[]).forEach(item=>{
+      if(item.label && !labels.includes(item.label)) labels.push(item.label);
+    }));
+    if(!labels.length) return '';
+    return `<section class="source-version-compare">
+      <div class="source-version-head">
+        <div><div class="eyebrow">VERSIÓN CONTRA VERSIÓN</div><h2>La misma área en cada fuente</h2></div>
+        <label>Área
+          <select id="sourceCompareArea">${labels.map(label=>`<option value="${escapeHtml(label)}">${escapeHtml(label)}</option>`).join('')}</select>
+        </label>
+      </div>
+      <div id="sourceVersionMatrix"></div>
+    </section>`;
+  }
+
+  function renderVersionMatrix(label){
+    const host=document.getElementById('sourceVersionMatrix');
+    if(!host) return;
+    const rows=docs.map(doc=>{
+      const item=(doc.crossChecks||[]).find(x=>x.label===label);
+      if(!item) return '';
+      const availability=doc.previewUrl || (doc.localAvailable && doc.localPath) ? 'VISOR' :
+        doc.status==='SOURCE_RECOVERED_LOCATOR_PENDING' ? 'RECUPERADO · LOCATOR PENDIENTE' : (doc.status||'PENDIENTE');
+      return `<div class="source-version-row">
+        <div><strong>${escapeHtml(doc.nav || doc.title)}</strong><span>${escapeHtml(availability)}</span></div>
+        <div class="source-version-page">p. ${escapeHtml(item.sourcePage)}</div>
+        <p>${escapeHtml(item.focus || '')}</p>
+        <button type="button" class="source-open-version" data-source-id="${escapeHtml(doc.id)}" data-page="${escapeHtml(item.sourcePage)}">ABRIR</button>
+      </div>`;
+    }).join('');
+    host.innerHTML=rows || '<p class="source-note">Sin cruces registrados para esta área.</p>';
+    host.querySelectorAll('.source-open-version').forEach(btn=>btn.addEventListener('click',()=>{
+      renderSource(btn.dataset.sourceId,Number(btn.dataset.page)||null);
+      const select=document.getElementById('sourceCompareArea');
+      if(select) select.value=label;
+    }));
+  }
+
   function unavailableMarkup(doc){
     return `<div class="source-empty">
       <div class="eyebrow">LOCATOR PENDIENTE</div>
@@ -149,6 +189,7 @@
       </div>
       ${refsMarkup(activeDoc)}
       ${crossChecksMarkup(activeDoc)}
+      ${versionCompareMarkup()}
       <div class="source-note">${escapeHtml(activeDoc.note || '')}${activeDoc.localAvailable ? '' : ' · En Drive, usa los controles del visor para ir a una página exacta; el salto rápido se activará al servir una copia local controlada.'}</div>
       <div class="source-viewer-shell">${frame}</div>
       <div class="source-privacy-note">${escapeHtml(rules.warning || '')}</div>
@@ -183,6 +224,14 @@
         if(target) target.click();
       },0);
     });
+
+    const compare=document.getElementById('sourceCompareArea');
+    if(compare){
+      const first=(activeDoc.crossChecks && activeDoc.crossChecks[0] && activeDoc.crossChecks[0].label) || compare.value;
+      if(first) compare.value=first;
+      renderVersionMatrix(compare.value);
+      compare.addEventListener('change',()=>renderVersionMatrix(compare.value));
+    }
 
     const go=document.getElementById('sourceGoPage');
     if(go) go.addEventListener('click',()=>{
