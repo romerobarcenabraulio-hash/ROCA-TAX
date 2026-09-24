@@ -33,9 +33,9 @@ No usar una “estación tipo” como sustituto. Cuando se confirme responsable/
 **Estado:** HOLD_PENDING_EVIDENCE — responsable y estación vigente deben cerrarse en campo.
 
 ### Evidencia dirigida
-- **REC-EVID-01:** vista 3/4 del punto de ingreso completo: superficie de inspección, acceso y zona inmediata de espera.
-- **REC-EVID-02:** secuencia de identificación mostrando medio físico junto a la pieza y registro/pantalla sanitizada con el mismo ID.
-- **REC-EVID-03:** cierre del área: superficie limpia, documentos resguardados y pieza transferida o en espera identificada.
+- **EVID-REC-01 · Toma 01:** vista 3/4 del punto de ingreso completo: superficie de inspección, acceso y zona inmediata de espera.
+- **EVID-REC-02:** secuencia de identificación mostrando medio físico junto a la pieza y registro/pantalla sanitizada con el mismo ID.
+- **EVID-REC-03:** cierre del área: superficie limpia, documentos resguardados y pieza transferida o en espera identificada.
 
 Las fotografías prueban condición visible; no prueban vigencia legal del permiso ni corrección del flujo BIWO.
 
