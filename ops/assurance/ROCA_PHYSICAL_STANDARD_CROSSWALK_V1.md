@@ -254,3 +254,18 @@ Current local applicability candidate:
 Do not insert numerical discharge limits into workshop pages. Keep technical limits, sampling and authority correspondence in Assurance.
 
 Primary sources: Periódico Oficial del Estado de San Luis Potosí (15 Sep 2026 publication); current federal DOF/NOM-002-SEMARNAT-1996.
+
+
+## PHYS-SUPPORT-01 · Worker service spaces
+
+Worker-facing standard:
+- potable water is available to workers through a clean, usable provision point;
+- sanitary services and wash basins remain clean, safe, usable, ventilated/illuminated as appropriate and are not used as technical storage;
+- a hygienic place for consuming food is physically separated from chemicals, process pieces, technical waste and production contamination;
+- showers/changing areas are provided when the actual activity or worker decontamination requires them; do not invent a universal count without the center-of-work facts;
+- privacy is preserved; evidence photos avoid occupied/private conditions.
+
+Primary basis:
+- NOM-001-STPS-2008 (safe worker service areas; showers/changing spaces when required by activity/decontamination).
+- Reglamento Federal de Seguridad y Salud en el Trabajo, Art. 18 (potable water, sanitary services, food-consumption place, showers/changing areas when appropriate).
+
