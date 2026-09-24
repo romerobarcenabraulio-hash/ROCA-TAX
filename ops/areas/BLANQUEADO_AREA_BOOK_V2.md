@@ -31,10 +31,10 @@ La fuente histórica definía una estación para “responsable operativo — po
 - herramienta de limpieza resguardada.
 
 ### Evidencia dirigida
-- **BLA-EVID-01:** panorámica del puesto con recipiente, fuente de calor, ventilación y circulación.
-- **BLA-EVID-02:** tratamiento real mostrando soporte y cuernos físicamente fuera de la zona térmica cuando corresponda.
-- **BLA-EVID-03:** cierre: pieza identificada/escurrida, herramienta guardada, piso seco y residuo/material retirado separado.
-- **BLA-EVID-04:** drenaje/ruta real del agua de proceso.
+- **EVID-BLA-01 · Panorámica:** panorámica del puesto con recipiente, fuente de calor, ventilación y circulación.
+- **EVID-BLA-01 · Operación real:** tratamiento real mostrando soporte y cuernos físicamente fuera de la zona térmica cuando corresponda.
+- **EVID-BLA-02 · Cierre:** cierre: pieza identificada/escurrida, herramienta guardada, piso seco y residuo/material retirado separado.
+- **EVID-BLA-02 · Drenaje/ruta:** drenaje/ruta real del agua de proceso.
 
 ## 2. Metodología preservada
 La fuente fuerte confirma tratamiento con agua caliente sobre el cráneo manteniendo cuernos fuera de la zona que pueda alterar color/superficie.
