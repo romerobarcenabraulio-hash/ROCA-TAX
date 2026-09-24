@@ -15,7 +15,8 @@ EVID-RET-03,AREA-RET,NOT_VERIFIED,,,,,,,Compresor/placa regulador mangueras/cone
 EVID-BAS-01,AREA-BAS,NOT_VERIFIED,,,,,,,Condición observable de soporte/estabilidad,,,,,,NOT_REVIEWED
 EVID-BAS-02,AREA-BAS,NOT_VERIFIED,,,,,,,Estación materiales herramienta y punto de poliuretano/adhesivo,,,,,,NOT_REVIEWED
 EVID-BAS-03,AREA-BAS,NOT_VERIFIED,,,,,,,Método real de maniobra de pieza/base pesada cuando aplique,,,,,,NOT_REVIEWED
-EVID-CAR-01,AREA-CAR,NOT_IMPLEMENTED,,,,,,,Existencia y separación del puesto si aplica,,,,,,NOT_REVIEWED
+EVID-CAR-01,AREA-CAR,NOT_IMPLEMENTED,,,,,,,Existencia ubicación límites banco/rack/equipo/ruta si se implementa,,,,,,NOT_REVIEWED
+EVID-CAR-02,AREA-CAR,NOT_IMPLEMENTED,,,,,,,Primera orden real demostrada con secuencia equipo materiales criterio de salida y carga,,,,,,NOT_REVIEWED
 EVID-SOL-01,AREA-SOL,NOT_VERIFIED,,,,,,,Condición física del trabajo en caliente/equipo real,,,,,,NOT_REVIEWED
 EVID-BLA-01,AREA-BLA,NOT_VERIFIED,,,,,,,Montaje real de tratamiento térmico,,,,,,NOT_REVIEWED
 EVID-SUP-01,AREA-SUP,NOT_VERIFIED,,,,,,,Condición física y segregación de soportes,,,,,,NOT_REVIEWED
