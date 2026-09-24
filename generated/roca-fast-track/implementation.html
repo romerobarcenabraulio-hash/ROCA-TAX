@@ -31,7 +31,19 @@
     <a href="audit.html">IR A AUDITAR</a>
   </div>
   <div class="tools">
-    <div class="tool">
+    
+<div class="tool">
+  <h2>Riesgo de incendio · pre-chequeo</h2>
+  <label>Superficie construida (m²)</label><input id="riskArea" type="number" min="0" step="0.01">
+  <label>Gases inflamables · inventario máximo anual (L)</label><input id="riskGas" type="number" min="0" step="0.1">
+  <label>Líquidos inflamables · inventario máximo anual (L)</label><input id="riskInflam" type="number" min="0" step="0.1">
+  <label>Líquidos combustibles · inventario máximo anual (L)</label><input id="riskComb" type="number" min="0" step="0.1">
+  <label>Sólidos combustibles incluido mobiliario (kg)</label><input id="riskSolid" type="number" min="0" step="0.1">
+  <label>¿Existe cualquier cantidad de material pirofórico o explosivo?</label><select id="riskPyro"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+  <div id="riskResult" class="result">Captura inventarios máximos reales; no uses existencia de un solo día si no representa el máximo anual.</div>
+  <small>Umbrales de alto riesgo: superficie ≥3000 m²; gases inflamables ≥3000 L; líquidos inflamables ≥1400 L; líquidos combustibles ≥2000 L; sólidos combustibles ≥15000 kg; cualquier cantidad pirofórica/explosiva. Si todo queda debajo, aún falta completar el cálculo oficial combinado antes de declarar “ordinario”.</small>
+</div>
+<div class="tool">
       <h2>Extintores · mínimo por superficie</h2>
       <label>Superficie a proteger (m²)</label><input id="fireArea" type="number" min="0" step="0.01" value="800">
       <label>Riesgo de incendio</label><select id="fireRisk"><option value="300">Ordinario · 1 / 300 m² o fracción</option><option value="200">Alto · 1 / 200 m² o fracción</option></select>
@@ -1200,6 +1212,9 @@
 <td><span class="blank">POR CALCULAR / MEDIR</span></td>
 <td>NOT_CHECKED</td>
 </tr></tbody></table></div></main><script>let area="ALL";function apply(){document.querySelectorAll("tbody tr").forEach(r=>r.hidden=area!=="ALL"&&r.dataset.area!==area)}document.querySelectorAll("[data-area]").forEach(b=>b.onclick=()=>{area=b.dataset.area;document.querySelectorAll("[data-area]").forEach(x=>x.classList.toggle("active",x===b));apply();});
+
+function calcRisk(){const a=Number(document.getElementById("riskArea").value||0),g=Number(document.getElementById("riskGas").value||0),i=Number(document.getElementById("riskInflam").value||0),c=Number(document.getElementById("riskComb").value||0),s=Number(document.getElementById("riskSolid").value||0),p=document.getElementById("riskPyro").value;const hit=[];if(a>=3000)hit.push("superficie");if(g>=3000)hit.push("gases inflamables");if(i>=1400)hit.push("líquidos inflamables");if(c>=2000)hit.push("líquidos combustibles");if(s>=15000)hit.push("sólidos combustibles");if(p==="yes")hit.push("pirofóricos/explosivos");document.getElementById("riskResult").innerHTML=hit.length?"<b>RIESGO ALTO DISPARADO</b> por: "+hit.join(", ")+". Pasar a requisitos de alto riesgo y documentar clasificación.":"No se activó un umbral individual. <b>NO declarar ordinario todavía:</b> completar el cálculo oficial combinado y conservar inventarios máximos."}
+["riskArea","riskGas","riskInflam","riskComb","riskSolid","riskPyro"].forEach(id=>document.getElementById(id).addEventListener("input",calcRisk));
 function calcFire(){const a=Number(document.getElementById("fireArea").value||0),d=Number(document.getElementById("fireRisk").value);document.getElementById("fireResult").innerHTML=a>0?"Mínimo por superficie: <b>"+Math.ceil(a/d)+" extintor(es)</b>. Falta validar recorrido, clase y distribución.":"Captura superficie."}
 function calcTravel(){const lim=Number(document.getElementById("travelLimit").value),a=Number(document.getElementById("travelActual").value||0);document.getElementById("travelResult").innerHTML=!a?"Mide el recorrido real, no la distancia en línea recta.":a<=lim?"Recorrido dentro del límite de referencia: <b>"+a+" m ≤ "+lim+" m</b>.":"<b>REUBICAR / AÑADIR COBERTURA:</b> "+a+" m > "+lim+" m."}
 function calcEgress(){const d=Number(document.getElementById("egressDistance").value||0),t=Number(document.getElementById("egressTime").value||0);let s="";if(!d)s="Captura distancia real.";else if(d<=40)s="Recorrido capturado: <b>"+d+" m</b>. Revisar además continuidad, señalización, puerta y obstrucciones.";else s="<b>Recorrido mayor de 40 m.</b> Documentar que el recorrido a lugar seguro se realiza en ≤ 3 min.";if(d>40&&t)s+=" Tiempo medido: <b>"+t+" min</b> → "+(t<=3?"dentro":"fuera")+" de la referencia.";document.getElementById("egressResult").innerHTML=s}
