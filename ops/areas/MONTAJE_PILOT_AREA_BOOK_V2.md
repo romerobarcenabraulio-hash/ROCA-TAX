@@ -78,6 +78,8 @@ Forma, ojos, cuernos/astas, barro, adhesivo, Bondo, fibra de vidrio, catalizador
 
 # 1. Área de trabajo
 
+Hereda REQ-COM-01..16. Los controles siguientes conservan la resolución específica de Montaje y no sustituyen el estándar común.
+
 ## MON-AREA-01 · Circulación y acceso
 
 Pasillos, salida, tableros, extintores y puntos de operación quedan libres durante la jornada. Piezas, cajas, cables, mangueras y herramienta temporal no ocupan circulación.
