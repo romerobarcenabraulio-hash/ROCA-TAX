@@ -282,11 +282,51 @@
     renderSource(sourceId,sourcePage);
   });
 
+  function sourceBacklinksFor(targetSection){
+    const items=[];
+    docs.forEach(doc=>{
+      const hit=(doc.crossChecks||[]).find(x=>x.targetSection===targetSection);
+      if(hit) items.push({doc,item:hit});
+    });
+    return items;
+  }
+
+  function injectSourceBacklinks(){
+    if(!document.body.classList.contains('compendium-mode')) return;
+    const target=location.hash.slice(1);
+    if(!target || !target.startsWith('area-')) return;
+    const host=page.querySelector('.master-content');
+    if(!host || host.querySelector('.source-backlinks')) return;
+    const items=sourceBacklinksFor(target);
+    if(!items.length) return;
+
+    const fine=(window.ROCA_SOURCE_CROSSCHECK && window.ROCA_SOURCE_CROSSCHECK[target]) || [];
+    const fineMarkup=fine.length ? `<div class="source-backlink-fine">${fine.map(x=>
+      `<button type="button" class="source-backlink-page" data-source-id="${escapeHtml(x.sourceId)}" data-page="${escapeHtml(x.page)}">${escapeHtml(x.label)} · p.${escapeHtml(x.page)}</button>`
+    ).join('')}</div>` : '';
+
+    const block=document.createElement('section');
+    block.className='source-backlinks';
+    block.innerHTML=`<div class="source-backlinks-head"><div><div class="eyebrow">CROSS-CHECK</div><strong>Fuentes históricas de esta área</strong></div><button type="button" class="source-open-workspace">ABRIR FUENTES</button></div>
+      <div class="source-backlink-list">${items.map(({doc,item})=>
+        `<button type="button" class="source-backlink-doc" data-source-id="${escapeHtml(doc.id)}" data-page="${escapeHtml(item.sourcePage)}"><strong>${escapeHtml(doc.nav||doc.title)}</strong><span>p. ${escapeHtml(item.sourcePage)} · ${escapeHtml(doc.status||'')}</span></button>`
+      ).join('')}</div>
+      ${fineMarkup}`;
+    host.insertBefore(block,host.firstChild);
+
+    block.querySelector('.source-open-workspace')?.addEventListener('click',showSources);
+    block.querySelectorAll('.source-backlink-doc,.source-backlink-page').forEach(btn=>btn.addEventListener('click',()=>{
+      renderSource(btn.dataset.sourceId,Number(btn.dataset.page)||null);
+    }));
+  }
+
   function showSources(){
     renderSource(activeDoc && activeDoc.id);
   }
 
   sourceMode.addEventListener('click',showSources);
+  if(compendiumMode) compendiumMode.addEventListener('click',()=>setTimeout(injectSourceBacklinks,0));
+  window.addEventListener('hashchange',()=>setTimeout(injectSourceBacklinks,0));
 
   [finalMode,compendiumMode,fieldMode,notesMode].forEach(btn=>{
     if(btn) btn.addEventListener('click',clearSourceState);
@@ -306,6 +346,9 @@
   window.ROCA_SOURCE_READER = {
     open(sourceId,pageNumber){
       renderSource(sourceId,pageNumber);
+    },
+    refreshBacklinks(){
+      injectSourceBacklinks();
     }
   };
 })();
