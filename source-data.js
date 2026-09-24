@@ -100,21 +100,23 @@ window.ROCA_SOURCE_DOCS = [
         sectionId: "area-retoque",
         label: "Retoque",
         areaId: "AREA-RET",
-        controlIds: ["REQ-COM-01..15","RET-AREA-01..06"],
-        evidenceIds: ["EVID-RET-01","EVID-RET-02"],
+        controlIds: ["REQ-COM-01..15","RET-AREA-01..12"],
+        sourceControlIds: ["RET-AREA-01..09"],
+        evidenceIds: ["EVID-RET-01","EVID-RET-02","EVID-RET-03"],
         action: "MERGE_WITHOUT_LOSS",
         page: 159,
         pageEnd: 182,
         locator: "PDF físico pp. 159-182 · módulo RET",
-        proof: "Módulo RET comienza en p. 159 y termina con verificación de metodología en p. 182; p. 183 ya es portada BAS.",
+        proof: "Módulo RET comienza en p. 159 y termina con verificación de metodología en p. 182; entrevista primaria de Rodolfo localizada en p. 380; p. 183 ya es portada BAS.",
         subLocators: [
           { id:"RET-GOV", label:"Gobernanza local", page:161, pageEnd:161, action:"CORRECT" },
-          { id:"RET-AREA", label:"Área de trabajo y estación", page:162, pageEnd:164, action:"MERGE_WITHOUT_LOSS", controlIds:["RET-AREA-01..06"] },
-          { id:"EVID-RET", label:"Evidencia fotográfica", page:165, pageEnd:165, action:"MERGE_WITHOUT_LOSS", evidenceIds:["EVID-RET-01","EVID-RET-02"] },
+          { id:"RET-AREA", label:"Área de trabajo y estación", page:162, pageEnd:164, action:"MERGE_WITHOUT_LOSS", controlIds:["RET-AREA-01..12"], sourceControlIds:["RET-AREA-01..09"] },
+          { id:"EVID-RET", label:"Evidencia fotográfica", page:165, pageEnd:165, action:"MERGE_WITHOUT_LOSS", evidenceIds:["EVID-RET-01","EVID-RET-02","EVID-RET-03"] },
           { id:"RET-VERIFY-AREA", label:"Verificación del área", page:166, pageEnd:168, action:"PRESERVE" },
-          { id:"RET-METHOD", label:"Metodología", page:169, pageEnd:181, action:"MERGE_WITHOUT_LOSS" },
-          { id:"RET-TOOLS", label:"Herramientas, equipo y consumibles", page:176, pageEnd:181, action:"PRESERVE" },
-          { id:"RET-VERIFY-METHOD", label:"Verificación de metodología", page:182, pageEnd:182, action:"PRESERVE" }
+          { id:"RET-METHOD", label:"Metodología histórica Retoque + Bases", page:169, pageEnd:181, action:"MERGE_WITHOUT_LOSS" },
+          { id:"RET-TOOLS", label:"Herramientas, equipo y consumibles", page:176, pageEnd:181, action:"CORRECT" },
+          { id:"RET-VERIFY-METHOD", label:"Verificación de metodología", page:182, pageEnd:182, action:"PRESERVE" },
+          { id:"RET-INTERVIEW-RODOLFO", label:"Entrevista primaria · Rodolfo", page:380, pageEnd:380, action:"MERGE_WITHOUT_LOSS" }
         ]
       },
       {
