@@ -35,8 +35,9 @@ window.ROCA_SOURCE_DOCS = [
         sectionId: "area-curtiduria",
         label: "Curtiduría",
         areaId: "AREA-CUR",
-        controlIds: ["REQ-COM-01..15","CUR-AREA-01..09"],
-        evidenceIds: ["EVID-CUR-01","EVID-CUR-02","EVID-CUR-03"],
+        controlIds: ["REQ-COM-01..15","CUR-AREA-01..07"],
+        sourceControlIds: ["CUR-AREA-01..09"],
+        evidenceIds: ["EVID-CUR-01","EVID-CUR-02","EVID-CUR-03","EVID-CUR-04"],
         action: "MERGE_WITHOUT_LOSS",
         page: 48,
         pageEnd: 85,
@@ -44,8 +45,8 @@ window.ROCA_SOURCE_DOCS = [
         proof: "Módulo CUR comienza en p. 48; verificación de metodología termina en p. 85; p. 86 ya es portada FMR.",
         subLocators: [
           { id:"CUR-GOV", label:"Gobernanza local", page:50, pageEnd:50, action:"CORRECT" },
-          { id:"CUR-AREA", label:"Área de trabajo y estaciones", page:51, pageEnd:54, action:"MERGE_WITHOUT_LOSS", controlIds:["CUR-AREA-01..09"] },
-          { id:"EVID-CUR", label:"Evidencia fotográfica", page:55, pageEnd:55, action:"MERGE_WITHOUT_LOSS", evidenceIds:["EVID-CUR-01","EVID-CUR-02","EVID-CUR-03"] },
+          { id:"CUR-AREA", label:"Área de trabajo y estaciones", page:51, pageEnd:54, action:"MERGE_WITHOUT_LOSS", controlIds:["CUR-AREA-01..07"], sourceControlIds:["CUR-AREA-01..09"] },
+          { id:"EVID-CUR", label:"Evidencia / mediciones", page:55, pageEnd:55, action:"MERGE_WITHOUT_LOSS", evidenceIds:["EVID-CUR-01","EVID-CUR-02","EVID-CUR-03","EVID-CUR-04"] },
           { id:"CUR-VERIFY-AREA", label:"Verificación del área", page:56, pageEnd:59, action:"PRESERVE" },
           { id:"CUR-METHOD", label:"Metodología y receta", page:60, pageEnd:83, action:"MERGE_WITHOUT_LOSS" },
           { id:"CUR-TOOLS", label:"Herramientas, equipo y consumibles", page:79, pageEnd:83, action:"PRESERVE" },
@@ -361,7 +362,7 @@ window.ROCA_SOURCE_LEDGER = [
     subject: "Medición de pH y estado del instrumento",
     action: "MERGE_WITHOUT_LOSS",
     canonicalHome: "AREA-CUR / activos-medición + metodología",
-    destinationState: "El V2 actual no expone pH en el libro de área; el control debe recuperarse sin sustituir la receta técnica.",
+    destinationState: "RECOVERED IN BRANCH: Curtiduría V2 conserva los dos puntos de pH, estado del instrumento/método, EVID-CUR-04 y captura en CAMPO; sigue NOT_VERIFIED hasta evidencia real.",
     summary: "v24.7, v24.8 y PreEntrevistas ya conservan pH 3.6–3.8 al inicio del día 2 y referencia final 4.2–4.3. El 31AGO añade CUR-AREA-09: báscula y medición de pH con estado conocido. Esa capa explícita no debe perderse.",
     sources: [
       { docId:"precampo-v24-7", locator:"Curtiduría > ALUM-Tan / pH", fact:"pH 3.6–3.8 y 4.2–4.3 en puntos distintos del proceso" },
@@ -369,7 +370,7 @@ window.ROCA_SOURCE_LEDGER = [
       { docId:"pre-entrevistas-26ago", locator:"Curtiduría > ALUM-Tan / pH", fact:"Conserva ambas referencias de pH" },
       { docId:"canonico-pendientes-31ago", locator:"CUR-AREA-09 · Maquinaria crítica", fact:"Báscula y medición de pH tienen estado conocido" }
     ],
-    proof: "La capa de medición aparece de forma consistente en fuentes históricas y se hace explícita como control físico en 31AGO."
+    proof: "La capa de medición aparece de forma consistente en fuentes históricas y se hace explícita como control físico en 31AGO. Recuperada en CURTIDURIA_AREA_BOOK_V2.md + AST-CUR-005 + EVID-CUR-04 + CAMPO/Ola 5."
   },
   {
     id: "LEDGER-FMR-RATIO",
