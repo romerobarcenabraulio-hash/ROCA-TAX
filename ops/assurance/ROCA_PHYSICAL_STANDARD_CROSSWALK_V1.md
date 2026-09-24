@@ -181,3 +181,59 @@ Worker-facing standard when the machinery-storage trigger applies:
 Primary basis:
 - NOM-006-STPS-2023, current from 2024-09-03 for workplaces within its machinery-handling scope.
 - NOM-001-STPS-2008 / NOM-002-STPS-2010 / NOM-026-STPS-2008 as applicable for premises, emergency access and signs.
+
+
+## PHYS-MACHINE-01 · Machinery guards / emergency stop
+
+Worker-facing standard:
+- a machine with an accessible hazardous point or transmission has an effective guard/device; the guard is fixed/resistant, allows the needed work and does not create a new hazard;
+- unauthorized access to the danger zone is prevented;
+- start controls are protected against accidental operation;
+- emergency-stop/safety devices are accessible and operable where the machine requires them;
+- damaged/missing guard or failed safety device means FUERA DE SERVICIO until corrected;
+- maintenance that requires hazardous-energy isolation follows a controlled energy-blocking method and leaves a maintenance record.
+
+Primary basis: NOM-004-STPS-1999.
+
+## PHYS-ELECTRICAL-01 · Electrical installations / maintenance
+
+Worker-facing standard:
+- panels, disconnects and electrical access points remain identifiable and unobstructed;
+- cables, plugs, extensions and chargers are not left damaged, exposed to water/process splash or improvised in circulation;
+- maintenance on electrical installations is performed by trained personnel under the applicable safety procedure;
+- electrical-maintenance tools/protective equipment are inspected and maintained;
+- work records identify responsible person, work performed, result and date.
+
+Primary basis: NOM-029-STPS-2011 for electrical-maintenance activities. Normal electrical-installation design/utilization requirements remain in the applicable electrical code layer; do not use NOM-029 as a substitute for design.
+
+## PHYS-NOISE-01 · Noise
+
+Worker-facing standard:
+- noisy equipment/stations are identified by real operation, not by assumption;
+- where recognition indicates relevant exposure, measurement/evaluation is performed under normal operation;
+- controls are selected from measured exposure; hearing protection is not used as a substitute for a needed engineering/control decision.
+
+Implementation trigger:
+NOM-011 recognition specifically identifies areas at or above 80 dB(A) for octave-band/exposure evaluation steps. Do not label an area solely from a phone app or subjective loudness.
+
+Primary basis: NOM-011-STPS-2001.
+
+## PHYS-MANUALLOAD-01 · Manual handling
+
+Worker-facing standard:
+- heavy/bulky pieces have a defined route and enough maneuvering space;
+- the task defines whether one person, team assistance or mechanical aid is used before lifting/moving;
+- storage height/position avoids unnecessary high/reach/twist handling when reasonably controllable;
+- the worker does not improvise a lift when weight, geometry, stability or route exceeds the planned method.
+
+Primary basis: NOM-036-1-STPS-2018 where manual-load handling risk is present.
+
+## PHYS-PRESSURE-01 · Compressor / pressure equipment
+
+Worker-facing standard:
+- compressor/receiver and other pressure equipment have identifiable make/model/plate and are accessible for inspection/service;
+- hoses, regulators, drains, safety devices and connections are in usable condition;
+- equipment is not categorized under NOM-020 by appearance: capture plate/design/operating data first and determine scope/category in Assurance;
+- failed/leaking/damaged pressure equipment is removed from normal service until corrected.
+
+Primary basis: NOM-020-STPS-2011, conditional on actual pressure-equipment data and scope.
