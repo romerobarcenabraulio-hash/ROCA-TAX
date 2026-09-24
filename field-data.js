@@ -107,9 +107,16 @@ window.ROCA_FIELD_SECTIONS = [
         <li>Rutas, espacios o accesos cuando una dimensión cambie una decisión.</li>
         <li>Otras mediciones sólo si tienen criterio de aceptación definido.</li>
       </ul>
+      <h2>Curtiduría · peso y pH</h2>
+      <ul>
+        <li>Peso real de la carga y valor capturado en ALUM-Tan deben corresponder a la misma carga.</li>
+        <li>Registrar pH de inicio de día 2 y pH final en su punto real del proceso; no intercambiar referencias.</li>
+        <li>Antes de usar una lectura como evidencia, identificar instrumento o método de medición y dejar su estado conocido.</li>
+        <li>Si hoy no existe instrumento/método identificable o su estado no puede demostrarse, registrar NOT_VERIFIED; no inventar una lectura.</li>
+      </ul>
       <h2>Registro mínimo</h2>
-      <p>Área · estación/punto · tarea · valor · unidad · fecha · instrumento · foto contextual · criterio asociado.</p>
-      <h2>Evidence IDs</h2><p>EVID-CUR-03 · EVID-RET-02 y cualquier medición asociada a un REQ específico.</p>
+      <p>Área · estación/punto · tarea/etapa · valor · unidad · fecha · instrumento/método · ID/estado · foto o registro contextual · criterio asociado.</p>
+      <h2>Evidence IDs</h2><p>EVID-CUR-03 · EVID-CUR-04 · EVID-RET-02 y cualquier medición asociada a un REQ específico.</p>
     `
   },
   {
