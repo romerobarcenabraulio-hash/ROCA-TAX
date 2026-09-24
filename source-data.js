@@ -75,7 +75,7 @@ window.ROCA_SOURCE_DOCUMENTS = [
     previewUrl: "",
     openUrl: "",
     localPath: "sources/pdfs/ROCA_TAXIDERMY_MASTER_PreEntrevistas_26AGO2026.pdf",
-    note: "Fuente recuperada físicamente en ROCA Library y materializada para control de integridad. Falta una URL privada estable para servirla dentro del visor; no publicar sus bytes en el repo público."
+    note: "Actualización aditiva sobre v24.8: comparación textual normalizada confirma 5,006 líneas base preservadas + 279 líneas insertadas en cuatro bloques, con 0 reemplazos y 0 eliminaciones. Añade personal nuevo, arquitectura de documento único, piloto de descarnado con agua a presión y siguiente ciclo. Falta URL privada estable para servirla dentro del visor."
   },
   {
     id: "v24-8-precampo-control",
