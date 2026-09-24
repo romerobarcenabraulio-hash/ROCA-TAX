@@ -105,3 +105,44 @@ Primary basis: NOM-027-STPS-2008 plus NOM-002-STPS-2010.
 ## Closure semantics
 
 These translations are design standards, not evidence of compliance. Field status remains NOT_CHECKED until the exact condition is evidenced and independently reviewed where required.
+
+
+## PHYS-VENT-01 · Ventilation / local extraction
+
+Worker-facing standard:
+- the control is selected from the real process, real chemical/product and actual exposure potential;
+- if the HDS or exposure assessment calls for local exhaust, capture is placed at/near the generation point instead of relying only on general room ventilation;
+- artificial ventilation stays operable and is included in inspection/maintenance;
+- discharge does not simply move contamination to another occupied work area.
+
+Implementation logic:
+1. identify process and product;
+2. read current HDS exposure-control section;
+3. determine whether airborne contaminant/exposure evaluation is needed;
+4. select source capture / enclosure / other technical control when justified;
+5. verify operation and maintain the installed system.
+
+Primary basis:
+- NOM-010-STPS-2014 for occupational airborne chemical exposure evaluation/control.
+- NOM-018-STPS-2015 for HDS control recommendations, including local exhaust when applicable.
+- NOM-005-STPS-1998 for hazardous chemical handling/storage conditions and artificial-ventilation maintenance where applicable.
+
+## PHYS-WASTE-01 · Waste / recoverables
+
+Worker-facing standard:
+- useful/recoverable material is not mixed with waste by convenience;
+- each waste stream is identified from the actual material/process, not from appearance or bin colour;
+- hazardous-waste determination follows the applicable identification/classification procedure before assigning a hazardous-waste label;
+- containers and temporary locations prevent mixing, leakage, obstruction and loss of traceability;
+- destination/removal evidence is kept when the applicable control requires it.
+
+Implementation logic:
+1. identify the process that generated the material;
+2. identify product/material and its condition after use;
+3. determine whether it is useful, recoverable, ordinary waste, special-management candidate or hazardous-waste candidate;
+4. apply the corresponding controlled route and evidence.
+
+Primary basis:
+- NOM-052-SEMARNAT-2005 for hazardous-waste identification/classification.
+- Current LGPGIR / regulation / applicable state or municipal route for the actual waste category.
+
