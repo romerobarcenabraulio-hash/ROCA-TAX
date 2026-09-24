@@ -138,3 +138,5 @@ footer{display:none}
 @media print{
   .source-mode .source-reader{display:none!important}
 }
+
+.source-actions .pdf-link.secondary{background:transparent;color:var(--navy);border:1px solid var(--navy)}
