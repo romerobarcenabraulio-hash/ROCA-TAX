@@ -28,11 +28,11 @@ Específicos:
 Las fuentes 391p muestran estaciones históricas de Sr. Pes, Emiliano y Valerio. No se reutilizan como roster vigente. Se conservan únicamente como evidencia de cómo se estructuró el área y de las condiciones físicas que deben verificarse cuando exista una asignación real.
 
 ### Evidencia dirigida
-- **BAS-EVID-01:** frente de armado completo con plancha/base, apoyos, herramienta y espacio de maniobra.
-- **BAS-EVID-02:** almacenamiento de triplay/malla/material pesado y herramienta de corte/protección aplicable.
-- **BAS-EVID-03:** punto real de mezcla de PU/adhesivo cuando exista, con componentes identificados y contención.
-- **BAS-EVID-04:** base terminada o en espera mostrando estabilidad observable, ID y zona libre de recortes.
-- **BAS-EVID-05:** ruta de movimiento/salida de la pieza.
+- **EVID-BAS-01 · Toma contextual:** frente de armado completo con plancha/base, apoyos, herramienta y espacio de maniobra.
+- **EVID-BAS-02 · Corte/almacenamiento:** almacenamiento de triplay/malla/material pesado y herramienta de corte/protección aplicable.
+- **EVID-BAS-02 · Punto PU/adhesivo:** punto real de mezcla de PU/adhesivo cuando exista, con componentes identificados y contención.
+- **EVID-BAS-01 · Condición de base:** base terminada o en espera mostrando estabilidad observable, ID y zona libre de recortes.
+- **EVID-BAS-03:** ruta de movimiento/salida de la pieza.
 
 ## 2. Metodología preservada
 Definir referencia/medir → cortar plancha → definir apoyos/bancos → presentar/fijar pieza → construir volumen/terreno con sistema aplicable → terminar ambientación → revisar estabilidad → transferir.
