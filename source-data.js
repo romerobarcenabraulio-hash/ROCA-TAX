@@ -78,7 +78,8 @@ window.ROCA_SOURCE_DOCS = [
         sectionId: "area-montaje",
         label: "Montaje",
         areaId: "AREA-MON",
-        controlIds: ["REQ-COM-01..15","MON-AREA-01..10"],
+        controlIds: ["REQ-COM-01..15","MON-AREA-01..13"],
+        sourceControlIds: ["MON-AREA-01..10"],
         evidenceIds: ["EVID-MON-01","EVID-MON-02"],
         action: "MERGE_WITHOUT_LOSS",
         page: 129,
@@ -87,7 +88,7 @@ window.ROCA_SOURCE_DOCS = [
         proof: "Módulo MON comienza en p. 129 y termina con verificación de metodología en p. 158; p. 159 ya es portada RET.",
         subLocators: [
           { id:"MON-GOV", label:"Gobernanza local", page:131, pageEnd:131, action:"CORRECT" },
-          { id:"MON-AREA", label:"Área de trabajo y estaciones", page:132, pageEnd:139, action:"MERGE_WITHOUT_LOSS", controlIds:["MON-AREA-01..10"] },
+          { id:"MON-AREA", label:"Área de trabajo y estaciones", page:132, pageEnd:139, action:"MERGE_WITHOUT_LOSS", controlIds:["MON-AREA-01..13"], sourceControlIds:["MON-AREA-01..10"] },
           { id:"EVID-MON", label:"Evidencia fotográfica", page:140, pageEnd:140, action:"MERGE_WITHOUT_LOSS", evidenceIds:["EVID-MON-01","EVID-MON-02"] },
           { id:"MON-VERIFY-AREA", label:"Verificación del área", page:141, pageEnd:143, action:"PRESERVE" },
           { id:"MON-METHOD", label:"Metodología", page:144, pageEnd:156, action:"MERGE_WITHOUT_LOSS" },

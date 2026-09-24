@@ -68,9 +68,11 @@ window.ROCA_WORKSHOP_SECTIONS = [
     id:"area-montaje", nav:"Área · Montaje", title:"Montaje", eyebrow:"Libro de área · integración de la pieza",
     lead:"Integrar piel, forma y componentes hasta obtener una pieza seca, estable y lista para Retoque.",
     body:`
+      <h2>Área de trabajo</h2><p>Se preservan los significados del 391P para <strong>MON-AREA-01..10</strong>: circulación, estación/almacenamiento, iluminación, ventilación, emergencia, identidad/espera, estación del montador, punzantes/costura, químicos y secado. Los controles posteriores quedan como <strong>MON-AREA-11..13</strong>: cables/electricidad, residuos/recuperables y reset de estación.</p>
       <h2>Método preservado</h2><p>Recuperar flexibilidad/medir → seleccionar y corregir forma → preparar boca/nariz → cuernos/astas → orejas → ojos → barro localizado → adhesivo/vestido → costura/fijación → secado/liberación.</p>
-      <h2>Reglas que no se deben perder</h2><ul><li>Medir antes de cortar.</li><li>Barro y adhesivo no corrigen una forma general incompatible.</li><li>Fijaciones temporales tienen una función identificable.</li><li>24 h es referencia mínima de primera revisión, no liberación automática.</li><li>La pieza se libera por sequedad y estabilidad.</li></ul>
-      <h2>Por cerrar</h2><p>Estaciones persona↔puesto, iluminación, ventilación, HDS/productos, fijación exacta de cuernos, selección de hilos, Bondo/catalizador, herramienta de medición, competencia y BIWO.</p>
+      <h2>Detalle recuperado del 391P</h2><ul><li>Antes de medir la piel debe desplazarse y recuperar forma sin quedar al límite de tensión.</li><li>Después de cada corrección de forma se revalida cara, cuello, largo, ancho y volumen como conjunto.</li><li>Oreja: fibra cortada + Bondo + catalizador hasta masa homogénea; modelar mientras sea trabajable y sin borrar anatomía.</li><li>Costura conserva cuatro familias: zapatero grueso/delgado y pesca trenzado grueso/delgado; el criterio de selección sigue abierto.</li><li>Alfileres son fijación temporal y se retiran al iniciar Retoque.</li><li>24 h es referencia mínima de primera revisión, nunca liberación automática; se libera por sequedad y estabilidad.</li></ul>
+      <h2>Control de fuente</h2><p>Las referencias históricas de 300/500/750 lux quedan en HOLD; no se usan como umbral canónico hasta reconciliar tarea, medición y Assurance vigente. La matriz genérica de mantenimiento del 391P tampoco se aplica mecánicamente a toda herramienta manual.</p>
+      <h2>Por cerrar</h2><p>Estaciones persona↔puesto, iluminación real, ventilación, HDS/productos, fijación exacta de cuernos, tabla de selección de hilos, Bondo/catalizador, herramienta de medición, competencia y estados/eventos BIWO.</p>
     `
   },
   {
