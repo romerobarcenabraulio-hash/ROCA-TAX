@@ -91,6 +91,7 @@
     }
 
     const available = Boolean(activeDoc.previewUrl || (activeDoc.localAvailable && activeDoc.localPath));
+    const directPageJump = Boolean(activeDoc.localAvailable && activeDoc.localPath);
     const status = activeDoc.status === 'AVAILABLE_PRIVATE_LINK' ? 'Disponible' : 'Locator pendiente';
     const open = activeDoc.openUrl ? `<a class="pdf-link" href="${escapeHtml(activeDoc.openUrl)}" target="_blank" rel="noopener noreferrer">ABRIR EN VENTANA</a>` : '';
     const frame = available
@@ -115,7 +116,7 @@
         <div class="source-page-jump">
           <label for="sourcePageInput">Página</label>
           <input id="sourcePageInput" type="number" min="1" ${activeDoc.pages ? `max="${activeDoc.pages}"` : ''} value="${pageNumber || ''}" placeholder="ej. 133">
-          <button id="sourceGoPage" type="button" ${available ? '' : 'disabled'}>IR</button>
+          <button id="sourceGoPage" type="button" ${directPageJump ? '' : 'disabled'}>IR</button>
         </div>
         <div class="source-actions">${open}</div>
       </div>
@@ -131,6 +132,7 @@
       const p=Number(btn.dataset.page);
       const input=document.getElementById('sourcePageInput');
       if(input) input.value=String(p);
+      if(!directPageJump) return;
       const frame=document.getElementById('sourcePdfFrame');
       if(frame) frame.src=sourceUrl(activeDoc,p);
     }));
