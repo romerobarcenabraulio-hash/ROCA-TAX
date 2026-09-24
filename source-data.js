@@ -32,20 +32,6 @@ window.ROCA_SOURCE_DOCUMENTS = [
     ]
   },
   {
-    id: "v24-7-precampo-rigor",
-    nav: "v24.7 Pre-Campo Rigor",
-    title: "ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf",
-    subtitle: "Fuente técnica fuerte · Library confirmada · locator web pendiente",
-    sourceKind: "ROCA Library / archivo histórico",
-    privacy: "INTERNAL_OPERATIONAL",
-    status: "LOCATOR_PENDING",
-    pages: null,
-    previewUrl: "",
-    openUrl: "",
-    localPath: "sources/pdfs/ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf",
-    note: "Archivo bruto recuperado en Library y materializado durante el rescate. Falta un locator privado compatible con el HTML desplegado antes de habilitar lectura embebida."
-  },
-  {
     id: "master-canonico-31ago",
     nav: "Master canónico 31 AGO",
     title: "ROCA_TAXIDERMY_MASTER_CANONICO_PENDIENTES_31AGO2026.pdf",
@@ -114,6 +100,61 @@ window.ROCA_SOURCE_DOCUMENTS = [
     note: "Fuente fuerte de metodología y pre-campo recuperada físicamente. Falta URL privada estable para el visor."
   }
 ];
+
+
+window.ROCA_SOURCE_CROSSCHECK = {
+  "area-recepcion": [
+    { sourceId: "master-web-391", label: "Área de trabajo", page: 42 },
+    { sourceId: "master-web-391", label: "Estación / evidencia", page: 44 }
+  ],
+  "area-curtiduria": [
+    { sourceId: "master-web-391", label: "Área de trabajo", page: 52 },
+    { sourceId: "master-web-391", label: "Estaciones", page: 54 },
+    { sourceId: "master-web-391", label: "Evidencia", page: 56 }
+  ],
+  "area-fmr": [
+    { sourceId: "master-web-391", label: "Área de trabajo", page: 90 },
+    { sourceId: "master-web-391", label: "Estación de Omar", page: 92 },
+    { sourceId: "master-web-391", label: "Evidencia", page: 93 }
+  ],
+  "area-montaje": [
+    { sourceId: "master-web-391", label: "Área de trabajo", page: 133 },
+    { sourceId: "master-web-391", label: "Estaciones", page: 135 }
+  ],
+  "area-retoque": [
+    { sourceId: "master-web-391", label: "Área de trabajo", page: 163 },
+    { sourceId: "master-web-391", label: "Estación", page: 165 },
+    { sourceId: "master-web-391", label: "Evidencia", page: 166 }
+  ],
+  "area-bases": [
+    { sourceId: "master-web-391", label: "Área de trabajo", page: 188 },
+    { sourceId: "master-web-391", label: "Estaciones", page: 189 },
+    { sourceId: "master-web-391", label: "Evidencia", page: 191 }
+  ],
+  "area-carpinteria": [
+    { sourceId: "master-web-391", label: "Área de trabajo", page: 213 },
+    { sourceId: "master-web-391", label: "Estación", page: 214 },
+    { sourceId: "master-web-391", label: "Evidencia", page: 215 }
+  ],
+  "area-soldadura": [
+    { sourceId: "master-web-391", label: "Área de trabajo", page: 227 },
+    { sourceId: "master-web-391", label: "Estación", page: 228 },
+    { sourceId: "master-web-391", label: "Evidencia", page: 229 }
+  ],
+  "area-blanqueado": [
+    { sourceId: "master-web-391", label: "Área de trabajo", page: 241 },
+    { sourceId: "master-web-391", label: "Estación", page: 242 },
+    { sourceId: "master-web-391", label: "Evidencia", page: 243 }
+  ],
+  "area-soporte": [
+    { sourceId: "master-web-391", label: "Bodegas", page: 277 },
+    { sourceId: "master-web-391", label: "Oficina / BIWO", page: 266 },
+    { sourceId: "master-web-391", label: "Comedor", page: 296 },
+    { sourceId: "master-web-391", label: "Sanitarios", page: 305 },
+    { sourceId: "master-web-391", label: "Circulaciones", page: 314 },
+    { sourceId: "master-web-391", label: "Residuos", page: 323 }
+  ]
+};
 
 window.ROCA_SOURCE_RULES = {
   publicRepo: true,
