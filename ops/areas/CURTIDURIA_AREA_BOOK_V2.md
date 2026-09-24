@@ -37,11 +37,12 @@ No trasladar el roster histórico. En campo deben levantarse los puntos reales d
 **Estado:** PARTIAL — equipo vigente conocido; persona ↔ estación todavía NOT_VERIFIED.
 
 ### Evidencia dirigida
-- **CUR-EVID-01:** panorámica desde acceso mostrando tinas/tambor, equipos de rebajado, tendido/secado y circulación.
-- **CUR-EVID-02:** control químico: envases/etiquetas reales + HDS + punto de dosificación/recipiente identificado.
-- **CUR-EVID-03:** báscula y medio de medición de pH, mostrando identificación/estado y contexto de uso; la foto no demuestra calibración por sí sola.
-- **CUR-EVID-04:** drenajes/escurrimientos y ruta real de descarga/limpieza.
-- **CUR-EVID-05:** punto real de trabajo por persona cuando esté confirmado, con piel/lote identificado y condición de cierre.
+- **EVID-CUR-01:** panorámica desde acceso mostrando tinas/tambor, equipos de rebajado, tendido/secado y circulación.
+- **EVID-CUR-02:** control químico: envases/etiquetas reales + HDS + punto de dosificación/recipiente identificado.
+- **EVID-CUR-03:** medición contextual de iluminación/ventilación/servicio cuando gobierne una decisión; registrar punto, fecha e instrumento/medio aplicable.
+- **EVID-CUR-04:** báscula y medio de medición de pH, mostrando identificación/estado y contexto de uso; la foto no demuestra calibración por sí sola.
+- **EVID-CUR-05:** drenajes/escurrimientos y ruta real de descarga/limpieza.
+- **EVID-CUR-06:** punto real de trabajo por persona cuando esté confirmado, con piel/lote identificado y condición de cierre.
 
 ## 2. Metodología preservada
 Método fuerte existente: hidratación → marcado físico → ruta por espesor → picle → rebajado grueso/detalle → rebajado en disco → pesado/fórmula → repiclado/curtido según método → escurrido → tamboreo/aserrín → acondicionamiento/secado.
