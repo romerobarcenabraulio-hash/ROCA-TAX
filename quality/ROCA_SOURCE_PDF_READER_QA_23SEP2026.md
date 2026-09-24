@@ -16,9 +16,9 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 - PASS — Restricted-personal/financial/wildlife document classes are explicitly excluded from publication in the public repo.
 - PASS — Direct page-jump is disabled for Drive preview and reserved for a controlled local-served PDF.
 - PASS — Source-mode print interception prevents the existing master-print handler from silently printing another workspace; in FUENTES the action opens the original PDF instead.
-- PASS — Source manifest contains 5 unique source IDs; no duplicate navigation IDs remain.
+- PASS — Source manifest contains 6 unique source IDs; no duplicate navigation IDs remain.
 - PASS — 10 source-to-current cross-check targets resolve to real V2 area section IDs.
-- PASS — `ops/control/ROCA_SOURCE_CROSSCHECK_V1.csv` records source locator, subject, current canonical home and integration action.
+- PASS — `ops/control/ROCA_SOURCE_CROSSCHECK_V1.csv` now records the full source-integrity ledger: subject, source, locator, revision, authority, facts, conflicts, canonical home, action, proof and status.
 - PASS — Source document IDs are unique after reconciliation; the duplicate `v24-7-precampo-rigor` manifest entry was removed.
 - PASS — Ten area books expose inline cross-check links to exact 391p source pages without duplicating source prose or changing printable output.
 
@@ -30,7 +30,7 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 - SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_v24_8_PreCampo_Control.pdf`, 198 pages, 31,591,373 bytes.
 - SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_MASTER_PreEntrevistas_26AGO2026.pdf`, internally labeled v24.8, 208 pages, 31,643,065 bytes. Do not deduplicate against nominal v24.8 without diff.
 - SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf`, 194 pages, 26,262,426 bytes.
-- SOURCE-INTEGRITY-BLOCKER — raw `ROCA_TAXIDERMY_v22_1_Editable.zip` bytes still not recovered.
+- SOURCE-INTEGRITY-BLOCKER — raw `ROCA_TAXIDERMY_v22_1_Editable.zip` bytes still not recovered after targeted Library and Google Drive searches for `v22`, `ROCA_TAXIDERMY_v22`, `Editable ROCA TAXIDERMY`, and `PHOTO_PLAN_v22`.
 
 ## Privacy gate
 Do not add customer CITES/SEMARNAT/PROFEPA permit PDFs, IDs, financial records or other restricted originals to this public GitHub repository. Restricted source reading belongs in a private authenticated evidence surface.
