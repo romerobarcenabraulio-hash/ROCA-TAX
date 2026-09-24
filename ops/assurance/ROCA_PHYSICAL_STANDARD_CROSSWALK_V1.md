@@ -146,3 +146,24 @@ Primary basis:
 - NOM-052-SEMARNAT-2005 for hazardous-waste identification/classification.
 - Current LGPGIR / regulation / applicable state or municipal route for the actual waste category.
 
+
+
+## PHYS-STORAGE-01 · Storage / racks / material handling
+
+Applicability:
+- NOM-006-STPS-2023 is conditional: use it where materials are stored/handled with machinery.
+- Manual-only storage still follows the permanent ROCA stability, circulation and recoverability standard plus other applicable rules.
+
+Worker-facing standard when the machinery-storage trigger applies:
+- storage has a defined zone, order/cleanliness and firm floor suitable for the load;
+- racks/platforms have known capacity and are not used when damaged;
+- maximum stack height/capacity is defined from the material, rack/platform and handling method;
+- heavier material is placed lower;
+- stored material does not block illumination, ventilation, emergency routes, alarms or fire equipment;
+- aisle width is determined from the actual handling technique, the largest machinery/load envelope and the widest material/container handled;
+- relevant capacity/height/EPP/route/emergency signage remains visible;
+- racks/platforms are inspected and maintained; modifications are not improvised.
+
+Primary basis:
+- NOM-006-STPS-2023, current from 2024-09-03 for workplaces within its machinery-handling scope.
+- NOM-001-STPS-2008 / NOM-002-STPS-2010 / NOM-026-STPS-2008 as applicable for premises, emergency access and signs.
