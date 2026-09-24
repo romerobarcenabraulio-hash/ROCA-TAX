@@ -230,3 +230,12 @@ footer{display:none}
 .source-ledger-source span:nth-child(1){font-weight:700;color:#5d534a}
 .source-ledger-source span:nth-child(3){grid-column:1 / -1;color:#756b61}
 .source-ledger-open{grid-column:2;justify-self:start;appearance:none;border:1px solid var(--bronze);background:#fff;color:var(--bronze);padding:4px 6px;font:700 7px/1 Arial,Helvetica,sans-serif;cursor:pointer}
+
+.fast-track-wrap{margin-top:42px;padding-top:28px;border-top:3px solid var(--navy)}
+.fast-track-kicker{font-size:11px;letter-spacing:.14em;font-weight:700;color:var(--bronze);margin-bottom:8px}
+.table-scroll{overflow-x:auto;margin:14px 0 28px}
+.fast-track-table{min-width:1180px;width:100%;border-collapse:collapse;font-size:11px;line-height:1.35;background:#fff}
+.fast-track-table th,.fast-track-table td{border:1px solid #c9c3b7;padding:8px;vertical-align:top}
+.fast-track-table th{background:#f3efe7;text-align:left;font-size:10px;letter-spacing:.04em;text-transform:uppercase}
+.fast-track-table .ft-now,.fast-track-table .ft-action,.fast-track-table .ft-evidence{min-width:150px}
+.fast-track-table.audit{min-width:980px}
