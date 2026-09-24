@@ -85,7 +85,17 @@
     <select id="ventLocal"><option value="">Selecciona</option><option value="unknown">No revisado</option><option value="no">No</option><option value="yes">Sí</option></select>
     <div id="ventResult" class="result">Primero identifica proceso y producto.</div>
   </div>
-  <div class="tool">
+  
+<div class="tool">
+  <h2>Racks / almacenamiento · chequeo</h2>
+  <label>¿Se usa maquinaria para colocar/retirar material?</label>
+  <select id="storeMachine"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+  <label>Ancho máximo de maquinaria + carga (m)</label><input id="storeMachineWidth" type="number" min="0" step="0.01">
+  <label>Dimensión más ancha del material/caja (m)</label><input id="storeMaterialWidth" type="number" min="0" step="0.01">
+  <label>Capacidad conocida del rack/plataforma</label><select id="storeCapacity"><option value="">Selecciona</option><option value="yes">Sí</option><option value="no">No</option></select>
+  <div id="storeResult" class="result">Primero define cómo se mueve realmente el material.</div>
+</div>
+<div class="tool">
     <h2>Corriente de material / residuo</h2>
     <label>Material o corriente</label><input id="wasteName" type="text" placeholder="Ej. trapo con gasolina blanca">
     <label>¿Puede volver a usarse sin convertirse en residuo?</label>
@@ -1200,6 +1210,9 @@ function calcLux(){const tar=Number(document.getElementById("luxTarget").value),
 ["luxTarget","luxActual"].forEach(id=>document.getElementById(id).addEventListener("input",calcLux));
 calcFire();
 function calcVent(){const h=document.getElementById("ventHaz").value,s=document.getElementById("ventSds").value,l=document.getElementById("ventLocal").value;let x="";if(!h)x="Primero identifica proceso y producto.";else if(h==="no")x="No aparece una fuente aérea evidente en esta tarea. Verifica operación real antes de cerrar.";else if(s!=="yes")x="<b>PRIMERO HDS / FUENTE TÉCNICA.</b> No comprar extractor todavía.";else if(l==="yes")x="<b>DISEÑAR CAPTURA EN ORIGEN.</b> Definir punto de generación, descarga, operación y mantenimiento.";else if(l==="unknown"||!l)x="<b>REVISAR SECCIÓN DE CONTROLES DE EXPOSICIÓN.</b> No decidir por intuición.";else x="La fuente revisada no pide extracción local; confirmar si evaluación de exposición u otro control técnico aplica.";document.getElementById("ventResult").innerHTML=x}
+
+function calcStore(){const m=document.getElementById("storeMachine").value,mw=Number(document.getElementById("storeMachineWidth").value||0),w=Number(document.getElementById("storeMaterialWidth").value||0),c=document.getElementById("storeCapacity").value;let s="";if(!m)s="Primero define cómo se mueve realmente el material.";else if(m==="yes"){const g=Math.max(mw,w);s="<b>NOM-006 CONDICIONAL ACTIVADA.</b> "+(g?("Dimensión gobernante capturada: <b>"+g.toFixed(2)+" m</b>. El pasillo final debe responder a la técnica real de colocación/extracción; no inventar holgura."):"Mide maquinaria+carga y material más ancho.");if(c==="no")s+=" <b>NO CARGAR RACK SIN CAPACIDAD DEFINIDA.</b>";}else{s="Manejo manual: no usar NOM-006 como obligación automática. Mantener estabilidad, pesado abajo, acceso recuperable y rutas libres.";if(c==="no")s+=" Aun así, definir capacidad del mobiliario si la carga puede comprometerlo.";}document.getElementById("storeResult").innerHTML=s}
+["storeMachine","storeMachineWidth","storeMaterialWidth","storeCapacity"].forEach(id=>document.getElementById(id).addEventListener("input",calcStore));
 function calcWaste(){const n=document.getElementById("wasteName").value.trim(),r=document.getElementById("wasteReuse").value,c=document.getElementById("wasteChem").value;let x="";if(!n)x="Nombra la corriente real.";else if(r==="yes")x="<b>RECUPERABLE / MATERIAL ÚTIL CANDIDATO.</b> Sepáralo del residuo y define ubicación de retorno.";else if(!r)x="Define primero si realmente es recuperable.";else if(c==="yes")x="<b>CLASIFICACIÓN PENDIENTE.</b> Revisar producto/HDS/proceso y ruta ambiental antes de etiquetar como residuo peligroso.";else if(c==="no")x="Definir corriente y destino real aplicable; conservarla separada de recuperables y otras corrientes.";document.getElementById("wasteResult").innerHTML=x}
 ["ventHaz","ventSds","ventLocal"].forEach(id=>document.getElementById(id).addEventListener("input",calcVent));
 ["wasteName","wasteReuse","wasteChem"].forEach(id=>document.getElementById(id).addEventListener("input",calcWaste));
