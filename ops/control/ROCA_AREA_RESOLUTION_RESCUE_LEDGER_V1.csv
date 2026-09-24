@@ -1,0 +1,17 @@
+ID,SUBJECT,SOURCE,LOCATOR,CANONICAL_HOME,ACTION,STATUS
+RESC-COM-01,Límites interfaces entrada salida espera,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-01/02,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-COM-02,Estación individual real,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-03 + area books,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-COM-03,Equipo herramienta acceso mantenimiento,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-14,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-COM-04,Servicios y conexiones,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-08,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-COM-05,Señalización e identificación visual,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-16,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-COM-06,Metadatos de evidencia,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-15,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-REC-01,Ingreso privacidad estación evidencia,391p + v24.7,p42-p45 + p125-p128,ops/areas/RECEPCION_AREA_BOOK_V2.md,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-CUR-01,Zona húmeda drenaje medición maquinaria estaciones,391p + v24.7,p52-p56 + p129-p132,ops/areas/CURTIDURIA_AREA_BOOK_V2.md,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-FMR-01,Mezcla racks curado estación evidencia,391p + v24.7,p90-p93 + p133-p136,ops/areas/FORMAS_MOLDES_REPLICAS_AREA_BOOK_V2.md,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-MON-01,Resolución física de Montaje,v24.7 + 391p + V2,p137-p140 + p133+,ops/areas/MONTAJE_PILOT_AREA_BOOK_V2.md,PRESERVE,PRESERVED_REREAD
+RESC-RET-01,Detalle solventes aire comprimido estaciones,391p + v24.7,p163-p166 + p141-p144,ops/areas/RETOQUE_AREA_BOOK_V2.md,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-BAS-01,Armado estable PU corte polvo evidencia,391p + v24.7,p188-p191 + p145-p148,ops/areas/BASES_AREA_BOOK_V2.md,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-CAR-01,Puesto corte polvo madera embalaje,391p + v24.7,p213-p215 + p153-p156,ops/areas/CARPINTERIA_EMBALAJE_AREA_BOOK_V2.md,CORRECT,MERGED_REREAD
+RESC-SOL-01,Trabajo caliente humos equipo estación evidencia,391p + v24.7,p227-p229 + p149-p152,ops/areas/SOLDADURA_AREA_BOOK_V2.md,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-BLA-01,Calor agua cuernos drenaje estación evidencia,391p + v24.7,p241-p243 + p186-p189,ops/areas/BLANQUEADO_AREA_BOOK_V2.md,MERGE_WITHOUT_LOSS,MERGED_REREAD
+RESC-SUP-01,Espacios soporte físicos y evidencia,391p + v24.7,p266-p326 + p158-p189,ops/areas/ESPACIOS_SOPORTE_V2.md,MERGE_WITHOUT_LOSS,MERGED_REREAD

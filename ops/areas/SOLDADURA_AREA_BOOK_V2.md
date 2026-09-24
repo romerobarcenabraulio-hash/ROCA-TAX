@@ -13,14 +13,32 @@ Estado: WORKING STANDARD / MÉTODO NO LIBERADO
 **Gate:** no iniciar trabajo en caliente sin condiciones de área preparadas; regresar si estructura/unión no es estable.
 
 ## 1. Área de trabajo
-Hereda REQ-COM-01..15.
+Hereda REQ-COM-01..16.
 
 Específicos:
-- SOL-AREA-01 combustible, cartón, solventes y pieza sensible fuera de proyección;
-- SOL-AREA-02 pantalla/mampara protege a terceros cuando aplique;
-- SOL-AREA-03 ventilación/extracción responde a humo/material/recubrimiento real;
-- SOL-AREA-04 cables, pinza, antorcha/porta-electrodo y esmeril en condición utilizable;
-- SOL-AREA-05 extinción y autorización de trabajo en caliente se definen en Assurance según evaluación aplicable.
+- **SOL-AREA-01 · Trabajo en caliente.** La zona se delimita; combustible, cartón, solventes y pieza sensible quedan fuera de proyección de chispas/escoria/calor.
+- **SOL-AREA-02 · Protección a terceros.** Pantalla/mampara o límite físico protege a terceros cuando puedan quedar expuestos a proyección/radiación.
+- **SOL-AREA-03 · Humos.** Ventilación/extracción responde a material, recubrimiento y proceso real; el contaminante no se dirige a otra zona ocupada.
+- **SOL-AREA-04 · Equipo.** Soldadora, cables, pinza, porta-electrodo/antorcha, esmeril y sujeción se identifican y permanecen en condición utilizable; daño visible obliga a fuera de servicio.
+- **SOL-AREA-05 · Sujeción.** La pieza/adaptación se sostiene estable durante el trabajo; no se libera una unión que todavía dependa de apoyo improvisado.
+- **SOL-AREA-06 · Emergencia.** Extinción, autorización/condición de trabajo en caliente y demás requisitos externos se cierran en Assurance según evaluación aplicable; no copiar cifras históricas sin revalidación.
+
+### Estación de Flaco
+Las fuentes 391p documentan una estación/punto real de Flaco. Recuperar como objetivo de verificación:
+- equipo/cables/pinzas en condición;
+- pantalla/delimitación;
+- combustible retirado;
+- ventilación efectiva según operación;
+- EPP de trabajo real;
+- medio de respuesta accesible según evaluación aplicable.
+
+**Estado:** NOT_VERIFIED en campo actual.
+
+### Evidencia dirigida
+- **EVID-SOL-01 · Panorámica:** panorámica del punto de trabajo con límite/mampara, sujeción, soldadora y recorrido.
+- **EVID-SOL-02:** equipo/cables/pinza/antorcha o porta-electrodo + ventilación/extracción real.
+- **EVID-SOL-01 · Operación real:** adaptación real con sujeción estable y zona protegida frente a terceros/material combustible.
+- **Evidencia complementaria de EVID-SOL-01:** medio de respuesta visible/accesible como evidencia física; no demuestra por sí solo clasificación/cobertura legal.
 
 ## 2. Metodología
 NO LIBERADA.
@@ -30,7 +48,7 @@ La fuente existente dice explícitamente que falta entrevista/demostración del 
 No fabricar una “metodología estándar de soldadura” desde conocimiento general.
 
 ## 3. Herramientas/equipo
-Equipo de soldadura y herramienta asociada están confirmados como familias; modelo/proceso/consumible exacto: NOT_CHECKED.
+Equipo de soldadura y herramienta asociada están confirmados como familias; modelo, proceso, consumible, placas, condición y mantenimiento exactos: NOT_CHECKED.
 
 ## 4. Materiales/flujo
 Metal y consumibles de unión/corte reales deben levantarse. Escoria, discos, recortes y residuos se clasifican por material real.
@@ -43,10 +61,11 @@ Vincular adaptación/incidencia a la orden cuando afecta la pieza. Registrar con
 
 ## 7. Auditoría específica
 SOL-AUD-01 área preparada antes del trabajo en caliente.  
-SOL-AUD-02 terceros protegidos.  
-SOL-AUD-03 ventilación adecuada a operación.  
-SOL-AUD-04 equipo/cables en condición.  
-SOL-AUD-05 unión estable antes de liberar.
+SOL-AUD-02 terceros/material sensible protegidos.  
+SOL-AUD-03 ventilación corresponde a la operación real.  
+SOL-AUD-04 equipo/cables/sujeción en condición.  
+SOL-AUD-05 estación de Flaco verificada contra el puesto real.  
+SOL-AUD-06 unión estable antes de liberar.
 
 ## Bloqueadores
-Entrevista/demostración técnica; proceso de soldadura real; consumibles; EPP; ventilación; protección contra incendio; mantenimiento/evidencia.
+Entrevista/demostración técnica; proceso de soldadura real; consumibles; EPP; ventilación; protección contra incendio aplicable; equipo/mantenimiento/evidencia.

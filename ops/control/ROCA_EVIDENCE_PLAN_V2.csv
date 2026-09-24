@@ -1,18 +1,39 @@
 EVID_ID,AREA_ID,TARGET,PROOF_TYPE,WHAT_IT_PROVES,WHAT_IT_DOES_NOT_PROVE,STATUS
-EVID-REC-01,AREA-REC,Ingreso y espera,Foto panorámica + detalle ID,Separación de ingreso/espera e identificación visible,Vigencia legal del permiso o corrección de BIWO,REQUEST_DEFINED
-EVID-CUR-01,AREA-CUR,Zonas húmeda/seca/baños/espera,Panorámicas dirigidas,Distribución física y accesibilidad,Concentraciones químicas o cumplimiento legal,REQUEST_DEFINED
-EVID-CUR-02,AREA-CUR,Químicos/HDS,Foto de producto + HDS/registro,Identidad del producto y disponibilidad documental,Aplicabilidad normativa o exposición real,REQUEST_DEFINED
-EVID-CUR-03,AREA-CUR,Iluminación/ventilación/servicios,Medición + foto contextual,Condición medida en punto/fecha concreta,Condición permanente sin repetición/criterio técnico,REQUEST_DEFINED
-EVID-FMR-01,AREA-FMR,Racks/códigos de formas y moldes,Foto + inventario,Ubicación e identificación,Exactitud dimensional o estado BIWO,REQUEST_DEFINED
-EVID-FMR-02,AREA-FMR,Prueba/dosificación,Registro de lote/prueba + foto,Que se ejecutó el control documentado,Que toda la producción cumple sin muestreo,REQUEST_DEFINED
+EVID-REC-01,AREA-REC,Ingreso superficie y espera,Panorámica dirigida,Separación física punto de ingreso superficie utilizable y espera,Identidad digital completa o vigencia legal del expediente,REQUEST_DEFINED
+EVID-REC-02,AREA-REC,Identidad física y privacidad,Detalle ID + registro sanitizado,Relación visible pieza↔ID y protección de datos,Corrección integral de BIWO o validez jurídica del permiso,REQUEST_DEFINED
+EVID-REC-03,AREA-REC,Cierre del puesto,Foto de condición final,Superficie utilizable documentos resguardados pieza transferida/identificada,Que el procedimiento siempre se ejecute igual,REQUEST_DEFINED
+EVID-CUR-01,AREA-CUR,Zonas húmeda baños rebajado secado espera,Panorámicas dirigidas,Distribución física accesibilidad y separación observable,Concentraciones químicas o suficiencia técnica de drenaje,REQUEST_DEFINED
+EVID-CUR-02,AREA-CUR,Químicos HDS y dosificación,Foto producto + HDS/registro,Identidad producto disponibilidad documental y punto de uso,Aplicabilidad normativa o exposición real,REQUEST_DEFINED
+EVID-CUR-03,AREA-CUR,Iluminación ventilación y servicios,Medición + foto contextual,Condición medida en punto/fecha concreta,Condición permanente sin repetición o suficiencia técnica integral,REQUEST_DEFINED
+EVID-CUR-04,AREA-CUR,Báscula y medición de pH,Foto contextual + lectura/estado + registro,Existencia identidad estado observable y uso de lectura cuando gobierna decisión,Calibración o exactitud metrológica sin evidencia específica,REQUEST_DEFINED
+EVID-CUR-05,AREA-CUR,Drenaje escurrimientos y descarga,Foto/recorrido + mapa de servicio,Ruta física visible de escurrimiento/descarga y control de acumulación,Cumplimiento ambiental del efluente o destino final sin documento,REQUEST_DEFINED
+EVID-CUR-06,AREA-CUR,Puntos reales persona-estación,Foto por puesto confirmado,Asignación física herramienta piel/lote acceso y cierre,Competencia/autorización de la persona,REQUEST_DEFINED
+EVID-FMR-01,AREA-FMR,Racks códigos formas y moldes,Foto + inventario,Ubicación identificación estabilidad y acceso,Exactitud dimensional o estado BIWO,REQUEST_DEFINED
+EVID-FMR-02,AREA-FMR,Punto de mezcla prueba y dosificación,Registro lote/prueba + foto,Que el control documentado se ejecutó en punto identificado,Que toda la producción cumple sin muestreo,REQUEST_DEFINED
+EVID-FMR-03,AREA-FMR,Estación real de Omar,Panorámica + detalle de cierre,Condición física del puesto herramienta materiales ID y paso,Competencia o vigencia permanente de asignación,REQUEST_DEFINED
+EVID-FMR-04,AREA-FMR,Curado espera y residuos,Foto contextual,Estabilidad identificación protección y separación observable de sobrantes,Clasificación ambiental legal de residuos,REQUEST_DEFINED
 EVID-MON-01,AREA-MON,Estaciones reales,3 fotos por estación,Superficie almacenamiento cierre y pieza identificada,Competencia del montador o iluminación medida,REQUEST_DEFINED
-EVID-MON-02,AREA-MON,Secado/espera,Foto contextual + ID,Estabilidad ubicación e identificación,Sequedad interna o criterio técnico de liberación,REQUEST_DEFINED
-EVID-RET-01,AREA-RET,Pintura/solventes/pedacera,Foto contextual + producto,Habitabilidad de punto de uso y orden,Exposición o suficiencia de extracción,REQUEST_DEFINED
-EVID-RET-02,AREA-RET,Color/detalle,Medición de iluminación + foto,Nivel medido en plano de tarea,Calidad cromática global sin criterio,REQUEST_DEFINED
-EVID-BAS-01,AREA-BAS,Base y estabilidad,Foto + prueba/registro definido,Condición observable de soporte,Capacidad estructural no ensayada,REQUEST_DEFINED
-EVID-CAR-01,AREA-CAR,Puesto dedicado,Panorámica + equipo,Que el puesto existe y está separado,Que el método de embalaje está validado,REQUEST_DEFINED
-EVID-SOL-01,AREA-SOL,Trabajo en caliente,Panorámica + equipo/consumible real,Condición física y proceso/equipo usado,Competencia o seguridad normativa completa,REQUEST_DEFINED
-EVID-BLA-01,AREA-BLA,Tratamiento térmico,Foto de montaje real,Nivel de agua apoyo y protección de cuerno,Tiempo temperatura o liberación técnica,REQUEST_DEFINED
-EVID-SUP-01,AREA-SUP,Bodegas/circulación/carga/residuos,Panorámicas por subespacio,Condición física y segregación visible,Vigencia documental o destino final sin comprobante,REQUEST_DEFINED
-EVID-BIWO-01,GOV-ERP,Estados/eventos BIWO,Capturas sanitizadas,Nombre real de estado/campo y secuencia,Que la pieza física coincida sin muestreo,REQUEST_DEFINED
+EVID-MON-02,AREA-MON,Secado espera,Foto contextual + ID,Estabilidad ubicación e identificación,Sequedad interna o criterio técnico de liberación,REQUEST_DEFINED
+EVID-RET-01,AREA-RET,Pintura solventes y pedacera,Foto contextual + producto,Punto de uso almacenamiento identificación y orden,Exposición o suficiencia de extracción,REQUEST_DEFINED
+EVID-RET-02,AREA-RET,Color y detalle,Medición de iluminación + foto,Nivel medido en plano real de tarea y contexto visual,Calidad cromática global sin criterio técnico,REQUEST_DEFINED
+EVID-RET-03,AREA-RET,Aire comprimido,Foto compresor regulador mangueras conexiones,Condición observable recorrido conexiones y ausencia de fugas visibles,Integridad interna presión segura o aplicabilidad NOM-020 sin datos de placa,REQUEST_DEFINED
+EVID-RET-04,AREA-RET,Estaciones reales y espera,Panorámica por puesto confirmado,Superficie herramienta producto pieza ID mangueras y cierre,Competencia/autorización individual,REQUEST_DEFINED
+EVID-BAS-01,AREA-BAS,Base apoyo y estabilidad,Foto + prueba/registro definido,Condición observable de soporte fijación y espera,Capacidad estructural no calculada/ensayada,REQUEST_DEFINED
+EVID-BAS-02,AREA-BAS,Corte polvo y punto PU/adhesivo,Foto contextual + producto,Condición de herramienta separación de polvo identificación y contención,Exposición o clasificación de residuo,REQUEST_DEFINED
+EVID-BAS-03,AREA-BAS,Maniobra y ruta de salida,Secuencia fotográfica,Espacio observable para movimiento y salida,Capacidad de izaje o carga segura sin cálculo/equipo,REQUEST_DEFINED
+EVID-CAR-01,AREA-CAR,Puesto dedicado,Panorámica + equipo,Que el puesto existe está separado y tiene ruta de carga,Que el método de embalaje está validado,REQUEST_DEFINED
+EVID-CAR-02,AREA-CAR,Corte polvo madera y herrajes,Foto contextual,Condición observable de herramienta almacenamiento y retiro de polvo,Competencia o suficiencia de extracción,REQUEST_DEFINED
+EVID-SOL-01,AREA-SOL,Trabajo en caliente,Panorámica + pieza real,Delimitación sujeción y separación observable de combustibles/terceros,Competencia o seguridad normativa completa,REQUEST_DEFINED
+EVID-SOL-02,AREA-SOL,Equipo y humos,Foto equipo/cables + ventilación,Condición observable del equipo y medio real de ventilación/extracción,Suficiencia de exposición o autorización legal sin estudio,REQUEST_DEFINED
+EVID-BLA-01,AREA-BLA,Tratamiento térmico,Foto de montaje real,Nivel de agua apoyo estabilidad y protección de cuerno,Tiempo temperatura o liberación técnica,REQUEST_DEFINED
+EVID-BLA-02,AREA-BLA,Drenaje y cierre,Foto/recorrido,Condición seca ruta de agua herramienta y material retirado,Cumplimiento ambiental del efluente sin análisis/documento,REQUEST_DEFINED
+EVID-SUP-BOD,AREA-SUP,Bodegas,Panorámicas + detalle inventariable,Capacidad visual pasillos categorías estabilidad compatibilidad observable,Exactitud total de inventario sin conteo/registro,REQUEST_DEFINED
+EVID-SUP-ERP,AREA-SUP,Oficina BIWO y archivo,Captura sanitizada + foto,Protección de datos organización e identidad común visible,Integridad total de ERP o permisos de acceso sin revisión de sistema,REQUEST_DEFINED
+EVID-SUP-EXH,AREA-SUP,Exhibición,Panorámica + detalle pieza/base,Circulación estabilidad observable y ausencia de almacenamiento temporal,Capacidad estructural no ensayada,REQUEST_DEFINED
+EVID-SUP-COM,AREA-SUP,Comedor,Panorámica + cierre,Separación de producción condición de uso y limpieza observable,Condición sanitaria permanente sin rutina/registro,REQUEST_DEFINED
+EVID-SUP-SAN,AREA-SUP,Sanitarios,3 fotos con espacio vacío,Servicios insumos limpieza ventilación/iluminación y privacidad observable,Potabilidad/calidad de agua o mantenimiento no visible,REQUEST_DEFINED
+EVID-SUP-CIR,AREA-SUP,Circulaciones accesos y rutas,Secuencia longitudinal + mediciones,Rutas libres cruces de servicios y dimensiones medidas,Capacidad de evacuación integral sin evaluación aplicable,REQUEST_DEFINED
+EVID-SUP-EXT,AREA-SUP,Exterior carga y espera,Panorámica + secuencia de ruta,Maniobra identificación protección y continuidad de ruta,Seguridad de transporte externo no evaluada,REQUEST_DEFINED
+EVID-SUP-RES,AREA-SUP,Residuos y concentración temporal,Panorámica + corrientes + registro de retiro,Separación identificación no desbordamiento y destino documentado cuando exista,Clasificación legal de residuo por apariencia,REQUEST_DEFINED
+EVID-BIWO-01,GOV-ERP,Estados eventos BIWO,Capturas sanitizadas,Nombre real de estado/campo y secuencia,Que la pieza física coincida sin muestreo,REQUEST_DEFINED
 EVID-COMP-01,ALL,Competencia por operación,Demostración/registro de autorización,Que una persona fue evaluada/autorizada para una operación,Desempeño futuro permanente,NOT_DESIGNED_FULLY

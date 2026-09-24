@@ -13,15 +13,34 @@ Estado: WORKING / NO LIBERAR
 **Gates:** modificar existente vs fabricar; detener si geometría, lote/material o molde no permiten una salida controlada.
 
 ## 1. Área de trabajo
-Hereda REQ-COM-01..15.
+Hereda REQ-COM-01..16.
 
 Específicos:
-- FMR-AREA-01 separar corte/armado, encerado, mezcla/vaciado, curado y acabado;
-- FMR-AREA-02 resina, catalizadores, poliuretano, fibra y cargas identificados;
-- FMR-AREA-03 polvo/fibra y vapores no migran a áreas de acabado;
-- FMR-AREA-04 moldes y formas tienen código, especie, postura/tipo y ubicación de rack;
-- FMR-AREA-05 báscula/recipientes de prueba permanecen identificados;
-- FMR-AREA-06 reacción/curado dispone de espacio estable y sin manipulación prematura.
+- **FMR-AREA-01 · Separación del proceso.** Corte/armado, encerado, mezcla/vaciado, curado/espera y acabado son puntos distinguibles; almacenamiento no invade la operación.
+- **FMR-AREA-02 · Punto de mezcla y dosificación.** Poliuretanos A/B, resinas, gelcoat, catalizadores y cargas se preparan en una superficie definida, estable y protegida, con capacidad de limpieza/contención y ventilación acorde al producto real. Envase, recipiente y herramienta de dosificación permanecen identificados.
+- **FMR-AREA-03 · Polvo, fibra y vapores.** Corte/lijado, fibra y vapores no migran por costumbre hacia pintura, acabado u otra zona ocupada; el control se valida contra el proceso real.
+- **FMR-AREA-04 · Moldes y formas.** Rack o apoyos mantienen moldes/formas identificados, estables, sin deformación y fuera de circulación. Código, especie, postura/tipo y ubicación física se conservan cuando apliquen al sistema.
+- **FMR-AREA-05 · Báscula, prueba y recipientes.** Báscula y recipientes patrón/prueba se identifican y quedan disponibles en el punto de uso; la prueba/lote puede relacionarse con material y resultado.
+- **FMR-AREA-06 · Curado y espera.** Reacción/curado dispone de espacio estable, identificado y protegido contra golpes o manipulación prematura.
+- **FMR-AREA-07 · Fibra/resina y sobrantes.** Material útil, sobrante recuperable, mezcla reaccionada, fibra/recortes, envases y residuo no se mezclan por comodidad; su destino se documenta por producto/condición real.
+- **FMR-AREA-08 · Acceso de mantenimiento.** Moldes, mesa, equipo de corte/mezcla y servicios dejan acceso para limpieza, inspección y mantenimiento.
+
+### Estación de Omar
+La fuente 391p identifica una estación real para Omar; se recupera como objetivo de verificación, no como evidencia de estado actual. Debe comprobarse en campo:
+- herramientas/cierres accesibles;
+- productos y mezclas identificados;
+- molde/forma en trabajo identificados;
+- superficie sin sobrantes ajenos;
+- paso inmediato libre.
+
+**Estado:** NOT_VERIFIED.
+
+### Evidencia dirigida
+- **Contexto de EVID-FMR-01 / EVID-FMR-04:** panorámica mostrando mesa/punto de mezcla, moldes/formas almacenados, circulación y curado/espera.
+- **EVID-FMR-02:** punto de mezcla: A/B o resina/catalizador reales, recipientes/dosificación y ventilación/condición del punto de uso.
+- **EVID-FMR-01:** rack/almacenamiento completo mostrando identificación, estabilidad y piezas fuera de rack sólo cuando estén en uso.
+- **EVID-FMR-03:** estación real de Omar cuando se verifique, incluyendo herramienta/cierres/materiales y cierre limpio.
+- **EVID-FMR-04:** sobrantes/residuos reales separados por condición/material; la foto no determina por sí sola clasificación ambiental.
 
 ## 2. Metodologías preservadas
 
@@ -53,11 +72,13 @@ Matriz por operación: corte/estructura, encerado, dosificación, mezcla/vaciado
 Forma/molde/réplica: ID/código, especie/tipo, postura, foto, ubicación de rack, lote de material cuando aporte trazabilidad, prueba previa y liberación.
 
 ## 7. Auditoría específica
-FMR-AUD-01 forma/molde con ID y ubicación.  
-FMR-AUD-02 material/lote identificado.  
-FMR-AUD-03 mezcla/vaciado sin improvisar proporción.  
-FMR-AUD-04 curado antes de apertura.  
-FMR-AUD-05 ventilación/polvo/fibra controlados.  
+FMR-AUD-01 forma/molde con ID, soporte estable y ubicación.  
+FMR-AUD-02 material/lote y recipientes de mezcla identificados.  
+FMR-AUD-03 mezcla/vaciado en punto definido sin improvisar proporción.  
+FMR-AUD-04 curado protegido antes de apertura/manipulación.  
+FMR-AUD-05 ventilación/polvo/fibra controlados según proceso real.  
+FMR-AUD-06 estación de Omar utilizable cuando la asignación física se verifique.  
+FMR-AUD-07 sobrantes/residuos separados por condición/material.
 
 ## Bloqueadores
-Inventario/codificación real; rack; productos/HDS; ventilación; mantenimiento; criterios exactos de aceptación por familia y estados BIWO.
+Inventario/codificación real; rack; estación Omar actual; productos/HDS; ventilación; mantenimiento; criterios exactos de aceptación por familia; residuos/destinos y estados BIWO.

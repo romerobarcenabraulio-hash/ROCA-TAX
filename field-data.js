@@ -35,7 +35,7 @@ window.ROCA_FIELD_SECTIONS = [
         <li>Activos críticos.</li>
       </ul>
       <h2>Evidence IDs principales</h2>
-      <p>EVID-REC-01 · EVID-CUR-01 · EVID-MON-01 · EVID-MON-02 · EVID-RET-01 · EVID-BAS-01 · EVID-CAR-01 · EVID-SOL-01 · EVID-BLA-01 · EVID-SUP-01.</p>
+      <p>EVID-REC-01/02/03 · EVID-CUR-01/05/06 · EVID-FMR-01/03/04 · EVID-MON-01/02 · EVID-RET-03/04 · EVID-BAS-01/03 · EVID-CAR-01 · EVID-SOL-01 · EVID-BLA-01/02 · EVID-SUP-BOD/ERP/EXH/COM/SAN/CIR/EXT/RES.</p>
       <h2>Salida</h2>
       <p>Panorámicas dirigidas + mapa de faltantes + lista real de estaciones/activos/subespacios.</p>
     `
@@ -55,7 +55,7 @@ window.ROCA_FIELD_SECTIONS = [
         <li>Ventilación/extracción existente.</li>
         <li>Envase, sobrante, recuperable y residuo.</li>
       </ul>
-      <h2>Evidence IDs</h2><p>EVID-CUR-02 · EVID-FMR-02 · EVID-RET-01 y registros de materiales V2.</p>
+      <h2>Evidence IDs</h2><p>EVID-CUR-02 · EVID-FMR-02 · EVID-RET-01 · EVID-BAS-02 y registros de materiales V2.</p>
       <div class="callout">No clasificar un residuo por apariencia. Producto + proceso + condición del residuo + cantidad/frecuencia + destino gobiernan la decisión.</div>
     `
   },
@@ -74,6 +74,8 @@ window.ROCA_FIELD_SECTIONS = [
       </ul>
       <h2>Evidencia visual por estación</h2>
       <p>Vista 3/4 completa · almacenamiento abierto · superficie/herramienta · pieza identificada · cables/servicios · condición al cierre.</p>
+      <h2>Evidence IDs</h2>
+      <p>EVID-REC-02/03 · EVID-CUR-06 · EVID-FMR-03 · EVID-MON-01 · EVID-RET-04 · EVID-COMP-01.</p>
       <h2>No asumir</h2>
       <p>Antigüedad, oficio o aparecer en el roster no equivalen automáticamente a autorización para todas las operaciones.</p>
     `
@@ -109,7 +111,7 @@ window.ROCA_FIELD_SECTIONS = [
       </ul>
       <h2>Registro mínimo</h2>
       <p>Área · estación/punto · tarea · valor · unidad · fecha · instrumento · foto contextual · criterio asociado.</p>
-      <h2>Evidence IDs</h2><p>EVID-CUR-03 · EVID-RET-02 y cualquier medición asociada a un REQ específico.</p>
+      <h2>Evidence IDs</h2><p>EVID-CUR-03/04 · EVID-RET-02/03 · EVID-SUP-CIR y cualquier medición asociada a un REQ específico.</p>
     `
   },
   {
