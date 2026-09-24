@@ -44,9 +44,11 @@ window.ROCA_WORKSHOP_SECTIONS = [
     lead:"Preservar, curtir y acondicionar la piel hasta dejarla manipulable, identificada y lista para producción.",
     body:`
       <h2>Handoff</h2><p><strong>Recibe:</strong> piel identificada y condición conocida. <strong>Entrega:</strong> piel tratada, manipulable e identificada hacia la siguiente ruta.</p>
-      <h2>Método preservado</h2><p>Hidratación → marcado físico → ruta por espesor → picle → rebajado → pesado/fórmula → repiclado/curtido → escurrido → tamboreo/aserrín → acondicionamiento.</p>
-      <h2>Controles que importan</h2><ul><li>El ID sobrevive baños, rebajado y secado.</li><li>La piel avanza por condición física, no sólo por reloj.</li><li>Tinas, tambor y rebajadora tienen acceso para carga, limpieza y mantenimiento.</li><li>Químicos, baños agotados y residuos no se clasifican por intuición.</li></ul>
-      <h2>Por cerrar</h2><p>Receta conflictiva 6.0/6.4 L de ácido fórmico, productos/HDS, balance de baños, ventilación, drenaje, activos, competencia y evidencia física.</p>
+      <h2>Método preservado</h2><p>Hidratación → marcado físico → ruta por espesor → picle → rebajado manual/disco → pesado + ALUM-Tan → neutralización/repiclado → escurrido → tamboreo/aserrín → sacudido → engrase → pateado selectivo cuando aplica.</p>
+      <h2>Parámetros rescatados</h2><p>Hidratación 1 kg sal/10 L y 10–12 h; salinidad ALUM-Tan 2.2–2.3; pH 3.6–3.8 al inicio del día 2 y 4.2–4.3 al final; segunda adición de alumbre a 1 h 30 min; bicarbonato dividido en 5 adiciones horarias; escurrido 12 h con calor o 14–16 h en invierno/lluvia; tamboreo 4 h; sacudido 15 min. Estas referencias no sustituyen el criterio físico de salida.</p>
+      <h2>Controles que importan</h2><ul><li>El ID sobrevive baños, rebajado y secado.</li><li>Peso de báscula y peso capturado en ALUM-Tan corresponden a la misma carga.</li><li>Los dos puntos de pH se registran en etapas distintas y con instrumento/método identificable.</li><li>La piel avanza por condición física, no sólo por reloj.</li><li>Tinas, tambor y rebajadora tienen acceso para carga, limpieza y mantenimiento.</li><li>Químicos, baños agotados y residuos no se clasifican por intuición.</li></ul>
+      <h2>Piloto separado</h2><p>El descarnado/limpieza con agua a presión sigue como piloto NO LIBERADO; no sustituye la rebajadora ni entra a rutina sin validar parámetros, EPP, drenaje, residuos y corridas sin daño.</p>
+      <h2>Por cerrar</h2><p>Conflicto 6.0/6.4 L de ácido fórmico; instrumento/método real de pH y su estado; fuente controlada ALUM-Tan; productos/HDS; balance de baños; ventilación; drenaje; activos; competencia y evidencia física.</p>
     `
   },
   {
