@@ -45,6 +45,7 @@
   function clearSourceState(){
     document.body.classList.remove('source-mode');
     sourceMode.classList.remove('active');
+    if(printDoc) printDoc.textContent='IMPRIMIR / PDF';
   }
 
   function buildSourceNav(){
@@ -81,6 +82,7 @@
     markSourceActive();
     document.body.classList.add('source-mode');
     document.body.classList.remove('notes-mode','print-all-mode','field-mode','compendium-mode');
+    if(printDoc) printDoc.textContent='ABRIR PDF';
     contentsPane.querySelector('.contents-title').textContent='Fuentes documentales';
     contentsPane.querySelector('.rule-note').textContent='Lectura de fuentes para cross-check. El visor no altera los originales ni cambia permisos de Drive.';
     buildSourceNav();
@@ -162,7 +164,7 @@
       if(!document.body.classList.contains('source-mode')) return;
       event.preventDefault();
       event.stopImmediatePropagation();
-      window.print();
+      if(activeDoc && activeDoc.openUrl) window.open(activeDoc.openUrl,'_blank','noopener,noreferrer');
     },true);
   }
 
