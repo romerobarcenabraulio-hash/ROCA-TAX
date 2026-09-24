@@ -205,3 +205,11 @@ footer{display:none}
 .source-proof-line{font:8px/1.4 Arial,Helvetica,sans-serif;color:#756b61!important}
 .source-page-chip{display:inline-block;padding:4px 6px;border:1px solid #c2b6a7;background:#f7f2e9;font:700 7px/1 Arial,Helvetica,sans-serif;color:#50483f!important}
 .source-open-page{appearance:none;border:1px solid #8a5a34;background:#fffdf8;color:#8a5a34;padding:5px 7px;font:700 8px/1 Arial,Helvetica,sans-serif;letter-spacing:.04em;cursor:pointer}
+
+
+/* Source subsection navigation */
+.source-subnav{display:grid;grid-template-columns:1fr;gap:5px;margin-top:8px}
+.source-sub-page{appearance:none;width:100%;text-align:left;border:1px solid #d2c6b7;background:#fffaf2;padding:7px 8px;cursor:pointer}
+.source-sub-page:hover{border-color:var(--bronze);background:#f7efe2}
+.source-sub-title{display:block;font:700 8px/1.2 Arial,Helvetica,sans-serif;color:#302a25}
+.source-sub-meta{display:block;margin-top:2px;font:7px/1.3 Arial,Helvetica,sans-serif;color:#756b61}
