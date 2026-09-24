@@ -15,6 +15,7 @@
   const fieldMode = document.getElementById('fieldMode');
   const notesMode = document.getElementById('notesMode');
   const printDoc = document.getElementById('printDoc');
+  const fastTrackJump = document.getElementById('fastTrackJump');
 
   const finalOrder = [
     'roca',
@@ -238,6 +239,7 @@
   if(compendiumMode) compendiumMode.addEventListener('click',showCompendium);
   if(fieldMode) fieldMode.addEventListener('click',showField);
   notesMode.addEventListener('click',showNotes);
+  if(fastTrackJump) fastTrackJump.addEventListener('click',(ev)=>{ ev.preventDefault(); showCompendium(); go('area-recepcion', compendiumSections); });
   printDoc.addEventListener('click',()=>{
     const printSections = activeMode==='compendium' ? compendiumSections : activeMode==='field' ? fieldSections : finalSections;
     const returnMode = activeMode;
