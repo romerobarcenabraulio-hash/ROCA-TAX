@@ -36,11 +36,11 @@ La fuente 391p identifica una estación real para Omar; se recupera como objetiv
 **Estado:** NOT_VERIFIED.
 
 ### Evidencia dirigida
-- **FMR-EVID-01:** panorámica mostrando mesa/punto de mezcla, moldes/formas almacenados, circulación y curado/espera.
-- **FMR-EVID-02:** punto de mezcla: A/B o resina/catalizador reales, recipientes/dosificación y ventilación/condición del punto de uso.
-- **FMR-EVID-03:** rack/almacenamiento completo mostrando identificación, estabilidad y piezas fuera de rack sólo cuando estén en uso.
-- **FMR-EVID-04:** estación real de Omar cuando se verifique, incluyendo herramienta/cierres/materiales y cierre limpio.
-- **FMR-EVID-05:** sobrantes/residuos reales separados por condición/material; la foto no determina por sí sola clasificación ambiental.
+- **Contexto de EVID-FMR-01 / EVID-FMR-04:** panorámica mostrando mesa/punto de mezcla, moldes/formas almacenados, circulación y curado/espera.
+- **EVID-FMR-02:** punto de mezcla: A/B o resina/catalizador reales, recipientes/dosificación y ventilación/condición del punto de uso.
+- **EVID-FMR-01:** rack/almacenamiento completo mostrando identificación, estabilidad y piezas fuera de rack sólo cuando estén en uso.
+- **EVID-FMR-03:** estación real de Omar cuando se verifique, incluyendo herramienta/cierres/materiales y cierre limpio.
+- **EVID-FMR-04:** sobrantes/residuos reales separados por condición/material; la foto no determina por sí sola clasificación ambiental.
 
 ## 2. Metodologías preservadas
 
