@@ -1,6 +1,7 @@
 (function(){
   const docs = Array.isArray(window.ROCA_SOURCE_DOCUMENTS) ? window.ROCA_SOURCE_DOCUMENTS : [];
   const rules = window.ROCA_SOURCE_RULES || {};
+  const crosscheck = window.ROCA_SOURCE_CROSSCHECK || {};
   const sourceMode = document.getElementById('sourceMode');
   const finalMode = document.getElementById('finalMode');
   const compendiumMode = document.getElementById('compendiumMode');
@@ -149,6 +150,41 @@
     });
   }
 
+
+  function sourceCrosscheckMarkup(sectionId){
+    const refs = crosscheck[sectionId];
+    if(!Array.isArray(refs) || !refs.length) return '';
+    return `<aside class="source-crosscheck" aria-label="Fuentes para cross-check">
+      <div class="source-crosscheck-title">CROSS-CHECK · FUENTE 391P</div>
+      <div class="source-crosscheck-links">${refs.map(ref =>
+        `<button type="button" class="source-crosscheck-link" data-source-id="${escapeHtml(ref.sourceId)}" data-source-page="${Number(ref.page)}">${escapeHtml(ref.label)} · p. ${Number(ref.page)}</button>`
+      ).join('')}</div>
+    </aside>`;
+  }
+
+  function injectCrosscheck(){
+    const paper = page.querySelector('.master-paper[data-section]');
+    if(!paper || paper.querySelector('.source-crosscheck')) return;
+    const sectionId = paper.dataset.section;
+    const markup = sourceCrosscheckMarkup(sectionId);
+    if(!markup) return;
+    const lead = paper.querySelector('.lead');
+    if(lead) lead.insertAdjacentHTML('afterend',markup);
+    else paper.insertAdjacentHTML('afterbegin',markup);
+  }
+
+  const observer = new MutationObserver(()=>injectCrosscheck());
+  observer.observe(page,{childList:true,subtree:true});
+
+  page.addEventListener('click',(event)=>{
+    const trigger = event.target.closest('.source-crosscheck-link');
+    if(!trigger) return;
+    event.preventDefault();
+    const sourceId = trigger.dataset.sourceId;
+    const sourcePage = Number(trigger.dataset.sourcePage) || undefined;
+    renderSource(sourceId,sourcePage);
+  });
+
   function showSources(){
     renderSource(activeDoc && activeDoc.id);
   }
@@ -167,6 +203,8 @@
       if(activeDoc && activeDoc.openUrl) window.open(activeDoc.openUrl,'_blank','noopener,noreferrer');
     },true);
   }
+
+  injectCrosscheck();
 
   window.ROCA_SOURCE_READER = {
     open(sourceId,pageNumber){
