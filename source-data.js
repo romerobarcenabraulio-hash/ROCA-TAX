@@ -12,10 +12,114 @@ window.ROCA_SOURCE_DOCS = [
     access: "CONTROLLED",
     note: "Fuente historica de consulta para rescate. No se considera autoridad global por si sola.",
     related: [
-      { sectionId: "taller", label: "Taller y areas", action: "MERGE_WITHOUT_LOSS", locator: "Mapeo por pagina pendiente" },
-      { sectionId: "procesos", label: "Procesos", action: "MERGE_WITHOUT_LOSS", locator: "Mapeo por pagina pendiente" },
-      { sectionId: "cumplimiento", label: "Cumplimiento", action: "PRESERVE", locator: "Verificar vigencia contra fuente oficial actual" },
-      { sectionId: "machotes-guias", label: "Machotes y guias", action: "PRESERVE", locator: "Mapeo por pagina pendiente" }
+      {
+        sectionId: "area-recepcion",
+        label: "Recepción",
+        areaId: "AREA-REC",
+        controlIds: ["REQ-COM-01..15","REC-AREA-01..04"],
+        evidenceIds: ["EVID-REC-01"],
+        action: "MERGE_WITHOUT_LOSS",
+        page: 39,
+        pageEnd: 48,
+        locator: "PDF físico pp. 39-48 · módulo REC",
+        proof: "Paginado físico verificado en ROCA_MASTER_WEB_391P_SOURCE.pdf"
+      },
+      {
+        sectionId: "area-curtiduria",
+        label: "Curtiduría",
+        areaId: "AREA-CUR",
+        controlIds: ["REQ-COM-01..15","CUR-AREA-01..06"],
+        evidenceIds: ["EVID-CUR-01","EVID-CUR-02","EVID-CUR-03"],
+        action: "MERGE_WITHOUT_LOSS",
+        page: 49,
+        pageEnd: 86,
+        locator: "PDF físico pp. 49-86 · módulo CUR",
+        proof: "Página 49 validada visualmente; receta 6.4 L aparece en pp. 63 y 65"
+      },
+      {
+        sectionId: "area-fmr",
+        label: "Formas, Moldes y Réplicas",
+        areaId: "AREA-FMR",
+        controlIds: ["REQ-COM-01..15","FMR-AREA-01..06"],
+        evidenceIds: ["EVID-FMR-02"],
+        action: "MERGE_WITHOUT_LOSS",
+        page: 87,
+        pageEnd: 129,
+        locator: "PDF físico pp. 87-129 · módulo FMR",
+        proof: "Página 87 validada visualmente"
+      },
+      {
+        sectionId: "area-montaje",
+        label: "Montaje",
+        areaId: "AREA-MON",
+        controlIds: ["REQ-COM-01..15","MON-AREA-01..10"],
+        evidenceIds: ["EVID-MON-01","EVID-MON-02"],
+        action: "MERGE_WITHOUT_LOSS",
+        page: 130,
+        pageEnd: 159,
+        locator: "PDF físico pp. 130-159 · módulo MON",
+        proof: "Rango derivado del paginado físico: MON inicia p. 130 y RET inicia p. 160"
+      },
+      {
+        sectionId: "area-retoque",
+        label: "Retoque",
+        areaId: "AREA-RET",
+        controlIds: ["REQ-COM-01..15","RET-AREA-01..06"],
+        evidenceIds: ["EVID-RET-01","EVID-RET-02"],
+        action: "MERGE_WITHOUT_LOSS",
+        page: 160,
+        pageEnd: 183,
+        locator: "PDF físico pp. 160-183 · módulo RET",
+        proof: "Rango derivado del paginado físico: RET inicia p. 160 y BAS inicia p. 184"
+      },
+      {
+        sectionId: "area-bases",
+        label: "Bases",
+        areaId: "AREA-BAS",
+        controlIds: ["REQ-COM-01..15","BAS-AREA-01..05"],
+        evidenceIds: ["EVID-BAS-01"],
+        action: "MERGE_WITHOUT_LOSS",
+        page: 184,
+        pageEnd: 208,
+        locator: "PDF físico pp. 184-208 · módulo BAS",
+        proof: "Rango derivado del paginado físico: BAS inicia p. 184 y CAR inicia p. 209"
+      },
+      {
+        sectionId: "area-carpinteria",
+        label: "Carpintería, Corte y Embalaje",
+        areaId: "AREA-CAR",
+        controlIds: ["REQ-COM-01..15"],
+        evidenceIds: ["EVID-CAR-01"],
+        action: "MERGE_WITHOUT_LOSS",
+        page: 209,
+        pageEnd: 222,
+        locator: "PDF físico pp. 209-222 · módulo CAR",
+        proof: "Rango derivado del paginado físico: CAR inicia p. 209 y SOL inicia p. 223"
+      },
+      {
+        sectionId: "area-soldadura",
+        label: "Soldadura / Adaptación",
+        areaId: "AREA-SOL",
+        controlIds: ["REQ-COM-01..15","SOL-AREA-01..05"],
+        evidenceIds: ["EVID-SOL-01"],
+        action: "HOLD_PENDING_EVIDENCE",
+        page: 223,
+        pageEnd: 236,
+        locator: "PDF físico pp. 223-236 · módulo SOL",
+        proof: "Página 223 validada visualmente; metodología sigue no liberada"
+      },
+      {
+        sectionId: "area-blanqueado",
+        label: "Blanqueado",
+        areaId: "AREA-BLA",
+        controlIds: ["REQ-COM-01..15","BLA-AREA-01..05"],
+        evidenceIds: ["EVID-BLA-01"],
+        action: "MERGE_WITHOUT_LOSS",
+        page: 237,
+        pageEnd: 251,
+        locator: "PDF físico pp. 237-251 · módulo BLA",
+        proof: "Rango derivado del paginado físico: BLA inicia p. 237 y EXT inicia p. 252"
+      }
     ]
   },
   {
