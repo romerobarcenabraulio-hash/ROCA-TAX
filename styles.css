@@ -140,3 +140,12 @@ footer{display:none}
 }
 
 .source-actions .pdf-link.secondary{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+
+/* Inline provenance bridge: manual section -> exact source pages */
+.source-crosscheck{margin:10px 0 20px;padding:10px 0 12px;border-top:1px solid #d4ccbf;border-bottom:1px solid #d4ccbf}
+.source-crosscheck-title{font:700 8px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.13em;color:var(--bronze);margin-bottom:7px}
+.source-crosscheck-links{display:flex;flex-wrap:wrap;gap:6px}
+.source-crosscheck-link{appearance:none;border:1px solid #c9c0b3;background:#fbfaf6;padding:6px 8px;font:700 8px/1.2 Arial,Helvetica,sans-serif;color:#37322e;cursor:pointer}
+.source-crosscheck-link:hover{border-color:var(--bronze);color:var(--bronze)}
+@media(max-width:900px){.source-crosscheck-links{display:grid;grid-template-columns:1fr 1fr}.source-crosscheck-link{text-align:left}}
+@media print{.source-crosscheck{display:none!important}}
