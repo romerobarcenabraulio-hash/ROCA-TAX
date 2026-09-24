@@ -3,6 +3,7 @@ EVID-REC-01,AREA-REC,NOT_VERIFIED,,,,,,,Ingreso/espera e identificación visible
 EVID-CUR-01,AREA-CUR,NOT_VERIFIED,,,,,,,Distribución física y accesibilidad,,,,,,NOT_REVIEWED
 EVID-CUR-02,AREA-CUR,NOT_VERIFIED,,,,,,,Identidad de producto y HDS disponible,,,,,,NOT_REVIEWED
 EVID-CUR-03,AREA-CUR,NOT_VERIFIED,,,,,,,Condición medida de iluminación/ventilación/servicios,,,,,,NOT_REVIEWED
+EVID-CUR-04,AREA-CUR,NOT_VERIFIED,,,,,,,Peso/pH de proceso con punto de medición e instrumento/método trazable,,,,,,NOT_REVIEWED
 EVID-FMR-01,AREA-FMR,NOT_VERIFIED,,,,,,,Ubicación e identificación de formas/moldes,,,,,,NOT_REVIEWED
 EVID-FMR-02,AREA-FMR,NOT_VERIFIED,,,,,,,Ejecución de prueba/dosificación documentada,,,,,,NOT_REVIEWED
 EVID-MON-01,AREA-MON,NOT_VERIFIED,,,,,,,Condición real de estaciones de Montaje,,,,,,NOT_REVIEWED
