@@ -108,23 +108,6 @@ window.ROCA_SOURCE_DOCS = [
     ]
   },
   {
-    id: "indice-general",
-    group: "Expedientes controlados",
-    title: "00_INDICE_GENERAL.pdf",
-    label: "Indice general de expedientes",
-    kind: "drive",
-    driveId: "10UHuiAI_zjJ65wfl16NKBg2yOYNf2kHu",
-    webUrl: "https://drive.google.com/file/d/10UHuiAI_zjJ65wfl16NKBg2yOYNf2kHu/view",
-    modified: "2026-08-28",
-    sourceStatus: "SOURCE-CONFIRMED",
-    access: "CONTROLLED",
-    note: "Indice para navegar expedientes documentales. Los PDFs juridicos y de clientes permanecen en Drive; no se copian al repositorio publico.",
-    related: [
-      { sectionId: "trazabilidad", label: "Control y trazabilidad", action: "PRESERVE", locator: "Indice / expediente" },
-      { sectionId: "cumplimiento", label: "Cumplimiento", action: "HOLD_PENDING_EVIDENCE", locator: "Aplicabilidad por caso" }
-    ]
-  },
-  {
     id: "v22-editable-missing",
     group: "Fuentes faltantes",
     title: "ROCA_TAXIDERMY_v22_1_Editable.zip",
