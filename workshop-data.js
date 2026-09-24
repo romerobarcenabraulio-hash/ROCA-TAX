@@ -13,8 +13,8 @@ window.ROCA_WORKSHOP_SECTIONS = [
         <li><strong>Iluminación:</strong> se mide en el plano real de trabajo; el nivel objetivo se selecciona por la tarea visual real.</li>
         <li><strong>Químicos:</strong> producto identificable, HDS disponible donde se maneja, señal legible y almacenamiento compatible con el producto real.</li>
         <li><strong>Estación y almacenamiento:</strong> superficies estables, acceso recuperable y materiales pesados o inestables controlados sin invadir circulación.</li>
-        <li><strong>Servicios:</strong> energía, agua, drenaje, aire y ventilación se usan sin improvisaciones, humedad peligrosa, obstrucción o contaminación cruzada.</li>
-        <li><strong>Residuos:</strong> residuo, sobrante recuperable y material útil se separan por destino real.</li>
+        <li><strong>Ventilación/extracción:</strong> el control corresponde al proceso, producto y exposición real; cuando se requiere captura localizada, se coloca en el punto de generación y se conserva operable.</li>\n        <li><strong>Servicios:</strong> energía, agua, drenaje y aire se usan sin improvisaciones, humedad peligrosa, obstrucción o contaminación cruzada.</li>
+        <li><strong>Residuos:</strong> material útil, recuperable y residuo se separan por destino real; ninguna corriente se clasifica como peligrosa sólo por apariencia o por el color del recipiente.</li>
         <li><strong>Activos:</strong> equipo fuera de condición se separa del uso; activos críticos conservan identidad e inspección/mantenimiento verificable.</li>
       </ul>
       <ul>
