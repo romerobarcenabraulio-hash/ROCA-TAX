@@ -12,7 +12,9 @@ EVID-MON-02,AREA-MON,Secado/espera,Foto contextual + ID,Estabilidad ubicación e
 EVID-RET-01,AREA-RET,Área/estación de Retoque + pintura/solventes/pedacera,Panorámica + estación + producto,Distribución identidad de producto punto de uso pedacera y condición visible,Exposición suficiencia de extracción o cumplimiento químico,REQUEST_DEFINED
 EVID-RET-02,AREA-RET,Color/detalle,Medición de iluminación + foto,Nivel medido en plano de tarea,Calidad cromática global sin criterio,REQUEST_DEFINED
 EVID-RET-03,AREA-RET,Sistema de aire/pintura,Foto placa/identidad + compresor/regulador/mangueras/punto de uso,Existencia configuración y condición visible del sistema,Integridad interna prueba de fugas suficiencia técnica o aplicabilidad regulatoria,REQUEST_DEFINED
-EVID-BAS-01,AREA-BAS,Base y estabilidad,Foto + prueba/registro definido,Condición observable de soporte,Capacidad estructural no ensayada,REQUEST_DEFINED
+EVID-BAS-01,AREA-BAS,Base terminada/soporte/fijación,Foto + prueba/registro definido,Condición observable de soporte estabilidad e identidad,Capacidad estructural no ensayada ni resistencia de fijación,REQUEST_DEFINED
+EVID-BAS-02,AREA-BAS,Estación/materiales/herramientas/punto PU,Panorámica + almacenamiento + herramienta + producto,Distribución almacenamiento condición visible y separación de material útil/residuo,Competencia capacidad estructural o suficiencia de ventilación,REQUEST_DEFINED
+EVID-BAS-03,AREA-BAS,Maniobra de pieza/base pesada,Observación/foto contextual del método real,Ruta método de asistencia y condición observable,Capacidad ergonómica individual o seguridad de una maniobra preparada sólo para evidencia,REQUEST_DEFINED
 EVID-CAR-01,AREA-CAR,Puesto dedicado,Panorámica + equipo,Que el puesto existe y está separado,Que el método de embalaje está validado,REQUEST_DEFINED
 EVID-SOL-01,AREA-SOL,Trabajo en caliente,Panorámica + equipo/consumible real,Condición física y proceso/equipo usado,Competencia o seguridad normativa completa,REQUEST_DEFINED
 EVID-BLA-01,AREA-BLA,Tratamiento térmico,Foto de montaje real,Nivel de agua apoyo y protección de cuerno,Tiempo temperatura o liberación técnica,REQUEST_DEFINED
