@@ -29,6 +29,18 @@ window.ROCA_SOURCE_DOCUMENTS = [
       ["Sanitarios", 305],
       ["Circulaciones", 314],
       ["Residuos", 323]
+    ],
+    crossChecks: [
+      { label:"Recepción", sourcePage:42, targetSection:"area-recepcion", action:"MERGE_WITHOUT_LOSS", focus:"Área física, ingreso controlado, privacidad y evidencia." },
+      { label:"Curtiduría", sourcePage:52, targetSection:"area-curtiduria", action:"MERGE_WITHOUT_LOSS", focus:"Zona húmeda, drenaje, química, maquinaria, báscula/pH y estaciones." },
+      { label:"Formas / Moldes / Réplicas", sourcePage:90, targetSection:"area-fmr", action:"MERGE_WITHOUT_LOSS", focus:"Punto de mezcla, racks, curado, estación de Omar y evidencia." },
+      { label:"Montaje", sourcePage:133, targetSection:"area-montaje", action:"PRESERVE", focus:"Piloto V2 ya conserva la mayor resolución física; revisar regresiones." },
+      { label:"Retoque", sourcePage:163, targetSection:"area-retoque", action:"MERGE_WITHOUT_LOSS", focus:"Pintura/solventes, aire comprimido, acabado fino y estaciones reales." },
+      { label:"Bases", sourcePage:188, targetSection:"area-bases", action:"MERGE_WITHOUT_LOSS", focus:"Armado estable, PU/adhesivos, corte, polvo y evidencia." },
+      { label:"Carpintería / Embalaje", sourcePage:213, targetSection:"area-carpinteria", action:"CORRECT", focus:"Preservar condiciones; no conservar la vieja ubicación en espacio del Sr. Pez como vigente." },
+      { label:"Soldadura", sourcePage:227, targetSection:"area-soldadura", action:"MERGE_WITHOUT_LOSS", focus:"Trabajo en caliente, humos, equipo, estación de Flaco y evidencia." },
+      { label:"Blanqueado", sourcePage:241, targetSection:"area-blanqueado", action:"MERGE_WITHOUT_LOSS", focus:"Calor/agua, protección de cuernos, ventilación y evidencia." },
+      { label:"Espacios de soporte", sourcePage:277, targetSection:"area-soporte", action:"MERGE_WITHOUT_LOSS", focus:"Bodegas, BIWO, exhibición, comedor, sanitarios, rutas, exterior y residuos." }
     ]
   },
   {
