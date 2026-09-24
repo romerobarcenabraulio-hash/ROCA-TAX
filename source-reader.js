@@ -11,11 +11,30 @@
   const printDoc = document.getElementById('printDoc');
   let activeDocId = docs[0] ? docs[0].id : null;
   let requestedPage = null;
+  let activeCompareSectionId = null;
 
   function esc(value){
     return String(value == null ? '' : value)
       .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
       .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  }
+
+  function allSections(){
+    return window.ROCA_DATA && Array.isArray(window.ROCA_DATA.sections) ? window.ROCA_DATA.sections : [];
+  }
+
+  function sectionById(sectionId){
+    return allSections().find(section => section && section.id === sectionId) || null;
+  }
+
+  function docsForSection(sectionId){
+    if(!sectionId) return [];
+    return docs.filter(doc => Array.isArray(doc.related) && doc.related.some(item => item.sectionId === sectionId));
+  }
+
+  function relationFor(doc, sectionId){
+    if(!doc || !Array.isArray(doc.related)) return null;
+    return doc.related.find(item => item.sectionId === sectionId) || null;
   }
 
   function previewUrl(doc, pageNumber){
@@ -39,7 +58,7 @@
     const title = contentsPane && contentsPane.querySelector('.contents-title');
     const note = contentsPane && contentsPane.querySelector('.rule-note');
     if(title) title.textContent = 'Fuentes / documentos';
-    if(note) note.textContent = 'Leer el original y contrastarlo contra ROCA sin sustituir la fuente. Los documentos controlados permanecen en Drive.';
+    if(note) note.textContent = 'PDF original a la izquierda y sección actual de ROCA a la derecha para revisar sin perder contexto.';
   }
 
   function buildSourceNav(filterText){
@@ -75,6 +94,9 @@
       button.addEventListener('click', () => {
         activeDocId = doc.id;
         requestedPage = null;
+        if(!relationFor(doc,activeCompareSectionId)){
+          activeCompareSectionId = Array.isArray(doc.related) && doc.related[0] ? doc.related[0].sectionId : null;
+        }
         renderSource(doc);
         buildSourceNav(filter.value);
       });
@@ -101,18 +123,38 @@
   function relatedMarkup(doc){
     const related = Array.isArray(doc.related) ? doc.related : [];
     if(!related.length) return '<p class="source-empty">Sin relaciones registradas todavia.</p>';
-    return related.map(item => '<div class="source-check-row">' +
-      '<div><strong>' + esc(item.label || item.sectionId) + '</strong>' +
-      '<span>' + esc(item.locator || 'Locator pendiente') + '</span></div>' +
-      '<div class="source-check-actions"><span class="source-action-chip">' + esc(item.action || 'PRESERVE') + '</span>' +
-      (item.sectionId ? '<button type="button" class="source-jump-section" data-section="' + esc(item.sectionId) + '">VER EN COMPENDIO</button>' : '') +
-      '</div></div>').join('');
+    return related.map(item => {
+      const selected = item.sectionId && item.sectionId === activeCompareSectionId;
+      return '<div class="source-check-row' + (selected ? ' selected' : '') + '">' +
+        '<div><strong>' + esc(item.label || item.sectionId) + '</strong>' +
+        '<span>' + esc(item.locator || 'Locator pendiente') + '</span></div>' +
+        '<div class="source-check-actions"><span class="source-action-chip">' + esc(item.action || 'PRESERVE') + '</span>' +
+        (item.sectionId ? '<button type="button" class="source-compare-section" data-section="' + esc(item.sectionId) + '">COMPARAR AQUÍ</button>' : '') +
+        (item.sectionId ? '<button type="button" class="source-jump-section" data-section="' + esc(item.sectionId) + '">ABRIR EN COMPENDIO</button>' : '') +
+        '</div></div>';
+    }).join('');
+  }
+
+  function compareSectionMarkup(sectionId){
+    const section = sectionById(sectionId);
+    if(!section){
+      return '<div class="source-compare-empty"><strong>Sin sección seleccionada</strong><p>Elige una relación de arriba para verla junto al PDF.</p></div>';
+    }
+    return '<article class="source-compare-document" data-compare-section="' + esc(section.id) + '">' +
+      '<div class="source-compare-label">HTML ACTUAL · ' + esc(section.id) + '</div>' +
+      '<h3>' + esc(section.title || section.nav || section.id) + '</h3>' +
+      (section.lead ? '<p class="source-compare-lead">' + esc(section.lead) + '</p>' : '') +
+      '<div class="source-compare-body">' + (section.body || '') + '</div>' +
+      '</article>';
   }
 
   function renderSource(doc, pageNumber){
     if(!doc || !page) return;
     activeDocId = doc.id;
     requestedPage = pageNumber || null;
+    if(!activeCompareSectionId || !relationFor(doc,activeCompareSectionId)){
+      activeCompareSectionId = Array.isArray(doc.related) && doc.related[0] ? doc.related[0].sectionId : null;
+    }
     document.title = (doc.label || doc.title) + ' · Fuentes ROCA';
 
     const missing = doc.kind === 'missing';
@@ -138,19 +180,22 @@
             '<div class="source-toolbar-actions">' + pageControl + openLink + '</div>' +
           '</div>' +
           sourceBody +
-          '<div class="source-viewer-note">El PDF permanece como fuente de solo lectura. Zoom, busqueda y navegacion interna pertenecen al visor del PDF/Drive.</div>' +
+          '<div class="source-viewer-note">El PDF permanece como fuente de solo lectura. Zoom, busqueda y navegacion interna pertenecen al visor del PDF/Drive. El numero de pagina escrito arriba se conserva como referencia de trabajo, aunque el salto exacto depende del visor de Drive.</div>' +
         '</div>' +
         '<aside class="source-crosscheck">' +
           '<div class="source-kicker">CROSS-CHECK</div>' +
-          '<h2>Relacion con el master</h2>' +
+          '<h2>Fuente contra HTML actual</h2>' +
           '<dl class="source-meta">' +
             '<div><dt>Estado</dt><dd>' + esc(doc.sourceStatus || 'NOT-CHECKED') + '</dd></div>' +
             '<div><dt>Acceso</dt><dd>' + esc(doc.access || 'CONTROLLED') + '</dd></div>' +
             '<div><dt>Revision</dt><dd>' + esc(doc.modified || 'sin fecha') + '</dd></div>' +
+            (requestedPage ? '<div><dt>Pagina</dt><dd>' + esc(requestedPage) + '</dd></div>' : '') +
           '</dl>' +
           '<p class="source-note">' + esc(doc.note || '') + '</p>' +
           '<h3>Secciones relacionadas</h3>' +
           relatedMarkup(doc) +
+          '<div class="source-compare-divider"></div>' +
+          compareSectionMarkup(activeCompareSectionId) +
         '</aside>' +
       '</section>';
 
@@ -164,6 +209,13 @@
       });
     }
 
+    page.querySelectorAll('.source-compare-section').forEach(button => {
+      button.addEventListener('click', () => {
+        activeCompareSectionId = button.dataset.section || null;
+        renderSource(doc,requestedPage);
+      });
+    });
+
     page.querySelectorAll('.source-jump-section').forEach(button => {
       button.addEventListener('click', () => {
         const sectionId = button.dataset.section;
@@ -176,22 +228,53 @@
     window.scrollTo({top:0,left:0,behavior:'auto'});
   }
 
-  function showSources(docId, pageNumber){
+  function showSources(docId, pageNumber, sectionId){
     setModeChrome();
     const doc = docs.find(x => x.id === docId) || docs.find(x => x.id === activeDocId) || docs[0];
     if(doc) activeDocId = doc.id;
+    if(sectionId) activeCompareSectionId = sectionId;
     buildSourceNav('');
     if(doc) renderSource(doc,pageNumber);
     else page.innerHTML = '<div class="source-missing">No hay fuentes registradas.</div>';
   }
 
-  if(sourcesMode) sourcesMode.addEventListener('click', () => showSources(activeDocId,requestedPage));
+  function injectSourceBacklinks(){
+    if(!page || document.body.classList.contains('source-mode')) return;
+    const article = page.querySelector('article[data-section]');
+    if(!article || article.querySelector('.source-backlinks')) return;
+    const sectionId = article.dataset.section;
+    if(!sectionId || sectionId === 'portada') return;
+    const relatedDocs = docsForSection(sectionId).filter(doc => doc.kind !== 'missing');
+    if(!relatedDocs.length) return;
+    const target = article.querySelector('.master-content');
+    if(!target) return;
+
+    const box = document.createElement('div');
+    box.className = 'source-backlinks';
+    box.innerHTML = '<span class="source-backlinks-label">FUENTES RELACIONADAS</span><div class="source-backlinks-actions"></div>';
+    const actions = box.querySelector('.source-backlinks-actions');
+
+    relatedDocs.forEach(doc => {
+      const rel = relationFor(doc,sectionId);
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'source-backlink-button';
+      button.textContent = doc.label || doc.title;
+      button.title = (rel && rel.locator) ? rel.locator : 'Abrir fuente para cross-check';
+      button.addEventListener('click', () => showSources(doc.id, rel && rel.page ? rel.page : null, sectionId));
+      actions.appendChild(button);
+    });
+    article.insertBefore(box,target);
+  }
+
+  if(sourcesMode) sourcesMode.addEventListener('click', () => showSources(activeDocId,requestedPage,activeCompareSectionId));
 
   [finalMode,compendiumMode,fieldMode,notesMode].forEach(button => {
     if(!button) return;
     button.addEventListener('click', () => {
       document.body.classList.remove('source-mode');
       if(sourcesMode) sourcesMode.classList.remove('active');
+      setTimeout(injectSourceBacklinks,0);
     }, true);
   });
 
@@ -205,7 +288,13 @@
     }, true);
   }
 
-  window.ROCA_OPEN_SOURCE = function(docId,pageNumber){
-    showSources(docId,pageNumber);
+  if(page && window.MutationObserver){
+    const observer = new MutationObserver(() => injectSourceBacklinks());
+    observer.observe(page,{childList:true,subtree:false});
+  }
+  setTimeout(injectSourceBacklinks,0);
+
+  window.ROCA_OPEN_SOURCE = function(docId,pageNumber,sectionId){
+    showSources(docId,pageNumber,sectionId);
   };
 })();
