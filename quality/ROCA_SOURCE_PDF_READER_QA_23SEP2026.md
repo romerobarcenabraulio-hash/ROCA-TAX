@@ -24,7 +24,8 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 
 ## Functional state
 - SOURCE-CONFIRMED — Five PDF sources now exist inside `ROCA AUDIT - FUENTES DOCUMENTALES` as private `not_shared` Drive files: 391p, 367p, PreEntrevistas 26 AGO, v24.8 Pre-Campo Control and v24.7 Pre-Campo Rigor.
-- BLOCKED-EXTERNAL — Vercel deployment is Ready, but this session's Vercel connector is not authorized for project `roca-tax`; authenticated iframe/browser QA cannot be completed from this connection.
+- PASS — Current head deploys successfully in Vercel.
+- BLOCKED-EXTERNAL — this session's Vercel connector/web surface is not authorized to inspect the protected `roca-tax` preview, so authenticated iframe/browser visual QA cannot be completed from this connection.
 - NOT-CHECKED — mobile visual behavior has not been screenshot-tested.
 - SOURCE-INTEGRITY-BLOCKER — raw `ROCA_TAXIDERMY_v22_1_Editable.zip` bytes still not recovered after targeted Library and Google Drive searches for `v22`, `ROCA_TAXIDERMY_v22`, `Editable ROCA TAXIDERMY`, and `PHOTO_PLAN_v22`.
 
@@ -34,7 +35,8 @@ Do not add customer CITES/SEMARNAT/PROFEPA permit PDFs, IDs, financial records o
 ## Cross-check state
 - SOURCE-CROSSCHECK — Master 391p maps Recepción, Curtiduría, FMR, Montaje, Retoque, Bases, Carpintería, Soldadura, Blanqueado and Espacios de soporte to their current V2 sections.
 - SOURCE-CROSSCHECK — UI exposes the source page/reference plus `VER V2` navigation without replacing or rewriting the PDF.
-- OPEN — Remaining historical source mappings will be added only after their page-level locators are established from the recovered originals.
+- PASS — 391p, 367p, PreEntrevistas, v24.8 and v24.7 have area-level page mappings derived from their recovered originals.
+- OPEN — v22.1 cannot receive page/section mapping until its raw editable package is recovered.
 
 ## Release state
 PARTIAL — code, private Drive master copy, Vercel deployment, unique source IDs, and section→source cross-check links are present. Authenticated iframe/mobile visual QA remains required before merge.
