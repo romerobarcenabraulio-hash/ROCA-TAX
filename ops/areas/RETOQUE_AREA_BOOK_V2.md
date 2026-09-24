@@ -37,11 +37,11 @@ Para cada estación confirmada verificar sólo lo aplicable:
 - iluminación/ventilación acordes a la tarea.
 
 ### Evidencia dirigida
-- **RET-EVID-01:** panorámica del área mostrando estaciones reales, compresor/línea de aire, pinturas/solventes, pedacera y circulación.
-- **RET-EVID-02:** punto de pintura/detalle: aerógrafo/pistola, producto identificado y medio real de ventilación/extracción.
-- **RET-EVID-03:** compresor, reguladores, mangueras y conexiones en contexto, incluyendo cruces de paso si existen.
-- **RET-EVID-04:** estación confirmada en condición lista: herramienta separada, productos cerrados, pieza identificada, superficie utilizable.
-- **RET-EVID-05:** medición de iluminación en plano real de detalle/color cuando corresponda.
+- **Contexto de EVID-RET-01 / EVID-RET-03 / EVID-RET-04:** panorámica del área mostrando estaciones reales, compresor/línea de aire, pinturas/solventes, pedacera y circulación.
+- **EVID-RET-01:** punto de pintura/detalle: aerógrafo/pistola, producto identificado y medio real de ventilación/extracción.
+- **EVID-RET-03:** compresor, reguladores, mangueras y conexiones en contexto, incluyendo cruces de paso si existen.
+- **EVID-RET-04:** estación confirmada en condición lista: herramienta separada, productos cerrados, pieza identificada, superficie utilizable.
+- **EVID-RET-02:** medición de iluminación en plano real de detalle/color cuando corresponda.
 
 ## 2. Metodología preservada
 Retiro de alfileres/limpieza → resane → preparación superficial → color por zonas → cepillado/acabado de pelo → brillo de ojos/nariz/boca → texturas/acabados especiales y cuernos cuando aplique → liberar o regresar.
