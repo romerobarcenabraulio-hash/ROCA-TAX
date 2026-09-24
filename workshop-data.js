@@ -89,11 +89,14 @@ window.ROCA_WORKSHOP_SECTIONS = [
   },
   {
     id:"area-bases", nav:"Área · Bases", title:"Bases", eyebrow:"Libro de área · soporte y ambientación",
-    lead:"Construir una base estable y coherente con la pieza sin usar el acabado para esconder una fijación deficiente.",
+    lead:"Construir una base estable, transportable y coherente con la pieza sin usar terreno o pintura para esconder una fijación deficiente.",
     body:`
-      <h2>Flujo preservado</h2><p>Definir referencia/medir → cortar plancha → apoyos/bancos → presentar/fijar → construir volumen/terreno → ambientar → revisar estabilidad → transferir.</p>
-      <h2>Rutas documentadas</h2><p>Volumen con poliuretano cuando la base lo requiere; malla/costal/dextrina/terreno para relieves bajos o acabados de tierra. La elección depende de la pieza y referencia.</p>
-      <h2>Por cerrar</h2><p>Responsable vigente, layout, herramienta real, manipulación de piezas pesadas, frontera con Carpintería, productos/HDS y evidencia de estabilidad.</p>
+      <h2>Área de trabajo</h2><p>Se preservan <strong>BAS-AREA-01..09</strong> con el significado del 391P. Los controles posteriores pasan a <strong>BAS-AREA-10..12</strong>: separar polvo/acabado, almacenamiento/ruta de material pesado y método de manipulación.</p>
+      <h2>Método completo recuperado</h2><p>08 medir/plancha → 09 bancos/fijación → 10 poliuretano protección/vertido cuando aplique → 11 recorte/pintura → 12 dextrina/terreno → 13 costillas+malla 8x8 → 14 costal+dextrina+terreno → 15 vegetación/detalles.</p>
+      <h2>Fuente primaria</h2><p>Rodolfo confirma dextrina:Blanco España <strong>2:1</strong>, malla <strong>8x8</strong> y <strong>3 mm</strong> entre pata y malla.</p>
+      <h2>Conflicto bloqueado</h2><p>El 391P derivado dice poliuretano 50/50 en cálido y 30/70 en fresco/húmedo; Omar documenta 50/50 como relación base y aumento de cantidad total con frío. <strong>30/70 no queda canónico en Bases</strong> hasta identificar producto y receta real.</p>
+      <h2>No convertir propuesta en estándar</h2><p>Los “4 kits”, cantidades mínimas y puntos de reposición históricos son propuestas de planeación, no cantidades vigentes hasta cerrar personal, estaciones, consumo y stock real.</p>
+      <h2>Por cerrar</h2><p>Responsable, layout, frontera con Carpintería, herramienta real, fijación/capacidad estructural, poliuretano/HDS, manipulación, BIWO y evidencia de estabilidad.</p>
     `
   },
   {
