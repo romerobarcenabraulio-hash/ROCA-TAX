@@ -1,0 +1,12 @@
+ID,SUBJECT,SOURCE,LOCATOR,CANONICAL_HOME,ACTION,STATUS
+RESC-COM-01,Límites interfaces entrada salida espera,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-01/02,MERGE_WITHOUT_LOSS,OPEN
+RESC-COM-02,Estación individual real,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-03 + area books,MERGE_WITHOUT_LOSS,OPEN
+RESC-COM-03,Equipo herramienta acceso mantenimiento,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-14,MERGE_WITHOUT_LOSS,OPEN
+RESC-COM-04,Servicios y conexiones,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-08,MERGE_WITHOUT_LOSS,OPEN
+RESC-COM-05,Señalización e identificación visual,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-16,MERGE_WITHOUT_LOSS,OPEN
+RESC-COM-06,Metadatos de evidencia,v24.7 Pre-Campo Rigor,p125-p189,ops/areas/AREA_COMMON_STANDARD_V2.md REQ-COM-15,MERGE_WITHOUT_LOSS,OPEN
+RESC-REC-01,Ingreso privacidad estación evidencia,391p + v24.7,p42-p45 + p125-p128,ops/areas/RECEPCION_AREA_BOOK_V2.md,MERGE_WITHOUT_LOSS,OPEN
+RESC-CUR-01,Zona húmeda drenaje medición maquinaria estaciones,391p + v24.7,p52-p56 + p129-p132,ops/areas/CURTIDURIA_AREA_BOOK_V2.md,MERGE_WITHOUT_LOSS,OPEN
+RESC-FMR-01,Mezcla racks curado estación evidencia,391p + v24.7,p90-p93 + p133-p136,ops/areas/FORMAS_MOLDES_REPLICAS_AREA_BOOK_V2.md,MERGE_WITHOUT_LOSS,OPEN
+RESC-MON-01,Resolución física de Montaje,v24.7 + 391p + V2,p137-p140 + p133+,ops/areas/MONTAJE_PILOT_AREA_BOOK_V2.md,PRESERVE,PARTIAL
+RESC-RET-01,Detalle solventes aire comprimido estaciones,391p + v24.7,p163-p166 + p141-p144,ops/areas/RETOQUE_AREA_BOOK_V2.md,MERGE_WITHOUT_LOSS,OPEN
