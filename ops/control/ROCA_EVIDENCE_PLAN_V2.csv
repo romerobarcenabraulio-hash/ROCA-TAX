@@ -6,6 +6,7 @@ EVID-CUR-03,AREA-CUR,Iluminación/ventilación/servicios,Medición + foto contex
 EVID-CUR-04,AREA-CUR,Peso/pH de proceso + instrumento/método,Registro de lectura + ID/estado del instrumento o método,Valor registrado en punto/fecha y trazabilidad de la medición,Exactitud metrológica permanente o cumplimiento sin verificación aplicable,REQUEST_DEFINED
 EVID-FMR-01,AREA-FMR,Racks/códigos de formas y moldes,Foto + inventario,Ubicación e identificación,Exactitud dimensional o estado BIWO,REQUEST_DEFINED
 EVID-FMR-02,AREA-FMR,Prueba/dosificación,Registro de lote/prueba + foto,Que se ejecutó el control documentado,Que toda la producción cumple sin muestreo,REQUEST_DEFINED
+EVID-FMR-03,AREA-FMR,Curado/desmolde,Registro de vaciado/revisión + condición física + foto,Que una apertura documentada respetó referencia y condición física,Que todos los lotes futuros curarán igual sin control,REQUEST_DEFINED
 EVID-MON-01,AREA-MON,Estaciones reales,3 fotos por estación,Superficie almacenamiento cierre y pieza identificada,Competencia del montador o iluminación medida,REQUEST_DEFINED
 EVID-MON-02,AREA-MON,Secado/espera,Foto contextual + ID,Estabilidad ubicación e identificación,Sequedad interna o criterio técnico de liberación,REQUEST_DEFINED
 EVID-RET-01,AREA-RET,Pintura/solventes/pedacera,Foto contextual + producto,Habitabilidad de punto de uso y orden,Exposición o suficiencia de extracción,REQUEST_DEFINED
