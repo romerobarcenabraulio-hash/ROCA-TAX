@@ -303,3 +303,141 @@ window.ROCA_SOURCE_DOCS = [
     ]
   }
 ];
+
+
+window.ROCA_SOURCE_LEDGER = [
+  {
+    id: "LEDGER-ROSTER-RICARDO",
+    sectionIds: ["area-recepcion","area-curtiduria","area-montaje"],
+    subject: "Ubicación vigente de Ricardo",
+    action: "CORRECT",
+    canonicalHome: "ops/control/ROCA_ROSTER_STATION_REGISTRY_V2.csv",
+    destinationState: "V2 vigente: Recepción OPEN; Curtiduría = Rodolfo Sr. + David + Lalo/Eduardo; Ricardo = Montaje; Eugenio = asistente directo de Ricardo.",
+    summary: "v24.7, v24.8 y PreEntrevistas ubican a Ricardo en Curtiduría. El 31AGO todavía lo conserva como dato por reconciliar. La corrección posterior del proyecto lo mueve a Montaje; no reintroducir el roster histórico como estructura vigente.",
+    sources: [
+      { docId:"precampo-v24-7", locator:"Personal del taller > Áreas y equipos / Curtiduría", fact:"Rodolfo Sr. · Ricardo · David" },
+      { docId:"precampo-v24-8", locator:"Personal del taller > Áreas y equipos / Curtiduría", fact:"Rodolfo Sr. · Ricardo · David" },
+      { docId:"pre-entrevistas-26ago", locator:"Personal del taller > Áreas y equipos / Curtiduría", fact:"Rodolfo Sr. · Ricardo · David" },
+      { docId:"canonico-pendientes-31ago", locator:"Gobernanza > Taller y equipo", fact:"Ricardo aparece como recepción/relación con Curtiduría PENDIENTE DE RECONCILIAR" }
+    ],
+    proof: "La corrección vigente está registrada en ROCA_ROSTER_STATION_REGISTRY_V2.csv y en MONTAJE_PILOT_AREA_BOOK_V2.md."
+  },
+  {
+    id: "LEDGER-ROSTER-RETOQUE-BASES",
+    sectionIds: ["area-retoque","area-bases"],
+    subject: "Separación vigente Retoque / Bases",
+    action: "CORRECT",
+    canonicalHome: "ops/control/ROCA_ROSTER_STATION_REGISTRY_V2.csv",
+    destinationState: "V2 vigente: Retoque = Rodolfo Jr. + Emiliano + Valerio/Valentino + Señor Pez; Bases = responsable OPEN.",
+    summary: "Las versiones pre-campo concentran a Sr. Pes, Emiliano y Valerio en Bases. La corrección posterior los ubica en Retoque y deja Bases pendiente; la pedacera vive únicamente en Retoque.",
+    sources: [
+      { docId:"precampo-v24-7", locator:"Personal del taller > Áreas y equipos / Bases", fact:"Sr. Pes · Emiliano · Valerio" },
+      { docId:"precampo-v24-8", locator:"Personal del taller > Áreas y equipos / Bases", fact:"Sr. Pes · Emiliano · Valerio" },
+      { docId:"pre-entrevistas-26ago", locator:"Personal y áreas de trabajo", fact:"Sr. Pes, Emiliano y Valerio aparecen en Retoque y Bases / Bases" },
+      { docId:"canonico-pendientes-31ago", locator:"Gobernanza > Taller y equipo", fact:"Bases conserva Sr. Pes/Emiliano/Valerio como dato histórico pendiente de reconciliar" }
+    ],
+    proof: "BASES_AREA_BOOK_V2.md prohíbe duplicar automáticamente el roster histórico; RETOQUE_AREA_BOOK_V2.md fija el equipo vigente conocido."
+  },
+  {
+    id: "LEDGER-CUR-PICLE",
+    sectionIds: ["area-curtiduria"],
+    subject: "Picle: cantidad de ácido fórmico",
+    action: "HOLD_PENDING_EVIDENCE",
+    canonicalHome: "AREA-CUR / metodología técnica controlada",
+    destinationState: "CURTIDURIA_AREA_BOOK_V2.md conserva explícitamente conflicto 6.0 L vs 6.4 L y bloquea normalización por redondeo.",
+    summary: "v24.7, v24.8, PreEntrevistas y 31AGO repiten 473 L agua + 45 kg sal + 6.4 L ácido fórmico + 300 mL ácido sulfúrico. Aun así, existe una fuente histórica de 6.0 L registrada por V2 que no ha sido reconciliada; no cerrar el conflicto hasta recuperar esa fuente.",
+    sources: [
+      { docId:"precampo-v24-7", locator:"Curtiduría > Referencias > Picle · formulación", fact:"473 L agua + 45 kg sal + 6.4 L ácido fórmico + 300 mL ácido sulfúrico" },
+      { docId:"precampo-v24-8", locator:"Curtiduría > Referencias > Picle · formulación", fact:"Misma formulación 6.4 L" },
+      { docId:"pre-entrevistas-26ago", locator:"Curtiduría > Referencias > Picle · formulación", fact:"Misma formulación 6.4 L" },
+      { docId:"canonico-pendientes-31ago", locator:"CUR / Metodología > referencia de picle", fact:"Misma formulación 6.4 L" },
+      { docId:"master-391", locator:"CUR / Metodología", page:63, fact:"La fuente 391P conserva la receta con 6.4 L" }
+    ],
+    proof: "Cuatro versiones históricas coinciden en 6.4 L; la fuente material que soporta 6.0 L sigue pendiente de recuperación/reconciliación."
+  },
+  {
+    id: "LEDGER-CUR-PH",
+    sectionIds: ["area-curtiduria"],
+    subject: "Medición de pH y estado del instrumento",
+    action: "MERGE_WITHOUT_LOSS",
+    canonicalHome: "AREA-CUR / activos-medición + metodología",
+    destinationState: "El V2 actual no expone pH en el libro de área; el control debe recuperarse sin sustituir la receta técnica.",
+    summary: "v24.7, v24.8 y PreEntrevistas ya conservan pH 3.6–3.8 al inicio del día 2 y referencia final 4.2–4.3. El 31AGO añade CUR-AREA-09: báscula y medición de pH con estado conocido. Esa capa explícita no debe perderse.",
+    sources: [
+      { docId:"precampo-v24-7", locator:"Curtiduría > ALUM-Tan / pH", fact:"pH 3.6–3.8 y 4.2–4.3 en puntos distintos del proceso" },
+      { docId:"precampo-v24-8", locator:"Curtiduría > ALUM-Tan / pH", fact:"Conserva ambas referencias de pH" },
+      { docId:"pre-entrevistas-26ago", locator:"Curtiduría > ALUM-Tan / pH", fact:"Conserva ambas referencias de pH" },
+      { docId:"canonico-pendientes-31ago", locator:"CUR-AREA-09 · Maquinaria crítica", fact:"Báscula y medición de pH tienen estado conocido" }
+    ],
+    proof: "La capa de medición aparece de forma consistente en fuentes históricas y se hace explícita como control físico en 31AGO."
+  },
+  {
+    id: "LEDGER-FMR-RATIO",
+    sectionIds: ["area-fmr"],
+    subject: "Dosificación A/B por condición climática",
+    action: "PRESERVE",
+    canonicalHome: "AREA-FMR / metodología técnica controlada",
+    destinationState: "FMR V2 conserva prueba de 20 g y 50/50 en condición cálida; remite variaciones climáticas al método técnico controlado.",
+    summary: "Las cuatro versiones comparadas conservan 50/50 en clima cálido y 30/70 en fresco/húmedo. Mantener el contexto climático; no convertir la relación en regla global descontextualizada.",
+    sources: [
+      { docId:"precampo-v24-7", locator:"FMR > Dosificar, mezclar y vaciar", fact:"cálido 50/50; fresco/húmedo 30/70" },
+      { docId:"precampo-v24-8", locator:"FMR > Dosificar, mezclar y vaciar", fact:"cálido 50/50; fresco/húmedo 30/70" },
+      { docId:"pre-entrevistas-26ago", locator:"FMR > Dosificar, mezclar y vaciar", fact:"cálido 50/50; fresco/húmedo 30/70" },
+      { docId:"canonico-pendientes-31ago", locator:"FMR > Metodología", fact:"cálido 50/50; fresco/húmedo 30/70" }
+    ],
+    proof: "Parámetro repetido de forma consistente; V2 lo preserva sin elevarlo a regla universal."
+  },
+  {
+    id: "LEDGER-RET-PRODUCTS",
+    sectionIds: ["area-retoque"],
+    subject: "Productos y consumibles de Retoque",
+    action: "PRESERVE",
+    canonicalHome: "AREA-RET / metodología + materiales",
+    destinationState: "Retoque V2 conserva Salvo/Roma, Suavitel condicional, resanadores/catalizadores, pinturas y gasolina blanca.",
+    summary: "La capa de materiales no debe comprimirse a 'limpieza/pintura'. Los productos concretos y su uso condicional sobreviven en V2.",
+    sources: [
+      { docId:"master-391", locator:"RET / Metodología y catálogo", page:169, fact:"Metodología de Retoque y catálogo de materiales" },
+      { docId:"canonico-pendientes-31ago", locator:"Retoque > metodología/herramientas/consumibles", fact:"Conserva inventario y controles de acabado" }
+    ],
+    proof: "RETOQUE_AREA_BOOK_V2.md conserva nombres y uso condicional; no se detecta pérdida en esta capa."
+  },
+  {
+    id: "LEDGER-CAR-METHOD",
+    sectionIds: ["area-carpinteria"],
+    subject: "Estado de metodología de Carpintería / Corte / Embalaje",
+    action: "HOLD_PENDING_EVIDENCE",
+    canonicalHome: "AREA-CAR / metodología",
+    destinationState: "CARPINTERIA_EMBALAJE_AREA_BOOK_V2.md = CONTROL PREPARED, método no liberado; puesto pendiente.",
+    summary: "31AGO declara expresamente que el método no se publica hasta cerrar flujo real, responsable, herramientas, criterios y condición de salida. Mantenerlo pendiente evita fabricar un procedimiento genérico.",
+    sources: [
+      { docId:"canonico-pendientes-31ago", locator:"Carpintería, corte y embalaje · Metodología > Método no liberado", fact:"Secuencia técnica no liberada hasta cerrar evidencia primaria" }
+    ],
+    proof: "El estado pendiente sobrevivió correctamente al V2."
+  },
+  {
+    id: "LEDGER-SOL-METHOD",
+    sectionIds: ["area-soldadura"],
+    subject: "Estado de metodología de Soldadura / Adaptación",
+    action: "HOLD_PENDING_EVIDENCE",
+    canonicalHome: "AREA-SOL / metodología",
+    destinationState: "SOLDADURA_AREA_BOOK_V2.md = WORKING STANDARD / MÉTODO NO LIBERADO; Flaco identificado como responsable operativo conocido.",
+    summary: "31AGO exige entrevista/demostración para secuencia, unión, preparación, consumibles, ajustes, aceptación y retrabajo. V2 preserva exactamente ese bloqueo.",
+    sources: [
+      { docId:"canonico-pendientes-31ago", locator:"Soldadura y adaptación · Metodología > Método no liberado", fact:"Falta evidencia primaria del responsable técnico" }
+    ],
+    proof: "No se detecta cierre artificial ni metodología inventada."
+  },
+  {
+    id: "LEDGER-BLA-OWNER",
+    sectionIds: ["area-blanqueado"],
+    subject: "Responsable operativo de Blanqueado",
+    action: "HOLD_PENDING_EVIDENCE",
+    canonicalHome: "AREA-BLA / gobernanza local",
+    destinationState: "BLANQUEADO_AREA_BOOK_V2.md mantiene responsable operativo pendiente de confirmar.",
+    summary: "31AGO ya declaraba el responsable de Blanqueado como pendiente. V2 conserva el hueco en vez de asignar una persona por inferencia.",
+    sources: [
+      { docId:"canonico-pendientes-31ago", locator:"Gobernanza > Taller y equipo / Blanqueado", fact:"Responsable operativo PENDIENTE DE CONFIRMAR" }
+    ],
+    proof: "El pendiente permanece visible y no se convirtió en una asignación falsa."
+  }
+];
