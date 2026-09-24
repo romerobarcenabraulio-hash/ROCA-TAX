@@ -118,7 +118,7 @@
 
     const available = Boolean(activeDoc.previewUrl || (activeDoc.localAvailable && activeDoc.localPath));
     const directPageJump = Boolean(activeDoc.localAvailable && activeDoc.localPath);
-    const status = activeDoc.status === 'AVAILABLE_PRIVATE_LINK' ? 'Disponible' : 'Locator pendiente';
+    const status = activeDoc.status === 'AVAILABLE_PRIVATE_LINK' ? 'Disponible' : activeDoc.status === 'SOURCE_RECOVERED_LOCATOR_PENDING' ? 'Fuente recuperada · locator pendiente' : activeDoc.status === 'SOURCE_INTEGRITY_BLOCKER' ? 'Fuente no recuperada' : 'Locator pendiente';
     const open = activeDoc.openUrl ? `<a class="pdf-link" href="${escapeHtml(activeDoc.openUrl)}" target="_blank" rel="noopener noreferrer">ABRIR EN VENTANA</a>` : '';
     const folder = rules.sourceFolderUrl ? `<a class="pdf-link secondary" href="${escapeHtml(rules.sourceFolderUrl)}" target="_blank" rel="noopener noreferrer">CARPETA DE FUENTES</a>` : '';
     const frame = available
