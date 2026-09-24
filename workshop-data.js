@@ -15,6 +15,11 @@ window.ROCA_WORKSHOP_SECTIONS = [
         <li><strong>Estación y almacenamiento:</strong> superficies estables, acceso recuperable y materiales pesados o inestables controlados sin invadir circulación.</li>
         <li><strong>Ventilación/extracción:</strong> el control corresponde al proceso, producto y exposición real; cuando se requiere captura localizada, se coloca en el punto de generación y se conserva operable.</li>\n        <li><strong>Servicios:</strong> energía, agua, drenaje y aire se usan sin improvisaciones, humedad peligrosa, obstrucción o contaminación cruzada.</li>
         <li><strong>Residuos:</strong> material útil, recuperable y residuo se separan por destino real; ninguna corriente se clasifica como peligrosa sólo por apariencia o por el color del recipiente.</li>
+        <li><strong>Maquinaria:</strong> guardas y dispositivos de seguridad permanecen instalados y operables; si falta una guarda o falla un dispositivo, el equipo queda fuera de servicio.</li>
+        <li><strong>Electricidad:</strong> tableros y desconexiones quedan accesibles; cables, clavijas, extensiones y cargadores permanecen íntegros y fuera de agua, daño y circulación improvisada.</li>
+        <li><strong>Ruido:</strong> las fuentes relevantes se reconocen en operación normal y se miden cuando el nivel/exposición lo requiere; el EPP auditivo no sustituye el control de la fuente.</li>
+        <li><strong>Carga manual:</strong> piezas pesadas o voluminosas tienen ruta y método de maniobra definidos antes de moverlas.</li>
+        <li><strong>Compresor/presión:</strong> equipo, placa, reguladores, mangueras, drenaje y dispositivos de seguridad son identificables y accesibles; la aplicabilidad técnica se determina con datos reales.</li>
         <li><strong>Activos:</strong> equipo fuera de condición se separa del uso; activos críticos conservan identidad e inspección/mantenimiento verificable.</li>
       </ul>
       <ul>
