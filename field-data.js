@@ -74,6 +74,8 @@ window.ROCA_FIELD_SECTIONS = [
       </ul>
       <h2>Evidencia visual por estación</h2>
       <p>Vista 3/4 completa · almacenamiento abierto · superficie/herramienta · pieza identificada · cables/servicios · condición al cierre.</p>
+      <h2>Evidence IDs</h2>
+      <p>EVID-REC-02/03 · EVID-CUR-06 · EVID-FMR-03 · EVID-MON-01 · EVID-RET-04 · EVID-COMP-01.</p>
       <h2>No asumir</h2>
       <p>Antigüedad, oficio o aparecer en el roster no equivalen automáticamente a autorización para todas las operaciones.</p>
     `
