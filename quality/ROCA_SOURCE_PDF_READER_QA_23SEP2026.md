@@ -22,8 +22,11 @@ Add a read-only source-document workspace to ROCA Audit without publishing restr
 - BLOCKED-EXTERNAL — Vercel deployment is Ready, but this session's Vercel connector is not authorized for project `roca-tax`; authenticated iframe/browser QA cannot be completed from this connection.
 - NOT-CHECKED — mobile visual behavior has not been screenshot-tested.
 - LOCATOR_PENDING — `ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf` (Library/raw bytes confirmed; deployed private locator missing).
-- LOCATOR_PENDING — `ROCA_TAXIDERMY_MASTER_CANONICO_PENDIENTES_31AGO2026.pdf`.
-- LOCATOR_PENDING — `ROCA_TAXIDERMY_MASTER_PreEntrevistas_26AGO2026.pdf`.
+- SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_MASTER_CANONICO_PENDIENTES_31AGO2026 2.pdf`, 367 pages, 60,294,089 bytes.
+- SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_v24_8_PreCampo_Control.pdf`, 198 pages, 31,591,373 bytes.
+- SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_MASTER_PreEntrevistas_26AGO2026.pdf`, internally labeled v24.8, 208 pages, 31,643,065 bytes. Do not deduplicate against nominal v24.8 without diff.
+- SOURCE-RECOVERED / LOCATOR-PENDING — `ROCA_TAXIDERMY_v24_7_PreCampo_Rigor.pdf`, 194 pages, 26,262,426 bytes.
+- SOURCE-INTEGRITY-BLOCKER — raw `ROCA_TAXIDERMY_v22_1_Editable.zip` bytes still not recovered.
 
 ## Privacy gate
 Do not add customer CITES/SEMARNAT/PROFEPA permit PDFs, IDs, financial records or other restricted originals to this public GitHub repository. Restricted source reading belongs in a private authenticated evidence surface.
