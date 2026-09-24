@@ -13,6 +13,8 @@ EVID-RET-01,AREA-RET,NOT_VERIFIED,,,,,,,Punto real de pintura/solventes/pedacera
 EVID-RET-02,AREA-RET,NOT_VERIFIED,,,,,,,Iluminación medida en plano de detalle/color,,,,,,NOT_REVIEWED
 EVID-RET-03,AREA-RET,NOT_VERIFIED,,,,,,,Compresor/placa regulador mangueras/conexiones y punto de pintura,,,,,,NOT_REVIEWED
 EVID-BAS-01,AREA-BAS,NOT_VERIFIED,,,,,,,Condición observable de soporte/estabilidad,,,,,,NOT_REVIEWED
+EVID-BAS-02,AREA-BAS,NOT_VERIFIED,,,,,,,Estación materiales herramienta y punto de poliuretano/adhesivo,,,,,,NOT_REVIEWED
+EVID-BAS-03,AREA-BAS,NOT_VERIFIED,,,,,,,Método real de maniobra de pieza/base pesada cuando aplique,,,,,,NOT_REVIEWED
 EVID-CAR-01,AREA-CAR,NOT_IMPLEMENTED,,,,,,,Existencia y separación del puesto si aplica,,,,,,NOT_REVIEWED
 EVID-SOL-01,AREA-SOL,NOT_VERIFIED,,,,,,,Condición física del trabajo en caliente/equipo real,,,,,,NOT_REVIEWED
 EVID-BLA-01,AREA-BLA,NOT_VERIFIED,,,,,,,Montaje real de tratamiento térmico,,,,,,NOT_REVIEWED
