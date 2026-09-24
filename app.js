@@ -70,6 +70,51 @@
     </article>`;
   }
 
+
+  function fastTrackMarkup(section){
+    const cfg = window.ROCA_FAST_TRACK && window.ROCA_FAST_TRACK.areas ? window.ROCA_FAST_TRACK.areas[section.id] : null;
+    if(!cfg) return '';
+    const rows = (window.ROCA_FAST_TRACK.commonRows || []).map((r,i)=>`
+      <tr>
+        <td><strong>${r.label}</strong></td>
+        <td class="ft-now">____________________________</td>
+        <td>${r.target}</td>
+        <td class="ft-action">____________________________</td>
+        <td>${r.input}</td>
+        <td class="ft-evidence">EVID-${cfg.code}-FT-${String(i+1).padStart(2,'0')}<br>________________</td>
+        <td>NOT_CHECKED</td>
+      </tr>`).join('');
+    return `
+      <section class="fast-track-wrap">
+        <div class="fast-track-kicker">ROCA · FAST TRACK AUDIT</div>
+        <h2>Plan provisional de implementación</h2>
+        <p><strong>El estándar anterior no cambia.</strong> Esta tabla registra únicamente la brecha entre la condición actual y el estándar objetivo. Cuando la evidencia exista, el mismo renglón alimenta la auditoría.</p>
+        <p class="callout"><strong>Específico de ${cfg.title}:</strong> ${cfg.specific}</p>
+        <div class="table-scroll">
+          <table class="fast-track-table">
+            <thead><tr><th>Elemento</th><th>Cómo está hoy</th><th>Cómo debe quedar</th><th>Qué hacer para llegar</th><th>Dato / cálculo</th><th>Evidencia esperada</th><th>Estado</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+        <h2>Auditoría de implementación</h2>
+        <p>La auditoría verifica dos cosas en paralelo: <strong>el área física</strong> y <strong>la operación que ocurre dentro del área</strong>. Ningún renglón cambia a VERIFIED sin evidencia ID y revisor.</p>
+        <div class="table-scroll">
+          <table class="fast-track-table audit">
+            <thead><tr><th>Req.</th><th>Prueba objetiva</th><th>Resultado</th><th>Evidencia ID</th><th>Hallazgo / acción</th><th>Revisor / fecha</th></tr></thead>
+            <tbody>${(window.ROCA_FAST_TRACK.commonRows||[]).map((r,i)=>`
+              <tr>
+                <td>${cfg.code}-FT-${String(i+1).padStart(2,'0')}</td>
+                <td>${r.label}</td>
+                <td>NOT_CHECKED</td>
+                <td>EVID-${cfg.code}-FT-${String(i+1).padStart(2,'0')}</td>
+                <td>________________</td>
+                <td>________________</td>
+              </tr>`).join('')}</tbody>
+          </table>
+        </div>
+      </section>`;
+  }
+
   function sectionMarkup(section){
     const posters = section.posters ? section.posters.map(([name, items]) => `
       <section class="poster"><div class="poster-sub">ROCA · condición de área</div><h2>${name}</h2><ol>${items.map(x=>`<li>${x}</li>`).join('')}</ol></section>`).join('') : '';
@@ -79,7 +124,7 @@
       <h1>${section.title}</h1>
       <p class="lead">${section.lead || ''}</p>
       <div class="bronze-rule short"></div>
-      <div class="master-content">${section.body||''}${posters}</div>
+      <div class="master-content">${section.body||''}${posters}${fastTrackMarkup(section)}</div>
       ${footer(section.nav ? section.nav.toUpperCase() : '')}
     </article>`;
   }
