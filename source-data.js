@@ -66,12 +66,15 @@ window.ROCA_SOURCE_DOCUMENTS = [
     subtitle: "Fuente histórica identificada · locator web pendiente",
     sourceKind: "ROCA Library / archivo histórico",
     privacy: "INTERNAL_OPERATIONAL",
-    status: "LOCATOR_PENDING",
+    status: "SOURCE_RECOVERED_LOCATOR_PENDING",
     pages: null,
+    libraryFileId: "libfile_c4a856ce0038819198a470b9707bc649",
+    sourceFileId: "file_000000002b3081fd9d262ad4ad4a25ca",
+    sizeBytes: 31643065,
     previewUrl: "",
     openUrl: "",
     localPath: "sources/pdfs/ROCA_TAXIDERMY_MASTER_PreEntrevistas_26AGO2026.pdf",
-    note: "Se conserva como fuente de reconciliación. Falta copiarla a la carpeta privada/segura que alimente este visor."
+    note: "Fuente recuperada físicamente en ROCA Library y materializada para control de integridad. Falta una URL privada estable para servirla dentro del visor; no publicar sus bytes en el repo público."
   }
 ];
 
