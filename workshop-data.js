@@ -7,19 +7,20 @@ window.ROCA_WORKSHOP_SECTIONS = [
       <p class="callout"><strong>Área = deber ser permanente.</strong> Sólo permanece la condición correcta del espacio.</p>
       <h2>Estándar físico común</h2>
       <ul>
-        <li><strong>Rutas y salidas:</strong> continuas, visibles y libres; ninguna pieza, caja, cable o material se almacena en la ruta. La salida de emergencia permanece identificada y operable desde dentro.</li>
-        <li><strong>Extintores:</strong> del tipo adecuado al fuego posible, visibles, accesibles y señalizados; la parte más alta queda a máximo 1.50 m del piso y la cobertura se define por riesgo, superficie y recorrido real.</li>
-        <li><strong>Señalización:</strong> rojo para equipo contra incendio/prohibición, amarillo para advertencia o delimitación, verde para condición segura/ruta/salida y azul para obligación.</li>
-        <li><strong>Iluminación:</strong> se mide en el plano real de trabajo; el nivel objetivo se selecciona por la tarea visual real.</li>
-        <li><strong>Químicos:</strong> producto identificable, HDS disponible donde se maneja, señal legible y almacenamiento compatible con el producto real.</li>
+        <li><strong>Rutas de evacuación:</strong> visibles, señalizadas y libres. Desde el punto más alejado hasta cualquier punto de la ruta de evacuación el recorrido no excede 40 m; si lo excede, la evacuación completa a lugar seguro se demuestra en máximo 3 minutos. Donde una falla de energía deje la ruta sin iluminación suficiente, existe iluminación de emergencia.</li>
+        <li><strong>Salidas de emergencia:</strong> identificadas, libres de obstáculos y seguros que impidan usarlas durante la jornada. Abren en el sentido del flujo, permiten apertura desde dentro mediante una operación simple de empuje y, si son automáticas o eléctricas, conservan apertura manual al faltar energía.</li>
+        <li><strong>Extintores:</strong> corresponden a la clase de fuego posible, están visibles, accesibles, señalizados y protegidos. La parte más alta queda a máximo 1.50 m del piso. La distribución total cubre al menos 1 extintor por cada 300 m² o fracción cuando el riesgo es ordinario y 1 por cada 200 m² o fracción cuando es alto, además de respetar la distancia real de recorrido: 23 m para clases A/C/D; clase B 15 m en riesgo ordinario y 10 m en riesgo alto; clase K 10 m.</li>
+        <li><strong>Clasificación de incendio:</strong> la distribución de extintores y demás medidas parte de una clasificación documentada con superficie e inventarios máximos reales. No se asigna un extintor por área por costumbre.</li>
+        <li><strong>Señalización:</strong> rojo identifica equipo contra incendio y prohibición; amarillo advierte peligro o delimita; verde identifica condición segura, rutas y salidas; azul indica obligación. La señal permanece visible desde el punto donde debe orientar una decisión.</li>
+        <li><strong>Iluminación:</strong> se mide en el plano real de trabajo. Mínimos por tarea visual: 50 lux tránsito interior general; 100 lux circulación/sala de espera/almacén; 200 lux inspección simple, banco y máquina; 300 lux ensamble medio, empaque y oficina; 500 lux detalle claro; 750 lux pintura/acabado de superficies y trabajo fino; 1,000 lux para alta exactitud. La tarea real, no el nombre del cuarto, gobierna el nivel.</li>
+        <li><strong>Químicos:</strong> sustancias peligrosas y mezclas conservan identificación/señalización visible y coherente con su HDS; la HDS en español permanece disponible para consulta en el área donde se maneja el producto. Depósitos, recipientes, anaqueles y áreas de almacenamiento se señalizan cuando corresponda.</li>
         <li><strong>Estación y almacenamiento:</strong> superficies estables, acceso recuperable y materiales pesados o inestables controlados sin invadir circulación.</li>
-        <li><strong>Ventilación/extracción:</strong> el control corresponde al proceso, producto y exposición real; cuando se requiere captura localizada, se coloca en el punto de generación y se conserva operable.</li>\n        <li><strong>Servicios:</strong> energía, agua, drenaje y aire se usan sin improvisaciones, humedad peligrosa, obstrucción o contaminación cruzada.</li>
+        <li><strong>Ventilación/extracción:</strong> el control corresponde al proceso, producto y exposición real; cuando el reconocimiento o la HDS exijan captura localizada, ésta actúa en el punto de generación y descarga sin crear una nueva exposición.</li>
+        <li><strong>Servicios:</strong> energía, agua, drenaje y aire se usan sin improvisaciones, humedad peligrosa, obstrucción o contaminación cruzada.</li>
         <li><strong>Residuos:</strong> material útil, recuperable y residuo se separan por destino real; ninguna corriente se clasifica como peligrosa sólo por apariencia o por el color del recipiente.</li>
         <li><strong>Maquinaria:</strong> guardas y dispositivos de seguridad permanecen instalados y operables; si falta una guarda o falla un dispositivo, el equipo queda fuera de servicio.</li>
         <li><strong>Electricidad:</strong> tableros y desconexiones quedan accesibles; cables, clavijas, extensiones y cargadores permanecen íntegros y fuera de agua, daño y circulación improvisada.</li>
-        <li><strong>Ruido:</strong> las fuentes relevantes se reconocen en operación normal y se miden cuando el nivel/exposición lo requiere; el EPP auditivo no sustituye el control de la fuente.</li>
         <li><strong>Carga manual:</strong> piezas pesadas o voluminosas tienen ruta y método de maniobra definidos antes de moverlas.</li>
-        <li><strong>Compresor/presión:</strong> equipo, placa, reguladores, mangueras, drenaje y dispositivos de seguridad son identificables y accesibles; la aplicabilidad técnica se determina con datos reales.</li>
         <li><strong>Activos:</strong> equipo fuera de condición se separa del uso; activos críticos conservan identidad e inspección/mantenimiento verificable.</li>
       </ul>
       <ul>
@@ -37,7 +38,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
       <h2>Cómo debe estar</h2>
       <ul>
         <li>Ingreso, inspección y espera se distinguen físicamente.</li>
-        <li>Superficie de inspección limpia, despejada y utilizable.</li>
+        <li>Superficie de inspección limpia, despejada y utilizable; la iluminación de inspección simple y recepción corresponde al nivel de tarea visual aplicable.</li>
         <li>Piezas en espera están separadas, identificadas y con siguiente acción visible.</li>
         <li>Etiquetas, fotografías y documentación se vinculan a la misma pieza.</li>
         <li>Material húmedo, salado o sucio no contamina documentos, equipo ni circulación.</li>
@@ -104,7 +105,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
     body:`
       <h2>Cómo debe estar</h2>
       <ul>
-        <li>Estación de acabado permite inspeccionar color, textura y detalle sin obstrucciones.</li>
+        <li>Estación de acabado permite inspeccionar color, textura y detalle sin obstrucciones; la tarea de pintura/acabado fino dispone como mínimo de 750 lux en su plano de trabajo, y tareas de alta exactitud usan el nivel que les corresponda.</li>
         <li>Resane, lijado o polvo no contaminan el punto de pintura/acabado fino.</li>
         <li>Pinturas, gasolina blanca, barnices, adhesivos y otros productos están identificados y cerrados cuando no se usan.</li>
         <li>Compresor, regulador, mangueras y conexiones están identificados y fuera de circulación.</li>
