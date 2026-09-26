@@ -1,0 +1,433 @@
+{
+  "source_name": "ROCA_MASTER_WEB_391P_SOURCE.pdf",
+  "source_drive_id": "1ZbBmnudrO7m7aGCtFGTSXuljy1Sg5AJO",
+  "pages": 391,
+  "actions": 1001,
+  "exceptions": 74,
+  "areas": {
+    "GLOBAL": {
+      "area": "Global / Governance",
+      "pages": 38,
+      "first_page": 1,
+      "last_page": 38,
+      "actions": {
+        "DOCUMENT_EVIDENCE": 377,
+        "MEASURE_VERIFY": 254,
+        "CONFLICT_REVIEW": 178,
+        "INSTALL_OR_IMPROVE": 86,
+        "BUY_CANDIDATE": 19
+      },
+      "exceptions": 1
+    },
+    "REC": {
+      "area": "Recepción",
+      "pages": 10,
+      "first_page": 39,
+      "last_page": 48,
+      "actions": {
+        "DOCUMENT_EVIDENCE": 117,
+        "MEASURE_VERIFY": 49,
+        "CONFLICT_REVIEW": 36,
+        "INSTALL_OR_IMPROVE": 31,
+        "BUY_CANDIDATE": 7
+      },
+      "exceptions": 6
+    },
+    "CUR": {
+      "area": "Curtiduría",
+      "pages": 38,
+      "first_page": 49,
+      "last_page": 86,
+      "actions": {
+        "MEASURE_VERIFY": 192,
+        "CONFLICT_REVIEW": 123,
+        "INSTALL_OR_IMPROVE": 93,
+        "DOCUMENT_EVIDENCE": 269,
+        "BUY_CANDIDATE": 13
+      },
+      "exceptions": 13
+    },
+    "FMR": {
+      "area": "Formas, Moldes y Réplicas",
+      "pages": 43,
+      "first_page": 87,
+      "last_page": 129,
+      "actions": {
+        "MEASURE_VERIFY": 197,
+        "CONFLICT_REVIEW": 138,
+        "INSTALL_OR_IMPROVE": 85,
+        "DOCUMENT_EVIDENCE": 297,
+        "BUY_CANDIDATE": 7
+      },
+      "exceptions": 8
+    },
+    "MON": {
+      "area": "Montaje",
+      "pages": 30,
+      "first_page": 130,
+      "last_page": 159,
+      "actions": {
+        "MEASURE_VERIFY": 148,
+        "CONFLICT_REVIEW": 103,
+        "INSTALL_OR_IMPROVE": 171,
+        "DOCUMENT_EVIDENCE": 230,
+        "BUY_CANDIDATE": 7
+      },
+      "exceptions": 6
+    },
+    "RET": {
+      "area": "Retoque",
+      "pages": 24,
+      "first_page": 160,
+      "last_page": 183,
+      "actions": {
+        "MEASURE_VERIFY": 117,
+        "CONFLICT_REVIEW": 78,
+        "INSTALL_OR_IMPROVE": 61,
+        "DOCUMENT_EVIDENCE": 171,
+        "BUY_CANDIDATE": 15
+      },
+      "exceptions": 9
+    },
+    "BAS": {
+      "area": "Bases",
+      "pages": 25,
+      "first_page": 184,
+      "last_page": 208,
+      "actions": {
+        "MEASURE_VERIFY": 113,
+        "CONFLICT_REVIEW": 84,
+        "INSTALL_OR_IMPROVE": 60,
+        "DOCUMENT_EVIDENCE": 190,
+        "BUY_CANDIDATE": 27
+      },
+      "exceptions": 10
+    },
+    "CAR": {
+      "area": "Carpintería / Embalaje",
+      "pages": 14,
+      "first_page": 209,
+      "last_page": 222,
+      "actions": {
+        "MEASURE_VERIFY": 85,
+        "DOCUMENT_EVIDENCE": 138,
+        "CONFLICT_REVIEW": 53,
+        "INSTALL_OR_IMPROVE": 71,
+        "BUY_CANDIDATE": 16
+      },
+      "exceptions": 4
+    },
+    "SOL": {
+      "area": "Soldadura / Adaptación",
+      "pages": 14,
+      "first_page": 223,
+      "last_page": 236,
+      "actions": {
+        "MEASURE_VERIFY": 72,
+        "DOCUMENT_EVIDENCE": 148,
+        "CONFLICT_REVIEW": 50,
+        "INSTALL_OR_IMPROVE": 57,
+        "BUY_CANDIDATE": 23
+      },
+      "exceptions": 7
+    },
+    "BLA": {
+      "area": "Blanqueado",
+      "pages": 15,
+      "first_page": 237,
+      "last_page": 251,
+      "actions": {
+        "MEASURE_VERIFY": 78,
+        "DOCUMENT_EVIDENCE": 145,
+        "INSTALL_OR_IMPROVE": 71,
+        "CONFLICT_REVIEW": 54,
+        "BUY_CANDIDATE": 7
+      },
+      "exceptions": 5
+    },
+    "EXT": {
+      "area": "EXT",
+      "pages": 10,
+      "first_page": 252,
+      "last_page": 261,
+      "actions": {
+        "MEASURE_VERIFY": 54,
+        "DOCUMENT_EVIDENCE": 105,
+        "CONFLICT_REVIEW": 42,
+        "INSTALL_OR_IMPROVE": 31,
+        "BUY_CANDIDATE": 7
+      },
+      "exceptions": 1
+    },
+    "ERP": {
+      "area": "ERP",
+      "pages": 11,
+      "first_page": 262,
+      "last_page": 272,
+      "actions": {
+        "MEASURE_VERIFY": 57,
+        "DOCUMENT_EVIDENCE": 162,
+        "CONFLICT_REVIEW": 39,
+        "INSTALL_OR_IMPROVE": 40,
+        "BUY_CANDIDATE": 7
+      },
+      "exceptions": 1
+    },
+    "BOD": {
+      "area": "BOD",
+      "pages": 9,
+      "first_page": 273,
+      "last_page": 281,
+      "actions": {
+        "MEASURE_VERIFY": 64,
+        "DOCUMENT_EVIDENCE": 92,
+        "INSTALL_OR_IMPROVE": 57,
+        "CONFLICT_REVIEW": 36,
+        "BUY_CANDIDATE": 7
+      },
+      "exceptions": 1
+    },
+    "EXH": {
+      "area": "EXH",
+      "pages": 10,
+      "first_page": 282,
+      "last_page": 291,
+      "actions": {
+        "MEASURE_VERIFY": 54,
+        "DOCUMENT_EVIDENCE": 108,
+        "INSTALL_OR_IMPROVE": 48,
+        "CONFLICT_REVIEW": 39,
+        "BUY_CANDIDATE": 7
+      },
+      "exceptions": 1
+    },
+    "COM": {
+      "area": "COM",
+      "pages": 9,
+      "first_page": 292,
+      "last_page": 300,
+      "actions": {
+        "MEASURE_VERIFY": 46,
+        "DOCUMENT_EVIDENCE": 85,
+        "INSTALL_OR_IMPROVE": 43,
+        "CONFLICT_REVIEW": 35,
+        "BUY_CANDIDATE": 6
+      },
+      "exceptions": 0
+    },
+    "SAN": {
+      "area": "SAN",
+      "pages": 9,
+      "first_page": 301,
+      "last_page": 309,
+      "actions": {
+        "MEASURE_VERIFY": 47,
+        "DOCUMENT_EVIDENCE": 97,
+        "CONFLICT_REVIEW": 36,
+        "INSTALL_OR_IMPROVE": 40,
+        "BUY_CANDIDATE": 6
+      },
+      "exceptions": 0
+    },
+    "RUT": {
+      "area": "RUT",
+      "pages": 9,
+      "first_page": 310,
+      "last_page": 318,
+      "actions": {
+        "MEASURE_VERIFY": 44,
+        "DOCUMENT_EVIDENCE": 82,
+        "BUY_CANDIDATE": 27,
+        "CONFLICT_REVIEW": 33,
+        "INSTALL_OR_IMPROVE": 41
+      },
+      "exceptions": 0
+    },
+    "RES": {
+      "area": "RES",
+      "pages": 73,
+      "first_page": 319,
+      "last_page": 391,
+      "actions": {
+        "MEASURE_VERIFY": 405,
+        "DOCUMENT_EVIDENCE": 617,
+        "INSTALL_OR_IMPROVE": 137,
+        "CONFLICT_REVIEW": 328,
+        "BUY_CANDIDATE": 26
+      },
+      "exceptions": 0
+    },
+    "SUP": {
+      "area": "Espacios de soporte",
+      "pages": 0,
+      "first_page": null,
+      "last_page": null,
+      "actions": {},
+      "exceptions": 1
+    }
+  },
+  "action_counts": {
+    "BAS": {
+      "area": "Bases",
+      "total": 67,
+      "BUY_CANDIDATE": 11,
+      "INSTALL_OR_IMPROVE": 3,
+      "MEASURE_VERIFY": 3,
+      "DOCUMENT_EVIDENCE": 50,
+      "CONFLICT_REVIEW": 0
+    },
+    "CUR": {
+      "area": "Curtiduría",
+      "total": 96,
+      "BUY_CANDIDATE": 3,
+      "INSTALL_OR_IMPROVE": 6,
+      "MEASURE_VERIFY": 35,
+      "DOCUMENT_EVIDENCE": 52,
+      "CONFLICT_REVIEW": 0
+    },
+    "GLOBAL": {
+      "area": "Global / Governance",
+      "total": 98,
+      "BUY_CANDIDATE": 4,
+      "INSTALL_OR_IMPROVE": 9,
+      "MEASURE_VERIFY": 15,
+      "DOCUMENT_EVIDENCE": 70,
+      "CONFLICT_REVIEW": 0
+    },
+    "RET": {
+      "area": "Retoque",
+      "total": 56,
+      "BUY_CANDIDATE": 3,
+      "INSTALL_OR_IMPROVE": 6,
+      "MEASURE_VERIFY": 6,
+      "DOCUMENT_EVIDENCE": 41,
+      "CONFLICT_REVIEW": 0
+    },
+    "BLA": {
+      "area": "Blanqueado",
+      "total": 38,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 3,
+      "MEASURE_VERIFY": 3,
+      "DOCUMENT_EVIDENCE": 32,
+      "CONFLICT_REVIEW": 0
+    },
+    "BOD": {
+      "area": "Bodegas y almacenamiento",
+      "total": 20,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 3,
+      "MEASURE_VERIFY": 0,
+      "DOCUMENT_EVIDENCE": 17,
+      "CONFLICT_REVIEW": 0
+    },
+    "CAR": {
+      "area": "Carpintería / Embalaje",
+      "total": 43,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 19,
+      "MEASURE_VERIFY": 3,
+      "DOCUMENT_EVIDENCE": 19,
+      "CONFLICT_REVIEW": 2
+    },
+    "RUT": {
+      "area": "Circulaciones, accesos y rutas",
+      "total": 25,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 6,
+      "MEASURE_VERIFY": 3,
+      "DOCUMENT_EVIDENCE": 16,
+      "CONFLICT_REVIEW": 0
+    },
+    "COM": {
+      "area": "Comedor",
+      "total": 25,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 9,
+      "MEASURE_VERIFY": 0,
+      "DOCUMENT_EVIDENCE": 16,
+      "CONFLICT_REVIEW": 0
+    },
+    "EXT": {
+      "area": "Exterior, carga y preparación",
+      "total": 23,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 3,
+      "MEASURE_VERIFY": 0,
+      "DOCUMENT_EVIDENCE": 17,
+      "CONFLICT_REVIEW": 3
+    },
+    "FMR": {
+      "area": "Formas, Moldes y Réplicas",
+      "total": 66,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 9,
+      "MEASURE_VERIFY": 9,
+      "DOCUMENT_EVIDENCE": 45,
+      "CONFLICT_REVIEW": 3
+    },
+    "MON": {
+      "area": "Montaje",
+      "total": 70,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 6,
+      "MEASURE_VERIFY": 16,
+      "DOCUMENT_EVIDENCE": 45,
+      "CONFLICT_REVIEW": 3
+    },
+    "ERP": {
+      "area": "Oficina / BIWO / ERP / Comercio",
+      "total": 34,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 3,
+      "MEASURE_VERIFY": 0,
+      "DOCUMENT_EVIDENCE": 31,
+      "CONFLICT_REVIEW": 0
+    },
+    "REC": {
+      "area": "Recepción",
+      "total": 40,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 3,
+      "MEASURE_VERIFY": 0,
+      "DOCUMENT_EVIDENCE": 37,
+      "CONFLICT_REVIEW": 0
+    },
+    "EXH": {
+      "area": "Sala de exhibición",
+      "total": 20,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 3,
+      "MEASURE_VERIFY": 0,
+      "DOCUMENT_EVIDENCE": 17,
+      "CONFLICT_REVIEW": 0
+    },
+    "SAN": {
+      "area": "Servicios sanitarios",
+      "total": 24,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 6,
+      "MEASURE_VERIFY": 0,
+      "DOCUMENT_EVIDENCE": 18,
+      "CONFLICT_REVIEW": 0
+    },
+    "RES": {
+      "area": "Sistema de residuos",
+      "total": 210,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 15,
+      "MEASURE_VERIFY": 15,
+      "DOCUMENT_EVIDENCE": 177,
+      "CONFLICT_REVIEW": 3
+    },
+    "SOL": {
+      "area": "Soldadura / Adaptación",
+      "total": 46,
+      "BUY_CANDIDATE": 0,
+      "INSTALL_OR_IMPROVE": 6,
+      "MEASURE_VERIFY": 3,
+      "DOCUMENT_EVIDENCE": 35,
+      "CONFLICT_REVIEW": 2
+    }
+  }
+}

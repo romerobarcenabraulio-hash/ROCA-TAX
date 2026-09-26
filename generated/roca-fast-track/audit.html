@@ -1,0 +1,1226 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ROCA · Auditar</title><style>body{margin:0;font-family:Arial,sans-serif;background:#ece7de;color:#171717}header{position:sticky;top:0;z-index:5;background:#17232e;color:#fff;padding:16px 20px}header a{color:#fff}.wrap{max-width:1700px;margin:auto;padding:20px}.note{background:#fff4d8;border:1px solid #d0b46f;padding:12px;margin:0 0 14px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 14px}.filters button{border:1px solid #999;background:#fff;padding:7px 10px;cursor:pointer}.filters button.active{background:#17232e;color:#fff}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;background:#fff;font-size:12px}th,td{border:1px solid #c8c2b7;padding:8px;vertical-align:top;text-align:left}th{position:sticky;top:73px;background:#f7f4ee}.blank{color:#9a6f21;font-weight:700}.small{font-size:12px;color:#ddd}</style></head><body><header><b>ROCA · AUDITAR</b><div class="small">Verificación contra el estándar permanente. <a href="../../index.html">Volver al manual</a> · <a href="implementation.html">IMPLEMENTAR</a></div></header><main class="wrap">
+<section class="note">
+  <h2>Qué evidencia cierra cada frente</h2>
+  <table>
+    <thead><tr><th>Frente</th><th>Evidencia mínima útil</th><th>No demuestra por sí sola</th></tr></thead>
+    <tbody>
+      <tr><td>Extintores</td><td>Foto de ubicación + altura + señal + recorrido medido + identificación del equipo + registro/revisión aplicable.</td><td>Clasificación de riesgo completa, entrenamiento o cobertura de todo el taller.</td></tr>
+      <tr><td>Salida / ruta</td><td>Recorrido fotografiado + distancia medida + puerta operable + señal visible + tiempo cuando aplique.</td><td>Plan de emergencia completo ni simulacro.</td></tr>
+      <tr><td>Iluminación</td><td>Lectura lux + ubicación/plano de tarea + instrumento + fecha.</td><td>Calidad visual de todas las tareas del área.</td></tr>
+      <tr><td>Químicos / HDS</td><td>Producto real + etiqueta + HDS correspondiente + foto de almacenamiento + compatibilidad revisada.</td><td>Exposición ocupacional, ventilación suficiente o clasificación del residuo.</td></tr>
+      <tr><td>Ventilación / extracción</td><td>Proceso/producto + punto de generación + evaluación/medición aplicable + foto del control instalado.</td><td>Eficacia sólo por “tener extractor”.</td></tr>
+      <tr><td>Almacenamiento</td><td>Foto panorámica + detalle de rack/ubicación + carga/estabilidad cuando gobierna.</td><td>Capacidad estructural si no existe cálculo/placa/evidencia técnica.</td></tr>
+      <tr><td>Residuos</td><td>Corriente identificada + recipiente + ubicación + destino/registro cuando corresponda.</td><td>Clasificación ambiental correcta sólo por color del bote.</td></tr>
+    
+      <tr><td>Maquinaria / guardas</td><td>Activo identificado + foto del punto de operación/transmisión + guarda/dispositivo + paro cuando corresponda + registro de mantenimiento/aislamiento aplicable.</td><td>Que el operador esté capacitado o que todos los riesgos mecánicos estén cerrados.</td></tr>
+      <tr><td>Electricidad</td><td>Tablero/desconexión accesible + identificación + cables/clavijas visibles + registro del trabajo eléctrico cuando exista mantenimiento.</td><td>Diseño/capacidad de toda la instalación eléctrica ni dictamen técnico.</td></tr>
+      <tr><td>Ruido</td><td>Fuente + condición normal + tiempo de exposición + medición/evaluación cuando se active.</td><td>Exposición ocupacional sólo porque “se oye fuerte” o por una lectura casual de celular.</td></tr>
+      <tr><td>Vibración</td><td>Herramienta/equipo + tarea + tiempo/frecuencia + evaluación cuando se active.</td><td>Exposición admisible sólo por observar vibración.</td></tr>
+      <tr><td>Compresor / presión</td><td>Placa/modelo/serie + presión/volumen cuando estén en placa + dispositivos + mangueras/reguladores/drenaje + servicio.</td><td>Aplicabilidad o categoría NOM-020 sólo por ser compresor.</td></tr>
+      <tr><td>Carga manual</td><td>Pieza/carga real + peso si se conoce + ruta + método/personas/ayuda mecánica.</td><td>Riesgo ergonómico completo sin analizar tarea real.</td></tr>
+      <tr><td>Descarga de agua</td><td>Punto identificado + proceso de origen + ruta/destino + caracterización/condiciones/permiso cuando se active.</td><td>Que la descarga cumpla límites sólo porque llega a una coladera.</td></tr>
+      <tr><td>Servicios sanitarios / comedor</td><td>Condición limpia/usable + agua potable + separación de proceso/químicos + privacidad respetada.</td><td>Suficiencia cuantitativa o accesibilidad universal si no se evaluó el centro y su personal.</td></tr>
+</tbody>
+  </table>
+</section>
+<div class="note"><b>La auditoría no inventa el estándar.</b> Sólo verifica si el área ya cumple lo que la página permanente exige, usando evidencia, revisor y fecha.</div><div class="filters"><button class="active" data-area="ALL">TODAS</button><button data-area="area-recepcion">Recepción</button><button data-area="area-curtiduria">Curtiduría</button><button data-area="area-fmr">Formas, Moldes y Réplicas</button><button data-area="area-montaje">Montaje</button><button data-area="area-retoque">Retoque</button><button data-area="area-bases">Bases</button><button data-area="area-carpinteria">Carpintería / Embalaje</button><button data-area="area-soldadura">Soldadura / Adaptación</button><button data-area="area-blanqueado">Blanqueado</button><button data-area="area-soporte">Espacios de soporte</button></div><div class="tablewrap"><table><thead><tr><th>ID</th><th>Área</th><th>Elemento</th><th>Estándar permanente</th><th>Evidencia ID</th><th>Resultado</th><th>Hallazgo / acción</th><th>Revisor</th><th>Fecha</th></tr></thead><tbody><tr data-area="area-recepcion">
+<td>REC-FT-01</td>
+<td>Recepción</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td>EVID-REC-FT-01</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-02</td>
+<td>Recepción</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td>EVID-REC-FT-02</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-03</td>
+<td>Recepción</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td>EVID-REC-FT-03</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-04</td>
+<td>Recepción</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td>EVID-REC-FT-04</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-05</td>
+<td>Recepción</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td>EVID-REC-FT-05</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-06</td>
+<td>Recepción</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td>EVID-REC-FT-06</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-07</td>
+<td>Recepción</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td>EVID-REC-FT-07</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-08</td>
+<td>Recepción</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td>EVID-REC-FT-08</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-09</td>
+<td>Recepción</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td>EVID-REC-FT-09</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-10</td>
+<td>Recepción</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td>EVID-REC-FT-10</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-11</td>
+<td>Recepción</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td>EVID-REC-FT-11</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-12</td>
+<td>Recepción</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td>EVID-REC-FT-12</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-01</td>
+<td>Curtiduría</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td>EVID-CUR-FT-01</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-02</td>
+<td>Curtiduría</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td>EVID-CUR-FT-02</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-03</td>
+<td>Curtiduría</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td>EVID-CUR-FT-03</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-04</td>
+<td>Curtiduría</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td>EVID-CUR-FT-04</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-05</td>
+<td>Curtiduría</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td>EVID-CUR-FT-05</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-06</td>
+<td>Curtiduría</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td>EVID-CUR-FT-06</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-07</td>
+<td>Curtiduría</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td>EVID-CUR-FT-07</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-08</td>
+<td>Curtiduría</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td>EVID-CUR-FT-08</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-09</td>
+<td>Curtiduría</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td>EVID-CUR-FT-09</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-10</td>
+<td>Curtiduría</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td>EVID-CUR-FT-10</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-11</td>
+<td>Curtiduría</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td>EVID-CUR-FT-11</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-12</td>
+<td>Curtiduría</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td>EVID-CUR-FT-12</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-01</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td>EVID-FMR-FT-01</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-02</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td>EVID-FMR-FT-02</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-03</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td>EVID-FMR-FT-03</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-04</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td>EVID-FMR-FT-04</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-05</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td>EVID-FMR-FT-05</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-06</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td>EVID-FMR-FT-06</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-07</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td>EVID-FMR-FT-07</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-08</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td>EVID-FMR-FT-08</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-09</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td>EVID-FMR-FT-09</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-10</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td>EVID-FMR-FT-10</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-11</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td>EVID-FMR-FT-11</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-12</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td>EVID-FMR-FT-12</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-01</td>
+<td>Montaje</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td>EVID-MON-FT-01</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-02</td>
+<td>Montaje</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td>EVID-MON-FT-02</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-03</td>
+<td>Montaje</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td>EVID-MON-FT-03</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-04</td>
+<td>Montaje</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td>EVID-MON-FT-04</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-05</td>
+<td>Montaje</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td>EVID-MON-FT-05</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-06</td>
+<td>Montaje</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td>EVID-MON-FT-06</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-07</td>
+<td>Montaje</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td>EVID-MON-FT-07</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-08</td>
+<td>Montaje</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td>EVID-MON-FT-08</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-09</td>
+<td>Montaje</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td>EVID-MON-FT-09</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-10</td>
+<td>Montaje</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td>EVID-MON-FT-10</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-11</td>
+<td>Montaje</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td>EVID-MON-FT-11</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-12</td>
+<td>Montaje</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td>EVID-MON-FT-12</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-01</td>
+<td>Retoque</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td>EVID-RET-FT-01</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-02</td>
+<td>Retoque</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td>EVID-RET-FT-02</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-03</td>
+<td>Retoque</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td>EVID-RET-FT-03</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-04</td>
+<td>Retoque</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td>EVID-RET-FT-04</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-05</td>
+<td>Retoque</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td>EVID-RET-FT-05</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-06</td>
+<td>Retoque</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td>EVID-RET-FT-06</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-07</td>
+<td>Retoque</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td>EVID-RET-FT-07</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-08</td>
+<td>Retoque</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td>EVID-RET-FT-08</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-09</td>
+<td>Retoque</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td>EVID-RET-FT-09</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-10</td>
+<td>Retoque</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td>EVID-RET-FT-10</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-11</td>
+<td>Retoque</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td>EVID-RET-FT-11</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-12</td>
+<td>Retoque</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td>EVID-RET-FT-12</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-01</td>
+<td>Bases</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td>EVID-BAS-FT-01</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-02</td>
+<td>Bases</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td>EVID-BAS-FT-02</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-03</td>
+<td>Bases</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td>EVID-BAS-FT-03</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-04</td>
+<td>Bases</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td>EVID-BAS-FT-04</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-05</td>
+<td>Bases</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td>EVID-BAS-FT-05</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-06</td>
+<td>Bases</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td>EVID-BAS-FT-06</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-07</td>
+<td>Bases</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td>EVID-BAS-FT-07</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-08</td>
+<td>Bases</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td>EVID-BAS-FT-08</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-09</td>
+<td>Bases</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td>EVID-BAS-FT-09</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-10</td>
+<td>Bases</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td>EVID-BAS-FT-10</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-11</td>
+<td>Bases</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td>EVID-BAS-FT-11</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-12</td>
+<td>Bases</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td>EVID-BAS-FT-12</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-01</td>
+<td>Carpintería / Embalaje</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td>EVID-CAR-FT-01</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-02</td>
+<td>Carpintería / Embalaje</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td>EVID-CAR-FT-02</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-03</td>
+<td>Carpintería / Embalaje</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td>EVID-CAR-FT-03</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-04</td>
+<td>Carpintería / Embalaje</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td>EVID-CAR-FT-04</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-05</td>
+<td>Carpintería / Embalaje</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td>EVID-CAR-FT-05</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-06</td>
+<td>Carpintería / Embalaje</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td>EVID-CAR-FT-06</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-07</td>
+<td>Carpintería / Embalaje</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td>EVID-CAR-FT-07</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-08</td>
+<td>Carpintería / Embalaje</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td>EVID-CAR-FT-08</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-09</td>
+<td>Carpintería / Embalaje</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td>EVID-CAR-FT-09</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-10</td>
+<td>Carpintería / Embalaje</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td>EVID-CAR-FT-10</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-11</td>
+<td>Carpintería / Embalaje</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td>EVID-CAR-FT-11</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-12</td>
+<td>Carpintería / Embalaje</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td>EVID-CAR-FT-12</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-01</td>
+<td>Soldadura / Adaptación</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td>EVID-SOL-FT-01</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-02</td>
+<td>Soldadura / Adaptación</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td>EVID-SOL-FT-02</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-03</td>
+<td>Soldadura / Adaptación</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td>EVID-SOL-FT-03</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-04</td>
+<td>Soldadura / Adaptación</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td>EVID-SOL-FT-04</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-05</td>
+<td>Soldadura / Adaptación</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td>EVID-SOL-FT-05</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-06</td>
+<td>Soldadura / Adaptación</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td>EVID-SOL-FT-06</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-07</td>
+<td>Soldadura / Adaptación</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td>EVID-SOL-FT-07</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-08</td>
+<td>Soldadura / Adaptación</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td>EVID-SOL-FT-08</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-09</td>
+<td>Soldadura / Adaptación</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td>EVID-SOL-FT-09</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-10</td>
+<td>Soldadura / Adaptación</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td>EVID-SOL-FT-10</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-11</td>
+<td>Soldadura / Adaptación</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td>EVID-SOL-FT-11</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-12</td>
+<td>Soldadura / Adaptación</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td>EVID-SOL-FT-12</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-01</td>
+<td>Blanqueado</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td>EVID-BLA-FT-01</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-02</td>
+<td>Blanqueado</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td>EVID-BLA-FT-02</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-03</td>
+<td>Blanqueado</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td>EVID-BLA-FT-03</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-04</td>
+<td>Blanqueado</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td>EVID-BLA-FT-04</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-05</td>
+<td>Blanqueado</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td>EVID-BLA-FT-05</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-06</td>
+<td>Blanqueado</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td>EVID-BLA-FT-06</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-07</td>
+<td>Blanqueado</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td>EVID-BLA-FT-07</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-08</td>
+<td>Blanqueado</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td>EVID-BLA-FT-08</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-09</td>
+<td>Blanqueado</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td>EVID-BLA-FT-09</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-10</td>
+<td>Blanqueado</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td>EVID-BLA-FT-10</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-11</td>
+<td>Blanqueado</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td>EVID-BLA-FT-11</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-12</td>
+<td>Blanqueado</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td>EVID-BLA-FT-12</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-01</td>
+<td>Espacios de soporte</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td>EVID-SUP-FT-01</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-02</td>
+<td>Espacios de soporte</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td>EVID-SUP-FT-02</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-03</td>
+<td>Espacios de soporte</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td>EVID-SUP-FT-03</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-04</td>
+<td>Espacios de soporte</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td>EVID-SUP-FT-04</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-05</td>
+<td>Espacios de soporte</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td>EVID-SUP-FT-05</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-06</td>
+<td>Espacios de soporte</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td>EVID-SUP-FT-06</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-07</td>
+<td>Espacios de soporte</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td>EVID-SUP-FT-07</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-08</td>
+<td>Espacios de soporte</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td>EVID-SUP-FT-08</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-09</td>
+<td>Espacios de soporte</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td>EVID-SUP-FT-09</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-10</td>
+<td>Espacios de soporte</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td>EVID-SUP-FT-10</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-11</td>
+<td>Espacios de soporte</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td>EVID-SUP-FT-11</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-12</td>
+<td>Espacios de soporte</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td>EVID-SUP-FT-12</td>
+<td>NOT_CHECKED</td>
+<td><span class="blank">SIN REVISAR</span></td>
+<td><span class="blank">—</span></td>
+<td><span class="blank">—</span></td>
+</tr></tbody></table></div></main><script>let area="ALL";function apply(){document.querySelectorAll("tbody tr").forEach(r=>r.hidden=area!=="ALL"&&r.dataset.area!==area)}document.querySelectorAll("[data-area]").forEach(b=>b.onclick=()=>{area=b.dataset.area;document.querySelectorAll("[data-area]").forEach(x=>x.classList.toggle("active",x===b));apply();});</script></body></html>

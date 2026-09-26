@@ -78,53 +78,69 @@ Forma, ojos, cuernos/astas, barro, adhesivo, Bondo, fibra de vidrio, catalizador
 
 # 1. Área de trabajo
 
-## MON-AREA-01 · Circulación y acceso
+El master 391P usa **MON-AREA-01..10**. Esos IDs se conservan aquí con el mismo significado para que el lector FUENTES pueda hacer cross-check sin colisiones semánticas. Los controles posteriores que aportan valor se agregan como **MON-AREA-11..13**; no se renumeran los históricos.
 
-Pasillos, salida, tableros, extintores y puntos de operación quedan libres durante la jornada. Piezas, cajas, cables, mangueras y herramienta temporal no ocupan circulación.
+## MON-AREA-01 · Circulación y accesos
+
+Pasillos, salidas, tableros, extintores y puntos de operación permanecen libres durante la jornada. Piezas, cajas, cables, mangueras y herramienta temporal no ocupan circulación.
 
 **Evidencia requerida:** vista general desde acceso y vista de recorrido hacia salida/equipo de emergencia.
 
-## MON-AREA-02 · Superficie utilizable
+## MON-AREA-02 · Estación y almacenamiento
 
-Cada puesto conserva una superficie suficiente para la pieza y la operación en curso. Material ajeno al trabajo activo no invade la superficie.
+Cada puesto conserva una superficie suficiente para la pieza y la operación en curso. Herramienta, material y consumible habitual tienen ubicación definida y recuperable sin vaciar cajones completos. Lo dañado o fuera de servicio se separa del uso.
 
-**Evidencia requerida:** foto 3/4 de cada estación activa.
-
-## MON-AREA-03 · Herramienta y almacenamiento
-
-Cada herramienta habitual tiene ubicación definida y recuperable sin vaciar cajones completos. Punzantes y filos permanecen protegidos cuando no se usan.
+La pieza o forma se apoya de manera estable durante el trabajo; no depende de una improvisación que pueda caer, rodar o desplazar el trabajo.
 
 La solución de mobiliario puede variar por persona; el estándar común es capacidad suficiente, categorías claras, acceso simple y cero amontonamiento que impida encontrar o guardar.
 
-## MON-AREA-04 · Pieza e identidad
-
-Toda pieza activa o en espera conserva identificación visible y siguiente acción. La identidad física no depende de memoria personal.
-
-## MON-AREA-05 · Iluminación
+## MON-AREA-03 · Iluminación
 
 La tarea de detalle se verifica en el plano real de trabajo. No cerrar este punto con percepción visual solamente cuando una medición sea necesaria.
 
 **Estado:** VALIDATE_TECHNICALLY — falta levantamiento de iluminancia por estación/tarea.
 
-## MON-AREA-06 · Ventilación y mezcla
+**HOLD DE TRAZABILIDAD:** el 391P contiene referencias aproximadas de 300 lux para trabajo general y 500/750 lux para mayor detalle. Se conservan como antecedente, **no como umbral de aceptación canónico**, hasta reconciliar tarea real, medición y capa Assurance vigente.
 
-Las operaciones con Bondo, catalizador, fibra, adhesivos u otros productos se realizan en un punto compatible con la ventilación/extracción que resulte necesaria por producto y exposición real.
+## MON-AREA-04 · Ventilación y extracción
+
+Las operaciones con Bondo, catalizador, fibra, adhesivos u otros productos se realizan en un punto compatible con la ventilación/extracción que resulte necesaria por producto, HDS y exposición real.
 
 **Estado:** VALIDATE_TECHNICALLY — cruzar HDS, inventario químico, ventilación real y reconocimiento de exposición.
 
-## MON-AREA-07 · Cables, mangueras y electricidad
+## MON-AREA-05 · Emergencia
+
+Rutas, señalización y medios de respuesta aplicables permanecen visibles, accesibles y sin bloqueo. La suficiencia o vigencia legal no se cierra desde una fotografía; se verifica en la capa Assurance y con el registro correspondiente.
+
+## MON-AREA-06 · Identidad y espera
+
+Toda pieza, piel, forma o trabajo activo o en espera conserva identificación visible y siguiente acción. La espera no bloquea circulación ni mezcla proyectos.
+
+## MON-AREA-07 · Estación del montador
+
+Cada montador dispone de una estación identificable y almacenamiento propio. La evaluación se hace sobre el puesto real de cada persona; no existe una “estación típica” que sustituya a las demás.
+
+## MON-AREA-08 · Punzantes y costura
+
+Agujas, alfileres, cuchillos e hilo tienen ubicación definida. Puntas y filos permanecen protegidos cuando no se usan; alfileres usados no quedan dispersos.
+
+## MON-AREA-09 · Químicos de montaje
+
+Bondo, catalizador, fibra y adhesivos conservan producto identificado, HDS cuando aplique y punto de mezcla/uso compatible con ventilación, residuos y fuentes de ignición según el producto real.
+
+## MON-AREA-10 · Secado
+
+Piezas en secado permanecen estables, identificadas, fuera de circulación y con espacio suficiente para revisar fijaciones sin mover trabajos ajenos.
+
+## MON-AREA-11 · Cables, mangueras y electricidad
 
 Cables y extensiones no cruzan circulación sin protección. Cargadores/taladros tienen punto definido; la alimentación temporal se retira al terminar.
 
-## MON-AREA-08 · Residuos y recuperables
+## MON-AREA-12 · Residuos y recuperables
 
-Punzantes, sobrantes de mezcla, envases, recortes recuperables y residuo general no comparten destino por conveniencia. La clasificación final depende del material real y de la capa ambiental aplicable.
+Punzantes, sobrantes de mezcla, envases, recortes recuperables y residuo general no comparten destino por conveniencia. Material útil no se desecha junto con residuo. La clasificación final depende del material real y de la capa ambiental aplicable.
 
-## MON-AREA-09 · Secado y espera
-
-Piezas en secado permanecen estables, identificadas y fuera de circulación. Existe espacio suficiente para revisar fijaciones sin mover trabajos ajenos.
-
-## MON-AREA-10 · Reset de estación
+## MON-AREA-13 · Reset de estación
 
 Al terminar:
 - superficie utilizable;
@@ -137,15 +153,14 @@ Al terminar:
 
 ## Estaciones individuales
 
-El estándar se evalúa sobre la estación real de cada persona; no existe una “estación típica” que sustituya a las demás.
+El estándar se evalúa sobre la estación real de cada persona.
 
-Para cada estación activa levantar:
-1. vista 3/4 completa;
-2. almacenamiento abierto;
-3. superficie y herramientas de uso frecuente;
-4. pieza identificada;
-5. alimentación/cables/mangueras;
-6. estación al cierre.
+Evidencia mínima por estación:
+1. vista 3/4 completa con superficie, almacenamiento y pieza identificada;
+2. almacenamiento abierto mostrando categorías sin amontonamiento;
+3. estación al cierre con paso libre, punzantes resguardados y residuos retirados.
+
+Agregar tomas de detalle sólo cuando un control no quede demostrable en esas tres vistas.
 
 **IMPLEMENT:** cerrar inventario de estaciones reales y asignación exacta persona ↔ estación, especialmente Ricardo/Eugenio.
 
@@ -172,9 +187,9 @@ Piel flexible y medida
 
 ## 01 · Recuperar flexibilidad y levantar medidas
 
-Relajar la piel hasta recuperar flexibilidad. Cerrar desde el interior los cortes o balazos que deban repararse; retirar carnaza, grasa, tejido sobrante, huesos residuales y terminar cartílagos de oreja, nariz y belfos cuando corresponda.
+Relajar la piel hasta recuperar flexibilidad. Cerrar desde el interior los cortes o balazos que deban repararse; retirar carnaza, grasa, tejido sobrante, huesos residuales; limpiar interior de pezuñas o garras cuando corresponda; y terminar cartílagos de oreja, nariz y belfos.
 
-Con la piel flexible, registrar ojo-nariz, contorno inmediatamente detrás de las órbitas y las medidas corporales que correspondan.
+Antes de medir, jalar la piel con la mano: debe desplazarse y recuperar forma sin quedar al límite de tensión. Con la piel flexible, registrar ojo-nariz, contorno inmediatamente detrás de las órbitas y las medidas corporales que correspondan.
 
 No seleccionar ni cortar una forma con la piel rígida o sin las medidas que gobiernan la selección.
 
@@ -182,9 +197,9 @@ Si una modificación de forma se prolongará varios días, el registro técnico 
 
 ## 02 · Seleccionar, presentar y corregir la forma
 
-Comparar medidas de piel, inventario de formas y pose solicitada. Presentar la piel antes de cortar.
+Comparar medidas de piel, inventario de formas y pose solicitada. Elegir la forma que reduzca al mínimo la corrección necesaria y presentar la piel antes de cortar.
 
-Si sobra volumen, retirar/perfilar poliuretano con serrote, escofina o cuchillo y volver a presentar. Las correcciones añadidas son localizadas; no deben compensar una forma general incorrecta en largo, ancho o proporción.
+Si sobra volumen, retirar/perfilar poliuretano con serrote, escofina o cuchillo y volver a presentar. Si falta volumen, corregir de manera localizada con barro, poliuretano o yeso cuando la condición de la pieza lo exija; no compensar una forma general incorrecta en largo, ancho o proporción. Después de cada modificación volver a comprobar cara, cuello, largo, ancho y volumen como conjunto.
 
 **Criterio de salida:** la piel puede presentarse sin forzar una medida para compensar otra.
 
@@ -194,11 +209,13 @@ Abrir/perfilar alojamientos de boca, nariz y canales donde entran los bordes de 
 
 **Criterio de salida:** labios y nariz entran en sus alojamientos sin forzar la piel ni desplazar la cara.
 
+La fuente 391P no confirma un consumible adicional específico para esta preparación fina; no agregar uno por costumbre sin evidencia.
+
 ## 04 · Preparar y posicionar cuernos o astas
 
 Presentar la base sobre la forma y resolver posición con frente, ojos y orejas. Comparar altura, inclinación, separación y simetría desde frente, perfil y vista superior.
 
-No cubrir la unión mientras exista movimiento o una diferencia corregible.
+No cubrir la unión mientras exista movimiento o una diferencia corregible. Registrar los componentes reales del sistema de fijación antes de cubrir la unión con piel.
 
 **Criterio de salida:** conjunto estable y en posición antes del vestido.
 
@@ -206,7 +223,7 @@ No cubrir la unión mientras exista movimiento o una diferencia corregible.
 
 ## 05 · Preparar y conformar las orejas
 
-Voltear y limpiar la oreja. Preparar fibra cortada y mezclar con Bondo y catalizador; distribuir dentro de la oreja mientras permanece trabajable. Modelar borde, concavidad y volumen.
+Voltear y limpiar la oreja. Preparar fibra cortada y mezclar con Bondo y catalizador hasta obtener una masa homogénea; distribuir dentro de la oreja mientras permanece trabajable. Modelar borde, concavidad y volumen y detener cuando la oreja conserve la forma por sí misma.
 
 **Criterio de salida:** la oreja conserva forma, borde y concavidad sin exceso de espesor ni acumulación que borre anatomía.
 
@@ -236,11 +253,11 @@ El adhesivo fija contacto; no corrige una cavidad, falta de volumen o forma inco
 
 ## 09 · Coser y controlar abultamientos
 
-Cerrar con hilo de zapatero; la fuente registra separación del hilo en tiras porque entero resulta demasiado grueso. Acomodar la piel conforme avanza la costura y corregir abultamientos antes de perder movilidad del adhesivo. Usar alfileres como fijación temporal cuando una zona se levanta.
+Cerrar con el hilo que corresponda al espesor y a la zona. El 391P conserva cuatro familias controladas: zapatero grueso, zapatero delgado, pesca trenzado grueso y pesca trenzado delgado. La entrevista también registra separación del hilo de zapatero en tiras cuando entero resulta demasiado grueso. Acomodar la piel conforme avanza la costura y corregir abultamientos antes de perder movilidad del adhesivo. Usar alfileres como fijación temporal cuando una zona se levanta.
 
-**Criterio de salida:** costura cerrada sin abrir bordes y piel asentada; cada fijación temporal tiene una función clara.
+**Criterio de salida:** costura cerrada sin abrir bordes y piel asentada; cada fijación temporal tiene una función clara. Los alfileres temporales se retiran al iniciar Retoque.
 
-Fuentes anteriores también registran variantes de hilo grueso/delgado y pesca trenzada. **No consolidar una tabla universal de selección hasta cerrar el criterio por espesor/tipo/zona.**
+**OPEN TECHNICAL:** no sustituir una familia/grosor por otra como regla general hasta cerrar la tabla de selección por espesor/tipo de piel, zona y aguja asociada cuando cambie.
 
 ## 10 · Secar y transferir a Retoque
 
@@ -259,7 +276,10 @@ Mantener inmóvil durante secado. Usar 24 h como referencia mínima para la prim
 - cuchillo;
 - aguja;
 - alfileres;
+- bandeja para barro;
+- mesas/soportes de montaje;
 - herramienta manual de modelado cuando corresponda;
+- herramienta eléctrica compartida cuando la operación la use;
 - equipo/herramienta de fijación de cuernos: pendiente de especificación exacta.
 
 ## Condición de uso
@@ -268,7 +288,10 @@ Mantener inmóvil durante secado. Usar 24 h como referencia mínima para la prim
 - herramienta dañada se separa del uso;
 - herramienta de ajuste de forma se limpia de residuos que impidan control;
 - equipo eléctrico se almacena con cargador/cable en ubicación definida;
+- mesas/soportes mantienen apoyo estable y se retiran del uso si pierden estabilidad;
 - cualquier herramienta de medición usada para decisión crítica se identifica y verifica según su función.
+
+La matriz genérica de mantenimiento del 391P se conserva como antecedente, pero no se aplica mecánicamente a agujas, alfileres o herramienta manual como si todo tuviera un intervalo de fabricante. Frecuencia y método se definen por activo real, manual/placa cuando existan, criticidad y condición observada.
 
 **VALIDATE_TECHNICALLY:** confirmar herramienta exacta de medición y qué medidas requieren trazabilidad metrológica formal frente a referencia de oficio.
 
@@ -385,16 +408,36 @@ Estados:
 
 | Ref | Verificación | Resultado | Evidencia objetiva | Hallazgo / acción | Responsable | Fecha | Cierre |
 |---|---|---|---|---|---|---|---|
-| MON-AUD-01 | circulación y accesos libres | NO VERIFICADO |  |  |  |  |  |
-| MON-AUD-02 | estación utilizable y almacenamiento recuperable | NO VERIFICADO |  |  |  |  |  |
-| MON-AUD-03 | pieza activa identificada y siguiente acción visible | NO VERIFICADO |  |  |  |  |  |
-| MON-AUD-04 | punzantes/filos protegidos fuera de uso | NO VERIFICADO |  |  |  |  |  |
-| MON-AUD-05 | cables/mangueras fuera del paso | NO VERIFICADO |  |  |  |  |  |
-| MON-AUD-06 | productos de mezcla identificados y HDS accesible cuando aplique | NO VERIFICADO |  |  |  |  |  |
-| MON-AUD-07 | ventilación/extracción corresponde a la operación real | NO VERIFICADO |  |  |  |  |  |
-| MON-AUD-08 | iluminación verificada en tarea que lo requiere | NO VERIFICADO |  |  |  |  |  |
-| MON-AUD-09 | secado/espera estable, identificado y fuera de circulación | NO VERIFICADO |  |  |  |  |  |
-| MON-AUD-10 | estación vuelve a condición lista al cierre | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-01 | MON-AREA-01 circulación y accesos libres | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-02 | MON-AREA-02 estación utilizable, almacenamiento recuperable y soporte estable | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-03 | MON-AREA-03 iluminación medida cuando la tarea lo requiera | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-04 | MON-AREA-04 ventilación/extracción corresponde a la operación real | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-05 | MON-AREA-05 rutas y medios de emergencia accesibles | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-06 | MON-AREA-06 pieza activa/en espera identificada y siguiente acción visible | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-07 | MON-AREA-07 estación y almacenamiento propios sin amontonamiento | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-08 | MON-AREA-08 punzantes/filos protegidos y ubicados | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-09 | MON-AREA-09 productos identificados, HDS y punto de mezcla definidos cuando aplique | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-10 | MON-AREA-10 secado/espera estable, identificado y fuera de circulación | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-11 | MON-AREA-11 cables/mangueras fuera del paso o protegidos | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-12 | MON-AREA-12 residuos separados y material útil fuera de recipientes de descarte | NO VERIFICADO |  |  |  |  |  |
+| MON-AUD-13 | MON-AREA-13 estación vuelve a condición lista al cierre | NO VERIFICADO |  |  |  |  |  |
+
+## Verificación de metodología
+
+La verificación técnica sigue las diez etapas documentadas y usa evidencia de la ejecución real; no agrega parámetros nuevos.
+
+| Ref | Etapa | Resultado | Evidencia / hallazgo |
+|---|---|---|---|
+| MON-MET-01 | Recuperar flexibilidad y levantar medidas | NO VERIFICADO |  |
+| MON-MET-02 | Seleccionar, presentar y corregir la forma | NO VERIFICADO |  |
+| MON-MET-03 | Preparar boca y nariz | NO VERIFICADO |  |
+| MON-MET-04 | Preparar/posicionar cuernos o astas | NO VERIFICADO |  |
+| MON-MET-05 | Preparar/conformar orejas | NO VERIFICADO |  |
+| MON-MET-06 | Posicionar ojos | NO VERIFICADO |  |
+| MON-MET-07 | Preparar/colocar barro | NO VERIFICADO |  |
+| MON-MET-08 | Aplicar pegamento y vestir | NO VERIFICADO |  |
+| MON-MET-09 | Coser y controlar abultamientos | NO VERIFICADO |  |
+| MON-MET-10 | Secar y transferir a Retoque | NO VERIFICADO |  |
 
 ---
 
@@ -403,6 +446,7 @@ Estados:
 ## CORRECT_NOW
 - dejar de presentar a Ricardo como Recepción/Curtiduría en la gobernanza vigente;
 - incorporar a Eugenio como asistente directo de Ricardo donde la operación lo necesite;
+- conservar el significado histórico de MON-AREA-01..10 y usar IDs nuevos para controles posteriores;
 - separar metodología de auditoría y de requisitos legales;
 - conservar el método técnico maduro sin resumirlo en frases genéricas.
 
@@ -415,7 +459,7 @@ Estados:
 - evidencia fotográfica exacta del estado implementado.
 
 ## VALIDATE_TECHNICALLY
-- iluminancia por tarea/plano;
+- iluminancia por tarea/plano; mantener 300/500/750 lux del 391P como referencia histórica en HOLD hasta reconciliar criterio vigente;
 - ventilación/extracción y productos químicos;
 - HDS/productos exactos;
 - sistema de fijación de cuernos/astas;

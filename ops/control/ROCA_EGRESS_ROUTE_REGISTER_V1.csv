@@ -1,0 +1,2 @@
+route_id,area,start_point,exit_id,measured_distance_m,measured_time_min,door_opens_with_flow,opens_from_inside_without_key,route_clear,sign_visible,emergency_lighting_where_needed,safe_place_identified,evidence_ids,reviewer,date,status,notes
+EG-001,,,,,,,,,,,,,,,NOT_CHECKED,

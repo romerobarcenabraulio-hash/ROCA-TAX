@@ -35,7 +35,7 @@ window.ROCA_FIELD_SECTIONS = [
         <li>Activos críticos.</li>
       </ul>
       <h2>Evidence IDs principales</h2>
-      <p>EVID-REC-01 · EVID-CUR-01 · EVID-MON-01 · EVID-MON-02 · EVID-RET-01 · EVID-BAS-01 · EVID-CAR-01 · EVID-SOL-01 · EVID-BLA-01 · EVID-SUP-01.</p>
+      <p>EVID-REC-01 · EVID-CUR-01 · EVID-MON-01 · EVID-MON-02 · EVID-RET-01 · EVID-RET-03 · EVID-BAS-01 · EVID-BAS-02 · EVID-BAS-03 · EVID-CAR-01 · EVID-CAR-02 · EVID-SOL-01 · EVID-BLA-01 · EVID-SUP-01.</p>
       <h2>Salida</h2>
       <p>Panorámicas dirigidas + mapa de faltantes + lista real de estaciones/activos/subespacios.</p>
     `
@@ -55,7 +55,7 @@ window.ROCA_FIELD_SECTIONS = [
         <li>Ventilación/extracción existente.</li>
         <li>Envase, sobrante, recuperable y residuo.</li>
       </ul>
-      <h2>Evidence IDs</h2><p>EVID-CUR-02 · EVID-FMR-02 · EVID-RET-01 y registros de materiales V2.</p>
+      <h2>Evidence IDs</h2><p>EVID-CUR-02 · EVID-FMR-02 · EVID-RET-01 y registros de materiales V2.</p><h2>Retoque · productos a identificar</h2><p>Salvo · Roma · Suavitel cuando exista · resanador/catalizador · pinturas · gasolina blanca · barniz · Resistol blanco 800 · manchas/aceite de cuerno. Capturar producto real; la lista histórica no prueba uso actual.</p>
       <div class="callout">No clasificar un residuo por apariencia. Producto + proceso + condición del residuo + cantidad/frecuencia + destino gobiernan la decisión.</div>
     `
   },
@@ -63,11 +63,11 @@ window.ROCA_FIELD_SECTIONS = [
     id:"campo-3", nav:"Ola 3 · Estaciones", title:"Ola 3 · Estaciones y competencia", eyebrow:"Persona ↔ puesto ↔ operación",
     lead:"Cerrar quién trabaja dónde y qué puede ejecutar sin acompañamiento.",
     body:`
-      <h2>Montaje y Retoque primero</h2>
+      <h2>Carpintería / Embalaje · sólo si se implementa</h2><p>No levantar evidencia como si el área ya existiera. Primero confirmar decisión de implementación y ubicación. Cuando exista: capturar límites, banco/rack/equipo real, separación de polvo respecto de Retoque, ruta de carga y luego una primera orden real sin escenificarla.</p><h2>Bases · maniobra y estructura</h2><p>Levantar responsable/estación real; plancha/bancos/fijaciones; herramientas de corte; punto de poliuretano/adhesivo; almacenamiento de malla/triplay/herrajes; y una maniobra real de pieza/base pesada sólo si ocurre naturalmente y puede observarse sin crear riesgo.</p><h2>Montaje y Retoque primero</h2>
       <ul>
         <li>Persona ↔ estación real.</li>
         <li>Tareas que ejecuta.</li>
-        <li>Herramienta/equipo que usa.</li>
+        <li>Herramienta/equipo que usa.</li><li>En Retoque: compresor/placa, regulador, mangueras/conexiones, aerógrafo/pistola y punto real de aplicación cuando existan.</li>
         <li>Operaciones que puede realizar sin acompañamiento.</li>
         <li>Qué condición obliga a parar o pedir apoyo.</li>
         <li>Demostración breve o evidencia equivalente.</li>
@@ -107,9 +107,22 @@ window.ROCA_FIELD_SECTIONS = [
         <li>Rutas, espacios o accesos cuando una dimensión cambie una decisión.</li>
         <li>Otras mediciones sólo si tienen criterio de aceptación definido.</li>
       </ul>
+      <h2>Curtiduría · peso y pH</h2>
+      <ul>
+        <li>Peso real de la carga y valor capturado en ALUM-Tan deben corresponder a la misma carga.</li>
+        <li>Registrar pH de inicio de día 2 y pH final en su punto real del proceso; no intercambiar referencias.</li>
+        <li>Antes de usar una lectura como evidencia, identificar instrumento o método de medición y dejar su estado conocido.</li>
+        <li>Si hoy no existe instrumento/método identificable o su estado no puede demostrarse, registrar NOT_VERIFIED; no inventar una lectura.</li>
+      </ul>
       <h2>Registro mínimo</h2>
-      <p>Área · estación/punto · tarea · valor · unidad · fecha · instrumento · foto contextual · criterio asociado.</p>
-      <h2>Evidence IDs</h2><p>EVID-CUR-03 · EVID-RET-02 y cualquier medición asociada a un REQ específico.</p>
+      <p>Área · estación/punto · tarea/etapa · valor · unidad · fecha · instrumento/método · ID/estado · foto o registro contextual · criterio asociado.</p>
+      <h2>FMR · prueba y curado</h2>
+      <ul>
+        <li>Prueba de lote: masa total, relación A/B, recipiente patrón, condición climática observada y resultado.</li>
+        <li>Curado/desmolde: familia/tamaño, hora de vaciado, referencia usada, hora de revisión y condición física antes de abrir.</li>
+        <li>No liberar por reloj solamente; si está caliente, blando o deformable, registrar NOT_VERIFIED / continuar curado.</li>
+      </ul>
+      <h2>Evidence IDs</h2><p>EVID-CUR-03 · EVID-CUR-04 · EVID-FMR-02 · EVID-FMR-03 · EVID-RET-02 · EVID-RET-03 y cualquier medición asociada a un REQ específico.</p>
     `
   },
   {

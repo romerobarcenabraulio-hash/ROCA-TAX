@@ -1,0 +1,2 @@
+chemical_id,area,product_name,manufacturer,container_label_ok,hds_available,hds_revision_date,storage_location,compatibility_reviewed,ignition_separation_needed,exposure_control_from_hds,local_exhaust_required,ventilation_control_id,waste_stream_id,evidence_ids,reviewer,status,notes
+CHEM-001,,,,,,,,,,,,,,,,NOT_CHECKED,

@@ -1,0 +1,2 @@
+control_id,area,station,process,product_or_agent,generation_point,hds_or_source,evaluation_needed,control_type,local_capture_point,discharge_destination,operational_check,maintenance_owner,last_check_date,evidence_ids,reviewer,status,notes
+VENT-001,,,,,,,,,,,,,,,,NOT_CHECKED,

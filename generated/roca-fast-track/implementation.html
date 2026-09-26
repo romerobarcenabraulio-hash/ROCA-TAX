@@ -1,0 +1,1251 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ROCA · Implementar</title><style>body{margin:0;font-family:Arial,sans-serif;background:#ece7de;color:#171717}header{position:sticky;top:0;z-index:5;background:#17232e;color:#fff;padding:16px 20px}header a{color:#fff}.wrap{max-width:1700px;margin:auto;padding:20px}.note{background:#fff4d8;border:1px solid #d0b46f;padding:12px;margin:0 0 14px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 14px}.filters button{border:1px solid #999;background:#fff;padding:7px 10px;cursor:pointer}.filters button.active{background:#17232e;color:#fff}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;background:#fff;font-size:12px}th,td{border:1px solid #c8c2b7;padding:8px;vertical-align:top;text-align:left}th{position:sticky;top:73px;background:#f7f4ee}.blank{color:#9a6f21;font-weight:700}.small{font-size:12px;color:#ddd}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:0 0 18px}
+.tool{background:#fff;border:1px solid #c8c2b7;padding:14px}
+.tool h2{font-size:16px;margin:0 0 8px}
+.tool label{display:block;font-size:11px;font-weight:700;margin:8px 0 4px}
+.tool input,.tool select{width:100%;box-sizing:border-box;padding:8px;border:1px solid #aaa;background:#fff}
+.result{margin-top:10px;padding:10px;background:#f3efe7;min-height:36px}
+.geometry{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.geometry td,.geometry th{border:1px solid #ccc;padding:6px;text-align:left}
+.tool-links{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.tool-links a{display:inline-block;padding:8px 10px;background:#fff;border:1px solid #999;color:#17232e;text-decoration:none}
+</style></head><body><header><b>ROCA · IMPLEMENTAR</b><div class="small">Trabajo temporal para llegar al estándar. Cuando se corrige, deja de ser pendiente. <a href="../../index.html">Volver al manual</a> · <a href="audit.html">AUDITAR</a></div></header><main class="wrap"><div class="note"><b>Esta vista NO forma parte del estándar permanente.</b> Sólo registra brechas, acciones, mediciones y cálculos necesarios para llegar al “cómo debe estar”.</div>
+<section>
+  <h1>Fast Track · cálculo y preparación</h1>
+<section class="tool">
+  <h2>Orden de ataque · instalaciones</h2>
+  <ol>
+    <li><strong>Incendio:</strong> clasificar riesgo real y clases de fuego por zona; después usar superficie P-00 + recorrido real para ubicar extintores.</li>
+    <li><strong>Evacuación:</strong> medir punto más alejado → salida → lugar seguro; comprobar puerta, apertura, obstáculos y señalización.</li>
+    <li><strong>Señalización:</strong> colocar primero marcadores provisionales; sustituirlos por señal definitiva una vez cerrada ubicación/mensaje.</li>
+    <li><strong>Iluminación:</strong> definir tarea visual por estación, medir lux exactamente en el plano de trabajo y corregir sólo donde la lectura no alcanza el nivel seleccionado.</li>
+    <li><strong>Químicos/HDS:</strong> inventario real por área → HDS → compatibilidad → almacenamiento → señalización → evidencia.</li>
+    <li><strong>Ventilación/extracción:</strong> sólo después de saber producto/proceso/exposición real; no comprar extractores por intuición.</li>
+  </ol>
+  <p><small>La secuencia evita comprar primero y descubrir después que la ubicación, tipo o capacidad eran incorrectos.</small></p>
+</section>
+
+  <div class="note"><b>Estas herramientas son de implementación.</b> No cambian el estándar permanente y no sustituyen la clasificación de riesgo, el levantamiento ni la auditoría.</div>
+  <div class="tool-links">
+  <a href="../../ops/control/ROCA_MACHINE_SAFETY_REGISTER_V1.csv">REGISTRO MAQUINARIA</a>
+  <a href="../../ops/control/ROCA_ELECTRICAL_MAINTENANCE_REGISTER_V1.csv">REGISTRO ELÉCTRICO</a>
+  <a href="../../ops/control/ROCA_NOISE_RECOGNITION_REGISTER_V1.csv">REGISTRO RUIDO</a>
+  <a href="../../ops/control/ROCA_MANUAL_LOAD_REGISTER_V1.csv">REGISTRO CARGA MANUAL</a>
+  <a href="../../ops/control/ROCA_PRESSURE_EQUIPMENT_REGISTER_V1.csv">REGISTRO PRESIÓN</a>
+</div><div class="tool-links">
+  <a href="../../ops/control/ROCA_FIRE_RISK_CLASSIFICATION_V1.csv">REGISTRO INCENDIO</a>
+  <a href="../../ops/control/ROCA_EGRESS_ROUTE_REGISTER_V1.csv">REGISTRO RUTAS</a>
+  <a href="../../ops/control/ROCA_EMERGENCY_PLACEMENT_REGISTER_V1.csv">REGISTRO UBICACIONES</a>
+  <a href="../../ops/control/ROCA_ROUTE_FIRE_EVIDENCE_SHOTLIST_V1.csv">SHOTLIST RUTAS/FUEGO</a>
+  <a href="../../ops/control/ROCA_LIGHTING_MEASUREMENT_REGISTER_V1.csv">REGISTRO LUX</a>
+  <a href="../../ops/control/ROCA_CHEMICAL_HDS_REGISTER_V1.csv">REGISTRO QUÍMICOS/HDS</a>
+  <a href="../../ops/control/ROCA_VENTILATION_CONTROL_REGISTER_V1.csv">REGISTRO VENTILACIÓN</a>
+  <a href="../../ops/control/ROCA_WASTEWATER_DISCHARGE_REGISTER_V1.csv">REGISTRO DESCARGAS</a>
+</div><div class="tool-links">
+    <a href="field-walk.html">CAMINATA ÚNICA</a>
+    <a href="poster-pack.html">POSTERS PROVISIONALES</a>
+    <a href="audit.html">IR A AUDITAR</a>
+  </div>
+  <div class="tools">
+    
+<div class="tool">
+  <h2>Riesgo de incendio · pre-chequeo</h2>
+  <label>Superficie construida (m²)</label><input id="riskArea" type="number" min="0" step="0.01">
+  <label>Gases inflamables · inventario máximo anual (L)</label><input id="riskGas" type="number" min="0" step="0.1">
+  <label>Líquidos inflamables · inventario máximo anual (L)</label><input id="riskInflam" type="number" min="0" step="0.1">
+  <label>Líquidos combustibles · inventario máximo anual (L)</label><input id="riskComb" type="number" min="0" step="0.1">
+  <label>Sólidos combustibles incluido mobiliario (kg)</label><input id="riskSolid" type="number" min="0" step="0.1">
+  <label>¿Existe cualquier cantidad de material pirofórico o explosivo?</label><select id="riskPyro"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+  <div id="riskResult" class="result">Captura inventarios máximos reales; no uses existencia de un solo día si no representa el máximo anual.</div>
+  <small>Umbrales de alto riesgo: superficie ≥3000 m²; gases inflamables ≥3000 L; líquidos inflamables ≥1400 L; líquidos combustibles ≥2000 L; sólidos combustibles ≥15000 kg; cualquier cantidad pirofórica/explosiva. Si todo queda debajo, aún falta completar el cálculo oficial combinado antes de declarar “ordinario”.</small>
+</div>
+<div class="tool">
+      <h2>Extintores · mínimo por superficie</h2>
+      <label>Superficie a proteger (m²)</label><input id="fireArea" type="number" min="0" step="0.01" value="800">
+      <label>Riesgo de incendio</label><select id="fireRisk"><option value="300">Ordinario · 1 / 300 m² o fracción</option><option value="200">Alto · 1 / 200 m² o fracción</option></select>
+      <div id="fireResult" class="result"></div>
+      <small>Después hay que revisar clase de fuego, distribución y recorrido real; cualquiera de ellos puede exigir más equipos.</small>
+    </div>
+    <div class="tool">
+      <h2>Recorrido al extintor</h2>
+      <label>Clase / condición</label><select id="travelLimit">
+        <option value="23">A / C / D · máximo 23 m</option>
+        <option value="15">B riesgo ordinario · máximo 15 m</option>
+        <option value="10">B riesgo alto · máximo 10 m</option>
+        <option value="10">K · máximo 10 m</option>
+      </select>
+      <label>Recorrido real medido (m)</label><input id="travelActual" type="number" min="0" step="0.1">
+      <div id="travelResult" class="result">Mide el recorrido real, no la distancia en línea recta.</div>
+    </div>
+    <div class="tool">
+      <h2>Ruta de evacuación</h2>
+      <label>Recorrido desde punto más alejado (m)</label><input id="egressDistance" type="number" min="0" step="0.1">
+      <label>Tiempo real a lugar seguro (min)</label><input id="egressTime" type="number" min="0" step="0.1">
+      <div id="egressResult" class="result">Captura distancia y tiempo del recorrido real.</div>
+      <small>El chequeo usa el umbral de 40 m y, cuando corresponde, la demostración de evacuación a lugar seguro en máximo 3 min.</small>
+    </div>
+    <div class="tool">
+      <h2>Iluminación · tarea real</h2>
+      <label>Tipo de tarea visual</label><select id="luxTarget">
+        <option value="20">Exterior / circulación general · 20 lux</option>
+        <option value="50">Tránsito interior / almacén bajo movimiento / escaleras · 50 lux</option>
+        <option value="100">Circulación / espera / almacén / plataforma · 100 lux</option>
+        <option value="200">Tarea visual simple / recepción-despacho / compresor / pailería · 200 lux</option>
+        <option value="300">Detalle moderado / ensamble simple / oficina / empaque · 300 lux</option>
+        <option value="500">Detalle claro / laboratorio / dibujo / cómputo · 500 lux</option>
+        <option value="750">Detalle fino / pintura y acabado superficial / QC · 750 lux</option>
+        <option value="1000">Alta exactitud / partes pequeñas complejas / pulido fino · 1000 lux</option>
+        <option value="2000">Tarea especializada de muy bajo contraste · 2000 lux</option>
+      </select>
+      <label>Lectura medida en plano de trabajo (lux)</label><input id="luxActual" type="number" min="0" step="1">
+      <div id="luxResult" class="result">Mide donde realmente se ve y ejecuta la tarea.</div>
+    </div>
+  </div>
+  
+<div class="tools">
+  <div class="tool">
+    <h2>Ventilación / extracción · decisión</h2>
+    <label>¿La tarea usa/genera químico, vapor, aerosol, polvo o humo?</label>
+    <select id="ventHaz"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+    <label>¿Existe HDS o fuente técnica del producto/proceso?</label>
+    <select id="ventSds"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+    <label>¿La fuente pide control técnico / extracción local / cabina?</label>
+    <select id="ventLocal"><option value="">Selecciona</option><option value="unknown">No revisado</option><option value="no">No</option><option value="yes">Sí</option></select>
+    <div id="ventResult" class="result">Primero identifica proceso y producto.</div>
+  </div>
+  
+<div class="tool">
+  <h2>Racks / almacenamiento · chequeo</h2>
+  <label>¿Se usa maquinaria para colocar/retirar material?</label>
+  <select id="storeMachine"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+  <label>Ancho máximo de maquinaria + carga (m)</label><input id="storeMachineWidth" type="number" min="0" step="0.01">
+  <label>Dimensión más ancha del material/caja (m)</label><input id="storeMaterialWidth" type="number" min="0" step="0.01">
+  <label>Capacidad conocida del rack/plataforma</label><select id="storeCapacity"><option value="">Selecciona</option><option value="yes">Sí</option><option value="no">No</option></select>
+  <div id="storeResult" class="result">Primero define cómo se mueve realmente el material.</div>
+</div>
+<div class="tool">
+    <h2>Corriente de material / residuo</h2>
+    <label>Material o corriente</label><input id="wasteName" type="text" placeholder="Ej. trapo con gasolina blanca">
+    <label>¿Puede volver a usarse sin convertirse en residuo?</label>
+    <select id="wasteReuse"><option value="">Selecciona</option><option value="yes">Sí</option><option value="no">No</option></select>
+    <label>¿Proviene de químico/producto con HDS o proceso que requiere clasificación?</label>
+    <select id="wasteChem"><option value="">Selecciona</option><option value="yes">Sí / posible</option><option value="no">No</option></select>
+    <div id="wasteResult" class="result">No clasifiques por color del bote.</div>
+  </div>
+</div>
+<div class="tool">
+    <h2>Geometría P-00 rescatada del 391P</h2>
+    <table class="geometry"><thead><tr><th>Zona</th><th>Dimensión fuente</th><th>Superficie</th><th>Mínimo por área · ordinario</th><th>Mínimo por área · alto</th></tr></thead><tbody>
+      <tr><td>Área principal</td><td>40 × 20 m</td><td>800 m²</td><td>3</td><td>4</td></tr>
+      <tr><td>Moldes oeste</td><td>10 × 15 m</td><td>150 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Sala de exhibición</td><td>11 × 6 m</td><td>66 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Oficina</td><td>10 × 4.5 m</td><td>45 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Bodega sur</td><td>16.5 × 6.7 m</td><td>110.55 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Bodega norte A</td><td>14 × 4 m</td><td>56 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Bodega norte B</td><td>14 × 4 m</td><td>56 m²</td><td>1</td><td>1</td></tr>
+    </tbody></table>
+    <p><small>Estos mínimos son sólo el cociente por superficie. No se suman automáticamente ni definen la ubicación final: primero hay que confirmar si las zonas son independientes/continuas, clasificación de riesgo, clase de fuego y recorrido real.</small></p>
+  </div>
+</section>
+<div class="filters"><button class="active" data-area="ALL">TODAS</button><button data-area="area-recepcion">Recepción</button><button data-area="area-curtiduria">Curtiduría</button><button data-area="area-fmr">Formas, Moldes y Réplicas</button><button data-area="area-montaje">Montaje</button><button data-area="area-retoque">Retoque</button><button data-area="area-bases">Bases</button><button data-area="area-carpinteria">Carpintería / Embalaje</button><button data-area="area-soldadura">Soldadura / Adaptación</button><button data-area="area-blanqueado">Blanqueado</button><button data-area="area-soporte">Espacios de soporte</button></div><div class="tablewrap"><table><thead><tr><th>ID</th><th>Área</th><th>Elemento</th><th>Estándar permanente</th><th>Cómo está hoy</th><th>Qué hacer</th><th>Dato / cálculo</th><th>Estado</th></tr></thead><tbody><tr data-area="area-recepcion">
+<td>REC-FT-01</td>
+<td>Recepción</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-02</td>
+<td>Recepción</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-03</td>
+<td>Recepción</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-04</td>
+<td>Recepción</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-05</td>
+<td>Recepción</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-06</td>
+<td>Recepción</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-07</td>
+<td>Recepción</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-08</td>
+<td>Recepción</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-09</td>
+<td>Recepción</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-10</td>
+<td>Recepción</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-11</td>
+<td>Recepción</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-recepcion">
+<td>REC-FT-12</td>
+<td>Recepción</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-01</td>
+<td>Curtiduría</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-02</td>
+<td>Curtiduría</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-03</td>
+<td>Curtiduría</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-04</td>
+<td>Curtiduría</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-05</td>
+<td>Curtiduría</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-06</td>
+<td>Curtiduría</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-07</td>
+<td>Curtiduría</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-08</td>
+<td>Curtiduría</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-09</td>
+<td>Curtiduría</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-10</td>
+<td>Curtiduría</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-11</td>
+<td>Curtiduría</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-curtiduria">
+<td>CUR-FT-12</td>
+<td>Curtiduría</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-01</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-02</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-03</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-04</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-05</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-06</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-07</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-08</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-09</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-10</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-11</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-fmr">
+<td>FMR-FT-12</td>
+<td>Formas, Moldes y Réplicas</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-01</td>
+<td>Montaje</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-02</td>
+<td>Montaje</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-03</td>
+<td>Montaje</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-04</td>
+<td>Montaje</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-05</td>
+<td>Montaje</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-06</td>
+<td>Montaje</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-07</td>
+<td>Montaje</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-08</td>
+<td>Montaje</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-09</td>
+<td>Montaje</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-10</td>
+<td>Montaje</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-11</td>
+<td>Montaje</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-montaje">
+<td>MON-FT-12</td>
+<td>Montaje</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-01</td>
+<td>Retoque</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-02</td>
+<td>Retoque</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-03</td>
+<td>Retoque</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-04</td>
+<td>Retoque</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-05</td>
+<td>Retoque</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-06</td>
+<td>Retoque</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-07</td>
+<td>Retoque</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-08</td>
+<td>Retoque</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-09</td>
+<td>Retoque</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-10</td>
+<td>Retoque</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-11</td>
+<td>Retoque</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-retoque">
+<td>RET-FT-12</td>
+<td>Retoque</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-01</td>
+<td>Bases</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-02</td>
+<td>Bases</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-03</td>
+<td>Bases</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-04</td>
+<td>Bases</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-05</td>
+<td>Bases</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-06</td>
+<td>Bases</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-07</td>
+<td>Bases</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-08</td>
+<td>Bases</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-09</td>
+<td>Bases</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-10</td>
+<td>Bases</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-11</td>
+<td>Bases</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-bases">
+<td>BAS-FT-12</td>
+<td>Bases</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-01</td>
+<td>Carpintería / Embalaje</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-02</td>
+<td>Carpintería / Embalaje</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-03</td>
+<td>Carpintería / Embalaje</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-04</td>
+<td>Carpintería / Embalaje</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-05</td>
+<td>Carpintería / Embalaje</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-06</td>
+<td>Carpintería / Embalaje</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-07</td>
+<td>Carpintería / Embalaje</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-08</td>
+<td>Carpintería / Embalaje</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-09</td>
+<td>Carpintería / Embalaje</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-10</td>
+<td>Carpintería / Embalaje</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-11</td>
+<td>Carpintería / Embalaje</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-carpinteria">
+<td>CAR-FT-12</td>
+<td>Carpintería / Embalaje</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-01</td>
+<td>Soldadura / Adaptación</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-02</td>
+<td>Soldadura / Adaptación</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-03</td>
+<td>Soldadura / Adaptación</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-04</td>
+<td>Soldadura / Adaptación</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-05</td>
+<td>Soldadura / Adaptación</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-06</td>
+<td>Soldadura / Adaptación</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-07</td>
+<td>Soldadura / Adaptación</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-08</td>
+<td>Soldadura / Adaptación</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-09</td>
+<td>Soldadura / Adaptación</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-10</td>
+<td>Soldadura / Adaptación</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-11</td>
+<td>Soldadura / Adaptación</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soldadura">
+<td>SOL-FT-12</td>
+<td>Soldadura / Adaptación</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-01</td>
+<td>Blanqueado</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-02</td>
+<td>Blanqueado</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-03</td>
+<td>Blanqueado</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-04</td>
+<td>Blanqueado</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-05</td>
+<td>Blanqueado</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-06</td>
+<td>Blanqueado</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-07</td>
+<td>Blanqueado</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-08</td>
+<td>Blanqueado</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-09</td>
+<td>Blanqueado</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-10</td>
+<td>Blanqueado</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-11</td>
+<td>Blanqueado</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-blanqueado">
+<td>BLA-FT-12</td>
+<td>Blanqueado</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-01</td>
+<td>Espacios de soporte</td>
+<td>Límite, flujo y circulación</td>
+<td>El área tiene límites reconocibles; entrada, salida, espera y transferencia no se mezclan. Pasillos, salidas, tableros y medios de emergencia permanecen libres.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-02</td>
+<td>Espacios de soporte</td>
+<td>Estación, superficies y mobiliario</td>
+<td>La estación permite ejecutar la tarea; superficies y mobiliario son estables, utilizables y vuelven a condición lista al cierre.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-03</td>
+<td>Espacios de soporte</td>
+<td>Almacenamiento</td>
+<td>Cada categoría tiene ubicación reconocible; materiales pesados o inestables quedan asegurados y el acceso no exige desmontar otras categorías.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-04</td>
+<td>Espacios de soporte</td>
+<td>Iluminación</td>
+<td>La iluminación se verifica en el plano real de la tarea cuando calidad o seguridad dependan de ella.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-05</td>
+<td>Espacios de soporte</td>
+<td>Ventilación y extracción</td>
+<td>La ventilación responde a la operación y exposición real; cuando corresponda, la captura se controla en el punto de generación.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-06</td>
+<td>Espacios de soporte</td>
+<td>Energía, agua, drenaje, aire y servicios</td>
+<td>Servicios e instalaciones se usan sin improvisaciones, daño, obstrucción, humedad peligrosa o contaminación cruzada.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-07</td>
+<td>Espacios de soporte</td>
+<td>Químicos, materiales y HDS</td>
+<td>Producto identificado, recipiente secundario identificado cuando corresponda, HDS accesible y almacenamiento compatible con el producto real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-08</td>
+<td>Espacios de soporte</td>
+<td>Residuos, recuperables y limpieza</td>
+<td>Residuo, sobrante recuperable y material útil se separan; el área cierra limpia y lista sin dispersar contaminantes.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-09</td>
+<td>Espacios de soporte</td>
+<td>Emergencia y señalización</td>
+<td>Rutas, salidas, medios de respuesta y señalización aplicables son visibles, accesibles y corresponden a la evaluación vigente.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-10</td>
+<td>Espacios de soporte</td>
+<td>Activos, guardas y mantenimiento</td>
+<td>Equipo crítico tiene identidad, condición utilizable, control de fuera de servicio y mantenimiento o inspección proporcional al riesgo.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-11</td>
+<td>Espacios de soporte</td>
+<td>Identidad y trazabilidad</td>
+<td>Toda pieza, piel, forma, componente o trabajo en espera conserva ID y siguiente acción; la trazabilidad no depende de memoria.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr><tr data-area="area-soporte">
+<td>SUP-FT-12</td>
+<td>Espacios de soporte</td>
+<td>Competencia, EPP y autorización</td>
+<td>La operación la ejecuta personal autorizado; el EPP y la competencia corresponden a la tarea y riesgo real.</td>
+<td><span class="blank">POR LEVANTAR</span></td>
+<td><span class="blank">POR DEFINIR</span></td>
+<td><span class="blank">POR CALCULAR / MEDIR</span></td>
+<td>NOT_CHECKED</td>
+</tr></tbody></table></div></main><script>let area="ALL";function apply(){document.querySelectorAll("tbody tr").forEach(r=>r.hidden=area!=="ALL"&&r.dataset.area!==area)}document.querySelectorAll("[data-area]").forEach(b=>b.onclick=()=>{area=b.dataset.area;document.querySelectorAll("[data-area]").forEach(x=>x.classList.toggle("active",x===b));apply();});
+
+function calcRisk(){const a=Number(document.getElementById("riskArea").value||0),g=Number(document.getElementById("riskGas").value||0),i=Number(document.getElementById("riskInflam").value||0),c=Number(document.getElementById("riskComb").value||0),s=Number(document.getElementById("riskSolid").value||0),p=document.getElementById("riskPyro").value;const hit=[];if(a>=3000)hit.push("superficie");if(g>=3000)hit.push("gases inflamables");if(i>=1400)hit.push("líquidos inflamables");if(c>=2000)hit.push("líquidos combustibles");if(s>=15000)hit.push("sólidos combustibles");if(p==="yes")hit.push("pirofóricos/explosivos");document.getElementById("riskResult").innerHTML=hit.length?"<b>RIESGO ALTO DISPARADO</b> por: "+hit.join(", ")+". Pasar a requisitos de alto riesgo y documentar clasificación.":"No se activó un umbral individual. <b>NO declarar ordinario todavía:</b> completar el cálculo oficial combinado y conservar inventarios máximos."}
+["riskArea","riskGas","riskInflam","riskComb","riskSolid","riskPyro"].forEach(id=>document.getElementById(id).addEventListener("input",calcRisk));
+function calcFire(){const a=Number(document.getElementById("fireArea").value||0),d=Number(document.getElementById("fireRisk").value);document.getElementById("fireResult").innerHTML=a>0?"Mínimo por superficie: <b>"+Math.ceil(a/d)+" extintor(es)</b>. Falta validar recorrido, clase y distribución.":"Captura superficie."}
+function calcTravel(){const lim=Number(document.getElementById("travelLimit").value),a=Number(document.getElementById("travelActual").value||0);document.getElementById("travelResult").innerHTML=!a?"Mide el recorrido real, no la distancia en línea recta.":a<=lim?"Recorrido dentro del límite de referencia: <b>"+a+" m ≤ "+lim+" m</b>.":"<b>REUBICAR / AÑADIR COBERTURA:</b> "+a+" m > "+lim+" m."}
+function calcEgress(){const d=Number(document.getElementById("egressDistance").value||0),t=Number(document.getElementById("egressTime").value||0);let s="";if(!d)s="Captura distancia real.";else if(d<=40)s="Recorrido capturado: <b>"+d+" m</b>. Revisar además continuidad, señalización, puerta y obstrucciones.";else s="<b>Recorrido mayor de 40 m.</b> Documentar que el recorrido a lugar seguro se realiza en ≤ 3 min.";if(d>40&&t)s+=" Tiempo medido: <b>"+t+" min</b> → "+(t<=3?"dentro":"fuera")+" de la referencia.";document.getElementById("egressResult").innerHTML=s}
+function calcLux(){const tar=Number(document.getElementById("luxTarget").value),a=Number(document.getElementById("luxActual").value||0);document.getElementById("luxResult").innerHTML=!a?"Mide donde realmente se ejecuta la tarea.":a>=tar?"Lectura <b>"+a+" lux</b> frente a referencia <b>"+tar+" lux</b>: alcanza el nivel seleccionado.":"<b>MEJORAR / REUBICAR / MEDIR DE NUEVO:</b> "+a+" lux frente a "+tar+" lux."}
+["fireArea","fireRisk"].forEach(id=>document.getElementById(id).addEventListener("input",calcFire));
+["travelLimit","travelActual"].forEach(id=>document.getElementById(id).addEventListener("input",calcTravel));
+["egressDistance","egressTime"].forEach(id=>document.getElementById(id).addEventListener("input",calcEgress));
+["luxTarget","luxActual"].forEach(id=>document.getElementById(id).addEventListener("input",calcLux));
+calcFire();
+function calcVent(){const h=document.getElementById("ventHaz").value,s=document.getElementById("ventSds").value,l=document.getElementById("ventLocal").value;let x="";if(!h)x="Primero identifica proceso y producto.";else if(h==="no")x="No aparece una fuente aérea evidente en esta tarea. Verifica operación real antes de cerrar.";else if(s!=="yes")x="<b>PRIMERO HDS / FUENTE TÉCNICA.</b> No comprar extractor todavía.";else if(l==="yes")x="<b>DISEÑAR CAPTURA EN ORIGEN.</b> Definir punto de generación, descarga, operación y mantenimiento.";else if(l==="unknown"||!l)x="<b>REVISAR SECCIÓN DE CONTROLES DE EXPOSICIÓN.</b> No decidir por intuición.";else x="La fuente revisada no pide extracción local; confirmar si evaluación de exposición u otro control técnico aplica.";document.getElementById("ventResult").innerHTML=x}
+
+function calcStore(){const m=document.getElementById("storeMachine").value,mw=Number(document.getElementById("storeMachineWidth").value||0),w=Number(document.getElementById("storeMaterialWidth").value||0),c=document.getElementById("storeCapacity").value;let s="";if(!m)s="Primero define cómo se mueve realmente el material.";else if(m==="yes"){const g=Math.max(mw,w);s="<b>NOM-006 CONDICIONAL ACTIVADA.</b> "+(g?("Dimensión gobernante capturada: <b>"+g.toFixed(2)+" m</b>. El pasillo final debe responder a la técnica real de colocación/extracción; no inventar holgura."):"Mide maquinaria+carga y material más ancho.");if(c==="no")s+=" <b>NO CARGAR RACK SIN CAPACIDAD DEFINIDA.</b>";}else{s="Manejo manual: no usar NOM-006 como obligación automática. Mantener estabilidad, pesado abajo, acceso recuperable y rutas libres.";if(c==="no")s+=" Aun así, definir capacidad del mobiliario si la carga puede comprometerlo.";}document.getElementById("storeResult").innerHTML=s}
+["storeMachine","storeMachineWidth","storeMaterialWidth","storeCapacity"].forEach(id=>document.getElementById(id).addEventListener("input",calcStore));
+function calcWaste(){const n=document.getElementById("wasteName").value.trim(),r=document.getElementById("wasteReuse").value,c=document.getElementById("wasteChem").value;let x="";if(!n)x="Nombra la corriente real.";else if(r==="yes")x="<b>RECUPERABLE / MATERIAL ÚTIL CANDIDATO.</b> Sepáralo del residuo y define ubicación de retorno.";else if(!r)x="Define primero si realmente es recuperable.";else if(c==="yes")x="<b>CLASIFICACIÓN PENDIENTE.</b> Revisar producto/HDS/proceso y ruta ambiental antes de etiquetar como residuo peligroso.";else if(c==="no")x="Definir corriente y destino real aplicable; conservarla separada de recuperables y otras corrientes.";document.getElementById("wasteResult").innerHTML=x}
+["ventHaz","ventSds","ventLocal"].forEach(id=>document.getElementById(id).addEventListener("input",calcVent));
+["wasteName","wasteReuse","wasteChem"].forEach(id=>document.getElementById(id).addEventListener("input",calcWaste));
+
+</script></body></html>

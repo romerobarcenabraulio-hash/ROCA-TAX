@@ -1,0 +1,4 @@
+shot_id,target,required_view,proves,does_not_prove,evidence_id,status,notes
+SHOT-RUT-01,Rutas principales,"Secuencia longitudinal desde dos extremos; mostrar pasillos libres, límites reconocibles y ausencia de cajas/cables/piezas","Continuidad y condición visible del recorrido","Distancia reglamentaria, tiempo de evacuación o plan de emergencia",EVID-RUT-01,NOT_CHECKED,
+SHOT-RUT-02,Extintor/salida/tablero,"Toma contextual de acceso completo + toma cercana de señalización/identificación","Accesibilidad visible e identificación del punto","Clasificación de incendio, vigencia, cobertura, mantenimiento o capacidad",EVID-RUT-02,NOT_CHECKED,
+SHOT-RUT-03,Cruce entre áreas,"Foto de transición mostrando paso continuo sin reducción por almacenamiento temporal","Continuidad visible del cruce","Ancho reglamentario o capacidad de evacuación sin medición",EVID-RUT-03,NOT_CHECKED,
