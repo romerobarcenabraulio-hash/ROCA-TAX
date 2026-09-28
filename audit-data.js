@@ -13,6 +13,8 @@ window.ROCA_AUDIT_SECTIONS = [
         <li>Si la corrección se cierra, la auditoría conserva el resultado y el criterio fijo sigue siendo parte del HTML.</li>
       </ol>
       <div id="auditSummary"></div>
+      <h2>Línea base por departamento</h2>
+      <div id="baselineRegistry">Cargando línea base...</div>
     `
   },
   ...Object.entries(window.ROCA_FAST_TRACK?.areas || {}).map(([areaId, area]) => ({
@@ -32,12 +34,35 @@ window.ROCA_AUDIT_SECTIONS = [
 
 window.ROCA_AUDIT_ENHANCE = async function(sectionId){
   const root = document.querySelector('.audit-area-shell');
+  function parseCSV(text){
+    const rows=[]; let row=[],field='',q=false;
+    for(let i=0;i<text.length;i++){
+      const ch=text[i];
+      if(ch==='"'){ if(q&&text[i+1]==='"'){field+='"';i++;} else q=!q; }
+      else if(ch===','&&!q){row.push(field);field='';}
+      else if((ch==='\n'||ch==='\r')&&!q){ if(ch==='\r'&&text[i+1]==='\n')i++; row.push(field);field=''; if(row.some(v=>v!==''))rows.push(row); row=[]; }
+      else field+=ch;
+    }
+    if(field||row.length){row.push(field);if(row.some(v=>v!==''))rows.push(row);}
+    if(!rows.length) return [];
+    const head=rows.shift();
+    return rows.map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]||''])));
+  }
   if(sectionId === 'audit-inicio'){
     const host = document.getElementById('auditSummary');
     if(host){
       const areas = Object.keys(window.ROCA_FAST_TRACK?.areas || {}).length;
       const criteria = (window.ROCA_FAST_TRACK?.commonRows || []).length;
-      host.innerHTML = '<div class="callout"><strong>'+areas+' áreas</strong> · '+criteria+' criterios transversales base por área. Los resultados se guardan en este navegador hasta que se integren al registro controlado.</div>';
+      host.innerHTML = '<div class="callout"><strong>'+areas+' áreas</strong> · '+criteria+' criterios transversales base por área. La línea base se congela por departamento; la auditoría posterior cambia el resultado, no redefine automáticamente el criterio.</div>';
+    }
+    const baseHost=document.getElementById('baselineRegistry');
+    if(baseHost){
+      try{
+        const res=await fetch('ops/control/ROCA_DEPARTMENT_BASELINE_V1.csv',{cache:'no-store'});
+        const data=res.ok?parseCSV(await res.text()):[];
+        baseHost.innerHTML='<table><thead><tr><th>Departamento</th><th>Estado</th><th>Versión</th><th>Capturado</th><th>Congelado</th><th>Se reabre sólo si...</th></tr></thead><tbody>'+
+          data.map(r=>'<tr><td><strong>'+r.department_name+'</strong></td><td>'+r.baseline_status+'</td><td>'+r.baseline_version+'</td><td>'+(r.captured_date||'—')+'</td><td>'+(r.frozen_date||'—')+'</td><td>'+r.review_trigger+'</td></tr>').join('')+'</tbody></table>';
+      }catch(e){ baseHost.textContent='No se pudo leer la línea base controlada.'; }
     }
     return;
   }
@@ -53,17 +78,18 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     const res = await fetch('ops/control/ROCA_IMPLEMENTATION_ACTION_REGISTER_V1.csv',{cache:'no-store'});
     if(res.ok){
       const text = await res.text();
-      const lines = text.trim().split(/\r?\n/);
-      const head = (lines.shift()||'').split(',');
-      implementation = lines.filter(Boolean).map(line=>{
-        const vals=line.split(',');
-        return Object.fromEntries(head.map((h,i)=>[h,vals[i]||'']));
-      }).filter(x=>x.area===areaId);
+      implementation = parseCSV(text).filter(x=>x.area===areaId);
     }
   }catch(e){}
 
   const openByReq = new Map(implementation.filter(x=>!['CLOSED','CANCELLED'].includes(String(x.status||'').toUpperCase())).map(x=>[x.target_requirement_id,x]));
-  const html = '<table class="audit-central-table"><thead><tr><th>ID</th><th>Criterio fijo</th><th>Resultado</th><th>Dato / nota</th><th>Implementación</th></tr></thead><tbody>'+
+  const promoted = implementation.filter(x=>String(x.status||'').toUpperCase()==='CLOSED' && String(x.promote_to_baseline||'').toUpperCase()==='YES');
+  const promotedHtml = promoted.length
+    ? '<section class="baseline-promoted"><h2>Valores fijos promovidos desde IMPLEMENTAR</h2><table><thead><tr><th>Concepto</th><th>Valor fijo</th><th>Fundamento</th></tr></thead><tbody>'+
+      promoted.map(x=>'<tr><td><strong>'+String(x.fixed_label||x.target_requirement_id||'')+'</strong></td><td>'+String(x.fixed_value||'')+(x.fixed_unit?' '+x.fixed_unit:'')+'</td><td>'+String(x.basis_reference||'')+(x.basis_source?' · '+x.basis_source:'')+'</td></tr>').join('')+
+      '</tbody></table></section>'
+    : '';
+  const html = promotedHtml + '<table class="audit-central-table"><thead><tr><th>ID</th><th>Criterio fijo</th><th>Resultado</th><th>Dato / nota</th><th>Implementación</th></tr></thead><tbody>'+
     rows.map((row,i)=>{
       const id=code+'-FT-'+String(i+1).padStart(2,'0');
       const v=saved[id]||{};
