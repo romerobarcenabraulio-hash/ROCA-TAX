@@ -132,6 +132,7 @@
     nav.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x.dataset.id===id));
     page.focus({preventScroll:true});
     window.scrollTo({top:0,left:0,behavior:'auto'});
+    document.dispatchEvent(new CustomEvent('roca:sectionchange',{detail:{id,mode:activeMode}}));
   }
 
   async function afterRender(section){
