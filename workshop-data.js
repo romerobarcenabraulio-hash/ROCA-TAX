@@ -18,10 +18,10 @@ window.ROCA_WORKSHOP_SECTIONS = [
         <li><strong>Ventilación/extracción:</strong> el control corresponde al proceso, producto y exposición real; cuando el reconocimiento o la HDS exijan captura localizada, ésta actúa en el punto de generación y descarga sin crear una nueva exposición.</li>
         <li><strong>Servicios:</strong> energía, agua, drenaje y aire se usan sin improvisaciones, humedad peligrosa, obstrucción o contaminación cruzada.</li>
         <li><strong>Residuos:</strong> material útil, recuperable y residuo se separan por destino real; ninguna corriente se clasifica como peligrosa sólo por apariencia o por el color del recipiente.</li>
-        <li><strong>Maquinaria:</strong> guardas y dispositivos de seguridad permanecen instalados y operables; si falta una guarda o falla un dispositivo, el equipo queda fuera de servicio.</li>
+        <li><strong>Maquinaria:</strong> guardas y dispositivos de seguridad permanecen instalados, completos, firmes y operables en los puntos de riesgo accesibles.</li>
         <li><strong>Electricidad:</strong> tableros y desconexiones quedan accesibles; cables, clavijas, extensiones y cargadores permanecen íntegros y fuera de agua, daño y circulación improvisada.</li>
-        <li><strong>Carga manual:</strong> piezas pesadas o voluminosas tienen ruta y método de maniobra definidos antes de moverlas.</li>
-        <li><strong>Activos:</strong> equipo fuera de condición se separa del uso; activos críticos conservan identidad e inspección/mantenimiento verificable.</li>
+        <li><strong>Carga manual:</strong> piezas pesadas o voluminosas cuentan con ruta libre, espacio de maniobra y medios de apoyo disponibles según su peso, geometría y estabilidad.</li>
+        <li><strong>Activos:</strong> equipos y activos críticos conservan identidad visible, condición utilizable y acceso para inspección y mantenimiento.</li>
       </ul>
       <ul>
         <li>El espacio físico se define por flujo, estación, almacenamiento, servicios, seguridad, limpieza y evidencia observable.</li>
