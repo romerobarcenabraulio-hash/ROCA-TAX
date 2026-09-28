@@ -1,14 +1,14 @@
 window.ROCA_NORM_SECTIONS = [
   {
-    id:"normas-inicio", nav:"Normas · Aplicabilidad", title:"Normas y criterios aplicables", eyebrow:"ROCA · respaldo normativo",
-    lead:"Aquí vive la memoria de qué requisito externo justifica cada criterio de ROCA. Los PDF visibles al usuario deben ser únicamente las normas o fuentes oficiales controladas.",
+    id:"normas-inicio", nav:"Bibliografía · Aplicabilidad", title:"Bibliografía normativa", eyebrow:"ROCA · bibliografía y fundamento",
+    lead:"Aquí se conserva el fundamento de los criterios de ROCA: referencia, vigencia, aplicabilidad y fuente oficial. La operación diaria consulta el criterio aterrizado en su departamento; la bibliografía respalda por qué existe.",
     body:`
-      <div class="callout"><strong>No es otra biblioteca.</strong> Esta vista concentra referencia, aplicabilidad, criterio ROCA y vínculo a fuente oficial. Los manuales históricos y PDFs internos no forman parte de la navegación del deployment.</div>
+      <div class="callout"><strong>No es una segunda capa operativa.</strong> Esta vista concentra referencia, aplicabilidad, criterio ROCA y vínculo a fuente oficial. Los manuales históricos y PDFs internos no forman parte de la navegación del deployment.</div>
       <div id="normRegistry">Cargando registro normativo...</div>
     `
   },
   {
-    id:"normas-memoria", nav:"Normas · Memoria fija", title:"Memoria fija de criterio", eyebrow:"ROCA · criterio respaldado",
+    id:"normas-memoria", nav:"Bibliografía · Memoria fija", title:"Memoria fija de criterio", eyebrow:"ROCA · criterio respaldado",
     lead:"Un criterio queda fijo cuando su fundamento, aplicabilidad y resultado técnico están suficientemente definidos. Las acciones para alcanzarlo pueden abrirse y cerrarse; el criterio permanece.",
     body:`
       <div id="criterionMemory">Cargando memoria de criterios...</div>
