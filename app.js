@@ -210,7 +210,7 @@
   finalMode.addEventListener('click',showFinal);
   if(compendiumMode) compendiumMode.addEventListener('click',showCompendium);
   if(fieldMode) fieldMode.addEventListener('click',showField);
-  notesMode.addEventListener('click',showNotes); showCompendium(); go('area-recepcion', compendiumSections); });
+  notesMode.addEventListener('click',showNotes);
   printDoc.addEventListener('click',()=>{
     const printSections = activeMode==='compendium' ? compendiumSections : activeMode==='field' ? fieldSections : finalSections;
     const returnMode = activeMode;
