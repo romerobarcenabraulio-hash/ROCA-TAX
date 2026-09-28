@@ -66,7 +66,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
   },
   {
     id:"area-fmr", nav:"Área · Formas/Moldes", title:"Formas, Moldes y Réplicas", eyebrow:"Estándar permanente · geometría y materiales reactivos",
-    lead:"Materiales identificados, dosificación verificable, moldes/racks trazables y polvo, fibra y vapores controlados.",
+    lead:"Área ordenada para materiales reactivos, moldes, racks, mezcla y acabado, con polvo, fibra y vapores físicamente contenidos.",
     body:`
       <h2>Cómo debe estar</h2>
       <ul>
@@ -94,7 +94,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
         <li>Cables, extensiones y mangueras no cruzan circulación sin control.</li>
         <li>Piezas en secado permanecen estables, identificadas y fuera de rutas de paso.</li>
         <li>Residuo, sobrante recuperable y material útil se separan.</li>
-        <li>La estación vuelve a condición lista al cierre.</li>
+        <li>Fuera de operación, la estación permanece despejada y en condición lista para el siguiente trabajo.</li>
       </ul>
     `
   },
@@ -110,7 +110,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
         <li>Compresor, regulador, mangueras y conexiones están identificados y fuera de circulación.</li>
         <li>Aerógrafos, pistolas, pinceles y herramientas de detalle tienen ubicación definida.</li>
         <li>Pedacera está contenida, clasificada y ubicada únicamente en Retoque.</li>
-        <li>Alfileres y fijaciones retiradas se concentran en un lugar definido.</li>
+        <li>Existe un recipiente o ubicación definida para alfileres y fijaciones retiradas.</li>
         <li>Ventilación y control de vapores corresponden a los productos realmente usados.</li>
         <li>Piezas en espera conservan ID y siguiente acción.</li>
       </ul>
@@ -124,7 +124,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
       <ul>
         <li>Plancha, bancos, piezas y materiales pesados se almacenan estables y sin invadir rutas.</li>
         <li>Madera, malla, herrajes, tornillería y consumibles tienen ubicación recuperable.</li>
-        <li>Banco y superficies de armado son estables y permiten presentar la pieza antes de fijarla.</li>
+        <li>Banco y superficies de armado son estables y tienen espacio útil suficiente para presentar, girar y fijar la pieza.</li>
         <li>Herramientas de corte, perforación y fijación se guardan con accesorios y guardas correspondientes.</li>
         <li>Polvo y recortes se separan de poliuretano, adhesivos, pintura y acabado.</li>
         <li>Componentes reactivos permanecen identificados y contenidos en su punto de uso.</li>
@@ -144,7 +144,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
         <li>Madera y paneles se almacenan contra vuelco o deslizamiento.</li>
         <li>Tornillos, clavos, bisagras y herrajes se separan por tipo/tamaño.</li>
         <li>Polvo y aserrín se contienen o retiran en el punto de generación.</li>
-        <li>Equipo eléctrico se usa con cables, guardas y accesorios en condición.</li>
+        <li>Equipo eléctrico conserva cables, guardas y accesorios completos y en condición utilizable.</li>
         <li>Material de embalaje conserva ubicación propia y no invade rutas.</li>
         <li>Cajas y embalajes permanecen ligados a la orden/pieza correspondiente.</li>
         <li>Ruta de carga y manipulación permanece libre.</li>
@@ -163,7 +163,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
         <li>Máquina, cables, pinzas y conexiones están identificados y en condición utilizable.</li>
         <li>Equipo y consumibles tienen almacenamiento definido y estable.</li>
         <li>Medios de respuesta aplicables permanecen accesibles.</li>
-        <li>La pieza y su adaptación conservan identificación hasta entrega.</li>
+        <li>Existe un punto visible de identificación para la pieza y su adaptación mientras permanecen en el área.</li>
       </ul>
     `
   },
@@ -174,7 +174,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
       <h2>Cómo debe estar</h2>
       <ul>
         <li>Recipiente y fuente de calor permanecen estables durante la operación.</li>
-        <li>Cuernos quedan fuera de la zona térmica cuando el tratamiento lo requiere.</li>
+        <li>El puesto tiene espacio y geometría suficientes para mantener los cuernos fuera de la zona térmica cuando corresponda.</li>
         <li>Ruta de agua caliente no cruza circulación.</li>
         <li>Drenaje permite retirar agua sin crear encharcamiento o contaminación cruzada.</li>
         <li>Ventilación corresponde al calor, vapor y productos realmente usados.</li>
