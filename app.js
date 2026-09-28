@@ -80,10 +80,9 @@
       <section class="inherited-standard">
         <div class="eyebrow">ESTÁNDAR FÍSICO PERMANENTE</div>
         <h2>Condiciones que debe conservar esta área</h2>
-        <p>Estas condiciones describen el estado correcto del espacio. No son pendientes ni una lista de implementación.</p>
         <table class="permanent-standard-table">
-          <thead><tr><th>ID</th><th>Condición permanente</th><th>Cómo se demuestra</th></tr></thead>
-          <tbody>${rows.map(r=>`<tr><td><strong>${r.id}</strong><br><span>${r.label}</span></td><td>${r.standard}</td><td>${r.evidence}</td></tr>`).join('')}</tbody>
+          <thead><tr><th>Elemento</th><th>Cómo debe estar</th></tr></thead>
+          <tbody>${rows.map(r=>`<tr><td><strong>${r.label}</strong></td><td>${r.standard}</td></tr>`).join('')}</tbody>
         </table>
       </section>`;
   }

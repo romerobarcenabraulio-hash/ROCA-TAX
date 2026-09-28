@@ -244,7 +244,5 @@ footer{display:none}
 .permanent-standard-table{width:100%;border-collapse:collapse;font-size:11px;line-height:1.4;margin-top:14px}
 .permanent-standard-table th,.permanent-standard-table td{border:1px solid #c9c3b7;padding:8px;vertical-align:top;text-align:left}
 .permanent-standard-table th{background:#f3efe7;font-size:10px;letter-spacing:.04em;text-transform:uppercase}
-.permanent-standard-table td:first-child{width:18%}
-.permanent-standard-table td:nth-child(2){width:48%}
-.permanent-standard-table td:nth-child(3){width:34%}
-.permanent-standard-table span{font-size:10px;color:#666}
+.permanent-standard-table td:first-child{width:26%}
+.permanent-standard-table td:nth-child(2){width:74%}
