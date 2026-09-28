@@ -30,6 +30,37 @@
     </aside>
 
     <main id="page" class="page" tabindex="-1"></main>
+    <aside id="controlRail" class="control-rail" aria-label="Control del departamento">
+      <div class="control-rail-head">CONTROL</div>
+      <div id="controlDepartment" class="control-department">Sin departamento</div>
+      <div id="controlStatus" class="control-status">—</div>
+      <div class="control-meta"><span>Versión</span><strong id="controlVersion">—</strong></div>
+      <div class="control-meta"><span>Congelado</span><strong id="controlFrozenAt">—</strong></div>
+      <div class="control-actions">
+        <button id="freezeDepartment" type="button">CONGELAR</button>
+        <button id="unlockDepartment" type="button">DESBLOQUEAR</button>
+      </div>
+      <div id="controlLockNote" class="control-note">Los cambios permanentes requieren una sesión administrativa autorizada.</div>
+      <hr>
+      <div class="control-rail-head">IMÁGENES</div>
+      <label class="control-label">Destino</label>
+      <select id="imagePlacement">
+        <option value="area">Área</option>
+        <option value="method">Metodología</option>
+        <option value="tool">Herramientas</option>
+        <option value="evidence">Evidencia</option>
+        <option value="cover">Portada del área</option>
+        <option value="inline">Otro punto</option>
+      </select>
+      <label class="control-label">Sección / ID</label>
+      <input id="imageSectionKey" type="text" placeholder="Ej. CUR-AREA-03">
+      <label class="control-label">Pie / descripción</label>
+      <textarea id="imageCaption" rows="3" placeholder="Qué muestra y por qué importa"></textarea>
+      <input id="imagePicker" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple hidden>
+      <button id="chooseImages" type="button" class="control-primary">AGREGAR IMAGEN</button>
+      <div id="imageQueue" class="image-queue"></div>
+      <div class="control-note">Las fotos seleccionadas quedan en cola local hasta que exista una sesión autorizada para subirlas al almacenamiento privado.</div>
+    </aside>
   </div>
 
   <footer>
@@ -51,5 +82,6 @@
   <script src="audit-data.js"></script>
   <script src="norms-data.js"></script>
   <script src="app.js"></script>
+  <script src="manual-control.js"></script>
 </body>
 </html>
