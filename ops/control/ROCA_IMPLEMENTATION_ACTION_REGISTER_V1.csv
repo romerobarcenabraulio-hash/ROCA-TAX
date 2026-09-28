@@ -1,1 +1,1 @@
-action_id,area,observed_gap,target_requirement_id,correction,responsible,due_date,status,evidence_id,closed_date,source_locator,notes
+action_id,area,observed_gap,target_requirement_id,correction,responsible,due_date,status,evidence_id,closed_date,source_locator,notes,promote_to_baseline,fixed_label,fixed_value,fixed_unit,basis_reference,basis_source
