@@ -49,19 +49,18 @@ window.ROCA_WORKSHOP_SECTIONS = [
   },
   {
     id:"area-curtiduria", nav:"Área · Curtiduría", title:"Curtiduría", eyebrow:"Estándar permanente · pieles, baños y químicos",
-    lead:"Flujo claro de pieles y baños, identidad preservada, químicos controlados y equipos accesibles para operar, limpiar y mantener.",
+    lead:"Área físicamente ordenada para trabajar con agua, químicos y equipos sin mezclar circulación, almacenamiento, preparación, drenaje y residuos.",
     body:`
       <h2>Cómo debe estar</h2>
       <ul>
-        <li>Tinas, tambor, rebajadora, báscula, tendido y acondicionamiento tienen ubicación definida y acceso libre.</li>
-        <li>Químicos permanecen identificados, cerrados cuando no se usan y con HDS accesible.</li>
-        <li>Almacenamiento químico corresponde a compatibilidad y riesgo real del producto.</li>
-        <li>Preparación y transferencia de productos se realiza sin invadir circulación ni exponer otras áreas.</li>
-        <li>Agua y drenaje corresponden a las operaciones reales; cada punto de descarga tiene ruta conocida y el agua de proceso se distingue de sanitaria/pluvial.</li>
-        <li>Báscula e instrumento de pH están identificados y disponibles para la operación.</li>
-        <li>La piel conserva su ID durante baños, rebajado, secado y acondicionamiento.</li>
-        <li>Baños agotados, envases, residuos y material recuperable se separan por destino.</li>
-        <li>Rutas, señalización y medios de emergencia permanecen visibles y accesibles.</li>
+        <li>Tinas, tambor, rebajadora, báscula y zonas de tendido/acondicionamiento tienen ubicación fija, acceso libre y espacio suficiente alrededor.</li>
+        <li>Los productos químicos tienen ubicación definida, identificación legible y recipientes cerrados cuando no están en uso.</li>
+        <li>El almacenamiento químico mantiene separados los productos incompatibles y deja visible la identificación de cada producto.</li>
+        <li>Existe una zona definida para preparar y transferir productos, fuera de pasillos y separada de otras actividades que puedan contaminarse.</li>
+        <li>Los puntos de agua y drenaje están identificados, accesibles y sin encharcamientos; la descarga de proceso tiene una ruta física conocida y separada de la sanitaria/pluvial cuando corresponda.</li>
+        <li>La báscula y el instrumento de pH tienen ubicación definida, protegida y accesible.</li>
+        <li>Baños agotados, envases, material recuperable y residuos tienen recipientes y ubicaciones separados según su destino.</li>
+        <li>Rutas, señalización y medios de emergencia permanecen visibles, accesibles y libres de materiales.</li>
       </ul>
     `
   },
