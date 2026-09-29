@@ -207,6 +207,25 @@ async function loadImplementationActions(){
   }
 }
 loadImplementationActions();
+function holdClosureType(text){
+  const t=String(text||"").toLowerCase();
+  if(/biwo|estado exacto|pantalla|campo/.test(t) && /biwo|estado/.test(t)) return "BIWO REAL";
+  if(/reconciliar|fuente controlada|fuente histórica|recuperar/.test(t)) return "FUENTE";
+  if(/decidir|definir frontera|ubicación real|implementar este frente/.test(t)) return "DECISIÓN";
+  if(/evidencia|fotograf|capturar/.test(t)) return "EVIDENCIA";
+  if(/levantar|verificar|confirmar|observar|demostrar|medición|inventario|ventilación|drenaje|maniobra|producto|hds|equipo|responsable|estación|competencia/.test(t)) return "CAMPO";
+  return "CIERRE TÉCNICO";
+}
+function holdCloseRule(type){
+  return ({
+    "FUENTE":"Cierra sólo con la fuente material recuperada/reconciliada y el criterio actualizado en el manual.",
+    "BIWO REAL":"Cierra al comprobar en BIWO real nombre, pantalla/campo y evento operativo correspondiente.",
+    "DECISIÓN":"Cierra con una decisión explícita aplicada al layout/operación y reflejada en el estándar permanente.",
+    "EVIDENCIA":"Cierra cuando la evidencia objetiva requerida existe, es aceptada y demuestra la condición.",
+    "CAMPO":"Cierra con observación, medición o demostración real; después el dato confirmado se incorpora al estándar permanente.",
+    "CIERRE TÉCNICO":"Cierra cuando el criterio técnico queda definido con evidencia suficiente y se incorpora al estándar permanente."
+  })[type];
+}
 function renderDepartmentHolds(){
   const host=document.getElementById("departmentHoldList");
   if(!host)return;
@@ -214,7 +233,7 @@ function renderDepartmentHolds(){
   const blocks=Object.values(depts).filter(d=>Array.isArray(d.implementationHolds)&&d.implementationHolds.length);
   if(!blocks.length){host.innerHTML='<p>Sin HOLD departamentales registrados.</p>';return}
   host.innerHTML=blocks.map(d=>'<div class="tool"><h3>'+esc(d.code+' · '+d.title)+'</h3><ul>'+
-    d.implementationHolds.map(h=>'<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'</li>').join("")+
+    d.implementationHolds.map(h=>{const type=holdClosureType(h.text);return '<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'<br><small><b>'+esc(type)+'</b> · '+esc(holdCloseRule(type))+'</small></li>'}).join("")+
     '</ul></div>').join("");
 }
 renderDepartmentHolds();
