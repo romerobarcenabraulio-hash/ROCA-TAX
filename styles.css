@@ -288,3 +288,15 @@ footer{display:none}
 .method-stage h3{margin:0 0 5px;font:700 11px/1.3 Arial,Helvetica,sans-serif}
 .method-stage p{margin:0}
 @media(max-width:900px){.department-two-col{grid-template-columns:1fr}.department-handoff{display:block}.department-handoff span{display:block;margin-top:5px}}
+
+.image-upload-result{display:grid;grid-template-columns:46px minmax(0,1fr);gap:8px;align-items:center;padding:8px;border:1px solid #c9c0b4;background:#fffaf2}
+.image-upload-result img{width:46px;height:46px;object-fit:cover;border:1px solid #c9c0b4}
+.image-upload-result>div{min-width:0}
+.image-upload-result strong,.image-upload-result span,.image-upload-result small{display:block;overflow-wrap:anywhere}
+.image-upload-result strong{font:700 9px/1.25 Arial,Helvetica,sans-serif}
+.image-upload-result span{margin-top:2px;font:8px/1.35 Arial,Helvetica,sans-serif;color:#5f574f}
+.image-upload-result small{margin-top:3px;font:7px/1.3 Arial,Helvetica,sans-serif;color:#80766b}
+#authLoginBox{display:grid;gap:7px}
+#authLoginBox[hidden]{display:none!important}
+#signOutManual{width:100%;margin-bottom:6px}
+#authState{overflow-wrap:anywhere}
