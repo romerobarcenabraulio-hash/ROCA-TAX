@@ -359,12 +359,14 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
     {id:"RET-AUD-AREA-02",criterion:"Estación y almacenamiento son utilizables y recuperables.",evidence:"Vista de estación y almacenamiento."},
     {id:"RET-AUD-AREA-03",criterion:"Iluminación corresponde a la tarea cuando gobierna color/detalle.",evidence:"Lux en plano de tarea cuando aplique."},
     {id:"RET-AUD-AREA-04",criterion:"Ventilación/extracción corresponde a operación y producto real.",evidence:"Producto/HDS + punto de uso + control físico."},
-    {id:"RET-AUD-AREA-05",criterion:"Pieza activa o en espera conserva ID y siguiente acción.",evidence:"Muestra de piezas en estación/espera."},
-    {id:"RET-AUD-AREA-06",criterion:"Pintura y solventes se usan y almacenan en punto controlado.",evidence:"Producto real + ubicación + condición."},
-    {id:"RET-AUD-AREA-07",criterion:"Compresor, reguladores y mangueras están identificables y no invaden circulación.",evidence:"Sistema de aire completo."},
-    {id:"RET-AUD-AREA-08",criterion:"Resane/lijado no contamina acabado fino.",evidence:"Secuencia/limpieza y condición del punto de acabado."},
-    {id:"RET-AUD-AREA-09",criterion:"Pedacera permanece contenida y sólo en Retoque.",evidence:"Ubicación y clasificación visible."},
-    {id:"RET-AUD-AREA-10",criterion:"Alfileres retirados quedan contenidos.",evidence:"Recipiente y estado de cierre."}
+    {id:"RET-AUD-AREA-05",criterion:"Rutas, señalización y medios de respuesta aplicables permanecen visibles, accesibles y sin bloqueo.",evidence:"Recorrido físico de emergencia."},
+    {id:"RET-AUD-AREA-06",criterion:"Pieza activa o en espera conserva ID y siguiente acción.",evidence:"Muestra de piezas en estación/espera."},
+    {id:"RET-AUD-AREA-07",criterion:"Pintura y solventes se usan y almacenan en punto controlado.",evidence:"Producto real + ubicación + condición."},
+    {id:"RET-AUD-AREA-08",criterion:"Compresor, reguladores y mangueras están identificables y no invaden circulación.",evidence:"Sistema de aire completo."},
+    {id:"RET-AUD-AREA-09",criterion:"La estación de acabado fino permite inspeccionar color y detalle sin contaminación ni sombras críticas.",evidence:"Punto real de acabado fino."},
+    {id:"RET-AUD-AREA-10",criterion:"Resane/lijado no contamina acabado fino.",evidence:"Secuencia/limpieza y condición del punto de acabado."},
+    {id:"RET-AUD-AREA-11",criterion:"Pedacera permanece contenida y sólo en Retoque.",evidence:"Ubicación y clasificación visible."},
+    {id:"RET-AUD-AREA-12",criterion:"Alfileres retirados quedan contenidos.",evidence:"Recipiente y estado de cierre."}
   ],
   method:{
     flow:"Recibir pieza seca/estable → retirar fijaciones temporales → cepillar y limpiar → inspeccionar defecto → si es estructural regresar al oficio de origen → resanar imperfección compatible → recuperar color de oscuros a claros → terminar pelo → brillo localizado → textura de nariz cuando aplique → acabado de cuernos cuando aplique → liberar a Bases/Revisión.",
@@ -377,8 +379,8 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
       {id:"RET-MET-03",title:"Pintura del animal",text:"Recuperar ojos, nariz, boca, costuras y zonas que perdieron tono, construyendo el color de tonos oscuros a claros y comparando continuamente con la coloración natural o referencia aprobada."},
       {id:"RET-MET-04",title:"Cepillado y acabado del pelo",text:"Cepillar en dirección natural y retirar residuos. Usar gasolina blanca por zonas para soltar o ablandar pelo y recuperar apariencia natural; no fijar una dosis volumétrica universal."},
       {id:"RET-MET-05",title:"Brillo de ojos, nariz y boca",text:"Aplicar barniz brillante en spray de forma localizada cuando corresponda, sin escurrimientos ni película excesiva sobre pelo o piel vecina."},
-      {id:"RET-MET-06",title:"Textura de nariz en cérvidos",text:"Usar Resistol blanco 800 en jeringa, una gota por marca, siguiendo el patrón de referencia. La referencia histórica de 1–2 h no sustituye el criterio físico de que las gotas conserven relieve individual."},
-      {id:"RET-MET-07",title:"Acabado de cuernos",text:"Aplicar aceite al final para recuperar brillo. Las manchas para madera se usan según especie o tono cuando corresponda, sin escurrimientos ni contaminación del pelo."}
+      {id:"RET-MET-06",title:"Textura de nariz en cérvidos",text:"Usar Resistol blanco 800 en jeringa, una gota por marca, siguiendo el patrón de referencia. Usar 1–2 h sólo como referencia de secado; liberar cuando las gotas conserven relieve individual y no se deformen durante el acabado."},
+      {id:"RET-MET-07",title:"Acabado de cuernos",text:"Aplicar aceite al final para recuperar brillo. Usar manchas para madera según especie o tono cuando corresponda; referencias de taller incluyen roble, encino / Encino Americano y roble oscuro. Distribuir sin escurrimientos, acumulación en la base ni contaminación del pelo."}
     ],
     controls:[
       {id:"RET-CTL-01",text:"Retoque no usa pintura o resane para ocultar un defecto estructural."},
