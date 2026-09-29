@@ -108,12 +108,37 @@
     const evidence=(dept.evidence||[]).map(r=>
       '<tr><td><strong>'+esc(r.id)+'</strong></td><td>'+esc(r.text)+'</td><td>'+esc(r.placement)+'</td></tr>'
     ).join('');
+    const people=(dept.people||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const entryInputs=(dept.entryInputs||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const entryStops=(dept.entryStops||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const exitCriteria=(dept.exitCriteria||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const toolCare=(dept.toolCare||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const competencies=(dept.competencies||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const controlRecords=(dept.controlRecords||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const materialFlow=(dept.materialFlow||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+
+    const governance = (people||entryInputs||entryStops||exitCriteria)
+      ? '<section class="department-block"><div class="eyebrow">00 · CONTEXTO OPERATIVO</div><h2>Equipo, entrada y salida</h2>'+
+        (people?'<h3>Equipo conocido</h3><ul>'+people+'</ul>':'')+
+        (entryInputs?'<h3>Debe llegar con</h3><ul>'+entryInputs+'</ul>':'')+
+        (entryStops?'<h3>Detener o devolver cuando</h3><ul>'+entryStops+'</ul>':'')+
+        (exitCriteria?'<h3>Condición de salida</h3><ul>'+exitCriteria+'</ul>':'')+
+        '</section>' : '';
+
+    const operations = (toolCare||competencies||controlRecords||materialFlow)
+      ? '<section class="department-two-col">'+
+        (toolCare?'<section class="department-block"><div class="eyebrow">06 · CUIDADO DE HERRAMIENTA</div><h2>Condición de uso</h2><ul>'+toolCare+'</ul></section>':'')+
+        (competencies?'<section class="department-block"><div class="eyebrow">07 · PERSONAS / COMPETENCIA</div><h2>Operaciones que requieren autorización</h2><ul>'+competencies+'</ul></section>':'')+
+        (controlRecords?'<section class="department-block"><div class="eyebrow">08 · CONTROL / REGISTROS</div><h2>Qué debe mantenerse ligado a la pieza</h2><ul>'+controlRecords+'</ul></section>':'')+
+        (materialFlow?'<section class="department-block"><div class="eyebrow">09 · FLUJO DE MATERIAL</div><h2>Qué se registra por tarea</h2><ul>'+materialFlow+'</ul></section>':'')+
+        '</section>' : '';
 
     return '<section class="department-canonical">'+
       '<div class="department-purpose"><div class="eyebrow">DEPARTAMENTO</div><h2>'+esc(dept.title)+'</h2><p>'+esc(dept.purpose)+'</p>'+
       '<div class="department-handoff"><span><strong>Recibe de:</strong> '+esc(dept.receivesFrom||'—')+'</span><span><strong>Entrega a:</strong> '+esc(dept.handsOffTo||'—')+'</span></div></div>'+
+      governance+
       inheritedPhysicalStandardMarkup(section)+
-      '<section class="department-block"><div class="eyebrow">01 · ÁREA DE TRABAJO</div><h2>Cómo debe estar Curtiduría</h2>'+
+      '<section class="department-block"><div class="eyebrow">01 · ÁREA DE TRABAJO</div><h2>Cómo debe estar '+esc(dept.title)+'</h2>'+
       '<table><thead><tr><th>ID</th><th>Condición permanente</th></tr></thead><tbody>'+areaRows+'</tbody></table></section>'+
       '<section class="department-block department-audit-block"><div class="eyebrow">02 · AUDITORÍA DEL ÁREA</div><h2>Qué se comprueba en el espacio</h2>'+
       '<p>Esta revisión comprueba el estado físico del departamento. Una desviación real abre IMPLEMENTAR; el criterio permanece.</p>'+
@@ -122,10 +147,11 @@
       '<p class="flow-line">'+esc(dept.method?.flow||'')+'</p>'+branches+stages+
       '<h3>Controles que viajan con el proceso</h3><ul>'+controls+'</ul></section>'+
       '<section class="department-two-col">'+
-        '<section class="department-block"><div class="eyebrow">04 · HERRAMIENTAS / EQUIPO</div><h2>Qué usa Curtiduría</h2><ul>'+tools+'</ul></section>'+
+        '<section class="department-block"><div class="eyebrow">04 · HERRAMIENTAS / EQUIPO</div><h2>Qué usa '+esc(dept.title)+'</h2><ul>'+tools+'</ul></section>'+
         '<section class="department-block"><div class="eyebrow">05 · CONSUMIBLES / MATERIALES</div><h2>Qué entra al proceso</h2><ul>'+consumables+'</ul></section>'+
       '</section>'+
-      '<section class="department-block"><div class="eyebrow">06 · EVIDENCIA</div><h2>Qué evidencia sirve y dónde va</h2>'+
+      operations+
+      '<section class="department-block"><div class="eyebrow">10 · EVIDENCIA</div><h2>Qué evidencia sirve y dónde va</h2>'+
       '<table><thead><tr><th>ID</th><th>Qué demuestra</th><th>Placement</th></tr></thead><tbody>'+evidence+'</tbody></table></section>'+
       '</section>';
   }
