@@ -296,3 +296,7 @@ footer{display:none}
 .image-upload-result strong{font:700 9px/1.25 Arial,Helvetica,sans-serif}
 .image-upload-result span{margin-top:2px;font:8px/1.35 Arial,Helvetica,sans-serif;color:#5f574f}
 .image-upload-result small{margin-top:3px;font:7px/1.3 Arial,Helvetica,sans-serif;color:#80766b}
+
+.print-gate-note{align-self:center;font:700 8px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.05em;color:#6e645a;max-width:160px}
+.print-action:disabled{opacity:.45;cursor:not-allowed}
+@media print{.print-gate-note{display:none!important}}
