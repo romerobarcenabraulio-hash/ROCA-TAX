@@ -44,7 +44,7 @@
       <hr>
       <div class="control-rail-head">IMÁGENES</div>
       <label class="control-label">Destino</label>
-      <select id="imagePlacement">
+      <select id="imagePlacement" disabled>
         <option value="area">Área</option>
         <option value="method">Metodología</option>
         <option value="tool">Herramientas</option>
@@ -53,13 +53,13 @@
         <option value="inline">Otro punto</option>
       </select>
       <label class="control-label">Sección / ID</label>
-      <input id="imageSectionKey" type="text" placeholder="Ej. CUR-AREA-03">
+      <input id="imageSectionKey" type="text" placeholder="Ej. CUR-AREA-03" disabled>
       <label class="control-label">Pie / descripción</label>
-      <textarea id="imageCaption" rows="3" placeholder="Qué muestra y por qué importa"></textarea>
+      <textarea id="imageCaption" rows="3" placeholder="Qué muestra y por qué importa" disabled></textarea>
       <input id="imagePicker" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple hidden>
-      <button id="chooseImages" type="button" class="control-primary">AGREGAR IMAGEN</button>
+      <button id="chooseImages" type="button" class="control-primary" disabled>IMÁGENES · PREPARADO</button>
       <div id="imageQueue" class="image-queue"></div>
-      <div class="control-note">Las fotos seleccionadas quedan en cola local hasta que exista una sesión autorizada para subirlas al almacenamiento privado.</div>
+      <div class="control-note">El placement de imágenes ya está definido. Se habilita cuando exista sesión Owner/Admin y persistencia en almacenamiento privado; mientras tanto no simula una carga que no puede guardar.</div>
     </aside>
   </div>
 
