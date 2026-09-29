@@ -3,18 +3,18 @@ window.ROCA_WORKSHOP_SECTIONS = [
     id:"taller",
     nav:"Taller",
     title:"El taller como sistema",
-    eyebrow:"Manual central · lectura por departamento",
-    lead:"ROCA se consulta y audita por departamento. Cada departamento concentra área física, auditoría, metodología, herramientas, materiales, evidencia y línea base.",
+    eyebrow:"Manual maestro · lectura por departamento",
+    lead:"El manual reúne por departamento las condiciones del área, la metodología, las herramientas, los materiales, la evidencia y los criterios de verificación.",
     body:`
-      <div class="callout"><strong>Regla de uso:</strong> el manual muestra el estado permanente y la forma de trabajar. IMPLEMENTAR contiene únicamente brechas y acciones temporales. Bibliografía conserva el fundamento normativo y la procedencia.</div>
-      <h2>Cómo navegar</h2>
+      <div class="callout"><strong>Regla de uso:</strong> cada departamento se consulta en el mismo orden: condición del área → verificación → metodología → herramientas y materiales → evidencia.</div>
+      <h2>Cómo consultar el manual</h2>
       <ol>
-        <li>Entrar al departamento que se quiere trabajar.</li>
-        <li>Leer primero cómo debe estar el área.</li>
-        <li>Auditar ese estado físico.</li>
-        <li>Consultar la metodología, herramientas, consumibles y controles del mismo departamento.</li>
-        <li>Si existe una desviación real, abrirla en IMPLEMENTAR.</li>
-        <li>Cuando la línea base esté suficientemente capturada, congelarla.</li>
+        <li>Ubicar el departamento y confirmar su función, entrada y condición de salida.</li>
+        <li>Revisar cómo debe estar el área antes de iniciar trabajo.</li>
+        <li>Consultar la metodología y sus criterios para detener, corregir o liberar una operación.</li>
+        <li>Confirmar herramientas, consumibles, registros y controles que acompañan el proceso.</li>
+        <li>Usar la auditoría para comprobar que el área y la operación conservan las condiciones definidas.</li>
+        <li>Consultar Bibliografía cuando un criterio dependa de una norma, permiso, especificación o requisito externo.</li>
       </ol>
     `
   },
