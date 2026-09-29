@@ -31,6 +31,15 @@
 
     <main id="page" class="page" tabindex="-1"></main>
     <aside id="controlRail" class="control-rail" aria-label="Control del departamento">
+      <div class="control-rail-head">ACCESO</div>
+      <div id="authState" class="control-note">Sin sesión administrativa.</div>
+      <div id="authLoginBox">
+        <label class="control-label">Correo autorizado</label>
+        <input id="authEmail" type="email" autocomplete="email" placeholder="correo autorizado">
+        <button id="requestLogin" type="button" class="control-primary">ENVIAR ACCESO</button>
+      </div>
+      <button id="signOutManual" type="button" class="control-primary" hidden>CERRAR SESIÓN</button>
+      <hr>
       <div class="control-rail-head">CONTROL</div>
       <div id="controlDepartment" class="control-department">Sin departamento</div>
       <div id="controlStatus" class="control-status">—</div>
@@ -77,5 +86,6 @@
   <script src="norms-data.js"></script>
   <script src="app.js"></script>
   <script src="manual-control.js"></script>
+  <script type="module" src="auth-control.js"></script>
 </body>
 </html>
