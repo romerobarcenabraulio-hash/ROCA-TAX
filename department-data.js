@@ -7,14 +7,33 @@ window.ROCA_DEPARTMENTS["area-curtiduria"] = {
   purpose:"Preservar, curtir y acondicionar la piel hasta dejarla manipulable, identificada y lista para producción.",
   receivesFrom:"Recepción",
   handsOffTo:"Almacén / Montaje según ruta",
+  people:[
+    "Rodolfo Sr. — Curtiduría / conocimiento técnico",
+    "David — Curtiduría / supervisión",
+    "Lalo / Eduardo — Curtiduría"
+  ],
+  entryInputs:[
+    "Piel recibida desde Recepción con identificación física",
+    "Condición y espesor suficientes para seleccionar la ruta de proceso"
+  ],
+  entryStops:[
+    "La piel no conserva identidad",
+    "La condición física no permite continuar sin repetir o corregir una etapa"
+  ],
+  exitCriteria:[
+    "Piel manipulable y acondicionada",
+    "Identidad conservada",
+    "Condición física suficiente para transferencia",
+    "Registro de proceso ligado a la misma carga cuando aplique"
+  ],
   area:[
     {id:"CUR-AREA-01",label:"Zonas de trabajo",text:"Recepción húmeda, baños, rebajado, escurrido/secado y espera están físicamente diferenciados para evitar cruces y pérdida de identidad."},
     {id:"CUR-AREA-02",label:"Tinas, tambor y equipos",text:"Tinas, tambor, rebajadora, pateadora y equipos de apoyo tienen acceso suficiente para carga, descarga, limpieza, inspección y mantenimiento."},
-    {id:"CUR-AREA-03",label:"Piso, agua y drenaje",text:"Las rutas húmedas permanecen transitables, sin acumulaciones que creen riesgo de resbalón; los puntos de agua y drenaje tienen ruta física conocida."},
-    {id:"CUR-AREA-04",label:"Químicos",text:"Ácidos, sal y demás productos permanecen cerrados cuando no están en uso, identificados y almacenados según compatibilidad y condición real del producto."},
+    {id:"CUR-AREA-03",label:"Piso, agua y drenaje",text:"Las rutas húmedas permanecen transitables, sin acumulaciones que creen riesgo de resbalón; los puntos de agua, drenaje, limpieza y descarga tienen ruta física conocida y documentable."},
+    {id:"CUR-AREA-04",label:"Químicos",text:"Ácidos, sal y demás productos permanecen cerrados cuando no están en uso, identificados, con HDS accesible cuando corresponda y almacenados según compatibilidad y condición real del producto."},
     {id:"CUR-AREA-05",label:"Ventilación",text:"La ventilación corresponde a los baños, químicos y equipos realmente usados en Curtiduría."},
     {id:"CUR-AREA-06",label:"Identidad de pieles",text:"Las pieles conservan su identificación y siguiente acción durante tendido, secado, espera y transferencia."},
-    {id:"CUR-AREA-07",label:"Instrumentos y activos críticos",text:"Tambor, rebajadora, pateadora, báscula y el método o instrumento usado para pH tienen identidad, ubicación y condición conocidas antes de usarse como parte del proceso."}
+    {id:"CUR-AREA-07",label:"Instrumentos y activos críticos",text:"Tambor, rebajadora y pateadora conservan identidad, ubicación, condición conocida y método de fuera de servicio. La báscula y el método o instrumento usado para pH tienen identidad y estado conocidos antes de que una lectura se use como evidencia."}
   ],
   areaAudit:[
     {id:"CUR-AUD-AREA-01",criterion:"Zonas húmedas, baños, rebajado, secado y espera están diferenciados y utilizables.",evidence:"Recorrido del área + fotografía general y puntos de cruce."},
@@ -28,26 +47,29 @@ window.ROCA_DEPARTMENTS["area-curtiduria"] = {
   method:{
     flow:"Recepción/inspección → hidratación → marcado físico → ruta por espesor → picle → rebajado manual → rebajado en disco → pesado / ALUM-Tan → neutralización / repiclado → escurrido / secado → tamboreo con aserrín → sacudido → engrase → pateado selectivo cuando la piel lo requiere.",
     branches:[
-      {title:"Piel gruesa o dura",text:"Después de hidratar y marcar puede aflojarse en tina exterior de picle. Esa tina no sustituye el picle ácido de tambor. Después del picle se rebaja y puede regresar a picle mientras exista sección sin curtir."}
+      {title:"Piel gruesa o dura",text:"Después de hidratar y marcar puede aflojarse en tina exterior de picle. Esa tina no sustituye el picle ácido de tambor. Después del picle se rebaja y puede regresar a picle mientras exista sección sin curtir."},
+      {title:"Piloto de agua a presión",text:"NO LIBERADO — el descarnado o limpieza con agua a presión permanece separado de la rutina. No sustituye el rebajado de espesor y no se usa en cara, labios, párpados, borde de oreja, flancos, base de cola ni zonas finas sin validación específica."}
     ],
     stages:[
       {id:"CUR-MET-01",title:"Hidratación",text:"Usar como referencia 1 kg de sal por 10 L de agua y una ventana de 10–12 h. La salida también depende de condición física: la piel debe poder desplegarse y marcarse sin forzar zonas rígidas."},
-      {id:"CUR-MET-02",title:"Picle",text:"La referencia de trabajo conserva 473 L de agua, 45 kg de sal y 300 mL de ácido sulfúrico. VALIDACIÓN EN CAMPO — no fijar una cantidad única de ácido fórmico hasta cerrar la dosificación aplicable."},
+      {id:"CUR-MET-02",title:"Picle",text:"Usar como referencia 473 L de agua, 45 kg de sal y 300 mL de ácido sulfúrico. Para piel común, usar 24 h como referencia de picle. VALIDACIÓN EN CAMPO — no fijar una cantidad única de ácido fórmico hasta cerrar el conflicto 6.0 L vs 6.4 L. En piel gruesa repetir picle → rebajado → picle mientras exista sección sin curtir, sin fijar un número universal de retornos."},
       {id:"CUR-MET-03",title:"Rebajado",text:"La cuchilla o trabajo manual atiende detalle y zonas necesarias; la rebajadora de disco uniforma espesor. En piel gruesa puede repetirse la secuencia picle → rebajado → picle hasta eliminar sección sin curtir."},
-      {id:"CUR-MET-04",title:"Pesado y ALUM-Tan",text:"Pesar la carga real y capturar exactamente esa lectura en la hoja controlada. El peso usado por el cálculo debe corresponder a la misma carga física."},
+      {id:"CUR-MET-04",title:"Pesado y ALUM-Tan",text:"Pesar la carga real y capturar exactamente esa lectura en la hoja controlada; el peso usado por el cálculo debe corresponder a la misma carga física. Referencia de salinidad ALUM-Tan: 2.2–2.3. En el día 1, realizar la segunda adición de alumbre después de 1 h 30 min usando el valor indicado por la hoja controlada para esa carga."},
       {id:"CUR-MET-05",title:"Neutralización y pH",text:"La referencia para inicio del día 2 es pH 3.6–3.8. El bicarbonato calculado se divide en cinco partes con una adición por hora. La referencia final es pH 4.2–4.3."},
       {id:"CUR-MET-06",title:"Escurrido y secado",text:"Referencia: 12 h con calor y 14–16 h en invierno o lluvia. No pasar a aserrín con la piel empapada; la condición real gobierna el avance."},
       {id:"CUR-MET-07",title:"Tamboreo con aserrín",text:"Referencia de 4 h."},
       {id:"CUR-MET-08",title:"Sacudido",text:"Referencia de 15 min. No engrasar mientras siga soltando aserrín visible."},
       {id:"CUR-MET-09",title:"Engrase y pateado",text:"La pateadora se usa después del engrase sólo en piel gruesa o resistente que requiera acondicionamiento mecánico. No sustituye a la rebajadora."},
-      {id:"CUR-MET-10",title:"Salado previo",text:"Referencia preservada de 2–3 pasadas de sal fina, con drenado entre pasadas y secado a la sombra. No colgar inmediatamente después del primer salado."}
+      {id:"CUR-MET-10",title:"Salado previo",text:"Usar 2–3 pasadas de sal fina, con drenado entre pasadas y secado a la sombra. No colgar inmediatamente después del primer salado."}
     ],
     controls:[
       {id:"CUR-CTL-01",text:"El número consecutivo físico permanece asociado a la piel durante baños, rebajado, secado y transferencia."},
       {id:"CUR-CTL-02",text:"La rebajadora uniforma espesor; la pateadora acondiciona después del engrase. No son intercambiables."},
       {id:"CUR-CTL-03",text:"Peso de báscula y peso capturado en ALUM-Tan corresponden a la misma carga."},
       {id:"CUR-CTL-04",text:"Los dos valores de pH corresponden a puntos distintos del proceso y no son intercambiables."},
-      {id:"CUR-CTL-05",text:"La piel avanza por condición física además de las referencias de tiempo."}
+      {id:"CUR-CTL-05",text:"La piel avanza por condición física además de las referencias de tiempo."},
+      {id:"CUR-CTL-06",text:"Toda corrección de receta conserva fuente o versión, fecha, responsable y motivo antes de usarse."},
+      {id:"CUR-CTL-07",text:"El piloto de agua a presión permanece fuera de rutina hasta validación documentada; no sustituye el rebajado de espesor."}
     ]
   },
   tools:[
