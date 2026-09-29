@@ -1,6 +1,6 @@
 window.ROCA_EDITORIAL_SECTIONS = [
   {
-    id:"roca", nav:"ROCA Taxidermy", title:"ROCA Taxidermy", eyebrow:"Empresa · taller · oficio",
+    id:"roca", nav:"ROCA Taxidermy", title:"ROCA Taxidermy", eyebrow:"Gobernanza · empresa, taller y oficio",
     lead:"ROCA TAXIDERMY es un taller especializado donde el oficio, la operación y el control documental se conectan alrededor de cada pieza.",
     body:`
       <h2>Qué reúne ROCA</h2>
@@ -16,7 +16,7 @@ window.ROCA_EDITORIAL_SECTIONS = [
     `
   },
   {
-    id:"heritage", nav:"Historia / Heritage", title:"Historia, oficio y continuidad", eyebrow:"Heritage ROCA",
+    id:"heritage", nav:"Historia / Heritage", title:"Historia, oficio y continuidad", eyebrow:"Anexo editorial · Heritage ROCA",
     lead:"La historia de ROCA no se presenta como decoración. Se conserva a través de personas, herramientas, áreas, técnicas, piezas, fotografías y cambios reales del taller.",
     body:`
       <h2>Referencia histórica</h2>
@@ -33,7 +33,7 @@ window.ROCA_EDITORIAL_SECTIONS = [
     `
   },
   {
-    id:"personas", nav:"Taller y equipo", title:"Taller y equipo", eyebrow:"Estructura funcional actual",
+    id:"personas", nav:"Taller y equipo", title:"Taller y equipo", eyebrow:"Gobernanza · estructura funcional actual",
     lead:"La organización se entiende por las funciones reales del taller y por la forma en que cada área entrega trabajo a la siguiente.",
     body:`
       <table><thead><tr><th>Función / área</th><th>Referencia pública</th><th>Papel dentro de ROCA</th></tr></thead><tbody>
