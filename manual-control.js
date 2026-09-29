@@ -11,12 +11,25 @@
   const choose=document.getElementById('chooseImages');
   const auditMap={rec:'area-recepcion',cur:'area-curtiduria',fmr:'area-fmr',mon:'area-montaje',ret:'area-retoque',bas:'area-bases',car:'area-carpinteria',sol:'area-soldadura',bla:'area-blanqueado',sop:'area-soporte'};
   function parseCSV(text){
-    const lines=text.trim().split(/\r?\n/);
-    const head=(lines.shift()||'').split(',');
-    return lines.filter(Boolean).map(line=>{
-      const vals=line.split(',');
-      return Object.fromEntries(head.map((h,i)=>[h,vals[i]||'']));
-    });
+    const rows=[]; let row=[],field='',quoted=false;
+    for(let i=0;i<text.length;i++){
+      const ch=text[i];
+      if(ch==='"'){
+        if(quoted && text[i+1]==='"'){ field+='"'; i++; }
+        else quoted=!quoted;
+      }else if(ch===',' && !quoted){
+        row.push(field); field='';
+      }else if((ch==='\n'||ch==='\r') && !quoted){
+        if(ch==='\r' && text[i+1]==='\n') i++;
+        row.push(field); field='';
+        if(row.some(v=>v!=='')) rows.push(row);
+        row=[];
+      }else field+=ch;
+    }
+    if(field||row.length){ row.push(field); if(row.some(v=>v!=='')) rows.push(row); }
+    if(!rows.length) return [];
+    const head=rows.shift();
+    return rows.map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]||''])));
   }
   function currentDepartment(){
     const id=(location.hash||'').replace(/^#/,'');
