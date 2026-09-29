@@ -211,9 +211,11 @@ function holdClosureType(text){
   const t=String(text||"").toLowerCase();
   if(/estados? biwo|biwo real|estado biwo|pantalla.*biwo|biwo.*pantalla/.test(t)) return "BIWO REAL";
   if(/reconciliar|fuente controlada|fuente histórica|recuperar/.test(t)) return "FUENTE";
-  if(/decidir|definir frontera|ubicación real|implementar este frente/.test(t)) return "DECISIÓN";
+  if(/decidir|definir frontera|ubicación real|implementar este frente|interfaz con bases y logística/.test(t)) return "DECISIÓN";
   if(/evidencia|fotograf|capturar/.test(t)) return "EVIDENCIA";
-  if(/levantar|verificar|confirmar|observar|demostrar|medición|inventario|ventilación|drenaje|maniobra|producto|hds|equipo|responsable|estación|competencia/.test(t)) return "CAMPO";
+  if(/aplicabilidad|normativa|bibliografía|trabajo en caliente|epp|control metrológico|verificación aplicable|capacidad\/criterio estructural/.test(t)) return "TÉCNICO / NORMATIVA";
+  if(/instrumento o método real|balance de baños|piloto de agua a presión|sistema exacto de fijación|selección de hilo|persona × operación|compresor|paleta real|prácticas históricas siguen vigentes|criterios exactos de aceptación|proceso de soldadura real|mantenimiento y servicios|frontera física/.test(t)) return "CAMPO";
+  if(/levantar|verificar|confirmar|observar|demostrar|medición|inventario|ventilación|drenaje|maniobra|producto|hds|equipo|responsable|estación|competencia|privacidad|archivo real/.test(t)) return "CAMPO";
   return "CIERRE TÉCNICO";
 }
 function holdKnownProof(id){
@@ -250,6 +252,7 @@ function holdCloseRule(type){
     "DECISIÓN":"Cierra con una decisión explícita aplicada al layout/operación y reflejada en el estándar permanente.",
     "EVIDENCIA":"Cierra cuando la evidencia objetiva requerida existe, es aceptada y demuestra la condición.",
     "CAMPO":"Cierra con observación, medición o demostración real; después el dato confirmado se incorpora al estándar permanente.",
+    "TÉCNICO / NORMATIVA":"Cierra cuando se resuelve la aplicabilidad/criterio técnico con fuente oficial o cálculo válido y, cuando corresponda, evidencia del equipo/condición real.",
     "CIERRE TÉCNICO":"Cierra cuando el criterio técnico queda definido con evidencia suficiente y se incorpora al estándar permanente."
   })[type];
 }
