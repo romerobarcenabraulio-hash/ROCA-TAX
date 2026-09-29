@@ -865,3 +865,115 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
     "ops/areas/FORMAS_MOLDES_REPLICAS_AREA_BOOK_V2.md"
   ]
 };
+
+window.ROCA_DEPARTMENTS["area-recepcion"] = {
+  id:"area-recepcion",
+  code:"REC",
+  title:"Recepción",
+  status:"CAPTURE_PENDING",
+  purpose:"Abrir una identidad única del trabajo y transferirla sin perder documentación, fotos, condición de ingreso ni siguiente acción.",
+  receivesFrom:"Cliente / transportista / ingreso de pieza o piel con documentación disponible",
+  handsOffTo:"Curtiduría u otra ruta aplicable con identidad común y condición registrada",
+  entryInputs:[
+    "Pieza o piel",
+    "Documentación disponible",
+    "Condición física de ingreso",
+    "Referencia suficiente para relacionar la pieza con el trabajo"
+  ],
+  entryStops:[
+    "Identidad, documentación y pieza no se relacionan",
+    "La pieza no puede recibir un ID común sin ambigüedad",
+    "La condición de ingreso no queda registrada antes de perder contexto"
+  ],
+  exitCriteria:[
+    "Trabajo con ID único",
+    "Foto y documentación ligadas al mismo trabajo",
+    "Condición de ingreso registrada",
+    "Siguiente acción visible",
+    "Transferencia registrada"
+  ],
+  area:[
+    {id:"REC-AREA-01",label:"Ingreso y espera",text:"La zona de ingreso y espera evita mezclar trabajos y conserva separación física suficiente entre piezas."},
+    {id:"REC-AREA-02",label:"Captura inicial",text:"Etiquetas, fotos y documentos se capturan antes de perder el contexto de ingreso."},
+    {id:"REC-AREA-03",label:"Identidad en espera",text:"Toda pieza en espera conserva ID, condición registrada y destino o siguiente acción."},
+    {id:"REC-AREA-04",label:"Separación húmedo/documental",text:"Material húmedo o salado no contamina documentos, equipo de captura ni circulación."}
+  ],
+  areaAudit:[
+    {id:"REC-AUD-AREA-01",criterion:"Zona de ingreso y espera separa trabajos sin mezcla.",evidence:"Panorámica del área y piezas en espera."},
+    {id:"REC-AUD-AREA-02",criterion:"Etiquetas, fotos y documentos se capturan antes de perder contexto.",evidence:"Muestra de trabajo recién ingresado."},
+    {id:"REC-AUD-AREA-03",criterion:"Toda pieza en espera conserva ID, condición y siguiente acción.",evidence:"Muestra de piezas en espera."},
+    {id:"REC-AUD-AREA-04",criterion:"Material húmedo/salado no contamina documentación o equipo.",evidence:"Condición física del punto de ingreso."}
+  ],
+  method:{
+    flow:"Inspección inicial → registrar especie/referencia/documento → etiquetar → fotografía → condición de ingreso → almacenamiento/espera controlada → transferencia.",
+    branches:[],
+    stages:[
+      {id:"REC-MET-01",title:"Inspección inicial",text:"Recibir la pieza y observar su condición de ingreso sin perder la relación con la documentación disponible."},
+      {id:"REC-MET-02",title:"Registrar referencia",text:"Registrar especie, referencia de trabajo y documentación disponible usando la identidad común del trabajo."},
+      {id:"REC-MET-03",title:"Etiquetar",text:"Aplicar una identificación no ambigua antes de separar pieza, documentos o fotografías."},
+      {id:"REC-MET-04",title:"Fotografiar",text:"Capturar evidencia útil de ingreso vinculada al mismo ID del trabajo."},
+      {id:"REC-MET-05",title:"Registrar condición",text:"Dejar visible la condición física de ingreso y cualquier discrepancia que afecte el siguiente paso."},
+      {id:"REC-MET-06",title:"Espera controlada",text:"Ubicar la pieza en espera sin perder ID, condición ni destino."},
+      {id:"REC-MET-07",title:"Transferir",text:"Entregar a Curtiduría u otra ruta aplicable conservando la misma identidad y registrando el handoff."}
+    ],
+    controls:[
+      {id:"REC-CTL-01",text:"Recepción no inventa criterios legales de aceptación; la aplicabilidad documental se resuelve en Bibliografía/Assurance."},
+      {id:"REC-CTL-02",text:"Ninguna pieza se transfiere sin ID común y condición registrada."},
+      {id:"REC-CTL-03",text:"Foto y documento sólo sirven como evidencia si permanecen ligados al mismo trabajo."}
+    ]
+  },
+  competencies:[
+    "Relacionar pieza ↔ orden/trabajo",
+    "Detectar discrepancia visible",
+    "Capturar fotografía útil",
+    "Etiquetar sin ambigüedad",
+    "Ejecutar handoff sin pérdida documental"
+  ],
+  controlRecords:[
+    "ID del trabajo",
+    "Condición de ingreso",
+    "Evidencia fotográfica",
+    "Documentación asociada",
+    "Transferencia / handoff",
+    "Los nombres exactos de estados BIWO se toman del sistema real"
+  ],
+  materialFlow:[
+    "Pieza o piel recibida",
+    "Etiqueta / identificación",
+    "Protección temporal cuando aplique",
+    "Transferencia física al siguiente punto"
+  ],
+  tools:[
+    "Etiquetas / identificación",
+    "Medio de captura fotográfica",
+    "Estación BIWO / registro",
+    "Superficie de inspección",
+    "Almacenamiento / espera"
+  ],
+  consumables:[
+    "Etiquetas",
+    "Elementos de embalaje o protección temporal",
+    "Consumibles de identificación"
+  ],
+  evidence:[
+    {id:"EVID-REC-01",text:"Zona de ingreso/espera y relación física entre pieza, ID y siguiente acción.",placement:"Área"},
+    {id:"EVID-REC-02",text:"Fotografía de ingreso ligada al mismo trabajo.",placement:"Metodología / ingreso"},
+    {id:"EVID-REC-03",text:"Documentación asociada al trabajo sin exponer datos sensibles innecesarios.",placement:"Control / trazabilidad"},
+    {id:"EVID-REC-04",text:"Transferencia registrada al siguiente proceso.",placement:"Handoff"}
+  ],
+  auditCriteria:[
+    {id:"REC-AUD-01",group:"Proceso",label:"ID",target:"Ningún trabajo queda sin ID.",input:"Muestra de trabajos activos."},
+    {id:"REC-AUD-02",group:"Proceso",label:"Foto/documento",target:"Foto y documento están ligados al mismo trabajo.",input:"ID + foto + documento."},
+    {id:"REC-AUD-03",group:"Área",label:"Espera",target:"Espera está separada y siguiente acción visible.",input:"Zona de espera."},
+    {id:"REC-AUD-04",group:"Proceso",label:"Handoff",target:"Transferencia queda registrada.",input:"Trabajo transferido + registro."}
+  ],
+  implementationHolds:[
+    {id:"REC-HOLD-01",text:"Confirmar responsable y estación vigente de Recepción."},
+    {id:"REC-HOLD-02",text:"Cerrar estados BIWO exactos."},
+    {id:"REC-HOLD-03",text:"Definir estándar físico de espera con evidencia real del área."},
+    {id:"REC-HOLD-04",text:"Capturar evidencia fotográfica real del área."}
+  ],
+  sourceRefs:[
+    "ops/areas/RECEPCION_AREA_BOOK_V2.md"
+  ]
+};
