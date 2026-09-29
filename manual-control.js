@@ -9,34 +9,39 @@
     version:$('controlVersion'),
     frozenAt:$('controlFrozenAt'),
     note:$('controlLockNote'),
-    freeze:$('freezeDepartment'),
-    unlock:$('unlockDepartment'),
-    choose:$('chooseImages'),
-    placement:$('imagePlacement'),
-    sectionKey:$('imageSectionKey'),
-    caption:$('imageCaption')
+    queue:$('imageQueue')
   };
 
-  const auditMap={rec:'area-recepcion',cur:'area-curtiduria',fmr:'area-fmr',mon:'area-montaje',ret:'area-retoque',bas:'area-bases',car:'area-carpinteria',sol:'area-soldadura',bla:'area-blanqueado',sop:'area-soporte'};
-  let activeBaseline=null;
+  const auditMap={
+    rec:'area-recepcion',
+    cur:'area-curtiduria',
+    fmr:'area-fmr',
+    mon:'area-montaje',
+    ret:'area-retoque',
+    bas:'area-bases',
+    car:'area-carpinteria',
+    sol:'area-soldadura',
+    bla:'area-blanqueado',
+    sop:'area-soporte'
+  };
 
   function parseCSV(text){
     const rows=[]; let row=[],field='',quoted=false;
     for(let i=0;i<text.length;i++){
       const ch=text[i];
       if(ch==='"'){
-        if(quoted && text[i+1]==='"'){ field+='"'; i++; }
+        if(quoted && text[i+1]==='"'){field+='"';i++;}
         else quoted=!quoted;
-      }else if(ch===',' && !quoted){
-        row.push(field); field='';
-      }else if((ch==='\n'||ch==='\r') && !quoted){
-        if(ch==='\r' && text[i+1]==='\n') i++;
-        row.push(field); field='';
+      }else if(ch===','&&!quoted){
+        row.push(field);field='';
+      }else if((ch==='\n'||ch==='\r')&&!quoted){
+        if(ch==='\r'&&text[i+1]==='\n') i++;
+        row.push(field);field='';
         if(row.some(v=>v!=='')) rows.push(row);
         row=[];
       }else field+=ch;
     }
-    if(field||row.length){ row.push(field); if(row.some(v=>v!=='')) rows.push(row); }
+    if(field||row.length){row.push(field);if(row.some(v=>v!==''))rows.push(row);}
     if(!rows.length) return [];
     const head=rows.shift();
     return rows.map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]||''])));
@@ -49,94 +54,69 @@
     return null;
   }
 
-  function canEdit(){
-    return Boolean(window.ROCA_MANUAL_AUTH && window.ROCA_MANUAL_AUTH.canEdit);
+  function humanStatus(v){
+    const key=String(v||'').toLowerCase();
+    return ({
+      capture_pending:'CAPTURA PENDIENTE',
+      partial:'PARCIAL',
+      frozen:'CONGELADO',
+      unlocked:'DESBLOQUEADO',
+      not_released:'NO LIBERADO'
+    })[key]||String(v||'—').toUpperCase();
   }
 
-  function setEditorControls(row){
-    const editable=canEdit();
-    const state=String(row?.baseline_status||row?.status||'').toLowerCase();
-    const hasDept=Boolean(currentDepartment());
-
-    els.freeze.disabled=!(editable && hasDept && state!=='frozen' && state!=='not_released');
-    els.unlock.disabled=!(editable && hasDept && state==='frozen');
-
-    const imagesEnabled=editable && hasDept;
-    els.choose.disabled=!imagesEnabled;
-    els.placement.disabled=!imagesEnabled;
-    els.sectionKey.disabled=!imagesEnabled;
-    els.caption.disabled=!imagesEnabled;
-
-    if(!hasDept){
-      els.note.textContent='Abre un departamento o su auditoría para usar estos controles.';
-    }else if(!editable){
-      els.note.textContent='Lectura habilitada. Congelar, desbloquear y subir imágenes requieren una sesión Owner/Admin.';
-    }else if(state==='not_released'){
-      els.note.textContent='Departamento NO LIBERADO: puede recibir evidencia e imágenes, pero no puede congelarse todavía.';
-    }else if(state==='frozen'){
-      els.note.textContent='Línea base congelada. Desbloquear exige motivo y genera nueva versión e historial.';
-    }else{
-      els.note.textContent='Sesión autorizada. Los cambios quedan sujetos a RLS e historial controlado.';
-    }
-  }
-
-  async function baselineFromFallback(id){
+  async function getBaseline(departmentId){
     const res=await fetch('ops/control/ROCA_DEPARTMENT_BASELINE_V1.csv',{cache:'no-store'});
-    if(!res.ok) return null;
-    return parseCSV(await res.text()).find(r=>r.department_id===id)||null;
+    if(!res.ok) throw new Error('baseline '+res.status);
+    return parseCSV(await res.text()).find(r=>r.department_id===departmentId)||null;
   }
 
-  async function getBaseline(id){
-    const live=window.ROCA_MANUAL_AUTH && window.ROCA_MANUAL_AUTH.getBaseline;
-    if(typeof live==='function'){
-      try{
-        const row=await live(id);
-        if(row) return row;
-      }catch(e){}
-    }
-    return baselineFromFallback(id);
-  }
-
-  function normalize(row){
-    if(!row) return null;
-    return {
-      ...row,
-      baseline_status:row.baseline_status||row.status||'',
-      baseline_version:row.baseline_version||('V'+String(row.version||'')),
-      frozen_date:row.frozen_date||row.frozen_at||''
-    };
+  function idle(){
+    rail.classList.add('is-idle');
+    els.dept.textContent='Sin departamento';
+    els.status.textContent='—';
+    els.version.textContent='—';
+    els.frozenAt.textContent='—';
+    els.note.textContent='Abre un departamento para ver el estado de su línea base.';
+    if(els.queue) els.queue.innerHTML='';
   }
 
   async function refresh(){
     const id=currentDepartment();
-    if(!id){
-      activeBaseline=null;
-      els.dept.textContent='Sin departamento';
-      els.status.textContent='—';
+    if(!id){ idle(); return; }
+
+    rail.classList.remove('is-idle');
+    try{
+      const b=await getBaseline(id);
+      els.dept.textContent=b?.department_name||id;
+      els.status.textContent=humanStatus(b?.baseline_status);
+      els.status.dataset.state=String(b?.baseline_status||'').toLowerCase();
+      els.version.textContent=b?.baseline_version||'—';
+      els.frozenAt.textContent=b?.frozen_date||'—';
+
+      if(!b){
+        els.note.textContent='Departamento sin línea base registrada.';
+      }else if(String(b.baseline_status).toUpperCase()==='FROZEN'){
+        els.note.textContent='Línea base congelada para publicación. Sólo se reabre si cambia el proceso, el área o el fundamento aplicable.';
+      }else if(String(b.baseline_status).toUpperCase()==='NOT_RELEASED'){
+        els.note.textContent='Departamento no liberado. Falta cerrar captura o evidencia antes de imprimirlo como definitivo.';
+      }else{
+        els.note.textContent='Departamento en construcción/revisión. Al cerrar contenido, evidencia y pendientes puede congelarse para impresión.';
+      }
+
+      if(els.queue){
+        els.queue.innerHTML='<div class="image-queue-empty">Placement fotográfico previsto por departamento. Las imágenes finales se insertan en su sección antes del cierre editorial.</div>';
+      }
+    }catch(e){
+      els.dept.textContent=id;
+      els.status.textContent='SIN CONEXIÓN';
       els.version.textContent='—';
       els.frozenAt.textContent='—';
-      setEditorControls(null);
-      return;
+      els.note.textContent='No se pudo leer la línea base controlada.';
     }
-
-    const row=normalize(await getBaseline(id));
-    activeBaseline=row;
-    els.dept.textContent=row?.department_name||id;
-    els.status.textContent=(row?.baseline_status||'NO REGISTRADO').replaceAll('_',' ');
-    els.version.textContent=row?.baseline_version||'—';
-    els.frozenAt.textContent=row?.frozen_date ? new Date(row.frozen_date).toLocaleDateString('es-MX') : '—';
-    setEditorControls(row);
   }
-
-  window.ROCA_MANUAL_CONTROL={
-    currentDepartment,
-    refresh,
-    get activeBaseline(){ return activeBaseline; },
-    setNote(message){ els.note.textContent=String(message||''); }
-  };
 
   window.addEventListener('hashchange',refresh);
   document.addEventListener('roca:sectionchange',refresh);
-  document.addEventListener('roca:authchange',refresh);
   refresh();
 })();
