@@ -136,3 +136,141 @@ $$;
 
 revoke all on function public.roca_manual_unlock_department(text,text) from public, anon;
 grant execute on function public.roca_manual_unlock_department(text,text) to authenticated;
+
+-- Registro transaccional de imagen ya subida al bucket privado.
+-- El upload físico ocurre primero en storage.roca-private-media bajo:
+-- manual/<department_id>/<filename>
+-- Después esta función crea media_assets + vínculo de placement en el manual.
+
+create or replace function public.roca_manual_register_media(
+  _department_id text,
+  _storage_path text,
+  _file_name text,
+  _mime_type text,
+  _file_size_bytes bigint,
+  _section_key text default 'general',
+  _placement text default 'inline',
+  _caption text default null,
+  _alt_text text default '',
+  _source_channel text default 'portal',
+  _source_ref text default null
+)
+returns public.roca_manual_media_links
+language plpgsql
+security invoker
+set search_path = public, storage, pg_temp
+as $$
+declare
+  new_asset public.media_assets;
+  new_link public.roca_manual_media_links;
+begin
+  if auth.uid() is null then
+    raise exception 'authentication required';
+  end if;
+
+  if not (
+    has_role(auth.uid(), 'admin'::app_role)
+    or has_role(auth.uid(), 'owner'::app_role)
+  ) then
+    raise exception 'owner or admin role required';
+  end if;
+
+  if _placement not in ('cover','area','method','tool','evidence','inline') then
+    raise exception 'invalid placement';
+  end if;
+
+  if _source_channel not in ('portal','chat','drive','legacy') then
+    raise exception 'invalid source channel';
+  end if;
+
+  if _mime_type not in ('image/jpeg','image/png','image/webp','image/avif') then
+    raise exception 'unsupported image type';
+  end if;
+
+  if _file_size_bytes <= 0 or _file_size_bytes > 26214400 then
+    raise exception 'invalid image size';
+  end if;
+
+  if _storage_path !~ ('^manual/' || regexp_replace(_department_id,'[^a-zA-Z0-9_-]','','g') || '/') then
+    raise exception 'storage path must be inside manual/<department>/';
+  end if;
+
+  if not exists (
+    select 1
+    from storage.objects
+    where bucket_id = 'roca-private-media'
+      and name = _storage_path
+  ) then
+    raise exception 'uploaded storage object not found';
+  end if;
+
+  insert into public.media_assets (
+    storage_path,
+    bucket,
+    file_name,
+    mime_type,
+    file_size_bytes,
+    alt_text,
+    status,
+    uploaded_by,
+    media_scope,
+    media_area,
+    media_route_hint,
+    rights_status,
+    visibility
+  )
+  values (
+    _storage_path,
+    'roca-private-media',
+    _file_name,
+    _mime_type,
+    _file_size_bytes,
+    coalesce(_alt_text,''),
+    'draft',
+    auth.uid(),
+    'instalaciones',
+    'general',
+    'manual/' || _department_id || '/' || coalesce(nullif(btrim(_section_key),''),'general'),
+    'pending',
+    'private'
+  )
+  returning * into new_asset;
+
+  insert into public.roca_manual_media_links (
+    department_id,
+    section_key,
+    media_asset_id,
+    source_channel,
+    source_ref,
+    placement,
+    caption,
+    alt_text,
+    status,
+    created_by
+  )
+  values (
+    _department_id,
+    coalesce(nullif(btrim(_section_key),''),'general'),
+    new_asset.id,
+    _source_channel,
+    _source_ref,
+    _placement,
+    nullif(btrim(coalesce(_caption,'')),''),
+    coalesce(_alt_text,''),
+    'draft',
+    auth.uid()
+  )
+  returning * into new_link;
+
+  return new_link;
+end;
+$$;
+
+revoke all on function public.roca_manual_register_media(
+  text,text,text,text,bigint,text,text,text,text,text,text
+) from public, anon;
+
+grant execute on function public.roca_manual_register_media(
+  text,text,text,text,bigint,text,text,text,text,text,text
+) to authenticated;
+
