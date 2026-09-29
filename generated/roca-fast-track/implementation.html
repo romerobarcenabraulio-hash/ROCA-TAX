@@ -210,11 +210,11 @@ loadImplementationActions();
 function holdClosureType(text){
   const t=String(text||"").toLowerCase();
   if(/estados? biwo|biwo real|estado biwo|pantalla.*biwo|biwo.*pantalla/.test(t)) return "BIWO REAL";
-  if(/reconciliar|fuente controlada|fuente histórica|recuperar/.test(t)) return "FUENTE";
+  if(/reconciliar|fuente controlada|fuente histórica|recuperar|conflicto 50\/50 vs 30\/70/.test(t)) return "FUENTE";
   if(/decidir|definir frontera|ubicación real|implementar este frente|interfaz con bases y logística/.test(t)) return "DECISIÓN";
   if(/evidencia|fotograf|capturar/.test(t)) return "EVIDENCIA";
   if(/aplicabilidad|normativa|bibliografía|trabajo en caliente|epp|control metrológico|verificación aplicable|capacidad\/criterio estructural/.test(t)) return "TÉCNICO / NORMATIVA";
-  if(/instrumento o método real|balance de baños|piloto de agua a presión|sistema exacto de fijación|selección de hilo|persona × operación|compresor|paleta real|prácticas históricas siguen vigentes|criterios exactos de aceptación|proceso de soldadura real|mantenimiento y servicios|frontera física/.test(t)) return "CAMPO";
+  if(/instrumento o método real|balance de baños|piloto de agua a presión|sistema exacto de fijación|selección de hilo|persona × operación|compresor|paleta real|prácticas históricas siguen vigentes|criterios exactos de aceptación|proceso de soldadura real|mantenimiento y servicios|frontera física|dimensionado\/protección por pieza\/destino/.test(t)) return "CAMPO";
   if(/levantar|verificar|confirmar|observar|demostrar|medición|inventario|ventilación|drenaje|maniobra|producto|hds|equipo|responsable|estación|competencia|privacidad|archivo real/.test(t)) return "CAMPO";
   return "CIERRE TÉCNICO";
 }
@@ -249,7 +249,9 @@ function holdKnownProof(id){
     "BAS-HOLD-04":"No existe en el corpus una capacidad universal demostrada para 18 mm, dos capas, ruedas, bancos o tornillos. Cierre técnico por proyecto: documentar peso y centro de gravedad de la pieza, geometría y luces de la base, material/espesor real, apoyos, fijaciones, ruedas si existen, maniobra/transporte y criterio de estabilidad/capacidad; calcular o ensayar cuando el riesgo lo exija. Las referencias históricas no son capacidad certificada.",
     "FMR-HOLD-09":"La verificación comercial periódica de básculas se vincula a instrumentos usados como base de transacciones comerciales. Para la báscula interna de formulación, no asumir automáticamente ese régimen; sí debe existir control metrológico acorde al uso. Cierre: identificar báscula, rango/división, tolerancia aceptable para la receta, comprobación con masa/patrón trazable y frecuencia basada en uso/riesgo; escalar a verificación legal sólo si su uso real activa ese régimen.",
     "SOL-HOLD-04":"NOM-017-STPS-2024 exige seleccionar EPP a partir de los factores de riesgo/agentes reales y mantener instrucciones de uso, revisión, reposición, limpieza, limitaciones, mantenimiento y resguardo. NOM-027-STPS-2008 exige EPP en soldadura/corte. Cierre: identificar proceso real (p. ej. arco, MIG/MAG, TIG, oxicorte), materiales, radiación/proyección/humo/ruido y entonces definir protección ocular/facial, manos, cuerpo, pies, respiratoria y auditiva cuando corresponda.",
-    "SOL-HOLD-06":"NOM-027-STPS-2008 exige análisis de riesgos y procedimiento de autorización por escrito para soldadura/corte en áreas con riesgo de incendio, espacios confinados y áreas no designadas; NOM-002-STPS-2010 exige clasificar riesgo de incendio por centro o área. Cierre: identificar área real y proceso, inventario/material combustible e inflamable, clasificación de riesgo de incendio, área designada o permiso de trabajo en caliente, ventilación/extracción, medios contra incendio y responsable que autoriza/supervisa."
+    "SOL-HOLD-06":"NOM-027-STPS-2008 exige análisis de riesgos y procedimiento de autorización por escrito para soldadura/corte en áreas con riesgo de incendio, espacios confinados y áreas no designadas; NOM-002-STPS-2010 exige clasificar riesgo de incendio por centro o área. Cierre: identificar área real y proceso, inventario/material combustible e inflamable, clasificación de riesgo de incendio, área designada o permiso de trabajo en caliente, ventilación/extracción, medios contra incendio y responsable que autoriza/supervisa.",
+    "BAS-HOLD-06":"El corpus separa Formas de Bases: 50/50 y 30/70 están soportados para Formas bajo condiciones distintas, pero no existe evidencia suficiente para trasladar 30/70 a Bases. Cierre sólo con identificación del producto de Bases + HDS/ficha técnica + demostración o fuente primaria específica de esa aplicación.",
+    "CAR-HOLD-07":"No existe un criterio universal demostrado de holgura/protección para embalaje. Cierre observando una orden real y registrando dimensiones de pieza, destino, modo de transporte, puntos frágiles, holguras, inmovilización y condición de salida."
   })[id]||"";
 }
 function holdCloseRule(type){
