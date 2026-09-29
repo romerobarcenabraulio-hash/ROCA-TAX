@@ -160,11 +160,11 @@
     <a href="../../index.html">AUDITAR EN EL HTML CENTRAL</a>
     <a href="../../ops/control/ROCA_IMPLEMENTATION_ACTION_REGISTER_V1.csv">REGISTRO CONTROLADO</a>
   </div>
-  <div class="tablewrap"><table>
+  <div id="implementationAuditSummary" class="note"><strong>Calculando brechas...</strong></div><div class="tablewrap"><table>
     <thead><tr><th>ID</th><th>Área</th><th>Brecha observada</th><th>Corrección concreta</th><th>Responsable</th><th>Fecha objetivo</th><th>Estado</th><th>Evidencia</th></tr></thead>
     <tbody id="implementationRows"><tr><td colspan="8"><span class="blank">CARGANDO REGISTRO...</span></td></tr></tbody>
   </table></div>
-</section></main><script src="../../department-data.js"></script><script>function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+</section></main><script src="../../area-standard-data.js"></script><script src="../../department-data.js"></script><script>function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function parseCsv(text){
   const rows=[]; let row=[],field="",quoted=false;
   for(let i=0;i<text.length;i++){
@@ -182,31 +182,116 @@ function parseCsv(text){
   if(field!==""||row.length){row.push(field);if(row.some(v=>v!==""))rows.push(row)}
   return rows;
 }
+const PHYS_NORM_BASIS={
+  "PHYS-FLOW":"NOM-001-STPS-2008",
+  "PHYS-EGRESS":"NOM-002-STPS-2010",
+  "PHYS-FIRE":"NOM-002-STPS-2010",
+  "PHYS-SIGN":"NOM-026-STPS-2008",
+  "PHYS-LIGHT":"NOM-025-STPS-2008",
+  "PHYS-STATION":"NOM-001-STPS-2008",
+  "PHYS-STORAGE":"ROCA + NOM-006-STPS-2023 cuando aplique",
+  "PHYS-ELECTRIC":"NOM-029-STPS-2011 cuando aplique",
+  "PHYS-CHEM":"NOM-018-STPS-2015 + NOM-005-STPS-1998",
+  "PHYS-VENT":"NOM-010-STPS-2014 + HDS aplicable",
+  "PHYS-MACHINE":"NOM-004-STPS-1999",
+  "PHYS-NOISE":"NOM-011-STPS-2001 cuando aplique",
+  "PHYS-MANUALLOAD":"NOM-036-1-STPS-2018 cuando aplique",
+  "PHYS-PRESSURE":"NOM-020-STPS-2011 cuando aplique",
+  "PHYS-WASTE":"NOM-052-SEMARNAT-2005 + ruta aplicable",
+  "PHYS-WASTEWATER":"NOM-002-SEMARNAT-1996 + NTE-SLP-AR-001/2026 cuando aplique",
+  "PHYS-SUPPORT":"NOM-001-STPS-2008 + RFSST"
+};
+function applicablePhysicalRows(areaId){
+  const phys=Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)?window.ROCA_AREA_PHYSICAL_STANDARD:[];
+  return phys.filter(r=>r.areas==="ALL"||(Array.isArray(r.areas)&&r.areas.includes(areaId))).map(r=>({
+    id:r.id,label:r.label,target:r.standard,evidence:r.evidence||"Evidencia observable.",basis:PHYS_NORM_BASIS[r.id]||"Base física ROCA"
+  }));
+}
+function implementationCriterionMap(areaId,dept){
+  const rows=[];
+  (Array.isArray(dept?.areaAudit)?dept.areaAudit:[]).forEach(r=>rows.push({
+    id:r.id,label:r.criterion||r.id,target:r.criterion||"",evidence:r.evidence||"Evidencia observable.",basis:"Estándar permanente del departamento"
+  }));
+  (Array.isArray(dept?.auditCriteria)?dept.auditCriteria:[]).forEach(r=>rows.push({
+    id:r.id,label:r.label||r.id,target:r.target||r.label||"",evidence:r.input||"Evidencia / dato de auditoría.",basis:"Metodología / control ROCA"
+  }));
+  applicablePhysicalRows(areaId).forEach(r=>rows.push(r));
+  return new Map(rows.map(r=>[r.id,r]));
+}
+function auditImplementationItems(){
+  const items=[];
+  Object.entries(window.ROCA_DEPARTMENTS||{}).forEach(([areaId,dept])=>{
+    let saved={};
+    try{saved=JSON.parse(localStorage.getItem("roca.audit."+areaId)||"{}")}catch(e){}
+    const criteria=implementationCriterionMap(areaId,dept);
+    Object.entries(saved).forEach(([req,v])=>{
+      const status=String(v?.status||"").toUpperCase();
+      if(!["NONCONFORMING","NOT_VERIFIED"].includes(status)) return;
+      const row=criteria.get(req)||{label:req,target:req,evidence:"Evidencia pendiente.",basis:"Estándar ROCA"};
+      const note=String(v?.note||"").trim();
+      items.push({
+        id:"AUD-"+String(dept.code||areaId).toUpperCase()+"-"+req,
+        area:dept.title||areaId,
+        areaId,
+        req,
+        gap:status==="NONCONFORMING"
+          ? "NO CONFORME · "+(note||row.label)
+          : "NO VERIFICADO · "+(note||row.label),
+        fix:status==="NONCONFORMING"
+          ? "Corregir la condición: "+row.target+" Después volver a auditar."
+          : "Verificar la condición y registrar la evidencia requerida: "+row.evidence,
+        owner:"POR ASIGNAR",
+        due:"—",
+        status:status==="NONCONFORMING"?"NO CONFORME":"NO VERIFICADO",
+        evidence:note||row.evidence,
+        basis:row.basis,
+        dynamic:true
+      });
+    });
+  });
+  return items;
+}
 async function loadImplementationActions(){
   const body=document.getElementById("implementationRows");
+  let controlled=[];
+  let controlledError=false;
   try{
     const res=await fetch("../../ops/control/ROCA_IMPLEMENTATION_ACTION_REGISTER_V1.csv",{cache:"no-store"});
     if(!res.ok)throw new Error("HTTP "+res.status);
     const rows=parseCsv(await res.text());
-    if(!rows.length)throw new Error("Registro vacío");
-    const head=rows.shift().map(x=>x.trim());
-    const ix=n=>head.indexOf(n);
-    const items=rows.filter(r=>r.some(v=>v.trim()!=="")).map(r=>({
-      id:r[ix("action_id")]||"",area:r[ix("area")]||"",gap:r[ix("observed_gap")]||"",
-      req:r[ix("target_requirement_id")]||"",fix:r[ix("correction")]||"",
-      owner:r[ix("responsible")]||"",due:r[ix("due_date")]||"",status:r[ix("status")]||"",
-      evidence:r[ix("evidence_id")]||""
-    })).filter(x=>!["CLOSED","CANCELLED"].includes(x.status.toUpperCase()));
-    if(!items.length){
-      body.innerHTML='<tr><td colspan="8"><b>Sin acciones abiertas confirmadas.</b><br>Esto no significa que el taller esté verificado: los frentes aún no revisados permanecen en CAMPO/AUDITAR. Aquí no se fabrican pendientes a partir del estándar.</td></tr>';
-      return;
+    if(rows.length){
+      const head=rows.shift().map(x=>x.trim());
+      const ix=n=>head.indexOf(n);
+      controlled=rows.filter(r=>r.some(v=>v.trim()!=="")).map(r=>({
+        id:r[ix("action_id")]||"",area:r[ix("area")]||"",areaId:r[ix("area")]||"",
+        gap:r[ix("observed_gap")]||"",req:r[ix("target_requirement_id")]||"",fix:r[ix("correction")]||"",
+        owner:r[ix("responsible")]||"",due:r[ix("due_date")]||"",status:r[ix("status")]||"",
+        evidence:r[ix("evidence_id")]||"",dynamic:false
+      })).filter(x=>!["CLOSED","CANCELLED"].includes(x.status.toUpperCase()));
     }
-    body.innerHTML=items.map(x=>`<tr><td><strong>${esc(x.id)}</strong>${x.req?`<br><small>${esc(x.req)}</small>`:""}</td><td>${esc(x.area)}</td><td>${esc(x.gap)}</td><td>${esc(x.fix)}</td><td>${esc(x.owner||"POR ASIGNAR")}</td><td>${esc(x.due||"—")}</td><td>${esc(x.status)}</td><td>${esc(x.evidence||"—")}</td></tr>`).join("");
-  }catch(err){
-    body.innerHTML='<tr><td colspan="8"><span class="blank">NO SE PUDO LEER EL REGISTRO CONTROLADO.</span> Abrir el CSV enlazado arriba antes de crear o cerrar acciones.</td></tr>';
+  }catch(err){controlledError=true}
+
+  const auditItems=auditImplementationItems();
+  const controlledReqs=new Set(controlled.map(x=>x.req).filter(Boolean));
+  const dynamic= auditItems.filter(x=>!controlledReqs.has(x.req));
+  const items=[...controlled,...dynamic];
+
+  const summary=document.getElementById("implementationAuditSummary");
+  if(summary){
+    const nc=dynamic.filter(x=>x.status==="NO CONFORME").length;
+    const nv=dynamic.filter(x=>x.status==="NO VERIFICADO").length;
+    summary.innerHTML='<strong>'+items.length+' acciones abiertas</strong> · '+controlled.length+' del registro controlado · '+dynamic.length+' generadas por AUDITORÍA ('+nc+' no conformes · '+nv+' no verificadas).';
   }
+
+  if(!items.length){
+    body.innerHTML='<tr><td colspan="8"><b>Sin acciones abiertas.</b><br>Al auditar un criterio como NO CONFORME o NO VERIFICADO, aparecerá aquí automáticamente.</td></tr>';
+    return;
+  }
+  body.innerHTML=items.map(x=>`<tr data-source="${x.dynamic?"audit":"register"}"><td><strong>${esc(x.id)}</strong>${x.req?`<br><small>${esc(x.req)}</small>`:""}</td><td>${esc(x.area)}</td><td>${esc(x.gap)}</td><td>${esc(x.fix)}</td><td>${esc(x.owner||"POR ASIGNAR")}</td><td>${esc(x.due||"—")}</td><td>${esc(x.status)}</td><td>${esc(x.evidence||"—")}${x.dynamic&&x.basis?`<br><small>${esc(x.basis)}</small>`:""}</td></tr>`).join("");
+  if(controlledError && summary) summary.innerHTML+='<br><span class="blank">El registro CSV no pudo leerse; las brechas de AUDITORÍA sí se muestran.</span>';
 }
 loadImplementationActions();
+window.addEventListener("storage",e=>{if(e.key&&e.key.startsWith("roca.audit."))loadImplementationActions()});
 function holdClosureType(text){
   const t=String(text||"").toLowerCase();
   if(/estados? biwo|biwo real|estado biwo|pantalla.*biwo|biwo.*pantalla/.test(t)) return "BIWO REAL";
