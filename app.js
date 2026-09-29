@@ -17,7 +17,14 @@
     'responsabilidades','documentos','internacional','legal','master-exacto',
     'procesos','trazabilidad','cumplimiento','machotes-guias','controles-transversales','assurance'
   ]);
-  const manualSections = data.sections.filter(s => s && !hiddenLegacy.has(s.id) && !String(s.id||'').startsWith('campo-'));
+  const manualOrder = [
+    'indice','personas','roca','taller',
+    'area-recepcion','area-curtiduria','area-fmr','area-montaje','area-retoque','area-bases',
+    'area-carpinteria','area-soldadura','area-blanqueado','area-soporte','heritage'
+  ];
+  const manualCandidates = data.sections.filter(s => s && !hiddenLegacy.has(s.id) && !String(s.id||'').startsWith('campo-'));
+  const manualById = new Map(manualCandidates.map(s=>[s.id,s]));
+  const manualSections = manualOrder.map(id=>manualById.get(id)).filter(Boolean);
   const auditSections = Array.isArray(window.ROCA_AUDIT_SECTIONS) ? window.ROCA_AUDIT_SECTIONS : [];
   const normSections = Array.isArray(window.ROCA_NORM_SECTIONS) ? window.ROCA_NORM_SECTIONS : [];
 
