@@ -692,3 +692,176 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
     "ops/areas/BASES_AREA_BOOK_V2.md"
   ]
 };
+
+window.ROCA_DEPARTMENTS["area-fmr"] = {
+  id:"area-fmr",
+  code:"FMR",
+  title:"Formas, Moldes y Réplicas",
+  status:"PARTIAL",
+  purpose:"Convertir medidas y geometría en forma, molde o réplica estable y utilizable.",
+  receivesFrom:"Medidas, patrón/forma, pose o pieza a reproducir",
+  handsOffTo:"Montaje u operación solicitante",
+  people:[
+    "Omar — responsable conocido de Formas, Moldes y Réplicas",
+    "Soldadura / adaptación participa sólo cuando la pieza lo requiere"
+  ],
+  entryInputs:[
+    "Medidas o geometría suficiente",
+    "Patrón, forma, pose o pieza a reproducir identificada",
+    "Material/lote identificable cuando gobierne la dosificación"
+  ],
+  entryStops:[
+    "La geometría no permite definir cierre o división controlada",
+    "El lote/material no está identificado cuando la dosificación depende de él",
+    "El molde o cierre no permite una salida reproducible",
+    "El material sigue caliente, blando, deformable o con zona aguadita"
+  ],
+  exitCriteria:[
+    "Forma, molde o réplica identificada",
+    "Geometría utilizable",
+    "Curado suficiente por tiempo de referencia y condición física",
+    "Molde abre sin destruir detalle y puede volver a cerrar cuando aplique",
+    "Ubicación de rack registrada cuando corresponda"
+  ],
+  area:[
+    {id:"FMR-AREA-01",label:"Zonas de trabajo",text:"Corte/armado, encerado, mezcla/vaciado, curado y acabado permanecen diferenciados para evitar contaminación y errores de secuencia."},
+    {id:"FMR-AREA-02",label:"Materiales reactivos",text:"Resina, catalizadores, poliuretano, fibra y cargas permanecen identificados según producto/lote real."},
+    {id:"FMR-AREA-03",label:"Polvo, fibra y vapores",text:"Polvo, fibra y vapores se controlan para no migrar hacia áreas de acabado u otras operaciones incompatibles."},
+    {id:"FMR-AREA-04",label:"Código y rack",text:"Moldes y formas conservan código, especie, postura/tipo y ubicación de rack reconocible."},
+    {id:"FMR-AREA-05",label:"Báscula y recipientes de prueba",text:"Báscula y recipientes patrón permanecen identificados y en condición conocida antes de usarse para una decisión de dosificación."},
+    {id:"FMR-AREA-06",label:"Curado",text:"Reacción y curado disponen de espacio estable, sin manipulación prematura ni interferencia con otras piezas."},
+    {id:"FMR-AREA-07",label:"Punto de mezcla",text:"La mezcla se realiza en un punto dedicado, protegido y ventilado según producto y proceso real."},
+    {id:"FMR-AREA-08",label:"Resguardo de moldes/formas",text:"Moldes y formas se almacenan estables, identificados y sin condición que favorezca deformación."},
+    {id:"FMR-AREA-09",label:"Divisiones / salida de molde",text:"La línea de partición y las divisiones se definen antes de laminar cuando la geometría pueda quedar atrapada."}
+  ],
+  areaAudit:[
+    {id:"FMR-AUD-AREA-01",criterion:"Corte, mezcla, curado y acabado están diferenciados.",evidence:"Recorrido del área y puntos de transición."},
+    {id:"FMR-AUD-AREA-02",criterion:"Materiales reactivos y lotes están identificados.",evidence:"Producto/lote real + etiqueta + ubicación."},
+    {id:"FMR-AUD-AREA-03",criterion:"Polvo, fibra y vapores no migran a acabados.",evidence:"Condición del punto de trabajo + ventilación/extracción cuando aplique."},
+    {id:"FMR-AUD-AREA-04",criterion:"Forma/molde conserva ID y ubicación de rack.",evidence:"Código + rack + pieza física."},
+    {id:"FMR-AUD-AREA-05",criterion:"Báscula y recipientes patrón están identificados y utilizables.",evidence:"Activo real + condición visible."},
+    {id:"FMR-AUD-AREA-06",criterion:"Curado ocurre en espacio estable y sin apertura prematura.",evidence:"Pieza en curado + hora de vaciado/revisión."},
+    {id:"FMR-AUD-AREA-07",criterion:"Punto de mezcla está preparado para producto/proceso real.",evidence:"Punto de mezcla + control de derrame/ventilación."}
+  ],
+  method:{
+    flow:"Elegir familia → preparar estructura/molde → encerar/orear cuando aplique → prueba de lote cuando aplique → dosificar → mezclar/vaciar o laminar → curar → desmoldar/revisar → identificar y resguardar.",
+    branches:[
+      {title:"Formas de poliuretano",text:"Conserva prueba de lote, dosificación A/B, curado por referencia y condición física. La cera de 10 pasadas NO pertenece automáticamente a esta familia."},
+      {title:"Moldes de fibra de vidrio",text:"Conserva 10 pasadas de cera, oreado, gelcoat, divisiones y laminado 6/7 capas según exigencia."},
+      {title:"Réplicas",text:"Conserva su flujo propio. No hereda relaciones, tiempos ni criterios de Formas/Moldes sin fuente específica."}
+    ],
+    stages:[
+      {id:"FMR-MET-FOR-01",title:"Preparar estructura/molde",text:"La fuente registra triplay de 18 mm y doble triplay en formas de gran escala como práctica documentada, no como capacidad universal certificada."},
+      {id:"FMR-MET-FOR-02",title:"Encerar y orear",text:"En Formas la cera cubre toda superficie de contacto. El oreado documentado es 20–30 min y no se cierra antes de 20 min. La referencia de 10 pasadas pertenece a Moldes de fibra."},
+      {id:"FMR-MET-FOR-03",title:"Prueba de lote",text:"Usar 20 g totales en botella patrón de aproximadamente 600 mL. Cálido: 10 g base + 10 g catalizador. Fresco/húmedo: 6 g base + 14 g catalizador. Un lote nuevo no entra a producción sin prueba de expansión previa."},
+      {id:"FMR-MET-FOR-04",title:"Dosificar A/B",text:"Cálido: 50% base / 50% catalizador. Fresco, húmedo o lluvia: 30% base / 70% catalizador. Pesar cada componente por separado con misma báscula/unidad antes de juntarlos; no corregir proporciones a ojo después de iniciar mezcla."},
+      {id:"FMR-MET-FOR-05",title:"Curar y desmoldar forma",text:"Cabeza: mínimo 1 h 30 min como referencia; cuerpo completo: mínimo 4 h y puede permanecer toda la noche. La fuente también registra aproximadamente 1 h/kg con calor y 1 h 20 min/kg con frío. El reloj no libera la pieza: no abrir mientras esté caliente, blanda, deformable o con zona aguadita."},
+      {id:"FMR-MET-MOL-01",title:"Definir divisiones y encerar",text:"La línea de partición se decide antes de laminar. Para Moldes de fibra la fuente conserva 10 pasadas uniformes de cera desmoldante y oreado de 20–30 min."},
+      {id:"FMR-MET-MOL-02",title:"Preparar y aplicar gelcoat",text:"Referencia del taller: 1 kg de resina por aproximadamente 2 kg de talco, incorporado progresivamente hasta pasta muy espesa que no escurra. Es referencia de consistencia del taller, no formulación universal."},
+      {id:"FMR-MET-MOL-03",title:"Laminar fibra/resina",text:"Base documentada: 6 capas continuas. Séptima capa sólo cuando el molde sea grande, requiera mayor espesor o vaya a soportar mayor presión."},
+      {id:"FMR-MET-MOL-04",title:"Liberar molde",text:"Liberar cuando la carcasa es rígida, abre sin destruir detalle y puede volver a cerrar de forma reproducible."},
+      {id:"FMR-MET-REP-01",title:"Réplicas",text:"Preparar molde → preparar mezcla de resina/carga → vaciar/distribuir → curar/desmoldar → corregir línea/rebabas → pintar contra referencia. No trasladar relaciones o tiempos de otras familias sin fuente específica."}
+    ],
+    controls:[
+      {id:"FMR-CTL-01",text:"La prueba de 20 g pertenece al control de lote de Formas."},
+      {id:"FMR-CTL-02",text:"50/50 y 30/70 se preservan dentro de FMR; no autorizan extrapolar esa receta a Bases."},
+      {id:"FMR-CTL-03",text:"La cera de 10 pasadas pertenece a Moldes de fibra, no automáticamente a Formas."},
+      {id:"FMR-CTL-04",text:"El tiempo es referencia de curado; la condición física gobierna la apertura."},
+      {id:"FMR-CTL-05",text:"La séptima capa de fibra requiere mayor exigencia documentada."},
+      {id:"FMR-CTL-06",text:"Réplicas no heredan recetas de Formas/Moldes sin evidencia específica."}
+    ]
+  },
+  toolCare:[
+    "Báscula: condición/lectura conocida antes de dosificar y verificación aplicable pendiente",
+    "Taladro/mezclador: cable o batería, accesorio y limpieza en condición utilizable",
+    "Moldes: integridad, cierre, herrajes, identificación y mantenimiento por condición"
+  ],
+  competencies:[
+    "Corte / estructura",
+    "Encerado",
+    "Prueba de lote",
+    "Dosificación",
+    "Mezcla / vaciado",
+    "Control de fugas / cierre",
+    "Criterio de curado / apertura",
+    "Apertura de molde",
+    "Laminado",
+    "Acabado",
+    "Liberación"
+  ],
+  controlRecords:[
+    "ID / código",
+    "Especie / tipo",
+    "Postura",
+    "Foto",
+    "Ubicación de rack",
+    "Lote / material cuando aporta trazabilidad",
+    "Prueba previa",
+    "Dosificación",
+    "Condición de curado",
+    "Liberación"
+  ],
+  materialFlow:[
+    "Material incorporado",
+    "Herramental reutilizable",
+    "Sobrante reutilizable",
+    "Mezcla reaccionada",
+    "Recorte",
+    "Envases",
+    "Residuo",
+    "Destino"
+  ],
+  tools:[
+    "Caladora / corte",
+    "Taladro y mezclador",
+    "Báscula",
+    "Recipientes patrón",
+    "Moldes",
+    "Pernos / herrajes",
+    "Prensas / sargentos",
+    "Brochas",
+    "Herramienta de acabado"
+  ],
+  consumables:[
+    "Triplay",
+    "Varilla / herrajes",
+    "Cera desmoldante",
+    "Componentes A/B",
+    "Resina",
+    "Talco / cargas",
+    "Fibra de vidrio",
+    "Gelcoat del taller",
+    "Papel cascarón",
+    "Materiales de réplica / acabado"
+  ],
+  evidence:[
+    {id:"EVID-FMR-01",text:"Racks, códigos y ubicación real.",placement:"Área"},
+    {id:"EVID-FMR-02",text:"Prueba de lote y dosificación: masa total, relación A/B, recipiente patrón, condición climática y resultado de expansión.",placement:"Metodología / Formas"},
+    {id:"EVID-FMR-03",text:"Curado/desmolde: familia/tamaño, hora de vaciado, referencia usada, hora de revisión y condición física antes de abrir.",placement:"Metodología / curado"},
+    {id:"EVID-FMR-04",text:"Divisiones, gelcoat y capas cuando se construye un molde de fibra.",placement:"Metodología / Moldes"}
+  ],
+  auditCriteria:[
+    {id:"FMR-AUD-01",group:"Área",label:"ID/rack",target:"Forma o molde conserva ID y ubicación.",input:"Código + rack + pieza."},
+    {id:"FMR-AUD-02",group:"Área",label:"Material/lote",target:"Material y lote están identificados cuando gobiernan dosificación.",input:"Producto/lote real."},
+    {id:"FMR-AUD-03",group:"Proceso",label:"Prueba de lote",target:"Lote nuevo se prueba antes de producción.",input:"Prueba 20 g + resultado."},
+    {id:"FMR-AUD-04",group:"Proceso",label:"Dosificación",target:"A/B se pesan por separado y proporción se registra antes de mezclar.",input:"Pesos + relación + lote."},
+    {id:"FMR-AUD-05",group:"Proceso",label:"Curado",target:"Curado cumple referencia de tiempo y condición física antes de apertura.",input:"Hora vaciado/revisión + condición."},
+    {id:"FMR-AUD-06",group:"Proceso",label:"Cera",target:"10 pasadas aplican a Moldes de fibra, no como requisito automático de Formas.",input:"Familia + preparación."},
+    {id:"FMR-AUD-07",group:"Proceso",label:"Gelcoat",target:"Gelcoat se aplica después del oreado y la consistencia no escurre.",input:"Oreado + mezcla."},
+    {id:"FMR-AUD-08",group:"Proceso",label:"Laminado",target:"6 capas base; séptima sólo por mayor exigencia documentada.",input:"Conteo + justificación."},
+    {id:"FMR-AUD-09",group:"Área",label:"Ventilación/polvo",target:"Ventilación, polvo y fibra están controlados según proceso real.",input:"Punto de trabajo + control físico."}
+  ],
+  implementationHolds:[
+    {id:"FMR-HOLD-01",text:"Cerrar inventario/codificación real y rack."},
+    {id:"FMR-HOLD-02",text:"Confirmar productos/HDS y formulaciones controladas vigentes."},
+    {id:"FMR-HOLD-03",text:"Verificar ventilación/extracción real."},
+    {id:"FMR-HOLD-04",text:"Completar mantenimiento e inventario real de activos."},
+    {id:"FMR-HOLD-05",text:"Cerrar criterios exactos de aceptación por familia."},
+    {id:"FMR-HOLD-06",text:"Cerrar estados BIWO exactos."},
+    {id:"FMR-HOLD-07",text:"Capturar evidencia real de prueba, dosificación y curado."},
+    {id:"FMR-HOLD-08",text:"Confirmar en campo qué referencias de tiempo/programación siguen gobernando la práctica actual antes de liberar el método."}
+  ],
+  sourceRefs:[
+    "ops/areas/FORMAS_MOLDES_REPLICAS_AREA_BOOK_V2.md"
+  ]
+};
