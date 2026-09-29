@@ -52,7 +52,7 @@ window.ROCA_DEPARTMENTS["area-curtiduria"] = {
     ],
     stages:[
       {id:"CUR-MET-01",title:"Hidratación",text:"Usar como referencia 1 kg de sal por 10 L de agua y una ventana de 10–12 h. La salida también depende de condición física: la piel debe poder desplegarse y marcarse sin forzar zonas rígidas."},
-      {id:"CUR-MET-02",title:"Picle",text:"Usar como referencia 473 L de agua, 45 kg de sal y 300 mL de ácido sulfúrico. Para piel común, usar 24 h como referencia de picle. VALIDACIÓN EN CAMPO — no fijar una cantidad única de ácido fórmico hasta cerrar el conflicto 6.0 L vs 6.4 L. En piel gruesa repetir picle → rebajado → picle mientras exista sección sin curtir, sin fijar un número universal de retornos."},
+      {id:"CUR-MET-02",title:"Picle",text:"Usar como referencia 473 L de agua, 45 kg de sal y 300 mL de ácido sulfúrico. La dosificación de ácido fórmico se toma exclusivamente de la receta controlada vigente. Para piel común, usar 24 h como referencia de picle. En piel gruesa repetir picle → rebajado → picle mientras exista sección sin curtir, sin fijar un número universal de retornos."},
       {id:"CUR-MET-03",title:"Rebajado",text:"La cuchilla o trabajo manual atiende detalle y zonas necesarias; la rebajadora de disco uniforma espesor. En piel gruesa puede repetirse la secuencia picle → rebajado → picle hasta eliminar sección sin curtir."},
       {id:"CUR-MET-04",title:"Pesado y ALUM-Tan",text:"Pesar la carga real y capturar exactamente esa lectura en la hoja controlada; el peso usado por el cálculo debe corresponder a la misma carga física. Referencia de salinidad ALUM-Tan: 2.2–2.3. En el día 1, realizar la segunda adición de alumbre después de 1 h 30 min usando el valor indicado por la hoja controlada para esa carga."},
       {id:"CUR-MET-05",title:"Neutralización y pH",text:"La referencia para inicio del día 2 es pH 3.6–3.8. El bicarbonato calculado se divide en cinco partes con una adición por hora. La referencia final es pH 4.2–4.3."},
@@ -77,7 +77,7 @@ window.ROCA_DEPARTMENTS["area-curtiduria"] = {
     "Rebajadora de disco",
     "Cuchilla / burro y herramientas de detalle",
     "Báscula para peso de carga",
-    "Medición de pH — VALIDACIÓN EN CAMPO del método o instrumento",
+    "Instrumento o método identificado para medición de pH",
     "Sistema de tendido",
     "Tambor de aserrín",
     "Pateadora cuando la secuencia real la requiera"
@@ -271,7 +271,7 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
     "Mesas / soportes de montaje",
     "Herramienta manual de modelado",
     "Herramienta eléctrica compartida cuando la operación la use",
-    "Sistema de fijación de cuernos/astas — VALIDACIÓN EN CAMPO"
+    "Sistema de fijación de cuernos/astas correspondiente al tipo de pieza"
   ],
   consumables:[
     "Agua",
@@ -282,7 +282,7 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
     "Bondo",
     "Catalizador",
     "Ojos",
-    "Adhesivo / pegamento americano — VALIDACIÓN EN CAMPO del producto exacto",
+    "Adhesivo de montaje identificado",
     "Hilo de zapatero",
     "Hilo de pesca trenzado donde corresponda",
     "Recortes de Tetra Pak",
@@ -346,7 +346,6 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
   people:[
     "Rodolfo Jr. — encargado de Retoque",
     "Emiliano — Retoque",
-    "Valerio / Valentino — VALIDACIÓN EN CAMPO del nombre operativo",
     "Señor Pez — Retoque; la pedacera pertenece únicamente a esta área"
   ],
   entryInputs:[
@@ -1021,14 +1020,13 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
   title:"Carpintería / Corte / Embalaje",
   status:"NOT_RELEASED",
   purpose:"Preparar un frente separado para corte de madera, armado de cajas y embalaje/protección, sin contaminar Retoque ni fabricar una metodología que aún no ha sido demostrada.",
-  receivesFrom:"NO LIBERADO — requerimiento de corte/caja/protección + dimensiones/referencia + ID de orden/pieza",
-  handsOffTo:"NO LIBERADO — corte, caja o embalaje identificado y listo para siguiente uso/carga",
+  receivesFrom:"Requerimiento de corte, caja o protección + dimensiones/referencia + ID de orden/pieza",
+  handsOffTo:"Corte, caja o embalaje identificado y listo para siguiente uso/carga",
   entryInputs:[
-    "Decisión de implementar el frente",
-    "Ubicación real aprobada",
-    "Responsable real",
-    "Equipo y estación reales",
-    "Orden/pieza real para primera demostración"
+    "Requerimiento identificado",
+    "Dimensiones o referencia suficiente",
+    "ID de orden/pieza",
+    "Material y equipo correspondientes al trabajo"
   ],
   entryStops:[
     "No existe todavía un puesto real",
@@ -1038,8 +1036,9 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     "NO LIBERADO — no publicar metodología hasta demostrar el flujo real"
   ],
   exitCriteria:[
-    "NO LIBERADO hasta observar flujo real",
-    "Metodología sólo se redacta después de demostrar secuencia, criterio de dimensionado/protección, herramienta/equipo y condición de salida"
+    "Corte, caja o embalaje identificado",
+    "Protección y dimensiones corresponden a la pieza y destino",
+    "La carga puede manipularse sin retirar protecciones esenciales ni bloquear la ruta"
   ],
   area:[
     {id:"CAR-AREA-01",label:"Circulación y accesos",text:"Cuando exista el puesto, pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Piezas, cajas, madera, cables y herramienta temporal no ocupan circulación."},
@@ -1048,7 +1047,7 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     {id:"CAR-AREA-04",label:"Ventilación y extracción",text:"Ventilación/extracción se define contra las operaciones reales de corte, lijado, polvo de madera, adhesivos o acabados efectivamente usados; no se instala antes de confirmar equipo, material y generación real."},
     {id:"CAR-AREA-05",label:"Emergencia",text:"Rutas y medios de respuesta aplicables permanecen visibles y accesibles; cobertura y ubicación se resuelven contra la evaluación vigente."},
     {id:"CAR-AREA-06",label:"Identidad y espera",text:"Toda pieza, caja, corte o trabajo en espera conserva ID de orden/proyecto y siguiente acción; material de embalaje no mezcla proyectos."},
-    {id:"CAR-AREA-07",label:"Ubicación y separación",text:"NO LIBERADO — la ubicación todavía no está definida. No puede ocupar la pedacera ni la estación de Señor Pez en Retoque; debe separar polvo/aserrín de pintura, gasolina blanca, solventes y acabados, permitir ruta de madera/cajas y contar con servicios compatibles con el equipo real."},
+    {id:"CAR-AREA-07",label:"Ubicación y separación",text:"La ubicación del puesto no puede ocupar la pedacera ni la estación de Señor Pez en Retoque; debe separar polvo/aserrín de pintura, gasolina blanca, solventes y acabados, permitir ruta de madera/cajas y contar con servicios compatibles con el equipo real."},
     {id:"CAR-AREA-08",label:"Corte y polvo",text:"Banco y equipo de corte, cuando existan, permanecen estables y con protecciones/accesorios correspondientes al equipo real. Polvo/aserrín se captura o retira en origen."},
     {id:"CAR-AREA-09",label:"Madera y herrajes",text:"Madera/triplay se almacena estable; paneles pesados evitan vuelco/deslizamiento. Tornillos, clavos, bisagras y herrajes se separan por tipo/tamaño suficiente para recuperarlos sin vaciar contenedores."},
     {id:"CAR-AREA-10",label:"Embalaje y carga",text:"Cartón, madera, película/protección y fijaciones tienen zona definida. Caja/embalaje conserva ID de orden y puede manipularse/cargarse sin retirar protecciones esenciales ni bloquear la ruta."}
@@ -1066,13 +1065,13 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     {id:"CAR-AUD-AREA-10",criterion:"Embalaje conserva ID y puede manipularse/cargarse sin retirar protecciones esenciales ni bloquear la ruta.",evidence:"Caja/embalaje real + recorrido de carga."}
   ],
   method:{
-    flow:"NO LIBERADO — no existe todavía una secuencia técnica canónica.",
+    flow:"METODOLOGÍA NO LIBERADA. No usar una secuencia genérica como instrucción de trabajo.",
     branches:[
-      {title:"Evidencia necesaria para construir el método",text:"Observar al menos una orden real; registrar quién recibe el requerimiento; medir cómo decide dimensiones y holguras; documentar materiales/uniones; observar corte/armado; observar protección/inmovilización; definir criterio de listo; observar carga/manipulación; identificar retrabajos; separar qué pertenece a Carpintería, Bases, Logística o transportista."}
+      {title:"Condición de liberación",text:"El método debe definir recepción del requerimiento, dimensionado y holguras, materiales y uniones, corte y armado, protección e inmovilización, criterio de salida, manipulación y carga, retrabajos e interfaz con Bases/Logística."}
     ],
     stages:[],
     controls:[
-      {id:"CAR-CTL-01",text:"NO LIBERADO — no publicar metodología hasta validar una orden real completa."},
+      {id:"CAR-CTL-01",text:"No operar este frente hasta que exista una metodología liberada para una orden real completa."},
       {id:"CAR-CTL-02",text:"No usar una secuencia teórica como instrucción de trabajo."},
       {id:"CAR-CTL-03",text:"No duplicar automáticamente madera/herrajes controlados en Bases; definir propiedad y stock cuando se implemente."},
       {id:"CAR-CTL-04",text:"No asignar mantenimiento ni manuales a activos imaginarios."}
@@ -1087,9 +1086,9 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     "Liberación de embalaje"
   ],
   controlRecords:[
-    "NO LIBERADO — requerimiento de embalaje",
-    "NO LIBERADO — vínculo caja/embalaje ↔ orden",
-    "NO LIBERADO — listo para carga",
+    "Requerimiento de embalaje ligado a la orden",
+    "Vínculo caja/embalaje ↔ orden",
+    "Condición de listo para carga",
     "Los estados BIWO no se crean hasta observar el sistema real"
   ],
   materialFlow:[
@@ -1101,20 +1100,20 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     "Destino / carga"
   ],
   tools:[
-    "NO LIBERADO — banco/mesa de corte y armado",
-    "NO LIBERADO — sierra/caladora u otro equipo que se confirme",
-    "NO LIBERADO — taladro/atornillador",
-    "NO LIBERADO — herramienta manual de medición, corte y fijación",
-    "NO LIBERADO — sistema de captura/retiro de polvo si la operación lo requiere",
-    "NO LIBERADO — rack/almacenamiento de madera",
-    "NO LIBERADO — medios de manipulación/carga si peso y volumen lo exigen"
+    "Banco o mesa de corte y armado",
+    "Equipo de corte correspondiente al trabajo",
+    "Taladro / atornillador cuando corresponda",
+    "Herramienta manual de medición, corte y fijación",
+    "Sistema de captura o retiro de polvo cuando la operación lo requiera",
+    "Rack / almacenamiento de madera",
+    "Medios de manipulación o carga cuando peso y volumen lo exijan"
   ],
   consumables:[
-    "NO LIBERADO — madera/triplay",
-    "NO LIBERADO — tornillería/herrajes",
-    "NO LIBERADO — cartón",
-    "NO LIBERADO — película/plástico/protecciones",
-    "NO LIBERADO — elementos de fijación"
+    "Madera / triplay",
+    "Tornillería / herrajes",
+    "Cartón",
+    "Película / plástico / protecciones",
+    "Elementos de fijación"
   ],
   evidence:[
     {id:"EVID-CAR-01",text:"Implementación física real: panorámica, límite con áreas vecinas, banco/rack/equipo, ruta de circulación/carga y separación respecto de polvo/químicos/acabado.",placement:"Área"},
@@ -1193,13 +1192,13 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     {id:"SOL-AUD-AREA-05",criterion:"Medios de respuesta aplicables están disponibles.",evidence:"Condición física + criterio aplicable definido en Bibliografía."}
   ],
   method:{
-    flow:"NO LIBERADO — secuencia técnica pendiente de validación en campo.",
+    flow:"METODOLOGÍA NO LIBERADA. El departamento sólo puede operar con una secuencia técnica específica del proceso y equipo reales.",
     branches:[
-      {title:"NO LIBERADO",text:"No fijar secuencia, tipo de unión, preparación, consumibles, ajustes, aceptación ni retrabajo hasta validar el proceso real en campo."}
+      {title:"Condición de liberación",text:"Antes de operar deben estar definidos la secuencia, tipo de unión, preparación, consumibles, ajustes, criterio de aceptación y retrabajo del proceso real."}
     ],
     stages:[],
     controls:[
-      {id:"SOL-CTL-01",text:"No fabricar una metodología estándar de soldadura desde conocimiento general."},
+      {id:"SOL-CTL-01",text:"No sustituir el método específico del proceso real con una secuencia genérica de soldadura."},
       {id:"SOL-CTL-02",text:"La autorización se define por proceso/equipo real y control de trabajo en caliente."},
       {id:"SOL-CTL-03",text:"La modificación estructural conserva condición antes/después y vínculo con la orden."}
     ]
@@ -1207,7 +1206,7 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
   competencies:[
     "Autorización por proceso/equipo real",
     "Control de trabajo en caliente",
-    "Criterio de aceptación/retrabajo — NO LIBERADO"
+    "Criterio de aceptación y retrabajo del proceso real"
   ],
   controlRecords:[
     "ID de pieza / orden",
@@ -1224,13 +1223,13 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     "Residuo y destino"
   ],
   tools:[
-    "Equipo de soldadura — modelo/proceso exacto NO LIBERADO",
-    "Herramienta asociada — NO LIBERADO",
+    "Equipo de soldadura correspondiente al proceso real",
+    "Herramienta asociada al proceso real",
     "Esmeril cuando corresponda"
   ],
   consumables:[
-    "Consumibles de unión/corte — NO LIBERADO",
-    "Material metálico — NO LIBERADO"
+    "Consumibles de unión o corte correspondientes al proceso real",
+    "Material metálico correspondiente al trabajo"
   ],
   evidence:[
     {id:"EVID-SOL-01",text:"Área preparada antes de trabajo en caliente.",placement:"Área"},
@@ -1303,7 +1302,7 @@ window.ROCA_DEPARTMENTS["area-blanqueado"] = {
     branches:[],
     stages:[
       {id:"BLA-MET-01",title:"Preparar pieza y apoyo",text:"Identificar la pieza, preparar recipiente/fuente de calor y colocar el sistema de apoyo/protección necesario para mantener cuernos fuera de la zona térmica cuando corresponda."},
-      {id:"BLA-MET-02",title:"Tratamiento con agua caliente",text:"Aplicar tratamiento con agua caliente sobre el cráneo manteniendo cuernos fuera de la zona capaz de alterar color o superficie. VALIDACIÓN EN CAMPO — no fijar temperatura ni tiempo hasta contar con una medición y criterio de salida controlados."},
+      {id:"BLA-MET-02",title:"Tratamiento con agua caliente",text:"Aplicar tratamiento con agua caliente sobre el cráneo manteniendo cuernos fuera de la zona capaz de alterar color o superficie. Temperatura y tiempo sólo se usan cuando estén definidos en el método controlado vigente; la condición física de la pieza gobierna la salida."},
       {id:"BLA-MET-03",title:"Limpieza y salida",text:"Limpiar el elemento tratado, conservar identidad y llevarlo a condición estable para Montaje/acabado. Cualquier producto auxiliar se documenta sólo si realmente se usa."}
     ],
     controls:[
@@ -1316,7 +1315,7 @@ window.ROCA_DEPARTMENTS["area-blanqueado"] = {
     "Control de calor",
     "Manipulación segura de agua caliente/vapor",
     "Protección de cuernos",
-    "Criterio de salida — VALIDACIÓN EN CAMPO"
+    "Criterio físico de salida del tratamiento"
   ],
   controlRecords:[
     "ID de pieza",
