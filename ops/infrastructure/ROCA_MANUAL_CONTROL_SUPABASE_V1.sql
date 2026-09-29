@@ -419,3 +419,19 @@ $$;
 
 revoke all on function public.roca_manual_claim_allowed_role() from public, anon;
 grant execute on function public.roca_manual_claim_allowed_role() to authenticated;
+
+
+-- Grants mínimos para las tablas del control manual.
+revoke all on public.roca_manual_auth_allowlist from anon, authenticated;
+grant select on public.roca_manual_auth_allowlist to authenticated;
+
+revoke all on public.roca_manual_department_baselines from anon, authenticated;
+grant select on public.roca_manual_department_baselines to anon, authenticated;
+grant update on public.roca_manual_department_baselines to authenticated;
+
+revoke all on public.roca_manual_baseline_events from anon, authenticated;
+grant select, insert on public.roca_manual_baseline_events to authenticated;
+
+revoke all on public.roca_manual_media_links from anon, authenticated;
+grant select on public.roca_manual_media_links to anon, authenticated;
+grant insert, update on public.roca_manual_media_links to authenticated;
