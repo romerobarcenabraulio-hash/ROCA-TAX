@@ -103,3 +103,133 @@ window.ROCA_DEPARTMENTS["area-curtiduria"] = {
     "ops/areas/CURTIDURIA_AREA_BOOK_V2.md"
   ]
 };
+
+window.ROCA_DEPARTMENTS["area-montaje"] = {
+  id:"area-montaje",
+  code:"MON",
+  title:"Montaje",
+  status:"PARTIAL",
+  purpose:"Convertir una piel curtida y acondicionada, una forma compatible y sus componentes en una pieza armada, proporcionada, estable y lista para Retoque.",
+  receivesFrom:"Curtiduría / almacén con piel, medidas, forma y componentes identificados",
+  handsOffTo:"Retoque",
+  area:[
+    {id:"MON-AREA-01",label:"Circulación y accesos",text:"Pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Piezas, cajas, cables, mangueras y herramienta temporal no ocupan circulación."},
+    {id:"MON-AREA-02",label:"Estación y almacenamiento",text:"Cada puesto conserva superficie suficiente, almacenamiento recuperable y apoyo estable para la pieza. Herramienta y consumibles habituales tienen ubicación definida sin amontonamiento."},
+    {id:"MON-AREA-03",label:"Iluminación",text:"La iluminación se evalúa en el plano real de la tarea de cada estación cuando calidad o seguridad dependan de ella."},
+    {id:"MON-AREA-04",label:"Ventilación y extracción",text:"Bondo, catalizador, fibra, adhesivos y otros productos se usan en un punto compatible con la ventilación o extracción que exijan el producto, la HDS y la exposición real."},
+    {id:"MON-AREA-05",label:"Emergencia",text:"Rutas, señalización y medios de respuesta aplicables permanecen visibles, accesibles y sin bloqueo."},
+    {id:"MON-AREA-06",label:"Identidad y espera",text:"Toda pieza, piel, forma o trabajo activo o en espera conserva identificación visible y siguiente acción; la espera no bloquea circulación ni mezcla proyectos."},
+    {id:"MON-AREA-07",label:"Estación del montador",text:"Cada montador dispone de una estación identificable y almacenamiento propio. La evaluación se hace sobre cada puesto real, no sobre una estación promedio."},
+    {id:"MON-AREA-08",label:"Punzantes y costura",text:"Agujas, alfileres, cuchillos e hilo tienen ubicación definida. Puntas y filos permanecen protegidos cuando no se usan y los alfileres usados no quedan dispersos."},
+    {id:"MON-AREA-09",label:"Químicos de montaje",text:"Bondo, catalizador, fibra y adhesivos conservan identificación y punto de mezcla/uso compatible con ventilación, residuos y fuentes de ignición según el producto real."},
+    {id:"MON-AREA-10",label:"Secado",text:"Las piezas en secado permanecen estables, identificadas, fuera de circulación y con espacio suficiente para revisar fijaciones sin mover trabajos ajenos."},
+    {id:"MON-AREA-11",label:"Cables, mangueras y electricidad",text:"Cables y extensiones no cruzan circulación sin protección. Cargadores y taladros tienen punto definido y la alimentación temporal se retira al terminar."},
+    {id:"MON-AREA-12",label:"Residuos y recuperables",text:"Punzantes, sobrantes de mezcla, envases, recortes recuperables y residuo general se separan por destino real. Material útil no se desecha junto con residuo."},
+    {id:"MON-AREA-13",label:"Reset de estación",text:"Al cierre la superficie queda utilizable, herramienta ubicada, punzantes protegidos, residuos retirados, cables fuera del paso, pieza identificada y siguiente acción visible."}
+  ],
+  areaAudit:[
+    {id:"MON-AUD-AREA-01",criterion:"Circulación, salidas, tableros y medios de emergencia permanecen libres.",evidence:"Vista general desde acceso y recorrido hacia salida/equipo de emergencia."},
+    {id:"MON-AUD-AREA-02",criterion:"Cada estación es utilizable, estable y con almacenamiento recuperable.",evidence:"Vista 3/4 de estación + almacenamiento abierto."},
+    {id:"MON-AUD-AREA-03",criterion:"La iluminación corresponde a la tarea real cuando requiere medición.",evidence:"Lux en plano de tarea + fecha + instrumento cuando aplique."},
+    {id:"MON-AUD-AREA-04",criterion:"La ventilación/extracción corresponde al producto y operación real.",evidence:"Producto/HDS + punto de uso + condición de ventilación."},
+    {id:"MON-AUD-AREA-05",criterion:"Toda pieza activa, en espera o secado conserva ID y siguiente acción.",evidence:"Muestra de piezas en estaciones y zona de secado."},
+    {id:"MON-AUD-AREA-06",criterion:"Punzantes, filos, cables y residuos no quedan dispersos ni invaden paso.",evidence:"Estación al cierre."},
+    {id:"MON-AUD-AREA-07",criterion:"Químicos y mezclas de montaje están identificados y controlados en su punto de uso.",evidence:"Producto real + etiqueta + ubicación + HDS cuando aplique."}
+  ],
+  method:{
+    flow:"Piel flexible y medida → comparar con forma y pose → presentar y corregir forma → preparar boca/nariz/canales → posicionar cuernos/astas → conformar orejas → posicionar ojos → correcciones localizadas con barro → adhesivo y vestido de piel → coser/fijar → secar y comprobar → transferir a Retoque.",
+    branches:[],
+    stages:[
+      {id:"MON-MET-01",title:"Recuperar flexibilidad y levantar medidas",text:"Relajar la piel hasta recuperar flexibilidad; cerrar desde el interior cortes o balazos que deban repararse; retirar carnaza, grasa, tejido sobrante y huesos residuales; terminar cartílagos y limpiar donde corresponda. Medir sólo con la piel suficientemente flexible."},
+      {id:"MON-MET-02",title:"Seleccionar, presentar y corregir la forma",text:"Comparar medidas, inventario y pose. Elegir la forma que reduzca correcciones, presentar antes de cortar y corregir de forma localizada cuando proceda. Después de cada modificación volver a comprobar cara, cuello, largo, ancho y volumen como conjunto."},
+      {id:"MON-MET-03",title:"Preparar boca, nariz y canales",text:"Abrir y perfilar alojamientos para boca, nariz, belfos y piel de nariz. El criterio de salida es que entren sin forzar la piel ni desplazar la cara."},
+      {id:"MON-MET-04",title:"Preparar y posicionar cuernos o astas",text:"Presentar la base, resolver posición con frente, ojos y orejas y comparar altura, inclinación, separación y simetría desde frente, perfil y vista superior. No cubrir la unión mientras exista movimiento o una diferencia corregible."},
+      {id:"MON-MET-05",title:"Preparar y conformar orejas",text:"Voltear y limpiar la oreja. Preparar fibra cortada y mezclar con Bondo y catalizador hasta masa homogénea; distribuir mientras permanece trabajable y modelar borde, concavidad y volumen hasta que conserve forma."},
+      {id:"MON-MET-06",title:"Posicionar ojos",text:"Colocar los ojos y usar barro LR300 para sostener y modelar posición. Trabajar ambos lados simultáneamente y comparar altura, profundidad, orientación y relación anatómica."},
+      {id:"MON-MET-07",title:"Correcciones localizadas con barro",text:"Usar barro para corregir volumen y transición sólo después de que la forma principal coincide con la piel. Presentar la piel inmediatamente después de modelar."},
+      {id:"MON-MET-08",title:"Aplicar adhesivo y vestir la piel",text:"Aplicar adhesivo en superficies de contacto y vestir mientras permanece trabajable. Asentar primero ojos, nariz, belfos, orejas, cuernos/astas y líneas de costura. El adhesivo fija contacto; no corrige una forma incompatible."},
+      {id:"MON-MET-09",title:"Coser y controlar abultamientos",text:"Cerrar con el hilo apropiado al espesor y zona, acomodando la piel conforme avanza la costura. Corregir abultamientos antes de perder movilidad del adhesivo y usar alfileres sólo como fijación temporal."},
+      {id:"MON-MET-10",title:"Secar y transferir a Retoque",text:"Mantener inmóvil durante secado. Usar 24 h como referencia mínima para primera revisión, no como liberación automática. Liberar cuando no exista humedad apreciable ni recuperación de desplazamiento en zonas fijadas."}
+    ],
+    controls:[
+      {id:"MON-CTL-01",text:"No seleccionar ni cortar una forma con la piel rígida o sin las medidas que gobiernan la selección."},
+      {id:"MON-CTL-02",text:"Una corrección localizada no debe compensar una forma general incorrecta en largo, ancho o proporción."},
+      {id:"MON-CTL-03",text:"Cuernos/astas deben quedar estables y en posición antes de cubrir la unión."},
+      {id:"MON-CTL-04",text:"Ojos se comparan bilateralmente y desde más de un ángulo antes del vestido."},
+      {id:"MON-CTL-05",text:"Los alfileres son fijación temporal y se retiran al iniciar Retoque."},
+      {id:"MON-CTL-06",text:"El tiempo de secado es referencia; la condición física gobierna la liberación."}
+    ]
+  },
+  tools:[
+    "Serrote",
+    "Escofinas",
+    "Cuchillo",
+    "Agujas",
+    "Alfileres",
+    "Bandeja para barro",
+    "Mesas / soportes de montaje",
+    "Herramienta manual de modelado",
+    "Herramienta eléctrica compartida cuando la operación la use",
+    "Herramienta de fijación de cuernos/astas pendiente de especificación exacta"
+  ],
+  consumables:[
+    "Agua",
+    "Barro LR300",
+    "Poliuretano / material de forma para correcciones localizadas cuando aplique",
+    "Yeso cuando aplique",
+    "Fibra de vidrio",
+    "Bondo",
+    "Catalizador",
+    "Ojos",
+    "Adhesivo / pegamento americano — producto exacto pendiente",
+    "Hilo de zapatero",
+    "Hilo de pesca trenzado donde corresponda",
+    "Recortes de Tetra Pak",
+    "Alfileres"
+  ],
+  evidence:[
+    {id:"EVID-MON-01",text:"Vista general del área y circulación.",placement:"Área"},
+    {id:"EVID-MON-02",text:"Estación individual completa y almacenamiento recuperable.",placement:"Área / estación"},
+    {id:"EVID-MON-03",text:"Iluminación medida cuando la tarea lo requiera.",placement:"Área"},
+    {id:"EVID-MON-04",text:"Producto real, punto de uso y ventilación cuando aplique.",placement:"Área / químicos"},
+    {id:"EVID-MON-05",text:"Corrección relevante de forma o incompatibilidad antes/después.",placement:"Metodología"},
+    {id:"EVID-MON-06",text:"Componente especial, fijación o reparación estructural cuando sea relevante.",placement:"Metodología"},
+    {id:"EVID-MON-07",text:"Incidencia, retrabajo o excepción.",placement:"Metodología / control"},
+    {id:"EVID-MON-08",text:"Condición final y transferencia a Retoque cuando aporte trazabilidad.",placement:"Handoff"}
+  ],
+  auditCriteria:[
+    {id:"MON-AUD-01",group:"Área",label:"Circulación",target:"Circulación y accesos permanecen libres.",input:"Vista general y recorrido."},
+    {id:"MON-AUD-02",group:"Área",label:"Estación",target:"Estación utilizable, almacenamiento recuperable y soporte estable.",input:"Estación real + almacenamiento."},
+    {id:"MON-AUD-03",group:"Área",label:"Iluminación",target:"Iluminación medida cuando la tarea real lo requiera.",input:"Lux + plano de tarea + instrumento."},
+    {id:"MON-AUD-04",group:"Área",label:"Ventilación",target:"Ventilación/extracción corresponde a operación y producto real.",input:"Producto/HDS + punto de uso."},
+    {id:"MON-AUD-05",group:"Área",label:"Emergencia",target:"Rutas y medios de emergencia accesibles.",input:"Recorrido físico."},
+    {id:"MON-AUD-06",group:"Área",label:"Identidad y espera",target:"Pieza activa o en espera conserva ID y siguiente acción.",input:"Muestra de trabajos."},
+    {id:"MON-AUD-07",group:"Área",label:"Estación individual",target:"Cada montador conserva estación y almacenamiento propios sin amontonamiento.",input:"Revisión por estación."},
+    {id:"MON-AUD-08",group:"Área",label:"Punzantes",target:"Punzantes y filos están protegidos y ubicados.",input:"Estado al cierre."},
+    {id:"MON-AUD-09",group:"Área",label:"Químicos",target:"Productos identificados y punto de mezcla/uso definido cuando aplique.",input:"Producto + etiqueta + ubicación."},
+    {id:"MON-AUD-10",group:"Área",label:"Secado",target:"Secado/espera estable, identificado y fuera de circulación.",input:"Zona de secado."},
+    {id:"MON-AUD-11",group:"Área",label:"Cables",target:"Cables y mangueras quedan fuera del paso o protegidos.",input:"Recorrido de estación."},
+    {id:"MON-AUD-12",group:"Área",label:"Residuos",target:"Residuos y recuperables se separan por destino real.",input:"Recipientes y corrientes."},
+    {id:"MON-AUD-13",group:"Área",label:"Reset",target:"La estación regresa a condición lista al cierre.",input:"Estado de cierre."},
+    {id:"MON-AUD-14",group:"Proceso",label:"Forma",target:"Piel y forma son dimensionalmente compatibles antes del vestido.",input:"Medidas + presentación."},
+    {id:"MON-AUD-15",group:"Proceso",label:"Cuernos/astas",target:"Conjunto estable y posicionado antes de cubrir la unión.",input:"Comprobación previa al vestido."},
+    {id:"MON-AUD-16",group:"Proceso",label:"Orejas",target:"Oreja conserva forma sin exceso de espesor ni pérdida anatómica.",input:"Comparación visual y táctil."},
+    {id:"MON-AUD-17",group:"Proceso",label:"Ojos",target:"Alineación y simetría estables antes del vestido.",input:"Frente y perfil."},
+    {id:"MON-AUD-18",group:"Proceso",label:"Costura",target:"Costura cerrada, piel asentada y fijaciones temporales controladas.",input:"Revisión previa a secado."},
+    {id:"MON-AUD-19",group:"Proceso",label:"Liberación",target:"La pieza se libera por condición física y no únicamente por tiempo.",input:"Humedad/movimiento + transferencia."}
+  ],
+  implementationHolds:[
+    {id:"MON-HOLD-01",text:"Cerrar inventario real de estaciones y asignación persona ↔ estación, incluyendo Ricardo/Eugenio."},
+    {id:"MON-HOLD-02",text:"Definir umbral de iluminación por tarea real mediante medición y Assurance; no congelar referencias históricas por percepción."},
+    {id:"MON-HOLD-03",text:"Cruzar HDS, inventario y ventilación real para Bondo, catalizador, fibra, adhesivos y otros productos."},
+    {id:"MON-HOLD-04",text:"Cerrar sistema exacto de fijación estructural de cuernos/astas por tipo de pieza."},
+    {id:"MON-HOLD-05",text:"Cerrar proporción Bondo/catalizador para orejas desde fuente controlada; no inventar."},
+    {id:"MON-HOLD-06",text:"Confirmar producto exacto del adhesivo/pegamento americano."},
+    {id:"MON-HOLD-07",text:"Cerrar tabla de selección de hilo/aguja por espesor, tipo de piel y zona cuando cambie."},
+    {id:"MON-HOLD-08",text:"Confirmar herramienta exacta de medición y qué medidas requieren trazabilidad metrológica formal."},
+    {id:"MON-HOLD-09",text:"Construir matriz persona × operación después de cerrar asignación real y criterio de liberación; no inventar niveles."}
+  ],
+  sourceRefs:[
+    "ops/areas/MONTAJE_PILOT_AREA_BOOK_V2.md"
+  ]
+};
