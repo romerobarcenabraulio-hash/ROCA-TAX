@@ -246,24 +246,43 @@
 
   async function refreshPrintGate(){
     try{
-      const res=await fetch('ops/control/ROCA_DEPARTMENT_BASELINE_V1.csv',{cache:'no-store'});
-      if(!res.ok) throw new Error('baseline '+res.status);
-      const rows=parseCSV(await res.text());
-      const open=rows.filter(r=>String(r.baseline_status||'').toUpperCase()!=='FROZEN');
-      const ready=rows.length>0 && open.length===0;
+      const [baselineRes,normRes]=await Promise.all([
+        fetch('ops/control/ROCA_DEPARTMENT_BASELINE_V1.csv',{cache:'no-store'}),
+        fetch('ops/assurance/ROCA_NORMATIVE_APPLICABILITY_V1.csv',{cache:'no-store'})
+      ]);
+      if(!baselineRes.ok) throw new Error('baseline '+baselineRes.status);
+      if(!normRes.ok) throw new Error('normative '+normRes.status);
+
+      const baselineRows=parseCSV(await baselineRes.text());
+      const normRows=parseCSV(await normRes.text());
+
+      const openDepartments=baselineRows.filter(r=>String(r.baseline_status||'').toUpperCase()!=='FROZEN');
+      const terminalNormStates=new Set(['VERIFIED','JUSTIFIED_NA']);
+      const openNorms=normRows.filter(r=>!terminalNormStates.has(String(r.status||'').toUpperCase()));
+
+      const departmentsReady=baselineRows.length>0 && openDepartments.length===0;
+      const normsReady=normRows.length>0 && openNorms.length===0;
+      const ready=departmentsReady && normsReady;
+
       printDoc.disabled=!ready;
       printDoc.textContent=ready?'IMPRIMIR / PDF':'IMPRESIÓN FINAL · BLOQUEADA';
+
       if(printGateNote){
-        printGateNote.textContent=ready
-          ? 'Manual liberado para impresión.'
-          : open.length+' departamento'+(open.length===1?'':'s')+' sin congelar.';
+        if(ready){
+          printGateNote.textContent='Manual liberado para impresión.';
+        }else{
+          const parts=[];
+          if(openDepartments.length) parts.push(openDepartments.length+' departamento'+(openDepartments.length===1?'':'s')+' sin congelar');
+          if(openNorms.length) parts.push(openNorms.length+' requisito'+(openNorms.length===1?'':'s')+' normativo'+(openNorms.length===1?'':'s')+' sin cierre');
+          printGateNote.textContent=parts.join(' · ')+'.';
+        }
       }
-      return {ready,open};
+      return {ready,openDepartments,openNorms};
     }catch(err){
       printDoc.disabled=true;
       printDoc.textContent='IMPRESIÓN FINAL · BLOQUEADA';
-      if(printGateNote)printGateNote.textContent='No se pudo validar la línea base.';
-      return {ready:false,open:[]};
+      if(printGateNote)printGateNote.textContent='No se pudo validar el cierre editorial y normativo.';
+      return {ready:false,openDepartments:[],openNorms:[]};
     }
   }
 
