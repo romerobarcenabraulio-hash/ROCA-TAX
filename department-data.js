@@ -68,7 +68,7 @@ window.ROCA_DEPARTMENTS["area-curtiduria"] = {
       {id:"CUR-CTL-03",text:"Peso de báscula y peso capturado en ALUM-Tan corresponden a la misma carga."},
       {id:"CUR-CTL-04",text:"Los dos valores de pH corresponden a puntos distintos del proceso y no son intercambiables."},
       {id:"CUR-CTL-05",text:"La piel avanza por condición física además de las referencias de tiempo."},
-      {id:"CUR-CTL-06",text:"Toda corrección de receta conserva fuente o versión, fecha, responsable y motivo antes de usarse."},
+      {id:"CUR-CTL-06",text:"Toda corrección de receta conserva versión, fecha, responsable y motivo antes de usarse."},
       {id:"CUR-CTL-07",text:"El piloto de agua a presión permanece fuera de rutina hasta validación documentada; no sustituye el rebajado de espesor."}
     ]
   },
@@ -321,7 +321,7 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
   ],
   implementationHolds:[
     {id:"MON-HOLD-01",text:"Cerrar inventario real de estaciones y asignación persona ↔ estación, incluyendo Ricardo/Eugenio."},
-    {id:"MON-HOLD-02",text:"Definir umbral de iluminación por tarea real mediante medición y Assurance; no congelar referencias históricas por percepción."},
+    {id:"MON-HOLD-02",text:"Definir el criterio de iluminación por tarea real mediante medición y Bibliografía aplicable; no fijar referencias sólo por percepción."},
     {id:"MON-HOLD-03",text:"Cruzar HDS, inventario y ventilación real para Bondo, catalizador, fibra, adhesivos y otros productos."},
     {id:"MON-HOLD-04",text:"Cerrar sistema exacto de fijación estructural de cuernos/astas por tipo de pieza."},
     {id:"MON-HOLD-05",text:"Cerrar proporción Bondo/catalizador para orejas desde fuente controlada; no inventar."},
@@ -514,7 +514,7 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
     {id:"RET-HOLD-02",text:"Confirmar estaciones reales de Rodolfo Jr., Emiliano, Valerio/Valentino y Señor Pez."},
     {id:"RET-HOLD-03",text:"Levantar productos, marcas y HDS realmente vigentes."},
     {id:"RET-HOLD-04",text:"Cerrar ventilación/extracción por producto y proceso."},
-    {id:"RET-HOLD-05",text:"Identificar compresor, placa, accesorios y condición; resolver aplicabilidad en Bibliografía/Assurance."},
+    {id:"RET-HOLD-05",text:"Identificar compresor, placa, accesorios y condición; resolver la aplicabilidad técnica en Bibliografía."},
     {id:"RET-HOLD-06",text:"Levantar iluminancia en tarea real; no usar 750/1000 lux como cierre automático."},
     {id:"RET-HOLD-07",text:"Cerrar paleta real de pinturas/tonos y criterio de comparación."},
     {id:"RET-HOLD-08",text:"Confirmar inventario real de aerógrafos, pistola y secadora y mantenimiento aplicable."},
@@ -782,7 +782,7 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
     branches:[
       {title:"Formas de poliuretano",text:"Conserva prueba de lote, dosificación A/B, curado por referencia y condición física. La cera de 10 pasadas NO pertenece automáticamente a esta familia."},
       {title:"Moldes de fibra de vidrio",text:"Conserva 10 pasadas de cera, oreado, gelcoat, divisiones y laminado 6/7 capas según exigencia."},
-      {title:"Réplicas",text:"Conserva su flujo propio. No hereda relaciones, tiempos ni criterios de Formas/Moldes sin fuente específica."}
+      {title:"Réplicas",text:"Conserva su flujo propio. No hereda relaciones, tiempos ni criterios de Formas/Moldes sin validación específica de Réplicas."}
     ],
     stages:[
       {id:"FMR-MET-FOR-01",title:"Preparar estructura/molde",text:"Referencia de taller: triplay de 18 mm; en formas de gran escala puede usarse doble triplay. No tratar estas referencias como capacidad estructural universal."},
@@ -795,7 +795,7 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
       {id:"FMR-MET-MOL-02",title:"Preparar y aplicar gelcoat",text:"Referencia del taller: 1 kg de resina por aproximadamente 2 kg de talco, incorporado progresivamente hasta pasta muy espesa que no escurra. Es referencia de consistencia del taller, no formulación universal."},
       {id:"FMR-MET-MOL-03",title:"Laminar fibra/resina",text:"Base documentada: 6 capas continuas. Séptima capa sólo cuando el molde sea grande, requiera mayor espesor o vaya a soportar mayor presión."},
       {id:"FMR-MET-MOL-04",title:"Liberar molde",text:"Liberar cuando la carcasa es rígida, abre sin destruir detalle y puede volver a cerrar de forma reproducible."},
-      {id:"FMR-MET-REP-01",title:"Réplicas",text:"Preparar molde → preparar mezcla de resina/carga → vaciar/distribuir → curar/desmoldar → corregir línea/rebabas → pintar contra referencia. No trasladar relaciones o tiempos de otras familias sin fuente específica."}
+      {id:"FMR-MET-REP-01",title:"Réplicas",text:"Preparar molde → preparar mezcla de resina/carga → vaciar/distribuir → curar/desmoldar → corregir línea/rebabas → pintar contra referencia. No trasladar relaciones o tiempos de otras familias sin validación específica de Réplicas."}
     ],
     controls:[
       {id:"FMR-CTL-01",text:"La prueba de 20 g pertenece al control de lote de Formas."},
@@ -1032,7 +1032,7 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
   ],
   entryStops:[
     "No existe todavía un puesto real",
-    "No hay entrevista/demostración primaria del responsable",
+    "El flujo real todavía no ha sido demostrado por el responsable",
     "La ubicación invade Retoque, circulación, carga o químicos",
     "No usar la pedacera ni la estación de Señor Pez como área de Carpintería / Embalaje",
     "NO LIBERADO — no publicar metodología hasta demostrar el flujo real"
@@ -1046,7 +1046,7 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     {id:"CAR-AREA-02",label:"Estación y almacenamiento",text:"Herramientas, materiales y consumibles tienen ubicación definida. El puesto vuelve a condición utilizable al cerrar la tarea y el equipo dañado se separa del uso."},
     {id:"CAR-AREA-03",label:"Iluminación",text:"La iluminación se verifica en el plano real de corte, trazo y armado cuando la tarea lo requiera."},
     {id:"CAR-AREA-04",label:"Ventilación y extracción",text:"Ventilación/extracción se define contra las operaciones reales de corte, lijado, polvo de madera, adhesivos o acabados efectivamente usados; no se instala antes de confirmar equipo, material y generación real."},
-    {id:"CAR-AREA-05",label:"Emergencia",text:"Rutas y medios de respuesta aplicables permanecen visibles y accesibles; cobertura y ubicación se resuelven contra evaluación real."},
+    {id:"CAR-AREA-05",label:"Emergencia",text:"Rutas y medios de respuesta aplicables permanecen visibles y accesibles; cobertura y ubicación se resuelven contra la evaluación vigente."},
     {id:"CAR-AREA-06",label:"Identidad y espera",text:"Toda pieza, caja, corte o trabajo en espera conserva ID de orden/proyecto y siguiente acción; material de embalaje no mezcla proyectos."},
     {id:"CAR-AREA-07",label:"Ubicación y separación",text:"NO LIBERADO — la ubicación todavía no está definida. No puede ocupar la pedacera ni la estación de Señor Pez en Retoque; debe separar polvo/aserrín de pintura, gasolina blanca, solventes y acabados, permitir ruta de madera/cajas y contar con servicios compatibles con el equipo real."},
     {id:"CAR-AREA-08",label:"Corte y polvo",text:"Banco y equipo de corte, cuando existan, permanecen estables y con protecciones/accesorios correspondientes al equipo real. Polvo/aserrín se captura o retira en origen."},
@@ -1190,7 +1190,7 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     {id:"SOL-AUD-AREA-02",criterion:"Terceros están protegidos cuando aplica.",evidence:"Pantalla/mampara y ubicación real."},
     {id:"SOL-AUD-AREA-03",criterion:"Ventilación corresponde a la operación real.",evidence:"Material/recubrimiento + control físico."},
     {id:"SOL-AUD-AREA-04",criterion:"Equipo y cables están en condición utilizable.",evidence:"Equipo real + condición visible."},
-    {id:"SOL-AUD-AREA-05",criterion:"Medios de respuesta aplicables están disponibles.",evidence:"Condición física + criterio Assurance."}
+    {id:"SOL-AUD-AREA-05",criterion:"Medios de respuesta aplicables están disponibles.",evidence:"Condición física + criterio aplicable definido en Bibliografía."}
   ],
   method:{
     flow:"NO LIBERADO — secuencia técnica pendiente de validación en campo.",
