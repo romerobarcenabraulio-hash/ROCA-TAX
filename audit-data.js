@@ -51,9 +51,10 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
   if(sectionId === 'audit-inicio'){
     const host = document.getElementById('auditSummary');
     if(host){
-      const areas = Object.keys(window.ROCA_FAST_TRACK?.areas || {}).length;
-      const criteria = (window.ROCA_FAST_TRACK?.commonRows || []).length;
-      host.innerHTML = '<div class="callout"><strong>'+areas+' áreas</strong> · '+criteria+' criterios transversales base por área. La línea base se congela por departamento; la auditoría posterior cambia el resultado, no redefine automáticamente el criterio.</div>';
+      const departments = Object.values(window.ROCA_DEPARTMENTS || {});
+      const areas = departments.length;
+      const criteria = departments.reduce((sum,d)=>sum+(Array.isArray(d.auditCriteria)?d.auditCriteria.length:0),0);
+      host.innerHTML = '<div class="callout"><strong>'+areas+' departamentos</strong> · '+criteria+' criterios específicos actualmente estructurados. La línea base se congela por departamento; la auditoría posterior cambia el resultado, no redefine automáticamente el criterio.</div>';
     }
     const baseHost=document.getElementById('baselineRegistry');
     if(baseHost){
