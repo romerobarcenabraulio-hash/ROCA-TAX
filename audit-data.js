@@ -71,6 +71,26 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
   const areaId = root.dataset.auditArea;
   const code = root.dataset.auditCode;
   const dept = window.ROCA_DEPARTMENTS && window.ROCA_DEPARTMENTS[areaId];
+
+  const PHYS_NORM_BASIS={
+    "PHYS-FLOW":"NOM-001-STPS-2008",
+    "PHYS-EGRESS":"NOM-002-STPS-2010",
+    "PHYS-FIRE":"NOM-002-STPS-2010",
+    "PHYS-SIGN":"NOM-026-STPS-2008",
+    "PHYS-LIGHT":"NOM-025-STPS-2008",
+    "PHYS-STATION":"NOM-001-STPS-2008",
+    "PHYS-STORAGE":"ROCA + NOM-006-STPS-2023 cuando aplique",
+    "PHYS-ELECTRIC":"NOM-029-STPS-2011 cuando aplique",
+    "PHYS-CHEM":"NOM-018-STPS-2015 + NOM-005-STPS-1998",
+    "PHYS-VENT":"NOM-010-STPS-2014 + HDS aplicable",
+    "PHYS-MACHINE":"NOM-004-STPS-1999",
+    "PHYS-NOISE":"NOM-011-STPS-2001 cuando aplique",
+    "PHYS-MANUALLOAD":"NOM-036-1-STPS-2018 cuando aplique",
+    "PHYS-PRESSURE":"NOM-020-STPS-2011 cuando aplique",
+    "PHYS-WASTE":"NOM-052-SEMARNAT-2005 + ruta aplicable",
+    "PHYS-WASTEWATER":"NOM-002-SEMARNAT-1996 + NTE-SLP-AR-001/2026 cuando aplique",
+    "PHYS-SUPPORT":"NOM-001-STPS-2008 + RFSST"
+  };
   function applicablePhysicalRows(areaId){
     const phys=Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)?window.ROCA_AREA_PHYSICAL_STANDARD:[];
     return phys.filter(r=>r.areas==='ALL'||(Array.isArray(r.areas)&&r.areas.includes(areaId))).map(r=>({
@@ -78,7 +98,8 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       group:'Normativa / condición física',
       label:r.label,
       target:r.standard,
-      input:r.evidence||'Evidencia observable de la condición.'
+      input:r.evidence||'Evidencia observable de la condición.',
+      basis:PHYS_NORM_BASIS[r.id]||'Base física ROCA'
     }));
   }
   function departmentAuditRows(dept,areaId){
@@ -88,14 +109,16 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       group:'Área de trabajo',
       label:r.criterion||r.id,
       target:r.criterion||'',
-      input:r.evidence||'Evidencia observable.'
+      input:r.evidence||'Evidencia observable.',
+      basis:'Estándar permanente del departamento'
     }));
     const processRows=(Array.isArray(dept.auditCriteria)?dept.auditCriteria:[]).map(r=>({
       id:r.id,
       group:r.group||'Metodología / operación',
       label:r.label||r.id,
       target:r.target||r.label||'',
-      input:r.input||'Evidencia / dato de auditoría.'
+      input:r.input||'Evidencia / dato de auditoría.',
+      basis:'Metodología / control ROCA'
     }));
     const physicalRows=applicablePhysicalRows(areaId);
     const merged=[...areaRows,...processRows,...physicalRows];
@@ -148,7 +171,7 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       '<div><strong>'+m.open+'</strong><span>IMPLEMENTAR</span><small>Brechas abiertas</small></div>'+
       '</div>';
   }
-  const html = promotedHtml + '<div id="auditMetricsHost">'+metricMarkup()+'</div><table class="audit-central-table"><thead><tr><th>ID</th><th>Criterio fijo</th><th>Resultado</th><th>Dato / nota</th><th>Implementación</th></tr></thead><tbody>'+
+  const html = promotedHtml + '<div id="auditMetricsHost">'+metricMarkup()+'</div><table class="audit-central-table"><thead><tr><th>ID</th><th>Base</th><th>Criterio fijo</th><th>Resultado</th><th>Dato / nota</th><th>Implementación</th></tr></thead><tbody>'+
     rows.map((row,i)=>{
       const id=row.id || (code+'-FT-'+String(i+1).padStart(2,'0'));
       const v=saved[id]||{};
@@ -157,7 +180,7 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       const implementationText=action
         ? '<strong>ABIERTA · REGISTRO</strong><br>'+String(action.correction||'')
         : (dynamicOpen?'<strong>ABIERTA · AUDITORÍA</strong><br>'+(v.status==='NONCONFORMING'?'Corregir la condición y volver a auditar.':'Verificar la condición y registrar evidencia.'):'—');
-      return '<tr data-audit-id="'+id+'"><td><strong>'+id+'</strong><br><small>'+row.group+' · '+row.label+'</small></td><td>'+row.target+'</td><td><select class="audit-status"><option value="NOT_VERIFIED">NO VERIFICADO</option><option value="CONFORMING">CONFORME</option><option value="NONCONFORMING">NO CONFORME</option><option value="NA_JUSTIFIED">NO APLICA — JUSTIFICACIÓN</option></select></td><td><textarea class="audit-note" rows="3" placeholder="'+row.input.replace(/"/g,'&quot;')+'">'+(v.note||'')+'</textarea></td><td class="audit-implementation">'+implementationText+'</td></tr>';
+      return '<tr data-audit-id="'+id+'"><td><strong>'+id+'</strong><br><small>'+row.group+' · '+row.label+'</small></td><td><small>'+String(row.basis||'Estándar ROCA')+'</small></td><td>'+row.target+'</td><td><select class="audit-status"><option value="NOT_VERIFIED">NO VERIFICADO</option><option value="CONFORMING">CONFORME</option><option value="NONCONFORMING">NO CONFORME</option><option value="NA_JUSTIFIED">NO APLICA — JUSTIFICACIÓN</option></select></td><td><textarea class="audit-note" rows="3" placeholder="'+row.input.replace(/"/g,'&quot;')+'">'+(v.note||'')+'</textarea></td><td class="audit-implementation">'+implementationText+'</td></tr>';
     }).join('')+'</tbody></table>';
   root.querySelector('.audit-table-host').innerHTML = html;
   root.querySelectorAll('tr[data-audit-id]').forEach(tr=>{
