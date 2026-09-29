@@ -1327,3 +1327,133 @@ window.ROCA_DEPARTMENTS["area-blanqueado"] = {
     "ops/areas/BLANQUEADO_AREA_BOOK_V2.md"
   ]
 };
+
+window.ROCA_DEPARTMENTS["area-soporte"] = {
+  id:"area-soporte",
+  code:"SUP",
+  title:"Espacios de soporte",
+  status:"PARTIAL",
+  purpose:"Mantener bodegas, oficina/BIWO, exhibición, comedor, sanitarios, circulaciones, exterior/carga y residuos en condición utilizable, identificada, segura y coherente con la operación.",
+  receivesFrom:"Operación general del taller",
+  handsOffTo:"Operación general del taller",
+  entryInputs:[
+    "Uso real de cada subzona",
+    "Inventario o contenido real cuando aplique",
+    "Condición física observable",
+    "Necesidad de privacidad, carga, almacenamiento o servicio según la subzona"
+  ],
+  entryStops:[
+    "La subzona se usa para una función distinta a la definida sin control",
+    "Piezas/materiales bloquean rutas",
+    "Datos sensibles quedan expuestos",
+    "Químicos, residuos o alimentos se mezclan de forma incompatible",
+    "Carga/descarga invade una ruta sin control"
+  ],
+  exitCriteria:[
+    "Subzona utilizable para su función",
+    "Identidad y almacenamiento conservados",
+    "Circulación libre",
+    "Privacidad y separación física respetadas",
+    "Residuos y materiales con destino reconocido"
+  ],
+  area:[
+    {id:"SUP-BOD",label:"Bodegas",text:"Ubicación y categoría son reconocibles; pieza/material conserva ID y siguiente acción; pesado o inestable se almacena abajo y estable; racks/pasillos permanecen accesibles; químicos incompatibles se separan según producto real."},
+    {id:"SUP-ERP",label:"Oficina / BIWO",text:"Estación y archivo evitan exposición innecesaria de datos; acceso responde a necesidad; documentos sensibles permanecen fuera del HTML/repositorio público; BIWO es sistema operativo, no almacén físico paralelo."},
+    {id:"SUP-EXH",label:"Exhibición",text:"Pieza permanece estable y protegida; circulación de visitante/cliente no invade operación; exhibición no se usa como bodega temporal; identificación comercial no expone datos privados."},
+    {id:"SUP-COM",label:"Comedor",text:"Comedor permanece separado de químicos, residuos y piezas de proceso; superficies limpias y alimentos almacenados de forma diferenciada."},
+    {id:"SUP-SAN",label:"Sanitarios",text:"Sanitarios conservan condición higiénica, insumos, drenaje/ventilación y privacidad; no se usan como almacenamiento de químicos o equipo."},
+    {id:"SUP-CIR",label:"Circulaciones",text:"Rutas y accesos permanecen libres; piezas en espera no invaden paso; señalización y emergencia permanecen visibles según evaluación aplicable."},
+    {id:"SUP-EXT",label:"Exterior / carga",text:"Carga y descarga no mezclan residuos, piezas terminadas y químicos; acceso, maniobra y protección climática se validan contra condición real; embalaje conserva ID hasta salida."},
+    {id:"SUP-RES",label:"Residuos",text:"La separación ocurre en punto de generación; contenedor e identificación corresponden al material real; almacenamiento temporal está controlado; material útil o recuperable no se descarta por comodidad."}
+  ],
+  areaAudit:[
+    {id:"SUP-AUD-01",criterion:"Bodegas conservan ID, estabilidad y pasillos accesibles.",evidence:"Recorrido de almacenamiento."},
+    {id:"SUP-AUD-02",criterion:"Oficina/BIWO protege datos y documentos sensibles.",evidence:"Condición de estación/archivo sin exponer información privada."},
+    {id:"SUP-AUD-03",criterion:"Exhibición no invade operación ni funciona como bodega.",evidence:"Recorrido y piezas exhibidas."},
+    {id:"SUP-AUD-04",criterion:"Comedor permanece separado de químicos, residuos y piezas.",evidence:"Condición física."},
+    {id:"SUP-AUD-05",criterion:"Sanitarios conservan higiene, privacidad y no almacenan químicos/equipo.",evidence:"Condición física sin capturar personas ni pertenencias."},
+    {id:"SUP-AUD-06",criterion:"Circulaciones permanecen libres.",evidence:"Recorrido completo."},
+    {id:"SUP-AUD-07",criterion:"Exterior/carga conserva separación y ruta de maniobra.",evidence:"Zona de carga/descarga."},
+    {id:"SUP-AUD-08",criterion:"Residuos se separan y almacenan según material real.",evidence:"Puntos de generación y almacenamiento temporal."}
+  ],
+  method:{
+    flow:"No aplica una metodología única. Cada subzona conserva su condición, rutina real y evidencia propia.",
+    branches:[
+      {title:"Bodegas",text:"Mantener ubicación, identidad, estabilidad y acceso."},
+      {title:"Oficina / BIWO",text:"Mantener privacidad, control documental y acceso por necesidad."},
+      {title:"Exhibición",text:"Mantener estabilidad, protección y separación de la operación."},
+      {title:"Comedor / Sanitarios",text:"Mantener higiene, separación y privacidad."},
+      {title:"Circulaciones / Exterior",text:"Mantener ruta libre, maniobra y separación de corrientes."},
+      {title:"Residuos",text:"Mantener separación, identificación, almacenamiento temporal y destino."}
+    ],
+    stages:[],
+    controls:[
+      {id:"SUP-CTL-01",text:"No forzar una metodología de producción en espacios de soporte."},
+      {id:"SUP-CTL-02",text:"Documentos sensibles permanecen fuera del HTML/repositorio público."},
+      {id:"SUP-CTL-03",text:"Una foto no sustituye la validación de privacidad, mantenimiento o destino de residuos."},
+      {id:"SUP-CTL-04",text:"Material útil o recuperable no se clasifica como residuo por comodidad."}
+    ]
+  },
+  competencies:[
+    "Uso correcto de cada subzona",
+    "Manejo de información/archivo según necesidad",
+    "Separación de materiales y residuos",
+    "Carga/descarga cuando aplique"
+  ],
+  controlRecords:[
+    "Inventario/ubicación cuando aplique",
+    "ID y siguiente acción de pieza/material",
+    "Acceso/documentación sensible cuando aplique",
+    "Retiro/destino de residuos cuando corresponda",
+    "Incidencia de carga, ruta o servicio cuando ocurra"
+  ],
+  materialFlow:[
+    "Entrada a subzona",
+    "Almacenamiento o uso",
+    "Movimiento/transferencia",
+    "Recuperable",
+    "Residuo",
+    "Destino"
+  ],
+  tools:[
+    "Racks y almacenamiento según subzona",
+    "Estación BIWO / archivo",
+    "Medios de manipulación/carga cuando existan",
+    "Contenedores de residuos según material real"
+  ],
+  consumables:[
+    "Insumos de limpieza",
+    "Material de archivo/identificación",
+    "Material de protección/embalaje cuando aplique",
+    "Consumibles de comedor/sanitarios según uso real"
+  ],
+  evidence:[
+    {id:"EVID-SUP-01",text:"Panorámica y condición de cada subzona.",placement:"Área"},
+    {id:"EVID-SUP-02",text:"Inventario/ubicación cuando aplique.",placement:"Bodegas"},
+    {id:"EVID-SUP-03",text:"Condición de privacidad/archivo sin exponer datos sensibles.",placement:"Oficina / BIWO"},
+    {id:"EVID-SUP-04",text:"Ruta de circulación y carga/descarga.",placement:"Circulaciones / exterior"},
+    {id:"EVID-SUP-05",text:"Separación y almacenamiento temporal de residuos.",placement:"Residuos"}
+  ],
+  auditCriteria:[
+    {id:"SUP-AUD-01",group:"Bodega",label:"Almacenamiento",target:"Ubicación, ID, estabilidad y acceso son correctos.",input:"Recorrido de bodega."},
+    {id:"SUP-AUD-02",group:"Oficina",label:"Privacidad",target:"Datos y documentos sensibles no están expuestos.",input:"Condición de estación/archivo."},
+    {id:"SUP-AUD-03",group:"Exhibición",label:"Separación",target:"Exhibición no funciona como bodega ni invade operación.",input:"Recorrido."},
+    {id:"SUP-AUD-04",group:"Comedor",label:"Separación higiénica",target:"Alimentos están separados de químicos, residuos y piezas.",input:"Condición física."},
+    {id:"SUP-AUD-05",group:"Sanitarios",label:"Higiene/privacidad",target:"Sanitarios están higiénicos y no almacenan químicos/equipo.",input:"Condición física sin invadir privacidad."},
+    {id:"SUP-AUD-06",group:"Circulación",label:"Ruta libre",target:"Rutas y accesos permanecen libres.",input:"Recorrido."},
+    {id:"SUP-AUD-07",group:"Exterior",label:"Carga",target:"Carga/descarga conserva separación y ruta de maniobra.",input:"Zona exterior."},
+    {id:"SUP-AUD-08",group:"Residuos",label:"Separación/destino",target:"Residuos se separan por material real y mantienen destino controlado.",input:"Puntos de generación + almacenamiento."}
+  ],
+  implementationHolds:[
+    {id:"SUP-HOLD-01",text:"Completar levantamiento físico y fotografías de subzonas."},
+    {id:"SUP-HOLD-02",text:"Cerrar inventarios y ubicaciones reales."},
+    {id:"SUP-HOLD-03",text:"Verificar rutas y condiciones de circulación/carga."},
+    {id:"SUP-HOLD-04",text:"Cerrar privacidad y archivo real de Oficina/BIWO."},
+    {id:"SUP-HOLD-05",text:"Levantar residuos reales y destinos."},
+    {id:"SUP-HOLD-06",text:"Verificar condiciones de carga/descarga."},
+    {id:"SUP-HOLD-07",text:"Cerrar mantenimiento y servicios aplicables."}
+  ],
+  sourceRefs:[
+    "ops/areas/ESPACIOS_SOPORTE_V2.md"
+  ]
+};
