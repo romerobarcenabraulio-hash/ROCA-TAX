@@ -1,7 +1,103 @@
 -- ROCA Audit · control de línea base por departamento
 -- Estado: aplicado en Supabase project jtmoteixwlcqqikhpxfq
 -- Seguridad: SECURITY INVOKER + authenticated + verificación interna owner/admin.
+-- Preservación: no delete de baselines/media links; freeze/unlock se versiona y audita por trigger.
 -- No ejecutar desde cliente anónimo.
+
+create or replace function public.roca_prepare_department_baseline_update()
+returns trigger
+language plpgsql
+security invoker
+set search_path = public
+as $$
+begin
+  new.updated_at := now();
+  new.updated_by := auth.uid();
+
+  if new.status is distinct from old.status then
+    if new.status = 'frozen' then
+      if old.status = 'not_released' then
+        raise exception 'A NOT_RELEASED department cannot be frozen';
+      end if;
+      new.captured_at := coalesce(old.captured_at, now());
+      new.frozen_at := now();
+      new.frozen_by := auth.uid();
+      new.unlock_reason := null;
+    elsif new.status = 'unlocked' then
+      if old.status <> 'frozen' then
+        raise exception 'Only a frozen department can be unlocked';
+      end if;
+      if nullif(btrim(new.unlock_reason), '') is null then
+        raise exception 'unlock_reason is required';
+      end if;
+      new.version := old.version + 1;
+      new.unlocked_at := now();
+      new.unlocked_by := auth.uid();
+    end if;
+  else
+    new.version := old.version;
+  end if;
+
+  return new;
+end;
+$$;
+
+create or replace function public.roca_log_department_baseline_event()
+returns trigger
+language plpgsql
+security invoker
+set search_path = public
+as $$
+declare
+  v_event text;
+  v_reason text;
+begin
+  if new.status is distinct from old.status then
+    if new.status = 'frozen' then
+      v_event := 'freeze';
+      v_reason := 'baseline frozen';
+    elsif new.status = 'unlocked' then
+      v_event := 'unlock';
+      v_reason := new.unlock_reason;
+    else
+      v_event := 'update';
+      v_reason := 'status changed';
+    end if;
+  elsif row(new.*) is distinct from row(old.*) then
+    v_event := 'update';
+    v_reason := 'baseline metadata updated';
+  else
+    return new;
+  end if;
+
+  insert into public.roca_manual_baseline_events(
+    department_id,event_type,reason,before_snapshot,after_snapshot,actor
+  )
+  values(
+    new.department_id,
+    v_event,
+    v_reason,
+    to_jsonb(old),
+    to_jsonb(new),
+    auth.uid()
+  );
+
+  return new;
+end;
+$$;
+
+drop trigger if exists roca_prepare_department_baseline_update on public.roca_manual_department_baselines;
+create trigger roca_prepare_department_baseline_update
+before update on public.roca_manual_department_baselines
+for each row execute function public.roca_prepare_department_baseline_update();
+
+drop trigger if exists roca_log_department_baseline_event on public.roca_manual_department_baselines;
+create trigger roca_log_department_baseline_event
+after update on public.roca_manual_department_baselines
+for each row execute function public.roca_log_department_baseline_event();
+
+drop policy if exists "admins delete manual baselines" on public.roca_manual_department_baselines;
+drop policy if exists "admins delete manual media links" on public.roca_manual_media_links;
 
 create or replace function public.roca_manual_freeze_department(_department_id text)
 returns public.roca_manual_department_baselines
@@ -10,7 +106,7 @@ security invoker
 set search_path = public, pg_temp
 as $$
 declare
-  before_row public.roca_manual_department_baselines;
+  current_row public.roca_manual_department_baselines;
   after_row public.roca_manual_department_baselines;
 begin
   if auth.uid() is null then
@@ -24,7 +120,7 @@ begin
     raise exception 'owner or admin role required';
   end if;
 
-  select * into before_row
+  select * into current_row
   from public.roca_manual_department_baselines
   where department_id = _department_id
   for update;
@@ -33,37 +129,18 @@ begin
     raise exception 'department baseline not found';
   end if;
 
-  if before_row.status = 'not_released' then
+  if current_row.status = 'not_released' then
     raise exception 'department is not released';
   end if;
 
-  if before_row.status = 'frozen' then
-    return before_row;
+  if current_row.status = 'frozen' then
+    return current_row;
   end if;
 
   update public.roca_manual_department_baselines
-  set
-    status = 'frozen',
-    version = case
-      when before_row.status = 'unlocked' then before_row.version + 1
-      else before_row.version
-    end,
-    captured_at = coalesce(before_row.captured_at, now()),
-    frozen_at = now(),
-    frozen_by = auth.uid(),
-    unlocked_at = null,
-    unlocked_by = null,
-    unlock_reason = null,
-    updated_at = now(),
-    updated_by = auth.uid()
+  set status = 'frozen'
   where department_id = _department_id
   returning * into after_row;
-
-  insert into public.roca_manual_baseline_events
-    (department_id,event_type,reason,before_snapshot,after_snapshot,actor)
-  values
-    (_department_id,'freeze','baseline frozen',
-     to_jsonb(before_row),to_jsonb(after_row),auth.uid());
 
   return after_row;
 end;
@@ -82,7 +159,7 @@ security invoker
 set search_path = public, pg_temp
 as $$
 declare
-  before_row public.roca_manual_department_baselines;
+  current_row public.roca_manual_department_baselines;
   after_row public.roca_manual_department_baselines;
 begin
   if auth.uid() is null then
@@ -100,7 +177,7 @@ begin
     raise exception 'unlock reason required';
   end if;
 
-  select * into before_row
+  select * into current_row
   from public.roca_manual_department_baselines
   where department_id = _department_id
   for update;
@@ -109,26 +186,16 @@ begin
     raise exception 'department baseline not found';
   end if;
 
-  if before_row.status <> 'frozen' then
+  if current_row.status <> 'frozen' then
     raise exception 'only a frozen baseline can be unlocked';
   end if;
 
   update public.roca_manual_department_baselines
   set
     status = 'unlocked',
-    unlocked_at = now(),
-    unlocked_by = auth.uid(),
-    unlock_reason = btrim(_reason),
-    updated_at = now(),
-    updated_by = auth.uid()
+    unlock_reason = btrim(_reason)
   where department_id = _department_id
   returning * into after_row;
-
-  insert into public.roca_manual_baseline_events
-    (department_id,event_type,reason,before_snapshot,after_snapshot,actor)
-  values
-    (_department_id,'unlock',btrim(_reason),
-     to_jsonb(before_row),to_jsonb(after_row),auth.uid());
 
   return after_row;
 end;
