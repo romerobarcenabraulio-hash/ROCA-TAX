@@ -753,9 +753,10 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
     stages:[
       {id:"FMR-MET-FOR-01",title:"Preparar estructura/molde",text:"Referencia de taller: triplay de 18 mm; en formas de gran escala puede usarse doble triplay. No tratar estas referencias como capacidad estructural universal."},
       {id:"FMR-MET-FOR-02",title:"Encerar y orear",text:"En Formas la cera cubre toda superficie de contacto. El oreado documentado es 20–30 min y no se cierra antes de 20 min. La referencia de 10 pasadas pertenece a Moldes de fibra."},
+      {id:"FMR-MET-FOR-02B",title:"Cerrar y sellar",text:"Cerrar y sellar el conjunto antes de prueba o vaciado. Detener si el cierre no contiene la mezcla o no permite una apertura controlada después del curado."},
       {id:"FMR-MET-FOR-03",title:"Prueba de lote",text:"Usar 20 g totales en botella patrón de aproximadamente 600 mL. Cálido: 10 g base + 10 g catalizador. Fresco/húmedo: 6 g base + 14 g catalizador. Un lote nuevo no entra a producción sin prueba de expansión previa."},
       {id:"FMR-MET-FOR-04",title:"Dosificar A/B",text:"Cálido: 50% base / 50% catalizador. Fresco, húmedo o lluvia: 30% base / 70% catalizador. Pesar cada componente por separado con misma báscula/unidad antes de juntarlos; no corregir proporciones a ojo después de iniciar mezcla."},
-      {id:"FMR-MET-FOR-05",title:"Curar y desmoldar forma",text:"Cabeza: mínimo 1 h 30 min como referencia; cuerpo completo: mínimo 4 h y puede permanecer toda la noche. Usar también como referencia aproximada 1 h/kg con calor y 1 h 20 min/kg con frío. El reloj no libera la pieza: no abrir mientras esté caliente, blanda, deformable o con zona aguadita."},
+      {id:"FMR-MET-FOR-05",title:"Curar y desmoldar forma",text:"Cabeza: mínimo 1 h 30 min como referencia; cuerpo completo: mínimo 4 h y puede permanecer toda la noche. Usar también como referencia aproximada 1 h/kg con calor y 1 h 20 min/kg con frío. El reloj no libera la pieza: no abrir mientras esté caliente, blanda, deformable o con zona aguadita. No enfriar bruscamente una forma que todavía esté caliente."},
       {id:"FMR-MET-MOL-01",title:"Definir divisiones y encerar",text:"La línea de partición se decide antes de laminar. Para Moldes de fibra aplicar 10 pasadas uniformes de cera desmoldante y dejar orear 20–30 min."},
       {id:"FMR-MET-MOL-02",title:"Preparar y aplicar gelcoat",text:"Referencia del taller: 1 kg de resina por aproximadamente 2 kg de talco, incorporado progresivamente hasta pasta muy espesa que no escurra. Es referencia de consistencia del taller, no formulación universal."},
       {id:"FMR-MET-MOL-03",title:"Laminar fibra/resina",text:"Base documentada: 6 capas continuas. Séptima capa sólo cuando el molde sea grande, requiera mayor espesor o vaya a soportar mayor presión."},
@@ -768,11 +769,12 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
       {id:"FMR-CTL-03",text:"La cera de 10 pasadas pertenece a Moldes de fibra, no automáticamente a Formas."},
       {id:"FMR-CTL-04",text:"El tiempo es referencia de curado; la condición física gobierna la apertura."},
       {id:"FMR-CTL-05",text:"La séptima capa de fibra requiere mayor exigencia documentada."},
-      {id:"FMR-CTL-06",text:"Réplicas no heredan recetas de Formas/Moldes sin evidencia específica."}
+      {id:"FMR-CTL-06",text:"Réplicas mantienen su propia receta y tiempos; no usar parámetros de Formas/Moldes sin validación específica de Réplicas."},
+      {id:"FMR-CTL-07",text:"Un ajuste posterior se registra como resultado o ajuste de lote; no se convierte automáticamente en regla universal."}
     ]
   },
   toolCare:[
-    "Báscula: condición/lectura conocida antes de dosificar; VALIDACIÓN EN CAMPO de la verificación aplicable",
+    "Báscula: condición y lectura conocidas antes de dosificar",
     "Taladro/mezclador: cable o batería, accesorio y limpieza en condición utilizable",
     "Moldes: integridad, cierre, herrajes, identificación y mantenimiento por condición"
   ],
@@ -859,7 +861,8 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
     {id:"FMR-HOLD-05",text:"Cerrar criterios exactos de aceptación por familia."},
     {id:"FMR-HOLD-06",text:"Cerrar estados BIWO exactos."},
     {id:"FMR-HOLD-07",text:"Capturar evidencia real de prueba, dosificación y curado."},
-    {id:"FMR-HOLD-08",text:"Confirmar en campo qué referencias de tiempo/programación siguen gobernando la práctica actual antes de liberar el método."}
+    {id:"FMR-HOLD-08",text:"Confirmar en campo qué referencias de tiempo/programación siguen gobernando la práctica actual antes de liberar el método."},
+    {id:"FMR-HOLD-09",text:"Definir la verificación aplicable de la báscula antes de liberar el control metrológico."}
   ],
   sourceRefs:[
     "ops/areas/FORMAS_MOLDES_REPLICAS_AREA_BOOK_V2.md"
