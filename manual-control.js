@@ -32,7 +32,7 @@
       note.textContent='Abre un departamento o su auditoría para usar estos controles.';
       return;
     }
-    choose.disabled=false;
+    choose.disabled=true;
     const res=await fetch('ops/control/ROCA_DEPARTMENT_BASELINE_V1.csv',{cache:'no-store'});
     const row=res.ok?parseCSV(await res.text()).find(r=>r.department_id===id):null;
     dept.textContent=row?.department_name||id;
