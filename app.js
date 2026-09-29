@@ -10,6 +10,7 @@
   const auditMode = document.getElementById('auditMode');
   const normsMode = document.getElementById('normsMode');
   const printDoc = document.getElementById('printDoc');
+  const printGateNote = document.getElementById('printGateNote');
 
   const hiddenLegacy = new Set([
     'estado','implementacion','areas','residuos','erp','evidencia','editorial','posters',
@@ -214,6 +215,51 @@
     go(mode==='manual' ? 'portada' : (activeSections[0] && activeSections[0].id));
   }
 
+  function parseCSV(text){
+    const rows=[]; let row=[],field='',quoted=false;
+    for(let i=0;i<text.length;i++){
+      const ch=text[i];
+      if(ch==='"'){
+        if(quoted && text[i+1]==='"'){field+='"';i++;}
+        else quoted=!quoted;
+      }else if(ch===','&&!quoted){
+        row.push(field);field='';
+      }else if((ch==='\n'||ch==='\r')&&!quoted){
+        if(ch==='\r'&&text[i+1]==='\n')i++;
+        row.push(field);field='';
+        if(row.some(v=>v!==''))rows.push(row);
+        row=[];
+      }else field+=ch;
+    }
+    if(field||row.length){row.push(field);if(row.some(v=>v!==''))rows.push(row);}
+    if(!rows.length)return[];
+    const head=rows.shift();
+    return rows.map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]||''])));
+  }
+
+  async function refreshPrintGate(){
+    try{
+      const res=await fetch('ops/control/ROCA_DEPARTMENT_BASELINE_V1.csv',{cache:'no-store'});
+      if(!res.ok) throw new Error('baseline '+res.status);
+      const rows=parseCSV(await res.text());
+      const open=rows.filter(r=>String(r.baseline_status||'').toUpperCase()!=='FROZEN');
+      const ready=rows.length>0 && open.length===0;
+      printDoc.disabled=!ready;
+      printDoc.textContent=ready?'IMPRIMIR / PDF':'IMPRESIÓN FINAL · BLOQUEADA';
+      if(printGateNote){
+        printGateNote.textContent=ready
+          ? 'Manual liberado para impresión.'
+          : open.length+' departamento'+(open.length===1?'':'s')+' sin congelar.';
+      }
+      return {ready,open};
+    }catch(err){
+      printDoc.disabled=true;
+      printDoc.textContent='IMPRESIÓN FINAL · BLOQUEADA';
+      if(printGateNote)printGateNote.textContent='No se pudo validar la línea base.';
+      return {ready:false,open:[]};
+    }
+  }
+
   function renderAllForPrint(){
     const sections=activeMode==='manual'?manualSections:activeSections;
     page.innerHTML=(activeMode==='manual'?coverMarkup():'')+sections.map(sectionMarkup).join('');
@@ -223,10 +269,12 @@
   manualMode.addEventListener('click',()=>setMode('manual'));
   auditMode.addEventListener('click',()=>setMode('audit'));
   normsMode.addEventListener('click',()=>setMode('norms'));
-  printDoc.addEventListener('click',()=>{
+  printDoc.addEventListener('click',async()=>{
+    const gate=await refreshPrintGate();
+    if(!gate.ready) return;
     const mode=activeMode;
     renderAllForPrint();
-    setTimeout(()=>{ window.print(); setTimeout(()=>setMode(mode),120); },80);
+    setTimeout(()=>{ window.print(); setTimeout(()=>{setMode(mode);refreshPrintGate();},120); },80);
   });
   window.addEventListener('hashchange',()=>{
     const id=location.hash.slice(1);
@@ -234,4 +282,5 @@
   });
 
   setMode('manual');
+  refreshPrintGate();
 })();
