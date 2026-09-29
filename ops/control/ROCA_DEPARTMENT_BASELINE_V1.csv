@@ -6,6 +6,6 @@ area-montaje,Montaje,PARTIAL,V1,,,Cambio de proceso/equipo/layout; hallazgo crí
 area-retoque,Retoque,PARTIAL,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,Libro profundo integrado; línea base aún no congelada
 area-bases,Bases,PARTIAL,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,Libro profundo integrado; línea base aún no congelada
 area-carpinteria,Carpintería / Embalaje,NOT_RELEASED,V1,,,Implementación física; primera demostración; cambio normativo,,Área aún no liberada
-area-soldadura,Soldadura / Adaptación,CAPTURE_PENDING,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,
-area-blanqueado,Blanqueado,CAPTURE_PENDING,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,
-area-soporte,Espacios de soporte,CAPTURE_PENDING,V1,,,Cambio de uso/layout; hallazgo crítico; cambio normativo,,
+area-soldadura,Soldadura / Adaptación,NOT_RELEASED,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,Método técnico no liberado hasta entrevista/demostración primaria
+area-blanqueado,Blanqueado,PARTIAL,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,Método mínimo soportado; parámetros operativos críticos siguen abiertos
+area-soporte,Espacios de soporte,PARTIAL,V1,,,Cambio de uso/layout; hallazgo crítico; cambio normativo,,Subzonas estructuradas; faltan levantamientos y evidencia de campo
