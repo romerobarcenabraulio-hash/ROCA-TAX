@@ -2,9 +2,6 @@
   const data = window.ROCA_DATA;
   if (Array.isArray(window.ROCA_EDITORIAL_SECTIONS)) data.sections.push(...window.ROCA_EDITORIAL_SECTIONS);
   if (Array.isArray(window.ROCA_WORKSHOP_SECTIONS)) data.sections.push(...window.ROCA_WORKSHOP_SECTIONS);
-  if (Array.isArray(window.ROCA_CONTROL_SECTIONS)) data.sections.push(...window.ROCA_CONTROL_SECTIONS);
-  if (Array.isArray(window.ROCA_ASSURANCE_SECTIONS)) data.sections.push(...window.ROCA_ASSURANCE_SECTIONS);
-  if (Array.isArray(window.ROCA_EXTRA_SECTIONS)) data.sections.push(...window.ROCA_EXTRA_SECTIONS);
 
   const nav = document.getElementById('nav');
   const page = document.getElementById('page');
@@ -44,47 +41,6 @@
       '<div class="cover-bottom"><strong>SISTEMA CENTRAL DE TRABAJO</strong>'+
       '<span>El HTML concentra el manual, la auditoría y la memoria de criterio. IMPLEMENTAR conserva únicamente el trabajo temporal para llegar al estándar.</span></div>'+
       footer('PORTADA')+'</article>';
-  }
-
-  function markdownInline(text){
-    return esc(text)
-      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-      .replace(/\`([^\`]+)\`/g,'<code>$1</code>');
-  }
-
-  function areaBookMarkup(section){
-    const book = window.ROCA_AREA_BOOKS && window.ROCA_AREA_BOOKS[section && section.id];
-    if(!book || !book.markdown) return '';
-    const lines=String(book.markdown).split(/\r?\n/);
-    let html='<section class="area-book-central"><div class="eyebrow">LIBRO INTEGRAL DEL ÁREA</div><h2>Operación, método y control</h2>';
-    let inList=false, inTable=false, tableRows=[];
-    function closeList(){ if(inList){html+='</ul>'; inList=false;} }
-    function flushTable(){
-      if(!inTable) return;
-      if(tableRows.length){
-        const rows=tableRows.map(r=>r.split('|').slice(1,-1).map(x=>x.trim()));
-        const head=rows[0]||[];
-        const body=rows.slice(2);
-        html+='<div class="tablewrap"><table><thead><tr>'+head.map(x=>'<th>'+markdownInline(x)+'</th>').join('')+'</tr></thead><tbody>'+
-          body.map(r=>'<tr>'+r.map(x=>'<td>'+markdownInline(x)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
-      }
-      inTable=false; tableRows=[];
-    }
-    lines.forEach(line=>{
-      const t=line.trim();
-      if(t.startsWith('|')){
-        closeList(); inTable=true; tableRows.push(t); return;
-      } else flushTable();
-      if(!t){ closeList(); return; }
-      if(/^##\s+/.test(t)){closeList(); html+='<h2>'+markdownInline(t.replace(/^##\s+/,''))+'</h2>'; return;}
-      if(/^###\s+/.test(t)){closeList(); html+='<h3>'+markdownInline(t.replace(/^###\s+/,''))+'</h3>'; return;}
-      if(/^[-*]\s+/.test(t)){ if(!inList){html+='<ul>';inList=true;} html+='<li>'+markdownInline(t.replace(/^[-*]\s+/,''))+'</li>'; return;}
-      closeList();
-      html+='<p>'+markdownInline(t)+'</p>';
-    });
-    closeList(); flushTable();
-    html+='<div class="source-note">Fuente controlada: '+esc(book.source||'libro de área')+'. Los bloqueadores de implementación no se muestran como parte del estado definitivo.</div></section>';
-    return html;
   }
 
   function departmentMarkup(section){
