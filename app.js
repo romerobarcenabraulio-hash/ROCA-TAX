@@ -39,8 +39,8 @@
       '<div class="cover-kicker">ROCA TAXIDERMY · ARTE Y TRADICIÓN · DESDE 1946</div>'+
       '<div class="cover-main"><h1>ROCA TAXIDERMY<br>Manual maestro</h1>'+
       '<p>Operación · áreas · metodología · auditoría · criterios normativos · trazabilidad</p><div class="bronze-rule"></div></div>'+
-      '<div class="cover-bottom"><strong>SISTEMA CENTRAL DE TRABAJO</strong>'+
-      '<span>El HTML concentra el manual, la auditoría y la memoria de criterio. IMPLEMENTAR conserva únicamente el trabajo temporal para llegar al estándar.</span></div>'+
+      '<div class="cover-bottom"><strong>MANUAL MAESTRO DE OPERACIÓN</strong>'+
+      '<span>Áreas, metodología, herramientas, materiales, evidencia, auditoría y criterios de trabajo de ROCA Taxidermy.</span></div>'+
       footer('PORTADA')+'</article>';
   }
 
@@ -104,7 +104,7 @@
       '<p class="source-note">La misma tabla integra condiciones específicas del departamento y controles físicos transversales que realmente le aplican.</p>'+
       '<table><thead><tr><th>ID</th><th>Condición permanente</th></tr></thead><tbody>'+areaRows+'</tbody></table></section>'+
       '<section class="department-block department-audit-block"><div class="eyebrow">02 · AUDITORÍA DEL ÁREA</div><h2>Qué se comprueba en el espacio</h2>'+
-      '<p>Esta revisión comprueba el estado físico del departamento. Una desviación real abre IMPLEMENTAR; el criterio permanece.</p>'+
+      '<p>Esta revisión comprueba que el estado físico del departamento corresponda a las condiciones definidas en el área de trabajo.</p>'+
       '<table><thead><tr><th>ID</th><th>Criterio</th><th>Evidencia útil</th></tr></thead><tbody>'+auditRows+'</tbody></table></section>'+
       '<section class="department-block"><div class="eyebrow">03 · METODOLOGÍA</div><h2>Cómo se trabaja</h2>'+
       '<p class="flow-line">'+esc(dept.method?.flow||'')+'</p>'+branches+stages+
@@ -114,8 +114,8 @@
         '<section class="department-block"><div class="eyebrow">05 · CONSUMIBLES / MATERIALES</div><h2>Qué entra al proceso</h2><ul>'+consumables+'</ul></section>'+
       '</section>'+
       operations+
-      '<section class="department-block"><div class="eyebrow">10 · EVIDENCIA</div><h2>Qué evidencia sirve y dónde va</h2>'+
-      '<table><thead><tr><th>ID</th><th>Qué demuestra</th><th>Placement</th></tr></thead><tbody>'+evidence+'</tbody></table></section>'+
+      '<section class="department-block"><div class="eyebrow">10 · EVIDENCIA</div><h2>Evidencia de referencia</h2>'+
+      '<table><thead><tr><th>ID</th><th>Qué demuestra</th><th>Ubicación</th></tr></thead><tbody>'+evidence+'</tbody></table></section>'+
       '</section>';
   }
 
