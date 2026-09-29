@@ -34,18 +34,42 @@ window.ROCA_EDITORIAL_SECTIONS = [
   },
   {
     id:"personas", nav:"Taller y equipo", title:"Taller y equipo", eyebrow:"Gobernanza · estructura funcional actual",
-    lead:"La organización se entiende por las funciones reales del taller y por la forma en que cada área entrega trabajo a la siguiente.",
+    lead:"El taller se organiza por áreas y funciones reales. Esta es la única vista global del equipo; los libros de área sólo repiten nombres cuando una estación, decisión, autorización o handoff lo requiere.",
     body:`
-      <table><thead><tr><th>Función / área</th><th>Referencia pública</th><th>Papel dentro de ROCA</th></tr></thead><tbody>
-        <tr><td>Dirección de taller / Producción</td><td>Dirección operativa</td><td>Coordina producción, decisiones de montaje, compras programadas, cobranza operativa y seguimiento del taller.</td></tr>
-        <tr><td>ERP / Compras / Inventarios</td><td>Responsable administrativo-operativo</td><td>Control de inventarios, compras, ERP y seguimiento de cuentas por cobrar junto con dirección.</td></tr>
-        <tr><td>Curtiduría</td><td>Responsable de curtiduría + equipo</td><td>Preparación, hidratación, pickle, rebajado, bateado y control físico del proceso de curtido.</td></tr>
-        <tr><td>Montaje</td><td>Dirección de taller + equipo de montaje</td><td>Medición, selección/modificación de formas, preparación, colocación de piel, reparación y armado de la pieza.</td></tr>
-        <tr><td>Retoque</td><td>Responsable de retoque + equipo</td><td>Limpieza, resane, color, aerografía, acabado y preparación final.</td></tr>
-        <tr><td>Formas y Moldes</td><td>Responsable de formas y moldes</td><td>Fabricación y ajuste de formas, moldes, fibra, resina, insertos y componentes.</td></tr>
-        <tr><td>Soldadura / Adaptación</td><td>Responsable de soldadura y adaptación</td><td>Adaptaciones metálicas, estructuras y trabajo de soldadura requerido por las piezas o formas.</td></tr>
-      </tbody></table>
-      <div class="callout">Los expedientes personales, identificaciones, contratos y comprobantes individuales permanecen en sus archivos controlados y no forman parte del manual operativo.</div>
+      <h2>Dirección operativa y BIWO / ERP</h2>
+      <p><strong>Guicho</strong> — dirección del taller / coordinación de Montaje / seguimiento operativo.</p>
+      <p><strong>César</strong> — ERP / compras / inventarios.</p>
+
+      <h2>Curtiduría</h2>
+      <p><strong>Rodolfo Sr.</strong> — referencia técnica.</p>
+      <p><strong>David</strong> — equipo de Curtiduría.</p>
+      <p><strong>Lalo / Eduardo</strong> — equipo de Curtiduría; alias operativo por reconciliar.</p>
+
+      <h2>Formas, Moldes y Réplicas</h2>
+      <p><strong>Omar</strong> — encargado.</p>
+
+      <h2>Montaje</h2>
+      <p><strong>Guicho</strong> — dirección del taller / coordinación de Montaje.</p>
+      <p><strong>Don Gustavo</strong> — montador.</p>
+      <p><strong>Ezequiel</strong> — montador.</p>
+      <p><strong>Manuel Rivera</strong> — montador.</p>
+      <p><strong>Rodolfo</strong> — montador.</p>
+      <p><strong>Raimundo</strong> — montador.</p>
+      <p><strong>Rubén</strong> — montador.</p>
+      <p><strong>Lalo</strong> — Montaje / taxidermia.</p>
+      <p><strong>Ricardo</strong> — montador.</p>
+      <p><strong>Eugenio</strong> — asistente directo de Ricardo.</p>
+
+      <h2>Retoque</h2>
+      <p><strong>Rodolfo Jr.</strong> — encargado.</p>
+      <p><strong>Emiliano</strong> — equipo de Retoque.</p>
+      <p><strong>Valerio / Valentino</strong> — equipo de Retoque; nombre operativo por reconciliar.</p>
+      <p><strong>Señor Pez</strong> — Retoque / pedacera.</p>
+
+      <h2>Soldadura / Adaptación</h2>
+      <p><strong>Flaco</strong> — soldadura / adaptación; alias operativo.</p>
+
+      <div class="callout"><strong>Responsabilidad aún por cerrar:</strong> Recepción, Bases y Blanqueado todavía no tienen responsable vigente confirmado. Carpintería / Embalaje sigue como frente no implementado. Los espacios de soporte se asignan por función cuando la operación real queda confirmada.</div>
     `
   },
   {
