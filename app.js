@@ -201,7 +201,7 @@
       activeSections=normSections;
       document.body.classList.add('norms-mode');
       normsMode.classList.add('active');
-      contentsPane.querySelector('.contents-title').textContent='Normas y memoria';
+      contentsPane.querySelector('.contents-title').textContent='Bibliografía';
       contentsPane.querySelector('.rule-note').textContent='Base normativa, aplicabilidad y memoria fija del criterio. Los PDF visibles deben ser únicamente normas o fuentes oficiales.';
     }else{
       activeMode='manual';
@@ -217,7 +217,7 @@
   function renderAllForPrint(){
     const sections=activeMode==='manual'?manualSections:activeSections;
     page.innerHTML=(activeMode==='manual'?coverMarkup():'')+sections.map(sectionMarkup).join('');
-    document.title='ROCA TAXIDERMY · '+(activeMode==='manual'?'Manual maestro':activeMode==='audit'?'Auditoría':'Normas');
+    document.title='ROCA TAXIDERMY · '+(activeMode==='manual'?'Manual maestro':activeMode==='audit'?'Auditoría':'Bibliografía');
   }
 
   manualMode.addEventListener('click',()=>setMode('manual'));
