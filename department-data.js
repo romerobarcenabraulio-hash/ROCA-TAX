@@ -176,7 +176,7 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
     flow:"Piel flexible y medida → comparar con forma y pose → presentar y corregir forma → preparar boca/nariz/canales → posicionar cuernos/astas → conformar orejas → posicionar ojos → correcciones localizadas con barro → adhesivo y vestido de piel → coser/fijar → secar y comprobar → transferir a Retoque.",
     branches:[],
     stages:[
-      {id:"MON-MET-01",title:"Recuperar flexibilidad y levantar medidas",text:"Relajar la piel hasta recuperar flexibilidad; cerrar desde el interior cortes o balazos que deban repararse; retirar carnaza, grasa, tejido sobrante y huesos residuales; limpiar interior de pezuñas o garras cuando corresponda; terminar cartílagos de oreja, nariz y belfos. Antes de medir, jalar la piel con la mano: debe desplazarse y recuperar forma sin quedar al límite de tensión. Registrar ojo-nariz, contorno inmediatamente detrás de las órbitas y las medidas corporales que correspondan. Si una modificación de forma se prolongará varios días, la fuente técnica atribuye congelar la piel para resguardarla."},
+      {id:"MON-MET-01",title:"Recuperar flexibilidad y levantar medidas",text:"Relajar la piel hasta recuperar flexibilidad; cerrar desde el interior cortes o balazos que deban repararse; retirar carnaza, grasa, tejido sobrante y huesos residuales; limpiar interior de pezuñas o garras cuando corresponda; terminar cartílagos de oreja, nariz y belfos. Antes de medir, jalar la piel con la mano: debe desplazarse y recuperar forma sin quedar al límite de tensión. Registrar ojo-nariz, contorno inmediatamente detrás de las órbitas y las medidas corporales que correspondan. Si una modificación de forma se prolongará varios días, congelar la piel para resguardarla."},
       {id:"MON-MET-02",title:"Seleccionar, presentar y corregir la forma",text:"Comparar medidas, inventario y pose. Elegir la forma que reduzca correcciones, presentar antes de cortar y corregir de forma localizada cuando proceda. Después de cada modificación volver a comprobar cara, cuello, largo, ancho y volumen como conjunto."},
       {id:"MON-MET-03",title:"Preparar boca, nariz y canales",text:"Abrir y perfilar alojamientos para boca, nariz, belfos y piel de nariz. El criterio de salida es que entren sin forzar la piel ni desplazar la cara."},
       {id:"MON-MET-04",title:"Preparar y posicionar cuernos o astas",text:"Presentar la base, resolver posición con frente, ojos y orejas y comparar altura, inclinación, separación y simetría desde frente, perfil y vista superior. No cubrir la unión mientras exista movimiento o una diferencia corregible."},
@@ -184,7 +184,7 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
       {id:"MON-MET-06",title:"Posicionar ojos",text:"Colocar los ojos y usar barro LR300 para sostener y modelar posición. Trabajar ambos lados simultáneamente y comparar altura, profundidad, orientación y relación anatómica."},
       {id:"MON-MET-07",title:"Correcciones localizadas con barro",text:"Usar barro para corregir volumen y transición sólo después de que la forma principal coincide con la piel. Presentar la piel inmediatamente después de modelar."},
       {id:"MON-MET-08",title:"Aplicar adhesivo y vestir la piel",text:"Aplicar adhesivo en superficies de contacto y vestir mientras permanece trabajable. Asentar primero ojos, nariz, belfos, orejas, cuernos/astas y líneas de costura. El adhesivo fija contacto; no corrige una forma incompatible."},
-      {id:"MON-MET-09",title:"Coser y controlar abultamientos",text:"Cerrar con el hilo que corresponda al espesor y la zona. La fuente conserva cuatro familias: zapatero grueso, zapatero delgado, pesca trenzado grueso y pesca trenzado delgado; también registra separación del hilo de zapatero en tiras cuando entero resulta demasiado grueso. Acomodar la piel conforme avanza la costura, corregir abultamientos antes de perder movilidad del adhesivo y usar alfileres sólo como fijación temporal."},
+      {id:"MON-MET-09",title:"Coser y controlar abultamientos",text:"Cerrar con el hilo que corresponda al espesor y la zona. Usar una de cuatro familias de hilo según espesor y zona: zapatero grueso, zapatero delgado, pesca trenzado grueso o pesca trenzado delgado. Cuando el hilo de zapatero entero resulte demasiado grueso, separarlo en tiras. Acomodar la piel conforme avanza la costura, corregir abultamientos antes de perder movilidad del adhesivo y usar alfileres sólo como fijación temporal."},
       {id:"MON-MET-10",title:"Secar y transferir a Retoque",text:"Mantener inmóvil durante secado. Usar 24 h como referencia mínima para primera revisión, no como liberación automática. Liberar cuando no exista humedad apreciable ni recuperación de desplazamiento en zonas fijadas."}
     ],
     controls:[
@@ -243,7 +243,7 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
     "Mesas / soportes de montaje",
     "Herramienta manual de modelado",
     "Herramienta eléctrica compartida cuando la operación la use",
-    "Herramienta de fijación de cuernos/astas pendiente de especificación exacta"
+    "Sistema de fijación de cuernos/astas — VALIDACIÓN EN CAMPO"
   ],
   consumables:[
     "Agua",
@@ -254,7 +254,7 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
     "Bondo",
     "Catalizador",
     "Ojos",
-    "Adhesivo / pegamento americano — producto exacto pendiente",
+    "Adhesivo / pegamento americano — VALIDACIÓN EN CAMPO del producto exacto",
     "Hilo de zapatero",
     "Hilo de pesca trenzado donde corresponda",
     "Recortes de Tetra Pak",
@@ -318,7 +318,7 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
   people:[
     "Rodolfo Jr. — encargado de Retoque",
     "Emiliano — Retoque",
-    "Valerio / Valentino — nombre pendiente de reconciliar",
+    "Valerio / Valentino — VALIDACIÓN EN CAMPO del nombre operativo",
     "Señor Pez — Retoque; la pedacera pertenece únicamente a esta área"
   ],
   entryInputs:[
@@ -372,10 +372,10 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
       {title:"Gate de defecto",text:"Costura abierta, anatomía incorrecta, fijación inestable o defecto estructural regresan a Montaje/Formas según origen. Retoque sólo continúa con imperfecciones compatibles con acabado."}
     ],
     stages:[
-      {id:"RET-MET-01",title:"Retiro de alfileres y limpieza",text:"Retirar todos los alfileres y fijaciones temporales sin desgarrar piel ni pelo. Iniciar con limpieza general y cepillado. Para retirar grasa, la fuente primaria registra jabón Salvo + jabón Roma. Suavitel es condicional y sólo se usa cuando el pelo requiere ablandamiento."},
-      {id:"RET-MET-02",title:"Resane de imperfecciones",text:"Cerrar o nivelar pequeñas imperfecciones antes de pintar. La fuente primaria confirma resanador automotriz, barro según zona y aserrín + Resistol según soporte. Lijar o perfilar hasta continuar el volumen sin borde perceptible."},
+      {id:"RET-MET-01",title:"Retiro de alfileres y limpieza",text:"Retirar todos los alfileres y fijaciones temporales sin desgarrar piel ni pelo. Iniciar con limpieza general y cepillado. Para retirar grasa, usar jabón Salvo + jabón Roma. Suavitel es condicional y sólo se usa cuando el pelo requiere ablandamiento."},
+      {id:"RET-MET-02",title:"Resane de imperfecciones",text:"Cerrar o nivelar pequeñas imperfecciones antes de pintar. Usar resanador automotriz, barro según zona o aserrín + Resistol según el soporte. Lijar o perfilar hasta continuar el volumen sin borde perceptible."},
       {id:"RET-MET-03",title:"Pintura del animal",text:"Recuperar ojos, nariz, boca, costuras y zonas que perdieron tono, construyendo el color de tonos oscuros a claros y comparando continuamente con la coloración natural o referencia aprobada."},
-      {id:"RET-MET-04",title:"Cepillado y acabado del pelo",text:"Cepillar en dirección natural y retirar residuos. La fuente primaria confirma gasolina blanca para soltar o ablandar pelo y recuperar apariencia natural; usar por zonas sin fijar una dosis volumétrica universal."},
+      {id:"RET-MET-04",title:"Cepillado y acabado del pelo",text:"Cepillar en dirección natural y retirar residuos. Usar gasolina blanca por zonas para soltar o ablandar pelo y recuperar apariencia natural; no fijar una dosis volumétrica universal."},
       {id:"RET-MET-05",title:"Brillo de ojos, nariz y boca",text:"Aplicar barniz brillante en spray de forma localizada cuando corresponda, sin escurrimientos ni película excesiva sobre pelo o piel vecina."},
       {id:"RET-MET-06",title:"Textura de nariz en cérvidos",text:"Usar Resistol blanco 800 en jeringa, una gota por marca, siguiendo el patrón de referencia. La referencia histórica de 1–2 h no sustituye el criterio físico de que las gotas conserven relieve individual."},
       {id:"RET-MET-07",title:"Acabado de cuernos",text:"Aplicar aceite al final para recuperar brillo. Las manchas para madera se usan según especie o tono cuando corresponda, sin escurrimientos ni contaminación del pelo."}
@@ -552,16 +552,16 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
     flow:"Definir alcance y medidas → cortar plancha/base → construir bancos y fijación → elegir ruta de volumen/terreno → proteger y verter poliuretano cuando aplique → recortar/modelar → aplicar dextrina/terreno → construir malla/costal cuando aplique → ambientar → comprobar estabilidad y transferir.",
     branches:[
       {title:"Ruta poliuretano",text:"Usar sólo cuando la solución de base realmente lo requiera. La receta permanece en HOLD hasta confirmar producto A/B real, HDS, aplicación y prueba controlada de Bases."},
-      {title:"Ruta malla/costal",text:"Usa costillas, malla 8x8, costal, dextrina y terreno. Conserva 3 mm de separación entre pata y malla según fuente primaria."}
+      {title:"Ruta malla/costal",text:"Usa costillas, malla 8x8, costal, dextrina y terreno. Conservar 3 mm de separación entre pata y malla."}
     ],
     stages:[
-      {id:"BAS-MET-08",title:"Medición y plancha de base",text:"Con la pieza completa y la referencia del proyecto, definir ancho y largo antes de cortar. La práctica histórica registra triplay industrial preferentemente de 18 mm y, para bases mayores a ~1 m o piezas pesadas, dos capas y ruedas; esas referencias no son capacidad estructural universal y deben verificarse contra peso, geometría, transporte, material real y fijación."},
-      {id:"BAS-MET-09",title:"Bancos y fijación del animal",text:"Cortar bancos a la altura de la postura, presentar la pieza antes de cerrar la fijación y hacer coincidir varillas/puntos estructurales con los apoyos. La fuente muestra tornillos #8 × 2 in como ejemplo observado, no especificación universal."},
-      {id:"BAS-MET-10",title:"Poliuretano: protección y vertido",text:"Proteger patas y zonas sensibles, construir límites de expansión, identificar componentes y dosificar sólo en el punto preparado. La formulación NO se congela: la fuente derivada registra 50/50 cálido y 30/70 fresco/húmedo, mientras la entrevista primaria de Omar registra base 50/50 y mayor cantidad total con frío. No transferir recetas de Formas a Bases sin demostrar mismo producto y aplicación."},
+      {id:"BAS-MET-08",title:"Medición y plancha de base",text:"Con la pieza completa y la referencia del proyecto, definir ancho y largo antes de cortar. Referencia de taller: triplay industrial de 18 mm. Para bases mayores a ~1 m o piezas pesadas pueden requerirse dos capas y ruedas. Verificar siempre contra peso, geometría, transporte, material real y fijación."},
+      {id:"BAS-MET-09",title:"Bancos y fijación del animal",text:"Cortar bancos a la altura de la postura, presentar la pieza antes de cerrar la fijación y hacer coincidir varillas/puntos estructurales con los apoyos. Referencia observada: tornillos #8 × 2 in. No usar esta medida como especificación universal."},
+      {id:"BAS-MET-10",title:"Poliuretano: protección y vertido",text:"Proteger patas y zonas sensibles, construir límites de expansión, identificar componentes y dosificar sólo en el punto preparado. NO LIBERADO — dosificación de poliuretano en Bases. No usar una relación fija hasta confirmar producto, HDS, aplicación y prueba controlada específica de Bases."},
       {id:"BAS-MET-11",title:"Poliuretano: recorte y pintura",text:"Una vez firme el volumen, recortar hasta aproximar terreno/referencia. Corregir huecos físicos antes de pintar y mantener libres patas y puntos de contacto."},
-      {id:"BAS-MET-12",title:"Dextrina y terreno",text:"La fuente primaria confirma 2 partes de dextrina por 1 de Blanco España. Preparar sólo lo necesario; la referencia histórica de ~1 h es tiempo útil orientativo, no liberación automática."},
-      {id:"BAS-MET-13",title:"Costillas y malla 8x8",text:"La fuente primaria confirma malla 8x8 y 3 mm de separación entre pata y malla. Fijar y modelar hasta cerrar volumen sin invadir la pata."},
-      {id:"BAS-MET-14",title:"Costal, dextrina y terreno",text:"Cubrir la malla con costal de manta humedecido en dextrina y después aplicar dextrina más espesa con Blanco España y terreno. La referencia de medio costal y de consistencia líquida/espesa se conserva como práctica histórica, no receta volumétrica cerrada."},
+      {id:"BAS-MET-12",title:"Dextrina y terreno",text:"Usar 2 partes de dextrina por 1 de Blanco España. Preparar sólo lo necesario; ~1 h es una referencia de tiempo útil, no un criterio automático de liberación."},
+      {id:"BAS-MET-13",title:"Costillas y malla 8x8",text:"Usar malla 8x8 y conservar 3 mm de separación entre pata y malla. Fijar y modelar hasta cerrar volumen sin invadir la pata."},
+      {id:"BAS-MET-14",title:"Costal, dextrina y terreno",text:"Cubrir la malla con costal de manta humedecido en dextrina y después aplicar dextrina más espesa con Blanco España y terreno. Usar la consistencia necesaria para cubrir y modelar sin invadir la pata; no fijar una receta volumétrica universal."},
       {id:"BAS-MET-15",title:"Vegetación y detalles finales",text:"Agregar ambientación sólo después de resolver estructura y terreno. Fijar cualquier elemento cuyo peso, altura o posibilidad de movimiento lo exija."}
     ],
     controls:[
@@ -751,12 +751,12 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
       {title:"Réplicas",text:"Conserva su flujo propio. No hereda relaciones, tiempos ni criterios de Formas/Moldes sin fuente específica."}
     ],
     stages:[
-      {id:"FMR-MET-FOR-01",title:"Preparar estructura/molde",text:"La fuente registra triplay de 18 mm y doble triplay en formas de gran escala como práctica documentada, no como capacidad universal certificada."},
+      {id:"FMR-MET-FOR-01",title:"Preparar estructura/molde",text:"Referencia de taller: triplay de 18 mm; en formas de gran escala puede usarse doble triplay. No tratar estas referencias como capacidad estructural universal."},
       {id:"FMR-MET-FOR-02",title:"Encerar y orear",text:"En Formas la cera cubre toda superficie de contacto. El oreado documentado es 20–30 min y no se cierra antes de 20 min. La referencia de 10 pasadas pertenece a Moldes de fibra."},
       {id:"FMR-MET-FOR-03",title:"Prueba de lote",text:"Usar 20 g totales en botella patrón de aproximadamente 600 mL. Cálido: 10 g base + 10 g catalizador. Fresco/húmedo: 6 g base + 14 g catalizador. Un lote nuevo no entra a producción sin prueba de expansión previa."},
       {id:"FMR-MET-FOR-04",title:"Dosificar A/B",text:"Cálido: 50% base / 50% catalizador. Fresco, húmedo o lluvia: 30% base / 70% catalizador. Pesar cada componente por separado con misma báscula/unidad antes de juntarlos; no corregir proporciones a ojo después de iniciar mezcla."},
-      {id:"FMR-MET-FOR-05",title:"Curar y desmoldar forma",text:"Cabeza: mínimo 1 h 30 min como referencia; cuerpo completo: mínimo 4 h y puede permanecer toda la noche. La fuente también registra aproximadamente 1 h/kg con calor y 1 h 20 min/kg con frío. El reloj no libera la pieza: no abrir mientras esté caliente, blanda, deformable o con zona aguadita."},
-      {id:"FMR-MET-MOL-01",title:"Definir divisiones y encerar",text:"La línea de partición se decide antes de laminar. Para Moldes de fibra la fuente conserva 10 pasadas uniformes de cera desmoldante y oreado de 20–30 min."},
+      {id:"FMR-MET-FOR-05",title:"Curar y desmoldar forma",text:"Cabeza: mínimo 1 h 30 min como referencia; cuerpo completo: mínimo 4 h y puede permanecer toda la noche. Usar también como referencia aproximada 1 h/kg con calor y 1 h 20 min/kg con frío. El reloj no libera la pieza: no abrir mientras esté caliente, blanda, deformable o con zona aguadita."},
+      {id:"FMR-MET-MOL-01",title:"Definir divisiones y encerar",text:"La línea de partición se decide antes de laminar. Para Moldes de fibra aplicar 10 pasadas uniformes de cera desmoldante y dejar orear 20–30 min."},
       {id:"FMR-MET-MOL-02",title:"Preparar y aplicar gelcoat",text:"Referencia del taller: 1 kg de resina por aproximadamente 2 kg de talco, incorporado progresivamente hasta pasta muy espesa que no escurra. Es referencia de consistencia del taller, no formulación universal."},
       {id:"FMR-MET-MOL-03",title:"Laminar fibra/resina",text:"Base documentada: 6 capas continuas. Séptima capa sólo cuando el molde sea grande, requiera mayor espesor o vaya a soportar mayor presión."},
       {id:"FMR-MET-MOL-04",title:"Liberar molde",text:"Liberar cuando la carcasa es rígida, abre sin destruir detalle y puede volver a cerrar de forma reproducible."},
@@ -772,7 +772,7 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
     ]
   },
   toolCare:[
-    "Báscula: condición/lectura conocida antes de dosificar y verificación aplicable pendiente",
+    "Báscula: condición/lectura conocida antes de dosificar; VALIDACIÓN EN CAMPO de la verificación aplicable",
     "Taladro/mezclador: cable o batería, accesorio y limpieza en condición utilizable",
     "Moldes: integridad, cierre, herrajes, identificación y mantenimiento por condición"
   ],
@@ -984,8 +984,8 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
   title:"Carpintería / Corte / Embalaje",
   status:"NOT_RELEASED",
   purpose:"Preparar un frente separado para corte de madera, armado de cajas y embalaje/protección, sin contaminar Retoque ni fabricar una metodología que aún no ha sido demostrada.",
-  receivesFrom:"DISEÑO PREVISTO — requerimiento de corte/caja/protección + dimensiones/referencia + ID de orden/pieza",
-  handsOffTo:"DISEÑO PREVISTO — corte, caja o embalaje identificado y listo para siguiente uso/carga",
+  receivesFrom:"NO LIBERADO — requerimiento de corte/caja/protección + dimensiones/referencia + ID de orden/pieza",
+  handsOffTo:"NO LIBERADO — corte, caja o embalaje identificado y listo para siguiente uso/carga",
   entryInputs:[
     "Decisión de implementar el frente",
     "Ubicación real aprobada",
@@ -1046,9 +1046,9 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     "Liberación de embalaje"
   ],
   controlRecords:[
-    "DISEÑO PREVISTO — requerimiento de embalaje",
-    "DISEÑO PREVISTO — vínculo caja/embalaje ↔ orden",
-    "DISEÑO PREVISTO — listo para carga",
+    "NO LIBERADO — requerimiento de embalaje",
+    "NO LIBERADO — vínculo caja/embalaje ↔ orden",
+    "NO LIBERADO — listo para carga",
     "Los estados BIWO no se crean hasta observar el sistema real"
   ],
   materialFlow:[
@@ -1060,20 +1060,20 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     "Destino / carga"
   ],
   tools:[
-    "PREPARED — banco/mesa de corte y armado",
-    "PREPARED — sierra/caladora u otro equipo que se confirme",
-    "PREPARED — taladro/atornillador",
-    "PREPARED — herramienta manual de medición, corte y fijación",
-    "PREPARED — sistema de captura/retiro de polvo si la operación lo requiere",
-    "PREPARED — rack/almacenamiento de madera",
-    "PREPARED — medios de manipulación/carga si peso y volumen lo exigen"
+    "NO LIBERADO — banco/mesa de corte y armado",
+    "NO LIBERADO — sierra/caladora u otro equipo que se confirme",
+    "NO LIBERADO — taladro/atornillador",
+    "NO LIBERADO — herramienta manual de medición, corte y fijación",
+    "NO LIBERADO — sistema de captura/retiro de polvo si la operación lo requiere",
+    "NO LIBERADO — rack/almacenamiento de madera",
+    "NO LIBERADO — medios de manipulación/carga si peso y volumen lo exigen"
   ],
   consumables:[
-    "PREPARED — madera/triplay",
-    "PREPARED — tornillería/herrajes",
-    "PREPARED — cartón",
-    "PREPARED — película/plástico/protecciones",
-    "PREPARED — elementos de fijación"
+    "NO LIBERADO — madera/triplay",
+    "NO LIBERADO — tornillería/herrajes",
+    "NO LIBERADO — cartón",
+    "NO LIBERADO — película/plástico/protecciones",
+    "NO LIBERADO — elementos de fijación"
   ],
   evidence:[
     {id:"EVID-CAR-01",text:"Implementación física real: panorámica, límite con áreas vecinas, banco/rack/equipo, ruta de circulación/carga y separación respecto de polvo/químicos/acabado.",placement:"Área"},
@@ -1166,7 +1166,7 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
   competencies:[
     "Autorización por proceso/equipo real",
     "Control de trabajo en caliente",
-    "Criterio de aceptación/retrabajo — pendiente de demostración"
+    "Criterio de aceptación/retrabajo — NO LIBERADO"
   ],
   controlRecords:[
     "ID de pieza / orden",
@@ -1183,13 +1183,13 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     "Residuo y destino"
   ],
   tools:[
-    "Equipo de soldadura — familia confirmada, modelo/proceso exacto pendiente",
-    "Herramienta asociada — detalle pendiente",
+    "Equipo de soldadura — modelo/proceso exacto NO LIBERADO",
+    "Herramienta asociada — NO LIBERADO",
     "Esmeril cuando corresponda"
   ],
   consumables:[
-    "Consumibles de unión/corte — por levantar",
-    "Material metálico — por levantar"
+    "Consumibles de unión/corte — NO LIBERADO",
+    "Material metálico — NO LIBERADO"
   ],
   evidence:[
     {id:"EVID-SOL-01",text:"Área preparada antes de trabajo en caliente.",placement:"Área"},
@@ -1262,7 +1262,7 @@ window.ROCA_DEPARTMENTS["area-blanqueado"] = {
     branches:[],
     stages:[
       {id:"BLA-MET-01",title:"Preparar pieza y apoyo",text:"Identificar la pieza, preparar recipiente/fuente de calor y colocar el sistema de apoyo/protección necesario para mantener cuernos fuera de la zona térmica cuando corresponda."},
-      {id:"BLA-MET-02",title:"Tratamiento con agua caliente",text:"Aplicar tratamiento con agua caliente sobre el cráneo manteniendo cuernos fuera de la zona capaz de alterar color o superficie. No se fijan temperatura ni tiempo porque la fuente disponible no los confirma."},
+      {id:"BLA-MET-02",title:"Tratamiento con agua caliente",text:"Aplicar tratamiento con agua caliente sobre el cráneo manteniendo cuernos fuera de la zona capaz de alterar color o superficie. VALIDACIÓN EN CAMPO — no fijar temperatura ni tiempo hasta contar con una medición y criterio de salida controlados."},
       {id:"BLA-MET-03",title:"Limpieza y salida",text:"Limpiar el elemento tratado, conservar identidad y llevarlo a condición estable para Montaje/acabado. Cualquier producto auxiliar se documenta sólo si realmente se usa."}
     ],
     controls:[
@@ -1275,7 +1275,7 @@ window.ROCA_DEPARTMENTS["area-blanqueado"] = {
     "Control de calor",
     "Manipulación segura de agua caliente/vapor",
     "Protección de cuernos",
-    "Criterio de salida — pendiente de cierre"
+    "Criterio de salida — VALIDACIÓN EN CAMPO"
   ],
   controlRecords:[
     "ID de pieza",
