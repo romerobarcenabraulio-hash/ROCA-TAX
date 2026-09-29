@@ -286,6 +286,27 @@
     }
   }
 
+  function normStatusLabel(value){
+    const key=String(value||'').toUpperCase();
+    return ({
+      VERIFIED:'VERIFICADO',
+      JUSTIFIED_NA:'NO APLICA — JUSTIFICADO',
+      NOT_CHECKED:'NO VERIFICADO',
+      PARTIAL:'PARCIAL',
+      APPLICABILITY_PENDING:'APLICABILIDAD POR CONFIRMAR'
+    })[key]||key.replaceAll('_',' ');
+  }
+
+  function applicabilityLabel(value){
+    const key=String(value||'').toUpperCase();
+    return ({
+      CORE:'APLICA',
+      CORE_CANDIDATE:'APLICABILIDAD A CONFIRMAR',
+      CONDITIONAL:'CONDICIONAL',
+      NOT_APPLICABLE:'NO APLICA'
+    })[key]||key.replaceAll('_',' ');
+  }
+
   async function buildNormativePrintMarkup(){
     const res=await fetch('ops/assurance/ROCA_NORMATIVE_APPLICABILITY_V1.csv',{cache:'no-store'});
     if(!res.ok) throw new Error('normative '+res.status);
@@ -308,7 +329,7 @@
       '<div class="eyebrow">Referencias aplicables</div>'+
       '<h1>'+(index===0?'Matriz normativa':'Matriz normativa · continuación')+'</h1>'+
       '<div class="master-content"><table><thead><tr><th>Referencia</th><th>Tema</th><th>Aplicabilidad</th><th>Criterio / salida ROCA</th><th>Estado</th></tr></thead><tbody>'+
-      chunk.map(r=>'<tr><td><strong>'+esc(r.reference||r.req_id)+'</strong></td><td>'+esc(r.title)+'</td><td>'+esc(r.applicability_class)+'</td><td>'+esc(r.roca_output)+'</td><td>'+esc(r.status)+'</td></tr>').join('')+
+      chunk.map(r=>'<tr><td><strong>'+esc(r.reference||r.req_id)+'</strong></td><td>'+esc(r.title)+'</td><td>'+esc(applicabilityLabel(r.applicability_class))+'</td><td>'+esc(r.roca_output)+'</td><td>'+esc(normStatusLabel(r.status))+(r.official_source?' · <a target="_blank" rel="noopener" href="'+esc(r.official_source)+'">fuente oficial</a>':'')+'</td></tr>').join('')+
       '</tbody></table></div>'+footer('BIBLIOGRAFÍA')+'</article>'
     ).join('');
 
