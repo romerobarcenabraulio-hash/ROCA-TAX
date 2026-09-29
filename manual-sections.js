@@ -1,9 +1,35 @@
 window.ROCA_WORKSHOP_SECTIONS = [
   {
+    id:"indice",
+    nav:"Índice",
+    title:"Índice general",
+    eyebrow:"Manual maestro · estructura de consulta",
+    lead:"El manual se organiza desde la gobernanza del taller hacia los libros operativos de cada departamento y sus criterios de verificación.",
+    body:`
+      <ol class="print-index">
+        <li><strong>Gobernanza</strong> — Taller y equipo</li>
+        <li><strong>Gobernanza</strong> — ROCA Taxidermy</li>
+        <li><strong>Gobernanza</strong> — El taller como sistema</li>
+        <li><strong>Libro de área</strong> — Recepción</li>
+        <li><strong>Libro de área</strong> — Curtiduría</li>
+        <li><strong>Libro de área</strong> — Formas, Moldes y Réplicas</li>
+        <li><strong>Libro de área</strong> — Montaje</li>
+        <li><strong>Libro de área</strong> — Retoque</li>
+        <li><strong>Libro de área</strong> — Bases</li>
+        <li><strong>Libro de área</strong> — Carpintería / Corte / Embalaje</li>
+        <li><strong>Libro de área</strong> — Soldadura / Adaptación</li>
+        <li><strong>Libro de área</strong> — Blanqueado / Tratamiento de cráneos</li>
+        <li><strong>Libro de área</strong> — Espacios de soporte</li>
+        <li><strong>Anexo editorial</strong> — Historia, oficio y continuidad</li>
+      </ol>
+      <div class="callout">Cada libro de área conserva la misma lógica: condición del espacio, verificación, metodología, herramientas, materiales, controles y evidencia.</div>
+    `
+  },
+  {
     id:"taller",
     nav:"Taller",
     title:"El taller como sistema",
-    eyebrow:"Manual maestro · lectura por departamento",
+    eyebrow:"Gobernanza · lectura por departamento",
     lead:"El manual reúne por departamento las condiciones del área, la metodología, las herramientas, los materiales, la evidencia y los criterios de verificación.",
     body:`
       <div class="callout"><strong>Regla de uso:</strong> cada departamento se consulta en el mismo orden: condición del área → verificación → metodología → herramientas y materiales → evidencia.</div>
