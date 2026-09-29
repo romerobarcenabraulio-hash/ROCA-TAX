@@ -495,3 +495,200 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
     "ops/areas/RETOQUE_AREA_BOOK_V2.md"
   ]
 };
+
+window.ROCA_DEPARTMENTS["area-bases"] = {
+  id:"area-bases",
+  code:"BAS",
+  title:"Bases",
+  status:"PARTIAL",
+  purpose:"Construir una base estructural y un acabado de terreno coherentes con la pieza y el proyecto cuando la orden lo requiera, sin usar volumen, terreno o pintura para compensar una fijación deficiente.",
+  receivesFrom:"Retoque / pieza lista para fijación + alcance o referencia aprobada de base",
+  handsOffTo:"Revisión / Embalaje / Entrega según flujo real",
+  entryInputs:[
+    "Pieza identificada y lista para fijación",
+    "Alcance o referencia aprobada de base",
+    "Condición estructural de la pieza suficientemente resuelta para no ocultar defectos con la base"
+  ],
+  entryStops:[
+    "La orden no incluye base o la referencia es insuficiente",
+    "La fijación estructural de la pieza sigue deficiente",
+    "La estabilidad depende de relleno, terreno o acabado cosmético",
+    "El estado físico o informacional obligaría a improvisar estructura"
+  ],
+  exitCriteria:[
+    "Pieza estable sobre base terminada",
+    "Identidad de pieza/orden conservada",
+    "Fijación y apoyo comprobables",
+    "Base trasladable sin depender de apoyos improvisados",
+    "Terminación coherente con la referencia aprobada"
+  ],
+  area:[
+    {id:"BAS-AREA-01",label:"Circulación y accesos",text:"Pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Plancha, base, pieza, cables y herramienta temporal no ocupan la ruta de maniobra."},
+    {id:"BAS-AREA-02",label:"Estación y almacenamiento",text:"Herramienta, triplay/madera, malla, herrajes y consumibles tienen ubicación definida. La estación vuelve a condición utilizable al cerrar la tarea y lo dañado o fuera de servicio se separa del uso."},
+    {id:"BAS-AREA-03",label:"Iluminación",text:"La iluminación se verifica sobre el plano real de corte, armado o acabado cuando la tarea lo requiera. La percepción visual sola no sustituye una medición que gobierne una decisión."},
+    {id:"BAS-AREA-04",label:"Ventilación y extracción",text:"La ventilación corresponde a corte, polvo, pintura, poliuretano/adhesivos y cualquier producto real. Producto/HDS y exposición real gobiernan la necesidad de extracción localizada."},
+    {id:"BAS-AREA-05",label:"Emergencia",text:"Rutas, señalización y medios de respuesta aplicables permanecen visibles, accesibles y sin bloqueo."},
+    {id:"BAS-AREA-06",label:"Identidad y espera",text:"Toda base, pieza o trabajo en espera conserva identificación y siguiente acción. Materiales y piezas en espera no bloquean circulación ni mezclan proyectos."},
+    {id:"BAS-AREA-07",label:"Armado estructural",text:"Triplay, bancos, varillas y fijaciones se trabajan sobre superficie estable. La pieza se presenta antes de cerrar la fijación y no depende de apoyos improvisados."},
+    {id:"BAS-AREA-08",label:"Poliuretano y adhesivos",text:"Los componentes se mantienen identificados; mezcla y expansión se contienen en el punto de trabajo. Producto útil, mezcla reaccionada, recortes y envases se separan por destino real."},
+    {id:"BAS-AREA-09",label:"Corte y acabado",text:"Caladora, sierra, pulidor, taladro y grapadora —cuando existan en la operación real— se usan con condición, guarda y accesorio compatibles con su función y sobre una zona despejada."},
+    {id:"BAS-AREA-10",label:"Separación polvo / acabado químico",text:"Corte, lijado o recorte que genere polvo no contamina pintura, adhesivos, poliuretano ni acabado final. Si comparten espacio, secuencia y limpieza impiden el arrastre."},
+    {id:"BAS-AREA-11",label:"Material pesado y ruta de maniobra",text:"Planchas, bases y piezas pesadas se almacenan estables, sin riesgo de vuelco o deslizamiento, y conservan ruta suficiente para presentarlas, girarlas o retirarlas."},
+    {id:"BAS-AREA-12",label:"Manipulación y asistencia",text:"Cuando peso, volumen, altura o postura creen riesgo de manejo, se define método de maniobra, número de personas o ayuda mecánica antes de mover la pieza."}
+  ],
+  areaAudit:[
+    {id:"BAS-AUD-AREA-01",criterion:"Circulación y ruta de maniobra permanecen libres.",evidence:"Panorámica y recorrido con pieza/base presentes."},
+    {id:"BAS-AUD-AREA-02",criterion:"Estación y almacenamiento son utilizables y recuperables.",evidence:"Vista de estación + almacenamiento de madera/malla/herrajes."},
+    {id:"BAS-AUD-AREA-03",criterion:"Iluminación corresponde a corte, armado o acabado cuando gobierna la tarea.",evidence:"Lux en plano real de trabajo cuando aplique."},
+    {id:"BAS-AUD-AREA-04",criterion:"Ventilación/extracción corresponde a proceso y producto real.",evidence:"Producto/HDS + punto de generación + control físico."},
+    {id:"BAS-AUD-AREA-05",criterion:"Armado se realiza sobre apoyo estable y sin improvisaciones.",evidence:"Pieza presentada sobre base antes del cierre."},
+    {id:"BAS-AUD-AREA-06",criterion:"Poliuretano/adhesivos están identificados y contenidos en su punto de uso.",evidence:"Producto real + mezcla + zona de trabajo."},
+    {id:"BAS-AUD-AREA-07",criterion:"Corte/acabado se ejecuta con zona despejada y herramienta apta.",evidence:"Equipo real + condición visible + espacio de trabajo."},
+    {id:"BAS-AUD-AREA-08",criterion:"Polvo no contamina acabado químico.",evidence:"Secuencia/limpieza y separación real."},
+    {id:"BAS-AUD-AREA-09",criterion:"Materiales y piezas pesadas permanecen estables y con ruta de maniobra.",evidence:"Almacenamiento + recorrido."},
+    {id:"BAS-AUD-AREA-10",criterion:"La maniobra pesada tiene método o asistencia definidos.",evidence:"Observación de maniobra real cuando aplique."}
+  ],
+  method:{
+    flow:"Definir alcance y medidas → cortar plancha/base → construir bancos y fijación → elegir ruta de volumen/terreno → proteger y verter poliuretano cuando aplique → recortar/modelar → aplicar dextrina/terreno → construir malla/costal cuando aplique → ambientar → comprobar estabilidad y transferir.",
+    branches:[
+      {title:"Ruta poliuretano",text:"Usar sólo cuando la solución de base realmente lo requiera. La receta permanece en HOLD hasta confirmar producto A/B real, HDS, aplicación y prueba controlada de Bases."},
+      {title:"Ruta malla/costal",text:"Usa costillas, malla 8x8, costal, dextrina y terreno. Conserva 3 mm de separación entre pata y malla según fuente primaria."}
+    ],
+    stages:[
+      {id:"BAS-MET-08",title:"Medición y plancha de base",text:"Con la pieza completa y la referencia del proyecto, definir ancho y largo antes de cortar. La práctica histórica registra triplay industrial preferentemente de 18 mm y, para bases mayores a ~1 m o piezas pesadas, dos capas y ruedas; esas referencias no son capacidad estructural universal y deben verificarse contra peso, geometría, transporte, material real y fijación."},
+      {id:"BAS-MET-09",title:"Bancos y fijación del animal",text:"Cortar bancos a la altura de la postura, presentar la pieza antes de cerrar la fijación y hacer coincidir varillas/puntos estructurales con los apoyos. La fuente muestra tornillos #8 × 2 in como ejemplo observado, no especificación universal."},
+      {id:"BAS-MET-10",title:"Poliuretano: protección y vertido",text:"Proteger patas y zonas sensibles, construir límites de expansión, identificar componentes y dosificar sólo en el punto preparado. La formulación NO se congela: la fuente derivada registra 50/50 cálido y 30/70 fresco/húmedo, mientras la entrevista primaria de Omar registra base 50/50 y mayor cantidad total con frío. No transferir recetas de Formas a Bases sin demostrar mismo producto y aplicación."},
+      {id:"BAS-MET-11",title:"Poliuretano: recorte y pintura",text:"Una vez firme el volumen, recortar hasta aproximar terreno/referencia. Corregir huecos físicos antes de pintar y mantener libres patas y puntos de contacto."},
+      {id:"BAS-MET-12",title:"Dextrina y terreno",text:"La fuente primaria confirma 2 partes de dextrina por 1 de Blanco España. Preparar sólo lo necesario; la referencia histórica de ~1 h es tiempo útil orientativo, no liberación automática."},
+      {id:"BAS-MET-13",title:"Costillas y malla 8x8",text:"La fuente primaria confirma malla 8x8 y 3 mm de separación entre pata y malla. Fijar y modelar hasta cerrar volumen sin invadir la pata."},
+      {id:"BAS-MET-14",title:"Costal, dextrina y terreno",text:"Cubrir la malla con costal de manta humedecido en dextrina y después aplicar dextrina más espesa con Blanco España y terreno. La referencia de medio costal y de consistencia líquida/espesa se conserva como práctica histórica, no receta volumétrica cerrada."},
+      {id:"BAS-MET-15",title:"Vegetación y detalles finales",text:"Agregar ambientación sólo después de resolver estructura y terreno. Fijar cualquier elemento cuyo peso, altura o posibilidad de movimiento lo exija."}
+    ],
+    controls:[
+      {id:"BAS-CTL-01",text:"La base no compensa una fijación estructural deficiente."},
+      {id:"BAS-CTL-02",text:"18 mm, dos capas, ruedas y #8×2 in son referencias históricas, no especificaciones universales."},
+      {id:"BAS-CTL-03",text:"La receta de poliuretano permanece abierta hasta confirmar producto y aplicación real de Bases."},
+      {id:"BAS-CTL-04",text:"Dextrina:Blanco España = 2:1 se conserva como hecho primario soportado."},
+      {id:"BAS-CTL-05",text:"Malla 8x8 y 3 mm de separación pata-malla se conservan como hechos primarios soportados."},
+      {id:"BAS-CTL-06",text:"La fotografía final no sustituye una comprobación estructural."}
+    ]
+  },
+  toolCare:[
+    "Equipos motorizados y neumáticos se identifican por activo real y siguen manual, placa e historial cuando existan",
+    "Herramienta manual no recibe por defecto un preventivo de fabricante inventado",
+    "Retirar del uso equipo con guarda, accesorio o cable dañado, pérdida de función o condición que impida operación controlada"
+  ],
+  competencies:[
+    "Medición/trazo y selección de plancha",
+    "Corte de madera",
+    "Fijación estructural",
+    "Operación de taladro/caladora/sierra/grapadora",
+    "Preparación y uso de poliuretano cuando aplique",
+    "Construcción de malla/costal/terreno",
+    "Ambientación",
+    "Manipulación de pieza/base pesada",
+    "Liberación de estabilidad/terminación"
+  ],
+  controlRecords:[
+    "ID de pieza / orden",
+    "Alcance / referencia aprobada",
+    "Responsable / estación",
+    "Dimensiones y material de plancha",
+    "Sistema de fijación",
+    "Ruta de base usada: poliuretano / malla / combinación",
+    "Incidencia / retrabajo",
+    "Terminación y transferencia",
+    "Evidencia final cuando aporta trazabilidad",
+    "Los estados BIWO exactos se toman del sistema real; no se inventan desde el manual"
+  ],
+  materialFlow:[
+    "Material que entra",
+    "Uso / incorporación",
+    "Remanente reutilizable",
+    "Recorte / sobrante",
+    "Residuo / envase",
+    "Destino",
+    "Energía / aire / servicio utilizado"
+  ],
+  tools:[
+    "Cinta métrica y herramienta de trazo",
+    "Desarmadores y puntas",
+    "Llaves combinadas",
+    "Pinzas / pinza de presión",
+    "Martillo",
+    "Tijeras para malla",
+    "Cuchillo / navaja",
+    "Taladro / atornillador y brocas",
+    "Espátulas / bandejas de mezcla",
+    "Caladora",
+    "Sierra",
+    "Pulidor / esmeril cuando la tarea lo requiera",
+    "Grapadora de uso pesado/neumática cuando aplique",
+    "Serrucho / segueta",
+    "Cepillos de preparación",
+    "Mesa / banco de armado"
+  ],
+  consumables:[
+    "Triplay / madera y bancos",
+    "Tornillería, clavos cuando proceda y herrajes",
+    "Varillas / fijaciones asociadas a la pieza",
+    "Plástico / playe para protección",
+    "Poliuretano A/B — receta en HOLD",
+    "Resanador para huecos localizados cuando aplique",
+    "Pinturas / acabados de terreno cuando aplique",
+    "Dextrina",
+    "Blanco España",
+    "Malla 8x8",
+    "Costal de manta",
+    "Tierra y arena",
+    "Colorantes cuando correspondan",
+    "Piedras / grava",
+    "Vegetación y elementos naturales o sintéticos",
+    "Grapas / fijaciones"
+  ],
+  evidence:[
+    {id:"EVID-BAS-01",text:"Base terminada, soporte/fijaciones visibles y estabilidad observable.",placement:"Área / salida"},
+    {id:"EVID-BAS-02",text:"Estación real: almacenamiento de triplay/malla/herrajes, herramienta de corte/fijación y punto de poliuretano/adhesivo cuando aplique.",placement:"Área"},
+    {id:"EVID-BAS-03",text:"Maniobra real de pieza/base pesada cuando aplique, mostrando ruta y método de asistencia sin preparar una maniobra sólo para la foto.",placement:"Área / maniobra"},
+    {id:"EVID-BAS-04",text:"Ruta técnica usada: poliuretano, malla o combinación, con materiales y condición antes del acabado.",placement:"Metodología"},
+    {id:"EVID-BAS-05",text:"Incidencia/retrabajo y condición final cuando aportan trazabilidad.",placement:"Control / handoff"}
+  ],
+  auditCriteria:[
+    {id:"BAS-AUD-01",group:"Área",label:"Circulación",target:"Circulación y ruta de maniobra permanecen libres.",input:"Panorámica y recorrido."},
+    {id:"BAS-AUD-02",group:"Área",label:"Estación",target:"Estación y almacenamiento son recuperables.",input:"Estación real."},
+    {id:"BAS-AUD-03",group:"Área",label:"Iluminación",target:"Iluminación se verifica cuando gobierna la tarea.",input:"Lux + plano + instrumento."},
+    {id:"BAS-AUD-04",group:"Área",label:"Ventilación",target:"Ventilación/extracción corresponde a proceso/producto.",input:"Producto/HDS + punto de generación."},
+    {id:"BAS-AUD-05",group:"Área",label:"Emergencia",target:"Rutas y medios de emergencia permanecen accesibles.",input:"Recorrido físico."},
+    {id:"BAS-AUD-06",group:"Área",label:"Identidad",target:"Pieza/base en espera conserva ID y siguiente acción.",input:"Muestra de trabajos."},
+    {id:"BAS-AUD-07",group:"Área",label:"Armado",target:"Armado estable y sin apoyos improvisados.",input:"Presentación de pieza/base."},
+    {id:"BAS-AUD-08",group:"Área",label:"Poliuretano/adhesivos",target:"Productos identificados y contenidos.",input:"Producto + ubicación + mezcla."},
+    {id:"BAS-AUD-09",group:"Área",label:"Corte/acabado",target:"Zona despejada y herramienta apta.",input:"Equipo real + condición."},
+    {id:"BAS-AUD-10",group:"Área",label:"Polvo",target:"Polvo no contamina acabado químico.",input:"Secuencia y limpieza."},
+    {id:"BAS-AUD-11",group:"Área",label:"Material pesado",target:"Materiales/piezas pesadas están estables y con ruta.",input:"Almacenamiento + recorrido."},
+    {id:"BAS-AUD-12",group:"Área",label:"Maniobra",target:"Maniobra pesada tiene método o asistencia definidos.",input:"Observación de maniobra real."},
+    {id:"BAS-AUD-13",group:"Proceso",label:"Plancha",target:"Dimensiones y apoyo inferior corresponden a pieza y referencia.",input:"Medidas + material + apoyo."},
+    {id:"BAS-AUD-14",group:"Proceso",label:"Fijación",target:"Pieza equilibrada y sostenida antes del relleno/acabado.",input:"Comprobación estructural."},
+    {id:"BAS-AUD-15",group:"Proceso",label:"Poliuretano",target:"Cuando se usa, producto y dosificación corresponden a una receta de Bases liberada.",input:"Producto + lote + receta + prueba."},
+    {id:"BAS-AUD-16",group:"Proceso",label:"Dextrina",target:"La mezcla usa la relación 2:1 soportada cuando aplica.",input:"Preparación real."},
+    {id:"BAS-AUD-17",group:"Proceso",label:"Malla",target:"Malla 8x8 y separación de 3 mm se conservan cuando esa ruta aplica.",input:"Detalle antes del recubrimiento."},
+    {id:"BAS-AUD-18",group:"Proceso",label:"Costal/terreno",target:"Recubrimiento mantiene continuidad sin invadir la pata.",input:"Detalle antes de ambientación."},
+    {id:"BAS-AUD-19",group:"Proceso",label:"Ambientación",target:"Elementos finales permanecen estables y no interfieren con traslado o lectura.",input:"Inspección final."},
+    {id:"BAS-AUD-20",group:"Proceso",label:"Liberación",target:"La base se libera por estabilidad, identidad y posibilidad de traslado, no sólo por apariencia.",input:"Comprobación final + transferencia."}
+  ],
+  implementationHolds:[
+    {id:"BAS-HOLD-01",text:"Confirmar responsable y estaciones reales de Bases."},
+    {id:"BAS-HOLD-02",text:"Cerrar frontera física/operativa con Carpintería."},
+    {id:"BAS-HOLD-03",text:"Levantar inventario real de herramienta/equipo."},
+    {id:"BAS-HOLD-04",text:"Definir capacidad/criterio estructural de planchas, bancos, ruedas, tornillería y fijaciones por proyecto real."},
+    {id:"BAS-HOLD-05",text:"Identificar producto/HDS/receta real de poliuretano para Bases."},
+    {id:"BAS-HOLD-06",text:"Resolver conflicto 50/50 vs 30/70 sin extrapolar Formas; 30/70 no queda canónico."},
+    {id:"BAS-HOLD-07",text:"Verificar ventilación/extracción y control de polvo."},
+    {id:"BAS-HOLD-08",text:"Observar método real de manipulación de piezas pesadas."},
+    {id:"BAS-HOLD-09",text:"Cerrar criterios/estado BIWO exactos."},
+    {id:"BAS-HOLD-10",text:"Completar evidencia de estabilidad y competencia."},
+    {id:"BAS-HOLD-11",text:"Validar si 18 mm, dos capas/ruedas y otras prácticas históricas siguen vigentes por tipo de proyecto."}
+  ],
+  sourceRefs:[
+    "ops/areas/BASES_AREA_BOOK_V2.md"
+  ]
+};
