@@ -1301,7 +1301,7 @@ window.ROCA_DEPARTMENTS["area-blanqueado"] = {
       {id:"BLA-MET-03",title:"Limpieza y salida",text:"Limpiar el elemento tratado, conservar identidad y llevarlo a condición estable para Montaje/acabado. Cualquier producto auxiliar se documenta sólo si realmente se usa."}
     ],
     controls:[
-      {id:"BLA-CTL-01",text:"No añadir químicos, concentraciones, tiempos o temperaturas no soportados por fuente."},
+      {id:"BLA-CTL-01",text:"No añadir químicos ni fijar concentraciones, tiempos o temperaturas que todavía no estén liberados como parte del método."},
       {id:"BLA-CTL-02",text:"Cualquier producto auxiliar se documenta únicamente si existe en la operación real."},
       {id:"BLA-CTL-03",text:"La protección de cuernos gobierna el montaje del tratamiento cuando aplica."}
     ]
