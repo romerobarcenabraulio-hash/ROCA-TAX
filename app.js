@@ -47,9 +47,14 @@
     const dept = window.ROCA_DEPARTMENTS && window.ROCA_DEPARTMENTS[section && section.id];
     if(!dept) return '';
 
-    const areaRows=(dept.area||[]).map(r=>
+    const specificAreaRows=(dept.area||[]).map(r=>
       '<tr><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td>'+esc(r.text)+'</td></tr>'
     ).join('');
+    const physicalRows=(Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)?window.ROCA_AREA_PHYSICAL_STANDARD:[])
+      .filter(r=>r.areas==='ALL' || (Array.isArray(r.areas)&&r.areas.includes(section.id)))
+      .map(r=>'<tr class="physical-row"><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td>'+esc(r.standard)+'</td></tr>')
+      .join('');
+    const areaRows=specificAreaRows+physicalRows;
     const auditRows=(dept.areaAudit||[]).map(r=>
       '<tr><td><strong>'+esc(r.id)+'</strong></td><td>'+esc(r.criterion)+'</td><td>'+esc(r.evidence)+'</td></tr>'
     ).join('');
@@ -94,8 +99,8 @@
       '<div class="department-purpose"><div class="eyebrow">DEPARTAMENTO</div><h2>'+esc(dept.title)+'</h2><p>'+esc(dept.purpose)+'</p>'+
       '<div class="department-handoff"><span><strong>Recibe de:</strong> '+esc(dept.receivesFrom||'—')+'</span><span><strong>Entrega a:</strong> '+esc(dept.handsOffTo||'—')+'</span></div></div>'+
       governance+
-      inheritedPhysicalStandardMarkup(section)+
       '<section class="department-block"><div class="eyebrow">01 · ÁREA DE TRABAJO</div><h2>Cómo debe estar '+esc(dept.title)+'</h2>'+
+      '<p class="source-note">La misma tabla integra condiciones específicas del departamento y controles físicos transversales que realmente le aplican.</p>'+
       '<table><thead><tr><th>ID</th><th>Condición permanente</th></tr></thead><tbody>'+areaRows+'</tbody></table></section>'+
       '<section class="department-block department-audit-block"><div class="eyebrow">02 · AUDITORÍA DEL ÁREA</div><h2>Qué se comprueba en el espacio</h2>'+
       '<p>Esta revisión comprueba el estado físico del departamento. Una desviación real abre IMPLEMENTAR; el criterio permanece.</p>'+
@@ -111,17 +116,6 @@
       '<section class="department-block"><div class="eyebrow">10 · EVIDENCIA</div><h2>Qué evidencia sirve y dónde va</h2>'+
       '<table><thead><tr><th>ID</th><th>Qué demuestra</th><th>Placement</th></tr></thead><tbody>'+evidence+'</tbody></table></section>'+
       '</section>';
-  }
-
-  function inheritedPhysicalStandardMarkup(section){
-    if(!section || !String(section.id||'').startsWith('area-') || !Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)) return '';
-    const rows = window.ROCA_AREA_PHYSICAL_STANDARD.filter(r => r.areas==='ALL' || (Array.isArray(r.areas) && r.areas.includes(section.id)));
-    if(!rows.length) return '';
-    return '<section class="inherited-standard"><div class="eyebrow">ESTÁNDAR FÍSICO PERMANENTE</div>'+
-      '<h2>Condiciones que debe conservar esta área</h2>'+
-      '<table class="permanent-standard-table"><thead><tr><th>Elemento</th><th>Cómo debe estar</th></tr></thead><tbody>'+
-      rows.map(r=>'<tr><td><strong>'+esc(r.label)+'</strong></td><td>'+r.standard+'</td></tr>').join('')+
-      '</tbody></table></section>';
   }
 
   function sectionMarkup(section){
