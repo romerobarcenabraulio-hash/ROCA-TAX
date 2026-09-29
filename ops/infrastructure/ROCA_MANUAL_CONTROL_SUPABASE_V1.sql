@@ -341,3 +341,81 @@ grant execute on function public.roca_manual_register_media(
   text,text,text,text,bigint,text,text,text,text,text,text
 ) to authenticated;
 
+
+
+-- Bootstrap Auth seguro: nadie adquiere owner/admin por orden de llegada.
+create table if not exists public.roca_manual_auth_allowlist (
+  email text primary key,
+  role public.app_role not null check (role in ('owner'::public.app_role,'admin'::public.app_role)),
+  active boolean not null default true,
+  added_at timestamptz not null default now(),
+  notes text,
+  constraint roca_manual_auth_allowlist_email_lower check (email = lower(email))
+);
+
+alter table public.roca_manual_auth_allowlist enable row level security;
+grant select on public.roca_manual_auth_allowlist to authenticated;
+
+drop policy if exists "allowlisted user reads own grant" on public.roca_manual_auth_allowlist;
+create policy "allowlisted user reads own grant"
+on public.roca_manual_auth_allowlist
+for select
+to authenticated
+using (
+  active
+  and email = lower(coalesce((auth.jwt() ->> 'email'), ''))
+);
+
+drop policy if exists "allowlisted user claims own role" on public.user_roles;
+create policy "allowlisted user claims own role"
+on public.user_roles
+for insert
+to authenticated
+with check (
+  user_id = auth.uid()
+  and exists (
+    select 1
+    from public.roca_manual_auth_allowlist a
+    where a.active
+      and a.email = lower(coalesce((auth.jwt() ->> 'email'), ''))
+      and a.role = user_roles.role
+  )
+);
+
+create or replace function public.roca_manual_claim_allowed_role()
+returns public.user_roles
+language plpgsql
+security invoker
+set search_path = public, pg_temp
+as $$
+declare
+  allowed_role public.app_role;
+  claimed public.user_roles;
+begin
+  if auth.uid() is null then
+    raise exception 'authentication required';
+  end if;
+
+  select a.role
+    into allowed_role
+  from public.roca_manual_auth_allowlist a
+  where a.active
+    and a.email = lower(coalesce((auth.jwt() ->> 'email'), ''))
+  limit 1;
+
+  if allowed_role is null then
+    raise exception 'email is not authorized for ROCA manual control';
+  end if;
+
+  insert into public.user_roles(user_id, role)
+  values (auth.uid(), allowed_role)
+  on conflict (user_id, role) do update
+    set role = excluded.role
+  returning * into claimed;
+
+  return claimed;
+end;
+$$;
+
+revoke all on function public.roca_manual_claim_allowed_role() from public, anon;
+grant execute on function public.roca_manual_claim_allowed_role() to authenticated;
