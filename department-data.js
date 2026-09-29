@@ -583,7 +583,7 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
   method:{
     flow:"Definir alcance y medidas → cortar plancha/base → construir bancos y fijación → elegir ruta de volumen/terreno → proteger y verter poliuretano cuando aplique → recortar/modelar → aplicar dextrina/terreno → construir malla/costal cuando aplique → ambientar → comprobar estabilidad y transferir.",
     branches:[
-      {title:"Ruta poliuretano",text:"Usar sólo cuando la solución de base realmente lo requiera. La receta permanece en HOLD hasta confirmar producto A/B real, HDS, aplicación y prueba controlada de Bases."},
+      {title:"Ruta poliuretano",text:"Usar sólo cuando la solución de base realmente lo requiera. La dosificación permanece NO LIBERADA hasta confirmar producto A/B real, HDS, aplicación y prueba controlada de Bases."},
       {title:"Ruta malla/costal",text:"Usa costillas, malla 8x8, costal, dextrina y terreno. Conservar 3 mm de separación entre pata y malla."}
     ],
     stages:[
@@ -665,7 +665,7 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
     "Tornillería, clavos cuando proceda y herrajes",
     "Varillas / fijaciones asociadas a la pieza",
     "Plástico / playe para protección",
-    "Poliuretano A/B — receta en HOLD",
+    "Poliuretano A/B — dosificación NO LIBERADA",
     "Resanador para huecos localizados cuando aplique",
     "Pinturas / acabados de terreno cuando aplique",
     "Dextrina",
@@ -954,7 +954,7 @@ window.ROCA_DEPARTMENTS["area-recepcion"] = {
       {id:"REC-MET-07",title:"Transferir",text:"Entregar a Curtiduría u otra ruta aplicable conservando la misma identidad y registrando el handoff."}
     ],
     controls:[
-      {id:"REC-CTL-01",text:"Recepción no inventa criterios legales de aceptación; la aplicabilidad documental se resuelve en Bibliografía/Assurance."},
+      {id:"REC-CTL-01",text:"Recepción no inventa criterios legales de aceptación; la aplicabilidad documental se resuelve en Bibliografía."},
       {id:"REC-CTL-02",text:"Ninguna pieza se transfiere sin ID común y condición registrada."},
       {id:"REC-CTL-03",text:"Foto y documento sólo sirven como evidencia si permanecen ligados al mismo trabajo."}
     ]
