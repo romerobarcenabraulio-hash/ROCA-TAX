@@ -773,7 +773,9 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
     {id:"FMR-AUD-AREA-04",criterion:"Forma/molde conserva ID y ubicación de rack.",evidence:"Código + rack + pieza física."},
     {id:"FMR-AUD-AREA-05",criterion:"Báscula y recipientes patrón están identificados y utilizables.",evidence:"Activo real + condición visible."},
     {id:"FMR-AUD-AREA-06",criterion:"Curado ocurre en espacio estable y sin apertura prematura.",evidence:"Pieza en curado + hora de vaciado/revisión."},
-    {id:"FMR-AUD-AREA-07",criterion:"Punto de mezcla está preparado para producto/proceso real.",evidence:"Punto de mezcla + control de derrame/ventilación."}
+    {id:"FMR-AUD-AREA-07",criterion:"Punto de mezcla está preparado para producto/proceso real.",evidence:"Punto de mezcla + control de derrame/ventilación."},
+    {id:"FMR-AUD-AREA-08",criterion:"Moldes y formas permanecen almacenados estables, identificados y sin deformación.",evidence:"Rack/resguardo + condición física."},
+    {id:"FMR-AUD-AREA-09",criterion:"La línea de partición y las divisiones están definidas antes de laminar cuando la geometría pueda quedar atrapada.",evidence:"Forma original + divisiones antes de laminado."}
   ],
   method:{
     flow:"Elegir familia → preparar estructura/molde → encerar/orear cuando aplique → prueba de lote cuando aplique → dosificar → mezclar/vaciar o laminar → curar → desmoldar/revisar → identificar y resguardar.",
