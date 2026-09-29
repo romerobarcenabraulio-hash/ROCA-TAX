@@ -1043,21 +1043,25 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     {id:"CAR-AREA-01",label:"Circulación y accesos",text:"Cuando exista el puesto, pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Piezas, cajas, madera, cables y herramienta temporal no ocupan circulación."},
     {id:"CAR-AREA-02",label:"Estación y almacenamiento",text:"Herramientas, materiales y consumibles tienen ubicación definida. El puesto vuelve a condición utilizable al cerrar la tarea y el equipo dañado se separa del uso."},
     {id:"CAR-AREA-03",label:"Iluminación",text:"La iluminación se verifica en el plano real de corte, trazo y armado cuando la tarea lo requiera."},
-    {id:"CAR-AREA-04",label:"Ventilación y extracción",text:"Ventilación/extracción se diseña contra operaciones reales de corte, lijado, polvo de madera, adhesivos o acabados efectivamente usados; no se instala por copiar un master histórico."},
+    {id:"CAR-AREA-04",label:"Ventilación y extracción",text:"Ventilación/extracción se define contra las operaciones reales de corte, lijado, polvo de madera, adhesivos o acabados efectivamente usados; no se instala antes de confirmar equipo, material y generación real."},
     {id:"CAR-AREA-05",label:"Emergencia",text:"Rutas y medios de respuesta aplicables permanecen visibles y accesibles; cobertura y ubicación se resuelven contra evaluación real."},
     {id:"CAR-AREA-06",label:"Identidad y espera",text:"Toda pieza, caja, corte o trabajo en espera conserva ID de orden/proyecto y siguiente acción; material de embalaje no mezcla proyectos."},
-    {id:"CAR-AREA-07",label:"Ubicación y separación",text:"La ubicación permanece OPEN. No ocupa la pedacera ni la estación de Señor Pez en Retoque; separa polvo/aserrín de pintura, gasolina blanca, solventes y acabados; permite ruta de madera/cajas y servicios compatibles con equipo real."},
+    {id:"CAR-AREA-07",label:"Ubicación y separación",text:"NO LIBERADO — la ubicación todavía no está definida. No puede ocupar la pedacera ni la estación de Señor Pez en Retoque; debe separar polvo/aserrín de pintura, gasolina blanca, solventes y acabados, permitir ruta de madera/cajas y contar con servicios compatibles con el equipo real."},
     {id:"CAR-AREA-08",label:"Corte y polvo",text:"Banco y equipo de corte, cuando existan, permanecen estables y con protecciones/accesorios correspondientes al equipo real. Polvo/aserrín se captura o retira en origen."},
     {id:"CAR-AREA-09",label:"Madera y herrajes",text:"Madera/triplay se almacena estable; paneles pesados evitan vuelco/deslizamiento. Tornillos, clavos, bisagras y herrajes se separan por tipo/tamaño suficiente para recuperarlos sin vaciar contenedores."},
     {id:"CAR-AREA-10",label:"Embalaje y carga",text:"Cartón, madera, película/protección y fijaciones tienen zona definida. Caja/embalaje conserva ID de orden y puede manipularse/cargarse sin retirar protecciones esenciales ni bloquear la ruta."}
   ],
   areaAudit:[
-    {id:"CAR-AUD-AREA-01",criterion:"Existe decisión de implementar y ubicación aprobada.",evidence:"Decisión + ubicación física real."},
-    {id:"CAR-AUD-AREA-02",criterion:"Polvo/aserrín queda separado de Retoque/acabados.",evidence:"Límites reales y punto de corte."},
-    {id:"CAR-AUD-AREA-03",criterion:"Banco, rack y equipo real están implementados y utilizables.",evidence:"Activo físico y condición."},
-    {id:"CAR-AUD-AREA-04",criterion:"Madera, herrajes y protecciones se almacenan de forma recuperable y estable.",evidence:"Almacenamiento real."},
-    {id:"CAR-AUD-AREA-05",criterion:"Electricidad y ruta de carga son compatibles con el puesto real.",evidence:"Recorrido + servicios."},
-    {id:"CAR-AUD-AREA-06",criterion:"Caja o embalaje conserva ID ligado a la orden.",evidence:"Muestra real."}
+    {id:"CAR-AUD-AREA-01",criterion:"Cuando exista el puesto, circulación, salidas, tableros y medios de emergencia permanecen libres.",evidence:"Recorrido físico completo."},
+    {id:"CAR-AUD-AREA-02",criterion:"Estación, herramientas, materiales y consumibles tienen ubicación definida y recuperable.",evidence:"Puesto real + almacenamiento."},
+    {id:"CAR-AUD-AREA-03",criterion:"La iluminación corresponde al plano real de corte, trazo y armado cuando gobierna la tarea.",evidence:"Lux + plano de tarea + instrumento cuando aplique."},
+    {id:"CAR-AUD-AREA-04",criterion:"Ventilación/extracción corresponde al equipo, material y generación real.",evidence:"Operación real + polvo/producto + control físico."},
+    {id:"CAR-AUD-AREA-05",criterion:"Rutas y medios de respuesta aplicables permanecen visibles y accesibles.",evidence:"Recorrido físico de emergencia."},
+    {id:"CAR-AUD-AREA-06",criterion:"Toda pieza, caja, corte o trabajo en espera conserva ID y siguiente acción.",evidence:"Muestra de trabajos y embalajes."},
+    {id:"CAR-AUD-AREA-07",criterion:"La ubicación aprobada no invade Retoque y mantiene separación de polvo, químicos, carga y servicios.",evidence:"Límite físico con áreas vecinas + ruta de materiales/carga."},
+    {id:"CAR-AUD-AREA-08",criterion:"Banco y equipo de corte permanecen estables y el polvo/aserrín se controla en origen.",evidence:"Puesto de corte real + condición del equipo + manejo de polvo."},
+    {id:"CAR-AUD-AREA-09",criterion:"Madera, paneles y herrajes se almacenan estables y recuperables.",evidence:"Almacenamiento real."},
+    {id:"CAR-AUD-AREA-10",criterion:"Embalaje conserva ID y puede manipularse/cargarse sin retirar protecciones esenciales ni bloquear la ruta.",evidence:"Caja/embalaje real + recorrido de carga."}
   ],
   method:{
     flow:"NO LIBERADO — no existe todavía una secuencia técnica canónica.",
