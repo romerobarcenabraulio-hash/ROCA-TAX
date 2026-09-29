@@ -86,6 +86,50 @@
     return html;
   }
 
+  function departmentMarkup(section){
+    const dept = window.ROCA_DEPARTMENTS && window.ROCA_DEPARTMENTS[section && section.id];
+    if(!dept) return '';
+
+    const areaRows=(dept.area||[]).map(r=>
+      '<tr><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td>'+esc(r.text)+'</td></tr>'
+    ).join('');
+    const auditRows=(dept.areaAudit||[]).map(r=>
+      '<tr><td><strong>'+esc(r.id)+'</strong></td><td>'+esc(r.criterion)+'</td><td>'+esc(r.evidence)+'</td></tr>'
+    ).join('');
+    const stages=(dept.method?.stages||[]).map(r=>
+      '<section class="method-stage"><h3>'+esc(r.id)+' · '+esc(r.title)+'</h3><p>'+esc(r.text)+'</p></section>'
+    ).join('');
+    const branches=(dept.method?.branches||[]).map(r=>
+      '<div class="callout"><strong>'+esc(r.title)+':</strong> '+esc(r.text)+'</div>'
+    ).join('');
+    const controls=(dept.method?.controls||[]).map(r=>'<li><strong>'+esc(r.id)+':</strong> '+esc(r.text)+'</li>').join('');
+    const tools=(dept.tools||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const consumables=(dept.consumables||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const evidence=(dept.evidence||[]).map(r=>
+      '<tr><td><strong>'+esc(r.id)+'</strong></td><td>'+esc(r.text)+'</td><td>'+esc(r.placement)+'</td></tr>'
+    ).join('');
+
+    return '<section class="department-canonical">'+
+      '<div class="department-purpose"><div class="eyebrow">DEPARTAMENTO</div><h2>'+esc(dept.title)+'</h2><p>'+esc(dept.purpose)+'</p>'+
+      '<div class="department-handoff"><span><strong>Recibe de:</strong> '+esc(dept.receivesFrom||'—')+'</span><span><strong>Entrega a:</strong> '+esc(dept.handsOffTo||'—')+'</span></div></div>'+
+      inheritedPhysicalStandardMarkup(section)+
+      '<section class="department-block"><div class="eyebrow">01 · ÁREA DE TRABAJO</div><h2>Cómo debe estar Curtiduría</h2>'+
+      '<table><thead><tr><th>ID</th><th>Condición permanente</th></tr></thead><tbody>'+areaRows+'</tbody></table></section>'+
+      '<section class="department-block department-audit-block"><div class="eyebrow">02 · AUDITORÍA DEL ÁREA</div><h2>Qué se comprueba en el espacio</h2>'+
+      '<p>Esta revisión comprueba el estado físico del departamento. Una desviación real abre IMPLEMENTAR; el criterio permanece.</p>'+
+      '<table><thead><tr><th>ID</th><th>Criterio</th><th>Evidencia útil</th></tr></thead><tbody>'+auditRows+'</tbody></table></section>'+
+      '<section class="department-block"><div class="eyebrow">03 · METODOLOGÍA</div><h2>Cómo se trabaja</h2>'+
+      '<p class="flow-line">'+esc(dept.method?.flow||'')+'</p>'+branches+stages+
+      '<h3>Controles que viajan con el proceso</h3><ul>'+controls+'</ul></section>'+
+      '<section class="department-two-col">'+
+        '<section class="department-block"><div class="eyebrow">04 · HERRAMIENTAS / EQUIPO</div><h2>Qué usa Curtiduría</h2><ul>'+tools+'</ul></section>'+
+        '<section class="department-block"><div class="eyebrow">05 · CONSUMIBLES / MATERIALES</div><h2>Qué entra al proceso</h2><ul>'+consumables+'</ul></section>'+
+      '</section>'+
+      '<section class="department-block"><div class="eyebrow">06 · EVIDENCIA</div><h2>Qué evidencia sirve y dónde va</h2>'+
+      '<table><thead><tr><th>ID</th><th>Qué demuestra</th><th>Placement</th></tr></thead><tbody>'+evidence+'</tbody></table></section>'+
+      '</section>';
+  }
+
   function inheritedPhysicalStandardMarkup(section){
     if(!section || !String(section.id||'').startsWith('area-') || !Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)) return '';
     const rows = window.ROCA_AREA_PHYSICAL_STANDARD.filter(r => r.areas==='ALL' || (Array.isArray(r.areas) && r.areas.includes(section.id)));
@@ -107,7 +151,7 @@
       '<div class="eyebrow">'+esc(section.eyebrow||'')+'</div>'+
       '<h1>'+esc(section.title||section.nav||section.id)+'</h1>'+
       '<p class="lead">'+esc(section.lead||'')+'</p><div class="bronze-rule short"></div>'+
-      '<div class="master-content">'+(section.body||'')+inheritedPhysicalStandardMarkup(section)+areaBookMarkup(section)+posters+'</div>'+
+      '<div class="master-content">'+((window.ROCA_DEPARTMENTS&&window.ROCA_DEPARTMENTS[section.id])?departmentMarkup(section):((section.body||'')+inheritedPhysicalStandardMarkup(section)+areaBookMarkup(section)))+posters+'</div>'+
       footer(section.nav ? String(section.nav).toUpperCase() : '')+'</article>';
   }
 
