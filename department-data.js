@@ -7,11 +7,6 @@ window.ROCA_DEPARTMENTS["area-curtiduria"] = {
   purpose:"Preservar, curtir y acondicionar la piel hasta dejarla manipulable, identificada y lista para producción.",
   receivesFrom:"Recepción",
   handsOffTo:"Almacén / Montaje según ruta",
-  people:[
-    "Rodolfo Sr. — Curtiduría / conocimiento técnico",
-    "David — Curtiduría / supervisión",
-    "Lalo / Eduardo — Curtiduría"
-  ],
   entryInputs:[
     "Piel recibida desde Recepción con identificación física",
     "Condición y espesor suficientes para seleccionar la ruta de proceso"
@@ -134,18 +129,6 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
   purpose:"Convertir una piel curtida y acondicionada, una forma compatible y sus componentes en una pieza armada, proporcionada, estable y lista para Retoque.",
   receivesFrom:"Curtiduría / almacén con piel, medidas, forma y componentes identificados",
   handsOffTo:"Retoque",
-  people:[
-    "Guicho — dirección del taller / coordinación de Montaje",
-    "Don Gustavo — Montaje",
-    "Ezequiel — Montaje",
-    "Manuel Rivera — Montaje",
-    "Rodolfo — Montaje",
-    "Raimundo — Montaje",
-    "Rubén — Montaje",
-    "Lalo — Montaje",
-    "Ricardo — Montador",
-    "Eugenio — asistente directo de Ricardo"
-  ],
   entryInputs:[
     "Piel curtida/acondicionada e identificada",
     "Medidas necesarias",
@@ -343,11 +326,6 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
   purpose:"Recuperar superficie, color, textura y presentación sin ocultar defectos estructurales que deban regresar al oficio capaz de corregirlos.",
   receivesFrom:"Montaje con pieza seca, estructuralmente estable e identificada",
   handsOffTo:"Bases / Revisión según alcance de la orden",
-  people:[
-    "Rodolfo Jr. — encargado de Retoque",
-    "Emiliano — Retoque",
-    "Señor Pez — Retoque; la pedacera pertenece únicamente a esta área"
-  ],
   entryInputs:[
     "Pieza seca",
     "Pieza estructuralmente estable",
@@ -732,10 +710,6 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
   purpose:"Convertir medidas y geometría en forma, molde o réplica estable y utilizable.",
   receivesFrom:"Medidas, patrón/forma, pose o pieza a reproducir",
   handsOffTo:"Montaje u operación solicitante",
-  people:[
-    "Omar — responsable conocido de Formas, Moldes y Réplicas",
-    "Soldadura / adaptación participa sólo cuando la pieza lo requiere"
-  ],
   entryInputs:[
     "Medidas o geometría suficiente",
     "Patrón, forma, pose o pieza a reproducir identificada",
@@ -1157,9 +1131,6 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
   purpose:"Resolver uniones y adaptaciones metálicas con control de sujeción, chispas, humos y estabilidad.",
   receivesFrom:"Pieza o estructura que requiere unión o adaptación",
   handsOffTo:"Operación solicitante con unión estable preparada para continuar",
-  people:[
-    "Flaco — responsable conocido / alias operativo"
-  ],
   entryInputs:[
     "Pieza/estructura identificada",
     "Necesidad de unión o adaptación definida",
