@@ -154,7 +154,7 @@
 </section>
 <section class="action-board">
   <h2>Acciones abiertas reales</h2>
-  <div class="note"><b>Regla de trabajo:</b> una fila entra aquí sólo después de observar una brecha real contra el estándar. Un requisito sin levantamiento no se convierte en tarea por defecto. Cuando la corrección queda lista pasa a <b>READY_FOR_AUDIT</b>; cuando la evidencia es aceptada queda <b>CLOSED</b> y deja esta vista.</div>
+  <div class="note"><b>Regla de trabajo:</b> todo criterio aplicable comienza pendiente hasta ser evaluado. <b>NO VERIFICADO</b> significa levantar/comprobar; <b>NO CONFORME</b> significa corregir. Cuando queda <b>CONFORME</b> o <b>NO APLICA — JUSTIFICADO</b>, desaparece de IMPLEMENTAR y permanece únicamente el estándar en el manual.</div>
   <div class="tool-links">
     <a href="field-walk.html">LEVANTAR EN CAMPO</a>
     <a href="../../index.html">AUDITAR EN EL HTML CENTRAL</a>
@@ -224,11 +224,11 @@ function auditImplementationItems(){
     let saved={};
     try{saved=JSON.parse(localStorage.getItem("roca.audit."+areaId)||"{}")}catch(e){}
     const criteria=implementationCriterionMap(areaId,dept);
-    Object.entries(saved).forEach(([req,v])=>{
-      const status=String(v?.status||"").toUpperCase();
+    criteria.forEach((row,req)=>{
+      const v=saved[req]||{};
+      const status=String(v.status||"NOT_VERIFIED").toUpperCase();
       if(!["NONCONFORMING","NOT_VERIFIED"].includes(status)) return;
-      const row=criteria.get(req)||{label:req,target:req,evidence:"Evidencia pendiente.",basis:"Estándar ROCA"};
-      const note=String(v?.note||"").trim();
+      const note=String(v.note||"").trim();
       items.push({
         id:"AUD-"+String(dept.code||areaId).toUpperCase()+"-"+req,
         area:dept.title||areaId,
@@ -272,8 +272,8 @@ async function loadImplementationActions(){
   }catch(err){controlledError=true}
 
   const auditItems=auditImplementationItems();
-  const controlledReqs=new Set(controlled.map(x=>x.req).filter(Boolean));
-  const dynamic= auditItems.filter(x=>!controlledReqs.has(x.req));
+  const controlledReqs=new Set(controlled.filter(x=>x.req).map(x=>String(x.areaId||x.area)+"|"+x.req));
+  const dynamic=auditItems.filter(x=>!controlledReqs.has(String(x.areaId)+"|"+x.req));
   const items=[...controlled,...dynamic];
 
   const summary=document.getElementById("implementationAuditSummary");
