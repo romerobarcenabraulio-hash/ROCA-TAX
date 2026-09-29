@@ -112,6 +112,42 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
   purpose:"Convertir una piel curtida y acondicionada, una forma compatible y sus componentes en una pieza armada, proporcionada, estable y lista para Retoque.",
   receivesFrom:"Curtiduría / almacén con piel, medidas, forma y componentes identificados",
   handsOffTo:"Retoque",
+  people:[
+    "Guicho — dirección del taller / coordinación de Montaje",
+    "Don Gustavo — Montaje",
+    "Ezequiel — Montaje",
+    "Manuel Rivera — Montaje",
+    "Rodolfo — Montaje",
+    "Raimundo — Montaje",
+    "Rubén — Montaje",
+    "Lalo — Montaje",
+    "Ricardo — Montador",
+    "Eugenio — asistente directo de Ricardo"
+  ],
+  entryInputs:[
+    "Piel curtida/acondicionada e identificada",
+    "Medidas necesarias",
+    "Pose/forma definida",
+    "Forma y componentes correspondientes",
+    "Cuernos/astas, ojos u otros componentes identificados cuando apliquen",
+    "Condición comercial/operativa suficiente para avanzar según la regla vigente de ROCA"
+  ],
+  entryStops:[
+    "Piel y forma no corresponden dimensionalmente",
+    "Falta una pieza o componente crítico",
+    "La identidad de la pieza no coincide",
+    "Existe una condición estructural o anatómica que no puede corregirse dentro de Montaje",
+    "El estado físico o informacional obligaría a improvisar"
+  ],
+  exitCriteria:[
+    "Pieza seca",
+    "Estructuralmente estable",
+    "Cosida",
+    "Piel asentada y fijada",
+    "Sin humedad apreciable",
+    "Sin desplazamiento estructural al comprobar las zonas fijadas",
+    "Identificada y con transferencia registrada"
+  ],
   area:[
     {id:"MON-AREA-01",label:"Circulación y accesos",text:"Pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Piezas, cajas, cables, mangueras y herramienta temporal no ocupan circulación."},
     {id:"MON-AREA-02",label:"Estación y almacenamiento",text:"Cada puesto conserva superficie suficiente, almacenamiento recuperable y apoyo estable para la pieza. Herramienta y consumibles habituales tienen ubicación definida sin amontonamiento."},
@@ -140,7 +176,7 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
     flow:"Piel flexible y medida → comparar con forma y pose → presentar y corregir forma → preparar boca/nariz/canales → posicionar cuernos/astas → conformar orejas → posicionar ojos → correcciones localizadas con barro → adhesivo y vestido de piel → coser/fijar → secar y comprobar → transferir a Retoque.",
     branches:[],
     stages:[
-      {id:"MON-MET-01",title:"Recuperar flexibilidad y levantar medidas",text:"Relajar la piel hasta recuperar flexibilidad; cerrar desde el interior cortes o balazos que deban repararse; retirar carnaza, grasa, tejido sobrante y huesos residuales; terminar cartílagos y limpiar donde corresponda. Medir sólo con la piel suficientemente flexible."},
+      {id:"MON-MET-01",title:"Recuperar flexibilidad y levantar medidas",text:"Relajar la piel hasta recuperar flexibilidad; cerrar desde el interior cortes o balazos que deban repararse; retirar carnaza, grasa, tejido sobrante y huesos residuales; limpiar interior de pezuñas o garras cuando corresponda; terminar cartílagos de oreja, nariz y belfos. Antes de medir, jalar la piel con la mano: debe desplazarse y recuperar forma sin quedar al límite de tensión. Registrar ojo-nariz, contorno inmediatamente detrás de las órbitas y las medidas corporales que correspondan. Si una modificación de forma se prolongará varios días, la fuente técnica atribuye congelar la piel para resguardarla."},
       {id:"MON-MET-02",title:"Seleccionar, presentar y corregir la forma",text:"Comparar medidas, inventario y pose. Elegir la forma que reduzca correcciones, presentar antes de cortar y corregir de forma localizada cuando proceda. Después de cada modificación volver a comprobar cara, cuello, largo, ancho y volumen como conjunto."},
       {id:"MON-MET-03",title:"Preparar boca, nariz y canales",text:"Abrir y perfilar alojamientos para boca, nariz, belfos y piel de nariz. El criterio de salida es que entren sin forzar la piel ni desplazar la cara."},
       {id:"MON-MET-04",title:"Preparar y posicionar cuernos o astas",text:"Presentar la base, resolver posición con frente, ojos y orejas y comparar altura, inclinación, separación y simetría desde frente, perfil y vista superior. No cubrir la unión mientras exista movimiento o una diferencia corregible."},
@@ -148,7 +184,7 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
       {id:"MON-MET-06",title:"Posicionar ojos",text:"Colocar los ojos y usar barro LR300 para sostener y modelar posición. Trabajar ambos lados simultáneamente y comparar altura, profundidad, orientación y relación anatómica."},
       {id:"MON-MET-07",title:"Correcciones localizadas con barro",text:"Usar barro para corregir volumen y transición sólo después de que la forma principal coincide con la piel. Presentar la piel inmediatamente después de modelar."},
       {id:"MON-MET-08",title:"Aplicar adhesivo y vestir la piel",text:"Aplicar adhesivo en superficies de contacto y vestir mientras permanece trabajable. Asentar primero ojos, nariz, belfos, orejas, cuernos/astas y líneas de costura. El adhesivo fija contacto; no corrige una forma incompatible."},
-      {id:"MON-MET-09",title:"Coser y controlar abultamientos",text:"Cerrar con el hilo apropiado al espesor y zona, acomodando la piel conforme avanza la costura. Corregir abultamientos antes de perder movilidad del adhesivo y usar alfileres sólo como fijación temporal."},
+      {id:"MON-MET-09",title:"Coser y controlar abultamientos",text:"Cerrar con el hilo que corresponda al espesor y la zona. La fuente conserva cuatro familias: zapatero grueso, zapatero delgado, pesca trenzado grueso y pesca trenzado delgado; también registra separación del hilo de zapatero en tiras cuando entero resulta demasiado grueso. Acomodar la piel conforme avanza la costura, corregir abultamientos antes de perder movilidad del adhesivo y usar alfileres sólo como fijación temporal."},
       {id:"MON-MET-10",title:"Secar y transferir a Retoque",text:"Mantener inmóvil durante secado. Usar 24 h como referencia mínima para primera revisión, no como liberación automática. Liberar cuando no exista humedad apreciable ni recuperación de desplazamiento en zonas fijadas."}
     ],
     controls:[
@@ -160,6 +196,43 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
       {id:"MON-CTL-06",text:"El tiempo de secado es referencia; la condición física gobierna la liberación."}
     ]
   },
+  toolCare:[
+    "Filos y punzantes se guardan protegidos",
+    "Herramienta dañada se separa del uso",
+    "Herramienta de ajuste de forma se limpia de residuos que impidan control",
+    "Equipo eléctrico se almacena con cargador y cable en ubicación definida",
+    "Mesas y soportes mantienen apoyo estable; se retiran del uso si pierden estabilidad",
+    "Cualquier herramienta de medición usada para una decisión crítica se identifica y verifica según su función"
+  ],
+  competencies:[
+    "Medir y seleccionar forma",
+    "Modificar forma",
+    "Fijar cuernos/astas",
+    "Conformar orejas con mezcla",
+    "Posicionar ojos y anatomía",
+    "Vestir y coser",
+    "Liberar a Retoque",
+    "Operar herramienta eléctrica o equipo especial cuando aplique"
+  ],
+  controlRecords:[
+    "ID de pieza / orden",
+    "Responsable / estación",
+    "Forma y componentes",
+    "Etapa real",
+    "Incidencias / retrabajo",
+    "Secado / espera",
+    "Transferencia a Retoque",
+    "Los nombres exactos de estados BIWO se toman del sistema real y no se inventan desde el manual"
+  ],
+  materialFlow:[
+    "Material que entra",
+    "Material incorporado a la pieza",
+    "Sobrante reutilizable",
+    "Sobrante no reutilizable",
+    "Envase",
+    "Residuo",
+    "Destino"
+  ],
   tools:[
     "Serrote",
     "Escofinas",
