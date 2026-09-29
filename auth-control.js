@@ -104,6 +104,14 @@ async function init(){
     const {data:{session:initial}}=await supabase.auth.getSession();
     await refreshSession(initial);
 
+    if(initial){
+      const returnHash=sessionStorage.getItem("roca.manual.returnHash");
+      if(returnHash && /^#(?:portada|area-|audit-)/.test(returnHash)){
+        sessionStorage.removeItem("roca.manual.returnHash");
+        if(location.hash!==returnHash) location.hash=returnHash;
+      }
+    }
+
     supabase.auth.onAuthStateChange((_event,nextSession)=>{
       setTimeout(()=>refreshSession(nextSession),0);
     });
@@ -117,6 +125,7 @@ requestLogin?.addEventListener("click",async()=>{
   const email=String(authEmail?.value||"").trim().toLowerCase();
   if(!email){ setAuthMessage("Escribe el correo autorizado."); return; }
 
+  sessionStorage.setItem("roca.manual.returnHash",location.hash||"#portada");
   requestLogin.disabled=true;
   setAuthMessage("Solicitando acceso…");
   try{
