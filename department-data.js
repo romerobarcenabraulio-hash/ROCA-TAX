@@ -1108,3 +1108,112 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     "ops/areas/CARPINTERIA_EMBALAJE_AREA_BOOK_V2.md"
   ]
 };
+
+window.ROCA_DEPARTMENTS["area-soldadura"] = {
+  id:"area-soldadura",
+  code:"SOL",
+  title:"Soldadura / Adaptación",
+  status:"NOT_RELEASED",
+  purpose:"Resolver uniones y adaptaciones metálicas con control de sujeción, chispas, humos y estabilidad.",
+  receivesFrom:"Pieza o estructura que requiere unión o adaptación",
+  handsOffTo:"Operación solicitante con unión estable preparada para continuar",
+  people:[
+    "Flaco — responsable conocido / alias operativo"
+  ],
+  entryInputs:[
+    "Pieza/estructura identificada",
+    "Necesidad de unión o adaptación definida",
+    "Área preparada para trabajo en caliente"
+  ],
+  entryStops:[
+    "Combustibles, cartón, solventes o pieza sensible permanecen dentro de proyección",
+    "No existe protección a terceros cuando aplica",
+    "Ventilación/extracción no corresponde al humo/material/recubrimiento real",
+    "Equipo, cables, pinza, antorcha/porta-electrodo o esmeril no están en condición utilizable",
+    "No existe condición de respuesta contra incendio acorde a la evaluación aplicable"
+  ],
+  exitCriteria:[
+    "Unión estable",
+    "Condición antes/después registrada cuando la modificación es estructural",
+    "Incidencia/adaptación ligada a la orden cuando afecta la pieza"
+  ],
+  area:[
+    {id:"SOL-AREA-01",label:"Proyección y combustibles",text:"Combustibles, cartón, solventes y pieza sensible permanecen fuera de proyección durante trabajo en caliente."},
+    {id:"SOL-AREA-02",label:"Protección a terceros",text:"Pantalla o mampara protege a terceros cuando la operación o ubicación lo requiere."},
+    {id:"SOL-AREA-03",label:"Ventilación y humos",text:"Ventilación/extracción responde al humo, material y recubrimiento real de la operación."},
+    {id:"SOL-AREA-04",label:"Equipo y cables",text:"Cables, pinza, antorcha/porta-electrodo, esmeril y equipo asociado permanecen en condición utilizable."},
+    {id:"SOL-AREA-05",label:"Extinción / trabajo en caliente",text:"Medios de respuesta y autorización aplicables se definen según evaluación vigente; no se cierran por apariencia."}
+  ],
+  areaAudit:[
+    {id:"SOL-AUD-AREA-01",criterion:"Área preparada antes de trabajo en caliente.",evidence:"Recorrido previo a la operación."},
+    {id:"SOL-AUD-AREA-02",criterion:"Terceros están protegidos cuando aplica.",evidence:"Pantalla/mampara y ubicación real."},
+    {id:"SOL-AUD-AREA-03",criterion:"Ventilación corresponde a la operación real.",evidence:"Material/recubrimiento + control físico."},
+    {id:"SOL-AUD-AREA-04",criterion:"Equipo y cables están en condición utilizable.",evidence:"Equipo real + condición visible."},
+    {id:"SOL-AUD-AREA-05",criterion:"Medios de respuesta aplicables están disponibles.",evidence:"Condición física + criterio Assurance."}
+  ],
+  method:{
+    flow:"NO LIBERADO — falta entrevista/demostración del responsable.",
+    branches:[
+      {title:"Método pendiente",text:"No se define secuencia, tipo de unión, preparación, consumibles, ajustes, aceptación ni retrabajo hasta contar con demostración primaria del responsable."}
+    ],
+    stages:[],
+    controls:[
+      {id:"SOL-CTL-01",text:"No fabricar una metodología estándar de soldadura desde conocimiento general."},
+      {id:"SOL-CTL-02",text:"La autorización se define por proceso/equipo real y control de trabajo en caliente."},
+      {id:"SOL-CTL-03",text:"La modificación estructural conserva condición antes/después y vínculo con la orden."}
+    ]
+  },
+  competencies:[
+    "Autorización por proceso/equipo real",
+    "Control de trabajo en caliente",
+    "Criterio de aceptación/retrabajo — pendiente de demostración"
+  ],
+  controlRecords:[
+    "ID de pieza / orden",
+    "Adaptación o incidencia",
+    "Condición antes/después cuando la modificación es estructural",
+    "Proceso/equipo real cuando quede demostrado"
+  ],
+  materialFlow:[
+    "Metal real",
+    "Consumible de unión/corte real",
+    "Escoria",
+    "Discos",
+    "Recortes",
+    "Residuo y destino"
+  ],
+  tools:[
+    "Equipo de soldadura — familia confirmada, modelo/proceso exacto pendiente",
+    "Herramienta asociada — detalle pendiente",
+    "Esmeril cuando corresponda"
+  ],
+  consumables:[
+    "Consumibles de unión/corte — por levantar",
+    "Material metálico — por levantar"
+  ],
+  evidence:[
+    {id:"EVID-SOL-01",text:"Área preparada antes de trabajo en caliente.",placement:"Área"},
+    {id:"EVID-SOL-02",text:"Equipo/cables/protección a terceros y ventilación real.",placement:"Área"},
+    {id:"EVID-SOL-03",text:"Condición antes/después de adaptación estructural.",placement:"Control / pieza"},
+    {id:"EVID-SOL-04",text:"Primera demostración técnica completa.",placement:"Metodología futura"}
+  ],
+  auditCriteria:[
+    {id:"SOL-AUD-01",group:"Área",label:"Preparación",target:"Área está preparada antes del trabajo en caliente.",input:"Recorrido previo."},
+    {id:"SOL-AUD-02",group:"Área",label:"Terceros",target:"Terceros están protegidos cuando aplica.",input:"Pantalla/mampara + ubicación."},
+    {id:"SOL-AUD-03",group:"Área",label:"Ventilación",target:"Ventilación corresponde a la operación real.",input:"Material/recubrimiento + control."},
+    {id:"SOL-AUD-04",group:"Área",label:"Equipo",target:"Equipo y cables están en condición utilizable.",input:"Equipo real."},
+    {id:"SOL-AUD-05",group:"Proceso",label:"Liberación",target:"Unión es estable antes de liberar.",input:"Comprobación de estabilidad."}
+  ],
+  implementationHolds:[
+    {id:"SOL-HOLD-01",text:"Realizar entrevista/demostración técnica del responsable."},
+    {id:"SOL-HOLD-02",text:"Identificar proceso de soldadura real."},
+    {id:"SOL-HOLD-03",text:"Levantar consumibles reales."},
+    {id:"SOL-HOLD-04",text:"Definir EPP según proceso real."},
+    {id:"SOL-HOLD-05",text:"Verificar ventilación/extracción."},
+    {id:"SOL-HOLD-06",text:"Cerrar protección contra incendio y autorización de trabajo en caliente según aplicabilidad."},
+    {id:"SOL-HOLD-07",text:"Cerrar mantenimiento y evidencia de equipo real."}
+  ],
+  sourceRefs:[
+    "ops/areas/SOLDADURA_AREA_BOOK_V2.md"
+  ]
+};
