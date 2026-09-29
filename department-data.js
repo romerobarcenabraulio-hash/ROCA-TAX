@@ -1033,7 +1033,7 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     "El flujo real todavía no ha sido demostrado por el responsable",
     "La ubicación invade Retoque, circulación, carga o químicos",
     "No usar la pedacera ni la estación de Señor Pez como área de Carpintería / Embalaje",
-    "NO LIBERADO — no publicar metodología hasta demostrar el flujo real"
+    "La metodología todavía no está liberada"
   ],
   exitCriteria:[
     "Corte, caja o embalaje identificado",
@@ -1117,7 +1117,7 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
   ],
   evidence:[
     {id:"EVID-CAR-01",text:"Implementación física real: panorámica, límite con áreas vecinas, banco/rack/equipo, ruta de circulación/carga y separación respecto de polvo/químicos/acabado.",placement:"Área"},
-    {id:"EVID-CAR-02",text:"Primera demostración real: orden/pieza, requerimiento/dimensiones, secuencia, herramienta/equipo, materiales/protección, condición de salida y carga/manipulación si aplica.",placement:"Metodología futura"}
+    {id:"EVID-CAR-02",text:"Primera demostración real: orden/pieza, requerimiento/dimensiones, secuencia, herramienta/equipo, materiales/protección, condición de salida y carga/manipulación si aplica.",placement:"Metodología"}
   ],
   auditCriteria:[
     {id:"CAR-AUD-01",group:"Área",label:"Decisión/ubicación",target:"Existe decisión de implementar y ubicación aprobada.",input:"Decisión + ubicación."},
@@ -1235,7 +1235,7 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     {id:"EVID-SOL-01",text:"Área preparada antes de trabajo en caliente.",placement:"Área"},
     {id:"EVID-SOL-02",text:"Equipo/cables/protección a terceros y ventilación real.",placement:"Área"},
     {id:"EVID-SOL-03",text:"Condición antes/después de adaptación estructural.",placement:"Control / pieza"},
-    {id:"EVID-SOL-04",text:"Primera demostración técnica completa.",placement:"Metodología futura"}
+    {id:"EVID-SOL-04",text:"Primera demostración técnica completa.",placement:"Metodología"}
   ],
   auditCriteria:[
     {id:"SOL-AUD-01",group:"Área",label:"Preparación",target:"Área está preparada antes del trabajo en caliente.",input:"Recorrido previo."},
