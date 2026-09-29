@@ -71,9 +71,42 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
   const areaId = root.dataset.auditArea;
   const code = root.dataset.auditCode;
   const dept = window.ROCA_DEPARTMENTS && window.ROCA_DEPARTMENTS[areaId];
-  const rows = dept && Array.isArray(dept.auditCriteria)
-    ? dept.auditCriteria.map(r=>({label:(r.group? r.group+' · ':'')+(r.label||r.id),target:r.target,input:r.input,id:r.id}))
-    : (window.ROCA_FAST_TRACK?.commonRows || []);
+  function applicablePhysicalRows(areaId){
+    const phys=Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)?window.ROCA_AREA_PHYSICAL_STANDARD:[];
+    return phys.filter(r=>r.areas==='ALL'||(Array.isArray(r.areas)&&r.areas.includes(areaId))).map(r=>({
+      id:r.id,
+      group:'Normativa / condición física',
+      label:r.label,
+      target:r.standard,
+      input:r.evidence||'Evidencia observable de la condición.'
+    }));
+  }
+  function departmentAuditRows(dept,areaId){
+    if(!dept) return [];
+    const areaRows=(Array.isArray(dept.areaAudit)?dept.areaAudit:[]).map(r=>({
+      id:r.id,
+      group:'Área de trabajo',
+      label:r.criterion||r.id,
+      target:r.criterion||'',
+      input:r.evidence||'Evidencia observable.'
+    }));
+    const processRows=(Array.isArray(dept.auditCriteria)?dept.auditCriteria:[]).map(r=>({
+      id:r.id,
+      group:r.group||'Metodología / operación',
+      label:r.label||r.id,
+      target:r.target||r.label||'',
+      input:r.input||'Evidencia / dato de auditoría.'
+    }));
+    const physicalRows=applicablePhysicalRows(areaId);
+    const merged=[...areaRows,...processRows,...physicalRows];
+    const seen=new Set();
+    return merged.filter(r=>{
+      if(!r.id||seen.has(r.id)) return false;
+      seen.add(r.id);
+      return true;
+    });
+  }
+  const rows=departmentAuditRows(dept,areaId);
   const storageKey = 'roca.audit.'+areaId;
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch(e) {}
@@ -93,12 +126,38 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       promoted.map(x=>'<tr><td><strong>'+String(x.fixed_label||x.target_requirement_id||'')+'</strong></td><td>'+String(x.fixed_value||'')+(x.fixed_unit?' '+x.fixed_unit:'')+'</td><td>'+String(x.basis_reference||'')+(x.basis_source?' · '+x.basis_source:'')+'</td></tr>').join('')+
       '</tbody></table></section>'
     : '';
-  const html = promotedHtml + '<table class="audit-central-table"><thead><tr><th>ID</th><th>Criterio fijo</th><th>Resultado</th><th>Dato / nota</th><th>Implementación</th></tr></thead><tbody>'+
+  function auditMetrics(){
+    const values=rows.map(row=>saved[row.id]?.status||'NOT_VERIFIED');
+    const conforming=values.filter(x=>x==='CONFORMING').length;
+    const nonconforming=values.filter(x=>x==='NONCONFORMING').length;
+    const na=values.filter(x=>x==='NA_JUSTIFIED').length;
+    const notVerified=values.filter(x=>x==='NOT_VERIFIED').length;
+    const assessed=conforming+nonconforming;
+    const closed=conforming+nonconforming+na;
+    const compliance=assessed?Math.round((conforming/assessed)*100):0;
+    const coverage=values.length?Math.round((closed/values.length)*100):0;
+    return {total:values.length,conforming,nonconforming,na,notVerified,compliance,coverage,open:nonconforming+notVerified};
+  }
+  function metricMarkup(){
+    const m=auditMetrics();
+    return '<div class="audit-metrics">'+
+      '<div><strong>'+m.compliance+'%</strong><span>Cumplimiento</span><small>Conforme / evaluado</small></div>'+
+      '<div><strong>'+m.coverage+'%</strong><span>Cobertura</span><small>Evaluado o N/A / total</small></div>'+
+      '<div><strong>'+m.nonconforming+'</strong><span>No conforme</span><small>Corrección requerida</small></div>'+
+      '<div><strong>'+m.notVerified+'</strong><span>No verificado</span><small>Levantamiento pendiente</small></div>'+
+      '<div><strong>'+m.open+'</strong><span>IMPLEMENTAR</span><small>Brechas abiertas</small></div>'+
+      '</div>';
+  }
+  const html = promotedHtml + '<div id="auditMetricsHost">'+metricMarkup()+'</div><table class="audit-central-table"><thead><tr><th>ID</th><th>Criterio fijo</th><th>Resultado</th><th>Dato / nota</th><th>Implementación</th></tr></thead><tbody>'+
     rows.map((row,i)=>{
       const id=row.id || (code+'-FT-'+String(i+1).padStart(2,'0'));
       const v=saved[id]||{};
       const action=openByReq.get(id);
-      return '<tr data-audit-id="'+id+'"><td><strong>'+id+'</strong><br><small>'+row.label+'</small></td><td>'+row.target+'</td><td><select class="audit-status"><option value="NOT_VERIFIED">NO VERIFICADO</option><option value="CONFORMING">CONFORME</option><option value="NONCONFORMING">NO CONFORME</option><option value="NA_JUSTIFIED">NO APLICA — JUSTIFICACIÓN</option></select></td><td><textarea class="audit-note" rows="3" placeholder="'+row.input.replace(/"/g,'&quot;')+'">'+(v.note||'')+'</textarea></td><td>'+(action?'<strong>ABIERTA</strong><br>'+String(action.correction||''):'—')+'</td></tr>';
+      const dynamicOpen=(v.status==='NONCONFORMING'||v.status==='NOT_VERIFIED'||!v.status);
+      const implementationText=action
+        ? '<strong>ABIERTA · REGISTRO</strong><br>'+String(action.correction||'')
+        : (dynamicOpen?'<strong>ABIERTA · AUDITORÍA</strong><br>'+(v.status==='NONCONFORMING'?'Corregir la condición y volver a auditar.':'Verificar la condición y registrar evidencia.'):'—');
+      return '<tr data-audit-id="'+id+'"><td><strong>'+id+'</strong><br><small>'+row.group+' · '+row.label+'</small></td><td>'+row.target+'</td><td><select class="audit-status"><option value="NOT_VERIFIED">NO VERIFICADO</option><option value="CONFORMING">CONFORME</option><option value="NONCONFORMING">NO CONFORME</option><option value="NA_JUSTIFIED">NO APLICA — JUSTIFICACIÓN</option></select></td><td><textarea class="audit-note" rows="3" placeholder="'+row.input.replace(/"/g,'&quot;')+'">'+(v.note||'')+'</textarea></td><td class="audit-implementation">'+implementationText+'</td></tr>';
     }).join('')+'</tbody></table>';
   root.querySelector('.audit-table-host').innerHTML = html;
   root.querySelectorAll('tr[data-audit-id]').forEach(tr=>{
@@ -109,6 +168,17 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     const persist=()=>{
       saved[id]={status:sel.value,note:note.value,updatedAt:new Date().toISOString()};
       localStorage.setItem(storageKey,JSON.stringify(saved));
+      const host=document.getElementById('auditMetricsHost');
+      if(host) host.innerHTML=metricMarkup();
+      const cell=tr.querySelector('.audit-implementation');
+      const action=openByReq.get(id);
+      if(cell&&!action){
+        cell.innerHTML=(sel.value==='NONCONFORMING')
+          ? '<strong>ABIERTA · AUDITORÍA</strong><br>Corregir la condición y volver a auditar.'
+          : (sel.value==='NOT_VERIFIED')
+            ? '<strong>ABIERTA · AUDITORÍA</strong><br>Verificar la condición y registrar evidencia.'
+            : '—';
+      }
     };
     sel.addEventListener('change',persist);
     note.addEventListener('input',persist);
