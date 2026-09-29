@@ -84,14 +84,14 @@ window.ROCA_EDITORIAL_SECTIONS = [
     id:"cumplimiento", nav:"Normas y licencias", title:"Normas, estándares, licencias y permisos", eyebrow:"Requisitos externos traducidos a ROCA",
     lead:"Las normas y autorizaciones se controlan por vigencia y aplicabilidad. El personal recibe instrucciones ejecutables; la trazabilidad legal permanece detrás en la matriz de cumplimiento.",
     body:`
-      <table><thead><tr><th>Familia</th><th>Qué controla ROCA</th><th>Cómo aparece en el master</th></tr></thead><tbody>
+      <table><thead><tr><th>Familia</th><th>Qué controla ROCA</th><th>Cómo aparece en el manual</th></tr></thead><tbody>
         <tr><td>Municipal / funcionamiento</td><td>Uso de suelo, licencia o refrendo y requisitos ligados al inmueble y actividad.</td><td>Estado, siguiente acción y condición física/documental necesaria.</td></tr>
         <tr><td>Protección Civil / incendio</td><td>Rutas, extintores, brigadas, señalización, programa u opinión cuando aplique.</td><td>Acciones observables del taller + evidencia requerida.</td></tr>
         <tr><td>STPS / seguridad y salud</td><td>EPP, químicos, exposición, iluminación, señalización y controles aplicables.</td><td>Reglas simples por área; nunca texto legal descargado sobre el personal.</td></tr>
         <tr><td>Ambiental / residuos</td><td>Clasificación, almacenamiento, manejo y disposición según las corrientes reales.</td><td>Qué separar, dónde, cómo identificar y qué evidencia conservar.</td></tr>
         <tr><td>Vida silvestre / comercio exterior</td><td>CITES, PROFEPA, SENASICA, TRACES y documentación de importación/exportación cuando el caso lo requiera.</td><td>Decisión por especie/origen/operación; no checklist universal.</td></tr>
       </tbody></table>
-      <div class="callout">Una norma o estándar puede cambiar. ROCA conserva la fuente oficial, su versión y aplicabilidad; si cambia el requisito, se actualiza la guía asociada sin alterar innecesariamente el resto del master.</div>
+      <div class="callout">Una norma o estándar puede cambiar. ROCA conserva la fuente oficial, su versión y aplicabilidad; si cambia el requisito, se actualiza la guía asociada sin alterar innecesariamente el resto del manual.</div>
       <h2>Estado de preauditoría</h2>
       <p>La matriz de revisión contiene 106 candidatos de control: 80 permanecen NOT_CHECKED y 26 APPLICABILITY_PENDING; todavía no existe ningún renglón marcado VERIFIED. Estos estados describen preparación de auditoría, no cumplimiento.</p>
     `
@@ -101,7 +101,7 @@ window.ROCA_EDITORIAL_SECTIONS = [
     lead:"El tipo de documento depende de cuánto cambia y de la acción que debe resolver. No todo se convierte en procedimiento y no todo se archiva como si fuera permanente.",
     body:`
       <table><thead><tr><th>Tipo</th><th>Uso</th><th>Ejemplo</th><th>Regla</th></tr></thead><tbody>
-        <tr><td>Documento base</td><td>Constituye o acredita a la empresa.</td><td>Acta, reforma, poder, licencia obtenida.</td><td>Preservar original/vigente en Drive; resumir en el master.</td></tr>
+        <tr><td>Documento base</td><td>Constituye o acredita a la empresa.</td><td>Acta, reforma, poder, licencia obtenida.</td><td>Preservar original/vigente en Drive; resumir en el manual.</td></tr>
         <tr><td>Norma / estándar</td><td>Impone un requisito externo.</td><td>NOM, reglamento, CITES, criterio municipal.</td><td>Controlar versión/aplicabilidad y traducir a acciones.</td></tr>
         <tr><td>Machote</td><td>Resolver una decisión o evento.</td><td>Contrato, finiquito, renuncia, entrega de EPP, autorización.</td><td>Conservar plantilla, cuándo se usa, quién llena/firma y qué evidencia queda.</td></tr>
         <tr><td>Guía operativa</td><td>Ejecutar una tarea repetitiva o mutable.</td><td>Curtiduría, montaje, mantenimiento, orden de área.</td><td>Mantener viva, simple y ajustada a la operación real.</td></tr>
