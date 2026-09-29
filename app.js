@@ -286,10 +286,47 @@
     }
   }
 
-  function renderAllForPrint(){
-    const sections=activeMode==='manual'?manualSections:activeSections;
-    page.innerHTML=(activeMode==='manual'?coverMarkup():'')+sections.map(sectionMarkup).join('');
-    document.title='ROCA TAXIDERMY · '+(activeMode==='manual'?'Manual maestro':activeMode==='audit'?'Auditoría':'Bibliografía');
+  async function buildNormativePrintMarkup(){
+    const res=await fetch('ops/assurance/ROCA_NORMATIVE_APPLICABILITY_V1.csv',{cache:'no-store'});
+    if(!res.ok) throw new Error('normative '+res.status);
+    const rows=parseCSV(await res.text());
+    const chunks=[];
+    for(let i=0;i<rows.length;i+=10) chunks.push(rows.slice(i,i+10));
+
+    const intro='<article class="paper master-paper" data-section="bibliografia">'+
+      '<div class="page-head"><span>BIBLIOGRAFÍA · FUNDAMENTO NORMATIVO</span><span>ROCA TAXIDERMY</span></div>'+
+      '<div class="eyebrow">Bibliografía · aplicabilidad y criterio</div>'+
+      '<h1>Fundamento normativo</h1>'+
+      '<p class="lead">Esta sección conserva las referencias externas que respaldan criterios del manual. La operación se ejecuta desde cada libro de área; aquí se documenta la referencia, su aplicabilidad y el resultado que debe producir en ROCA.</p>'+
+      '<div class="bronze-rule short"></div>'+
+      '<div class="master-content"><div class="callout">La inclusión de una referencia no equivale por sí sola a declarar cumplimiento. Cada requisito debe cerrar como VERIFIED o JUSTIFIED_NA antes de liberar la impresión final.</div></div>'+
+      footer('BIBLIOGRAFÍA')+'</article>';
+
+    const pages=chunks.map((chunk,index)=>
+      '<article class="paper master-paper normative-print-page" data-section="bibliografia-'+(index+1)+'">'+
+      '<div class="page-head"><span>BIBLIOGRAFÍA · '+esc(String(index+1).padStart(2,'0'))+'</span><span>ROCA TAXIDERMY</span></div>'+
+      '<div class="eyebrow">Referencias aplicables</div>'+
+      '<h1>'+(index===0?'Matriz normativa':'Matriz normativa · continuación')+'</h1>'+
+      '<div class="master-content"><table><thead><tr><th>Referencia</th><th>Tema</th><th>Aplicabilidad</th><th>Criterio / salida ROCA</th><th>Estado</th></tr></thead><tbody>'+
+      chunk.map(r=>'<tr><td><strong>'+esc(r.reference||r.req_id)+'</strong></td><td>'+esc(r.title)+'</td><td>'+esc(r.applicability_class)+'</td><td>'+esc(r.roca_output)+'</td><td>'+esc(r.status)+'</td></tr>').join('')+
+      '</tbody></table></div>'+footer('BIBLIOGRAFÍA')+'</article>'
+    ).join('');
+
+    return intro+pages;
+  }
+
+  async function renderAllForPrint(){
+    if(activeMode!=='manual'){
+      page.innerHTML=activeSections.map(sectionMarkup).join('');
+      document.title='ROCA TAXIDERMY · '+(activeMode==='audit'?'Auditoría':'Bibliografía');
+      return;
+    }
+
+    const heritage=manualSections.find(s=>s.id==='heritage');
+    const coreSections=manualSections.filter(s=>s.id!=='heritage');
+    const bibliography=await buildNormativePrintMarkup();
+    page.innerHTML=coverMarkup()+coreSections.map(sectionMarkup).join('')+bibliography+(heritage?sectionMarkup(heritage):'');
+    document.title='ROCA TAXIDERMY · Manual maestro';
   }
 
   manualMode.addEventListener('click',()=>setMode('manual'));
@@ -299,8 +336,12 @@
     const gate=await refreshPrintGate();
     if(!gate.ready) return;
     const mode=activeMode;
-    renderAllForPrint();
-    setTimeout(()=>{ window.print(); setTimeout(()=>{setMode(mode);refreshPrintGate();},120); },80);
+    try{
+      await renderAllForPrint();
+      setTimeout(()=>{ window.print(); setTimeout(()=>{setMode(mode);refreshPrintGate();},120); },80);
+    }catch(err){
+      if(printGateNote) printGateNote.textContent='No se pudo preparar la Bibliografía para impresión.';
+    }
   });
   window.addEventListener('hashchange',()=>{
     const id=location.hash.slice(1);
