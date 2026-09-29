@@ -93,7 +93,7 @@ window.ROCA_EDITORIAL_SECTIONS = [
       </tbody></table>
       <div class="callout">Una norma o estándar puede cambiar. ROCA conserva la fuente oficial, su versión y aplicabilidad; si cambia el requisito, se actualiza la guía asociada sin alterar innecesariamente el resto del manual.</div>
       <h2>Estado de preauditoría</h2>
-      <p>La matriz de revisión contiene 106 candidatos de control: 80 permanecen NOT_CHECKED y 26 APPLICABILITY_PENDING; todavía no existe ningún renglón marcado VERIFIED. Estos estados describen preparación de auditoría, no cumplimiento.</p>
+      <p>La matriz de revisión contiene 106 controles candidatos: 80 aún no han sido verificados y 26 requieren confirmar aplicabilidad. Ningún control debe presentarse como cumplido hasta contar con evidencia suficiente.</p>
     `
   },
   {
