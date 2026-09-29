@@ -20,6 +20,7 @@ window.ROCA_WORKSHOP_SECTIONS = [
         <li><strong>Libro de área</strong> — Soldadura / Adaptación</li>
         <li><strong>Libro de área</strong> — Blanqueado / Tratamiento de cráneos</li>
         <li><strong>Libro de área</strong> — Espacios de soporte</li>
+        <li><strong>Bibliografía</strong> — Fundamento normativo y aplicabilidad</li>
         <li><strong>Anexo editorial</strong> — Historia, oficio y continuidad</li>
       </ol>
       <div class="callout">Cada libro de área conserva la misma lógica: condición del espacio, verificación, metodología, herramientas, materiales, controles y evidencia.</div>
