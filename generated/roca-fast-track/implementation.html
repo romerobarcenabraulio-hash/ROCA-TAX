@@ -148,6 +148,11 @@
   </div>
 </section>
 <section class="action-board">
+  <h2>HOLD técnicos por departamento</h2>
+  <div class="note"><b>Regla:</b> un HOLD es un conflicto o dato todavía no liberado. No forma parte del estándar permanente hasta resolverse.</div>
+  <div id="departmentHoldList"><span class="blank">CARGANDO HOLD...</span></div>
+</section>
+<section class="action-board">
   <h2>Acciones abiertas reales</h2>
   <div class="note"><b>Regla de trabajo:</b> una fila entra aquí sólo después de observar una brecha real contra el estándar. Un requisito sin levantamiento no se convierte en tarea por defecto. Cuando la corrección queda lista pasa a <b>READY_FOR_AUDIT</b>; cuando la evidencia es aceptada queda <b>CLOSED</b> y deja esta vista.</div>
   <div class="tool-links">
@@ -159,7 +164,7 @@
     <thead><tr><th>ID</th><th>Área</th><th>Brecha observada</th><th>Corrección concreta</th><th>Responsable</th><th>Fecha objetivo</th><th>Estado</th><th>Evidencia</th></tr></thead>
     <tbody id="implementationRows"><tr><td colspan="8"><span class="blank">CARGANDO REGISTRO...</span></td></tr></tbody>
   </table></div>
-</section></main><script>function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+</section></main><script src="../../department-data.js"></script><script>function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function parseCsv(text){
   const rows=[]; let row=[],field="",quoted=false;
   for(let i=0;i<text.length;i++){
@@ -202,6 +207,18 @@ async function loadImplementationActions(){
   }
 }
 loadImplementationActions();
+function renderDepartmentHolds(){
+  const host=document.getElementById("departmentHoldList");
+  if(!host)return;
+  const depts=window.ROCA_DEPARTMENTS||{};
+  const blocks=Object.values(depts).filter(d=>Array.isArray(d.implementationHolds)&&d.implementationHolds.length);
+  if(!blocks.length){host.innerHTML='<p>Sin HOLD departamentales registrados.</p>';return}
+  host.innerHTML=blocks.map(d=>'<div class="tool"><h3>'+esc(d.code+' · '+d.title)+'</h3><ul>'+
+    d.implementationHolds.map(h=>'<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'</li>').join("")+
+    '</ul></div>').join("");
+}
+renderDepartmentHolds();
+
 
 function calcRisk(){const a=Number(document.getElementById("riskArea").value||0),g=Number(document.getElementById("riskGas").value||0),i=Number(document.getElementById("riskInflam").value||0),c=Number(document.getElementById("riskComb").value||0),s=Number(document.getElementById("riskSolid").value||0),p=document.getElementById("riskPyro").value;const hit=[];if(a>=3000)hit.push("superficie");if(g>=3000)hit.push("gases inflamables");if(i>=1400)hit.push("líquidos inflamables");if(c>=2000)hit.push("líquidos combustibles");if(s>=15000)hit.push("sólidos combustibles");if(p==="yes")hit.push("pirofóricos/explosivos");document.getElementById("riskResult").innerHTML=hit.length?"<b>RIESGO ALTO DISPARADO</b> por: "+hit.join(", ")+". Pasar a requisitos de alto riesgo y documentar clasificación.":"No se activó un umbral individual. <b>NO declarar ordinario todavía:</b> completar el cálculo oficial combinado y conservar inventarios máximos."}
 ["riskArea","riskGas","riskInflam","riskComb","riskSolid","riskPyro"].forEach(id=>document.getElementById(id).addEventListener("input",calcRisk));
