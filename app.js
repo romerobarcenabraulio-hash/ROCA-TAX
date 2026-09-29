@@ -16,7 +16,8 @@
 
   const hiddenLegacy = new Set([
     'estado','implementacion','areas','residuos','erp','evidencia','editorial','posters',
-    'responsabilidades','documentos','internacional','legal','master-exacto'
+    'responsabilidades','documentos','internacional','legal','master-exacto',
+    'procesos','trazabilidad','cumplimiento','machotes-guias','controles-transversales','assurance'
   ]);
   const manualSections = data.sections.filter(s => s && !hiddenLegacy.has(s.id) && !String(s.id||'').startsWith('campo-'));
   const auditSections = Array.isArray(window.ROCA_AUDIT_SECTIONS) ? window.ROCA_AUDIT_SECTIONS : [];
