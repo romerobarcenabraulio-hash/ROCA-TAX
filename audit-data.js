@@ -69,7 +69,10 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
   if(!root) return;
   const areaId = root.dataset.auditArea;
   const code = root.dataset.auditCode;
-  const rows = window.ROCA_FAST_TRACK?.commonRows || [];
+  const dept = window.ROCA_DEPARTMENTS && window.ROCA_DEPARTMENTS[areaId];
+  const rows = dept && Array.isArray(dept.auditCriteria)
+    ? dept.auditCriteria.map(r=>({label:(r.group? r.group+' · ':'')+(r.label||r.id),target:r.target,input:r.input,id:r.id}))
+    : (window.ROCA_FAST_TRACK?.commonRows || []);
   const storageKey = 'roca.audit.'+areaId;
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch(e) {}
@@ -91,7 +94,7 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     : '';
   const html = promotedHtml + '<table class="audit-central-table"><thead><tr><th>ID</th><th>Criterio fijo</th><th>Resultado</th><th>Dato / nota</th><th>Implementación</th></tr></thead><tbody>'+
     rows.map((row,i)=>{
-      const id=code+'-FT-'+String(i+1).padStart(2,'0');
+      const id=row.id || (code+'-FT-'+String(i+1).padStart(2,'0'));
       const v=saved[id]||{};
       const action=openByReq.get(id);
       return '<tr data-audit-id="'+id+'"><td><strong>'+id+'</strong><br><small>'+row.label+'</small></td><td>'+row.target+'</td><td><select class="audit-status"><option value="NOT_CHECKED">SIN REVISAR</option><option value="PASS">CUMPLE</option><option value="FAIL">NO CUMPLE</option><option value="NA">NO APLICA JUSTIFICADO</option></select></td><td><textarea class="audit-note" rows="3" placeholder="'+row.input.replace(/"/g,'&quot;')+'">'+(v.note||'')+'</textarea></td><td>'+(action?'<strong>ABIERTA</strong><br>'+String(action.correction||''):'—')+'</td></tr>';
