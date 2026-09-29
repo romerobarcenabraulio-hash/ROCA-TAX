@@ -1217,3 +1217,113 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     "ops/areas/SOLDADURA_AREA_BOOK_V2.md"
   ]
 };
+
+window.ROCA_DEPARTMENTS["area-blanqueado"] = {
+  id:"area-blanqueado",
+  code:"BLA",
+  title:"Blanqueado / Tratamiento de cráneos",
+  status:"PARTIAL",
+  purpose:"Limpiar y tratar cráneos o elementos óseos controlando calor, ventilación y protección de cuernos.",
+  receivesFrom:"Cráneo o elemento óseo identificado",
+  handsOffTo:"Montaje / acabado con elemento limpio, estable e identificado",
+  entryInputs:[
+    "Cráneo o elemento óseo identificado",
+    "Condición suficiente para manipulación y tratamiento",
+    "Sistema de apoyo/protección disponible cuando existan cuernos"
+  ],
+  entryStops:[
+    "La pieza pierde identidad",
+    "Los cuernos quedarían expuestos a una zona térmica que pueda alterar color o superficie",
+    "Recipiente o fuente de calor no son estables",
+    "La manipulación de agua caliente o vapor invade circulación"
+  ],
+  exitCriteria:[
+    "Elemento limpio",
+    "Elemento estable",
+    "Identidad conservada",
+    "Condición antes/después registrada cuando aporta trazabilidad"
+  ],
+  area:[
+    {id:"BLA-AREA-01",label:"Recipiente y fuente de calor",text:"Recipiente y fuente de calor permanecen estables durante el tratamiento."},
+    {id:"BLA-AREA-02",label:"Protección de cuernos",text:"Nivel de agua y sistema de apoyo mantienen los cuernos fuera de la zona térmica cuando corresponda."},
+    {id:"BLA-AREA-03",label:"Ruta de agua caliente",text:"La manipulación de agua caliente y vapor no cruza circulación ni obliga a maniobras improvisadas."},
+    {id:"BLA-AREA-04",label:"Ventilación",text:"La ventilación corresponde al calor, vapor y cualquier producto auxiliar realmente usado."},
+    {id:"BLA-AREA-05",label:"Drenaje, enfriamiento y espera",text:"Drenaje, enfriamiento y espera conservan ID y evitan derrames o mezcla de piezas."}
+  ],
+  areaAudit:[
+    {id:"BLA-AUD-AREA-01",criterion:"Cuernos quedan protegidos de la zona térmica cuando aplica.",evidence:"Montaje real del tratamiento."},
+    {id:"BLA-AUD-AREA-02",criterion:"Recipiente y fuente de calor permanecen estables.",evidence:"Condición física durante preparación."},
+    {id:"BLA-AUD-AREA-03",criterion:"Ruta de agua caliente no crea derrame u obstrucción.",evidence:"Recorrido de manipulación."},
+    {id:"BLA-AUD-AREA-04",criterion:"Ventilación corresponde al calor/vapor/producto real.",evidence:"Condición física y producto si existe."},
+    {id:"BLA-AUD-AREA-05",criterion:"Pieza conserva ID durante tratamiento, enfriamiento y espera.",evidence:"Muestra de pieza en proceso."}
+  ],
+  method:{
+    flow:"Tratamiento con agua caliente sobre el cráneo manteniendo cuernos fuera de la zona que pueda alterar color o superficie → limpieza → enfriamiento/espera → transferencia.",
+    branches:[],
+    stages:[
+      {id:"BLA-MET-01",title:"Preparar pieza y apoyo",text:"Identificar la pieza, preparar recipiente/fuente de calor y colocar el sistema de apoyo/protección necesario para mantener cuernos fuera de la zona térmica cuando corresponda."},
+      {id:"BLA-MET-02",title:"Tratamiento con agua caliente",text:"Aplicar tratamiento con agua caliente sobre el cráneo manteniendo cuernos fuera de la zona capaz de alterar color o superficie. No se fijan temperatura ni tiempo porque la fuente disponible no los confirma."},
+      {id:"BLA-MET-03",title:"Limpieza y salida",text:"Limpiar el elemento tratado, conservar identidad y llevarlo a condición estable para Montaje/acabado. Cualquier producto auxiliar se documenta sólo si realmente se usa."}
+    ],
+    controls:[
+      {id:"BLA-CTL-01",text:"No añadir químicos, concentraciones, tiempos o temperaturas no soportados por fuente."},
+      {id:"BLA-CTL-02",text:"Cualquier producto auxiliar se documenta únicamente si existe en la operación real."},
+      {id:"BLA-CTL-03",text:"La protección de cuernos gobierna el montaje del tratamiento cuando aplica."}
+    ]
+  },
+  competencies:[
+    "Control de calor",
+    "Manipulación segura de agua caliente/vapor",
+    "Protección de cuernos",
+    "Criterio de salida — pendiente de cierre"
+  ],
+  controlRecords:[
+    "ID de pieza",
+    "Condición antes/después",
+    "Incidencia cuando ocurra",
+    "Producto auxiliar sólo si realmente se usa"
+  ],
+  materialFlow:[
+    "Agua de proceso",
+    "Material de protección si existe",
+    "Producto auxiliar sólo si se confirma",
+    "Tejido retirado",
+    "Agua usada",
+    "Destino"
+  ],
+  tools:[
+    "Recipiente",
+    "Fuente de calor",
+    "Sistema de apoyo/protección de cuerno",
+    "Herramienta de limpieza"
+  ],
+  consumables:[
+    "Agua de proceso",
+    "Materiales de protección si existen",
+    "Producto auxiliar sólo si se confirma"
+  ],
+  evidence:[
+    {id:"EVID-BLA-01",text:"Montaje real del tratamiento mostrando recipiente, fuente de calor y protección de cuernos cuando aplique.",placement:"Área / metodología"},
+    {id:"EVID-BLA-02",text:"Condición antes/después del elemento.",placement:"Metodología"},
+    {id:"EVID-BLA-03",text:"Incidencia o excepción cuando ocurra.",placement:"Control"}
+  ],
+  auditCriteria:[
+    {id:"BLA-AUD-01",group:"Proceso",label:"Protección de cuernos",target:"Cuerno está protegido de zona térmica cuando aplica.",input:"Montaje real."},
+    {id:"BLA-AUD-02",group:"Área",label:"Estabilidad",target:"Recipiente y fuente de calor son estables.",input:"Condición física."},
+    {id:"BLA-AUD-03",group:"Área",label:"Ruta",target:"Ruta de agua caliente no genera derrame u obstrucción.",input:"Recorrido."},
+    {id:"BLA-AUD-04",group:"Proceso",label:"Producto auxiliar",target:"Producto auxiliar está identificado sólo si realmente existe.",input:"Producto real o N/A justificado."},
+    {id:"BLA-AUD-05",group:"Proceso",label:"Identidad",target:"Pieza conserva ID durante todo el tratamiento.",input:"Muestra en proceso."}
+  ],
+  implementationHolds:[
+    {id:"BLA-HOLD-01",text:"Confirmar responsable operativo."},
+    {id:"BLA-HOLD-02",text:"Capturar secuencia completa real."},
+    {id:"BLA-HOLD-03",text:"Confirmar si tiempos/temperaturas gobiernan realmente el proceso antes de fijarlos."},
+    {id:"BLA-HOLD-04",text:"Verificar ventilación real."},
+    {id:"BLA-HOLD-05",text:"Verificar drenaje y ruta de agua."},
+    {id:"BLA-HOLD-06",text:"Confirmar si existe producto auxiliar."},
+    {id:"BLA-HOLD-07",text:"Completar evidencia de campo."}
+  ],
+  sourceRefs:[
+    "ops/areas/BLANQUEADO_AREA_BOOK_V2.md"
+  ]
+};
