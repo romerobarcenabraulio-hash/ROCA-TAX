@@ -1,20 +1,18 @@
 window.ROCA_EDITORIAL_SECTIONS = [
   {
     id:"roca", nav:"ROCA Taxidermy", title:"ROCA Taxidermy", eyebrow:"Empresa · taller · oficio",
-    lead:"ROCA TAXIDERMY es un taller especializado donde el oficio, la operación y el control documental se conectan alrededor de cada pieza. El master resume la empresa; Drive conserva el respaldo profundo.",
+    lead:"ROCA TAXIDERMY es un taller especializado donde el oficio, la operación y el control documental se conectan alrededor de cada pieza.",
     body:`
       <h2>Qué reúne ROCA</h2>
       <p>La operación integra dirección de taller, curtiduría, formas y moldes, montaje, retoque, soldadura y adaptación, carpintería/embalaje, bodegas, control de materiales, trazabilidad y entrega.</p>
-      <h2>Qué debe permitir este master</h2>
+      <h2>Cómo se organiza</h2>
       <ul>
-        <li>Entender qué funciones integran la empresa y cómo se conectan.</li>
-        <li>Entender cómo está dividido el taller y para qué sirve cada área.</li>
-        <li>Seguir el recorrido general de una pieza desde que entra hasta que se entrega.</li>
-        <li>Conservar la forma correcta de ejecutar decisiones y tareas mediante machotes y guías.</li>
-        <li>Mostrar qué normas, licencias y controles externos gobiernan la operación sin convertir el documento en un expediente legal.</li>
-        <li>Preservar la historia, el oficio y la evidencia visual de ROCA.</li>
+        <li>Cada pieza conserva una identidad única desde el ingreso hasta la entrega.</li>
+        <li>Cada departamento concentra su área de trabajo, auditoría, metodología, herramientas, consumibles y evidencia.</li>
+        <li>BIWO mantiene la operación comercial y el estado del trabajo; los documentos y comprobantes permanecen en sus expedientes controlados.</li>
+        <li>Las normas y autorizaciones se traducen a condiciones y acciones que puedan ejecutarse en el taller.</li>
+        <li>La historia, el oficio y la evidencia visual se conservan como parte de la continuidad de ROCA.</li>
       </ul>
-      <div class="callout">Regla editorial: el HTML explica ROCA. Los expedientes, originales, comprobantes y evidencia de cada caso viven en Drive, BIWO o el repositorio que corresponda.</div>
     `
   },
   {
@@ -22,7 +20,7 @@ window.ROCA_EDITORIAL_SECTIONS = [
     lead:"La historia de ROCA no se presenta como decoración. Se conserva a través de personas, herramientas, áreas, técnicas, piezas, fotografías y cambios reales del taller.",
     body:`
       <h2>Referencia histórica</h2>
-      <p>El master aprobado conserva la identidad editorial “Arte y tradición · desde 1946”. La cronología detallada sólo se amplía cuando exista evidencia suficiente para sostener fechas, personas y etapas.</p>
+      <p>ROCA conserva la identidad “Arte y tradición · desde 1946”. La cronología se amplía únicamente con fechas, personas y etapas respaldadas por evidencia.</p>
       <h2>Qué entra a Heritage</h2>
       <ul>
         <li>Fotografías históricas del taller y de sus áreas.</li>
@@ -35,8 +33,8 @@ window.ROCA_EDITORIAL_SECTIONS = [
     `
   },
   {
-    id:"personas", nav:"Personas y estructura", title:"Cómo se organiza ROCA", eyebrow:"Estructura funcional actual",
-    lead:"La estructura pública se presenta por funciones reales y por el trabajo que ocurre en el taller. Los nombres y expedientes individuales permanecen en las fuentes privadas controladas.",
+    id:"personas", nav:"Taller y equipo", title:"Taller y equipo", eyebrow:"Estructura funcional actual",
+    lead:"La organización se entiende por las funciones reales del taller y por la forma en que cada área entrega trabajo a la siguiente.",
     body:`
       <table><thead><tr><th>Función / área</th><th>Referencia pública</th><th>Papel dentro de ROCA</th></tr></thead><tbody>
         <tr><td>Dirección de taller / Producción</td><td>Dirección operativa</td><td>Coordina producción, decisiones de montaje, compras programadas, cobranza operativa y seguimiento del taller.</td></tr>
@@ -47,7 +45,7 @@ window.ROCA_EDITORIAL_SECTIONS = [
         <tr><td>Formas y Moldes</td><td>Responsable de formas y moldes</td><td>Fabricación y ajuste de formas, moldes, fibra, resina, insertos y componentes.</td></tr>
         <tr><td>Soldadura / Adaptación</td><td>Responsable de soldadura y adaptación</td><td>Adaptaciones metálicas, estructuras y trabajo de soldadura requerido por las piezas o formas.</td></tr>
       </tbody></table>
-      <div class="callout">Los nombres completos, expedientes personales, identificaciones, comprobantes, contratos firmados y demás documentación individual se conservan fuera del repositorio público. El master público conserva únicamente la matriz funcional.</div>
+      <div class="callout">Los expedientes personales, identificaciones, contratos y comprobantes individuales permanecen en sus archivos controlados y no forman parte del manual operativo.</div>
     `
   },
   {
