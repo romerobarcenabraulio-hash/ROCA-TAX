@@ -32,7 +32,7 @@ window.ROCA_DEPARTMENTS["area-curtiduria"] = {
     ],
     stages:[
       {id:"CUR-MET-01",title:"Hidratación",text:"Usar como referencia 1 kg de sal por 10 L de agua y una ventana de 10–12 h. La salida también depende de condición física: la piel debe poder desplegarse y marcarse sin forzar zonas rígidas."},
-      {id:"CUR-MET-02",title:"Picle",text:"La referencia de trabajo conserva 473 L de agua, 45 kg de sal y 300 mL de ácido sulfúrico. La cantidad de ácido fórmico no se congela todavía porque existe conflicto entre 6.0 L y 6.4 L."},
+      {id:"CUR-MET-02",title:"Picle",text:"La referencia de trabajo conserva 473 L de agua, 45 kg de sal y 300 mL de ácido sulfúrico. VALIDACIÓN EN CAMPO — no fijar una cantidad única de ácido fórmico hasta cerrar la dosificación aplicable."},
       {id:"CUR-MET-03",title:"Rebajado",text:"La cuchilla o trabajo manual atiende detalle y zonas necesarias; la rebajadora de disco uniforma espesor. En piel gruesa puede repetirse la secuencia picle → rebajado → picle hasta eliminar sección sin curtir."},
       {id:"CUR-MET-04",title:"Pesado y ALUM-Tan",text:"Pesar la carga real y capturar exactamente esa lectura en la hoja controlada. El peso usado por el cálculo debe corresponder a la misma carga física."},
       {id:"CUR-MET-05",title:"Neutralización y pH",text:"La referencia para inicio del día 2 es pH 3.6–3.8. El bicarbonato calculado se divide en cinco partes con una adición por hora. La referencia final es pH 4.2–4.3."},
@@ -55,7 +55,7 @@ window.ROCA_DEPARTMENTS["area-curtiduria"] = {
     "Rebajadora de disco",
     "Cuchilla / burro y herramientas de detalle",
     "Báscula para peso de carga",
-    "Método o instrumento de medición de pH por identificar y verificar",
+    "Medición de pH — VALIDACIÓN EN CAMPO del método o instrumento",
     "Sistema de tendido",
     "Tambor de aserrín",
     "Pateadora cuando la secuencia real la requiera"
@@ -997,8 +997,8 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     "No existe todavía un puesto real",
     "No hay entrevista/demostración primaria del responsable",
     "La ubicación invade Retoque, circulación, carga o químicos",
-    "Se intenta usar el antiguo 'espacio del Sr. Pes' por herencia documental",
-    "Se intenta publicar como método una secuencia genérica no demostrada"
+    "No usar la pedacera ni la estación de Señor Pez como área de Carpintería / Embalaje",
+    "NO LIBERADO — no publicar metodología hasta demostrar el flujo real"
   ],
   exitCriteria:[
     "NO LIBERADO hasta observar flujo real",
@@ -1031,8 +1031,8 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     ],
     stages:[],
     controls:[
-      {id:"CAR-CTL-01",text:"No publicar metodología hasta existir entrevista/demostración primaria."},
-      {id:"CAR-CTL-02",text:"La secuencia genérica histórica sólo sirve como hipótesis de levantamiento, nunca como instrucción."},
+      {id:"CAR-CTL-01",text:"NO LIBERADO — no publicar metodología hasta validar una orden real completa."},
+      {id:"CAR-CTL-02",text:"No usar una secuencia teórica como instrucción de trabajo."},
       {id:"CAR-CTL-03",text:"No duplicar automáticamente madera/herrajes controlados en Bases; definir propiedad y stock cuando se implemente."},
       {id:"CAR-CTL-04",text:"No asignar mantenimiento ni manuales a activos imaginarios."}
     ]
@@ -1152,9 +1152,9 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     {id:"SOL-AUD-AREA-05",criterion:"Medios de respuesta aplicables están disponibles.",evidence:"Condición física + criterio Assurance."}
   ],
   method:{
-    flow:"NO LIBERADO — falta entrevista/demostración del responsable.",
+    flow:"NO LIBERADO — secuencia técnica pendiente de validación en campo.",
     branches:[
-      {title:"Método pendiente",text:"No se define secuencia, tipo de unión, preparación, consumibles, ajustes, aceptación ni retrabajo hasta contar con demostración primaria del responsable."}
+      {title:"NO LIBERADO",text:"No fijar secuencia, tipo de unión, preparación, consumibles, ajustes, aceptación ni retrabajo hasta validar el proceso real en campo."}
     ],
     stages:[],
     controls:[
