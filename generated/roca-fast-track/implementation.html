@@ -209,12 +209,26 @@ async function loadImplementationActions(){
 loadImplementationActions();
 function holdClosureType(text){
   const t=String(text||"").toLowerCase();
-  if(/biwo|estado exacto|pantalla|campo/.test(t) && /biwo|estado/.test(t)) return "BIWO REAL";
+  if(/estados? biwo|biwo real|estado biwo|pantalla.*biwo|biwo.*pantalla/.test(t)) return "BIWO REAL";
   if(/reconciliar|fuente controlada|fuente histórica|recuperar/.test(t)) return "FUENTE";
   if(/decidir|definir frontera|ubicación real|implementar este frente/.test(t)) return "DECISIÓN";
   if(/evidencia|fotograf|capturar/.test(t)) return "EVIDENCIA";
   if(/levantar|verificar|confirmar|observar|demostrar|medición|inventario|ventilación|drenaje|maniobra|producto|hds|equipo|responsable|estación|competencia/.test(t)) return "CAMPO";
   return "CIERRE TÉCNICO";
+}
+function holdKnownProof(id){
+  return ({
+    "CUR-HOLD-01":"Cuatro versiones históricas y el 391 reproducen 6.4 L; la fuente material que originó 6.0 L no está recuperada. No normalizar por mayoría.",
+    "CUR-HOLD-07":"El 391 reproduce la lógica y fórmulas ALUM-Tan, pero la hoja controlada original no está recuperada/verificada como archivo fuente.",
+    "MON-HOLD-05":"El 391 y Montaje V2 confirman Bondo + fibra + catalizador para orejas, pero no fijan una proporción controlada.",
+    "RET-HOLD-01":"El 391 y el roster controlado conservan literalmente Valerio/Valentino como nombre pendiente de reconciliar.",
+    "RET-HOLD-09":"ROCA_BIWO_EVENT_MAP_V2 define eventos semánticos, pero declara pendientes los nombres exactos de estados, campos y pantallas.",
+    "BAS-HOLD-09":"ROCA_BIWO_EVENT_MAP_V2 no contiene etiquetas/pantallas exactas de Bases; requiere comprobar BIWO real.",
+    "FMR-HOLD-06":"ROCA_BIWO_EVENT_MAP_V2 no contiene etiquetas/pantallas exactas de FMR; requiere comprobar BIWO real.",
+    "REC-HOLD-02":"ROCA_BIWO_EVENT_MAP_V2 define ingreso y transferencia semánticos, pero no los nombres exactos de estados/campos.",
+    "CAR-HOLD-11":"Carpintería sigue NOT_IMPLEMENTED y el mapa BIWO no define etiquetas reales de este frente.",
+    "SUP-HOLD-04":"No es un HOLD de etiquetas BIWO: exige revisar privacidad, acceso y archivo real de Oficina/BIWO en campo."
+  })[id]||"";
 }
 function holdCloseRule(type){
   return ({
@@ -233,7 +247,7 @@ function renderDepartmentHolds(){
   const blocks=Object.values(depts).filter(d=>Array.isArray(d.implementationHolds)&&d.implementationHolds.length);
   if(!blocks.length){host.innerHTML='<p>Sin HOLD departamentales registrados.</p>';return}
   host.innerHTML=blocks.map(d=>'<div class="tool"><h3>'+esc(d.code+' · '+d.title)+'</h3><ul>'+
-    d.implementationHolds.map(h=>{const type=holdClosureType(h.text);return '<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'<br><small><b>'+esc(type)+'</b> · '+esc(holdCloseRule(type))+'</small></li>'}).join("")+
+    d.implementationHolds.map(h=>{const type=holdClosureType(h.text);const proof=holdKnownProof(h.id);return '<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'<br><small><b>'+esc(type)+'</b> · '+esc(holdCloseRule(type))+(proof?'<br><b>EVIDENCIA ACTUAL</b> · '+esc(proof):'')+'</small></li>'}).join("")+
     '</ul></div>').join("");
 }
 renderDepartmentHolds();
