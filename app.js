@@ -108,7 +108,7 @@
       '<div class="department-handoff"><span><strong>Recibe de:</strong> '+esc(dept.receivesFrom||'—')+'</span><span><strong>Entrega a:</strong> '+esc(dept.handsOffTo||'—')+'</span></div></div>'+
       governance+
       '<section class="department-block"><div class="eyebrow">01 · ÁREA DE TRABAJO</div><h2>Cómo debe estar '+esc(dept.title)+'</h2>'+
-      '<p class="source-note">La misma tabla integra condiciones específicas del departamento y controles físicos transversales que realmente le aplican.</p>'+
+      '<p class="source-note">La tabla integra las condiciones específicas del departamento y los controles físicos transversales que le aplican.</p>'+
       '<table><thead><tr><th>ID</th><th>Condición permanente</th></tr></thead><tbody>'+areaRows+'</tbody></table></section>'+
       '<section class="department-block department-audit-block"><div class="eyebrow">02 · AUDITORÍA DEL ÁREA</div><h2>Qué se comprueba en el espacio</h2>'+
       '<p>Esta revisión comprueba que el estado físico del departamento corresponda a las condiciones definidas en el área de trabajo.</p>'+
@@ -210,13 +210,13 @@
       document.body.classList.add('norms-mode');
       normsMode.classList.add('active');
       contentsPane.querySelector('.contents-title').textContent='Bibliografía';
-      contentsPane.querySelector('.rule-note').textContent='Base normativa, aplicabilidad y memoria fija del criterio. Los PDF visibles deben ser únicamente normas o fuentes oficiales.';
+      contentsPane.querySelector('.rule-note').textContent='Base normativa, aplicabilidad y criterio vigente. Los PDF visibles corresponden únicamente a normas o fuentes oficiales.';
     }else{
       activeMode='manual';
       activeSections=manualSections;
       manualMode.classList.add('active');
       contentsPane.querySelector('.contents-title').textContent='Manual ROCA';
-      contentsPane.querySelector('.rule-note').textContent='Una sola fuente operativa: área, metodología, control y criterio permanente viven aquí. IMPLEMENTAR es el único módulo separado.';
+      contentsPane.querySelector('.rule-note').textContent='Área, metodología, control, evidencia y criterio permanente se consultan en un solo lugar. IMPLEMENTAR contiene únicamente acciones temporales.';
     }
     buildNav(activeSections);
     go(mode==='manual' ? 'portada' : (activeSections[0] && activeSections[0].id));
