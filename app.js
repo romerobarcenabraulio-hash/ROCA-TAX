@@ -128,7 +128,7 @@
       '<div class="eyebrow">'+esc(section.eyebrow||'')+'</div>'+
       '<h1>'+esc(section.title||section.nav||section.id)+'</h1>'+
       '<p class="lead">'+esc(section.lead||'')+'</p><div class="bronze-rule short"></div>'+
-      '<div class="master-content">'+((window.ROCA_DEPARTMENTS&&window.ROCA_DEPARTMENTS[section.id])?departmentMarkup(section):((section.body||'')+inheritedPhysicalStandardMarkup(section)+areaBookMarkup(section)))+posters+'</div>'+
+      '<div class="master-content">'+((window.ROCA_DEPARTMENTS&&window.ROCA_DEPARTMENTS[section.id])?departmentMarkup(section):(section.body||''))+posters+'</div>'+
       footer(section.nav ? String(section.nav).toUpperCase() : '')+'</article>';
   }
 
