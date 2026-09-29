@@ -977,3 +977,134 @@ window.ROCA_DEPARTMENTS["area-recepcion"] = {
     "ops/areas/RECEPCION_AREA_BOOK_V2.md"
   ]
 };
+
+window.ROCA_DEPARTMENTS["area-carpinteria"] = {
+  id:"area-carpinteria",
+  code:"CAR",
+  title:"Carpintería / Corte / Embalaje",
+  status:"NOT_RELEASED",
+  purpose:"Preparar un frente separado para corte de madera, armado de cajas y embalaje/protección, sin contaminar Retoque ni fabricar una metodología que aún no ha sido demostrada.",
+  receivesFrom:"DISEÑO PREVISTO — requerimiento de corte/caja/protección + dimensiones/referencia + ID de orden/pieza",
+  handsOffTo:"DISEÑO PREVISTO — corte, caja o embalaje identificado y listo para siguiente uso/carga",
+  entryInputs:[
+    "Decisión de implementar el frente",
+    "Ubicación real aprobada",
+    "Responsable real",
+    "Equipo y estación reales",
+    "Orden/pieza real para primera demostración"
+  ],
+  entryStops:[
+    "No existe todavía un puesto real",
+    "No hay entrevista/demostración primaria del responsable",
+    "La ubicación invade Retoque, circulación, carga o químicos",
+    "Se intenta usar el antiguo 'espacio del Sr. Pes' por herencia documental",
+    "Se intenta publicar como método una secuencia genérica no demostrada"
+  ],
+  exitCriteria:[
+    "NO LIBERADO hasta observar flujo real",
+    "Metodología sólo se redacta después de demostrar secuencia, criterio de dimensionado/protección, herramienta/equipo y condición de salida"
+  ],
+  area:[
+    {id:"CAR-AREA-01",label:"Circulación y accesos",text:"Cuando exista el puesto, pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Piezas, cajas, madera, cables y herramienta temporal no ocupan circulación."},
+    {id:"CAR-AREA-02",label:"Estación y almacenamiento",text:"Herramientas, materiales y consumibles tienen ubicación definida. El puesto vuelve a condición utilizable al cerrar la tarea y el equipo dañado se separa del uso."},
+    {id:"CAR-AREA-03",label:"Iluminación",text:"La iluminación se verifica en el plano real de corte, trazo y armado cuando la tarea lo requiera."},
+    {id:"CAR-AREA-04",label:"Ventilación y extracción",text:"Ventilación/extracción se diseña contra operaciones reales de corte, lijado, polvo de madera, adhesivos o acabados efectivamente usados; no se instala por copiar un master histórico."},
+    {id:"CAR-AREA-05",label:"Emergencia",text:"Rutas y medios de respuesta aplicables permanecen visibles y accesibles; cobertura y ubicación se resuelven contra evaluación real."},
+    {id:"CAR-AREA-06",label:"Identidad y espera",text:"Toda pieza, caja, corte o trabajo en espera conserva ID de orden/proyecto y siguiente acción; material de embalaje no mezcla proyectos."},
+    {id:"CAR-AREA-07",label:"Ubicación y separación",text:"La ubicación permanece OPEN. No ocupa la pedacera ni la estación de Señor Pez en Retoque; separa polvo/aserrín de pintura, gasolina blanca, solventes y acabados; permite ruta de madera/cajas y servicios compatibles con equipo real."},
+    {id:"CAR-AREA-08",label:"Corte y polvo",text:"Banco y equipo de corte, cuando existan, permanecen estables y con protecciones/accesorios correspondientes al equipo real. Polvo/aserrín se captura o retira en origen."},
+    {id:"CAR-AREA-09",label:"Madera y herrajes",text:"Madera/triplay se almacena estable; paneles pesados evitan vuelco/deslizamiento. Tornillos, clavos, bisagras y herrajes se separan por tipo/tamaño suficiente para recuperarlos sin vaciar contenedores."},
+    {id:"CAR-AREA-10",label:"Embalaje y carga",text:"Cartón, madera, película/protección y fijaciones tienen zona definida. Caja/embalaje conserva ID de orden y puede manipularse/cargarse sin retirar protecciones esenciales ni bloquear la ruta."}
+  ],
+  areaAudit:[
+    {id:"CAR-AUD-AREA-01",criterion:"Existe decisión de implementar y ubicación aprobada.",evidence:"Decisión + ubicación física real."},
+    {id:"CAR-AUD-AREA-02",criterion:"Polvo/aserrín queda separado de Retoque/acabados.",evidence:"Límites reales y punto de corte."},
+    {id:"CAR-AUD-AREA-03",criterion:"Banco, rack y equipo real están implementados y utilizables.",evidence:"Activo físico y condición."},
+    {id:"CAR-AUD-AREA-04",criterion:"Madera, herrajes y protecciones se almacenan de forma recuperable y estable.",evidence:"Almacenamiento real."},
+    {id:"CAR-AUD-AREA-05",criterion:"Electricidad y ruta de carga son compatibles con el puesto real.",evidence:"Recorrido + servicios."},
+    {id:"CAR-AUD-AREA-06",criterion:"Caja o embalaje conserva ID ligado a la orden.",evidence:"Muestra real."}
+  ],
+  method:{
+    flow:"NO LIBERADO — no existe todavía una secuencia técnica canónica.",
+    branches:[
+      {title:"Evidencia necesaria para construir el método",text:"Observar al menos una orden real; registrar quién recibe el requerimiento; medir cómo decide dimensiones y holguras; documentar materiales/uniones; observar corte/armado; observar protección/inmovilización; definir criterio de listo; observar carga/manipulación; identificar retrabajos; separar qué pertenece a Carpintería, Bases, Logística o transportista."}
+    ],
+    stages:[],
+    controls:[
+      {id:"CAR-CTL-01",text:"No publicar metodología hasta existir entrevista/demostración primaria."},
+      {id:"CAR-CTL-02",text:"La secuencia genérica histórica sólo sirve como hipótesis de levantamiento, nunca como instrucción."},
+      {id:"CAR-CTL-03",text:"No duplicar automáticamente madera/herrajes controlados en Bases; definir propiedad y stock cuando se implemente."},
+      {id:"CAR-CTL-04",text:"No asignar mantenimiento ni manuales a activos imaginarios."}
+    ]
+  },
+  competencies:[
+    "Medición / trazo",
+    "Operación de cada máquina real",
+    "Armado / uniones",
+    "Protección / inmovilización de pieza",
+    "Manipulación / carga",
+    "Liberación de embalaje"
+  ],
+  controlRecords:[
+    "DISEÑO PREVISTO — requerimiento de embalaje",
+    "DISEÑO PREVISTO — vínculo caja/embalaje ↔ orden",
+    "DISEÑO PREVISTO — listo para carga",
+    "Los estados BIWO no se crean hasta observar el sistema real"
+  ],
+  materialFlow:[
+    "Entrada",
+    "Corte / incorporación",
+    "Retal recuperable",
+    "Recorte / aserrín / residuo",
+    "Embalaje terminado",
+    "Destino / carga"
+  ],
+  tools:[
+    "PREPARED — banco/mesa de corte y armado",
+    "PREPARED — sierra/caladora u otro equipo que se confirme",
+    "PREPARED — taladro/atornillador",
+    "PREPARED — herramienta manual de medición, corte y fijación",
+    "PREPARED — sistema de captura/retiro de polvo si la operación lo requiere",
+    "PREPARED — rack/almacenamiento de madera",
+    "PREPARED — medios de manipulación/carga si peso y volumen lo exigen"
+  ],
+  consumables:[
+    "PREPARED — madera/triplay",
+    "PREPARED — tornillería/herrajes",
+    "PREPARED — cartón",
+    "PREPARED — película/plástico/protecciones",
+    "PREPARED — elementos de fijación"
+  ],
+  evidence:[
+    {id:"EVID-CAR-01",text:"Implementación física real: panorámica, límite con áreas vecinas, banco/rack/equipo, ruta de circulación/carga y separación respecto de polvo/químicos/acabado.",placement:"Área"},
+    {id:"EVID-CAR-02",text:"Primera demostración real: orden/pieza, requerimiento/dimensiones, secuencia, herramienta/equipo, materiales/protección, condición de salida y carga/manipulación si aplica.",placement:"Metodología futura"}
+  ],
+  auditCriteria:[
+    {id:"CAR-AUD-01",group:"Área",label:"Decisión/ubicación",target:"Existe decisión de implementar y ubicación aprobada.",input:"Decisión + ubicación."},
+    {id:"CAR-AUD-02",group:"Área",label:"Separación de polvo",target:"Polvo/aserrín queda separado de Retoque/acabados.",input:"Límite físico y punto de corte."},
+    {id:"CAR-AUD-03",group:"Área",label:"Puesto real",target:"Banco/rack/equipo real implementados y utilizables.",input:"Activo físico."},
+    {id:"CAR-AUD-04",group:"Área",label:"Almacenamiento",target:"Madera/herrajes/protecciones están estables y recuperables.",input:"Almacenamiento real."},
+    {id:"CAR-AUD-05",group:"Área",label:"Servicios/carga",target:"Electricidad y ruta de carga son compatibles con el puesto.",input:"Servicios + recorrido."},
+    {id:"CAR-AUD-06",group:"Proceso",label:"Identidad de embalaje",target:"Caja/embalaje está ligado a la orden.",input:"Muestra real."},
+    {id:"CAR-AUD-07",group:"Proceso",label:"Demostración real",target:"Método real fue demostrado antes de liberarse.",input:"Observación completa de una orden."},
+    {id:"CAR-AUD-08",group:"Proceso",label:"Criterio de liberación",target:"Criterios de protección y liberación están definidos por pieza/destino.",input:"Regla derivada de demostración real."}
+  ],
+  implementationHolds:[
+    {id:"CAR-HOLD-01",text:"Decidir si ROCA implementará este frente dedicado o mantendrá parte del trabajo en Bases/Logística."},
+    {id:"CAR-HOLD-02",text:"Definir ubicación real sin invadir Retoque ni circulación."},
+    {id:"CAR-HOLD-03",text:"Definir responsable real."},
+    {id:"CAR-HOLD-04",text:"Definir estación/layout."},
+    {id:"CAR-HOLD-05",text:"Levantar herramientas/equipo existentes."},
+    {id:"CAR-HOLD-06",text:"Observar método primario demostrado; no inventar secuencia."},
+    {id:"CAR-HOLD-07",text:"Cerrar criterio de dimensionado/protección por pieza/destino."},
+    {id:"CAR-HOLD-08",text:"Confirmar materiales y uniones reales."},
+    {id:"CAR-HOLD-09",text:"Observar manipulación/carga."},
+    {id:"CAR-HOLD-10",text:"Cerrar interfaz con Bases y Logística."},
+    {id:"CAR-HOLD-11",text:"Cerrar BIWO real."},
+    {id:"CAR-HOLD-12",text:"Capturar evidencia de campo."},
+    {id:"CAR-HOLD-13",text:"Demostrar competencia."}
+  ],
+  sourceRefs:[
+    "ops/areas/CARPINTERIA_EMBALAJE_AREA_BOOK_V2.md"
+  ]
+};
