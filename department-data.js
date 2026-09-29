@@ -549,12 +549,14 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
     {id:"BAS-AUD-AREA-02",criterion:"Estación y almacenamiento son utilizables y recuperables.",evidence:"Vista de estación + almacenamiento de madera/malla/herrajes."},
     {id:"BAS-AUD-AREA-03",criterion:"Iluminación corresponde a corte, armado o acabado cuando gobierna la tarea.",evidence:"Lux en plano real de trabajo cuando aplique."},
     {id:"BAS-AUD-AREA-04",criterion:"Ventilación/extracción corresponde a proceso y producto real.",evidence:"Producto/HDS + punto de generación + control físico."},
-    {id:"BAS-AUD-AREA-05",criterion:"Armado se realiza sobre apoyo estable y sin improvisaciones.",evidence:"Pieza presentada sobre base antes del cierre."},
-    {id:"BAS-AUD-AREA-06",criterion:"Poliuretano/adhesivos están identificados y contenidos en su punto de uso.",evidence:"Producto real + mezcla + zona de trabajo."},
-    {id:"BAS-AUD-AREA-07",criterion:"Corte/acabado se ejecuta con zona despejada y herramienta apta.",evidence:"Equipo real + condición visible + espacio de trabajo."},
-    {id:"BAS-AUD-AREA-08",criterion:"Polvo no contamina acabado químico.",evidence:"Secuencia/limpieza y separación real."},
-    {id:"BAS-AUD-AREA-09",criterion:"Materiales y piezas pesadas permanecen estables y con ruta de maniobra.",evidence:"Almacenamiento + recorrido."},
-    {id:"BAS-AUD-AREA-10",criterion:"La maniobra pesada tiene método o asistencia definidos.",evidence:"Observación de maniobra real cuando aplique."}
+    {id:"BAS-AUD-AREA-05",criterion:"Rutas, señalización y medios de respuesta aplicables permanecen visibles, accesibles y sin bloqueo.",evidence:"Recorrido físico de emergencia."},
+    {id:"BAS-AUD-AREA-06",criterion:"Toda base, pieza o trabajo en espera conserva identificación y siguiente acción.",evidence:"Muestra de trabajos y espera."},
+    {id:"BAS-AUD-AREA-07",criterion:"Armado se realiza sobre apoyo estable y sin improvisaciones.",evidence:"Pieza presentada sobre base antes del cierre."},
+    {id:"BAS-AUD-AREA-08",criterion:"Poliuretano/adhesivos están identificados y contenidos en su punto de uso.",evidence:"Producto real + mezcla + zona de trabajo."},
+    {id:"BAS-AUD-AREA-09",criterion:"Corte/acabado se ejecuta con zona despejada y herramienta apta.",evidence:"Equipo real + condición visible + espacio de trabajo."},
+    {id:"BAS-AUD-AREA-10",criterion:"Polvo no contamina acabado químico.",evidence:"Secuencia/limpieza y separación real."},
+    {id:"BAS-AUD-AREA-11",criterion:"Materiales y piezas pesadas permanecen estables y con ruta de maniobra.",evidence:"Almacenamiento + recorrido."},
+    {id:"BAS-AUD-AREA-12",criterion:"La maniobra pesada tiene método o asistencia definidos.",evidence:"Observación de maniobra real cuando aplique."}
   ],
   method:{
     flow:"Definir alcance y medidas → cortar plancha/base → construir bancos y fijación → elegir ruta de volumen/terreno → proteger y verter poliuretano cuando aplique → recortar/modelar → aplicar dextrina/terreno → construir malla/costal cuando aplique → ambientar → comprobar estabilidad y transferir.",
@@ -564,17 +566,17 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
     ],
     stages:[
       {id:"BAS-MET-08",title:"Medición y plancha de base",text:"Con la pieza completa y la referencia del proyecto, definir ancho y largo antes de cortar. Referencia de taller: triplay industrial de 18 mm. Para bases mayores a ~1 m o piezas pesadas pueden requerirse dos capas y ruedas. Verificar siempre contra peso, geometría, transporte, material real y fijación."},
-      {id:"BAS-MET-09",title:"Bancos y fijación del animal",text:"Cortar bancos a la altura de la postura, presentar la pieza antes de cerrar la fijación y hacer coincidir varillas/puntos estructurales con los apoyos. Referencia observada: tornillos #8 × 2 in. No usar esta medida como especificación universal."},
+      {id:"BAS-MET-09",title:"Bancos y fijación del animal",text:"Cortar bancos a la altura que exige la postura, presentar la pieza antes de cerrar la fijación y hacer coincidir varillas o puntos estructurales con los apoyos. Retirar varilla sobrante cuando corresponda y reservar clavos para condiciones donde la fijación lo permita. Los montajes apoyados en una o dos patas requieren una fijación mecánica capaz de conservar postura y resistir el esfuerzo. Referencia observada: tornillos #8 × 2 in; no usar esta medida como especificación universal."},
       {id:"BAS-MET-10",title:"Poliuretano: protección y vertido",text:"Proteger patas y zonas sensibles, construir límites de expansión, identificar componentes y dosificar sólo en el punto preparado. NO LIBERADO — dosificación de poliuretano en Bases. No usar una relación fija hasta confirmar producto, HDS, aplicación y prueba controlada específica de Bases."},
-      {id:"BAS-MET-11",title:"Poliuretano: recorte y pintura",text:"Una vez firme el volumen, recortar hasta aproximar terreno/referencia. Corregir huecos físicos antes de pintar y mantener libres patas y puntos de contacto."},
+      {id:"BAS-MET-11",title:"Poliuretano: recorte y pintura",text:"Una vez firme el volumen, recortar con herramienta compatible hasta aproximar terreno o referencia. Corregir huecos físicos antes de pintar; la pintura no oculta vacíos, apoyos inseguros ni transiciones deficientes. Mantener libres patas y puntos de contacto. Liberar esta etapa con un volumen continuo, estable y legible contra la referencia."},
       {id:"BAS-MET-12",title:"Dextrina y terreno",text:"Usar 2 partes de dextrina por 1 de Blanco España. Preparar sólo lo necesario; ~1 h es una referencia de tiempo útil, no un criterio automático de liberación."},
       {id:"BAS-MET-13",title:"Costillas y malla 8x8",text:"Usar malla 8x8 y conservar 3 mm de separación entre pata y malla. Fijar y modelar hasta cerrar volumen sin invadir la pata."},
-      {id:"BAS-MET-14",title:"Costal, dextrina y terreno",text:"Cubrir la malla con costal de manta humedecido en dextrina y después aplicar dextrina más espesa con Blanco España y terreno. Usar la consistencia necesaria para cubrir y modelar sin invadir la pata; no fijar una receta volumétrica universal."},
-      {id:"BAS-MET-15",title:"Vegetación y detalles finales",text:"Agregar ambientación sólo después de resolver estructura y terreno. Fijar cualquier elemento cuyo peso, altura o posibilidad de movimiento lo exija."}
+      {id:"BAS-MET-14",title:"Costal, dextrina y terreno",text:"Cubrir la malla con costal de manta humedecido en dextrina y después aplicar dextrina más espesa con Blanco España y terreno. El costal limita el paso excesivo de adhesivo por la malla y aporta continuidad. Completar el volumen conservando los 3 mm junto a la pata sin cubrirla. Usar la consistencia necesaria para cubrir y modelar; no fijar una receta volumétrica universal."},
+      {id:"BAS-MET-15",title:"Vegetación y detalles finales",text:"Agregar ambientación sólo después de resolver estructura y terreno. Según el proyecto pueden entrar troncos, piedras, grava, pastos, musgo, plantas naturales o sintéticas, ramas, hojas, huesos u otros elementos aprobados. Fijar cualquier elemento cuyo peso, altura o posibilidad de movimiento lo exija. Liberar cuando la composición corresponda a la referencia y permanezca estable sin interferir con patas, limpieza, traslado o lectura del ejemplar."}
     ],
     controls:[
       {id:"BAS-CTL-01",text:"La base no compensa una fijación estructural deficiente."},
-      {id:"BAS-CTL-02",text:"18 mm, dos capas, ruedas y #8×2 in son referencias históricas, no especificaciones universales."},
+      {id:"BAS-CTL-02",text:"18 mm, dos capas, ruedas y #8×2 in son referencias de taller; no funcionan como especificaciones universales."},
       {id:"BAS-CTL-03",text:"La receta de poliuretano permanece abierta hasta confirmar producto y aplicación real de Bases."},
       {id:"BAS-CTL-04",text:"Dextrina:Blanco España = 2:1 se conserva como hecho primario soportado."},
       {id:"BAS-CTL-05",text:"Malla 8x8 y 3 mm de separación pata-malla se conservan como hechos primarios soportados."},
