@@ -306,3 +306,192 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
     "ops/areas/MONTAJE_PILOT_AREA_BOOK_V2.md"
   ]
 };
+
+window.ROCA_DEPARTMENTS["area-retoque"] = {
+  id:"area-retoque",
+  code:"RET",
+  title:"Retoque",
+  status:"PARTIAL",
+  purpose:"Recuperar superficie, color, textura y presentación sin ocultar defectos estructurales que deban regresar al oficio capaz de corregirlos.",
+  receivesFrom:"Montaje con pieza seca, estructuralmente estable e identificada",
+  handsOffTo:"Bases / Revisión según alcance de la orden",
+  people:[
+    "Rodolfo Jr. — encargado de Retoque",
+    "Emiliano — Retoque",
+    "Valerio / Valentino — nombre pendiente de reconciliar",
+    "Señor Pez — Retoque; la pedacera pertenece únicamente a esta área"
+  ],
+  entryInputs:[
+    "Pieza seca",
+    "Pieza estructuralmente estable",
+    "Pieza identificada",
+    "Condición suficiente para evaluar superficie, color y detalle"
+  ],
+  entryStops:[
+    "Costura abierta",
+    "Anatomía incorrecta",
+    "Fijación inestable",
+    "Defecto estructural que todavía requiere intervención física de Montaje/Formas"
+  ],
+  exitCriteria:[
+    "Superficie terminada",
+    "Color integrado",
+    "Detalle terminado",
+    "Defectos estructurales no ocultados con pintura o resane",
+    "Pieza identificada y lista para Bases/Revisión"
+  ],
+  area:[
+    {id:"RET-AREA-01",label:"Circulación y accesos",text:"Pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Piezas, cajas, cables, mangueras y herramienta temporal no se almacenan en circulación."},
+    {id:"RET-AREA-02",label:"Estación y almacenamiento",text:"Herramienta, material y consumible tienen ubicación definida. La superficie vuelve a condición utilizable al cerrar la tarea y lo dañado o fuera de servicio se separa del uso."},
+    {id:"RET-AREA-03",label:"Iluminación",text:"La iluminación se verifica en el plano real donde se compara color, textura y detalle. Cuando una lectura gobierne la decisión se conserva punto, fecha, valor e instrumento identificado."},
+    {id:"RET-AREA-04",label:"Ventilación y extracción",text:"La ventilación o extracción corresponde a la operación y al producto real; pintura, aerosol, gasolina blanca u otro solvente se controlan contra producto/HDS, punto de generación y exposición real."},
+    {id:"RET-AREA-05",label:"Emergencia",text:"Rutas, señalización y medios de respuesta aplicables permanecen visibles, accesibles y sin bloqueo."},
+    {id:"RET-AREA-06",label:"Identidad y espera",text:"Toda pieza activa o en espera conserva identificación y siguiente acción. La espera no bloquea circulación ni mezcla proyectos."},
+    {id:"RET-AREA-07",label:"Pintura y solventes",text:"Aerógrafo, pistola, barnices, gasolina blanca, pinturas y otros productos de acabado se usan en un punto definido; inflamables permanecen cerrados y separados de fuentes de ignición según el producto real."},
+    {id:"RET-AREA-08",label:"Aire comprimido",text:"Compresor, reguladores, mangueras y conexiones se identifican y se inspeccionan por condición visible; las mangueras no atraviesan circulación sin protección."},
+    {id:"RET-AREA-09",label:"Acabado fino",text:"La estación de pintura y detalle permite inspeccionar la pieza sin sombras, contaminación de polvo o condiciones que oculten defectos."},
+    {id:"RET-AREA-10",label:"Separación resane/lijado y acabado",text:"Resane, perfilado o lijado que genere polvo no contamina el punto donde se aplica color o acabado final. Si comparten espacio, la secuencia y limpieza impiden arrastre de polvo."},
+    {id:"RET-AREA-11",label:"Pedacera",text:"La pedacera queda contenida, clasificada y ubicada únicamente en Retoque. Material útil se distingue de residuo y no se usa como depósito general."},
+    {id:"RET-AREA-12",label:"Alfileres retirados",text:"Los alfileres y fijaciones temporales retirados al inicio de Retoque se concentran en recipiente o lugar definido y no quedan dispersos."}
+  ],
+  areaAudit:[
+    {id:"RET-AUD-AREA-01",criterion:"Circulación y accesos permanecen libres.",evidence:"Panorámica y recorrido real."},
+    {id:"RET-AUD-AREA-02",criterion:"Estación y almacenamiento son utilizables y recuperables.",evidence:"Vista de estación y almacenamiento."},
+    {id:"RET-AUD-AREA-03",criterion:"Iluminación corresponde a la tarea cuando gobierna color/detalle.",evidence:"Lux en plano de tarea cuando aplique."},
+    {id:"RET-AUD-AREA-04",criterion:"Ventilación/extracción corresponde a operación y producto real.",evidence:"Producto/HDS + punto de uso + control físico."},
+    {id:"RET-AUD-AREA-05",criterion:"Pieza activa o en espera conserva ID y siguiente acción.",evidence:"Muestra de piezas en estación/espera."},
+    {id:"RET-AUD-AREA-06",criterion:"Pintura y solventes se usan y almacenan en punto controlado.",evidence:"Producto real + ubicación + condición."},
+    {id:"RET-AUD-AREA-07",criterion:"Compresor, reguladores y mangueras están identificables y no invaden circulación.",evidence:"Sistema de aire completo."},
+    {id:"RET-AUD-AREA-08",criterion:"Resane/lijado no contamina acabado fino.",evidence:"Secuencia/limpieza y condición del punto de acabado."},
+    {id:"RET-AUD-AREA-09",criterion:"Pedacera permanece contenida y sólo en Retoque.",evidence:"Ubicación y clasificación visible."},
+    {id:"RET-AUD-AREA-10",criterion:"Alfileres retirados quedan contenidos.",evidence:"Recipiente y estado de cierre."}
+  ],
+  method:{
+    flow:"Recibir pieza seca/estable → retirar fijaciones temporales → cepillar y limpiar → inspeccionar defecto → si es estructural regresar al oficio de origen → resanar imperfección compatible → recuperar color de oscuros a claros → terminar pelo → brillo localizado → textura de nariz cuando aplique → acabado de cuernos cuando aplique → liberar a Bases/Revisión.",
+    branches:[
+      {title:"Gate de defecto",text:"Costura abierta, anatomía incorrecta, fijación inestable o defecto estructural regresan a Montaje/Formas según origen. Retoque sólo continúa con imperfecciones compatibles con acabado."}
+    ],
+    stages:[
+      {id:"RET-MET-01",title:"Retiro de alfileres y limpieza",text:"Retirar todos los alfileres y fijaciones temporales sin desgarrar piel ni pelo. Iniciar con limpieza general y cepillado. Para retirar grasa, la fuente primaria registra jabón Salvo + jabón Roma. Suavitel es condicional y sólo se usa cuando el pelo requiere ablandamiento."},
+      {id:"RET-MET-02",title:"Resane de imperfecciones",text:"Cerrar o nivelar pequeñas imperfecciones antes de pintar. La fuente primaria confirma resanador automotriz, barro según zona y aserrín + Resistol según soporte. Lijar o perfilar hasta continuar el volumen sin borde perceptible."},
+      {id:"RET-MET-03",title:"Pintura del animal",text:"Recuperar ojos, nariz, boca, costuras y zonas que perdieron tono, construyendo el color de tonos oscuros a claros y comparando continuamente con la coloración natural o referencia aprobada."},
+      {id:"RET-MET-04",title:"Cepillado y acabado del pelo",text:"Cepillar en dirección natural y retirar residuos. La fuente primaria confirma gasolina blanca para soltar o ablandar pelo y recuperar apariencia natural; usar por zonas sin fijar una dosis volumétrica universal."},
+      {id:"RET-MET-05",title:"Brillo de ojos, nariz y boca",text:"Aplicar barniz brillante en spray de forma localizada cuando corresponda, sin escurrimientos ni película excesiva sobre pelo o piel vecina."},
+      {id:"RET-MET-06",title:"Textura de nariz en cérvidos",text:"Usar Resistol blanco 800 en jeringa, una gota por marca, siguiendo el patrón de referencia. La referencia histórica de 1–2 h no sustituye el criterio físico de que las gotas conserven relieve individual."},
+      {id:"RET-MET-07",title:"Acabado de cuernos",text:"Aplicar aceite al final para recuperar brillo. Las manchas para madera se usan según especie o tono cuando corresponda, sin escurrimientos ni contaminación del pelo."}
+    ],
+    controls:[
+      {id:"RET-CTL-01",text:"Retoque no usa pintura o resane para ocultar un defecto estructural."},
+      {id:"RET-CTL-02",text:"El color se construye de oscuros a claros y se compara con referencia natural/aprobada."},
+      {id:"RET-CTL-03",text:"Suavitel es condicional, no un paso obligatorio."},
+      {id:"RET-CTL-04",text:"Gasolina blanca no tiene una dosis universal; el uso se controla por zona y condición."},
+      {id:"RET-CTL-05",text:"La textura de nariz se libera por forma conservada, no sólo por tiempo."}
+    ]
+  },
+  toolCare:[
+    "Compresor, aerógrafo, pistola y secadora conservan identidad y estado reales antes de fijar mantenimiento",
+    "Aerógrafo y pistola se limpian después de uso y se retiran ante pérdida de función o daño",
+    "Mangueras y conexiones conservan condición visible y ruta sin invadir circulación",
+    "Herramienta manual se mantiene limpia, ubicada y separada del uso si está dañada"
+  ],
+  competencies:[
+    "Limpieza/acondicionado y uso de productos",
+    "Resane compatible con Retoque",
+    "Aerógrafo y color",
+    "Acabado fino / textura",
+    "Acabado de cuernos",
+    "Liberación visual o devolución al oficio de origen"
+  ],
+  controlRecords:[
+    "ID de pieza / orden",
+    "Responsable / estación",
+    "Condición de ingreso desde Montaje",
+    "Defecto / retrabajo y destino si se devuelve",
+    "Etapa real",
+    "Producto/material crítico cuando una excepción lo requiera",
+    "Terminación / transferencia a Bases/Revisión",
+    "Los nombres exactos de estados BIWO se toman del sistema real y no se inventan desde el manual"
+  ],
+  materialFlow:[
+    "Producto/identidad que entra",
+    "Cantidad o forma de uso cuando exista criterio",
+    "Material incorporado",
+    "Remanente reutilizable",
+    "Residuo / envase / trapo",
+    "Destino",
+    "Servicio / aire / energía usado"
+  ],
+  tools:[
+    "Trapo y esponja",
+    "Cepillos",
+    "Secadora",
+    "Pinceles",
+    "Aerógrafo",
+    "Pistola de pintura",
+    "Compresor, reguladores, mangueras y conexiones",
+    "Bandejas",
+    "Espátulas",
+    "Paleta de madera",
+    "Jeringa",
+    "Herramienta manual de detalle/retiro cuando la tarea la use"
+  ],
+  consumables:[
+    "Agua",
+    "Jabón Salvo",
+    "Jabón Roma",
+    "Suavitel sólo cuando el pelo lo requiera",
+    "Resanador automotriz + catalizador cuando aplique",
+    "Barro / RP300 cuando aplique",
+    "Aserrín + Resistol cuando el soporte lo requiera",
+    "Pinturas base agua / vinil-acrílicas observadas",
+    "Gasolina blanca",
+    "Barniz brillante en spray",
+    "Resistol blanco 800",
+    "Manchas para cuerno según referencia / tono",
+    "Aceite para cuernos"
+  ],
+  evidence:[
+    {id:"EVID-RET-01",text:"Panorámica/estación real de Retoque, productos, punto de uso, pedacera y condición de cierre.",placement:"Área"},
+    {id:"EVID-RET-02",text:"Iluminancia medida en el plano real de color/detalle cuando gobierna la tarea.",placement:"Área / iluminación"},
+    {id:"EVID-RET-03",text:"Sistema de aire/pintura real: compresor/placa, regulador, mangueras/conexiones y punto de uso.",placement:"Área / aire y pintura"},
+    {id:"EVID-RET-04",text:"Defecto que provoca devolución o retrabajo.",placement:"Metodología / gate"},
+    {id:"EVID-RET-05",text:"Reparación superficial relevante, textura especial o excepción de producto/tono.",placement:"Metodología"},
+    {id:"EVID-RET-06",text:"Condición final cuando aporta aceptación o trazabilidad.",placement:"Handoff"}
+  ],
+  auditCriteria:[
+    {id:"RET-AUD-01",group:"Área",label:"Circulación",target:"Circulación y accesos permanecen libres.",input:"Panorámica y recorrido."},
+    {id:"RET-AUD-02",group:"Área",label:"Estación",target:"Estación y almacenamiento son recuperables.",input:"Estación real."},
+    {id:"RET-AUD-03",group:"Área",label:"Iluminación",target:"Iluminación se mide cuando gobierna la tarea.",input:"Lux + punto + instrumento."},
+    {id:"RET-AUD-04",group:"Área",label:"Ventilación",target:"Ventilación/extracción corresponde a operación y producto.",input:"Producto/HDS + punto de uso."},
+    {id:"RET-AUD-05",group:"Área",label:"Emergencia",target:"Rutas y medios de emergencia permanecen accesibles.",input:"Recorrido físico."},
+    {id:"RET-AUD-06",group:"Área",label:"Identidad",target:"Pieza activa o en espera conserva ID.",input:"Muestra de piezas."},
+    {id:"RET-AUD-07",group:"Área",label:"Pintura/solventes",target:"Pintura y solventes están en punto definido e identificados.",input:"Producto + ubicación."},
+    {id:"RET-AUD-08",group:"Área",label:"Aire comprimido",target:"Compresor/línea de aire identificables y sin invadir circulación.",input:"Sistema de aire."},
+    {id:"RET-AUD-09",group:"Área",label:"Acabado fino",target:"Acabado puede inspeccionarse sin contaminación o sombras críticas.",input:"Punto de acabado."},
+    {id:"RET-AUD-10",group:"Área",label:"Polvo",target:"Resane/lijado no contamina acabado fino.",input:"Secuencia y limpieza."},
+    {id:"RET-AUD-11",group:"Área",label:"Pedacera",target:"Pedacera contenida y clasificada sólo en Retoque.",input:"Ubicación real."},
+    {id:"RET-AUD-12",group:"Área",label:"Alfileres",target:"Alfileres retirados quedan contenidos.",input:"Estado de cierre."},
+    {id:"RET-AUD-13",group:"Proceso",label:"Limpieza",target:"Pieza entra al acabado limpia, sin fijaciones temporales ni residuos que impidan evaluar.",input:"Condición antes de resane."},
+    {id:"RET-AUD-14",group:"Proceso",label:"Resane",target:"Defecto superficial queda nivelado antes de color.",input:"Inspección visual/táctil."},
+    {id:"RET-AUD-15",group:"Proceso",label:"Color",target:"Transiciones integradas sin manchas aisladas.",input:"Comparación con referencia."},
+    {id:"RET-AUD-16",group:"Proceso",label:"Pelo",target:"Pelo queda separado y con caída natural.",input:"Inspección final."},
+    {id:"RET-AUD-17",group:"Proceso",label:"Brillo",target:"Brillo localizado sin escurrimientos.",input:"Inspección final."},
+    {id:"RET-AUD-18",group:"Proceso",label:"Textura nariz",target:"Relieve individual conservado cuando aplique.",input:"Inspección de detalle."},
+    {id:"RET-AUD-19",group:"Proceso",label:"Cuernos",target:"Tono/acabado integrado y brillo uniforme.",input:"Inspección final."}
+  ],
+  implementationHolds:[
+    {id:"RET-HOLD-01",text:"Reconciliar nombre correcto Valerio/Valentino."},
+    {id:"RET-HOLD-02",text:"Confirmar estaciones reales de Rodolfo Jr., Emiliano, Valerio/Valentino y Señor Pez."},
+    {id:"RET-HOLD-03",text:"Levantar productos, marcas y HDS realmente vigentes."},
+    {id:"RET-HOLD-04",text:"Cerrar ventilación/extracción por producto y proceso."},
+    {id:"RET-HOLD-05",text:"Identificar compresor, placa, accesorios y condición; resolver aplicabilidad en Bibliografía/Assurance."},
+    {id:"RET-HOLD-06",text:"Levantar iluminancia en tarea real; no usar 750/1000 lux como cierre automático."},
+    {id:"RET-HOLD-07",text:"Cerrar paleta real de pinturas/tonos y criterio de comparación."},
+    {id:"RET-HOLD-08",text:"Confirmar inventario real de aerógrafos, pistola y secadora y mantenimiento aplicable."},
+    {id:"RET-HOLD-09",text:"Cerrar criterios/estado BIWO de ingreso, devolución, terminación y transferencia."},
+    {id:"RET-HOLD-10",text:"Completar evidencia de campo y competencia."}
+  ],
+  sourceRefs:[
+    "ops/areas/RETOQUE_AREA_BOOK_V2.md"
+  ]
+};
