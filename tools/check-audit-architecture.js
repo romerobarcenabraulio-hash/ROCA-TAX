@@ -27,6 +27,13 @@ for(const [areaId,dept] of departments){
   const ids=rows.map(r=>r.id);
   assert(new Set(ids).size===ids.length,areaId+': duplicate audit criterion id');
   assert(rows.every(r=>r.target&&r.basis),areaId+': criterion missing target/basis');
+
+  const areaIds=new Set((dept.area||[]).map(r=>r.id));
+  const sourceIds=(dept.areaAudit||[]).map(r=>r.sourceId);
+  assert(sourceIds.every(Boolean),areaId+': areaAudit row missing explicit sourceId');
+  assert(new Set(sourceIds).size===sourceIds.length,areaId+': duplicate areaAudit sourceId');
+  assert((dept.area||[]).every(r=>sourceIds.includes(r.id)),areaId+': permanent area criterion missing audit binding');
+  assert((dept.areaAudit||[]).every(r=>areaIds.has(r.sourceId)),areaId+': orphan areaAudit sourceId');
 }
 
 const sections=global.ROCA_AUDIT_SECTIONS||[];
@@ -54,6 +61,21 @@ global.ROCA_AUDIT_ENGINE.saveCriterion(area,criterion.id,{status:'NONCONFORMING'
 const item=global.ROCA_AUDIT_ENGINE.dynamicImplementationItems().find(x=>x.areaId===area&&x.req===criterion.id);
 assert(Boolean(item),'NONCONFORMING criterion must generate IMPLEMENTAR item');
 assert(item&&item.status==='NO CONFORME','dynamic IMPLEMENTAR item must preserve nonconforming status');
+assert(global.ROCA_AUDIT_ENGINE.closureDetailValid('CONFORMING','')===false,'CONFORMING without detail must not be valid');
+assert(global.ROCA_AUDIT_ENGINE.closureDetailValid('NA_JUSTIFIED','')===false,'NA_JUSTIFIED without justification must not be valid');
+
+global.ROCA_AUDIT_ENGINE.saveCriterion(area,criterion.id,{status:'CONFORMING',note:'EVID-TEST'});
+const backup=global.ROCA_AUDIT_ENGINE.exportAuditState();
+assert(backup.schema==='ROCA_AUDIT_STATE_V1','audit backup schema mismatch');
+delete store[global.ROCA_AUDIT_ENGINE.stateKey(area)];
+const restored=global.ROCA_AUDIT_ENGINE.importAuditState(backup);
+assert(restored.criteria>=1,'audit backup failed to restore known criterion');
+const tampered=JSON.parse(JSON.stringify(backup));
+tampered.departments[area][criterion.id]={status:'CONFORMING',note:''};
+tampered.departments[area]['UNKNOWN-REQ']={status:'CONFORMING',note:'fake'};
+delete store[global.ROCA_AUDIT_ENGINE.stateKey(area)];
+const filtered=global.ROCA_AUDIT_ENGINE.importAuditState(tampered);
+assert(filtered.ignored>=2,'audit import must reject empty terminal closure and unknown criterion');
 
 if(process.exitCode) process.exit(process.exitCode);
 console.log('PASS audit architecture: '+departments.length+' departments; one canonical criteria engine; AUDITORIA -> IMPLEMENTAR flow intact');
