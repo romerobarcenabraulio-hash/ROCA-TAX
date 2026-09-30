@@ -13,6 +13,8 @@ on:
       - generated/roca-fast-track/implementation.html
       - ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv
       - ops/control/ROCA_HOLD_ROUTING_V2.csv
+      - ops/control/ROCA_BASELINE_DEFINITION_READINESS_V2.csv
+      - ops/control/ROCA_BASELINE_DEFINITION_READINESS_GATE_V2.json
       - .github/roca-compliance-overlay/validate_audit_flow.mjs
       - .github/workflows/roca-audit-flow-integrity.yml
   pull_request:
@@ -24,6 +26,8 @@ on:
       - generated/roca-fast-track/implementation.html
       - ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv
       - ops/control/ROCA_HOLD_ROUTING_V2.csv
+      - ops/control/ROCA_BASELINE_DEFINITION_READINESS_V2.csv
+      - ops/control/ROCA_BASELINE_DEFINITION_READINESS_GATE_V2.json
       - .github/roca-compliance-overlay/validate_audit_flow.mjs
       - .github/workflows/roca-audit-flow-integrity.yml
 
