@@ -154,7 +154,7 @@
 </section>
 <section class="action-board">
   <h2>Acciones abiertas reales</h2>
-  <div class="note"><b>Regla de trabajo:</b> todo criterio aplicable comienza pendiente hasta ser evaluado. <b>NO VERIFICADO</b> significa levantar/comprobar; <b>NO CONFORME</b> significa corregir. Cuando queda <b>CONFORME</b> o <b>NO APLICA — JUSTIFICADO</b>, desaparece de IMPLEMENTAR y permanece únicamente el estándar en el manual.</div>
+  <div class="note"><b>Regla de trabajo:</b> <b>NO VERIFICADO</b> pertenece a AUDITORÍA y no se trata como una falla. IMPLEMENTAR recibe únicamente brechas reales: <b>NO CONFORME</b> o acciones controladas abiertas. Cuando la corrección queda <b>CONFORME</b> y se cierra su acción controlada, desaparece de IMPLEMENTAR; el estándar permanente permanece en el manual.</div>
   <div class="tool-links">
     <a href="field-walk.html">LEVANTAR EN CAMPO</a>
     <a href="../../index.html">AUDITAR EN EL HTML CENTRAL</a>
@@ -227,22 +227,18 @@ function auditImplementationItems(){
     criteria.forEach((row,req)=>{
       const v=saved[req]||{};
       const status=String(v.status||"NOT_VERIFIED").toUpperCase();
-      if(!["NONCONFORMING","NOT_VERIFIED"].includes(status)) return;
+      if(status!=="NONCONFORMING") return;
       const note=String(v.note||"").trim();
       items.push({
         id:"AUD-"+String(dept.code||areaId).toUpperCase()+"-"+req,
         area:dept.title||areaId,
         areaId,
         req,
-        gap:status==="NONCONFORMING"
-          ? "NO CONFORME · "+(note||row.label)
-          : "NO VERIFICADO · "+(note||row.label),
-        fix:status==="NONCONFORMING"
-          ? "Corregir la condición: "+row.target+" Después volver a auditar."
-          : "Verificar la condición y registrar la evidencia requerida: "+row.evidence,
+        gap:"NO CONFORME · "+(note||row.label),
+        fix:"Corregir la condición: "+row.target+" Después volver a auditar.",
         owner:"POR ASIGNAR",
         due:"—",
-        status:status==="NONCONFORMING"?"NO CONFORME":"NO VERIFICADO",
+        status:"NO CONFORME",
         evidence:note||row.evidence,
         basis:row.basis,
         dynamic:true
@@ -279,12 +275,11 @@ async function loadImplementationActions(){
   const summary=document.getElementById("implementationAuditSummary");
   if(summary){
     const nc=dynamic.filter(x=>x.status==="NO CONFORME").length;
-    const nv=dynamic.filter(x=>x.status==="NO VERIFICADO").length;
-    summary.innerHTML='<strong>'+items.length+' acciones abiertas</strong> · '+controlled.length+' del registro controlado · '+dynamic.length+' generadas por AUDITORÍA ('+nc+' no conformes · '+nv+' no verificadas).';
+    summary.innerHTML='<strong>'+items.length+' acciones abiertas</strong> · '+controlled.length+' del registro controlado · '+dynamic.length+' generadas por AUDITORÍA ('+nc+' no conformes).';
   }
 
   if(!items.length){
-    body.innerHTML='<tr><td colspan="8"><b>Sin acciones abiertas.</b><br>Al auditar un criterio como NO CONFORME o NO VERIFICADO, aparecerá aquí automáticamente.</td></tr>';
+    body.innerHTML='<tr><td colspan="8"><b>Sin acciones abiertas.</b><br>Al auditar un criterio como NO CONFORME, aparecerá aquí automáticamente. Los criterios NO VERIFICADOS permanecen en AUDITORÍA.</td></tr>';
     return;
   }
   body.innerHTML=items.map(x=>`<tr data-source="${x.dynamic?"audit":"register"}"><td><strong>${esc(x.id)}</strong>${x.req?`<br><small>${esc(x.req)}</small>`:""}</td><td>${esc(x.area)}</td><td>${esc(x.gap)}</td><td>${esc(x.fix)}</td><td>${esc(x.owner||"POR ASIGNAR")}</td><td>${esc(x.due||"—")}</td><td>${esc(x.status)}</td><td>${esc(x.evidence||"—")}${x.dynamic&&x.basis?`<br><small>${esc(x.basis)}</small>`:""}</td></tr>`).join("");
