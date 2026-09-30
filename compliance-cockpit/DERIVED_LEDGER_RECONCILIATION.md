@@ -388,3 +388,32 @@ After rollback backup:
 - module-admission gained both rows as `ADMITTED_RECONSTRUCTED`, preserving the distinction from historically admitted modules.
 
 Post-write read-back matched gate-sync paths/counts/hashes. This closes the derived-ledger omission without falsely claiming recovery of the historical gate artifacts.
+
+
+## 2026-09-30 reconstructed SLP source gates applied
+
+The two remaining provenance gaps were closed by creating new, explicitly reconstructed source-integrity gates from current official sources. These are not represented as recovered originals.
+
+GitHub source gates:
+- `compliance-cockpit/source-gates/SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+- `compliance-cockpit/source-gates/SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+
+Derived ledgers were updated in place after private rollback copies were created:
+
+- `SLP_ENV_IMPACT`
+  - health: 56 rows / `SLP_ENV_IMPACT_GATE.json` / SHA `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`
+  - admission: `ADMITTED_RECONSTRUCTED`
+  - source gate: `SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+
+- `SLP_MUN_FUNCTION`
+  - health: 25 rows / `SLP_MUN_FUNCTION_GATE.json` / SHA `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`
+  - admission: `ADMITTED_RECONSTRUCTED`
+  - source gate: `SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+
+Post-write comparison of gate-sync versus module-health and module-admission returned **0 structural mismatches** when `ADMIN_FORM` is correctly excluded from legal admission as an internal control module.
+
+The original historical SLP source-gate files remain unrecovered; the new gates are traceable replacements, not historical recovery.
+
+Verdict for derived-ledger structural/source-integrity reconciliation: **PASS - SOURCE INTEGRITY RECONSTRUCTED**.
+
+This does not authorize filings, establish applicability, or demonstrate physical/legal compliance.
