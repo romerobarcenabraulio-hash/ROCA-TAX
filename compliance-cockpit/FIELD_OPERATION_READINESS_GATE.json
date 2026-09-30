@@ -1,0 +1,23 @@
+{
+  "schema": "ROCA_FIELD_OPERATION_READINESS_V1",
+  "generated_date": "2026-09-29",
+  "master_rows": 4469,
+  "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "source_module_count": null,
+  "execution_board_packages": 18,
+  "checks": {
+    "atomic_build_pass": true,
+    "master_runtime_sha_match": true,
+    "master_runtime_count_match": true,
+    "cockpit_static_qa_pass": true,
+    "backup_persistence_pass": true,
+    "privacy_data_pass": true,
+    "three_week_board_present": true
+  },
+  "errors": [],
+  "visual_qa": "BLOCKED_BY_BROWSER_POLICY",
+  "field_operation_verdict": "PASS_FOR_FIELD_OPERATION",
+  "publication_visual_verdict": "BLOCKED_UNTIL_BROWSER_VISUAL_QA",
+  "compliance_claim": "NOT_AUTHORIZED",
+  "note": "Field-operation readiness means the cockpit/data/control plane can be used to capture and execute work. It does not mean ROCA is legally or physically compliant; requirement rows close only with valid evidence/review."
+}
