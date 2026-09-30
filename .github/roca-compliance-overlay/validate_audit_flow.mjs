@@ -54,14 +54,27 @@ function parseCsv(text){
 }
 const holdRows=parseCsv(read("ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv"));
 const holdStatus=new Map(holdRows.map(r=>[r.hold_id,r]));
+const routingRows=parseCsv(read("ops/control/ROCA_HOLD_ROUTING_V2.csv"));
+const routingById=new Map(routingRows.map(r=>[r.hold_id,r]));
+const allowedRouting=new Set(["DEFINE_STANDARD","AUDIT_CURRENT_STATE","SYSTEM_RECORD","IMPLEMENT_DECISION"]);
 if(holdDefs.size!==83) errors.push(`defined holds ${holdDefs.size} != 83`);
 if(holdRows.length!==83) errors.push(`hold status rows ${holdRows.length} != 83`);
 for(const [id,h] of holdDefs){
   const s=holdStatus.get(id);
   if(!s) errors.push(`${id}: missing hold status row`);
   else if(s.area!==h.area) errors.push(`${id}: hold area mismatch`);
+
+  const route=routingById.get(id);
+  if(!route) errors.push(`${id}: missing HOLD routing row`);
+  else{
+    if(route.area!==h.area) errors.push(`${id}: HOLD routing area mismatch`);
+    if(!allowedRouting.has(route.hold_type)) errors.push(`${id}: invalid HOLD routing type ${route.hold_type}`);
+    if(String(route.status||"").toUpperCase()!=="OPEN") errors.push(`${id}: routing row must preserve OPEN status`);
+  }
 }
 for(const id of holdStatus.keys()) if(!holdDefs.has(id)) errors.push(`${id}: orphan hold status row`);
+for(const id of routingById.keys()) if(!holdDefs.has(id)) errors.push(`${id}: orphan HOLD routing row`);
+if(routingRows.length!==holdDefs.size) errors.push(`HOLD routing rows ${routingRows.length} != defined holds ${holdDefs.size}`);
 
 if(holdDefs.has("CUR-HOLD-01")) errors.push("obsolete CUR-HOLD-01 still defined");
 const alum=holdDefs.get("CUR-HOLD-07")?.text||"";
@@ -145,7 +158,11 @@ for(const marker of [
   "normalizeImplementationArea",
   "CLOSED","CANCELLED",
   "dynamicImplementationItems",
-  "operational_calculator_release=BLOCKED"
+  "operational_calculator_release=BLOCKED",
+  "ROCA_HOLD_ROUTING_V2.csv",
+  "routingById",
+  "DEFINIR ESTÁNDAR",
+  "AUDITAR ESTADO ACTUAL"
 ]) if(!impl.includes(marker)) errors.push(`implementation marker missing: ${marker}`);
 
 if(impl.includes('href="audit.html"')) errors.push("implementation still links to legacy audit");
