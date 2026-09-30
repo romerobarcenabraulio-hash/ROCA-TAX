@@ -43,8 +43,9 @@
     const dept=window.ROCA_DEPARTMENTS&&window.ROCA_DEPARTMENTS[areaId];
     if(!dept) return [];
     const areaAuditMeta=Array.isArray(dept.areaAudit)?dept.areaAudit:[];
-    const areaRows=(Array.isArray(dept.area)?dept.area:[]).map((r,i)=>{
-      const meta=areaAuditMeta[i]||{};
+    const auditBySourceId=new Map(areaAuditMeta.filter(m=>m&&m.sourceId).map(m=>[m.sourceId,m]));
+    const areaRows=(Array.isArray(dept.area)?dept.area:[]).map(r=>{
+      const meta=auditBySourceId.get(r.id)||{};
       return {
         id:meta.id||r.id,
         group:'Área de trabajo',
