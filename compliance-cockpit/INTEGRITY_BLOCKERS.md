@@ -89,6 +89,8 @@ El master/module lock canónico sí contiene y congela:
 
 Sus quality gates también aparecen en gate-sync. Sin embargo, después de revisar GitHub, Drive, FASTTRACK, el Control Plane vivo y el release portátil, no se recuperaron los artefactos de source-gate originales que justificaron su admisión.
 
-Estado: `HOLD_PENDING_EVIDENCE` únicamente para la capa de admisión/source-integrity de esos dos módulos. No se eliminan del master ni se inventa un source-gate por convención de nombre.
+Estado histórico: los source-gates originales no fueron recuperados. El 30-sep-2026 se reconstruyeron source-gates nuevos desde fuentes oficiales actuales, marcados explícitamente `PASS_SOURCE_INTEGRITY_RECONSTRUCTED` y `original_source_gate_recovered:false`.
 
-Esto no invalida el master hash-locked; bloquea únicamente declarar que la procedencia/admisión de esos dos módulos está reconstruida al 100%.
+Los módulos ya están representados en health/admission con esos gates reconstruidos. La pérdida histórica permanece documentada; ya no existe un HOLD operativo en derived-ledgers por esta causa.
+
+Esto no invalida el master hash-locked ni constituye cumplimiento físico/legal.
