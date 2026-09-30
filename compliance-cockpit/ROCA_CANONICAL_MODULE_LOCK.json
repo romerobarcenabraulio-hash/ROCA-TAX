@@ -1,0 +1,224 @@
+{
+  "schema_version": "2-recovered-snapshot",
+  "canonical_master_rows": 4469,
+  "canonical_master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "provenance": "Reconstructed from gate-sync after direct comparison against ROCA_COMPLIANCE_RELEASE.zip module lock; comparison found only stale ADMIN_FORM 4->5, corrected before this snapshot.",
+  "module_count": 43,
+  "modules": [
+    {
+      "path": "NOM001/NOM001_requirement_ledger_canonical.csv",
+      "rows": 99,
+      "sha256": "1f96f4a408ff55e762133b755384734038ad06c8a27dbad7b46cfa7c56c033bf"
+    },
+    {
+      "path": "NOM002/NOM002_requirement_ledger.csv",
+      "rows": 198,
+      "sha256": "9c79122d2c62057f7857effa8caa42d1ee40bf57be8afafc6dd10252458b5ec6"
+    },
+    {
+      "path": "NOM004/NOM004_requirement_ledger.csv",
+      "rows": 68,
+      "sha256": "1a7c25c288bdec5c32d7cd28a7a5f119c312e1813cbcef7983100ad29314c737"
+    },
+    {
+      "path": "NOM005/NOM005_requirement_ledger.csv",
+      "rows": 79,
+      "sha256": "0ef71966dd9048ed8951e773672ecb52b7f6714bde9ac40349c71dd20fbee8bd"
+    },
+    {
+      "path": "NOM006/NOM006_requirement_ledger.csv",
+      "rows": 216,
+      "sha256": "05c0892183c16dad47b7664d10ffe5b43855339376dfdcd758a20ec4e5ad691e"
+    },
+    {
+      "path": "NOM009/NOM009_requirement_ledger.csv",
+      "rows": 236,
+      "sha256": "1df984b7815798c5dddb4806719dc276444025ceafabc38c2691616e2943b887"
+    },
+    {
+      "path": "NOM010/NOM010_requirement_ledger.csv",
+      "rows": 151,
+      "sha256": "efeae788953d784787a4b6258814da6840656e18b88ebb295de1b59ee0e2d97b"
+    },
+    {
+      "path": "NOM011/NOM011_requirement_ledger.csv",
+      "rows": 81,
+      "sha256": "af00f80b485f0509a152384acef2b56a808156ce7f67952c2cbf7fb28856b1c7"
+    },
+    {
+      "path": "NOM015/NOM015_requirement_ledger.csv",
+      "rows": 75,
+      "sha256": "c8e79959d165502e2e0a573241b60e12d4adfc7769ec072709415d65b6e6d95b"
+    },
+    {
+      "path": "NOM017/NOM017_requirement_ledger_canonical.csv",
+      "rows": 86,
+      "sha256": "6507faf4da959ee2e5db115a15ab99de586e4c3d23b4de58529d38bd4ba00d2f"
+    },
+    {
+      "path": "NOM018/NOM018_requirement_ledger.csv",
+      "rows": 154,
+      "sha256": "8549f2ad7a6d3f72818c5600b5f9b745d8306fb75a837d7b8b28c944b2864977"
+    },
+    {
+      "path": "NOM019/NOM019_requirement_ledger.csv",
+      "rows": 156,
+      "sha256": "ea2828994df361174d23027f6d3084287d3e5aed6968ac331516f8db418166c9"
+    },
+    {
+      "path": "NOM020/NOM020_requirement_ledger.csv",
+      "rows": 217,
+      "sha256": "d4778d2f118b0d30c3c975e2aeeac67afc6834b655d5dba21c71b0c6158b072b"
+    },
+    {
+      "path": "NOM022/NOM022_requirement_ledger.csv",
+      "rows": 143,
+      "sha256": "4047209151b886eab9c38d9731161c52cb2f34f10ad1a61216e01b5fae31eb7b"
+    },
+    {
+      "path": "NOM024/NOM024_requirement_ledger.csv",
+      "rows": 85,
+      "sha256": "b68e5f064b6ff0ca0d74081a209cf9d4b91e3a6da69fb8ccba54c4fd7606b7e1"
+    },
+    {
+      "path": "NOM025/NOM025_requirement_ledger.csv",
+      "rows": 81,
+      "sha256": "50459ae683e9a2c61443ab9db155ab5c880edb487bc468b20519b690ac6cb8c1"
+    },
+    {
+      "path": "NOM026/NOM026_requirement_ledger.csv",
+      "rows": 90,
+      "sha256": "247c805dd10f9ff31969f2f4e2efb13ed769f887cd9c91d18b8047ae0df03c3e"
+    },
+    {
+      "path": "NOM027/NOM027_requirement_ledger.csv",
+      "rows": 113,
+      "sha256": "b897ea681b1912ccd8fbefc65be811369b9669f5119008c790019c3c03e5c08a"
+    },
+    {
+      "path": "NOM028/NOM028_requirement_ledger.csv",
+      "rows": 327,
+      "sha256": "031eead3e35b252f46fad98ff8a304e9497e1c700de7d183c5f6a2c6dec4af2d"
+    },
+    {
+      "path": "NOM029/NOM029_requirement_ledger.csv",
+      "rows": 268,
+      "sha256": "09dfaa287330ddfed4f6d96e97d327819573681c43242fb9eed606857deb360c"
+    },
+    {
+      "path": "NOM030/NOM030_requirement_ledger.csv",
+      "rows": 40,
+      "sha256": "96681a5e98d0e42886e1db9404bcc80b7b09eb9e42a286ea89f79eb980bb88dc"
+    },
+    {
+      "path": "NOM033/NOM033_requirement_ledger.csv",
+      "rows": 265,
+      "sha256": "ae194b74705bf13541d95aeb26020c66a45eacc63f053235cd129480005e53f6"
+    },
+    {
+      "path": "NOM034/NOM034_REQUIREMENT_LEDGER_CANON_FINAL.csv",
+      "rows": 91,
+      "sha256": "9fd4cb5aecc9b6bd4ab204e01a6b2fe6c31abc993473c51778d8f372ab0c8c33"
+    },
+    {
+      "path": "NOM035/NOM035_REQUIREMENT_LEDGER_CANON_FINAL.csv",
+      "rows": 189,
+      "sha256": "2c9632c0e4431a0cee984d1190b9554a5c281a3a857d04f3418badad35da24e0"
+    },
+    {
+      "path": "NOM036/NOM036_REQUIREMENT_LEDGER_CANON_FINAL.csv",
+      "rows": 167,
+      "sha256": "2a82ce5e161b0dfd3bb7abe686b4a6aab4f1a59f784d9a01dc10443dfe54bac4"
+    },
+    {
+      "path": "LGVS/LGVS_requirement_ledger.csv",
+      "rows": 38,
+      "sha256": "c3277e7e3f4b9b777d14b185820a6473e0dc472a1dea17eb2e3df71421631155"
+    },
+    {
+      "path": "RLGVS/RLGVS_requirement_ledger.csv",
+      "rows": 50,
+      "sha256": "b8368bb6b9bfc698c6c048b03369d33330f0ef568ad89e3234a46887d75ba217"
+    },
+    {
+      "path": "SEMARNAT052/SEMARNAT052_requirement_ledger.csv",
+      "rows": 40,
+      "sha256": "1f50cf33059c3a35a32b4544f61e85ab4e8ab056339b6ffa58fc684d64935211"
+    },
+    {
+      "path": "SEMARNAT002/SEMARNAT002_requirement_ledger.csv",
+      "rows": 40,
+      "sha256": "000baa98770ba9d10e8ed76b3404b8b62bf2abb3a6a1c84b6ebcf677f37f8738"
+    },
+    {
+      "path": "LGPGIR/LGPGIR_requirement_ledger.csv",
+      "rows": 40,
+      "sha256": "6fd81eca9a590f043f063b00c0b98e2f344b38d1198209b197de0b19e829716e"
+    },
+    {
+      "path": "SEGAM_RINP/SEGAM_RINP_requirement_ledger.csv",
+      "rows": 65,
+      "sha256": "5c8572e76428c44242e6315461c20aca7495be3f6a524010b596977cb88f0678"
+    },
+    {
+      "path": "PCSLP/PC_SLP_REQUIREMENT_LEDGER.csv",
+      "rows": 55,
+      "sha256": "93409d8b21c5d28be646be6a0f96524d2cee558fd93b6f4856ee8940e9e41754"
+    },
+    {
+      "path": "WILDLIFE_TRACEABILITY/WILDLIFE_TRACEABILITY_requirement_ledger.csv",
+      "rows": 8,
+      "sha256": "f14e5597928bd09eb47fa7a08613a56e702f9e65271504d557bfc7fde9b03f54"
+    },
+    {
+      "path": "SEMARNAT08006/SEMARNAT08006_requirement_ledger.csv",
+      "rows": 27,
+      "sha256": "e4c2f69f5ad340d2e825478b7dde4a87114a99eacce61d5e80c62efd7e8894ed"
+    },
+    {
+      "path": "SEMARNAT08009/SEMARNAT08009_requirement_ledger.csv",
+      "rows": 47,
+      "sha256": "a95344a98f97187cdc92e549f47917372b78b45ba2c6abe5be3ef43b01cb8248"
+    },
+    {
+      "path": "SEMARNAT07017/SEMARNAT07017_requirement_ledger.csv",
+      "rows": 33,
+      "sha256": "cc56cf95ca7a95c5568df222d210ad3b76e3ae3fdcb64c9fdcc943d95d97ef12"
+    },
+    {
+      "path": "ADMIN_FORM/ADMIN_FORM_requirement_ledger.csv",
+      "rows": 5,
+      "sha256": "ca3e02e378d7710bf8d93c1a276f06072b671f7e16ebde5cc47f09b4d1a03db9"
+    },
+    {
+      "path": "SEGAM_POFF/SEGAM_POFF_requirement_ledger.csv",
+      "rows": 51,
+      "sha256": "5841a816a145507ed03560a8fd518c82fd0436174d8e70c83dfd15b233681da7"
+    },
+    {
+      "path": "LGEC/LGEC_REQUIREMENT_LEDGER_CANON_FINAL.csv",
+      "rows": 43,
+      "sha256": "a78f5051bdae74ad8827b4c526606c98f79a111f4cfe6d726f888ef6a26502ef"
+    },
+    {
+      "path": "RFSST2014/RFSST2014_requirement_ledger.csv",
+      "rows": 104,
+      "sha256": "9af335fd6d2aea52bc2545670e4a799f9c2b40c2280cb3941773e6678776d83c"
+    },
+    {
+      "path": "LEGAL/ROCA_LEGAL_REQUIREMENT_MASTER.csv",
+      "rows": 67,
+      "sha256": "60fb0a1b087d3c4a5578bb531f48f59ef0c20fe2d217e38ea8708b7665e99cf5"
+    },
+    {
+      "path": "SLP_ENV_IMPACT/SLP_ENV_IMPACT_requirement_ledger.csv",
+      "rows": 56,
+      "sha256": "efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04"
+    },
+    {
+      "path": "SLP_MUN_FUNCTION/SLP_MUN_FUNCTION_requirement_ledger.csv",
+      "rows": 25,
+      "sha256": "78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61"
+    }
+  ]
+}
