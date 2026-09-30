@@ -128,7 +128,7 @@ Cuando el sistema elegido requiera volumen con poliuretano:
 4. mezclar/verter sólo en el punto preparado y con HDS/producto real;
 5. modelar cuando el material alcance una condición físicamente trabajable, sin invadir patas o fijaciones.
 
-### CONFLICTO ABIERTO · formulación
+### CONFLICTO DE FUENTE RECONCILIADO · dosificación aún en HOLD
 El método derivado del 391P dice:
 - cálido = 50/50;
 - fresco/húmedo = 30/70.
@@ -139,7 +139,7 @@ La entrevista primaria de Omar, sobre el sistema de poliuretano, dice:
 
 Por precedencia de fuente, **30/70 NO queda canónico en Bases**. Tampoco se transfiere automáticamente la receta de Formas a Bases sin confirmar que sea el mismo producto/sistema y la misma aplicación.
 
-**Estado:** HOLD_PENDING_EVIDENCE — identificar producto A/B real, HDS, receta vigente de Bases y prueba controlada antes de cerrar dosificación.
+**Estado:** el conflicto 50/50 vs 30/70 queda resuelto por precedencia de fuente: 30/70 no es canónico para Bases. La dosificación operativa sigue HOLD_PENDING_EVIDENCE hasta identificar producto A/B real, HDS, receta vigente de Bases y prueba controlada.
 
 ## 11 · Base de poliuretano: recorte y pintura
 
@@ -333,7 +333,6 @@ BAS-MET-15 Vegetación y detalles finales.
 - inventario real de herramienta/equipo;
 - capacidad/criterio estructural de planchas, bancos, ruedas, tornillería y fijaciones;
 - producto/HDS/receta real de poliuretano para Bases;
-- resolver conflicto 50/50 vs 30/70 sin extrapolar Formas;
 - ventilación/extracción y polvo;
 - método real de manipulación de piezas pesadas;
 - criterios BIWO;
