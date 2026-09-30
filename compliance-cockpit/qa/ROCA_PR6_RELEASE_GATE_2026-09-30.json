@@ -1,0 +1,89 @@
+{
+  "schema": "ROCA_PR6_RELEASE_GATE_V1",
+  "date": "2026-09-30",
+  "scope": "PR #6 integrated source-reader + audit/implementation surfaces + compliance cockpit integration. This gate does not certify physical/legal compliance.",
+  "canonical_master": {
+    "rows": 4469,
+    "sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c"
+  },
+  "checks": {
+    "derived_ledger_integrity": {
+      "status": "PASS",
+      "modules_locked": 43,
+      "gate_sync": 43,
+      "health": 43,
+      "legal_source_admission": "42/42",
+      "issues": 0
+    },
+    "form_master": {
+      "status": "PASS",
+      "keys": 14,
+      "gate": "10/10"
+    },
+    "javascript_static": {
+      "status": "PASS_WITH_ESM_HANDLING",
+      "classic_scripts_checked": 19,
+      "classic_scripts_failed": 0,
+      "auth_control": "ES module import present; module body syntax PASS after excluding import declaration from classic-script parser"
+    },
+    "html_local_references": {
+      "status": "PASS",
+      "missing": 0,
+      "note": "All root and compliance-cockpit local src/href targets checked on current branch exist."
+    },
+    "large_runtime_data": {
+      "status": "PASS_BY_LOCKED_MANIFEST",
+      "note": "compliance-cockpit/data.js exists but is too large for inline connector fetch; runtime/master count+SHA are governed by locked manifest/snapshot."
+    },
+    "controlled_snapshot": {
+      "status": "PASS",
+      "permissions": "OWNER_ONLY",
+      "artifact_count": 10
+    },
+    "formic_acid_source_reconciliation": {
+      "status": "PASS",
+      "canonical_value_l": 6.4,
+      "note": "Literal Ricardo interview states 6 L + 400 mL; later source chain matches 6.4 L."
+    },
+    "alum_tan": {
+      "status": "DOMAIN_HOLD_NOT_PR_BLOCKER",
+      "original_excel_recovered": false,
+      "operational_calculator_release": "BLOCKED",
+      "active_calculator_exposed": false
+    },
+    "v22_1": {
+      "status": "HISTORICAL_SOURCE_NOT_RECOVERED_NOT_PR_BLOCKER",
+      "exclusive_active_dependency_identified": false
+    },
+    "current_browser_visual_qa": {
+      "status": "BLOCKED_BY_ENVIRONMENT",
+      "details": [
+        "agent-browser binary unavailable",
+        "public preview inaccessible to web tool",
+        "container DNS resolution unavailable"
+      ]
+    },
+    "canonical_drive_permissions": {
+      "status": "R1_OPEN",
+      "root": "anyone:writer",
+      "compliance_app_data": "anyone:writer",
+      "mitigation": "owner-only controlled snapshot + hash-locked GitHub sync; permission revocation unavailable in current connector"
+    },
+    "github_head_ci": {
+      "status": "PARTIAL",
+      "note": "Derived integrity workflow exists and prior run succeeded; current HEAD changes outside its path filter do not constitute full-browser/current-HEAD CI."
+    }
+  },
+  "blockers_for_pr_release": [
+    "Remove anyone:writer from canonical Drive root/COMPLIANCE_APP_DATA and re-read permissions, or formally re-designate owner-only controlled snapshot as canonical operational source with governance approval.",
+    "Run functional/visual browser QA on the current HEAD in an environment with browser access and preserve screenshots/results.",
+    "Re-run this PR release gate after the two blockers above."
+  ],
+  "non_blocking_domain_holds": [
+    "ALUM-Tan operational calculator remains blocked until original Excel or documented technical-owner validation; current PR does not expose the calculator.",
+    "v22.1 editable remains unrecovered historical source; no exclusive active dependency identified."
+  ],
+  "physical_legal_completion": "BLOCKED_SEPARATELY",
+  "compliance_claim": "NOT_AUTHORIZED",
+  "verdict": "BLOCKED — NO LIBERAR"
+}
