@@ -314,15 +314,37 @@ function holdCloseRule(type){
     "CIERRE TÉCNICO":"Cierra cuando el criterio técnico queda definido con evidencia suficiente y se incorpora al estándar permanente."
   })[type];
 }
-function renderDepartmentHolds(){
+async function renderDepartmentHolds(){
   const host=document.getElementById("departmentHoldList");
   if(!host)return;
   const depts=window.ROCA_DEPARTMENTS||{};
-  const blocks=Object.values(depts).filter(d=>Array.isArray(d.implementationHolds)&&d.implementationHolds.length);
-  if(!blocks.length){host.innerHTML='<p>Sin HOLD departamentales registrados.</p>';return}
-  host.innerHTML=blocks.map(d=>'<div class="tool"><h3>'+esc(d.code+' · '+d.title)+'</h3><ul>'+
-    d.implementationHolds.map(h=>{const type=holdClosureType(h.text);const proof=holdKnownProof(h.id);return '<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'<br><small><b>'+esc(type)+'</b> · '+esc(holdCloseRule(type))+(proof?'<br><b>EVIDENCIA ACTUAL</b> · '+esc(proof):'')+'</small></li>'}).join("")+
-    '</ul></div>').join("");
+  let stateRows=[];
+  let stateError=false;
+  try{
+    const res=await fetch("../../ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv",{cache:"no-store"});
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    const rows=parseCsv(await res.text());
+    if(rows.length){
+      const head=rows.shift().map(x=>x.trim());
+      stateRows=rows.filter(r=>r.some(v=>v.trim()!=="")).map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]||""])));
+    }
+  }catch(e){stateError=true}
+  const stateById=new Map(stateRows.map(r=>[r.hold_id,r]));
+  const blocks=Object.values(depts).map(d=>{
+    const open=(Array.isArray(d.implementationHolds)?d.implementationHolds:[]).filter(h=>{
+      const s=String(stateById.get(h.id)?.status||"OPEN").toUpperCase();
+      return !["CLOSED","CANCELLED"].includes(s);
+    });
+    return {dept:d,open};
+  }).filter(x=>x.open.length);
+  if(!blocks.length){
+    host.innerHTML='<p><b>Sin HOLD departamentales abiertos.</b> Los cierres permanecen como historial en el ledger controlado.</p>';
+    return;
+  }
+  host.innerHTML=(stateError?'<div class="note"><b>Advertencia:</b> no se pudo leer el ledger de HOLD; por seguridad se muestran todos como abiertos.</div>':'')+
+    blocks.map(x=>'<div class="tool"><h3>'+esc(x.dept.code+' · '+x.dept.title)+'</h3><ul>'+
+      x.open.map(h=>{const type=holdClosureType(h.text);const proof=holdKnownProof(h.id);const s=stateById.get(h.id)||{};return '<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'<br><small><b>'+esc(type)+'</b> · '+esc(holdCloseRule(type))+(proof?'<br><b>EVIDENCIA ACTUAL</b> · '+esc(proof):'')+(s.evidence_id?'<br><b>EVIDENCIA DE CIERRE</b> · '+esc(s.evidence_id):'')+'</small></li>'}).join("")+
+      '</ul></div>').join("");
 }
 renderDepartmentHolds();
 
