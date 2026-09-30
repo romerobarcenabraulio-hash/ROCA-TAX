@@ -35,5 +35,10 @@
     "Applicability/jurisdiction remains fact-dependent; this source gate does not authorize a project or establish that ROCA requires a specific filing."
   ],
   "verdict": "PASS_SOURCE_INTEGRITY_RECONSTRUCTED",
-  "compliance_claim": "NOT_AUTHORIZED"
+  "compliance_claim": "NOT_AUTHORIZED",
+  "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "limitations": [
+    "Original source-gate artifact was not recovered.",
+    "This reconstructed gate verifies source integrity/current official route existence; it does not establish that ROCA requires a particular environmental-impact filing or that any project is authorized."
+  ]
 }
