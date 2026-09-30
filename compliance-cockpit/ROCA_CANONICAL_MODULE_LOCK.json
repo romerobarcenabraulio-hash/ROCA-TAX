@@ -1,8 +1,7 @@
 {
-  "schema_version": "2-recovered-snapshot",
-  "canonical_master_rows": 4469,
-  "canonical_master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
-  "provenance": "Reconstructed from gate-sync after direct comparison against ROCA_COMPLIANCE_RELEASE.zip module lock; comparison found only stale ADMIN_FORM 4->5, corrected before this snapshot.",
+  "schema_version": "2",
+  "frozen_from_master_sha256": null,
+  "frozen_ui_sha256": null,
   "module_count": 43,
   "modules": [
     {
@@ -220,5 +219,6 @@
       "rows": 25,
       "sha256": "78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61"
     }
-  ]
+  ],
+  "refresh_rule": "Generated from the same frozen bytes used by the next atomic compile. Refresh master SHA after successful compile if desired."
 }
