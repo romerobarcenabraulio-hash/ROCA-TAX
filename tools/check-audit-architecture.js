@@ -60,10 +60,17 @@ const index=read('index.html');
 const order=['department-data.js','audit-engine.js','fast-track-data.js','audit-data.js'].map(x=>index.indexOf(x));
 assert(order.every(x=>x>=0)&&order.every((x,i)=>i===0||order[i-1]<x),'script order must load department-data -> audit-engine -> fast-track -> audit-data');
 
+const legacyAudit=read('generated/roca-fast-track/audit.html');
+assert(legacyAudit.includes('index.html?mode=audit#audit-inicio'),'legacy audit route must redirect to central audit');
+assert(!legacyAudit.includes('REC-FT-01')&&!legacyAudit.includes('MON-FT-01'),'legacy audit route must not contain a parallel criteria system');
+assert(app.includes("new URLSearchParams(location.search).get('mode')"),'central app must support direct audit mode links');
+
 const implementation=read('generated/roca-fast-track/implementation.html');
 assert(implementation.includes('../../audit-engine.js'),'IMPLEMENTAR must load audit-engine');
 assert(implementation.includes('ROCA_AUDIT_ENGINE.criteriaForArea(areaId)'),'IMPLEMENTAR criterion map must use audit-engine');
 assert(implementation.includes('ROCA_AUDIT_ENGINE.dynamicImplementationItems()'),'IMPLEMENTAR dynamic actions must use audit-engine');
+assert(!implementation.includes('href="audit.html"'),'IMPLEMENTAR must not link to legacy parallel audit');
+assert(implementation.includes('index.html?mode=audit#audit-inicio'),'IMPLEMENTAR must link to central audit');
 
 const area='area-curtiduria';
 const criterion=global.ROCA_AUDIT_ENGINE.criteriaForArea(area)[0];
