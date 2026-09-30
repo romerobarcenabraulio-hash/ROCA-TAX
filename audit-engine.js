@@ -42,14 +42,28 @@
   function criteriaForArea(areaId){
     const dept=window.ROCA_DEPARTMENTS&&window.ROCA_DEPARTMENTS[areaId];
     if(!dept) return [];
-    const areaRows=(Array.isArray(dept.areaAudit)?dept.areaAudit:[]).map(r=>({
+    const areaAuditMeta=Array.isArray(dept.areaAudit)?dept.areaAudit:[];
+    const areaRows=(Array.isArray(dept.area)?dept.area:[]).map((r,i)=>{
+      const meta=areaAuditMeta[i]||{};
+      return {
+        id:meta.id||r.id,
+        group:'Área de trabajo',
+        label:r.label||meta.criterion||r.id,
+        target:r.text||meta.criterion||'',
+        input:meta.evidence||'Evidencia observable de la condición permanente.',
+        basis:'Estándar permanente del departamento',
+        sourceType:'department_area',
+        sourceId:r.id
+      };
+    });
+    const controlRows=(Array.isArray(dept.method&&dept.method.controls)?dept.method.controls:[]).map(r=>({
       id:r.id,
-      group:'Área de trabajo',
-      label:r.criterion||r.id,
-      target:r.criterion||'',
-      input:r.evidence||'Evidencia observable.',
-      basis:'Estándar permanente del departamento',
-      sourceType:'department_area_audit',
+      group:'Control permanente',
+      label:r.id,
+      target:r.text||'',
+      input:'Evidencia, registro o condición observable directamente ligada a este control.',
+      basis:'Control permanente de metodología ROCA',
+      sourceType:'department_method_control',
       sourceId:r.id
     }));
     const processRows=(Array.isArray(dept.auditCriteria)?dept.auditCriteria:[]).map(r=>({
@@ -62,7 +76,7 @@
       sourceType:'department_audit_criteria',
       sourceId:r.id
     }));
-    const merged=[...areaRows,...processRows,...applicablePhysicalRows(areaId)];
+    const merged=[...areaRows,...controlRows,...processRows,...applicablePhysicalRows(areaId)];
     const seen=new Set();
     return merged.filter(r=>{
       if(!r.id||seen.has(r.id)) return false;
@@ -113,7 +127,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.0.0',
+    version:'1.1.0',
     departments,
     criteriaForArea,
     applicablePhysicalRows,
