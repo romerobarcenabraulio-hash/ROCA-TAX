@@ -1,0 +1,33 @@
+{
+  "schema": "ROCA_RECONSTRUCTED_SOURCE_GATE_V1",
+  "module": "SLP_MUN_FUNCTION",
+  "source_id": "SLP-MUN-FUNCTION-2026",
+  "ledger_path": "SLP_MUN_FUNCTION/SLP_MUN_FUNCTION_requirement_ledger.csv",
+  "ledger_rows": 25,
+  "ledger_sha256": "78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61",
+  "reconstruction_date": "2026-09-30",
+  "status": "PASS_SOURCE_INTEGRITY_RECONSTRUCTED",
+  "original_source_gate_recovered": false,
+  "sources": [
+    {
+      "authority": "Ayuntamiento de San Luis Potosi",
+      "url": "https://sitio.sanluis.gob.mx/",
+      "verified_on": "2026-09-30",
+      "supports": "Current municipal business opening, land-use feasibility, SARE and 2026 license-renewal routes."
+    },
+    {
+      "authority": "Ayuntamiento de San Luis Potosi / Gaceta Municipal",
+      "url": "https://sitio.sanluis.gob.mx/pagAyuntamientoCMS/storage/Medios/2026/04/GACETA%20300%20-%20ACUERDO%20COMERCIO%202026.pdf",
+      "verified_on": "2026-09-30",
+      "supports": "2026 commercial-license rule requiring compatible municipal land-use license and related operating-license conditions."
+    }
+  ],
+  "gates": [
+    "Ledger path/count/SHA match canonical module lock.",
+    "Current municipal site exposes land-use feasibility and operating-license routes.",
+    "2026 municipal gazette supports land-use compatibility as a prerequisite for operating license.",
+    "Exact route remains site/activity/surface dependent; SARE or other route must not be assumed without verified facts."
+  ],
+  "verdict": "PASS_SOURCE_INTEGRITY_RECONSTRUCTED",
+  "compliance_claim": "NOT_AUTHORIZED"
+}
