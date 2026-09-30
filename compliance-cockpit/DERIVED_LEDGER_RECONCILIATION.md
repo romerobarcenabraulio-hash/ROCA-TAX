@@ -129,3 +129,36 @@ Searches of GitHub, Drive, FASTTRACK, the live Control Plane and the portable re
 Eight temporary Google Docs used only as byte-transfer intermediates were permanently deleted after successful write/read-back. Rollback CSV copies remain in the private owner-only recovery mirror.
 
 Verdict: **BLOCKED - SOURCE INTEGRITY only for the two missing SLP source-gate artifacts; PASS for all reconciled derived rows above.**
+
+
+## 2026-09-30 reconstructed SLP source gates
+
+The original source-gate artifacts for the two SLP modules were not recovered. Rather than inventing historical files, new gates were reconstructed from current official sources and marked explicitly as reconstructed.
+
+### SLP_ENV_IMPACT
+
+- source gate: `SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+- GitHub path: `compliance-cockpit/source-gates/SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+- Drive raw copy id: `1OpRPAukfRdlAsDuvLcuY6L5gi17KAID7`
+- JSON SHA-256: `717963909dda423825234933771c09bb618e14a16b83423a399ae08b76eb56b8`
+- ledger rows: 56
+- ledger SHA: `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`
+- official basis rechecked 2026-09-30: SEGAM impact route, SEGAM legislation registry, current state environmental law listing.
+- verdict: `PASS_SOURCE_INTEGRITY_RECONSTRUCTED`
+- original source gate recovered: false
+
+### SLP_MUN_FUNCTION
+
+- source gate: `SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+- GitHub path: `compliance-cockpit/source-gates/SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+- Drive raw copy id: `1ZPtWLWlz1Jwn-PdWiJ1a99eVGL0HHrGB`
+- JSON SHA-256: `44d0822f80dde4b479ff4ee50186d8c11c1599fe888828f8b37c69898156e327`
+- ledger rows: 25
+- ledger SHA: `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`
+- official basis rechecked 2026-09-30: municipal land-use/business-opening routes and 2026 municipal gazette requirements.
+- verdict: `PASS_SOURCE_INTEGRITY_RECONSTRUCTED`
+- original source gate recovered: false
+
+Both modules were then added to module-health and module-admission with their locked ledger paths/counts/hashes. Post-write read-back matched gate-sync.
+
+This closes the derived-ledger omission. It does **not** retroactively recover the lost historical gate files and does not create a legal/physical compliance claim.
