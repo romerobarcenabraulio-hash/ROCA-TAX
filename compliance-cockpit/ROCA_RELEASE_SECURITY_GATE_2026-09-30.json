@@ -1,0 +1,47 @@
+{
+  "schema": "ROCA_RELEASE_SECURITY_GATE_V1",
+  "checked_on": "2026-09-30",
+  "scope": "ROCA Audit / Compliance source-integrity release gate",
+  "master_rows": 4469,
+  "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "checks": [
+    {
+      "id": "DERIVED_LEDGER_GATE",
+      "status": "PASS",
+      "evidence": "compliance-cockpit/ROCA_DERIVED_LEDGER_GATE_2026-09-30.json"
+    },
+    {
+      "id": "FORM_MASTER_GATE",
+      "status": "PASS",
+      "evidence": "compliance-cockpit/FORM_MASTER_GATE.json"
+    },
+    {
+      "id": "SHARED_DRIVE_PUBLIC_WRITER",
+      "status": "BLOCK",
+      "severity": "R1",
+      "observed": "ROCA Audit root and COMPLIANCE_APP_DATA both expose anyone:writer on 2026-09-30"
+    },
+    {
+      "id": "AUTHORITATIVE_PROMOTION_PATH",
+      "status": "PASS_MITIGATED",
+      "evidence": "GitHub exact-hash sync plus owner-only private recovery mirror"
+    }
+  ],
+  "release_status": "BLOCKED",
+  "block_reason": "Shared canonical Drive remains publicly writable. Mitigation prevents silent promotion but does not remove the permission risk.",
+  "unblock_criteria": [
+    "Remove anyone:writer from ROCA Audit root and COMPLIANCE_APP_DATA.",
+    "Re-read Drive permissions and confirm no public writer permission.",
+    "Re-run source-integrity/release gate after permission change."
+  ],
+  "allowed_while_blocked": [
+    "Continue drafting, reconciliation, field-preaudit preparation and QA on the draft branch.",
+    "Use GitHub hash-locked bytes and owner-only recovery mirror for controlled continuity."
+  ],
+  "prohibited_while_blocked": [
+    "Mark PR/release final or production-authoritative.",
+    "Treat shared Drive mutation as canon without pre-approved hash and review."
+  ],
+  "compliance_claim": "NOT_AUTHORIZED",
+  "verdict": "BLOCK_RELEASE_R1_DRIVE_PERMISSION"
+}
