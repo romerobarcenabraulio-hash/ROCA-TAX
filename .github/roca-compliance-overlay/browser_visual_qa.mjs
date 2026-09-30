@@ -77,9 +77,9 @@ for(const vp of contract.viewports){
         const compliance=page.locator('a[href*="compliance-cockpit"]');
         if(await compliance.count()) pass(prefix+":compliance-link","COMPLIANCE link present");
         else fail(prefix+":compliance-link","COMPLIANCE link missing");
-        const sourceText=await page.getByText("FUENTES",{exact:false}).count();
-        if(sourceText) pass(prefix+":sources-entry","FUENTES/source reader entry present");
-        else fail(prefix+":sources-entry","FUENTES/source reader entry missing");
+        const sourceEntry=(await page.locator("#normsMode").count())||(await page.getByText("BIBLIOGRAFÍA",{exact:false}).count())||(await page.getByText("FUENTES",{exact:false}).count());
+        if(sourceEntry) pass(prefix+":sources-entry","Bibliografía/source reader entry present");
+        else fail(prefix+":sources-entry","Bibliografía/source reader entry missing");
 
         if(vp.name==="desktop"){
           try{
