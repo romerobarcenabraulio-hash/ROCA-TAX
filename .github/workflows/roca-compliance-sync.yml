@@ -49,6 +49,20 @@ jobs:
           download_locked "1gmTPNx6R29rQdfRpVu_PkzNzhU8GShXE" "BACKUP_PERSISTENCE_GATE.json" "cf681ecbbf866d9fca3dc38ba5e3e52419634a0218c8dcb2787488c77dac7df9"
           download_locked "10aGvd9F1zMCIiPO86a66imgmf7VK6Uaa" "PRIVACY_DATA_GATE.json" "4b4494138f9c4e448e1c9f04cff7f0b53eed37ede6508a5d2892f198a6c44745"
 
+          # Reapply the controlled FORM_MASTER overlay after every base sync.
+          cp .github/roca-compliance-overlay/form-master-data.js "$out/form-master-data.js"
+          python .github/roca-compliance-overlay/patch_compliance_form_master.py "$out"
+          node --check "$out/app.js"
+          node --check "$out/form-master-data.js"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          g=json.loads(Path("compliance-cockpit/FORM_MASTER_GATE.json").read_text())
+          if g.get("verdict")!="PASS" or g.get("canonical_key_count")!=14:
+              raise SystemExit("FORM_MASTER overlay gate failed")
+          print("FORM_MASTER overlay OK:",g["passed"],"/",g["total"])
+          PY
+
           node - <<'NODE'
           global.window=global;
           require('./compliance-cockpit/data.js');
@@ -68,7 +82,9 @@ jobs:
             "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
             "source_permission_observation": "Drive release observed as anyone:writer on 2026-09-29; GitHub sync therefore requires exact SHA-256 for every imported runtime file.",
             "compliance_claim": "NOT_AUTHORIZED",
-            "visual_qa": "NOT_VISUALLY_VERIFIED"
+            "visual_qa": "NOT_VISUALLY_VERIFIED",
+            "overlay": "FORM_MASTER_V1",
+            "form_master_gate": "PASS_EXPECTED"
           }
           JSON
 
