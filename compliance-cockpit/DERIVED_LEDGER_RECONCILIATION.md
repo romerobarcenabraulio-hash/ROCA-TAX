@@ -220,3 +220,31 @@ Permission re-read for both private copies returned owner-only; no `anyone` perm
 Verdict for this scope: **PASS - SOURCE INTEGRITY / DERIVED LEDGER RECONCILIATION**.
 
 This verdict is limited to source/derived-ledger consistency. It does not close the separate Drive-sharing R1 blocker, visual QA, physical implementation, field evidence, authority filings, or legal compliance.
+
+
+## SLP provenance blockers resolved by controlled reconstruction
+
+The original source-gate artifacts for `SLP_ENV_IMPACT` and `SLP_MUN_FUNCTION` were not recovered. They were not silently recreated under the old names.
+
+New traceable gates were created in GitHub:
+
+- `source-gates/SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+  - official sources: current SEGAM environmental-impact route, SEGAM legislation page, current SLP environmental law listing;
+  - ledger locked at 56 rows / SHA `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`;
+  - verdict: `PASS_SOURCE_INTEGRITY_RECONSTRUCTED`.
+
+- `source-gates/SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+  - official sources: current Ayuntamiento de San Luis Potosi business/land-use routes and 2026 municipal gazette;
+  - ledger locked at 25 rows / SHA `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`;
+  - verdict: `PASS_SOURCE_INTEGRITY_RECONSTRUCTED`.
+
+Health and admission were updated in place after private rollback copies were made.
+
+Post-write full diff:
+- module-health vs gate-sync: 0 differences;
+- module-admission vs gate-sync: 0 differences for legal/source modules;
+- `ADMIN_FORM` remains intentionally outside legal admission because it is an internal control/master-data module.
+
+The two SLP admission rows are labeled `ADMITTED_RECONSTRUCTED`, not `ADMITTED`, preserving the fact that historical source-gate artifacts were lost.
+
+Verdict for derived ledgers: **PASS - SOURCE INTEGRITY WITH RECONSTRUCTED SLP GATES**.
