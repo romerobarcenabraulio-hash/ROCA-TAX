@@ -30,7 +30,7 @@ Acción aplicada: reconstrucción controlada como overlay derivado del runtime c
 
 ## Source integrity — NOM-035
 
-El runtime/master actual contiene 189 filas NOM-035; `ROCA_MODULE_HEALTH_CANON_2026-09-29.csv` conserva 156. Las 33 filas posteriores desagregan controles 9.1–10.2 y reglas de Guías II/III.
+El runtime/master actual contiene 189 filas NOM-035. El health ledger había quedado stale en 156, pero fue reconciliado el 30-sep-2026 a 189 con `NOM035_GATE.json` y el proof SHA vigente.
 
 Decisión: PRESERVE runtime/master; no deduplicar destructivamente. El health ledger previo quedó reconciliado el 30-sep-2026 a 189 filas y `NOM035_GATE.json`; el admission ledger también fue alineado al mismo quality gate.
 
@@ -78,3 +78,17 @@ On 30-sep-2026:
 - module-admission was updated in place from `NOM035_GATE_CANON_FINAL.json` to `NOM035_GATE.json`;
 - post-write read-back confirmed both changes;
 - master remained 4,469 rows and was not rewritten.
+
+
+## R1 — source-gates SLP no persistidos
+
+El master/module lock canónico sí contiene y congela:
+
+- `SLP_ENV_IMPACT/SLP_ENV_IMPACT_requirement_ledger.csv` — 56 filas — SHA `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`;
+- `SLP_MUN_FUNCTION/SLP_MUN_FUNCTION_requirement_ledger.csv` — 25 filas — SHA `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`.
+
+Sus quality gates también aparecen en gate-sync. Sin embargo, después de revisar GitHub, Drive, FASTTRACK, el Control Plane vivo y el release portátil, no se recuperaron los artefactos de source-gate originales que justificaron su admisión.
+
+Estado: `HOLD_PENDING_EVIDENCE` únicamente para la capa de admisión/source-integrity de esos dos módulos. No se eliminan del master ni se inventa un source-gate por convención de nombre.
+
+Esto no invalida el master hash-locked; bloquea únicamente declarar que la procedencia/admisión de esos dos módulos está reconstruida al 100%.
