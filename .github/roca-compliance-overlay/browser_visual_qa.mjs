@@ -80,6 +80,86 @@ for(const vp of contract.viewports){
         const sourceText=await page.getByText("FUENTES",{exact:false}).count();
         if(sourceText) pass(prefix+":sources-entry","FUENTES/source reader entry present");
         else fail(prefix+":sources-entry","FUENTES/source reader entry missing");
+
+        if(vp.name==="desktop"){
+          try{
+            await page.locator("#auditMode").click();
+            await page.waitForTimeout(150);
+            const backupControls=await page.locator("#auditBackupExport,#auditBackupImport").count();
+            if(backupControls===2) pass(prefix+":audit-backup-controls","audit backup/export controls present");
+            else fail(prefix+":audit-backup-controls","audit backup/export controls missing",{count:backupControls});
+
+            const montage=page.locator('#nav button[data-id="audit-mon"]');
+            if(await montage.count()!==1){
+              fail(prefix+":audit-montage-nav","audit montage navigation missing");
+            }else{
+              await montage.click();
+              await page.waitForSelector('tr[data-audit-id]',{timeout:10000});
+              const row=page.locator('tr[data-audit-id]').first();
+              const criterionId=await row.getAttribute("data-audit-id");
+              const status=row.locator(".audit-status");
+              const note=row.locator(".audit-note");
+
+              await note.fill("");
+              await status.selectOption("NONCONFORMING");
+              await page.waitForTimeout(100);
+              const invalidSaved=await page.evaluate(({areaId,criterionId})=>{
+                try{
+                  const state=JSON.parse(localStorage.getItem("roca.audit."+areaId)||"{}");
+                  return state[criterionId]?.status||"NOT_SAVED";
+                }catch{return "PARSE_ERROR"}
+              },{areaId:"area-montaje",criterionId});
+              const invalidMsg=(await row.locator(".audit-validation").innerText()).trim();
+              if(invalidSaved!=="NONCONFORMING"&&invalidMsg.length>0)
+                pass(prefix+":audit-empty-nonconforming-blocked","empty NONCONFORMING closure rejected");
+              else fail(prefix+":audit-empty-nonconforming-blocked","empty NONCONFORMING was persisted or had no validation",{saved:invalidSaved,message:invalidMsg});
+
+              const gap="QA_BROWSER_GAP_"+criterionId;
+              await note.fill(gap);
+              await page.waitForTimeout(100);
+              const openSaved=await page.evaluate(({areaId,criterionId})=>{
+                const state=JSON.parse(localStorage.getItem("roca.audit."+areaId)||"{}");
+                return state[criterionId]?.status||"NOT_SAVED";
+              },{areaId:"area-montaje",criterionId});
+              if(openSaved==="NONCONFORMING") pass(prefix+":audit-nonconforming-persisted","evidenced NONCONFORMING persisted");
+              else fail(prefix+":audit-nonconforming-persisted","evidenced NONCONFORMING not persisted",{saved:openSaved});
+
+              await page.goto(base+"/generated/roca-fast-track/implementation.html",{waitUntil:"domcontentloaded"});
+              await page.waitForTimeout(300);
+              const implBody=await page.locator("body").innerText();
+              if(implBody.includes(gap)) pass(prefix+":audit-to-implementation","NONCONFORMING appears in IMPLEMENTAR");
+              else fail(prefix+":audit-to-implementation","NONCONFORMING missing from IMPLEMENTAR",{criterionId});
+
+              await page.goto(base+"/index.html",{waitUntil:"domcontentloaded"});
+              await page.locator("#auditMode").click();
+              await page.locator('#nav button[data-id="audit-mon"]').click();
+              await page.waitForSelector('tr[data-audit-id]',{timeout:10000});
+              const restoredRow=page.locator('tr[data-audit-id="'+criterionId+'"]');
+              await restoredRow.locator(".audit-note").fill("QA closure evidence");
+              await restoredRow.locator(".audit-status").selectOption("CONFORMING");
+              await page.waitForTimeout(100);
+              const closedSaved=await page.evaluate(({areaId,criterionId})=>{
+                const state=JSON.parse(localStorage.getItem("roca.audit."+areaId)||"{}");
+                return state[criterionId]?.status||"NOT_SAVED";
+              },{areaId:"area-montaje",criterionId});
+              if(closedSaved==="CONFORMING") pass(prefix+":audit-conforming-persisted","evidenced CONFORMING persisted");
+              else fail(prefix+":audit-conforming-persisted","CONFORMING did not persist",{saved:closedSaved});
+
+              await page.goto(base+"/generated/roca-fast-track/implementation.html",{waitUntil:"domcontentloaded"});
+              await page.waitForTimeout(300);
+              const closedBody=await page.locator("body").innerText();
+              if(!closedBody.includes(gap)) pass(prefix+":implementation-closes","corrected criterion disappears from IMPLEMENTAR");
+              else fail(prefix+":implementation-closes","corrected criterion still visible in IMPLEMENTAR",{criterionId});
+
+              await page.evaluate(()=>localStorage.removeItem("roca.audit.area-montaje"));
+              await page.goto(base+"/index.html",{waitUntil:"domcontentloaded"});
+              await page.waitForTimeout(150);
+            }
+          }catch(e){
+            fail(prefix+":audit-flow-exception",e.message||String(e));
+            await page.goto(base+"/index.html",{waitUntil:"domcontentloaded"}).catch(()=>{});
+          }
+        }
       }
 
       if(route.endsWith("/audit.html")){
