@@ -112,7 +112,7 @@ window.ROCA_DEPARTMENTS["area-curtiduria"] = {
     {id:"CUR-HOLD-04",text:"Cerrar balance de baños/residuos y destino."},
     {id:"CUR-HOLD-05",text:"Verificar ventilación y drenaje."},
     {id:"CUR-HOLD-06",text:"Completar inventario/evidencia de activos y competencia."},
-    {id:"CUR-HOLD-07",text:"Recuperar/verificar la fuente controlada ALUM-Tan antes de trasladar sus fórmulas a cálculo HTML."},
+    {id:"CUR-HOLD-07",text:"ALUM-Tan reconstruido: no liberar calculador operativo hasta recuperar el Excel original o validar documentalmente con el dueño técnico todas las fórmulas y la segunda adición de alumbre."},
     {id:"CUR-HOLD-08",text:"Mantener el piloto de agua a presión fuera de rutina hasta validación documentada."}
   ],
   sourceRefs:[
