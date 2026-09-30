@@ -300,3 +300,7 @@ footer{display:none}
 .print-gate-note{align-self:center;font:700 8px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.05em;color:#6e645a;max-width:160px}
 .print-action:disabled{opacity:.45;cursor:not-allowed}
 @media print{.print-gate-note{display:none!important}}
+
+
+.audit-validation{min-height:1.2em;margin-top:6px;font-size:11px;font-weight:700}
+.audit-invalid .audit-status,.audit-invalid .audit-note{outline:2px solid currentColor;outline-offset:1px}
