@@ -189,3 +189,34 @@ Post-write Drive read-back confirmed:
 This closes the derived-ledger omission without pretending the historical source-gates were recovered. Applicability, authorization, filing readiness and physical/legal compliance remain separate and unresolved until evidence closes them.
 
 Updated verdict for derived-ledger continuity: **PASS - SOURCE INTEGRITY with reconstructed provenance disclosed**.
+
+
+## Current structural reconciliation — PASS
+
+Post-write automated comparison against the locked module manifest:
+
+- canonical module lock: **43**
+- gate-sync modules: **43**
+- module-health modules: **43**
+- module-admission modules: **42**
+- expected admission modules: **42** because `ADMIN_FORM` is the sole internal master-data/control module intentionally excluded from legal/source admission
+- extra admission modules: **0**
+- path mismatches: **0**
+- row-count mismatches: **0**
+- ledger-SHA mismatches: **0**
+- quality-gate mismatches: **0**
+- health gate/source statuses not PASS: **0**
+- admission rows not ADMITTED/PASS: **0**
+
+Automated reconciliation issues: **0**.
+
+The reconstructed SLP source gates are additionally mirrored in the private owner-only recovery folder:
+
+- `SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json` — private mirror ID `14dJsEpOS7gU8dXGzYFIJ1XgTFezwtVxa`
+- `SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json` — private mirror ID `1HfmLydAhBxESUuM-3hYQfZ6FhFhSTFHc`
+
+Permission re-read for both private copies returned owner-only; no `anyone` permission.
+
+Verdict for this scope: **PASS - SOURCE INTEGRITY / DERIVED LEDGER RECONCILIATION**.
+
+This verdict is limited to source/derived-ledger consistency. It does not close the separate Drive-sharing R1 blocker, visual QA, physical implementation, field evidence, authority filings, or legal compliance.
