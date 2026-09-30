@@ -104,14 +104,18 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
   }
   function departmentAuditRows(dept,areaId){
     if(!dept) return [];
-    const areaRows=(Array.isArray(dept.areaAudit)?dept.areaAudit:[]).map(r=>({
-      id:r.id,
-      group:'Área de trabajo',
-      label:r.criterion||r.id,
-      target:r.criterion||'',
-      input:r.evidence||'Evidencia observable.',
-      basis:'Estándar permanente del departamento'
-    }));
+    const areaAuditMeta=Array.isArray(dept.areaAudit)?dept.areaAudit:[];
+    const areaRows=(Array.isArray(dept.area)?dept.area:[]).map((r,i)=>{
+      const meta=areaAuditMeta[i]||{};
+      return {
+        id:meta.id||r.id,
+        group:'Área de trabajo',
+        label:r.label||meta.criterion||r.id,
+        target:r.text||meta.criterion||'',
+        input:meta.evidence||'Evidencia observable de la condición permanente.',
+        basis:'Estándar permanente del departamento'
+      };
+    });
     const processRows=(Array.isArray(dept.auditCriteria)?dept.auditCriteria:[]).map(r=>({
       id:r.id,
       group:r.group||'Metodología / operación',
