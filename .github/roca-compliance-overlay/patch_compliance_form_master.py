@@ -5,6 +5,7 @@ root=Path(sys.argv[1] if len(sys.argv)>1 else '.')
 app_path=root/'app.js'
 index_path=root/'index.html'
 manifest_path=root/'RUNTIME_MANIFEST.json'
+styles_path=root/'styles.css'
 app=app_path.read_text(encoding='utf-8')
 
 def repl(old,new,label):
@@ -28,6 +29,27 @@ repl(
 " for(const [k,o] of Object.entries(incoming.formValues||{})){const field=formMap.get(k);if(!field)throw new Error(`Campo de trámite desconocido: ${k}`);if(isRestrictedClass(field.privacy_class)&&o?.value&&!isEvidenceReference(o.value))throw new Error(`Dato restringido en bruto bloqueado: ${k}`)}\n const out={...blankState(),...incoming};",
 " for(const [k,o] of Object.entries(incoming.formValues||{})){const field=formMap.get(k);if(!field)throw new Error(`Campo de trámite desconocido: ${k}`);if(isRestrictedClass(field.privacy_class)&&o?.value&&!isEvidenceReference(o.value))throw new Error(`Dato restringido en bruto bloqueado: ${k}`)}\n const fmMap=new Map((D.formMaster||[]).map(x=>[x.key,x]));\n for(const [k,o] of Object.entries(incoming.formMasterValues||{})){const field=fmMap.get(k);if(!field)throw new Error(`FORM_MASTER desconocido: ${k}`);if(isRestrictedClass(field.privacy_class)&&o?.value&&!isEvidenceReference(o.value))throw new Error(`FORM_MASTER restringido en bruto bloqueado: ${k}`);if(o?.status==='VERIFIED'&&(!o?.value||!o?.evidence_ids||!o?.reviewer))throw new Error(`FORM_MASTER VERIFIED incompleto: ${k}`)}\n const out={...blankState(),...incoming};",
 'validate form master')
+
+# Restore canonical HOY/INBOX adapter when the downloaded base runtime lacks it.
+inbox_anchor="const riskBadge=r=>`<span class=\"badge ${r==='R1_CRITICAL'?'r1':''}\">${esc(r)}</span>`;"
+inbox_helpers="""
+let F={q:'',risk:'',status:'',source:''};
+const effStatus=(reqId,base)=>S.reqOverrides[reqId]?.status||base||'NOT_CHECKED';
+function applyInboxFilters(){
+ const q=String(F.q||'').trim().toLowerCase();
+ return (D.inbox||[]).map(r=>({
+   ...r,
+   requirement_title:r.requirement_title||r.title||'',
+   current_verification_status:effStatus(r.req_id,r.current_verification_status||r.status),
+   evidence_required:r.evidence_required||r.evidence_slot||'',
+   next_lane:r.next_lane||r.primary_lane||'',
+   closure_route:r.closure_route||r.lanes||''
+ })).filter(r=>(!F.risk||r.risk===F.risk)&&(!F.status||r.current_verification_status===F.status)&&(!F.source||r.source===F.source)&&(!q||[r.req_id,r.source,r.locator,r.requirement_title,r.scope,r.what_to_check,r.next_action,r.closure_route].join(' ').toLowerCase().includes(q)));
+}
+""".strip()
+if 'function applyInboxFilters()' not in app:
+    if app.count(inbox_anchor)!=1: raise SystemExit('inbox anchor mismatch')
+    app=app.replace(inbox_anchor,inbox_anchor+'\n'+inbox_helpers)
 
 insert_after="const reqMap=new Map(D.requirements.map(r=>[r.req_id,r]));"
 helpers="""
@@ -119,3 +141,26 @@ gate={
 (root/'FORM_MASTER_GATE.json').write_text(json.dumps(gate,ensure_ascii=False,indent=2)+"\n",encoding='utf-8')
 if gate['verdict']!='PASS':
     raise SystemExit('FORM_MASTER gate failed: '+', '.join(gate['errors']))
+# Preserve mobile containment across future base-runtime syncs.
+if styles_path.exists():
+    styles=styles_path.read_text(encoding='utf-8')
+    mobile_css="""
+
+/* Mobile containment: keep horizontal navigation/tables scrollable inside their own surfaces, never on the document. */
+@media(max-width:900px){
+ html,body{max-width:100%;overflow-x:hidden}
+ #app,#sidebar,#topbar,#view{width:100%;min-width:0;max-width:100%}
+ #sidebar{overscroll-behavior-x:contain}
+ #topbar>*{min-width:0}
+ .topactions{min-width:0}
+ #view>*{min-width:0;max-width:100%}
+ .panel,.lane,.metrics,.areaGrid,.calcgrid,.storagegrid,.pagehead{min-width:0;max-width:100%}
+ .lane>*{min-width:0;overflow-wrap:anywhere}
+ .tablewrap{width:100%;min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+ th,td{overflow-wrap:anywhere;word-break:normal}
+ pre,code{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere}
+}
+"""
+    if 'Mobile containment: keep horizontal navigation' not in styles:
+        styles += mobile_css
+        styles_path.write_text(styles,encoding='utf-8')
