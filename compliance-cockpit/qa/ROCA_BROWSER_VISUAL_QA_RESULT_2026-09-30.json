@@ -1,0 +1,66 @@
+{
+  "schema": "ROCA_BROWSER_VISUAL_QA_RESULT_V1",
+  "date": "2026-09-30",
+  "branch": "codex/roca-source-reader",
+  "tested_branch_head": "86f334bb48d1904d1e4785f55e3bb06b8ad0fb00",
+  "tested_pr_merge_ref": "c1530f1d3da670690f07266e03552a2ac0d320ea",
+  "note_on_current_branch": "Subsequent commit ef16e53f7b2710d5d7e63b045e8278a45759b716 changes only visual-QA workflow path filters; tested UI/runtime bytes are unchanged.",
+  "workflow": {
+    "name": "ROCA Browser Visual QA",
+    "run_id": 36687883324,
+    "conclusion": "success",
+    "artifact_id": 11084477544,
+    "artifact_name": "roca-browser-visual-qa-c1530f1d3da670690f07266e03552a2ac0d320ea",
+    "artifact_digest": "sha256:18017962dcf2e587d8d8f02506a2cf2cc71e89de8ca79191593bb818edf60c0d"
+  },
+  "automated_result": {
+    "verdict": "PASS",
+    "checks_passed": 108,
+    "checks_failed": 0,
+    "screenshots": 14,
+    "console_error_groups": 0,
+    "network_error_groups": 0,
+    "viewports": [
+      "1440x900",
+      "1024x768",
+      "390x844"
+    ],
+    "routes": [
+      "/index.html",
+      "/generated/roca-fast-track/audit.html",
+      "/generated/roca-fast-track/implementation.html",
+      "/generated/roca-fast-track/field-walk.html",
+      "/compliance-cockpit/index.html"
+    ]
+  },
+  "human_screenshot_review": {
+    "verdict": "PASS_WITH_USABILITY_REFINEMENT_APPLIED",
+    "reviewed": [
+      "desktop root",
+      "desktop audit",
+      "desktop implementation",
+      "desktop compliance cockpit",
+      "mobile root",
+      "mobile audit",
+      "mobile implementation",
+      "mobile compliance cockpit"
+    ],
+    "findings": [
+      "Primary root navigation is visible and coherent; FUENTES is explicit.",
+      "Audit desktop/mobile renders without document-level horizontal overflow.",
+      "Implementation surface renders with resolved CUR-HOLD-01 absent and ALUM-Tan release block preserved.",
+      "Compliance cockpit renders without JS/page errors.",
+      "Mobile cockpit navigation is contained; inbox table uses internal horizontal scrolling so columns remain readable rather than collapsing vertically."
+    ],
+    "unresolved_visual_blockers": []
+  },
+  "related_ci": {
+    "audit_architecture": "PASS",
+    "audit_implementation_integrity": "PASS",
+    "derived_ledger_integrity": "PASS",
+    "browser_qa": "PASS"
+  },
+  "release_effect": "Browser/visual blocker closed for the tested UI/runtime bytes. This does not authorize release while canonical Drive remains publicly writable.",
+  "compliance_claim": "NOT_AUTHORIZED",
+  "verdict": "PASS_BROWSER_VISUAL_QA"
+}
