@@ -1444,16 +1444,7 @@ window.ROCA_DEPARTMENTS["area-soporte"] = {
     {id:"EVID-SUP-04",text:"Ruta de circulación y carga/descarga.",placement:"Circulaciones / exterior"},
     {id:"EVID-SUP-05",text:"Separación y almacenamiento temporal de residuos.",placement:"Residuos"}
   ],
-  auditCriteria:[
-    {id:"SUP-AUD-01",group:"Bodega",label:"Almacenamiento",target:"Ubicación, ID, estabilidad y acceso son correctos.",input:"Recorrido de bodega."},
-    {id:"SUP-AUD-02",group:"Oficina",label:"Privacidad",target:"Datos y documentos sensibles no están expuestos.",input:"Condición de estación/archivo."},
-    {id:"SUP-AUD-03",group:"Exhibición",label:"Separación",target:"Exhibición no funciona como bodega ni invade operación.",input:"Recorrido."},
-    {id:"SUP-AUD-04",group:"Comedor",label:"Separación higiénica",target:"Alimentos están separados de químicos, residuos y piezas.",input:"Condición física."},
-    {id:"SUP-AUD-05",group:"Sanitarios",label:"Higiene/privacidad",target:"Sanitarios están higiénicos y no almacenan químicos/equipo.",input:"Condición física sin invadir privacidad."},
-    {id:"SUP-AUD-06",group:"Circulación",label:"Ruta libre",target:"Rutas y accesos permanecen libres.",input:"Recorrido."},
-    {id:"SUP-AUD-07",group:"Exterior",label:"Carga",target:"Carga/descarga conserva separación y ruta de maniobra.",input:"Zona exterior."},
-    {id:"SUP-AUD-08",group:"Residuos",label:"Separación/destino",target:"Residuos se separan por material real y mantienen destino controlado.",input:"Puntos de generación + almacenamiento."}
-  ],
+  auditCriteria:[],
   implementationHolds:[
     {id:"SUP-HOLD-01",text:"Completar levantamiento físico y fotografías de subzonas."},
     {id:"SUP-HOLD-02",text:"Cerrar inventarios y ubicaciones reales."},
