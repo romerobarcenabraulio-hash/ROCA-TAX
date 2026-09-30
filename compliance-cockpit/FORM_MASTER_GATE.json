@@ -17,9 +17,10 @@
   "passed": 10,
   "total": 10,
   "errors": [],
-  "app_sha256": "67859f5d3be93fe4ab6a845fa58846c270e7ebd8c316146e153c7c952b1c4aa7",
-  "index_sha256": "cd0ac7a3189f747628058b108d776f38a91608b75295df0e7dd0b53cee0837b4",
-  "form_master_data_sha256": "f83be890ad65a610f00e9cfef4bb44126a429727d30ae65798ee8cc7416fe306",
+  "app_sha256": "4290e93282dd9dd51f982211e727d705f239ac5418e737a2b1b13002ecd90bd7",
+  "index_sha256": "a9731a7e5fcaad86467be79de96126862f8c6144bcf8e41dd89890e2458c77e9",
+  "form_master_data_sha256": "049bc89ebc143a888c9d2bb5f1fee571c12c2407067fc61b32cdf4264af9e82d",
   "verdict": "PASS",
-  "scope": "FORM_MASTER persistence, privacy guards and live prefill wiring. Does not prove browser visual QA or physical/legal compliance."
+  "scope": "FORM_MASTER persistence, privacy guards and live prefill wiring. Does not prove browser visual QA or physical/legal compliance.",
+  "note": "FORM_MASTER gate refreshed after P0 walk restoration. Visual QA and physical/legal compliance remain outside scope."
 }
