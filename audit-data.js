@@ -147,7 +147,15 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       '</tbody></table></section>'
     : '';
   function auditMetrics(){
-    const values=rows.map(row=>saved[row.id]?.status||'NOT_VERIFIED');
+    const values=rows.map(row=>{
+      const v=saved[row.id]||{};
+      const status=String(v.status||'NOT_VERIFIED').toUpperCase();
+      if(window.ROCA_AUDIT_ENGINE&&typeof window.ROCA_AUDIT_ENGINE.closureDetailValid==='function'){
+        return window.ROCA_AUDIT_ENGINE.closureDetailValid(status,v.note)?status:'NOT_VERIFIED';
+      }
+      if(status!=='NOT_VERIFIED'&&!String(v.note||'').trim()) return 'NOT_VERIFIED';
+      return status;
+    });
     const conforming=values.filter(x=>x==='CONFORMING').length;
     const nonconforming=values.filter(x=>x==='NONCONFORMING').length;
     const na=values.filter(x=>x==='NA_JUSTIFIED').length;
@@ -184,8 +192,14 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     const id=tr.dataset.auditId, v=saved[id]||{};
     const sel=tr.querySelector('.audit-status');
     const note=tr.querySelector('.audit-note');
-    sel.value=v.status||'NOT_VERIFIED';
+    const storedStatus=String(v.status||'NOT_VERIFIED').toUpperCase();
+    const storedValid=window.ROCA_AUDIT_ENGINE&&typeof window.ROCA_AUDIT_ENGINE.closureDetailValid==='function'
+      ? window.ROCA_AUDIT_ENGINE.closureDetailValid(storedStatus,v.note)
+      : (storedStatus==='NOT_VERIFIED'||Boolean(String(v.note||'').trim()));
+    sel.value=storedValid?storedStatus:'NOT_VERIFIED';
     const validation=tr.querySelector('.audit-validation');
+    if(validation&&!storedValid) validation.textContent='Estado anterior no cuenta como cerrado porque no tiene dato, evidencia o justificación suficiente.';
+    tr.classList.toggle('audit-invalid',!storedValid);
     const persist=()=>{
       const status=sel.value;
       const detail=String(note.value||'').trim();
