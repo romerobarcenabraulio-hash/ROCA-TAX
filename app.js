@@ -276,7 +276,15 @@
           if(String(r.baseline_status||'').toUpperCase()!=='FROZEN') return;
           const criteria=window.ROCA_AUDIT_ENGINE.criteriaForArea(r.department_id);
           const state=window.ROCA_AUDIT_ENGINE.loadState(r.department_id);
-          const open=criteria.filter(x=>!['CONFORMING','NA_JUSTIFIED'].includes(String(state[x.id]?.status||'NOT_VERIFIED').toUpperCase()));
+          const open=criteria.filter(x=>{
+            const v=state[x.id]||{};
+            const status=String(v.status||'NOT_VERIFIED').toUpperCase();
+            const terminal=['CONFORMING','NA_JUSTIFIED'].includes(status);
+            const evidenceValid=typeof window.ROCA_AUDIT_ENGINE.closureDetailValid==='function'
+              ? window.ROCA_AUDIT_ENGINE.closureDetailValid(status,v.note)
+              : (status==='NOT_VERIFIED'||Boolean(String(v.note||'').trim()));
+            return !(terminal&&evidenceValid);
+          });
           if(open.length) auditOpen.push({department_id:r.department_id,count:open.length});
         });
       }else if(baselineRows.some(r=>String(r.baseline_status||'').toUpperCase()==='FROZEN')){
