@@ -36,7 +36,7 @@ La piel gruesa o dura sigue un ramal previo: después de hidratar y marcar puede
 Estos parámetros se conservan porque aparecen en la metodología fuente. **Conservar un parámetro no equivale a declarar que toda la receta está liberada**.
 
 - **Hidratación:** 1 kg de sal por 10 L de agua; ventana documentada de 10–12 h. La salida la gobierna también la condición física: la piel debe poder desplegarse y marcarse sin forzar zonas rígidas.
-- **Picle:** la cadena documental comparada conserva 473 L de agua + 45 kg de sal + 6.4 L de ácido fórmico + 300 mL de ácido sulfúrico, pero existe una fuente histórica registrada con 6.0 L de ácido fórmico. Por eso **la cantidad de ácido fórmico sigue en conflicto y no se fija una receta única por redondeo**.
+- **Picle:** 473 L de agua + 45 kg de sal + **6.4 L de ácido fórmico** + 300 mL de ácido sulfúrico. La entrevista literal de Ricardo del 18-ago-2026 dice “6 litros con 400 mililitros”, que equivale exactamente a 6.4 L; v24.7, v24.8, PreEntrevistas, 31AGO y 391P conservan el mismo valor. La antigua referencia resumida como 6.0 L queda corregida como defecto de transcripción/resumen, no como receta alternativa.
 - **Picle / piel común:** referencia de 24 h. En piel gruesa no se fija un número de retornos; se repite picle → rebajado → picle mientras exista sección sin curtir.
 - **ALUM-Tan:** pesar la carga real y capturar exactamente esa lectura en la hoja controlada; no aproximar ni recalcular de memoria.
 - **Salinidad ALUM-Tan:** referencia documentada 2.2–2.3.
@@ -123,7 +123,6 @@ CUR-AUD-07 los dos puntos de pH se registran donde corresponden y el instrumento
 CUR-AUD-08 piloto de agua a presión permanece separado de la rutina hasta contar con liberación documentada.
 
 ## Bloqueadores
-- reconciliar la fuente histórica 6.0 L vs la cadena documental 6.4 L antes de fijar una sola receta de picle;
 - identificar el instrumento/método real de pH y su estado/verificación aplicable;
 - confirmar productos/HDS exactos;
 - cerrar balance de baños/residuos y destino;
