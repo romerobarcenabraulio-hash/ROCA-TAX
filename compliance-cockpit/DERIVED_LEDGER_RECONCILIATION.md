@@ -336,3 +336,35 @@ Drive derived ledgers were then updated with rollback copies preserved beforehan
 Applicability remains fact-dependent and no legal/physical compliance claim is created.
 
 Verdict for derived-ledger provenance: **PASS - SOURCE INTEGRITY WITH RECONSTRUCTED SLP SOURCE GATES**.
+
+
+## 2026-09-30 final derived-ledger parity
+
+The two remaining SLP source-integrity gates were **reconstructed from current official sources** rather than falsely claimed as recovered originals:
+
+- `SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+- `SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+
+Both reconstructed gates:
+- bind to the exact locked ledger path/count/SHA;
+- cite current official state/municipal sources;
+- preserve applicability as fact-dependent;
+- set `compliance_claim: NOT_AUTHORIZED`;
+- explicitly record `original_source_gate_recovered: false`.
+
+After backup, both modules were added to health and admission with status `ADMITTED_RECONSTRUCTED`.
+
+A parser-based comparison against `ROCA_CANONICAL_MODULE_LOCK.json` now returns:
+
+- module lock: 43 modules;
+- health: 43 modules;
+- gate-sync: 43 modules;
+- admission: 42 modules;
+- health path/count/SHA mismatches vs module lock: 0;
+- gate-sync path/count/SHA mismatches vs module lock: 0;
+- admission missing legal/external modules: 0;
+- the sole module not in admission is `ADMIN_FORM`, intentionally internal-control/master-data, not a legal source module.
+
+The canonical master remains 4,469 rows with SHA `0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c`.
+
+Verdict for derived-ledger parity: **PASS - SOURCE INTEGRITY, with reconstructed provenance explicitly labeled for the two SLP modules.**
