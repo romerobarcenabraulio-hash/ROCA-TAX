@@ -28,6 +28,14 @@ health={r["module"]:r for r in rows(HEALTH)}
 admission={r["dir"]:r for r in rows(ADMISSION)}
 errors=[]
 
+EXPECTED_MASTER_SHA="0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c"
+if lock.get("frozen_from_master_sha256") != EXPECTED_MASTER_SHA:
+    errors.append("module lock frozen master SHA missing/mismatch")
+if int(lock.get("canonical_master_rows",0)) != 4469:
+    errors.append("module lock canonical master row count missing/mismatch")
+if lock.get("canonical_master_sha256") != EXPECTED_MASTER_SHA:
+    errors.append("module lock canonical master SHA missing/mismatch")
+
 for name,m in mods.items():
     g=gate.get(name)
     if not g:
