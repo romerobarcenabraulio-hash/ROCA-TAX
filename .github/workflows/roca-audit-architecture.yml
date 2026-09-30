@@ -10,6 +10,8 @@ on:
       - area-standard-data.js
       - audit-engine.js
       - audit-data.js
+      - app.js
+      - styles.css
       - index.html
       - generated/roca-fast-track/implementation.html
       - tools/check-audit-architecture.js
@@ -20,6 +22,8 @@ on:
       - area-standard-data.js
       - audit-engine.js
       - audit-data.js
+      - app.js
+      - styles.css
       - index.html
       - generated/roca-fast-track/implementation.html
       - tools/check-audit-architecture.js
