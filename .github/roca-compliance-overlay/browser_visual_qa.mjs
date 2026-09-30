@@ -64,7 +64,7 @@ for(const vp of contract.viewports){
     try{
       const res=await page.goto(base+route,{waitUntil:"domcontentloaded",timeout:30000});
       if(!res||!res.ok()) fail(prefix+":http",`route returned ${res?.status?.()??"no response"}`);
-      else pass(prefix+":http","route loaded",{status:res.status()});
+      else pass(prefix+":http","route loaded",{http_status:res.status()});
       await page.waitForTimeout(700);
       const body=(await page.locator("body").innerText()).trim();
       if(body.length<40) fail(prefix+":render","body is blank/too short",{chars:body.length});
