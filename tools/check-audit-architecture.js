@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+const fs=require('fs');
+const vm=require('vm');
+const path=require('path');
+const ROOT=path.resolve(__dirname,'..');
+
+function read(p){return fs.readFileSync(path.join(ROOT,p),'utf8')}
+function assert(cond,msg){if(!cond){console.error('ERROR:',msg);process.exitCode=1}}
+
+global.window=global;
+const store={};
+global.localStorage={
+  getItem:k=>Object.prototype.hasOwnProperty.call(store,k)?store[k]:null,
+  setItem:(k,v)=>{store[k]=String(v)}
+};
+
+for(const p of ['area-standard-data.js','department-data.js','audit-engine.js','audit-data.js']){
+  vm.runInThisContext(read(p),{filename:p});
+}
+
+const departments=Object.entries(global.ROCA_DEPARTMENTS||{});
+assert(departments.length===10,'expected 10 canonical departments');
+
+for(const [areaId,dept] of departments){
+  const rows=global.ROCA_AUDIT_ENGINE.criteriaForArea(areaId);
+  assert(rows.length>0,areaId+': no audit criteria');
+  const ids=rows.map(r=>r.id);
+  assert(new Set(ids).size===ids.length,areaId+': duplicate audit criterion id');
+  assert(rows.every(r=>r.target&&r.basis),areaId+': criterion missing target/basis');
+}
+
+const sections=global.ROCA_AUDIT_SECTIONS||[];
+assert(sections.length===departments.length+1,'audit navigation must be audit-inicio + every department');
+const expected=new Set(departments.map(([,d])=>'audit-'+String(d.code).toLowerCase()));
+const actual=new Set(sections.slice(1).map(s=>s.id));
+assert(expected.size===actual.size&&[...expected].every(x=>actual.has(x)),'audit navigation drifted from department-data');
+
+const auditText=read('audit-data.js');
+assert(!auditText.includes('ROCA_FAST_TRACK?.areas'),'audit-data must not derive departments from FAST_TRACK');
+assert(auditText.includes('ROCA_AUDIT_ENGINE.criteriaForArea(areaId)'),'audit-data must use canonical audit engine');
+
+const index=read('index.html');
+const order=['department-data.js','audit-engine.js','fast-track-data.js','audit-data.js'].map(x=>index.indexOf(x));
+assert(order.every(x=>x>=0)&&order.every((x,i)=>i===0||order[i-1]<x),'script order must load department-data -> audit-engine -> fast-track -> audit-data');
+
+const implementation=read('generated/roca-fast-track/implementation.html');
+assert(implementation.includes('../../audit-engine.js'),'IMPLEMENTAR must load audit-engine');
+assert(implementation.includes('ROCA_AUDIT_ENGINE.criteriaForArea(areaId)'),'IMPLEMENTAR criterion map must use audit-engine');
+assert(implementation.includes('ROCA_AUDIT_ENGINE.dynamicImplementationItems()'),'IMPLEMENTAR dynamic actions must use audit-engine');
+
+const area='area-curtiduria';
+const criterion=global.ROCA_AUDIT_ENGINE.criteriaForArea(area)[0];
+global.ROCA_AUDIT_ENGINE.saveCriterion(area,criterion.id,{status:'NONCONFORMING',note:'regression-test'});
+const item=global.ROCA_AUDIT_ENGINE.dynamicImplementationItems().find(x=>x.areaId===area&&x.req===criterion.id);
+assert(Boolean(item),'NONCONFORMING criterion must generate IMPLEMENTAR item');
+assert(item&&item.status==='NO CONFORME','dynamic IMPLEMENTAR item must preserve nonconforming status');
+
+if(process.exitCode) process.exit(process.exitCode);
+console.log('PASS audit architecture: '+departments.length+' departments; one canonical criteria engine; AUDITORIA -> IMPLEMENTAR flow intact');
