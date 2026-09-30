@@ -208,6 +208,8 @@ for(const marker of [
 
 if(impl.includes('href="audit.html"')) errors.push("implementation still links to legacy audit");
 if(!impl.includes("index.html?mode=audit#audit-inicio")) errors.push("implementation central audit link missing");
+if(!impl.includes('route?.hold_type==="IMPLEMENT_DECISION"'))
+  errors.push("IMPLEMENTAR is not filtering department HOLDs to IMPLEMENT_DECISION only");
 
 if(errors.length){
   errors.forEach(e=>console.error("ERROR:",e));
