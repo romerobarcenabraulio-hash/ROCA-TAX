@@ -217,6 +217,17 @@ function auditImplementationItems(){
   if(window.ROCA_AUDIT_ENGINE) return window.ROCA_AUDIT_ENGINE.dynamicImplementationItems();
   return [];
 }
+function normalizeImplementationArea(value){
+  const raw=String(value||"").trim();
+  const depts=window.ROCA_DEPARTMENTS||{};
+  if(depts[raw]) return {id:raw,title:depts[raw].title||raw};
+  const norm=raw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"");
+  for(const [id,d] of Object.entries(depts)){
+    const candidates=[id,d.code,d.title].map(v=>String(v||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,""));
+    if(candidates.includes(norm)) return {id,title:d.title||raw};
+  }
+  return {id:raw,title:raw};
+}
 async function loadImplementationActions(){
   const body=document.getElementById("implementationRows");
   let controlled=[];
@@ -228,12 +239,15 @@ async function loadImplementationActions(){
     if(rows.length){
       const head=rows.shift().map(x=>x.trim());
       const ix=n=>head.indexOf(n);
-      controlled=rows.filter(r=>r.some(v=>v.trim()!=="")).map(r=>({
-        id:r[ix("action_id")]||"",area:r[ix("area")]||"",areaId:r[ix("area")]||"",
-        gap:r[ix("observed_gap")]||"",req:r[ix("target_requirement_id")]||"",fix:r[ix("correction")]||"",
-        owner:r[ix("responsible")]||"",due:r[ix("due_date")]||"",status:r[ix("status")]||"",
-        evidence:r[ix("evidence_id")]||"",dynamic:false
-      })).filter(x=>!["CLOSED","CANCELLED"].includes(x.status.toUpperCase()));
+      controlled=rows.filter(r=>r.some(v=>v.trim()!=="")).map(r=>{
+        const area=normalizeImplementationArea(r[ix("area")]||"");
+        return {
+          id:r[ix("action_id")]||"",area:area.title,areaId:area.id,
+          gap:r[ix("observed_gap")]||"",req:r[ix("target_requirement_id")]||"",fix:r[ix("correction")]||"",
+          owner:r[ix("responsible")]||"",due:r[ix("due_date")]||"",status:r[ix("status")]||"",
+          evidence:r[ix("evidence_id")]||"",dynamic:false
+        };
+      }).filter(x=>!["CLOSED","CANCELLED"].includes(x.status.toUpperCase()));
     }
   }catch(err){controlledError=true}
 
