@@ -364,12 +364,14 @@ async function renderDepartmentHolds(){
   const blocks=Object.values(depts).map(d=>{
     const open=(Array.isArray(d.implementationHolds)?d.implementationHolds:[]).filter(h=>{
       const s=String(stateById.get(h.id)?.status||"OPEN").toUpperCase();
-      return !["CLOSED","CANCELLED"].includes(s);
+      if(["CLOSED","CANCELLED"].includes(s)) return false;
+      const route=routingById.get(h.id);
+      return route?.hold_type==="IMPLEMENT_DECISION";
     });
     return {dept:d,open};
   }).filter(x=>x.open.length);
   if(!blocks.length){
-    host.innerHTML='<p><b>Sin HOLD departamentales abiertos.</b> Los cierres permanecen como historial en el ledger controlado.</p>';
+    host.innerHTML='<p><b>Sin decisiones de implementación abiertas.</b> Los HOLD de definir estándar, auditar estado actual o sistema/registro permanecen en su capa canónica y no se convierten en tareas de IMPLEMENTAR.</p>';
     return;
   }
   host.innerHTML=(stateError?'<div class="note"><b>Advertencia:</b> no se pudo leer el ledger de HOLD; por seguridad se muestran todos como abiertos.</div>':'')+
