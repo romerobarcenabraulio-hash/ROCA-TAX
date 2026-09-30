@@ -1,0 +1,30 @@
+name: ROCA Derived Ledger Integrity
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/roca-source-reader
+    paths:
+      - compliance-cockpit/ROCA_CANONICAL_MODULE_LOCK.json
+      - compliance-cockpit/ROCA_MODULE_GATE_SYNC_CANON.csv
+      - compliance-cockpit/ROCA_MODULE_HEALTH_CANON.csv
+      - compliance-cockpit/ROCA_MODULE_ADMISSION_LEDGER_CANON.csv
+      - .github/roca-compliance-overlay/validate_derived_ledgers.py
+      - .github/workflows/roca-derived-integrity.yml
+  pull_request:
+    paths:
+      - compliance-cockpit/ROCA_CANONICAL_MODULE_LOCK.json
+      - compliance-cockpit/ROCA_MODULE_GATE_SYNC_CANON.csv
+      - compliance-cockpit/ROCA_MODULE_HEALTH_CANON.csv
+      - compliance-cockpit/ROCA_MODULE_ADMISSION_LEDGER_CANON.csv
+      - .github/roca-compliance-overlay/validate_derived_ledgers.py
+      - .github/workflows/roca-derived-integrity.yml
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate canonical derived ledgers
+        run: python .github/roca-compliance-overlay/validate_derived_ledgers.py
