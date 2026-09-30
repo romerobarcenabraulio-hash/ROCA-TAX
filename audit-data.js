@@ -159,7 +159,7 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     const closed=conforming+nonconforming+na;
     const compliance=assessed?Math.round((conforming/assessed)*100):0;
     const coverage=values.length?Math.round((closed/values.length)*100):0;
-    return {total:values.length,conforming,nonconforming,na,notVerified,compliance,coverage,open:nonconforming+notVerified};
+    return {total:values.length,conforming,nonconforming,na,notVerified,compliance,coverage,open:nonconforming};
   }
   function metricMarkup(){
     const m=auditMetrics();
@@ -176,10 +176,10 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       const id=row.id || (code+'-FT-'+String(i+1).padStart(2,'0'));
       const v=saved[id]||{};
       const action=openByReq.get(id);
-      const dynamicOpen=(v.status==='NONCONFORMING'||v.status==='NOT_VERIFIED'||!v.status);
+      const dynamicOpen=(v.status==='NONCONFORMING');
       const implementationText=action
         ? '<strong>ABIERTA · REGISTRO</strong><br>'+String(action.correction||'')
-        : (dynamicOpen?'<strong>ABIERTA · AUDITORÍA</strong><br>'+(v.status==='NONCONFORMING'?'Corregir la condición y volver a auditar.':'Verificar la condición y registrar evidencia.'):'—');
+        : (dynamicOpen?'<strong>ABIERTA · AUDITORÍA</strong><br>Corregir la condición y volver a auditar.':'—');
       return '<tr data-audit-id="'+id+'"><td><strong>'+id+'</strong><br><small>'+row.group+' · '+row.label+'</small></td><td><small>'+String(row.basis||'Estándar ROCA')+'</small></td><td>'+row.target+'</td><td><select class="audit-status"><option value="NOT_VERIFIED">NO VERIFICADO</option><option value="CONFORMING">CONFORME</option><option value="NONCONFORMING">NO CONFORME</option><option value="NA_JUSTIFIED">NO APLICA — JUSTIFICACIÓN</option></select></td><td><textarea class="audit-note" rows="3" placeholder="'+row.input.replace(/"/g,'&quot;')+'">'+(v.note||'')+'</textarea></td><td class="audit-implementation">'+implementationText+'</td></tr>';
     }).join('')+'</tbody></table>';
   root.querySelector('.audit-table-host').innerHTML = html;
@@ -198,9 +198,7 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       if(cell&&!action){
         cell.innerHTML=(sel.value==='NONCONFORMING')
           ? '<strong>ABIERTA · AUDITORÍA</strong><br>Corregir la condición y volver a auditar.'
-          : (sel.value==='NOT_VERIFIED')
-            ? '<strong>ABIERTA · AUDITORÍA</strong><br>Verificar la condición y registrar evidencia.'
-            : '—';
+          : '—';
       }
     };
     sel.addEventListener('change',persist);
