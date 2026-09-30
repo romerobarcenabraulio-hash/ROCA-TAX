@@ -92,3 +92,21 @@ Ambos declaran `original_source_gate_recovered: false` y `PASS_SOURCE_INTEGRITY_
 Read-back de Drive confirmó que module-health y module-admission ya contienen ambos módulos y admission apunta a los gates `*_RECON_2026-09-30.json`.
 
 Estado: ya no existe HOLD de procedencia en derived-ledgers por estos dos módulos. Permanecen separados los gates de aplicabilidad, trámite, evidencia y cumplimiento físico/legal.
+
+
+## SLP source-gate reconstruction closure
+
+The missing historical source-gate artifacts for `SLP_ENV_IMPACT` and `SLP_MUN_FUNCTION` were not recovered. The blocker was resolved by reconstruction, not by pretending historical recovery.
+
+New gates:
+- `SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+- `SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+
+They are backed by current official SEGAM, Congreso SLP and Ayuntamiento/Gaceta sources and preserve the limitation `original_source_gate_recovered=false`.
+
+After Drive write/read-back:
+- health: 0 differences against gate-sync;
+- admission: 0 differences against gate-sync for all external/legal modules;
+- `ADMIN_FORM` remains outside module-admission as an internal control module.
+
+The historical-provenance gap is now visible and controlled rather than silently missing.
