@@ -93,11 +93,29 @@ if(!probeId){
   ctx.window.ROCA_AUDIT_ENGINE.saveCriterion(probeArea,probeId,{status:"CONFORMING",note:"probe closed"});
   if(ctx.window.ROCA_AUDIT_ENGINE.dynamicImplementationItems().some(x=>x.req===probeId))
     errors.push("CONFORMING did not remove dynamic IMPLEMENTAR action");
+
+  // Backup/restore contract: preserve only known criteria and allowed statuses.
+  ctx.window.ROCA_AUDIT_ENGINE.saveCriterion(probeArea,probeId,{status:"NONCONFORMING",note:"backup probe"});
+  const backup=ctx.window.ROCA_AUDIT_ENGINE.exportAuditState();
+  if(backup.schema!=="ROCA_AUDIT_STATE_V1") errors.push("audit backup schema mismatch");
+  memory.clear();
+  const restored=ctx.window.ROCA_AUDIT_ENGINE.importAuditState(backup);
+  if(restored.criteria<1) errors.push("audit backup restored no criteria");
+  if(!ctx.window.ROCA_AUDIT_ENGINE.dynamicImplementationItems().some(x=>x.req===probeId))
+    errors.push("audit backup did not restore NONCONFORMING implementation state");
+
+  const tampered=JSON.parse(JSON.stringify(backup));
+  tampered.departments[probeArea]["UNKNOWN-REQ"]={status:"CONFORMING",note:"must be ignored"};
+  tampered.departments[probeArea][probeId]={status:"UNSAFE_UNKNOWN_STATUS",note:"must be ignored"};
+  memory.clear();
+  const filtered=ctx.window.ROCA_AUDIT_ENGINE.importAuditState(tampered);
+  if(filtered.ignored<2) errors.push("audit import did not reject unknown criterion/status");
   memory.clear();
 }
 
 const audit=read("audit-data.js");
 if(!audit.includes("NO VERIFICADO")||!audit.includes("NONCONFORMING")) errors.push("audit status contract missing");
+if(!audit.includes("auditBackupExport")||!audit.includes("auditBackupImport")) errors.push("audit backup UI controls missing");
 
 const impl=read("generated/roca-fast-track/implementation.html");
 for(const marker of [
@@ -112,4 +130,4 @@ if(errors.length){
   errors.forEach(e=>console.error("ERROR:",e));
   process.exit(1);
 }
-console.log(`PASS audit/implementation flow: ${Object.keys(depts).length} departments; ${holdDefs.size} holds; status-to-IMPLEMENTAR behavioral contract passed; no stale formic hold; ALUM-Tan operational block preserved`);
+console.log(`PASS audit/implementation flow: ${Object.keys(depts).length} departments; ${holdDefs.size} holds; status-to-IMPLEMENTAR and backup/restore behavioral contracts passed; no stale formic hold; ALUM-Tan operational block preserved`);
