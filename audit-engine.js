@@ -100,6 +100,7 @@
     return state;
   }
 
+  const BACKUP_SCHEMA='ROCA_AUDIT_STATE_V1';
   const ALLOWED_STATUSES=new Set(['NOT_VERIFIED','CONFORMING','NONCONFORMING','NA_JUSTIFIED']);
 
   function closureDetailValid(status,note){
@@ -110,51 +111,6 @@
     return Boolean(detail);
   }
 
-  function exportState(){
-    const areas={};
-    departments().forEach(([areaId])=>{
-      const known=new Set(criteriaForArea(areaId).map(r=>r.id));
-      const raw=loadState(areaId);
-      const clean={};
-      Object.entries(raw||{}).forEach(([id,v])=>{
-        if(!known.has(id)) return;
-        const status=String(v&&v.status||'NOT_VERIFIED').toUpperCase();
-        const note=String(v&&v.note||'');
-        if(!closureDetailValid(status,note)) return;
-        clean[id]={status,note,updatedAt:String(v&&v.updatedAt||'')};
-      });
-      areas[areaId]=clean;
-    });
-    return {
-      schema:'ROCA_AUDIT_STATE_V1',
-      engineVersion:'1.2.0',
-      exportedAt:new Date().toISOString(),
-      areas
-    };
-  }
-
-  function importState(bundle){
-    if(!bundle||bundle.schema!=='ROCA_AUDIT_STATE_V1'||!bundle.areas||typeof bundle.areas!=='object'){
-      throw new Error('Respaldo de auditoría no reconocido.');
-    }
-    let imported=0,ignored=0;
-    departments().forEach(([areaId])=>{
-      if(!Object.prototype.hasOwnProperty.call(bundle.areas,areaId)) return;
-      const known=new Set(criteriaForArea(areaId).map(r=>r.id));
-      const source=bundle.areas[areaId]||{};
-      const clean={};
-      Object.entries(source).forEach(([id,v])=>{
-        const status=String(v&&v.status||'NOT_VERIFIED').toUpperCase();
-        const note=String(v&&v.note||'');
-        if(!known.has(id)||!closureDetailValid(status,note)){ignored++;return;}
-        clean[id]={status,note,updatedAt:String(v&&v.updatedAt||new Date().toISOString())};
-        imported++;
-      });
-      localStorage.setItem(stateKey(areaId),JSON.stringify(clean));
-    });
-    return {imported,ignored};
-  }
-
   function dynamicImplementationItems(){
     const items=[];
     departments().forEach(([areaId,dept])=>{
@@ -163,17 +119,18 @@
         const v=saved[row.id]||{};
         if(String(v.status||'NOT_VERIFIED').toUpperCase()!=='NONCONFORMING') return;
         const note=String(v.note||'').trim();
+        if(!note) return;
         items.push({
           id:'AUD-'+String(dept.code||areaId).toUpperCase()+'-'+row.id,
           area:dept.title||areaId,
           areaId,
           req:row.id,
-          gap:'NO CONFORME · '+(note||row.label),
+          gap:'NO CONFORME · '+note,
           fix:'Corregir la condición: '+row.target+' Después volver a auditar.',
           owner:'POR ASIGNAR',
           due:'—',
           status:'NO CONFORME',
-          evidence:note||row.input,
+          evidence:note,
           basis:row.basis,
           dynamic:true
         });
@@ -182,14 +139,24 @@
     return items;
   }
 
-  const BACKUP_SCHEMA='ROCA_AUDIT_STATE_V1';
-  const ALLOWED_STATUSES=new Set(['NOT_VERIFIED','CONFORMING','NONCONFORMING','NA_JUSTIFIED']);
-
   function exportAuditState(){
     const state={};
     departments().forEach(([areaId])=>{
-      const saved=loadState(areaId);
-      if(saved&&Object.keys(saved).length) state[areaId]=saved;
+      const known=new Set(criteriaForArea(areaId).map(r=>r.id));
+      const raw=loadState(areaId);
+      const clean={};
+      Object.entries(raw||{}).forEach(([id,value])=>{
+        if(!known.has(id)||!value||typeof value!=='object') return;
+        const status=String(value.status||'NOT_VERIFIED').toUpperCase();
+        const note=String(value.note||'');
+        if(!closureDetailValid(status,note)) return;
+        clean[id]={
+          status,
+          note,
+          updatedAt:typeof value.updatedAt==='string'&&value.updatedAt?value.updatedAt:''
+        };
+      });
+      if(Object.keys(clean).length) state[areaId]=clean;
     });
     return {
       schema:BACKUP_SCHEMA,
@@ -213,10 +180,11 @@
       for(const [id,value] of Object.entries(rawState)){
         if(!allowedIds.has(id)||!value||typeof value!=='object'){ignored++;continue;}
         const status=String(value.status||'NOT_VERIFIED').toUpperCase();
-        if(!ALLOWED_STATUSES.has(status)){ignored++;continue;}
+        const note=String(value.note||'');
+        if(!closureDetailValid(status,note)){ignored++;continue;}
         clean[id]={
           status,
-          note:String(value.note||''),
+          note,
           updatedAt:typeof value.updatedAt==='string'&&value.updatedAt?value.updatedAt:new Date().toISOString()
         };
         criteria++;
@@ -238,6 +206,7 @@
     dynamicImplementationItems,
     exportAuditState,
     importAuditState,
+    closureDetailValid,
     stateKey
   };
 })();
