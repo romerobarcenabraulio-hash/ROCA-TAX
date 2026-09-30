@@ -2,7 +2,6 @@
   "schema": "ROCA_BROWSER_VISUAL_QA_CONTRACT_V1",
   "date": "2026-09-30",
   "branch": "codex/roca-source-reader",
-  "head_sha": "c043003c149ba91aa532347b789cb1c4d34595cd",
   "purpose": "Release-class browser/visual QA for PR #6 current integrated ROCA manual, audit/implementation surfaces and compliance cockpit.",
   "prerequisite": [
     "Run against this exact HEAD or record the tested SHA.",
@@ -140,5 +139,8 @@
   ],
   "pass_rule": "All routes and targeted regressions pass at required viewports; evidence bundle is preserved and tied to the tested HEAD.",
   "current_status": "NOT_EXECUTED_ENVIRONMENT_BLOCKER",
-  "compliance_claim": "NOT_AUTHORIZED"
+  "compliance_claim": "NOT_AUTHORIZED",
+  "contract_created_at_head": "c043003c149ba91aa532347b789cb1c4d34595cd",
+  "tested_head_requirement": "Record the exact current PR HEAD SHA at QA execution time; evidence is invalid if screenshots/logs are not tied to that tested SHA.",
+  "current_pr_head_observed": "ef49b50b4596ea0a3afc313b76b7135f1e6996a3"
 }
