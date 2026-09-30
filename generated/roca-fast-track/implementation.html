@@ -209,9 +209,13 @@ function applicablePhysicalRows(areaId){
 }
 function implementationCriterionMap(areaId,dept){
   const rows=[];
-  (Array.isArray(dept?.areaAudit)?dept.areaAudit:[]).forEach(r=>rows.push({
-    id:r.id,label:r.criterion||r.id,target:r.criterion||"",evidence:r.evidence||"Evidencia observable.",basis:"Estándar permanente del departamento"
-  }));
+  const areaAuditMeta=Array.isArray(dept?.areaAudit)?dept.areaAudit:[];
+  (Array.isArray(dept?.area)?dept.area:[]).forEach((r,i)=>{
+    const meta=areaAuditMeta[i]||{};
+    rows.push({
+      id:meta.id||r.id,label:r.label||meta.criterion||r.id,target:r.text||meta.criterion||"",evidence:meta.evidence||"Evidencia observable de la condición permanente.",basis:"Estándar permanente del departamento"
+    });
+  });
   (Array.isArray(dept?.auditCriteria)?dept.auditCriteria:[]).forEach(r=>rows.push({
     id:r.id,label:r.label||r.id,target:r.target||r.label||"",evidence:r.input||"Evidencia / dato de auditoría.",basis:"Metodología / control ROCA"
   }));
