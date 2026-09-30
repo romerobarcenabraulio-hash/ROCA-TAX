@@ -296,9 +296,23 @@ Post-write Drive read-back confirmed:
 - module-health contains all 43 gate-sync modules with matching ledger path, row count, quality-gate filename and proof SHA;
 - module-admission contains 42 admitted modules; `ADMIN_FORM` is intentionally excluded because it is an internal master-data control;
 - both SLP rows use the reconstructed source-gate filenames;
-- admission enum is normalized back to `ADMITTED` for contract compatibility;
-- reconstruction provenance remains in `source_gate` and `reason`.
+- standard admissions remain `ADMITTED`; the two reconstructed SLP modules use `ADMITTED_RECONSTRUCTED` by explicit validator contract;
+- reconstruction provenance is preserved in `admission`, `source_gate` and `reason`.
 
 Latest source-integrity verdict for these derived ledgers: **PASS - SOURCE INTEGRITY (RECONSTRUCTED GATES)**.
 
 Residual archival note: original SLP source-gate bytes were not recovered. This does not authorize a permit, resolve applicability, or establish legal/physical compliance.
+
+
+## CI enforcement of derived-ledger integrity
+
+The frozen module lock plus reconciled gate-sync, health and admission snapshots are now persisted under `compliance-cockpit/`.
+
+`.github/roca-compliance-overlay/validate_derived_ledgers.py` validates:
+- 43 locked modules;
+- gate-sync path/rows/SHA against module lock;
+- health path/rows/gate/SHA for all 43;
+- 42 admission rows with `ADMIN_FORM` intentionally excluded;
+- `ADMITTED_RECONSTRUCTED` + reconstructed source-gate marker for the two SLP modules.
+
+The Compliance sync workflow now invokes this validator before committing a synced cockpit release.
