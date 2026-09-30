@@ -162,3 +162,30 @@ The original source-gate artifacts for the two SLP modules were not recovered. R
 Both modules were then added to module-health and module-admission with their locked ledger paths/counts/hashes. Post-write read-back matched gate-sync.
 
 This closes the derived-ledger omission. It does **not** retroactively recover the lost historical gate files and does not create a legal/physical compliance claim.
+
+
+## SLP reconstructed source-gates admitted
+
+The original source-gate artifacts for `SLP_ENV_IMPACT` and `SLP_MUN_FUNCTION` were not recovered. They were therefore not silently recreated under the old names.
+
+Instead, two new explicitly reconstructed source-integrity gates were created from current official sources and bound to the locked module rows/hashes:
+
+- `compliance-cockpit/source-gates/SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+  - original_source_gate_recovered: false
+  - ledger rows: 56
+  - ledger SHA: `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`
+  - verdict: `PASS_SOURCE_INTEGRITY_RECONSTRUCTED`
+
+- `compliance-cockpit/source-gates/SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+  - original_source_gate_recovered: false
+  - ledger rows: 25
+  - ledger SHA: `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`
+  - verdict: `PASS_SOURCE_INTEGRITY_RECONSTRUCTED`
+
+Post-write Drive read-back confirmed:
+- module-health now contains both SLP modules with the locked row counts and hashes;
+- module-admission now contains both SLP modules and points to the explicit `*_RECON_2026-09-30.json` source-gates.
+
+This closes the derived-ledger omission without pretending the historical source-gates were recovered. Applicability, authorization, filing readiness and physical/legal compliance remain separate and unresolved until evidence closes them.
+
+Updated verdict for derived-ledger continuity: **PASS - SOURCE INTEGRITY with reconstructed provenance disclosed**.
