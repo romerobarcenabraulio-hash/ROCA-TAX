@@ -13,6 +13,14 @@ window.ROCA_AUDIT_SECTIONS = [
         <li>Si la corrección se cierra, la auditoría conserva el resultado y el criterio fijo sigue siendo parte del HTML.</li>
       </ol>
       <div id="auditSummary"></div>
+      <h2>Respaldo de auditoría</h2>
+      <div class="callout">Los resultados viven en este navegador. Exporta un respaldo JSON para conservarlos o moverlos a otro equipo. El respaldo sólo guarda estados y notas; no modifica criterios, normas ni el estándar permanente.</div>
+      <div class="tool-links">
+        <button type="button" id="auditBackupExport">EXPORTAR RESPALDO</button>
+        <label for="auditBackupImport">IMPORTAR RESPALDO</label>
+        <input id="auditBackupImport" type="file" accept=".json,application/json" hidden>
+      </div>
+      <div id="auditBackupStatus"></div>
       <h2>Línea base por departamento</h2>
       <div id="baselineRegistry">Cargando línea base...</div>
     `
@@ -56,6 +64,45 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       const criteria = departments.reduce((sum,d)=>sum+(window.ROCA_AUDIT_ENGINE?window.ROCA_AUDIT_ENGINE.criteriaForArea(d.id).length:(Array.isArray(d.auditCriteria)?d.auditCriteria.length:0)),0);
       host.innerHTML = '<div class="callout"><strong>'+areas+' departamentos</strong> · '+criteria+' criterios específicos actualmente estructurados. La línea base se congela por departamento; la auditoría posterior cambia el resultado, no redefine automáticamente el criterio.</div>';
     }
+    const backupStatus=document.getElementById('auditBackupStatus');
+    const exportBtn=document.getElementById('auditBackupExport');
+    const importInput=document.getElementById('auditBackupImport');
+    if(exportBtn){
+      exportBtn.addEventListener('click',()=>{
+        try{
+          if(!window.ROCA_AUDIT_ENGINE) throw new Error('Motor de auditoría no disponible.');
+          const payload=window.ROCA_AUDIT_ENGINE.exportAuditState();
+          const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+          const href=URL.createObjectURL(blob);
+          const a=document.createElement('a');
+          a.href=href;
+          a.download='ROCA_AUDITORIA_BACKUP_'+new Date().toISOString().slice(0,10)+'.json';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(href);
+          if(backupStatus) backupStatus.innerHTML='<div class="callout"><strong>Respaldo exportado.</strong> Conserva el JSON junto con la evidencia de auditoría.</div>';
+        }catch(e){
+          if(backupStatus) backupStatus.innerHTML='<div class="callout"><strong>No se pudo exportar:</strong> '+String(e.message||e)+'</div>';
+        }
+      });
+    }
+    if(importInput){
+      importInput.addEventListener('change',async()=>{
+        const file=importInput.files&&importInput.files[0];
+        if(!file) return;
+        try{
+          if(!window.ROCA_AUDIT_ENGINE) throw new Error('Motor de auditoría no disponible.');
+          const result=window.ROCA_AUDIT_ENGINE.importAuditState(await file.text());
+          if(backupStatus) backupStatus.innerHTML='<div class="callout"><strong>Respaldo importado.</strong> '+result.areas+' áreas · '+result.criteria+' criterios restaurados · '+result.ignored+' entradas ignoradas por seguridad.</div>';
+        }catch(e){
+          if(backupStatus) backupStatus.innerHTML='<div class="callout"><strong>Respaldo rechazado:</strong> '+String(e.message||e)+'</div>';
+        }finally{
+          importInput.value='';
+        }
+      });
+    }
+
     const baseHost=document.getElementById('baselineRegistry');
     if(baseHost){
       try{
