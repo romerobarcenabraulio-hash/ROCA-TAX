@@ -164,7 +164,7 @@
     <thead><tr><th>ID</th><th>Área</th><th>Brecha observada</th><th>Corrección concreta</th><th>Responsable</th><th>Fecha objetivo</th><th>Estado</th><th>Evidencia</th></tr></thead>
     <tbody id="implementationRows"><tr><td colspan="8"><span class="blank">CARGANDO REGISTRO...</span></td></tr></tbody>
   </table></div>
-</section></main><script src="../../area-standard-data.js"></script><script src="../../department-data.js"></script><script>function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+</section></main><script src="../../area-standard-data.js"></script><script src="../../department-data.js"></script><script src="../../audit-engine.js"></script><script>function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function parseCsv(text){
   const rows=[]; let row=[],field="",quoted=false;
   for(let i=0;i<text.length;i++){
@@ -208,48 +208,14 @@ function applicablePhysicalRows(areaId){
   }));
 }
 function implementationCriterionMap(areaId,dept){
-  const rows=[];
-  const areaAuditMeta=Array.isArray(dept?.areaAudit)?dept.areaAudit:[];
-  (Array.isArray(dept?.area)?dept.area:[]).forEach((r,i)=>{
-    const meta=areaAuditMeta[i]||{};
-    rows.push({
-      id:meta.id||r.id,label:r.label||meta.criterion||r.id,target:r.text||meta.criterion||"",evidence:meta.evidence||"Evidencia observable de la condición permanente.",basis:"Estándar permanente del departamento"
-    });
-  });
-  (Array.isArray(dept?.auditCriteria)?dept.auditCriteria:[]).forEach(r=>rows.push({
-    id:r.id,label:r.label||r.id,target:r.target||r.label||"",evidence:r.input||"Evidencia / dato de auditoría.",basis:"Metodología / control ROCA"
-  }));
-  applicablePhysicalRows(areaId).forEach(r=>rows.push(r));
+  const rows=window.ROCA_AUDIT_ENGINE
+    ? window.ROCA_AUDIT_ENGINE.criteriaForArea(areaId)
+    : [];
   return new Map(rows.map(r=>[r.id,r]));
 }
 function auditImplementationItems(){
-  const items=[];
-  Object.entries(window.ROCA_DEPARTMENTS||{}).forEach(([areaId,dept])=>{
-    let saved={};
-    try{saved=JSON.parse(localStorage.getItem("roca.audit."+areaId)||"{}")}catch(e){}
-    const criteria=implementationCriterionMap(areaId,dept);
-    criteria.forEach((row,req)=>{
-      const v=saved[req]||{};
-      const status=String(v.status||"NOT_VERIFIED").toUpperCase();
-      if(status!=="NONCONFORMING") return;
-      const note=String(v.note||"").trim();
-      items.push({
-        id:"AUD-"+String(dept.code||areaId).toUpperCase()+"-"+req,
-        area:dept.title||areaId,
-        areaId,
-        req,
-        gap:"NO CONFORME · "+(note||row.label),
-        fix:"Corregir la condición: "+row.target+" Después volver a auditar.",
-        owner:"POR ASIGNAR",
-        due:"—",
-        status:"NO CONFORME",
-        evidence:note||row.evidence,
-        basis:row.basis,
-        dynamic:true
-      });
-    });
-  });
-  return items;
+  if(window.ROCA_AUDIT_ENGINE) return window.ROCA_AUDIT_ENGINE.dynamicImplementationItems();
+  return [];
 }
 async function loadImplementationActions(){
   const body=document.getElementById("implementationRows");
