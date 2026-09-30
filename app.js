@@ -248,23 +248,45 @@
 
   async function refreshPrintGate(){
     try{
-      const [baselineRes,normRes]=await Promise.all([
+      const [baselineRes,normRes,implementationRes]=await Promise.all([
         fetch('ops/control/ROCA_DEPARTMENT_BASELINE_V1.csv',{cache:'no-store'}),
-        fetch('ops/assurance/ROCA_NORMATIVE_APPLICABILITY_V1.csv',{cache:'no-store'})
+        fetch('ops/assurance/ROCA_NORMATIVE_APPLICABILITY_V1.csv',{cache:'no-store'}),
+        fetch('ops/control/ROCA_IMPLEMENTATION_ACTION_REGISTER_V1.csv',{cache:'no-store'})
       ]);
       if(!baselineRes.ok) throw new Error('baseline '+baselineRes.status);
       if(!normRes.ok) throw new Error('normative '+normRes.status);
+      if(!implementationRes.ok) throw new Error('implementation '+implementationRes.status);
 
       const baselineRows=parseCSV(await baselineRes.text());
       const normRows=parseCSV(await normRes.text());
+      const implementationRows=parseCSV(await implementationRes.text());
 
       const openDepartments=baselineRows.filter(r=>String(r.baseline_status||'').toUpperCase()!=='FROZEN');
+      const frozenMetadataErrors=baselineRows.filter(r=>{
+        if(String(r.baseline_status||'').toUpperCase()!=='FROZEN') return false;
+        return !String(r.baseline_version||'').trim() || !String(r.captured_date||'').trim() || !String(r.frozen_date||'').trim();
+      });
+      const auditOpen=[];
+      if(window.ROCA_AUDIT_ENGINE){
+        baselineRows.forEach(r=>{
+          if(String(r.baseline_status||'').toUpperCase()!=='FROZEN') return;
+          const criteria=window.ROCA_AUDIT_ENGINE.criteriaForArea(r.department_id);
+          const state=window.ROCA_AUDIT_ENGINE.loadState(r.department_id);
+          const open=criteria.filter(x=>!['CONFORMING','NA_JUSTIFIED'].includes(String(state[x.id]?.status||'NOT_VERIFIED').toUpperCase()));
+          if(open.length) auditOpen.push({department_id:r.department_id,count:open.length});
+        });
+      }else if(baselineRows.some(r=>String(r.baseline_status||'').toUpperCase()==='FROZEN')){
+        throw new Error('audit engine unavailable');
+      }
+
+      const openImplementation=implementationRows.filter(r=>!['CLOSED','CANCELLED'].includes(String(r.status||'').toUpperCase()));
       const terminalNormStates=new Set(['VERIFIED','JUSTIFIED_NA']);
       const openNorms=normRows.filter(r=>!terminalNormStates.has(String(r.status||'').toUpperCase()));
 
-      const departmentsReady=baselineRows.length>0 && openDepartments.length===0;
+      const departmentsReady=baselineRows.length>0 && openDepartments.length===0 && frozenMetadataErrors.length===0 && auditOpen.length===0;
+      const implementationReady=openImplementation.length===0;
       const normsReady=normRows.length>0 && openNorms.length===0;
-      const ready=departmentsReady && normsReady;
+      const ready=departmentsReady && implementationReady && normsReady;
 
       printDoc.disabled=!ready;
       printDoc.textContent=ready?'IMPRIMIR / PDF':'IMPRESIÓN FINAL · BLOQUEADA';
@@ -275,16 +297,19 @@
         }else{
           const parts=[];
           if(openDepartments.length) parts.push(openDepartments.length+' departamento'+(openDepartments.length===1?'':'s')+' sin congelar');
+          if(frozenMetadataErrors.length) parts.push(frozenMetadataErrors.length+' línea'+(frozenMetadataErrors.length===1?'':'s')+' base congelada'+(frozenMetadataErrors.length===1?'':'s')+' sin metadata de cierre');
+          if(auditOpen.length) parts.push(auditOpen.reduce((n,x)=>n+x.count,0)+' criterio'+(auditOpen.reduce((n,x)=>n+x.count,0)===1?'':'s')+' de auditoría sin cierre');
+          if(openImplementation.length) parts.push(openImplementation.length+' acción'+(openImplementation.length===1?'':'es')+' de IMPLEMENTAR abierta'+(openImplementation.length===1?'':'s'));
           if(openNorms.length) parts.push(openNorms.length+' requisito'+(openNorms.length===1?'':'s')+' normativo'+(openNorms.length===1?'':'s')+' sin cierre');
           printGateNote.textContent=parts.join(' · ')+'.';
         }
       }
-      return {ready,openDepartments,openNorms};
+      return {ready,openDepartments,frozenMetadataErrors,auditOpen,openImplementation,openNorms};
     }catch(err){
       printDoc.disabled=true;
       printDoc.textContent='IMPRESIÓN FINAL · BLOQUEADA';
-      if(printGateNote)printGateNote.textContent='No se pudo validar el cierre editorial y normativo.';
-      return {ready:false,openDepartments:[],openNorms:[]};
+      if(printGateNote)printGateNote.textContent='No se pudo validar el cierre editorial, de auditoría, implementación y normativo.';
+      return {ready:false,openDepartments:[],frozenMetadataErrors:[],auditOpen:[],openImplementation:[],openNorms:[]};
     }
   }
 
