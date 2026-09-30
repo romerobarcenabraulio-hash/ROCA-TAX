@@ -44,29 +44,6 @@ const save=()=>{stampState();try{localStorage.setItem(LS,JSON.stringify(S))}catc
 async function hydratePersistentState(){try{const current=await idbGet('kv',STATE_CURRENT);const previous=await idbGet('kv',STATE_PREVIOUS);const localTs=Date.parse(S?._meta?.updatedAt||0)||0;const currentTs=Date.parse(current?._meta?.updatedAt||0)||0;const previousTs=Date.parse(previous?._meta?.updatedAt||0)||0;if(current&&currentTs>=localTs){S={...blankState(),...current};storageHealth.recovery='INDEXEDDB_CURRENT'}else if(!current&&previous&&previousTs>localTs){S={...blankState(),...previous};storageHealth.recovery='INDEXEDDB_PREVIOUS'}storageHealth.indexedDb='OK';storageHealth.evidenceFiles=(await idbGetAll('files')).length;try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){}render()}catch(e){storageHealth.indexedDb='UNAVAILABLE';storageHealth.lastError=String(e);render()}}
 async function sha256Blob(blob){try{if(!crypto?.subtle)return 'SHA256_UNAVAILABLE';const buf=await blob.arrayBuffer();const hash=await crypto.subtle.digest('SHA-256',buf);return [...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,'0')).join('')}catch(e){return 'SHA256_UNAVAILABLE'}}
 const status=(r)=>S.reqOverrides[r.req_id]?.status||r.verification_status||r.status||'NOT_CHECKED';
-let F={q:'',risk:'',status:'',source:''};
-const effStatus=(reqId,baseStatus)=>S.reqOverrides?.[reqId]?.status||baseStatus||'NOT_CHECKED';
-function applyInboxFilters(){
- const q=String(F.q||'').trim().toLowerCase();
- return (D.inbox||[]).filter(r=>{
-   const effective=effStatus(r.req_id,r.status||r.current_verification_status);
-   if(F.risk&&r.risk!==F.risk)return false;
-   if(F.status&&effective!==F.status)return false;
-   if(F.source&&r.source!==F.source)return false;
-   if(q&&![
-     r.req_id,r.source,r.locator,r.title,r.requirement_title,r.scope,
-     r.what_to_check,r.next_action
-   ].join(' ').toLowerCase().includes(q))return false;
-   return true;
- }).map(r=>({
-   ...r,
-   requirement_title:r.requirement_title||r.title||r.req_id,
-   current_verification_status:r.current_verification_status||r.status||'NOT_CHECKED',
-   evidence_required:r.evidence_required||r.evidence_slot||'',
-   next_lane:r.next_lane||r.primary_lane||'',
-   closure_route:r.closure_route||r.lanes||''
- }));
-}
 const statusBadge=s=>`<span class="badge ${s==='VERIFIED'?'verified':s==='JUSTIFIED_NA'?'na':s==='EXTERNAL_DEPENDENCY'?'external':s==='APPLICABILITY_PENDING'?'pending':''}">${esc(s)}</span>`;
 const riskBadge=r=>`<span class="badge ${r==='R1_CRITICAL'?'r1':''}">${esc(r)}</span>`;
 let F={q:'',risk:'',status:'',source:''};
