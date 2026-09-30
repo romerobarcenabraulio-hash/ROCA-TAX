@@ -248,18 +248,21 @@
 
   async function refreshPrintGate(){
     try{
-      const [baselineRes,normRes,implementationRes]=await Promise.all([
+      const [baselineRes,normRes,implementationRes,holdRes]=await Promise.all([
         fetch('ops/control/ROCA_DEPARTMENT_BASELINE_V1.csv',{cache:'no-store'}),
         fetch('ops/assurance/ROCA_NORMATIVE_APPLICABILITY_V1.csv',{cache:'no-store'}),
-        fetch('ops/control/ROCA_IMPLEMENTATION_ACTION_REGISTER_V1.csv',{cache:'no-store'})
+        fetch('ops/control/ROCA_IMPLEMENTATION_ACTION_REGISTER_V1.csv',{cache:'no-store'}),
+        fetch('ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv',{cache:'no-store'})
       ]);
       if(!baselineRes.ok) throw new Error('baseline '+baselineRes.status);
       if(!normRes.ok) throw new Error('normative '+normRes.status);
       if(!implementationRes.ok) throw new Error('implementation '+implementationRes.status);
+      if(!holdRes.ok) throw new Error('holds '+holdRes.status);
 
       const baselineRows=parseCSV(await baselineRes.text());
       const normRows=parseCSV(await normRes.text());
       const implementationRows=parseCSV(await implementationRes.text());
+      const holdRows=parseCSV(await holdRes.text());
 
       const openDepartments=baselineRows.filter(r=>String(r.baseline_status||'').toUpperCase()!=='FROZEN');
       const frozenMetadataErrors=baselineRows.filter(r=>{
@@ -280,11 +283,12 @@
       }
 
       const openImplementation=implementationRows.filter(r=>!['CLOSED','CANCELLED'].includes(String(r.status||'').toUpperCase()));
+      const openHolds=holdRows.filter(r=>!['CLOSED','CANCELLED'].includes(String(r.status||'').toUpperCase()));
       const terminalNormStates=new Set(['VERIFIED','JUSTIFIED_NA']);
       const openNorms=normRows.filter(r=>!terminalNormStates.has(String(r.status||'').toUpperCase()));
 
       const departmentsReady=baselineRows.length>0 && openDepartments.length===0 && frozenMetadataErrors.length===0 && auditOpen.length===0;
-      const implementationReady=openImplementation.length===0;
+      const implementationReady=openImplementation.length===0 && openHolds.length===0;
       const normsReady=normRows.length>0 && openNorms.length===0;
       const ready=departmentsReady && implementationReady && normsReady;
 
@@ -300,16 +304,17 @@
           if(frozenMetadataErrors.length) parts.push(frozenMetadataErrors.length+' línea'+(frozenMetadataErrors.length===1?'':'s')+' base congelada'+(frozenMetadataErrors.length===1?'':'s')+' sin metadata de cierre');
           if(auditOpen.length) parts.push(auditOpen.reduce((n,x)=>n+x.count,0)+' criterio'+(auditOpen.reduce((n,x)=>n+x.count,0)===1?'':'s')+' de auditoría sin cierre');
           if(openImplementation.length) parts.push(openImplementation.length+' acción'+(openImplementation.length===1?'':'es')+' de IMPLEMENTAR abierta'+(openImplementation.length===1?'':'s'));
+          if(openHolds.length) parts.push(openHolds.length+' HOLD técnico'+(openHolds.length===1?'':'s')+' abierto'+(openHolds.length===1?'':'s'));
           if(openNorms.length) parts.push(openNorms.length+' requisito'+(openNorms.length===1?'':'s')+' normativo'+(openNorms.length===1?'':'s')+' sin cierre');
           printGateNote.textContent=parts.join(' · ')+'.';
         }
       }
-      return {ready,openDepartments,frozenMetadataErrors,auditOpen,openImplementation,openNorms};
+      return {ready,openDepartments,frozenMetadataErrors,auditOpen,openImplementation,openHolds,openNorms};
     }catch(err){
       printDoc.disabled=true;
       printDoc.textContent='IMPRESIÓN FINAL · BLOQUEADA';
-      if(printGateNote)printGateNote.textContent='No se pudo validar el cierre editorial, de auditoría, implementación y normativo.';
-      return {ready:false,openDepartments:[],frozenMetadataErrors:[],auditOpen:[],openImplementation:[],openNorms:[]};
+      if(printGateNote)printGateNote.textContent='No se pudo validar el cierre editorial, de auditoría, implementación, HOLD y normativo.';
+      return {ready:false,openDepartments:[],frozenMetadataErrors:[],auditOpen:[],openImplementation:[],openHolds:[],openNorms:[]};
     }
   }
 
