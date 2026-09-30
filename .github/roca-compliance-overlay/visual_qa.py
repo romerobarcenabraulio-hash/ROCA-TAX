@@ -45,7 +45,7 @@ def page_ok(label,min_chars=300):
 try:
     driver.get(BASE+"/")
     wait.until(lambda d: d.find_element(By.ID,"page").text.strip())
-    record("manual title","Documento maestro" in driver.title,driver.title)
+    record("manual title","ROCA TAXIDERMY" in driver.title and ("Manual maestro" in driver.title or "Documento maestro" in driver.title),driver.title)
     page_ok("manual")
 
     for element_id,label in [("auditMode","audit"),("normsMode","bibliografia")]:
