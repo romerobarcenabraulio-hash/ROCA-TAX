@@ -13,6 +13,26 @@ window.ROCA_AUDIT_SECTIONS = [
         <li>Si la corrección se cierra, la auditoría conserva el resultado y el criterio fijo sigue siendo parte del HTML.</li>
       </ol>
       <div id="auditSummary"></div>
+      <h2>Qué evidencia cierra cada frente</h2>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Frente</th><th>Evidencia mínima útil</th><th>No demuestra por sí sola</th></tr></thead>
+        <tbody>
+          <tr><td>Extintores</td><td>Ubicación, altura, señal, recorrido medido, identificación del equipo y registro/revisión aplicable.</td><td>Clasificación de riesgo completa, entrenamiento o cobertura total del taller.</td></tr>
+          <tr><td>Salida / ruta</td><td>Recorrido fotografiado, distancia, puerta operable, señal visible y tiempo cuando aplique.</td><td>Plan de emergencia completo ni simulacro.</td></tr>
+          <tr><td>Iluminación</td><td>Lectura lux, ubicación/plano de tarea, instrumento y fecha.</td><td>Calidad visual de todas las tareas del área.</td></tr>
+          <tr><td>Químicos / HDS</td><td>Producto real, etiqueta, HDS correspondiente, almacenamiento y compatibilidad revisada.</td><td>Exposición ocupacional, ventilación suficiente o clasificación del residuo.</td></tr>
+          <tr><td>Ventilación / extracción</td><td>Proceso/producto, punto de generación, evaluación/medición aplicable y control instalado.</td><td>Eficacia sólo por tener extractor.</td></tr>
+          <tr><td>Almacenamiento</td><td>Panorámica, rack/ubicación y carga/estabilidad cuando gobierna.</td><td>Capacidad estructural sin cálculo, placa o evidencia técnica.</td></tr>
+          <tr><td>Residuos</td><td>Corriente identificada, recipiente, ubicación y destino/registro cuando corresponda.</td><td>Clasificación correcta sólo por color del bote.</td></tr>
+          <tr><td>Maquinaria / guardas</td><td>Activo, punto de operación/transmisión, guarda/dispositivo, paro y mantenimiento/aislamiento aplicable.</td><td>Competencia del operador ni cierre de todos los riesgos mecánicos.</td></tr>
+          <tr><td>Electricidad</td><td>Tablero/desconexión accesible, identificación, cables/clavijas y registro de mantenimiento cuando exista.</td><td>Diseño/capacidad integral de la instalación ni dictamen técnico.</td></tr>
+          <tr><td>Ruido / vibración</td><td>Fuente, tarea, condición normal, tiempo/frecuencia y evaluación cuando se active.</td><td>Exposición aceptable sólo por percepción o lectura casual.</td></tr>
+          <tr><td>Compresor / presión</td><td>Placa/modelo/serie, presión/volumen, dispositivos, mangueras/reguladores/drenaje y servicio.</td><td>Aplicabilidad/categoría NOM-020 sólo por existir compresor.</td></tr>
+          <tr><td>Carga manual</td><td>Pieza/carga real, peso si se conoce, ruta, método/personas y ayuda mecánica.</td><td>Riesgo ergonómico completo sin analizar la tarea real.</td></tr>
+          <tr><td>Descarga de agua</td><td>Punto, proceso de origen, ruta/destino y caracterización/permiso cuando se active.</td><td>Cumplimiento de límites sólo porque llega a una coladera.</td></tr>
+          <tr><td>Servicios sanitarios / comedor</td><td>Condición limpia/usable, agua, separación de proceso/químicos y privacidad.</td><td>Suficiencia cuantitativa o accesibilidad si no se evaluaron.</td></tr>
+        </tbody>
+      </table></div>
       <h2>Respaldo de auditoría</h2>
       <div class="callout">Los resultados viven en este navegador. Exporta un respaldo JSON para conservarlos o moverlos a otro equipo. El respaldo sólo guarda estados y notas; no modifica criterios, normas ni el estándar permanente.</div>
       <div class="tool-links">
