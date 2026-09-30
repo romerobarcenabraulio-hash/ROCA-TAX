@@ -75,6 +75,19 @@ for(const [id,h] of holdDefs){
 for(const id of holdStatus.keys()) if(!holdDefs.has(id)) errors.push(`${id}: orphan hold status row`);
 for(const id of routingById.keys()) if(!holdDefs.has(id)) errors.push(`${id}: orphan HOLD routing row`);
 if(routingRows.length!==holdDefs.size) errors.push(`HOLD routing rows ${routingRows.length} != defined holds ${holdDefs.size}`);
+const routingCounts=routingRows.reduce((acc,r)=>{acc[r.hold_type]=(acc[r.hold_type]||0)+1;return acc},{});
+if((routingCounts.DEFINE_STANDARD||0)!==32) errors.push(`DEFINE_STANDARD routing count ${routingCounts.DEFINE_STANDARD||0} != 32`);
+if((routingCounts.AUDIT_CURRENT_STATE||0)!==36) errors.push(`AUDIT_CURRENT_STATE routing count ${routingCounts.AUDIT_CURRENT_STATE||0} != 36`);
+if((routingCounts.SYSTEM_RECORD||0)!==8) errors.push(`SYSTEM_RECORD routing count ${routingCounts.SYSTEM_RECORD||0} != 8`);
+if((routingCounts.IMPLEMENT_DECISION||0)!==7) errors.push(`IMPLEMENT_DECISION routing count ${routingCounts.IMPLEMENT_DECISION||0} != 7`);
+
+const readinessRows=parseCsv(read("ops/control/ROCA_BASELINE_DEFINITION_READINESS_V2.csv"));
+if(readinessRows.length!==10) errors.push(`baseline definition readiness rows ${readinessRows.length} != 10`);
+const definitionBlockers=routingRows.filter(r=>["DEFINE_STANDARD","SYSTEM_RECORD","IMPLEMENT_DECISION"].includes(r.hold_type)).length;
+const auditStateHolds=routingRows.filter(r=>r.hold_type==="AUDIT_CURRENT_STATE").length;
+if(definitionBlockers!==47) errors.push(`definition blockers ${definitionBlockers} != 47`);
+if(auditStateHolds!==36) errors.push(`current-state audit holds ${auditStateHolds} != 36`);
+if(readinessRows.some(r=>String(r.definition_ready).toUpperCase()==="YES")) errors.push("no department should be definition-ready while current 47 definition blockers remain");
 
 if(holdDefs.has("CUR-HOLD-01")) errors.push("obsolete CUR-HOLD-01 still defined");
 const alum=holdDefs.get("CUR-HOLD-07")?.text||"";
