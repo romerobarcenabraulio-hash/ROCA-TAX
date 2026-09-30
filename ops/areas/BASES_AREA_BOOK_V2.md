@@ -10,7 +10,7 @@ Estado: WORKING / NO LIBERAR
 | Área, evidencia y verificación | master 391P pp. 183–207 | MERGE_WITHOUT_LOSS / CORRECT |
 | Etapas 08–09 que quedaron físicamente en “Retoque y bases” | master 391P p. 175 | MOVE |
 | Método detallado 10–15 | master 391P pp. 194–207 | MERGE_WITHOUT_LOSS |
-| Poliuretano / conflicto de formulación | método derivado de Bases + entrevista primaria de Omar p. 381 | HOLD_PENDING_EVIDENCE |
+| Poliuretano / dosificación vigente de Bases | método derivado de Bases + entrevista primaria de Omar p. 381 | HOLD_PENDING_EVIDENCE |
 | Responsabilidad vigente | correcciones posteriores del usuario + roster V2 | CORRECT |
 
 La fuente histórica mezcló Retoque y Bases. La arquitectura V2 conserva el conocimiento sin duplicarlo: lo superficial queda en Retoque y la estructura/ambientación queda aquí.
@@ -67,7 +67,7 @@ Toda base, pieza o trabajo en espera conserva identificación y siguiente acció
 Triplay, bancos, varillas y fijaciones se trabajan sobre una superficie estable. La pieza se presenta antes de cerrar la fijación y no depende de apoyos improvisados que puedan caer, rodar o alterar la postura.
 
 ## BAS-AREA-08 · Poliuretano y adhesivos
-Los componentes se mantienen identificados; mezcla y expansión se contienen en el punto de trabajo. Producto útil, mezcla reaccionada, recortes y envases no comparten destino por conveniencia. La receta exacta queda bloqueada hasta cerrar producto y conflicto de formulación.
+Los componentes se mantienen identificados; mezcla y expansión se contienen en el punto de trabajo. Producto útil, mezcla reaccionada, recortes y envases no comparten destino por conveniencia. La receta exacta queda bloqueada hasta identificar el producto real de Bases, HDS/ficha técnica, receta vigente y prueba controlada.
 
 ## BAS-AREA-09 · Corte y acabado
 Caladora, sierra, pulidor, taladro y grapadora —cuando existan en la operación real— se usan con condición/guarda/accesorio compatible con su función y sobre una zona despejada. Polvo y recortes se retiran antes de acabado fino.
