@@ -128,5 +128,5 @@ CUR-AUD-08 piloto de agua a presión permanece separado de la rutina hasta conta
 - cerrar balance de baños/residuos y destino;
 - verificar ventilación y drenaje;
 - completar inventario/evidencia de activos y competencia;
-- recuperar/verificar la fuente controlada ALUM-Tan antes de trasladar sus fórmulas a un cálculo HTML;
+- ALUM-Tan: el Excel original no fue recuperado; la reconstrucción controlada preserva fórmulas y ejemplo con gate PASS de consistencia, pero el calculador HTML/operativo permanece BLOCKED hasta recuperar el archivo original o validar documentalmente con el dueño técnico, especialmente la segunda adición de alumbre;
 - mantener el piloto de agua a presión fuera de rutina hasta validación documentada.
