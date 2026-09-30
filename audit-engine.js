@@ -127,14 +127,62 @@
     return items;
   }
 
+  const BACKUP_SCHEMA='ROCA_AUDIT_STATE_V1';
+  const ALLOWED_STATUSES=new Set(['NOT_VERIFIED','CONFORMING','NONCONFORMING','NA_JUSTIFIED']);
+
+  function exportAuditState(){
+    const state={};
+    departments().forEach(([areaId])=>{
+      const saved=loadState(areaId);
+      if(saved&&Object.keys(saved).length) state[areaId]=saved;
+    });
+    return {
+      schema:BACKUP_SCHEMA,
+      engineVersion:'1.2.0',
+      exportedAt:new Date().toISOString(),
+      departments:state
+    };
+  }
+
+  function importAuditState(payload){
+    const data=typeof payload==='string'?JSON.parse(payload):payload;
+    if(!data||data.schema!==BACKUP_SCHEMA||!data.departments||typeof data.departments!=='object'){
+      throw new Error('Respaldo de auditoría inválido o incompatible.');
+    }
+    let areas=0,criteria=0,ignored=0;
+    const knownAreas=new Map(departments());
+    for(const [areaId,rawState] of Object.entries(data.departments)){
+      if(!knownAreas.has(areaId)||!rawState||typeof rawState!=='object'){ignored++;continue;}
+      const allowedIds=new Set(criteriaForArea(areaId).map(r=>r.id));
+      const clean={};
+      for(const [id,value] of Object.entries(rawState)){
+        if(!allowedIds.has(id)||!value||typeof value!=='object'){ignored++;continue;}
+        const status=String(value.status||'NOT_VERIFIED').toUpperCase();
+        if(!ALLOWED_STATUSES.has(status)){ignored++;continue;}
+        clean[id]={
+          status,
+          note:String(value.note||''),
+          updatedAt:typeof value.updatedAt==='string'&&value.updatedAt?value.updatedAt:new Date().toISOString()
+        };
+        criteria++;
+      }
+      localStorage.setItem(stateKey(areaId),JSON.stringify(clean));
+      areas++;
+    }
+    return {areas,criteria,ignored};
+  }
+
   window.ROCA_AUDIT_ENGINE={
-    version:'1.1.0',
+    version:'1.2.0',
+    backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,
     applicablePhysicalRows,
     loadState,
     saveCriterion,
     dynamicImplementationItems,
+    exportAuditState,
+    importAuditState,
     stateKey
   };
 })();
