@@ -23,6 +23,12 @@ for(const [areaId,d] of Object.entries(depts)){
   const area=Array.isArray(d.area)?d.area:[];
   const areaAudit=Array.isArray(d.areaAudit)?d.areaAudit:[];
   if(area.length!==areaAudit.length) errors.push(`${areaId}: area/areaAudit parity mismatch`);
+  const areaIds=new Set(area.map(x=>x.id));
+  const sourceIds=areaAudit.map(x=>x.sourceId);
+  if(sourceIds.some(x=>!x)) errors.push(`${areaId}: areaAudit missing explicit sourceId`);
+  if(new Set(sourceIds).size!==sourceIds.length) errors.push(`${areaId}: duplicate areaAudit sourceId`);
+  for(const r of area) if(!sourceIds.includes(r.id)) errors.push(`${areaId}: area criterion ${r.id} missing audit binding`);
+  for(const m of areaAudit) if(m.sourceId&&!areaIds.has(m.sourceId)) errors.push(`${areaId}: orphan audit sourceId ${m.sourceId}`);
   const ids=[
     ...areaAudit.map(x=>x.id),
     ...(d.method?.controls||[]).map(x=>x.id),
@@ -110,6 +116,13 @@ if(!probeId){
   memory.clear();
   const filtered=ctx.window.ROCA_AUDIT_ENGINE.importAuditState(tampered);
   if(filtered.ignored<2) errors.push("audit import did not reject unknown criterion/status");
+  const emptyClosure=JSON.parse(JSON.stringify(backup));
+  emptyClosure.departments[probeArea][probeId]={status:"CONFORMING",note:""};
+  memory.clear();
+  const emptyFiltered=ctx.window.ROCA_AUDIT_ENGINE.importAuditState(emptyClosure);
+  if(emptyFiltered.ignored<1) errors.push("audit import accepted terminal closure without supporting detail");
+  if(ctx.window.ROCA_AUDIT_ENGINE.closureDetailValid("NA_JUSTIFIED","")!==false)
+    errors.push("NA_JUSTIFIED without justification accepted");
   memory.clear();
 }
 
