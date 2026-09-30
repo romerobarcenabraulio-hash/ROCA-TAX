@@ -1,0 +1,12 @@
+{
+  "schema": "ROCA_BASELINE_DEFINITION_READINESS_GATE_V2",
+  "date": "2026-09-30",
+  "departments": 10,
+  "total_open_holds": 83,
+  "definition_blockers": 47,
+  "current_state_audit_holds": 36,
+  "ready_departments": 0,
+  "blocked_departments": 10,
+  "rule": "Current-state evidence HOLDs do not define the permanent standard. Freeze eligibility depends on unresolved definition, target-design and exact system/record blockers; final publication still requires audit/implementation/normative closure.",
+  "verdict": "BLOCKED_DEFINITION_NOT_READY"
+}
