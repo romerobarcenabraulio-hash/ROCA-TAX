@@ -316,3 +316,23 @@ The frozen module lock plus reconciled gate-sync, health and admission snapshots
 - `ADMITTED_RECONSTRUCTED` + reconstructed source-gate marker for the two SLP modules.
 
 The Compliance sync workflow now invokes this validator before committing a synced cockpit release.
+
+
+## 2026-09-30 reconstructed SLP source gates
+
+The original source-gate artifacts for `SLP_ENV_IMPACT` and `SLP_MUN_FUNCTION` were not recovered. Rather than inventing historical files, two new source-integrity gates were reconstructed from current official sources and stored in GitHub:
+
+- `source-gates/SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+- `source-gates/SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+
+Both are explicitly marked `original_source_gate_recovered: false` and `PASS_SOURCE_INTEGRITY_RECONSTRUCTED`.
+
+Drive derived ledgers were then updated with rollback copies preserved beforehand:
+
+- module-health now includes SLP_ENV_IMPACT: 56 rows / SHA `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`;
+- module-health now includes SLP_MUN_FUNCTION: 25 rows / SHA `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`;
+- module-admission records both as `ADMITTED_RECONSTRUCTED`, not as historically recovered admissions.
+
+Applicability remains fact-dependent and no legal/physical compliance claim is created.
+
+Verdict for derived-ledger provenance: **PASS - SOURCE INTEGRITY WITH RECONSTRUCTED SLP SOURCE GATES**.
