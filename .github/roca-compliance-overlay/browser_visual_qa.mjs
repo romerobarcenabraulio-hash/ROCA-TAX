@@ -172,6 +172,12 @@ for(const vp of contract.viewports){
       }
 
       if(route.endsWith("/implementation.html")){
+        const decisionCount=(body.match(/DECISIÓN DE IMPLEMENTACIÓN/g)||[]).length;
+        if(decisionCount===7) pass(prefix+":implementation-hold-routing","only 7 IMPLEMENT_DECISION HOLDs are rendered",{count:decisionCount});
+        else fail(prefix+":implementation-hold-routing","IMPLEMENTAR decision HOLD count mismatch",{count:decisionCount,expected:7});
+        const leakedHoldLayers=["DEFINIR ESTÁNDAR","AUDITAR ESTADO ACTUAL","SISTEMA / REGISTRO"].filter(label=>body.includes(label));
+        if(!leakedHoldLayers.length) pass(prefix+":implementation-hold-layer-isolation","non-implementation HOLD layers are absent");
+        else fail(prefix+":implementation-hold-layer-isolation","non-implementation HOLD layers leaked into IMPLEMENTAR",{labels:leakedHoldLayers});
         if(body.includes("CUR-HOLD-01")) fail(prefix+":cur-hold-01","resolved CUR-HOLD-01 is visible");
         else pass(prefix+":cur-hold-01","resolved CUR-HOLD-01 absent");
         if(body.includes("6.0 L vs 6.4 L")) fail(prefix+":formic-stale","stale 6.0 L vs 6.4 L conflict visible");
