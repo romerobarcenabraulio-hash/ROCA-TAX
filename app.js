@@ -64,8 +64,9 @@
       .join('');
     const areaRows=specificAreaRows+physicalRows;
     const areaAuditMeta=Array.isArray(dept.areaAudit)?dept.areaAudit:[];
-    const auditRows=(dept.area||[]).map((r,i)=>{
-      const meta=areaAuditMeta[i]||{};
+    const auditBySourceId=new Map(areaAuditMeta.filter(m=>m&&m.sourceId).map(m=>[m.sourceId,m]));
+    const auditRows=(dept.area||[]).map(r=>{
+      const meta=auditBySourceId.get(r.id)||{};
       return '<tr><td><strong>'+esc(meta.id||r.id)+'</strong></td><td>'+esc(r.text)+'</td><td>'+esc(meta.evidence||'Evidencia observable de la condición permanente.')+'</td></tr>';
     }).join('');
     const stages=(dept.method?.stages||[]).map(r=>
