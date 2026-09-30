@@ -1,0 +1,19 @@
+{
+  "schema": "ROCA_DERIVED_LEDGER_GATE_V1",
+  "checked_date": "2026-09-30",
+  "master_rows": 4469,
+  "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "module_lock_count": 43,
+  "gate_sync_count": 43,
+  "health_count": 43,
+  "admission_count": 42,
+  "expected_admission_count": 42,
+  "admin_form_intentionally_excluded_from_admission": true,
+  "reconstructed_source_gates": {
+    "SLP_ENV_IMPACT": "SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json",
+    "SLP_MUN_FUNCTION": "SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json"
+  },
+  "issues": [],
+  "verdict": "PASS",
+  "scope": "Module lock vs gate-sync vs health vs admission consistency only; does not prove browser visual QA, Drive permission safety, applicability, filing readiness, physical implementation, or legal compliance."
+}
