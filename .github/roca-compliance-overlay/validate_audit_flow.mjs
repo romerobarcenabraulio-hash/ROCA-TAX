@@ -95,6 +95,21 @@ ctx.localStorage={
   clear:()=>memory.clear()
 };
 vm.runInContext(engine,ctx,{filename:"audit-engine.js"});
+
+// Coverage contract: every permanent criterion counted from department area,
+// method controls, process audit criteria and applicable physical standards
+// must survive into the runtime audit exactly once. This catches silent ID
+// collisions that the engine dedupe would otherwise hide.
+for(const areaId of Object.keys(depts)){
+  const runtimeRows=ctx.window.ROCA_AUDIT_ENGINE?.criteriaForArea(areaId)||[];
+  const expected=expectedCounts[areaId];
+  if(runtimeRows.length!==expected)
+    errors.push(areaId+": runtime audit coverage "+runtimeRows.length+" != permanent criteria "+expected);
+  const runtimeIds=runtimeRows.map(x=>x.id);
+  if(new Set(runtimeIds).size!==runtimeIds.length)
+    errors.push(areaId+": duplicate runtime audit ids");
+}
+
 const probeArea="area-curtiduria";
 const probeRows=ctx.window.ROCA_AUDIT_ENGINE?.criteriaForArea(probeArea)||[];
 const probeId=probeRows[0]?.id;
