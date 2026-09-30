@@ -48,8 +48,8 @@ function parseCsv(text){
 }
 const holdRows=parseCsv(read("ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv"));
 const holdStatus=new Map(holdRows.map(r=>[r.hold_id,r]));
-if(holdDefs.size!==84) errors.push(`defined holds ${holdDefs.size} != 84`);
-if(holdRows.length!==84) errors.push(`hold status rows ${holdRows.length} != 84`);
+if(holdDefs.size!==83) errors.push(`defined holds ${holdDefs.size} != 83`);
+if(holdRows.length!==83) errors.push(`hold status rows ${holdRows.length} != 83`);
 for(const [id,h] of holdDefs){
   const s=holdStatus.get(id);
   if(!s) errors.push(`${id}: missing hold status row`);
