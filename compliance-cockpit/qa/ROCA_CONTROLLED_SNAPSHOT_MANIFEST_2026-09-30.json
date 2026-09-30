@@ -7,19 +7,63 @@
   "canonical_master_rows": 4469,
   "canonical_master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
   "artifacts": [
-    {"name":"ROCA_COMPLIANCE_MASTER_CANON_FINAL.csv","drive_id":"1iEV_aS5n8-t8qJxPAqyx0-pQ4nQInY3m","sha256":"0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c"},
-    {"name":"ROCA_MODULE_GATE_SYNC_CANON_2026-09-29.csv","drive_id":"1wy2ecyBMbMMuWv-sWhFcopLu0PbAmCqB","sha256":"847759ee6960dab093893a7d8a144ce5a93a451323bbd6e5b31d94d90109032a"},
-    {"name":"ROCA_MODULE_HEALTH_CANON_2026-09-29.csv","drive_id":"1XEMN1SpbTQXsXGhetLOBH9UVMu0bHPvf","sha256":"15571adc930be1af6d897da8032379b7904ba294d11f7d2e9178bc6c1423a768"},
-    {"name":"ROCA_MODULE_ADMISSION_LEDGER_CANON_2026-09-29.csv","drive_id":"1jLpUhLVbHjoQCewGViayM_-BlHWFb6Dd","sha256":"f0f0c23d280e7ab62f46c35efb80932b4780ac6d0d10b17f6edfe1d27dc80a44"},
-    {"name":"ROCA_COMPLIANCE_RELEASE.zip","drive_id":"1CisVrf23_PMWahhaojCIGiMYu9IrX0Wr","sha256":"01c2f734f36726cd0ab01ba26c1bc61b7a951b5fe4e01dcf642db02925c1ca41"},
-    {"name":"ROCA_COMPLIANCE_CONTROL_PLANE.xlsx","drive_id":"1YUIJzO1j3pJbBC88sJ546bq6rRuOU05A","sha256":"29811d286e9fa555053239602d611537f86b9d732ea313d1b99cf065fd485504"},
-    {"name":"SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json","drive_id":"1J525LUt2M-hH1qI_zQ9YEbkCIFwLUpEN","sha256":"717963909dda423825234933771c09bb618e14a16b83423a399ae08b76eb56b8"},
-    {"name":"SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json","drive_id":"1PmmPl9ahN9w7yEcET_LVskrh0vMOBOO3","sha256":"44d0822f80dde4b479ff4ee50186d8c11c1599fe888828f8b37c69898156e327"}
+    {
+      "name": "ROCA_COMPLIANCE_MASTER_CANON_FINAL.csv",
+      "drive_id": "1iEV_aS5n8-t8qJxPAqyx0-pQ4nQInY3m",
+      "sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c"
+    },
+    {
+      "name": "ROCA_MODULE_GATE_SYNC_CANON_2026-09-29.csv",
+      "drive_id": "1wy2ecyBMbMMuWv-sWhFcopLu0PbAmCqB",
+      "sha256": "847759ee6960dab093893a7d8a144ce5a93a451323bbd6e5b31d94d90109032a"
+    },
+    {
+      "name": "ROCA_MODULE_HEALTH_CANON_2026-09-29.csv",
+      "drive_id": "1XEMN1SpbTQXsXGhetLOBH9UVMu0bHPvf",
+      "sha256": "15571adc930be1af6d897da8032379b7904ba294d11f7d2e9178bc6c1423a768"
+    },
+    {
+      "name": "ROCA_MODULE_ADMISSION_LEDGER_CANON_2026-09-29.csv",
+      "drive_id": "1jLpUhLVbHjoQCewGViayM_-BlHWFb6Dd",
+      "sha256": "f0f0c23d280e7ab62f46c35efb80932b4780ac6d0d10b17f6edfe1d27dc80a44"
+    },
+    {
+      "name": "ROCA_COMPLIANCE_RELEASE.zip",
+      "drive_id": "1CisVrf23_PMWahhaojCIGiMYu9IrX0Wr",
+      "sha256": "01c2f734f36726cd0ab01ba26c1bc61b7a951b5fe4e01dcf642db02925c1ca41"
+    },
+    {
+      "name": "ROCA_COMPLIANCE_CONTROL_PLANE.xlsx",
+      "drive_id": "1YUIJzO1j3pJbBC88sJ546bq6rRuOU05A",
+      "sha256": "29811d286e9fa555053239602d611537f86b9d732ea313d1b99cf065fd485504"
+    },
+    {
+      "name": "SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json",
+      "drive_id": "1J525LUt2M-hH1qI_zQ9YEbkCIFwLUpEN",
+      "sha256": "717963909dda423825234933771c09bb618e14a16b83423a399ae08b76eb56b8"
+    },
+    {
+      "name": "SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json",
+      "drive_id": "1PmmPl9ahN9w7yEcET_LVskrh0vMOBOO3",
+      "sha256": "44d0822f80dde4b479ff4ee50186d8c11c1599fe888828f8b37c69898156e327"
+    },
+    {
+      "name": "COCKPIT_index.html",
+      "drive_id": "11FeenB1RrKmbZT8FpAsmqw5YdVAiP2Q6",
+      "sha256": "80ba03ae8e32a756c1001e5585602d4f7a3fbcfd1cf80a2d50be7e84df0cc6a2"
+    },
+    {
+      "name": "ROCA_COMPLIANCE_APP_DATA_INDEX.csv",
+      "drive_id": "1SEtYYjKDORT70ivgJ_3IuUViCZGifYwJ",
+      "sha256": "aa65cc7d18e4ebbe2637987500b0f376b137e165ba611fba864509a635e37c06"
+    }
   ],
   "scope_verdict": "PASS_CONTROLLED_SNAPSHOT",
   "open_blockers": [
     "Shared ROCA root and COMPLIANCE_APP_DATA still expose anyone:writer and require administrative permission removal.",
     "Current integrated cockpit visual QA remains blocked by browser policy."
   ],
-  "compliance_claim": "NOT_AUTHORIZED"
+  "compliance_claim": "NOT_AUTHORIZED",
+  "artifact_count": 10,
+  "live_reference_note": "Private owner-only snapshot is the operational reference; shared COMPLIANCE_APP_DATA copies are convenience mirrors and not immutable sources."
 }
