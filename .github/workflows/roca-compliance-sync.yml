@@ -73,6 +73,9 @@ jobs:
           console.log('ROCA Compliance runtime OK:', d.requirements.length, d.meta.master_sha256);
           NODE
 
+          # Validate derived ledgers against the frozen module lock before any sync commit.
+          python .github/roca-compliance-overlay/validate_derived_ledgers.py
+
           cat > "$out/SYNC_PROVENANCE.json" <<'JSON'
           {
             "schema": "ROCA_COMPLIANCE_GITHUB_SYNC_V1",
