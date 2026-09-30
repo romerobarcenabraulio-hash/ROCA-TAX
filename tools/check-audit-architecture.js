@@ -46,6 +46,16 @@ const auditText=read('audit-data.js');
 assert(!auditText.includes('ROCA_FAST_TRACK?.areas'),'audit-data must not derive departments from FAST_TRACK');
 assert(auditText.includes('ROCA_AUDIT_ENGINE.criteriaForArea(areaId)'),'audit-data must use canonical audit engine');
 
+const app=read('app.js');
+assert(app.includes("closureDetailValid"),'final print gate must validate closure detail');
+assert(app.includes("terminal&&evidenceValid"),'final print gate must keep unsupported legacy closures open');
+
+const auditUi=read('audit-data.js');
+assert(auditUi.includes("status==='CONFORMING'&&!detail"),'audit UI must require detail for CONFORMING');
+assert(auditUi.includes("status==='NONCONFORMING'&&!detail"),'audit UI must require observed gap for NONCONFORMING');
+assert(auditUi.includes("status==='NA_JUSTIFIED'&&!detail"),'audit UI must require justification for NA');
+assert(auditUi.includes("auditBackupExport")&&auditUi.includes("auditBackupImport"),'audit backup controls missing');
+
 const index=read('index.html');
 const order=['department-data.js','audit-engine.js','fast-track-data.js','audit-data.js'].map(x=>index.indexOf(x));
 assert(order.every(x=>x>=0)&&order.every((x,i)=>i===0||order[i-1]<x),'script order must load department-data -> audit-engine -> fast-track -> audit-data');
