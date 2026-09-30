@@ -58,3 +58,74 @@ Before each reconciliation write, the previous health/admission CSVs were copied
 `ROCA_CONTROLLED_RECOVERY_PRIVATE_2026-09-29`
 
 No completion or compliance claim is created by this reconciliation.
+
+
+## 2026-09-30 source-integrity continuation
+
+Direct inspection of the locked 4,469-row release and the live Control Plane recovered exact metadata for three previously missing health modules:
+
+- `SEGAM_POFF`
+  - ledger: `SEGAM_POFF/SEGAM_POFF_requirement_ledger.csv`
+  - source: `SEGAM-POFF-SLP-2026`
+  - rows: 51
+  - quality gate: `SEGAM_POFF_GATE.json`
+  - source gate recovered from historical admission: `SEGAM_POFF_SOURCE_GATE.json`
+  - proof SHA: `5841a816a145507ed03560a8fd518c82fd0436174d8e70c83dfd15b233681da7`
+
+- `LGEC`
+  - ledger: `LGEC/LGEC_REQUIREMENT_LEDGER_CANON_FINAL.csv`
+  - source: `LGEC-2026`
+  - rows: 43
+  - quality gate: `LGEC_GATE.json`
+  - source gate: `LGEC_SOURCE_GATE.json`
+  - proof SHA: `a78f5051bdae74ad8827b4c526606c98f79a111f4cfe6d726f888ef6a26502ef`
+
+- `RFSST2014`
+  - ledger: `RFSST2014/RFSST2014_requirement_ledger.csv`
+  - source: `RFSST-2014`
+  - rows: 104
+  - quality gate: `RFSST2014_GATE.json`
+  - source gate: `RFSST2014_SOURCE_GATE.json`
+  - proof SHA: `9af335fd6d2aea52bc2545670e4a799f9c2b40c2280cb3941773e6678776d83c`
+
+These three rows were added to module-health and post-write read-back matched the locked release.
+
+LGEC admission was also corrected to point to the canonical ledger path `LGEC/LGEC_REQUIREMENT_LEDGER_CANON_FINAL.csv`.
+
+### ADMIN_FORM stale derivative corrected
+
+A direct CSV parse of the canonical master and the locked module manifest both show:
+
+- source `ROCA-ADMIN-FORM-DATA`
+- rows: 5
+- ledger SHA: `ca3e02e378d7710bf8d93c1a276f06072b671f7e16ebde5cc47f09b4d1a03db9`
+
+The old gate-sync/health count of 4 was stale. Both derived ledgers were corrected in place to 5 rows and the current SHA. `ADMIN_FORM` remains outside legal module-admission because it is an internal control/master-data module and no external source-gate was recovered.
+
+### Remaining provenance blockers
+
+Only these two modules remain absent from both module-health and module-admission:
+
+- `SLP_ENV_IMPACT`
+  - locked ledger: `SLP_ENV_IMPACT/SLP_ENV_IMPACT_requirement_ledger.csv`
+  - source: `SLP-ENV-IMPACT-2026`
+  - rows: 56
+  - quality gate: `SLP_ENV_IMPACT_GATE.json`
+  - proof SHA: `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`
+  - source-gate file: NOT RECOVERED
+
+- `SLP_MUN_FUNCTION`
+  - locked ledger: `SLP_MUN_FUNCTION/SLP_MUN_FUNCTION_requirement_ledger.csv`
+  - source: `SLP-MUN-FUNCTION-2026`
+  - rows: 25
+  - quality gate: `SLP_MUN_FUNCTION_GATE.json`
+  - proof SHA: `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`
+  - source-gate file: NOT RECOVERED
+
+Searches of GitHub, Drive, FASTTRACK, the live Control Plane and the portable release did not recover those source-gate artifacts. Therefore these rows remain `HOLD_PENDING_EVIDENCE`; they must not be silently admitted.
+
+### Cleanup
+
+Eight temporary Google Docs used only as byte-transfer intermediates were permanently deleted after successful write/read-back. Rollback CSV copies remain in the private owner-only recovery mirror.
+
+Verdict: **BLOCKED - SOURCE INTEGRITY only for the two missing SLP source-gate artifacts; PASS for all reconciled derived rows above.**
