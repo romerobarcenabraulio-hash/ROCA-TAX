@@ -46,6 +46,24 @@ async function sha256Blob(blob){try{if(!crypto?.subtle)return 'SHA256_UNAVAILABL
 const status=(r)=>S.reqOverrides[r.req_id]?.status||r.verification_status||r.status||'NOT_CHECKED';
 const statusBadge=s=>`<span class="badge ${s==='VERIFIED'?'verified':s==='JUSTIFIED_NA'?'na':s==='EXTERNAL_DEPENDENCY'?'external':s==='APPLICABILITY_PENDING'?'pending':''}">${esc(s)}</span>`;
 const riskBadge=r=>`<span class="badge ${r==='R1_CRITICAL'?'r1':''}">${esc(r)}</span>`;
+let F={q:'',risk:'',status:'',source:''};
+const effStatus=(reqId,base)=>S.reqOverrides[reqId]?.status||base||'NOT_CHECKED';
+function applyInboxFilters(){
+ const q=String(F.q||'').trim().toLowerCase();
+ return (D.inbox||[]).map(r=>({
+   ...r,
+   requirement_title:r.requirement_title||r.title||'',
+   current_verification_status:effStatus(r.req_id,r.current_verification_status||r.status),
+   evidence_required:r.evidence_required||r.evidence_slot||'',
+   next_lane:r.next_lane||r.primary_lane||'',
+   closure_route:r.closure_route||r.lanes||''
+ })).filter(r=>
+   (!F.risk||r.risk===F.risk)&&
+   (!F.status||r.current_verification_status===F.status)&&
+   (!F.source||r.source===F.source)&&
+   (!q||[r.req_id,r.source,r.locator,r.requirement_title,r.scope,r.what_to_check,r.next_action,r.closure_route].join(' ').toLowerCase().includes(q))
+ );
+}
 const countBy=(arr,key)=>arr.reduce((a,x)=>(a[x[key]||'—']=(a[x[key]||'—']||0)+1,a),{});
 const reqMap=new Map(D.requirements.map(r=>[r.req_id,r]));
 const formMasterMap=new Map((D.formMaster||[]).map(x=>[x.key,x]));
