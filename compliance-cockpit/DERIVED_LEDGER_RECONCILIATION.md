@@ -31,27 +31,17 @@ Post-write read-back now aligns quality-gate names for:
 - NOM036 -> `NOM036_GATE.json`
 - LGEC -> `LGEC_GATE.json`
 
-## Remaining health omissions
+## Historical omissions resolved
 
-These modules exist in gate-sync but are not represented in module-health:
+The earlier missing health/admission rows were subsequently reconciled. Current state after post-write read-back:
 
-- SEGAM_POFF — 51 rows
-- LGEC — 43 rows
-- RFSST2014 — 104 rows
-- SLP_ENV_IMPACT — 56 rows
-- SLP_MUN_FUNCTION — 25 rows
+- module-health includes SEGAM_POFF, LGEC, RFSST2014, SLP_ENV_IMPACT and SLP_MUN_FUNCTION with canonical path/count/SHA.
+- ADMIN_FORM was corrected from 4 to 5 rows in gate-sync + health using the locked module manifest.
+- module-admission uses the canonical LGEC ledger path.
+- SLP_ENV_IMPACT and SLP_MUN_FUNCTION are present as `ADMITTED_RECONSTRUCTED`, explicitly referencing reconstructed source-integrity gates.
+- ADMIN_FORM intentionally remains outside legal module-admission because it is an internal master-data/control module.
 
-Do not synthesize health rows until the exact source/source-gate metadata used by the generating pipeline is recovered. Their absence is a derived-ledger blocker, not evidence that the modules are absent from the master.
-
-## Remaining admission omissions
-
-These modules exist in gate-sync but are not represented in module-admission:
-
-- ADMIN_FORM — 4 rows
-- SLP_ENV_IMPACT — 56 rows
-- SLP_MUN_FUNCTION — 25 rows
-
-Do not auto-admit the two SLP modules without the exact source-gate record. ADMIN_FORM is an internal data/control module and must retain its internal-control semantics rather than being disguised as a legal source.
+No unresolved derived-ledger omission remains. Historical source-gate originals for the two SLP modules were not recovered; that loss remains recorded, while the operational gap was mitigated by controlled reconstruction.
 
 ## Recovery / rollback
 
