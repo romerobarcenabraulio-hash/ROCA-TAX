@@ -63,9 +63,11 @@
       .map(r=>'<tr class="physical-row"><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td>'+esc(r.standard)+'</td></tr>')
       .join('');
     const areaRows=specificAreaRows+physicalRows;
-    const auditRows=(dept.areaAudit||[]).map(r=>
-      '<tr><td><strong>'+esc(r.id)+'</strong></td><td>'+esc(r.criterion)+'</td><td>'+esc(r.evidence)+'</td></tr>'
-    ).join('');
+    const areaAuditMeta=Array.isArray(dept.areaAudit)?dept.areaAudit:[];
+    const auditRows=(dept.area||[]).map((r,i)=>{
+      const meta=areaAuditMeta[i]||{};
+      return '<tr><td><strong>'+esc(meta.id||r.id)+'</strong></td><td>'+esc(r.text)+'</td><td>'+esc(meta.evidence||'Evidencia observable de la condición permanente.')+'</td></tr>';
+    }).join('');
     const stages=(dept.method?.stages||[]).map(r=>
       '<section class="method-stage"><h3>'+esc(r.id)+' · '+esc(r.title)+'</h3><p>'+esc(r.text)+'</p></section>'
     ).join('');
