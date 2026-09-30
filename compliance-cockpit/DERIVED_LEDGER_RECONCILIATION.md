@@ -270,3 +270,33 @@ Post-write results:
 - temporary transfer Docs were cleaned up after write/read-back; rollback copies remain in the private recovery mirror.
 
 Verdict: **PASS - SOURCE INTEGRITY for reconstructed derived ledgers, with explicit historical-provenance limitation on the two SLP source gates.**
+
+
+## Resolution — reconstructed SLP source-integrity gates
+
+The original SLP source-gate artifacts were not recovered. They remain an archival provenance loss and are not represented as recovered files.
+
+To restore an auditable current source-integrity decision without inventing historical bytes, two new gates were reconstructed from the frozen module lock/master plus current official sources:
+
+- `compliance-cockpit/source-gates/SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+  - 56 rows
+  - ledger SHA `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`
+  - sources: current SEGAM impact route, SEGAM legislation register, current Congreso SLP environmental-law register
+  - verdict: `PASS_SOURCE_INTEGRITY_RECONSTRUCTED`
+
+- `compliance-cockpit/source-gates/SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+  - 25 rows
+  - ledger SHA `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`
+  - sources: current Ayuntamiento business/land-use routes and current Congreso SLP land-use/development-law register
+  - verdict: `PASS_SOURCE_INTEGRITY_RECONSTRUCTED`
+
+Post-write Drive read-back confirmed:
+- module-health contains all 43 gate-sync modules with matching ledger path, row count, quality-gate filename and proof SHA;
+- module-admission contains 42 admitted modules; `ADMIN_FORM` is intentionally excluded because it is an internal master-data control;
+- both SLP rows use the reconstructed source-gate filenames;
+- admission enum is normalized back to `ADMITTED` for contract compatibility;
+- reconstruction provenance remains in `source_gate` and `reason`.
+
+Latest source-integrity verdict for these derived ledgers: **PASS - SOURCE INTEGRITY (RECONSTRUCTED GATES)**.
+
+Residual archival note: original SLP source-gate bytes were not recovered. This does not authorize a permit, resolve applicability, or establish legal/physical compliance.
