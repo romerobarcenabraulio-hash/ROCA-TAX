@@ -1,0 +1,144 @@
+{
+  "schema": "ROCA_BROWSER_VISUAL_QA_CONTRACT_V1",
+  "date": "2026-09-30",
+  "branch": "codex/roca-source-reader",
+  "head_sha": "c043003c149ba91aa532347b789cb1c4d34595cd",
+  "purpose": "Release-class browser/visual QA for PR #6 current integrated ROCA manual, audit/implementation surfaces and compliance cockpit.",
+  "prerequisite": [
+    "Run against this exact HEAD or record the tested SHA.",
+    "Use an environment allowed to load the site and authenticated Drive/source-reader flows when exercised.",
+    "Do not convert a static PASS into visual PASS."
+  ],
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "tablet",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "routes": [
+    {
+      "path": "/index.html",
+      "checks": [
+        "page renders",
+        "primary navigation visible",
+        "COMPLIANCE link resolves",
+        "FUENTES/source-reader entry resolves if exposed",
+        "no horizontal overflow at tested viewport"
+      ]
+    },
+    {
+      "path": "/generated/roca-fast-track/audit.html",
+      "checks": [
+        "audit renders",
+        "department selector works",
+        "criteria come from permanent area standard",
+        "result controls usable",
+        "no duplicated permanent-standard prose",
+        "no JS/runtime errors"
+      ]
+    },
+    {
+      "path": "/generated/roca-fast-track/implementation.html",
+      "checks": [
+        "implementation renders",
+        "only unresolved/nonconforming work is surfaced",
+        "CUR-HOLD-01 absent",
+        "text '6.0 L vs 6.4 L' absent",
+        "ALUM-Tan operational calculator not exposed as released",
+        "no stale resolved item reappears"
+      ]
+    },
+    {
+      "path": "/generated/roca-fast-track/field-walk.html",
+      "checks": [
+        "P0 walk renders",
+        "canonical sequence preserved",
+        "category filter preserves relative sequence",
+        "open-only filter works"
+      ]
+    },
+    {
+      "path": "/compliance-cockpit/index.html",
+      "checks": [
+        "cockpit shell renders",
+        "FORM_MASTER overlay loads",
+        "no blank panels",
+        "navigation works",
+        "restricted personal data not exposed",
+        "master rows/hash indicators consistent"
+      ]
+    }
+  ],
+  "cockpit_click_flow": [
+    "HOY",
+    "AREAS",
+    "REQUISITOS",
+    "APLICABILIDAD",
+    "IMPLEMENTAR",
+    "EVIDENCIA",
+    "MEDIR/CALCULAR",
+    "MANUALES/SOP",
+    "TRAMITES",
+    "FUENTES",
+    "CAPTURA BASE",
+    "SETUP/FORM_MASTER"
+  ],
+  "targeted_regressions": [
+    {
+      "id": "VIS-CUR-01",
+      "check": "Curtiduria permanent standard shows 6.4 L formic-acid parameter provenance without presenting a 6.0/6.4 unresolved hold."
+    },
+    {
+      "id": "VIS-CUR-02",
+      "check": "IMPLEMENTAR does not display CUR-HOLD-01 after source reconciliation."
+    },
+    {
+      "id": "VIS-CUR-03",
+      "check": "ALUM-Tan may be described/referenced, but no production calculator is presented as released while reconstruction gate says BLOCKED."
+    },
+    {
+      "id": "VIS-SOURCE-01",
+      "check": "Source reader/related-source links do not expose client/legal restricted documents in public manifest surfaces."
+    },
+    {
+      "id": "VIS-AUD-01",
+      "check": "Area standard and audit criterion wording do not drift into separate contradictory definitions."
+    },
+    {
+      "id": "VIS-FORM-01",
+      "check": "FORM_MASTER restricted fields do not display raw restricted values in ordinary operational views."
+    }
+  ],
+  "evidence_required": [
+    "Screenshot for each route at desktop.",
+    "Screenshot of root + audit + implementation + cockpit at mobile.",
+    "Console/error log or explicit zero-error record.",
+    "Network/local-reference failure record including 404s.",
+    "Tested HEAD SHA and timestamp.",
+    "Named anomaly list with pass/fail disposition."
+  ],
+  "fail_conditions": [
+    "Blank/unclickable primary route.",
+    "Uncaught ReferenceError/TypeError/SyntaxError.",
+    "Missing local src/href required by route.",
+    "Horizontal clipping that hides controls at tested viewport.",
+    "Resolved CUR-HOLD-01 visible anywhere in IMPLEMENTAR.",
+    "ALUM-Tan production calculator exposed as released.",
+    "Restricted personal/psychosocial raw data visible in ordinary views.",
+    "Audit criterion contradicts the area permanent standard."
+  ],
+  "pass_rule": "All routes and targeted regressions pass at required viewports; evidence bundle is preserved and tied to the tested HEAD.",
+  "current_status": "NOT_EXECUTED_ENVIRONMENT_BLOCKER",
+  "compliance_claim": "NOT_AUTHORIZED"
+}
