@@ -14,8 +14,13 @@
     "missing_area_bindings": 0,
     "orphan_source_ids": 0,
     "positional_pairing_removed_from_audit_engine": true,
-    "positional_pairing_removed_from_manual_renderer": true
+    "positional_pairing_removed_from_manual_renderer": true,
+    "audit_data_js_syntax": "PASS",
+    "conforming_requires_detail": true,
+    "nonconforming_requires_gap_detail": true,
+    "na_requires_justification": true,
+    "invalid_closure_is_not_persisted": true
   },
   "verdict": "PASS",
-  "rule": "Audit metadata/evidence must bind to the permanent area criterion by explicit sourceId, never by array position."
+  "rule": "Audit criteria bind to permanent area conditions by explicit sourceId. CONFORMING, NONCONFORMING and NA_JUSTIFIED cannot be persisted without supporting detail."
 }
