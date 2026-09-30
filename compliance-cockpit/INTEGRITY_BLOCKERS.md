@@ -80,17 +80,15 @@ On 30-sep-2026:
 - master remained 4,469 rows and was not rewritten.
 
 
-## R1 — source-gates SLP no persistidos
+## Source-integrity recovery — SLP gates reconstructed
 
-El master/module lock canónico sí contiene y congela:
+Los source-gates originales de `SLP_ENV_IMPACT` y `SLP_MUN_FUNCTION` no fueron recuperados. Para no simular recuperación histórica, se crearon gates nuevos y explícitos de reconstrucción:
 
-- `SLP_ENV_IMPACT/SLP_ENV_IMPACT_requirement_ledger.csv` — 56 filas — SHA `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`;
-- `SLP_MUN_FUNCTION/SLP_MUN_FUNCTION_requirement_ledger.csv` — 25 filas — SHA `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`.
+- `SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json` — 56 filas / SHA `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`.
+- `SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json` — 25 filas / SHA `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`.
 
-Sus quality gates también aparecen en gate-sync. Sin embargo, después de revisar GitHub, Drive, FASTTRACK, el Control Plane vivo y el release portátil, no se recuperaron los artefactos de source-gate originales que justificaron su admisión.
+Ambos declaran `original_source_gate_recovered: false` y `PASS_SOURCE_INTEGRITY_RECONSTRUCTED`.
 
-Estado histórico: los source-gates originales no fueron recuperados. El 30-sep-2026 se reconstruyeron source-gates nuevos desde fuentes oficiales actuales, marcados explícitamente `PASS_SOURCE_INTEGRITY_RECONSTRUCTED` y `original_source_gate_recovered:false`.
+Read-back de Drive confirmó que module-health y module-admission ya contienen ambos módulos y admission apunta a los gates `*_RECON_2026-09-30.json`.
 
-Los módulos ya están representados en health/admission con esos gates reconstruidos. La pérdida histórica permanece documentada; ya no existe un HOLD operativo en derived-ledgers por esta causa.
-
-Esto no invalida el master hash-locked ni constituye cumplimiento físico/legal.
+Estado: ya no existe HOLD de procedencia en derived-ledgers por estos dos módulos. Permanecen separados los gates de aplicabilidad, trámite, evidencia y cumplimiento físico/legal.
