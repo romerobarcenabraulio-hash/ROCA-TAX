@@ -65,6 +65,37 @@ const engine=read("audit-engine.js");
 if(!engine.includes("!==\'NONCONFORMING\'")&&!engine.includes("!==\"NONCONFORMING\"")) errors.push("audit engine no longer filters dynamic implementation to NONCONFORMING");
 if(!engine.includes("localStorage")) errors.push("audit state persistence missing");
 
+// Behavioral contract: audit status drives IMPLEMENTAR exactly as intended.
+// NOT_VERIFIED stays in AUDITORIA; NONCONFORMING creates one dynamic action;
+// returning to CONFORMING removes that dynamic action while the permanent criterion remains.
+const memory=new Map();
+ctx.localStorage={
+  getItem:key=>memory.has(key)?memory.get(key):null,
+  setItem:(key,value)=>memory.set(key,String(value)),
+  removeItem:key=>memory.delete(key),
+  clear:()=>memory.clear()
+};
+vm.runInContext(engine,ctx,{filename:"audit-engine.js"});
+const probeArea="area-curtiduria";
+const probeRows=ctx.window.ROCA_AUDIT_ENGINE?.criteriaForArea(probeArea)||[];
+const probeId=probeRows[0]?.id;
+if(!probeId){
+  errors.push("behavioral audit probe missing criterion");
+}else{
+  ctx.window.ROCA_AUDIT_ENGINE.saveCriterion(probeArea,probeId,{status:"NOT_VERIFIED",note:"probe"});
+  if(ctx.window.ROCA_AUDIT_ENGINE.dynamicImplementationItems().some(x=>x.req===probeId))
+    errors.push("NOT_VERIFIED incorrectly promoted to IMPLEMENTAR");
+
+  ctx.window.ROCA_AUDIT_ENGINE.saveCriterion(probeArea,probeId,{status:"NONCONFORMING",note:"probe gap"});
+  const opened=ctx.window.ROCA_AUDIT_ENGINE.dynamicImplementationItems().filter(x=>x.req===probeId);
+  if(opened.length!==1) errors.push(`NONCONFORMING expected 1 dynamic action, got ${opened.length}`);
+
+  ctx.window.ROCA_AUDIT_ENGINE.saveCriterion(probeArea,probeId,{status:"CONFORMING",note:"probe closed"});
+  if(ctx.window.ROCA_AUDIT_ENGINE.dynamicImplementationItems().some(x=>x.req===probeId))
+    errors.push("CONFORMING did not remove dynamic IMPLEMENTAR action");
+  memory.clear();
+}
+
 const audit=read("audit-data.js");
 if(!audit.includes("NO VERIFICADO")||!audit.includes("NONCONFORMING")) errors.push("audit status contract missing");
 
@@ -81,4 +112,4 @@ if(errors.length){
   errors.forEach(e=>console.error("ERROR:",e));
   process.exit(1);
 }
-console.log(`PASS audit/implementation flow: ${Object.keys(depts).length} departments; ${holdDefs.size} holds; no stale formic hold; ALUM-Tan operational block preserved`);
+console.log(`PASS audit/implementation flow: ${Object.keys(depts).length} departments; ${holdDefs.size} holds; status-to-IMPLEMENTAR behavioral contract passed; no stale formic hold; ALUM-Tan operational block preserved`);
