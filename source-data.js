@@ -303,13 +303,13 @@ window.ROCA_SOURCE_DOCS = [
     id: "v22-editable-missing",
     group: "Fuentes faltantes",
     title: "ROCA_TAXIDERMY_v22_1_Editable.zip",
-    label: "v22.1 editable · archivo pendiente",
+    label: "v22.1 editable · fuente histórica no recuperada",
     kind: "missing",
-    sourceStatus: "BLOCKED",
+    sourceStatus: "HISTORICAL_SOURCE_NOT_RECOVERED",
     access: "MISSING",
-    note: "La identidad historica de esta fuente esta registrada, pero el archivo original no fue localizado en la ronda actual. Se mantiene visible para impedir una falsa declaracion de rescate completo.",
+    note: "Búsqueda exhaustiva sin hallazgo. La pérdida queda registrada en ops/control/V22_1_SOURCE_LOSS_RECORD_2026-09-30.md. No se identificó dependencia activa exclusiva de v22.1; no reconstruir un ZIP falso. Si aparece una dependencia exclusiva, devolverla a HOLD.",
     related: [
-      { sectionId: "taller", label: "Integridad de fuente", action: "HOLD_PENDING_EVIDENCE", locator: "Archivo original requerido" }
+      { sectionId: "taller", label: "Integridad de fuente", action: "PRESERVE", locator: "Pérdida histórica registrada; reconciliar si reaparece" }
     ]
   }
 ];
