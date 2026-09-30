@@ -17,12 +17,12 @@ window.ROCA_AUDIT_SECTIONS = [
       <div id="baselineRegistry">Cargando línea base...</div>
     `
   },
-  ...Object.entries(window.ROCA_FAST_TRACK?.areas || {}).map(([areaId, area]) => ({
+  ...Object.entries(window.ROCA_DEPARTMENTS || {}).map(([areaId, area]) => ({
     id:"audit-"+area.code.toLowerCase(),
     nav:"Auditoría · "+area.title,
     title:"Auditoría · "+area.title,
     eyebrow:"ROCA · auditoría por área",
-    lead:area.specific,
+    lead:area.purpose||"Criterios permanentes del departamento.",
     body:`
       <div class="audit-area-shell" data-audit-area="${areaId}" data-audit-code="${area.code}">
         <div class="callout"><strong>Criterio fijo:</strong> se deriva del estándar permanente del área y de la base normativa aplicable. El estado auditado cambia; el criterio no se borra por cerrar una acción.</div>
@@ -53,7 +53,7 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     if(host){
       const departments = Object.values(window.ROCA_DEPARTMENTS || {});
       const areas = departments.length;
-      const criteria = departments.reduce((sum,d)=>sum+(Array.isArray(d.auditCriteria)?d.auditCriteria.length:0),0);
+      const criteria = departments.reduce((sum,d)=>sum+(window.ROCA_AUDIT_ENGINE?window.ROCA_AUDIT_ENGINE.criteriaForArea(d.id).length:(Array.isArray(d.auditCriteria)?d.auditCriteria.length:0)),0);
       host.innerHTML = '<div class="callout"><strong>'+areas+' departamentos</strong> · '+criteria+' criterios específicos actualmente estructurados. La línea base se congela por departamento; la auditoría posterior cambia el resultado, no redefine automáticamente el criterio.</div>';
     }
     const baseHost=document.getElementById('baselineRegistry');
@@ -72,71 +72,17 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
   const code = root.dataset.auditCode;
   const dept = window.ROCA_DEPARTMENTS && window.ROCA_DEPARTMENTS[areaId];
 
-  const PHYS_NORM_BASIS={
-    "PHYS-FLOW":"NOM-001-STPS-2008",
-    "PHYS-EGRESS":"NOM-002-STPS-2010",
-    "PHYS-FIRE":"NOM-002-STPS-2010",
-    "PHYS-SIGN":"NOM-026-STPS-2008",
-    "PHYS-LIGHT":"NOM-025-STPS-2008",
-    "PHYS-STATION":"NOM-001-STPS-2008",
-    "PHYS-STORAGE":"ROCA + NOM-006-STPS-2023 cuando aplique",
-    "PHYS-ELECTRIC":"NOM-029-STPS-2011 cuando aplique",
-    "PHYS-CHEM":"NOM-018-STPS-2015 + NOM-005-STPS-1998",
-    "PHYS-VENT":"NOM-010-STPS-2014 + HDS aplicable",
-    "PHYS-MACHINE":"NOM-004-STPS-1999",
-    "PHYS-NOISE":"NOM-011-STPS-2001 cuando aplique",
-    "PHYS-MANUALLOAD":"NOM-036-1-STPS-2018 cuando aplique",
-    "PHYS-PRESSURE":"NOM-020-STPS-2011 cuando aplique",
-    "PHYS-WASTE":"NOM-052-SEMARNAT-2005 + ruta aplicable",
-    "PHYS-WASTEWATER":"NOM-002-SEMARNAT-1996 + NTE-SLP-AR-001/2026 cuando aplique",
-    "PHYS-SUPPORT":"NOM-001-STPS-2008 + RFSST"
-  };
-  function applicablePhysicalRows(areaId){
-    const phys=Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)?window.ROCA_AREA_PHYSICAL_STANDARD:[];
-    return phys.filter(r=>r.areas==='ALL'||(Array.isArray(r.areas)&&r.areas.includes(areaId))).map(r=>({
-      id:r.id,
-      group:'Normativa / condición física',
-      label:r.label,
-      target:r.standard,
-      input:r.evidence||'Evidencia observable de la condición.',
-      basis:PHYS_NORM_BASIS[r.id]||'Base física ROCA'
-    }));
-  }
-  function departmentAuditRows(dept,areaId){
-    if(!dept) return [];
-    const areaAuditMeta=Array.isArray(dept.areaAudit)?dept.areaAudit:[];
-    const areaRows=(Array.isArray(dept.area)?dept.area:[]).map((r,i)=>{
-      const meta=areaAuditMeta[i]||{};
-      return {
-        id:meta.id||r.id,
-        group:'Área de trabajo',
-        label:r.label||meta.criterion||r.id,
-        target:r.text||meta.criterion||'',
-        input:meta.evidence||'Evidencia observable de la condición permanente.',
-        basis:'Estándar permanente del departamento'
-      };
-    });
-    const processRows=(Array.isArray(dept.auditCriteria)?dept.auditCriteria:[]).map(r=>({
-      id:r.id,
-      group:r.group||'Metodología / operación',
-      label:r.label||r.id,
-      target:r.target||r.label||'',
-      input:r.input||'Evidencia / dato de auditoría.',
-      basis:'Metodología / control ROCA'
-    }));
-    const physicalRows=applicablePhysicalRows(areaId);
-    const merged=[...areaRows,...processRows,...physicalRows];
-    const seen=new Set();
-    return merged.filter(r=>{
-      if(!r.id||seen.has(r.id)) return false;
-      seen.add(r.id);
-      return true;
-    });
-  }
-  const rows=departmentAuditRows(dept,areaId);
+  const rows=window.ROCA_AUDIT_ENGINE
+    ? window.ROCA_AUDIT_ENGINE.criteriaForArea(areaId)
+    : [];
+
   const storageKey = 'roca.audit.'+areaId;
-  let saved = {};
-  try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch(e) {}
+  let saved = window.ROCA_AUDIT_ENGINE
+    ? window.ROCA_AUDIT_ENGINE.loadState(areaId)
+    : {};
+  if(!window.ROCA_AUDIT_ENGINE){
+    try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch(e) {}
+  }
   let implementation = [];
   try{
     const res = await fetch('ops/control/ROCA_IMPLEMENTATION_ACTION_REGISTER_V1.csv',{cache:'no-store'});
@@ -193,8 +139,12 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     const note=tr.querySelector('.audit-note');
     sel.value=v.status||'NOT_VERIFIED';
     const persist=()=>{
-      saved[id]={status:sel.value,note:note.value,updatedAt:new Date().toISOString()};
-      localStorage.setItem(storageKey,JSON.stringify(saved));
+      if(window.ROCA_AUDIT_ENGINE){
+        saved=window.ROCA_AUDIT_ENGINE.saveCriterion(areaId,id,{status:sel.value,note:note.value});
+      }else{
+        saved[id]={status:sel.value,note:note.value,updatedAt:new Date().toISOString()};
+        localStorage.setItem(storageKey,JSON.stringify(saved));
+      }
       const host=document.getElementById('auditMetricsHost');
       if(host) host.innerHTML=metricMarkup();
       const cell=tr.querySelector('.audit-implementation');
