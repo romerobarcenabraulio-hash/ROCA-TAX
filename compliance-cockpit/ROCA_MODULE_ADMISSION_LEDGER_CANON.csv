@@ -1,0 +1,43 @@
+module_path,dir,ledger_exists,quality_gate,quality_pass,source_gate,source_pass,admission,reason
+NOM001/NOM001_requirement_ledger_canonical.csv,NOM001,True,NOM001_GATE_CANONICAL.json,True,NOM001_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM002/NOM002_requirement_ledger.csv,NOM002,True,NOM002_GATE.json,True,NOM002_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM004/NOM004_requirement_ledger.csv,NOM004,True,NOM004_GATE.json,True,NOM004_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM005/NOM005_requirement_ledger.csv,NOM005,True,NOM005_GATE.json,True,NOM005_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM006/NOM006_requirement_ledger.csv,NOM006,True,NOM006_GATE.json,True,NOM006_SOURCE_INTEGRITY_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM009/NOM009_requirement_ledger.csv,NOM009,True,NOM009_GATE.json,True,NOM009_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM010/NOM010_requirement_ledger.csv,NOM010,True,NOM010_GATE.json,True,NOM010_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM011/NOM011_requirement_ledger.csv,NOM011,True,NOM011_GATE.json,True,NOM011_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM015/NOM015_requirement_ledger.csv,NOM015,True,NOM015_GATE.json,True,NOM015_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM017/NOM017_requirement_ledger_canonical.csv,NOM017,True,NOM017_GATE_CANONICAL.json,True,NOM017_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM018/NOM018_requirement_ledger.csv,NOM018,True,NOM018_GATE.json,True,NOM018_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM019/NOM019_requirement_ledger.csv,NOM019,True,NOM019_GATE.json,True,NOM019_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM020/NOM020_requirement_ledger.csv,NOM020,True,NOM020_GATE.json,True,NOM020_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM022/NOM022_requirement_ledger.csv,NOM022,True,NOM022_GATE.json,True,NOM022_SOURCE_INTEGRITY_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM024/NOM024_requirement_ledger.csv,NOM024,True,NOM024_GATE.json,True,NOM024_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM025/NOM025_requirement_ledger.csv,NOM025,True,NOM025_GATE.json,True,NOM025_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM026/NOM026_requirement_ledger.csv,NOM026,True,NOM026_GATE.json,True,NOM026_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM027/NOM027_requirement_ledger.csv,NOM027,True,NOM027_GATE.json,True,NOM027_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM028/NOM028_requirement_ledger.csv,NOM028,True,NOM028_GATE.json,True,NOM028_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM029/NOM029_requirement_ledger.csv,NOM029,True,NOM029_GATE.json,True,NOM029_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM030/NOM030_requirement_ledger.csv,NOM030,True,NOM030_GATE.json,True,NOM030_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM033/NOM033_requirement_ledger.csv,NOM033,True,NOM033_GATE.json,True,NOM033_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+NOM034/NOM034_REQUIREMENT_LEDGER_CANON_FINAL.csv,NOM034,True,NOM034_GATE.json,True,NOM034_SOURCE_GATE_CANON_FINAL.json,True,ADMITTED,Quality and source gates pass
+NOM035/NOM035_REQUIREMENT_LEDGER_CANON_FINAL.csv,NOM035,True,NOM035_GATE.json,True,NOM035_SOURCE_GATE_CANON_FINAL.json,True,ADMITTED,Quality and source gates pass
+NOM036/NOM036_REQUIREMENT_LEDGER_CANON_FINAL.csv,NOM036,True,NOM036_GATE.json,True,NOM036_SOURCE_INTEGRITY_GATE.json,True,ADMITTED,Quality and source gates pass
+LGVS/LGVS_requirement_ledger.csv,LGVS,True,LGVS_GATE.json,True,LGVS_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+RLGVS/RLGVS_requirement_ledger.csv,RLGVS,True,RLGVS_GATE.json,True,RLGVS_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+SEMARNAT052/SEMARNAT052_requirement_ledger.csv,SEMARNAT052,True,SEMARNAT052_GATE.json,True,SEMARNAT052_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+SEMARNAT002/SEMARNAT002_requirement_ledger.csv,SEMARNAT002,True,SEMARNAT002_GATE.json,True,SEMARNAT002_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+LGPGIR/LGPGIR_requirement_ledger.csv,LGPGIR,True,LGPGIR_GATE.json,True,LGPGIR_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+SEGAM_RINP/SEGAM_RINP_requirement_ledger.csv,SEGAM_RINP,True,SEGAM_RINP_GATE.json,True,SEGAM_RINP_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+PCSLP/PC_SLP_REQUIREMENT_LEDGER.csv,PCSLP,True,PCSLP_CANONICAL_GATE.json,True,PC_SLP_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+WILDLIFE_TRACEABILITY/WILDLIFE_TRACEABILITY_requirement_ledger.csv,WILDLIFE_TRACEABILITY,True,WILDLIFE_TRACEABILITY_GATE.json,True,WILDLIFE_TRACEABILITY_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+SEMARNAT08006/SEMARNAT08006_requirement_ledger.csv,SEMARNAT08006,True,SEMARNAT08006_GATE.json,True,SEMARNAT08006_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+SEMARNAT08009/SEMARNAT08009_requirement_ledger.csv,SEMARNAT08009,True,SEMARNAT08009_GATE.json,True,SEMARNAT08009_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+SEMARNAT07017/SEMARNAT07017_requirement_ledger.csv,SEMARNAT07017,True,SEMARNAT07017_GATE.json,True,SEMARNAT07017_SOURCE_GATE_CANON_FINAL.json,True,ADMITTED,Quality and source gates pass
+SEGAM_POFF/SEGAM_POFF_requirement_ledger.csv,SEGAM_POFF,True,SEGAM_POFF_GATE.json,True,SEGAM_POFF_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+LGEC/LGEC_REQUIREMENT_LEDGER_CANON_FINAL.csv,LGEC,True,LGEC_GATE.json,True,LGEC_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+RFSST2014/RFSST2014_requirement_ledger.csv,RFSST2014,True,RFSST2014_GATE.json,True,RFSST2014_SOURCE_GATE.json,True,ADMITTED,Quality and source gates pass
+LEGAL/ROCA_LEGAL_REQUIREMENT_MASTER.csv,LEGAL,True,LEGAL_GATE.json,True,LEGAL_SOURCE_INTEGRITY_GATE.json,True,ADMITTED,Quality and source gates pass
+SLP_ENV_IMPACT/SLP_ENV_IMPACT_requirement_ledger.csv,SLP_ENV_IMPACT,True,SLP_ENV_IMPACT_GATE.json,True,SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json,True,ADMITTED_RECONSTRUCTED,Quality gate pass; source-integrity gate reconstructed from current official sources; applicability remains fact-dependent
+SLP_MUN_FUNCTION/SLP_MUN_FUNCTION_requirement_ledger.csv,SLP_MUN_FUNCTION,True,SLP_MUN_FUNCTION_GATE.json,True,SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json,True,ADMITTED_RECONSTRUCTED,Quality gate pass; source-integrity gate reconstructed from current official sources; applicability remains fact-dependent
