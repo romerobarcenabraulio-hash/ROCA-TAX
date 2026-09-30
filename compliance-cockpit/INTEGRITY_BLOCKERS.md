@@ -30,9 +30,9 @@ Acción aplicada: reconstrucción controlada como overlay derivado del runtime c
 
 ## Source integrity — NOM-035
 
-El runtime actual contiene 188 filas NOM-035; `ROCA_MODULE_HEALTH_CANON_2026-09-29.csv` conserva 156. Las 32 filas posteriores desagregan controles 9.1–10.2 y reglas de Guías II/III.
+El runtime/master actual contiene 189 filas NOM-035; `ROCA_MODULE_HEALTH_CANON_2026-09-29.csv` conserva 156. Las 33 filas posteriores desagregan controles 9.1–10.2 y reglas de Guías II/III.
 
-Decisión: PRESERVE runtime; no deduplicar destructivamente. El health ledger queda marcado stale hasta un rebuild con el mismo manifest/augmenters que produjo el master.
+Decisión: PRESERVE runtime/master; no deduplicar destructivamente. El health ledger previo quedó reconciliado el 30-sep-2026 a 189 filas y `NOM035_GATE.json`; el admission ledger también fue alineado al mismo quality gate.
 
 ## Regla de liberación
 
@@ -65,3 +65,16 @@ Content re-read from the shared recovery source confirmed:
 - patch source is present and readable.
 
 This recovery mirror preserves continuity only. It does not change `compliance_claim: NOT_AUTHORIZED`.
+
+
+## NOM-035 correction after direct master recount
+
+Direct recount of the canonical master produced 189 unique IDs, from `REQ-NOM035-001` through `REQ-NOM035-189`. The prior 188 statement was stale.
+
+`REQ-NOM035-189` is an internal ROCA privacy control for psychosocial data, explicitly marked as internal governance and not as a legal clause of NOM-035.
+
+On 30-sep-2026:
+- module-health was updated in place from 156 to 189 and now points to `NOM035_GATE.json`;
+- module-admission was updated in place from `NOM035_GATE_CANON_FINAL.json` to `NOM035_GATE.json`;
+- post-write read-back confirmed both changes;
+- master remained 4,469 rows and was not rewritten.
