@@ -1,0 +1,39 @@
+{
+  "schema": "ROCA_AUDIT_ENGINE_GATE_V1",
+  "date": "2026-09-30",
+  "engine_version": "1.1.0",
+  "departments": 10,
+  "criteria_counts": {
+    "area-curtiduria": 36,
+    "area-montaje": 50,
+    "area-retoque": 49,
+    "area-bases": 52,
+    "area-fmr": 38,
+    "area-recepcion": 20,
+    "area-carpinteria": 35,
+    "area-soldadura": 26,
+    "area-blanqueado": 25,
+    "area-soporte": 24
+  },
+  "checks": {
+    "all_area_conditions_exact": true,
+    "all_method_controls_exact": true,
+    "not_verified_not_implementation": true,
+    "nonconforming_creates_implementation": true,
+    "conforming_removes_implementation": true,
+    "index_loads_engine_before_audit": true,
+    "implementation_loads_engine": true,
+    "engine_runtime_test": true
+  },
+  "transition_test": {
+    "before": 0,
+    "not_verified": 0,
+    "nonconforming": 1,
+    "conforming": 0
+  },
+  "passed": 8,
+  "total": 8,
+  "errors": [],
+  "verdict": "PASS",
+  "rule": "Permanent area standards and method controls are canonical inputs. Audit state changes; standards do not. IMPLEMENTAR receives only real nonconformities or controlled open actions."
+}
