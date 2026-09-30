@@ -1,0 +1,25 @@
+{
+  "schema": "ROCA_CONTROLLED_SNAPSHOT_V1",
+  "date": "2026-09-30",
+  "folder_id": "19hKdVbGAsYPEtbaAJoym5Dpl6UlDjgVQ",
+  "parent_private_mirror_id": "1eRp7_DsrCnB9Y-WXtSLRh4PaNziDdg0B",
+  "permissions_verified": "OWNER_ONLY",
+  "canonical_master_rows": 4469,
+  "canonical_master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "artifacts": [
+    {"name":"ROCA_COMPLIANCE_MASTER_CANON_FINAL.csv","drive_id":"1iEV_aS5n8-t8qJxPAqyx0-pQ4nQInY3m","sha256":"0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c"},
+    {"name":"ROCA_MODULE_GATE_SYNC_CANON_2026-09-29.csv","drive_id":"1wy2ecyBMbMMuWv-sWhFcopLu0PbAmCqB","sha256":"847759ee6960dab093893a7d8a144ce5a93a451323bbd6e5b31d94d90109032a"},
+    {"name":"ROCA_MODULE_HEALTH_CANON_2026-09-29.csv","drive_id":"1XEMN1SpbTQXsXGhetLOBH9UVMu0bHPvf","sha256":"15571adc930be1af6d897da8032379b7904ba294d11f7d2e9178bc6c1423a768"},
+    {"name":"ROCA_MODULE_ADMISSION_LEDGER_CANON_2026-09-29.csv","drive_id":"1jLpUhLVbHjoQCewGViayM_-BlHWFb6Dd","sha256":"f0f0c23d280e7ab62f46c35efb80932b4780ac6d0d10b17f6edfe1d27dc80a44"},
+    {"name":"ROCA_COMPLIANCE_RELEASE.zip","drive_id":"1CisVrf23_PMWahhaojCIGiMYu9IrX0Wr","sha256":"01c2f734f36726cd0ab01ba26c1bc61b7a951b5fe4e01dcf642db02925c1ca41"},
+    {"name":"ROCA_COMPLIANCE_CONTROL_PLANE.xlsx","drive_id":"1YUIJzO1j3pJbBC88sJ546bq6rRuOU05A","sha256":"29811d286e9fa555053239602d611537f86b9d732ea313d1b99cf065fd485504"},
+    {"name":"SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json","drive_id":"1J525LUt2M-hH1qI_zQ9YEbkCIFwLUpEN","sha256":"717963909dda423825234933771c09bb618e14a16b83423a399ae08b76eb56b8"},
+    {"name":"SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json","drive_id":"1PmmPl9ahN9w7yEcET_LVskrh0vMOBOO3","sha256":"44d0822f80dde4b479ff4ee50186d8c11c1599fe888828f8b37c69898156e327"}
+  ],
+  "scope_verdict": "PASS_CONTROLLED_SNAPSHOT",
+  "open_blockers": [
+    "Shared ROCA root and COMPLIANCE_APP_DATA still expose anyone:writer and require administrative permission removal.",
+    "Current integrated cockpit visual QA remains blocked by browser policy."
+  ],
+  "compliance_claim": "NOT_AUTHORIZED"
+}
