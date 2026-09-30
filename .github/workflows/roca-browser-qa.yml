@@ -1,0 +1,69 @@
+name: ROCA Browser QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/roca-source-reader
+    paths:
+      - index.html
+      - styles.css
+      - app.js
+      - manual-control.js
+      - department-data.js
+      - audit-data.js
+      - audit-engine.js
+      - norms-data.js
+      - fast-track-data.js
+      - area-standard-data.js
+      - editorial-data.js
+      - manual-sections.js
+      - generated/roca-fast-track/**
+      - compliance-cockpit/**
+      - .github/roca-compliance-overlay/visual_qa.py
+      - .github/workflows/roca-browser-qa.yml
+  pull_request:
+    paths:
+      - index.html
+      - styles.css
+      - app.js
+      - manual-control.js
+      - department-data.js
+      - audit-data.js
+      - audit-engine.js
+      - norms-data.js
+      - fast-track-data.js
+      - area-standard-data.js
+      - editorial-data.js
+      - manual-sections.js
+      - generated/roca-fast-track/**
+      - compliance-cockpit/**
+      - .github/roca-compliance-overlay/visual_qa.py
+      - .github/workflows/roca-browser-qa.yml
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Selenium
+        run: python -m pip install --disable-pip-version-check selenium
+      - name: Start static server
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 > /tmp/roca-http.log 2>&1 &
+          echo $! > /tmp/roca-http.pid
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:8000/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/roca-http.log
+          exit 1
+      - name: Run browser QA
+        run: python .github/roca-compliance-overlay/visual_qa.py
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: roca-browser-qa
+          path: qa-browser/
+          if-no-files-found: error
