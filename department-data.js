@@ -107,7 +107,6 @@ window.ROCA_DEPARTMENTS["area-curtiduria"] = {
     {id:"CUR-AUD-08",group:"Proceso",label:"Agua a presión",target:"El piloto permanece separado de la rutina hasta liberación documentada.",input:"Confirmar que no se usa como rutina."}
   ],
   implementationHolds:[
-    {id:"CUR-HOLD-01",text:"Reconciliar 6.0 L vs 6.4 L de ácido fórmico antes de congelar una receta única de picle."},
     {id:"CUR-HOLD-02",text:"Identificar el instrumento o método real de pH y su estado/verificación aplicable."},
     {id:"CUR-HOLD-03",text:"Confirmar productos y HDS exactos."},
     {id:"CUR-HOLD-04",text:"Cerrar balance de baños/residuos y destino."},
