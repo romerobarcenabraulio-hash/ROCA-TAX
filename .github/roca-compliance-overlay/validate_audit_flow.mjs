@@ -134,6 +134,11 @@ const audit=read("audit-data.js");
 if(!audit.includes("NO VERIFICADO")||!audit.includes("NONCONFORMING")) errors.push("audit status contract missing");
 if(!audit.includes("auditBackupExport")||!audit.includes("auditBackupImport")) errors.push("audit backup UI controls missing");
 
+const legacyAudit=read("generated/roca-fast-track/audit.html");
+if(!legacyAudit.includes("index.html?mode=audit#audit-inicio")) errors.push("legacy audit route does not redirect to central audit");
+if(/REC-FT-01|MON-FT-01/.test(legacyAudit)) errors.push("legacy audit route still contains parallel audit criteria");
+if(!app.includes("new URLSearchParams(location.search).get('mode')")) errors.push("central app lacks direct mode routing");
+
 const impl=read("generated/roca-fast-track/implementation.html");
 for(const marker of [
   "NO VERIFICADO</b> pertenece a AUDITORÍA",
@@ -142,6 +147,9 @@ for(const marker of [
   "dynamicImplementationItems",
   "operational_calculator_release=BLOCKED"
 ]) if(!impl.includes(marker)) errors.push(`implementation marker missing: ${marker}`);
+
+if(impl.includes('href="audit.html"')) errors.push("implementation still links to legacy audit");
+if(!impl.includes("index.html?mode=audit#audit-inicio")) errors.push("implementation central audit link missing");
 
 if(errors.length){
   errors.forEach(e=>console.error("ERROR:",e));
