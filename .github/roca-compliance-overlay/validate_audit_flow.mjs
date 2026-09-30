@@ -126,6 +126,10 @@ if(!probeId){
   memory.clear();
 }
 
+const app=read("app.js");
+if(!app.includes("closureDetailValid")||!app.includes("terminal&&evidenceValid"))
+  errors.push("final print gate does not validate closure detail / legacy unsupported closures");
+
 const audit=read("audit-data.js");
 if(!audit.includes("NO VERIFICADO")||!audit.includes("NONCONFORMING")) errors.push("audit status contract missing");
 if(!audit.includes("auditBackupExport")||!audit.includes("auditBackupImport")) errors.push("audit backup UI controls missing");
