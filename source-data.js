@@ -352,18 +352,18 @@ window.ROCA_SOURCE_LEDGER = [
     id: "LEDGER-CUR-PICLE",
     sectionIds: ["area-curtiduria"],
     subject: "Picle: cantidad de ácido fórmico",
-    action: "HOLD_PENDING_EVIDENCE",
+    action: "PRESERVE",
     canonicalHome: "AREA-CUR / metodología técnica controlada",
-    destinationState: "CURTIDURIA_AREA_BOOK_V2.md conserva explícitamente conflicto 6.0 L vs 6.4 L y bloquea normalización por redondeo.",
-    summary: "v24.7, v24.8, PreEntrevistas y 31AGO repiten 473 L agua + 45 kg sal + 6.4 L ácido fórmico + 300 mL ácido sulfúrico. Aun así, existe una fuente histórica de 6.0 L registrada por V2 que no ha sido reconciliada; no cerrar el conflicto hasta recuperar esa fuente.",
+    destinationState: "RESOLVED IN BRANCH: CURTIDURIA_AREA_BOOK_V2.md fija 6.4 L con respaldo de entrevista literal + cadena documental.",
+    summary: "Ricardo declaró literalmente el 18-ago-2026: 473 L de agua, 45 kg de sal, 6 litros con 400 mililitros de ácido fórmico y 300 mL de ácido sulfúrico. 6 L + 400 mL = 6.4 L. v24.7, v24.8, PreEntrevistas, 31AGO y 391P conservan 6.4 L. La referencia 6.0 L era una compresión incorrecta del dato, no una receta material alternativa.",
     sources: [
       { docId:"precampo-v24-7", locator:"Curtiduría > Referencias > Picle · formulación", fact:"473 L agua + 45 kg sal + 6.4 L ácido fórmico + 300 mL ácido sulfúrico" },
       { docId:"precampo-v24-8", locator:"Curtiduría > Referencias > Picle · formulación", fact:"Misma formulación 6.4 L" },
-      { docId:"pre-entrevistas-26ago", locator:"Curtiduría > Referencias > Picle · formulación", fact:"Misma formulación 6.4 L" },
+      { docId:"pre-entrevistas-26ago", locator:"Entrevista de proceso > Curtiduría > Ricardo · 18 agosto 2026", fact:"473 L agua + 45 kg sal + 6 L 400 mL ácido fórmico + 300 mL ácido sulfúrico (= 6.4 L)" },
       { docId:"canonico-pendientes-31ago", locator:"CUR / Metodología > referencia de picle", fact:"Misma formulación 6.4 L" },
       { docId:"master-391", locator:"CUR / Metodología", page:63, fact:"La fuente 391P conserva la receta con 6.4 L" }
     ],
-    proof: "Cuatro versiones históricas coinciden en 6.4 L; la fuente material que soporta 6.0 L sigue pendiente de recuperación/reconciliación."
+    proof: "La entrevista literal de Ricardo expresa 6 L + 400 mL y cinco cortes documentales conservan 6.4 L; no se recuperó ninguna fuente material independiente que establezca 6.0 L como receta."
   },
   {
     id: "LEDGER-CUR-PH",
