@@ -6,6 +6,7 @@
     "styles.css",
     "data.js",
     "state_guards.js",
+    "form-master-data.js",
     "app.js"
   ],
   "shadow_runtime": [
@@ -14,5 +15,6 @@
   "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
   "requirement_count": 4469,
   "runtime_requirements_sha256": "159be20ec9991f49350a174968f1264505c0e31c81aa65284834a03825e2dc40",
-  "note": "Shadow is rebuilt by build_cockpit.py from the same canonical master on every cockpit build."
+  "note": "Shadow is rebuilt by build_cockpit.py from the same canonical master on every cockpit build.",
+  "overlay": "FORM_MASTER_V1"
 }
