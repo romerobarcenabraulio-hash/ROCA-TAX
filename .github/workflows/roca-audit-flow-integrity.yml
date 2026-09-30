@@ -12,6 +12,7 @@ on:
       - audit-data.js
       - generated/roca-fast-track/implementation.html
       - ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv
+      - ops/control/ROCA_HOLD_ROUTING_V2.csv
       - .github/roca-compliance-overlay/validate_audit_flow.mjs
       - .github/workflows/roca-audit-flow-integrity.yml
   pull_request:
@@ -22,6 +23,7 @@ on:
       - audit-data.js
       - generated/roca-fast-track/implementation.html
       - ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv
+      - ops/control/ROCA_HOLD_ROUTING_V2.csv
       - .github/roca-compliance-overlay/validate_audit_flow.mjs
       - .github/workflows/roca-audit-flow-integrity.yml
 
