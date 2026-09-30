@@ -368,3 +368,23 @@ A parser-based comparison against `ROCA_CANONICAL_MODULE_LOCK.json` now returns:
 The canonical master remains 4,469 rows with SHA `0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c`.
 
 Verdict for derived-ledger parity: **PASS - SOURCE INTEGRITY, with reconstructed provenance explicitly labeled for the two SLP modules.**
+
+
+## 2026-09-30 reconstructed SLP source gates
+
+The original source-gate artifacts for `SLP_ENV_IMPACT` and `SLP_MUN_FUNCTION` were not recovered. Instead of inventing or backfilling them silently, new gates were reconstructed from current official sources and stored in GitHub:
+
+- `compliance-cockpit/source-gates/SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+- `compliance-cockpit/source-gates/SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+
+Both gates are explicitly marked:
+- schema `ROCA_RECONSTRUCTED_SOURCE_GATE_V1`;
+- `original_source_gate_recovered: false`;
+- `compliance_claim: NOT_AUTHORIZED`;
+- applicability remains fact-dependent.
+
+After rollback backup:
+- module-health gained SLP_ENV_IMPACT (56) and SLP_MUN_FUNCTION (25) with canonical path/count/SHA and PASS quality/source status;
+- module-admission gained both rows as `ADMITTED_RECONSTRUCTED`, preserving the distinction from historically admitted modules.
+
+Post-write read-back matched gate-sync paths/counts/hashes. This closes the derived-ledger omission without falsely claiming recovery of the historical gate artifacts.
