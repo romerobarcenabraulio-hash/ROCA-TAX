@@ -366,6 +366,22 @@ window.ROCA_SOURCE_LEDGER = [
     proof: "La entrevista literal de Ricardo expresa 6 L + 400 mL y cinco cortes documentales conservan 6.4 L; no se recuperó ninguna fuente material independiente que establezca 6.0 L como receta."
   },
   {
+    id: "LEDGER-CUR-ALUM-TAN",
+    sectionIds: ["area-curtiduria"],
+    subject: "ALUM-Tan: fuente controlada y fórmulas",
+    action: "HOLD_PENDING_EVIDENCE",
+    canonicalHome: "AREA-CUR / metodología técnica controlada",
+    destinationState: "RECONSTRUCTED_NOT_ORIGINAL: fórmulas y ejemplo preservados en ALUM_TAN_SOURCE_RECONSTRUCTION_2026-09-30.md; calculador operativo bloqueado.",
+    summary: "El Excel ALUM-Tan original no fue recuperado. v24.7, v24.8, PreEntrevistas y 31AGO/391P preservan la misma lógica de cálculo y el ejemplo de 16.08 kg; la reconstrucción verifica consistencia matemática pero no sustituye el archivo controlado.",
+    sources: [
+      { docId:"pre-entrevistas-26ago", locator:"Curtiduría > Pesado y fórmula de repiclado", fact:"Fórmulas de peso, agua, sal, alumbre, bicarbonato, pH y ejemplo 16.08 kg preservados" },
+      { docId:"precampo-v24-7", locator:"Curtiduría > ALUM-Tan", fact:"Misma lógica y ejemplo preservados" },
+      { docId:"canonico-pendientes-31ago", locator:"Curtiduría > ALUM-Tan", fact:"Misma lógica y ejemplo preservados" },
+      { docId:"repo-reconstruction", locator:"ops/areas/ALUM_TAN_SOURCE_RECONSTRUCTION_2026-09-30.md", fact:"Reconstrucción explícita; original_excel_recovered=false; operational_calculator_release=BLOCKED" }
+    ],
+    proof: "El ejemplo 16.08 kg reproduce ~67.08 L agua, 4.02 kg sal y ~0.6430 kg alumbre, coherente con 67.10/4.02/0.6432 por redondeo. La segunda adición de alumbre no se infiere sin hoja original o validación técnica."
+  },
+  {
     id: "LEDGER-CUR-PH",
     sectionIds: ["area-curtiduria"],
     subject: "Medición de pH y estado del instrumento",
