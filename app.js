@@ -410,6 +410,10 @@
     if(id) go(id);
   });
 
-  setMode('manual');
+  const requestedMode=new URLSearchParams(location.search).get('mode');
+  const initialMode=['manual','audit','norms'].includes(requestedMode)?requestedMode:'manual';
+  const requestedSection=location.hash.slice(1);
+  setMode(initialMode);
+  if(requestedSection&&activeSections.some(s=>s.id===requestedSection)) go(requestedSection);
   refreshPrintGate();
 })();
