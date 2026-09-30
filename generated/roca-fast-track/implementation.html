@@ -332,7 +332,9 @@ async function renderDepartmentHolds(){
   if(!host)return;
   const depts=window.ROCA_DEPARTMENTS||{};
   let stateRows=[];
+  let routingRows=[];
   let stateError=false;
+  let routingError=false;
   try{
     const res=await fetch("../../ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv",{cache:"no-store"});
     if(!res.ok)throw new Error("HTTP "+res.status);
@@ -342,7 +344,23 @@ async function renderDepartmentHolds(){
       stateRows=rows.filter(r=>r.some(v=>v.trim()!=="")).map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]||""])));
     }
   }catch(e){stateError=true}
+  try{
+    const res=await fetch("../../ops/control/ROCA_HOLD_ROUTING_V2.csv",{cache:"no-store"});
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    const rows=parseCsv(await res.text());
+    if(rows.length){
+      const head=rows.shift().map(x=>x.trim());
+      routingRows=rows.filter(r=>r.some(v=>v.trim()!=="")).map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]||""])));
+    }
+  }catch(e){routingError=true}
   const stateById=new Map(stateRows.map(r=>[r.hold_id,r]));
+  const routingById=new Map(routingRows.map(r=>[r.hold_id,r]));
+  const routingLabel={
+    DEFINE_STANDARD:"DEFINIR ESTÁNDAR",
+    AUDIT_CURRENT_STATE:"AUDITAR ESTADO ACTUAL",
+    SYSTEM_RECORD:"SISTEMA / REGISTRO",
+    IMPLEMENT_DECISION:"DECISIÓN DE IMPLEMENTACIÓN"
+  };
   const blocks=Object.values(depts).map(d=>{
     const open=(Array.isArray(d.implementationHolds)?d.implementationHolds:[]).filter(h=>{
       const s=String(stateById.get(h.id)?.status||"OPEN").toUpperCase();
@@ -355,8 +373,9 @@ async function renderDepartmentHolds(){
     return;
   }
   host.innerHTML=(stateError?'<div class="note"><b>Advertencia:</b> no se pudo leer el ledger de HOLD; por seguridad se muestran todos como abiertos.</div>':'')+
+    (routingError?'<div class="note"><b>Advertencia:</b> no se pudo leer el routing canónico de HOLD; se usa clasificación de respaldo.</div>':'')+
     blocks.map(x=>'<div class="tool"><h3>'+esc(x.dept.code+' · '+x.dept.title)+'</h3><ul>'+
-      x.open.map(h=>{const type=holdClosureType(h.text);const proof=holdKnownProof(h.id);const s=stateById.get(h.id)||{};return '<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'<br><small><b>'+esc(type)+'</b> · '+esc(holdCloseRule(type))+(proof?'<br><b>EVIDENCIA ACTUAL</b> · '+esc(proof):'')+(s.evidence_id?'<br><b>EVIDENCIA DE CIERRE</b> · '+esc(s.evidence_id):'')+'</small></li>'}).join("")+
+      x.open.map(h=>{const route=routingById.get(h.id);const fallbackType=holdClosureType(h.text);const type=route?.hold_type||fallbackType;const label=routingLabel[type]||type;const routingText=route?(route.canonical_home+' · '+route.routing_reason):holdCloseRule(fallbackType);const proof=holdKnownProof(h.id);const s=stateById.get(h.id)||{};return '<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'<br><small><b>'+esc(label)+'</b> · '+esc(routingText)+(route?'<br><b>BLOQUEA DEFINICIÓN</b> · '+esc(route.blocks_standard_definition)+' · <b>BLOQUEA AUDITORÍA ACTUAL</b> · '+esc(route.blocks_current_audit):'')+(proof?'<br><b>EVIDENCIA ACTUAL</b> · '+esc(proof):'')+(s.evidence_id?'<br><b>EVIDENCIA DE CIERRE</b> · '+esc(s.evidence_id):'')+'</small></li>'}).join("")+
       '</ul></div>').join("");
 }
 renderDepartmentHolds();
