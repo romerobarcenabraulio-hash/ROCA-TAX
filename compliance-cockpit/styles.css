@@ -12,6 +12,7 @@
  .panel,.lane,.metrics,.areaGrid,.calcgrid,.storagegrid,.pagehead{min-width:0;max-width:100%}
  .lane>*{min-width:0;overflow-wrap:anywhere}
  .tablewrap{width:100%;min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+ .tablewrap table{min-width:760px}
  th,td{overflow-wrap:anywhere;word-break:normal}
  pre,code{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere}
 }
