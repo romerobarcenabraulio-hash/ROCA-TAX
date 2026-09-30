@@ -110,3 +110,12 @@ After Drive write/read-back:
 - `ADMIN_FORM` remains outside module-admission as an internal control module.
 
 The historical-provenance gap is now visible and controlled rather than silently missing.
+
+
+### Mitigación ejecutada 30-sep-2026
+
+Se construyeron gates nuevos y explícitamente marcados `ROCA_RECONSTRUCTED_SOURCE_GATE_V1` para `SLP_ENV_IMPACT` y `SLP_MUN_FUNCTION`, usando el module lock/master congelado y fuentes oficiales vigentes verificadas el 30-sep-2026.
+
+Los gates reconstruidos pasan source integrity y ya están vinculados en module-health/module-admission. Los originales siguen sin recuperarse y se conserva esa pérdida como nota de procedencia; no se falsifica recuperación histórica.
+
+Estado operativo de este blocker: **MITIGATED_BY_RECONSTRUCTION**.
