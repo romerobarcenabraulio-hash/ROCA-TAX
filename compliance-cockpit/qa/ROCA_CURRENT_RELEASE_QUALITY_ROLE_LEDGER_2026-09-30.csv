@@ -1,0 +1,11 @@
+item_id,domain,risk_class,status,owner_check,independent_check,source_integrity,determinism,cross_system,artifact_check,blocker_note
+REL-MASTER-CANON,compliance-master,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,
+REL-DERIVED-LEDGERS,compliance-derived-ledgers,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,
+REL-SLP-SOURCE-GATES,regulatory-source-integrity,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,
+REL-CONTROLLED-SNAPSHOT,release-integrity,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,
+REL-ANTI-DRIFT-GATE,release-integrity,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,
+CUR-FORMIC-6_4,process-chemistry,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,
+CUR-ALUM-TAN-CALCULATOR,process-chemistry,R1_CRITICAL,JUSTIFIED_NA,Y,Y,Y,Y,Y,Y,"Operational calculator intentionally excluded from current release; original Excel or documented technical-owner validation remains required before release of calculator."
+SRC-V22_1-EDITABLE,source-integrity,R2_HIGH,JUSTIFIED_NA,Y,Y,Y,Y,Y,Y,"Historical editable source not recovered; no active exclusive dependency identified; reopens if an exclusive dependency appears."
+REL-SHARED-DRIVE-PERMISSION,release-integrity,R1_CRITICAL,NOT_VERIFIED,Y,Y,Y,Y,Y,N,"Shared ROCA root and COMPLIANCE_APP_DATA still expose anyone:writer; administrative revocation and read-back are required."
+REL-VISUAL-BROWSER-QA,artifact-qa,R2_HIGH,NOT_VERIFIED,Y,Y,Y,Y,Y,N,"Current HEAD has not passed preserved browser/visual QA in an authorized environment."
