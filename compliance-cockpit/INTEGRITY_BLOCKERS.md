@@ -119,3 +119,24 @@ Se construyeron gates nuevos y explícitamente marcados `ROCA_RECONSTRUCTED_SOUR
 Los gates reconstruidos pasan source integrity y ya están vinculados en module-health/module-admission. Los originales siguen sin recuperarse y se conserva esa pérdida como nota de procedencia; no se falsifica recuperación histórica.
 
 Estado operativo de este blocker: **MITIGATED_BY_RECONSTRUCTION**.
+
+
+## R1 mitigation — shared Drive demoted from authoritative source
+
+Re-read on 30-sep-2026 confirms both controlled locations still expose `anyone:writer`:
+
+- ROCA Audit root `1fG6oJcx6RZeziYTiBwZyiAXPdBvcUgar`;
+- `COMPLIANCE_APP_DATA` `1ylb-9wJTJAqD6VKCumjPZ_CUfSYYKT5e`.
+
+Until that permission is removed and independently re-read:
+
+1. Shared Drive is **not an authoritative promotion source** for runtime bytes.
+2. GitHub branch/release content may ingest Drive artifacts only when the exact expected SHA-256 is already locked and verification passes before commit.
+3. The owner-only private recovery mirror is the controlled continuity copy.
+4. A Drive file changing without a corresponding approved hash/manifest change is treated as tampering/version drift, not as a new canon.
+5. No release may claim Drive integrity closure while `anyone:writer` remains.
+6. Removing the public-writer permission requires an external Drive administration action because the current connector exposes permission reads/additions but no revocation action.
+
+Operational status: **R1 MITIGATED, NOT CLOSED**.
+
+This mitigation changes source authority, not legal applicability or compliance status.
