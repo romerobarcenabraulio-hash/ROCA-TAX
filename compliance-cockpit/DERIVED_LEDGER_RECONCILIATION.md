@@ -248,3 +248,25 @@ Post-write full diff:
 The two SLP admission rows are labeled `ADMITTED_RECONSTRUCTED`, not `ADMITTED`, preserving the fact that historical source-gate artifacts were lost.
 
 Verdict for derived ledgers: **PASS - SOURCE INTEGRITY WITH RECONSTRUCTED SLP GATES**.
+
+
+## 2026-09-30 reconstructed SLP source gates
+
+The original source-gate artifacts for `SLP_ENV_IMPACT` and `SLP_MUN_FUNCTION` were not recovered. Instead, two new source-integrity gates were reconstructed from current official sources and stored in GitHub:
+
+- `compliance-cockpit/source-gates/SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+- `compliance-cockpit/source-gates/SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+
+Both gates explicitly state:
+- original source gate not recovered;
+- source-integrity reconstructed from current official sources;
+- applicability/jurisdiction remains fact-dependent;
+- no compliance or permit authorization claim is created.
+
+Post-write results:
+- module-health now matches gate-sync across all modules: 0 diffs.
+- module-admission matches gate-sync for all legal/source modules, with `ADMIN_FORM` intentionally excluded because it is an internal control/master-data module.
+- SLP admissions are labeled `ADMITTED_RECONSTRUCTED`, not ordinary historical admission.
+- temporary transfer Docs were cleaned up after write/read-back; rollback copies remain in the private recovery mirror.
+
+Verdict: **PASS - SOURCE INTEGRITY for reconstructed derived ledgers, with explicit historical-provenance limitation on the two SLP source gates.**
