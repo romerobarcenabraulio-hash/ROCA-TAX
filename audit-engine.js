@@ -100,6 +100,61 @@
     return state;
   }
 
+  const ALLOWED_STATUSES=new Set(['NOT_VERIFIED','CONFORMING','NONCONFORMING','NA_JUSTIFIED']);
+
+  function closureDetailValid(status,note){
+    const s=String(status||'NOT_VERIFIED').toUpperCase();
+    const detail=String(note||'').trim();
+    if(!ALLOWED_STATUSES.has(s)) return false;
+    if(s==='NOT_VERIFIED') return true;
+    return Boolean(detail);
+  }
+
+  function exportState(){
+    const areas={};
+    departments().forEach(([areaId])=>{
+      const known=new Set(criteriaForArea(areaId).map(r=>r.id));
+      const raw=loadState(areaId);
+      const clean={};
+      Object.entries(raw||{}).forEach(([id,v])=>{
+        if(!known.has(id)) return;
+        const status=String(v&&v.status||'NOT_VERIFIED').toUpperCase();
+        const note=String(v&&v.note||'');
+        if(!closureDetailValid(status,note)) return;
+        clean[id]={status,note,updatedAt:String(v&&v.updatedAt||'')};
+      });
+      areas[areaId]=clean;
+    });
+    return {
+      schema:'ROCA_AUDIT_STATE_V1',
+      engineVersion:'1.2.0',
+      exportedAt:new Date().toISOString(),
+      areas
+    };
+  }
+
+  function importState(bundle){
+    if(!bundle||bundle.schema!=='ROCA_AUDIT_STATE_V1'||!bundle.areas||typeof bundle.areas!=='object'){
+      throw new Error('Respaldo de auditoría no reconocido.');
+    }
+    let imported=0,ignored=0;
+    departments().forEach(([areaId])=>{
+      if(!Object.prototype.hasOwnProperty.call(bundle.areas,areaId)) return;
+      const known=new Set(criteriaForArea(areaId).map(r=>r.id));
+      const source=bundle.areas[areaId]||{};
+      const clean={};
+      Object.entries(source).forEach(([id,v])=>{
+        const status=String(v&&v.status||'NOT_VERIFIED').toUpperCase();
+        const note=String(v&&v.note||'');
+        if(!known.has(id)||!closureDetailValid(status,note)){ignored++;return;}
+        clean[id]={status,note,updatedAt:String(v&&v.updatedAt||new Date().toISOString())};
+        imported++;
+      });
+      localStorage.setItem(stateKey(areaId),JSON.stringify(clean));
+    });
+    return {imported,ignored};
+  }
+
   function dynamicImplementationItems(){
     const items=[];
     departments().forEach(([areaId,dept])=>{
