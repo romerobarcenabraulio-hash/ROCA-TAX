@@ -1,0 +1,21 @@
+{
+  "schema": "ROCA_AUDIT_BINDING_GATE_V1",
+  "checked_on": "2026-09-30",
+  "scope": "department area standard -> audit criterion evidence binding",
+  "departments": 10,
+  "area_audit_bindings": 85,
+  "binding_key": "areaAudit.sourceId -> department.area.id",
+  "checks": {
+    "department_data_js_syntax": "PASS",
+    "audit_engine_js_syntax": "PASS",
+    "app_js_syntax": "PASS",
+    "missing_source_ids": 0,
+    "duplicate_source_ids": 0,
+    "missing_area_bindings": 0,
+    "orphan_source_ids": 0,
+    "positional_pairing_removed_from_audit_engine": true,
+    "positional_pairing_removed_from_manual_renderer": true
+  },
+  "verdict": "PASS",
+  "rule": "Audit metadata/evidence must bind to the permanent area criterion by explicit sourceId, never by array position."
+}
