@@ -1,5 +1,7 @@
 # ROCA Compliance — derived-ledger reconciliation
 
+> **CURRENT AUTHORITATIVE STATUS — 30-sep-2026:** derived-ledger reconciliation is PASS under `ROCA_DERIVED_LEDGER_GATE_2026-09-30.json`: module lock 43, gate-sync 43, health 43, admission 42/42 expected, issues 0. `ADMIN_FORM` is intentionally excluded from legal/source admission. The two SLP modules use explicitly reconstructed source-gates; original historical gate bytes were not recovered. Earlier “remaining omissions / HOLD” sections below are retained only as reconciliation history and are superseded by this status.
+
 Date: 2026-09-30
 
 ## Frozen master
