@@ -69,7 +69,7 @@ for(const vp of contract.viewports){
       const body=(await page.locator("body").innerText()).trim();
       if(body.length<40) fail(prefix+":render","body is blank/too short",{chars:body.length});
       else pass(prefix+":render","body rendered",{chars:body.length});
-      const dims=await page.evaluate(()=>({sw:document.documentElement.scrollWidth,cw:document.documentElement.clientWidth}));
+      const dims=await page.evaluate(()=>{const de=document.documentElement,cw=de.clientWidth;const offenders=[...document.querySelectorAll("body *")].map(el=>{const r=el.getBoundingClientRect();return {tag:el.tagName,id:el.id||"",cls:String(el.className||"").slice(0,80),left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width),scrollWidth:el.scrollWidth,clientWidth:el.clientWidth}}).filter(x=>x.right>cw+4||x.left<-4||x.scrollWidth>x.clientWidth+4).slice(0,12);return {sw:de.scrollWidth,cw,offenders}});
       if(dims.sw>dims.cw+4) fail(prefix+":overflow","horizontal overflow detected",dims);
       else pass(prefix+":overflow","no material horizontal overflow",dims);
 
