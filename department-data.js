@@ -689,7 +689,6 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
     {id:"BAS-HOLD-03",text:"Levantar inventario real de herramienta/equipo."},
     {id:"BAS-HOLD-04",text:"Definir capacidad/criterio estructural de planchas, bancos, ruedas, tornillería y fijaciones por proyecto real."},
     {id:"BAS-HOLD-05",text:"Identificar producto/HDS/receta real de poliuretano para Bases."},
-    {id:"BAS-HOLD-06",text:"Resolver conflicto 50/50 vs 30/70 sin extrapolar Formas; 30/70 no queda canónico."},
     {id:"BAS-HOLD-07",text:"Verificar ventilación/extracción y control de polvo."},
     {id:"BAS-HOLD-08",text:"Observar método real de manipulación de piezas pesadas."},
     {id:"BAS-HOLD-09",text:"Cerrar criterios/estado BIWO exactos."},
