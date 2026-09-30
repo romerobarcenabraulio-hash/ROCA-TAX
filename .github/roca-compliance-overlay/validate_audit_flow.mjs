@@ -44,11 +44,24 @@ for(const [areaId,d] of Object.entries(depts)){
   }
 }
 
+function parseCsvLine(line){
+  const out=[];let cur="";let quoted=false;
+  for(let i=0;i<line.length;i++){
+    const ch=line[i];
+    if(ch==='"'){
+      if(quoted&&line[i+1]==='"'){cur+='"';i++;}
+      else quoted=!quoted;
+    }else if(ch===","&&!quoted){out.push(cur);cur="";}
+    else cur+=ch;
+  }
+  out.push(cur);
+  return out;
+}
 function parseCsv(text){
   const lines=text.trim().split(/\r?\n/);
-  const head=lines.shift().split(",");
+  const head=parseCsvLine(lines.shift());
   return lines.filter(Boolean).map(line=>{
-    const vals=line.split(",");
+    const vals=parseCsvLine(line);
     return Object.fromEntries(head.map((h,i)=>[h,vals[i]||""]));
   });
 }
