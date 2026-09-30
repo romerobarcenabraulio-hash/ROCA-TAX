@@ -1,0 +1,33 @@
+{
+  "schema": "ROCA_ALUM_TAN_RECONSTRUCTION_GATE_V1",
+  "checked_date": "2026-09-30",
+  "status": "RECONSTRUCTED_NOT_ORIGINAL",
+  "original_excel_recovered": false,
+  "preserved_formula_sources": [
+    "v24.7",
+    "v24.8",
+    "PreEntrevistas 26AGO2026",
+    "31AGO/391P"
+  ],
+  "formulas_verified_for_internal_consistency": true,
+  "example_input_kg": 16.08,
+  "calculated": {
+    "skin_lb": 35.44032,
+    "water_gal": 17.72016,
+    "water_l": 67.0780708656,
+    "salt_kg": 4.02,
+    "alum_kg": 0.6430249478363422,
+    "bicarbonate_kg": 0.4501174634854395,
+    "bicarbonate_each_fifth_kg": 0.0900234926970879
+  },
+  "preserved_example": {
+    "water_l_approx": 67.1,
+    "salt_kg": 4.02,
+    "alum_kg_approx": 0.6432
+  },
+  "second_alum_addition_formula_recovered": false,
+  "rule": "Do not infer the second alum addition by doubling the first; use original controlled sheet or documented technical-owner validation.",
+  "operational_calculator_release": "BLOCKED",
+  "compliance_claim": "NOT_AUTHORIZED",
+  "verdict": "PASS_RECONSTRUCTION__BLOCKED_OPERATIONAL_RELEASE"
+}
