@@ -417,3 +417,26 @@ The original historical SLP source-gate files remain unrecovered; the new gates 
 Verdict for derived-ledger structural/source-integrity reconciliation: **PASS - SOURCE INTEGRITY RECONSTRUCTED**.
 
 This does not authorize filings, establish applicability, or demonstrate physical/legal compliance.
+
+
+## Final derived-ledger parity after reconstructed SLP source gates
+
+The two previously missing SLP source gates were reconstructed from current official sources and committed as explicitly reconstructed artifacts:
+
+- `compliance-cockpit/source-gates/SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+- `compliance-cockpit/source-gates/SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+
+They do **not** claim to be the lost historical files. Each records `original_source_gate_recovered: false`, preserves the locked ledger SHA/count, cites current official sources, and leaves applicability fact-dependent.
+
+Post-write parity check:
+
+- module-health: **43/43** rows aligned to gate-sync for ledger path, row count, quality gate and proof SHA.
+- module-admission: **42/42 source-backed/legal modules** aligned to gate-sync after excluding `ADMIN_FORM` by design.
+- `ADMIN_FORM`: present in master/gate-sync/health with 5 rows and current SHA, intentionally absent from legal module-admission because it is internal master-data control.
+- SLP modules are represented as `ADMITTED_RECONSTRUCTED`, not as historically recovered admissions.
+- temporary transfer Docs were removed after successful write/read-back.
+- canonical master remains 4,469 rows / SHA `0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c`.
+
+Verdict for derived ledgers: **PASS - SOURCE INTEGRITY WITH RECONSTRUCTED SLP SOURCE GATES**.
+
+This does not equal legal/physical compliance and does not change `compliance_claim: NOT_AUTHORIZED`.
