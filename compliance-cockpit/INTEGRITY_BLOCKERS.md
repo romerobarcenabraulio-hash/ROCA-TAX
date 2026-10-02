@@ -140,3 +140,22 @@ Until that permission is removed and independently re-read:
 Operational status: **R1 MITIGATED, NOT CLOSED**.
 
 This mitigation changes source authority, not legal applicability or compliance status.
+
+
+## SLP source-gates reconstruidos
+
+Los artefactos originales de source-gate de `SLP_ENV_IMPACT` y `SLP_MUN_FUNCTION` no fueron recuperados. Para no inventar recuperación histórica ni dejar hueco silencioso, se reconstruyeron gates nuevos y explícitamente identificados como reconstruidos a partir de fuentes oficiales actuales.
+
+- `SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+  - ledger: 56 filas
+  - SHA: `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`
+  - admission status: `ADMITTED_RECONSTRUCTED`
+  - applicability remains fact-dependent.
+
+- `SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+  - ledger: 25 filas
+  - SHA: `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`
+  - admission status: `ADMITTED_RECONSTRUCTED`
+  - exact municipal route remains site/activity/surface dependent.
+
+Read-back de Drive confirmó que ambos módulos ya existen en module-health y module-admission con los gates reconstruidos. Esto cierra el blocker de integridad derivada, pero no convierte la reconstrucción en prueba de cumplimiento legal/físico ni afirma que los source-gates históricos fueron recuperados.
