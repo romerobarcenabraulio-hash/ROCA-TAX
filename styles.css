@@ -304,3 +304,23 @@ footer{display:none}
 
 .audit-validation{min-height:1.2em;margin-top:6px;font-size:11px;font-weight:700}
 .audit-invalid .audit-status,.audit-invalid .audit-note{outline:2px solid currentColor;outline-offset:1px}
+
+
+/* Audit normative context: fixed reading aid while evaluating an area. */
+.audit-workspace{display:grid;grid-template-columns:270px minmax(0,1fr);gap:18px;align-items:start}
+.audit-norm-context{position:sticky;top:86px;max-height:calc(100vh - 110px);overflow:auto;background:#eee8dd;border:1px solid #c8bdaf;padding:12px;font-family:Arial,Helvetica,sans-serif}
+.audit-context-head{font:700 8px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.12em;color:var(--bronze);margin-bottom:8px}
+.audit-context-empty{font:10px/1.45 Arial,Helvetica,sans-serif;color:#5d554d}
+.audit-context-empty strong{display:block;font-size:8px;letter-spacing:.12em;color:var(--bronze);margin-bottom:5px}
+.audit-context-card{background:#fffdf8;border:1px solid #d2c7b8;padding:10px;margin-bottom:9px}
+.audit-context-card h3{font:700 11px/1.25 Arial,Helvetica,sans-serif;margin:3px 0 8px}
+.audit-context-card p{font:9px/1.42 Arial,Helvetica,sans-serif;margin:5px 0}
+.audit-context-req{font:700 8px/1 Arial,Helvetica,sans-serif;letter-spacing:.08em;color:var(--bronze)}
+.audit-context-citation{margin-top:8px;padding:7px;border-left:3px solid #9b8e7e;background:#f4efe7;font:8px/1.4 Arial,Helvetica,sans-serif}
+.audit-context-citation.verified{border-left-color:#556b2f}
+.audit-context-citation.pending{border-left-color:#9a6a2f}
+.audit-context-source{display:inline-block;margin-top:8px;padding:6px 7px;background:var(--navy);color:#fff;text-decoration:none;font:700 7px/1 Arial,Helvetica,sans-serif;letter-spacing:.06em}
+.audit-norm-open{display:block;margin-top:6px;appearance:none;border:1px solid #9f8d78;background:#fffaf2;color:#4e443b;padding:5px 6px;font:700 7px/1 Arial,Helvetica,sans-serif;letter-spacing:.05em;cursor:pointer}
+.audit-norm-open.active{background:var(--navy);border-color:var(--navy);color:#fff}
+@media(max-width:1100px){.audit-workspace{grid-template-columns:1fr}.audit-norm-context{position:static;max-height:none;order:-1}}
+@media print{.audit-norm-context,.audit-norm-open{display:none!important}}
