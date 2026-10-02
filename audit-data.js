@@ -54,7 +54,10 @@ window.ROCA_AUDIT_SECTIONS = [
     body:`
       <div class="audit-area-shell" data-audit-area="${areaId}" data-audit-code="${area.code}">
         <div class="callout"><strong>Criterio fijo:</strong> se deriva del estándar permanente del área y de la base normativa aplicable. El estado auditado cambia; el criterio no se borra por cerrar una acción.</div>
-        <div class="audit-table-host">Cargando criterios...</div>
+        <div class="audit-workspace">
+          <aside class="audit-norm-context" id="auditNormContext"><div class="audit-context-empty"><strong>CONTEXTO NORMATIVO</strong><p>Selecciona “VER FUNDAMENTO” en un criterio físico para mantener visible la NOM, el dato requerido, el cálculo y la cita mientras evalúas.</p></div></aside>
+          <div class="audit-table-host">Cargando criterios...</div>
+        </div>
       </div>
     `
   }))
@@ -205,9 +208,43 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       const implementationText=action
         ? '<strong>ABIERTA · REGISTRO</strong><br>'+String(action.correction||'')
         : (dynamicOpen?'<strong>ABIERTA · AUDITORÍA</strong><br>Corregir la condición y volver a auditar.':'—');
-      return '<tr data-audit-id="'+id+'"><td><strong>'+id+'</strong><br><small>'+row.group+' · '+row.label+'</small></td><td><small>'+String(row.basis||'Estándar ROCA')+'</small></td><td>'+row.target+'</td><td><select class="audit-status"><option value="NOT_VERIFIED">NO VERIFICADO</option><option value="CONFORMING">CONFORME</option><option value="NONCONFORMING">NO CONFORME</option><option value="NA_JUSTIFIED">NO APLICA — JUSTIFICACIÓN</option></select></td><td><textarea class="audit-note" rows="3" placeholder="'+row.input.replace(/"/g,'&quot;')+'">'+(v.note||'')+'</textarea><div class="audit-validation" role="status"></div></td><td class="audit-implementation">'+implementationText+'</td></tr>';
+      const normButton=(row.normReqIds&&row.normReqIds.length)
+        ? '<button type="button" class="audit-norm-open" data-norm-ids="'+row.normReqIds.join(';')+'">VER FUNDAMENTO</button>'
+        : '';
+      return '<tr data-audit-id="'+id+'"><td><strong>'+id+'</strong><br><small>'+row.group+' · '+row.label+'</small></td><td><small>'+String(row.basis||'Estándar ROCA')+'</small>'+normButton+'</td><td>'+row.target+'</td><td><select class="audit-status"><option value="NOT_VERIFIED">NO VERIFICADO</option><option value="CONFORMING">CONFORME</option><option value="NONCONFORMING">NO CONFORME</option><option value="NA_JUSTIFIED">NO APLICA — JUSTIFICACIÓN</option></select></td><td><textarea class="audit-note" rows="3" placeholder="'+row.input.replace(/"/g,'&quot;')+'">'+(v.note||'')+'</textarea><div class="audit-validation" role="status"></div></td><td class="audit-implementation">'+implementationText+'</td></tr>';
     }).join('')+'</tbody></table>';
   root.querySelector('.audit-table-host').innerHTML = html;
+  const normContext=document.getElementById('auditNormContext');
+  function renderNormContext(ids){
+    if(!normContext) return;
+    const ctx=window.ROCA_NORM_CONTEXT||{};
+    const rows=(ids||[]).map(id=>({id,data:ctx.byReq&&ctx.byReq[id]})).filter(x=>x.data);
+    if(!rows.length){
+      normContext.innerHTML='<div class="audit-context-empty"><strong>CONTEXTO NORMATIVO</strong><p>No hay ficha técnica/cálculo estructurado todavía para este criterio. Conserva la referencia visible y no inventes numeral o fórmula.</p></div>';
+      return;
+    }
+    normContext.innerHTML='<div class="audit-context-head">FUNDAMENTO DE LA EVALUACIÓN</div>'+rows.map(x=>{
+      const d=x.data;
+      const citationClass=String(d.citationStatus||'').startsWith('VERIFIED')?'verified':'pending';
+      return '<section class="audit-context-card">'+
+        '<div class="audit-context-req">'+x.id+'</div>'+
+        '<h3>'+String(d.mode||'').replaceAll('_',' ')+'</h3>'+
+        '<p><b>Por qué:</b> '+d.why+'</p>'+
+        '<p><b>Captura:</b> '+d.capture+'</p>'+
+        '<p><b>Cálculo / decisión:</b> '+d.calculation+'</p>'+
+        '<div class="audit-context-citation '+citationClass+'"><b>Cita:</b> '+d.citation+'<br><small>'+d.citationStatus+'</small></div>'+
+        (d.source?'<a class="audit-context-source" target="_blank" rel="noopener" href="'+d.source+'">ABRIR FUENTE OFICIAL</a>':'')+
+      '</section>';
+    }).join('');
+  }
+  root.querySelectorAll('.audit-norm-open').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const ids=String(btn.dataset.normIds||'').split(';').filter(Boolean);
+      renderNormContext(ids);
+      root.querySelectorAll('.audit-norm-open').forEach(x=>x.classList.toggle('active',x===btn));
+    });
+  });
+
   root.querySelectorAll('tr[data-audit-id]').forEach(tr=>{
     const id=tr.dataset.auditId, v=saved[id]||{};
     const sel=tr.querySelector('.audit-status');
