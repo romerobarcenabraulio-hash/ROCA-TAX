@@ -1,5 +1,5 @@
 window.ROCA_NORM_CONTEXT = {
-  version:"2026-10-02.1",
+  version:"2026-10-02.2",
   checkedOn:"2026-10-02",
   note:"Panel de contexto para AUDITORÍA. Un numeral sólo se muestra como verificado cuando fue contrastado contra texto oficial. Las referencias pendientes nunca se inventan.",
   areaToReqIds:{
@@ -34,6 +34,159 @@ window.ROCA_NORM_CONTEXT = {
     "PHYS-SUPPORT":["STPS-001","RFSST-2014"]
   },
   byReq:{
+    "STPS-001":{
+      mode:"INSPECCIONAR + DOCUMENTAR",
+      citation:"5.2-5.5 · 7.1.1-7.1.6 · 7.4",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Comprobar que edificio, circulaciones, servicios y superficies se conservan en condición segura y que las revisiones del centro se documentan.",
+      capture:"Área; condición insegura observada; orden/limpieza; delimitación; piso/cambio de nivel; servicios sanitarios/comedor; fecha y resultado de revisión ocular.",
+      calculation:"No usa una fórmula general. Verificar revisión ocular al menos cada 12 meses y después de eventos que puedan dañar instalaciones; registrar hallazgo y reparación. Cuando se midan elementos concretos, usar las dimensiones del capítulo 7 aplicables.",
+      source:"https://asinom.stps.gob.mx/upload/noms/Nom-001.pdf"
+    },
+    "STPS-004":{
+      mode:"ANALIZAR RIESGO DE MAQUINARIA + INSPECCIONAR",
+      citation:"5.2-5.4 · 7.1-7.2",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Evitar que partes móviles, superficies cortantes, proyecciones, calor, electricidad estática o herramienta generen lesión.",
+      capture:"Activo; punto de operación/transmisión; partes móviles; superficies cortantes; proyección/calor; herramienta; guarda/dispositivo; tipo de daño; gravedad; probabilidad; mantenimiento.",
+      calculation:"No impone una fórmula numérica única. Construir el estudio de riesgo por maquinaria: peligro → tipo de daño → gravedad → probabilidad; de ahí derivar programa específico, guardas/dispositivos, mantenimiento y capacitación.",
+      source:"https://asinom.stps.gob.mx/upload/noms/Nom-004.pdf"
+    },
+    "STPS-005":{
+      mode:"ANALIZAR RIESGO QUÍMICO + CONTROLAR MANEJO/ALMACENAMIENTO",
+      citation:"5.2-5.9 · 7.1",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Definir controles reales para manejo, transporte y almacenamiento de sustancias químicas peligrosas, incluyendo respuesta a emergencias.",
+      capture:"Producto real; proceso/tarea; cantidad máxima; propiedades/peligros; HDS; recipiente; almacenamiento; incompatibilidades; personal expuesto; regadera/lavaojos/neutralizador cuando el estudio lo justifique; EPP.",
+      calculation:"No hay fórmula general. Mantener estudio de riesgos actualizado cuando cambien procesos o sustancias y derivar de ese estudio procedimientos, medios de emergencia, EPP y medidas de almacenamiento.",
+      source:"https://asinom.stps.gob.mx/upload/noms/Nom-005.pdf"
+    },
+    "STPS-006":{
+      mode:"VERIFICAR APLICABILIDAD + PROCEDIMIENTOS DE MAQUINARIA",
+      citation:"2 · 7.1-7.4 · 8 · 9",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Controlar almacenamiento y manejo de materiales cuando se usa maquinaria, con procedimientos de instalación, operación, revisión y mantenimiento.",
+      capture:"Tipo de maquinaria de manejo; material/carga; placa/capacidad; fabricante; procedimiento; revisión/mantenimiento; zona; estabilidad/anclaje; líneas eléctricas cercanas; operador autorizado.",
+      calculation:"Primero confirmar que el manejo se realiza mediante maquinaria. No hay fórmula única; comparar capacidad/carga y, si existen líneas energizadas, aplicar las distancias mínimas de Tabla 1. Registrar programa de revisión y mantenimiento.",
+      source:"https://asinom.stps.gob.mx/upload/nom/52.pdf"
+    },
+    "STPS-017":{
+      mode:"ANALIZAR RIESGO POR PUESTO + SELECCIONAR EPP",
+      citation:"5.1-5.7 · 7 · Apéndice I no normativo",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Seleccionar EPP a partir del riesgo real de cada puesto y área, no por costumbre ni catálogo.",
+      capture:"Puesto/área; actividad; riesgo físico/mecánico/químico/biológico u otro; región corporal expuesta; EPP existente; talla; compatibilidad; instrucciones del fabricante; reposición/limpieza/resguardo.",
+      calculation:"No usa fórmula general. La salida es una matriz puesto/tarea → riesgo → región corporal → EPP requerido y sus condiciones de uso, revisión, reposición, limpieza, mantenimiento, resguardo y disposición final.",
+      source:"https://asinom.stps.gob.mx/Centro/CentroMarcoNormativo.aspx"
+    },
+    "STPS-018":{
+      mode:"INVENTARIAR + CLASIFICAR + COMUNICAR PELIGROS",
+      citation:"6.1-6.7 · 8.1-8.2 · 9 · 10",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Asegurar que cada sustancia/mezcla peligrosa tenga HDS, identificación y señalización coherentes y disponibles donde se usa.",
+      capture:"Nombre de sustancia/mezcla; CAS; clasificación de peligros físicos/salud; HDS; etiqueta/señal; depósito/recipiente/anaquel/área; personal que la maneja; evidencia de capacitación.",
+      calculation:"No usa una fórmula única. Mantener listado actualizado + HDS + señalización/etiquetado + capacitación. Actualizar cuando se sustituyan/adicionen sustancias o cambie la información de peligros.",
+      source:"https://asinom.stps.gob.mx/upload/nom/50.pdf"
+    },
+    "STPS-019":{
+      mode:"CONSTITUIR COMISIÓN + PROGRAMAR RECORRIDOS + DOCUMENTAR",
+      citation:"7-10 · 8.2-8.4",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Mantener una comisión de seguridad e higiene que identifique condiciones/actos inseguros, proponga medidas y dé seguimiento.",
+      capture:"Acta de constitución; integrantes/roles; programa anual de recorridos; actas; hallazgos; investigaciones; medidas propuestas; seguimiento; capacitación de integrantes.",
+      calculation:"No usa fórmula. El control es documental y de ejecución: recorrido programado → hallazgo → medida → responsable/seguimiento → acta y custodia documental.",
+      source:"https://asinom.stps.gob.mx/upload/nom/34.pdf"
+    },
+    "STPS-022":{
+      mode:"CONTROLAR ELECTRICIDAD ESTÁTICA + MEDIR PUESTA A TIERRA",
+      citation:"7.2 · 9.1-9.5",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Evitar acumulaciones/descargas electrostáticas peligrosas y verificar la eficacia de la puesta a tierra cuando el riesgo se active.",
+      capture:"Proceso/material; humedad/temperatura; equipo/material constructivo; controles de estática; red de tierra; instrumento/calibración; mediciones de resistencia.",
+      calculation:"Aplicar el método de medición del capítulo 9. Verificar resistencia ≤10 ohms para electrodos de pararrayos y ≤25 ohms para la red de puesta a tierra; conservar registro de medición.",
+      source:"https://asinom.stps.gob.mx/upload/nom/46.pdf"
+    },
+    "STPS-029":{
+      mode:"CONTROLAR MANTENIMIENTO ELÉCTRICO + DOCUMENTAR",
+      citation:"5.2-5.4 · 7-9",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Evitar choques, arco eléctrico y energización inesperada durante mantenimiento de instalaciones eléctricas.",
+      capture:"Instalación/actividad; plan de trabajo; diagrama unifilar y cargas; personal capacitado/autorizado; procedimiento; desenergización/bloqueo/puesta a tierra temporal; herramientas/EPP aislante; revisión de equipo.",
+      calculation:"No hay fórmula general. Verificar que exista plan/procedimiento secuencial, controles de energía y autorización. Registrar revisión/conservación del equipo aislante con fechas, responsable y resultado.",
+      source:"https://asinom.stps.gob.mx/upload/nom/NOM-029.pdf"
+    },
+    "STPS-009":{
+      mode:"DETERMINAR TRABAJO EN ALTURA + AUTORIZAR/CONTROLAR",
+      citation:"4.33 · 5.1-5.4 · 7-16",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Prevenir caídas cuando se realizan tareas a más de 1.80 m sobre el nivel de referencia o en condiciones equivalentes definidas por la norma.",
+      capture:"Tarea; altura; superficie/acceso; sistema/equipo usado; manual del fabricante; análisis previo de condiciones; autorización escrita cuando aplique; protección contra caídas; rescate/emergencia.",
+      calculation:"No usa fórmula general. Si la tarea entra en la definición de trabajo en altura, realizar análisis previo y aplicar el capítulo específico del sistema usado; autorización escrita para los supuestos de 5.3.",
+      source:"https://asinom.stps.gob.mx/upload/nom/35.pdf"
+    },
+    "STPS-030":{
+      mode:"DIAGNOSTICAR + PROGRAMAR + DAR SEGUIMIENTO",
+      citation:"4.1-4.8 · 5.1-5.7 · 6",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Convertir los riesgos/condiciones detectadas en diagnóstico, acciones preventivas/correctivas y seguimiento documentado.",
+      capture:"Responsable SST; diagnóstico integral o por área; peligros/exposición; acciones; prioridad; fecha/responsable; avance; reporte anual; comunicación a trabajadores/comisión.",
+      calculation:"No usa fórmula obligatoria. El sistema es: diagnóstico → programa o relación de acciones → prioridad por riesgo → seguimiento → reporte. En centros con menos de 100 trabajadores puede manejarse relación de acciones preventivas/correctivas.",
+      source:"https://asinom.stps.gob.mx/upload/nom/32.pdf"
+    },
+    "STPS-028":{
+      mode:"CUANTIFICAR SUSTANCIAS + DECIDIR UMBRAL + ADMINISTRAR PROCESO",
+      citation:"2.1-2.3 · 4.8 · 5.2-5.14 · Apéndice A",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Determinar si existen procesos/equipos críticos con sustancias químicas peligrosas en cantidades que activen el sistema de administración de seguridad de procesos.",
+      capture:"Sustancia/CAS; cantidad presente; capacidad instalada de almacenamiento/proceso; equipo/proceso; ubicación; cantidad umbral del Apéndice A; cambios; integridad mecánica; trabajos peligrosos.",
+      calculation:"Comparar por sustancia la capacidad instalada y/o cantidad presente contra la cantidad umbral del Apéndice A. Si es igual o mayor, activar los elementos de administración de seguridad; si es menor y no se activa otro supuesto, documentar la exclusión.",
+      source:"https://asinom.stps.gob.mx/upload/nom/NOM-028-STPS-2012.pdf"
+    },
+    "STPS-035":{
+      mode:"CLASIFICAR POR PLANTILLA + APLICAR BLOQUE CORRESPONDIENTE",
+      citation:"5.2-5.8 · 7.1-7.5",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Aplicar las obligaciones de factores de riesgo psicosocial según el número de trabajadores del centro.",
+      capture:"Número real de trabajadores del centro; política; acontecimientos traumáticos severos; mecanismos de queja; resultados/medidas/registros cuando el bloque de plantilla lo active.",
+      calculation:"Primero clasificar plantilla: hasta 15; 16-50; más de 50. De 16 a 50 se identifica y analiza riesgo psicosocial para todos; con más de 50 también se evalúa entorno organizacional. No inventar cuestionarios propios cuando se usen las guías de referencia.",
+      source:"https://asinom.stps.gob.mx/upload/nom/48.pdf"
+    },
+    "STPS-034":{
+      mode:"ANALIZAR COMPATIBILIDAD + VERIFICAR ACCESIBILIDAD",
+      citation:"7.1-7.3 · 8.1-8.2",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Asegurar que, cuando existan trabajadores con discapacidad, puesto, demanda y entorno sean compatibles y accesibles.",
+      capture:"Características funcionales relevantes para el trabajo; descripción/demanda del puesto; riesgos; iluminación/señalización; rutas/pasillos/accesos; adecuaciones requeridas.",
+      calculation:"No hay fórmula general. Documentar análisis persona-puesto-entorno y controles. Para medios de circulación aplicables, verificar ancho ≥120 cm y ausencia/control de bordes/desniveles y obstáculos según 8.2.",
+      source:"https://asinom.stps.gob.mx/upload/nom/47.pdf"
+    },
+    "STPS-026":{
+      mode:"INSPECCIONAR SEÑALIZACIÓN + VERIFICAR CÓDIGO",
+      citation:"7.1-7.2 · 8 · 9",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Asegurar que colores, señales e identificación de tuberías comuniquen correctamente prohibición, obligación, advertencia, condición segura e incendio.",
+      capture:"Señal/ubicación; riesgo/acción comunicada; color de seguridad; color contrastante; forma/símbolo; visibilidad; tubería/fluido/dirección cuando aplique.",
+      calculation:"No hay fórmula general. Comparar uso de colores con Tabla 1, contraste con Tabla 2 y, para tuberías, aplicar capítulo 9 y dimensiones/identificación que correspondan.",
+      source:"https://asinom.stps.gob.mx/upload/noms/Nom-026.pdf"
+    },
+    "STPS-027":{
+      mode:"ANALIZAR RIESGO DE SOLDADURA/CORTE + CONTROLAR TRABAJO",
+      citation:"5.2 · 7 · 8",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Controlar riesgos de soldadura/corte por proceso, equipo, gases, humos, radiación, incendio, electricidad y condiciones del área.",
+      capture:"Proceso/área; equipo; material base/aporte; gases combustibles; condiciones peligrosas; agentes físicos/químicos; tiempo de exposición; EPP; ventilación/extracción; combustibles cercanos; rescate cuando aplique.",
+      calculation:"No usa fórmula única. Construir análisis de riesgos por proceso y área, identificar exposición/daño y definir controles al trabajador, al área y para emergencias conforme a capítulos 7 y 8.",
+      source:"https://asinom.stps.gob.mx/upload/noms/Nom-027.pdf"
+    },
+    "SEM-WW":{
+      mode:"MUESTREAR + COMPARAR LÍMITES DE DESCARGA",
+      citation:"1 · 4.1-4.4 · 4.14 · Tabla 1",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Determinar si una descarga de proceso al alcantarillado urbano/municipal cumple los límites aplicables y cuenta con respaldo analítico.",
+      capture:"Punto de descarga; proceso origen; caudal; muestras simples/compuestas; laboratorio/método; grasas y aceites; sólidos sedimentables; metales/cianuro cuando correspondan; pH; temperatura; permiso/condiciones locales.",
+      calculation:"Comparar resultados con Tabla 1: promedio mensual/diario/instantáneo según parámetro. Verificar pH entre 5.5 y 10 y temperatura instantánea ≤40 °C, salvo condición autorizada. Conservar análisis técnicos y registros; integrar además condiciones particulares/locales que resulten más estrictas.",
+      source:"https://biblioteca.semarnat.gob.mx/janium/Documentos/Ciga/agenda/DOFsr/Ecolok.pdf"
+    },
     "STPS-002":{
       mode:"CALCULAR + MEDIR + DOCUMENTAR",
       citation:"Apéndice A (A.1, Tabla A.1) · 7.15(d) · 7.17(a-d)",
