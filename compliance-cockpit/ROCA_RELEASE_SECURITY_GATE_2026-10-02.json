@@ -1,30 +1,25 @@
 {
-  "schema": "ROCA_RELEASE_SECURITY_GATE_V2",
+  "schema": "ROCA_RELEASE_SECURITY_GATE_V3",
   "checked_on": "2026-10-02",
-  "tested_head": "34c793ece9fd7e89920fb578b638c1ab84758fd8",
+  "tested_head": "584f1d7d4ed5cb40a4a63a61646da96299ed41b3",
   "master_rows": 4469,
   "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
   "checks": [
     {
       "id": "HEAD_CI_AND_BROWSER_QA",
       "status": "PASS",
-      "evidence": "Five current-head workflows PASS"
+      "evidence": "Architecture, Implementation Integrity, Derived Ledger Integrity, Browser QA and Browser Visual QA all PASS on current head."
     },
     {
-      "id": "DERIVED_LEDGER_GATE",
-      "status": "PASS",
-      "evidence": "compliance-cockpit/ROCA_DERIVED_LEDGER_GATE_2026-09-30.json"
-    },
-    {
-      "id": "FORM_MASTER_GATE",
-      "status": "PASS",
-      "evidence": "compliance-cockpit/FORM_MASTER_GATE.json"
+      "id": "TUESDAY_EVIDENCE_PACKET",
+      "status": "PASS_DESIGN",
+      "evidence": "14 evidence packets cover the 20 P0 fact captures without claiming verification."
     },
     {
       "id": "SHARED_DRIVE_PUBLIC_WRITER",
       "status": "BLOCK",
       "severity": "R1",
-      "observed": "ROCA Audit root and COMPLIANCE_APP_DATA both still expose anyone:writer on 2026-10-02"
+      "observed": "ROCA Audit root and COMPLIANCE_APP_DATA still expose anyone:writer on 2026-10-02"
     },
     {
       "id": "AUTHORITATIVE_PROMOTION_PATH",
@@ -40,7 +35,7 @@
     "Rerun source-integrity/release gate after permission change."
   ],
   "allowed_while_blocked": [
-    "Continue source verification, drafting, field-preaudit preparation, BUY/TRAMITES/P0 execution and QA on draft branch.",
+    "Continue BUY/TRAMITES/P0 field execution, evidence capture and QA on draft branch.",
     "Use GitHub hash-locked bytes and owner-only recovery mirror for controlled continuity."
   ],
   "prohibited_while_blocked": [
