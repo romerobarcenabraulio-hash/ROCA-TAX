@@ -2,6 +2,18 @@ window.ROCA_NORM_CONTEXT = {
   version:"2026-10-02.1",
   checkedOn:"2026-10-02",
   note:"Panel de contexto para AUDITORÍA. Un numeral sólo se muestra como verificado cuando fue contrastado contra texto oficial. Las referencias pendientes nunca se inventan.",
+  areaToReqIds:{
+    "area-recepcion":["STPS-001","STPS-002","STPS-025","STPS-026","STPS-030"],
+    "area-curtiduria":["STPS-001","STPS-002","STPS-005","STPS-010","STPS-015","STPS-017","STPS-018","STPS-020","STPS-025","STPS-026","STPS-030","SEM-052","SEM-WW","SLP-ENV-WW-2026","SLP-ENV-RINP","SLP-ENV-RME"],
+    "area-fmr":["STPS-001","STPS-002","STPS-004","STPS-005","STPS-010","STPS-017","STPS-018","STPS-025","STPS-026","STPS-030"],
+    "area-montaje":["STPS-001","STPS-002","STPS-005","STPS-017","STPS-018","STPS-025","STPS-026","STPS-030","STPS-036"],
+    "area-retoque":["STPS-001","STPS-002","STPS-005","STPS-010","STPS-011","STPS-017","STPS-018","STPS-020","STPS-025","STPS-026","STPS-030"],
+    "area-bases":["STPS-001","STPS-002","STPS-004","STPS-005","STPS-009","STPS-011","STPS-017","STPS-018","STPS-025","STPS-026","STPS-030","STPS-036"],
+    "area-carpinteria":["STPS-001","STPS-002","STPS-004","STPS-006","STPS-009","STPS-011","STPS-017","STPS-025","STPS-026","STPS-030","STPS-036"],
+    "area-soldadura":["STPS-001","STPS-002","STPS-004","STPS-005","STPS-009","STPS-010","STPS-011","STPS-017","STPS-018","STPS-022","STPS-025","STPS-026","STPS-027","STPS-029","STPS-030"],
+    "area-blanqueado":["STPS-001","STPS-002","STPS-005","STPS-010","STPS-015","STPS-017","STPS-018","STPS-025","STPS-026","STPS-030","SEM-WW","SLP-ENV-WW-2026"],
+    "area-soporte":["STPS-001","STPS-002","STPS-019","STPS-025","STPS-026","STPS-030","STPS-035","STPS-034"]
+  },
   physicalToReqIds:{
     "PHYS-FLOW":["STPS-001"],
     "PHYS-EGRESS":["STPS-002"],
