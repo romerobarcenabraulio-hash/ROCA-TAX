@@ -430,3 +430,28 @@ Post-write parity check:
 Verdict for derived ledgers: **PASS - SOURCE INTEGRITY WITH RECONSTRUCTED SLP SOURCE GATES**.
 
 This does not equal legal/physical compliance and does not change `compliance_claim: NOT_AUTHORIZED`.
+
+
+## 2026-10-02 SLP reconstructed-gate closure
+
+Read-back on 2026-10-02 confirmed both previously held SLP modules are now present in module-health and module-admission using explicitly reconstructed source-integrity gates:
+
+- `SLP_ENV_IMPACT`
+  - health: 56 rows, `SLP_ENV_IMPACT_GATE.json`, PASS, canonical SHA `efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04`
+  - admission: `ADMITTED_RECONSTRUCTED`
+  - source gate: `SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json`
+  - gate artifact exists in GitHub and states that the original historical source gate was not recovered.
+
+- `SLP_MUN_FUNCTION`
+  - health: 25 rows, `SLP_MUN_FUNCTION_GATE.json`, PASS, canonical SHA `78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61`
+  - admission: `ADMITTED_RECONSTRUCTED`
+  - source gate: `SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json`
+  - gate artifact exists in GitHub and states that the original historical source gate was not recovered.
+
+This closes the derived-ledger omission while preserving provenance truth: the gates are reconstructed from current official sources, not falsely presented as recovered originals.
+
+`ADMIN_FORM` remains intentionally outside legal module-admission because it is internal master-data/control logic.
+
+Verdict for derived-ledger reconciliation: **PASS - SOURCE INTEGRITY WITH EXPLICIT RECONSTRUCTION**.
+
+This does not change `compliance_claim: NOT_AUTHORIZED` and is not a claim of physical or legal compliance.
