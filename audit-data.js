@@ -219,7 +219,7 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     if(!normContext) return;
     const ctx=window.ROCA_NORM_CONTEXT||{};
     const ids=(ctx.areaToReqIds&&ctx.areaToReqIds[areaId])||[];
-    const cards=ids.map(id=>ctx.byReq&&ctx.byReq[id] ? '<div class="audit-area-norm-row"><strong>'+id+'</strong><span>'+String(ctx.byReq[id].mode||'').replaceAll('_',' ')+'</span></div>' : '<div class="audit-area-norm-row pending"><strong>'+id+'</strong><span>REFERENCIA / CITA ESPECÍFICA PENDIENTE</span></div>').join('');
+    const cards=ids.map(id=>ctx.byReq&&ctx.byReq[id] ? '<button type="button" class="audit-area-norm-row audit-area-norm-open" data-norm-id="'+id+'"><strong>'+id+'</strong><span>'+String(ctx.byReq[id].mode||'').replaceAll('_',' ')+'</span></button>' : '<button type="button" class="audit-area-norm-row audit-area-norm-open pending" data-norm-id="'+id+'"><strong>'+id+'</strong><span>REFERENCIA / CITA ESPECÍFICA PENDIENTE</span></button>').join('');
     normContext.innerHTML='<div class="audit-context-head">NORMAS DEL ÁREA</div><p class="audit-context-summary">Marco aplicable/condicional para este departamento. Selecciona VER FUNDAMENTO en un criterio para fijar cálculo, captura y cita exacta.</p>'+cards;
   }
   function renderNormContext(ids){
@@ -245,6 +245,13 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     }).join('');
   }
   renderAreaNormSummary();
+  root.querySelectorAll('.audit-area-norm-open').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      renderNormContext([String(btn.dataset.normId||'')].filter(Boolean));
+      root.querySelectorAll('.audit-area-norm-open').forEach(x=>x.classList.toggle('active',x===btn));
+      root.querySelectorAll('.audit-norm-open').forEach(x=>x.classList.remove('active'));
+    });
+  });
   root.querySelectorAll('.audit-norm-open').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const ids=String(btn.dataset.normIds||'').split(';').filter(Boolean);

@@ -1,5 +1,5 @@
 window.ROCA_NORM_CONTEXT = {
-  version:"2026-10-02.2",
+  version:"2026-10-02.3",
   checkedOn:"2026-10-02",
   note:"Panel de contexto para AUDITORÍA. Un numeral sólo se muestra como verificado cuando fue contrastado contra texto oficial. Las referencias pendientes nunca se inventan.",
   areaToReqIds:{
@@ -34,6 +34,33 @@ window.ROCA_NORM_CONTEXT = {
     "PHYS-SUPPORT":["STPS-001","RFSST-2014"]
   },
   byReq:{
+    "RFSST-2014":{
+      mode:"MARCO GENERAL + DIAGNÓSTICO + CONTROLES",
+      citation:"Art. 7 fracc. I-VII · Art. 17",
+      citationStatus:"VERIFIED_OFFICIAL_TEXT",
+      why:"Usar el Reglamento Federal como marco de obligaciones del patrón y como puente entre diagnóstico, programa, comisión, señalización y las NOM específicas que correspondan.",
+      capture:"Diagnóstico SST; programa/relación de acciones; comisión; servicios preventivos; señalización; procedimientos; evidencia de medidas por naturaleza de actividad.",
+      calculation:"No usa una fórmula propia. El Reglamento exige diagnóstico y programa, y remite a las NOM específicas para los controles técnicos. No sustituye la evaluación de cada NOM.",
+      source:"https://www.dof.gob.mx/nota_detalle.php?codigo=5368114&fecha=13/11/2014"
+    },
+    "SLP-ENV-RINP":{
+      mode:"INVENTARIAR + CUANTIFICAR + DECIDIR REGISTRO",
+      citation:"Ruta SEGAM RINP vigente · F-SEGAM-DGA-RI-01",
+      citationStatus:"CURRENT_OFFICIAL_ROUTE_VERIFIED",
+      why:"Determinar si las corrientes industriales no peligrosas de ROCA activan inscripción/renovación/modificación del registro estatal y qué expediente corresponde.",
+      capture:"Corriente; proceso; cantidad por periodo; estimación anual; almacenamiento temporal; destino/recolector; registro previo; evidencia fotográfica del almacén; documentación legal aplicable.",
+      calculation:"No hay fórmula general. Consolidar cantidades por corriente, reconciliar registro previo y aplicar la ruta SEGAM vigente. No pagar ni presentar hasta confirmar aplicabilidad y estatus del registro.",
+      source:"https://segam.slp.gob.mx/residuos/"
+    },
+    "SLP-ENV-WW-2026":{
+      mode:"MAPEAR DESCARGA + CONFIRMAR APLICABILIDAD + MEDIR SI ACTIVA",
+      citation:"NTE-SLP-AR-001/2026 · publicación oficial estatal",
+      citationStatus:"SOURCE_ROUTE_VERIFIED_CLAUSE_PENDING",
+      why:"Resolver si una descarga de proceso de ROCA cae en la norma técnica estatal y qué caracterización/permiso/condiciones debe cumplir además de la NOM federal aplicable.",
+      capture:"Punto de descarga; origen sanitaria/pluvial/proceso; destino/operador; caudal cuando se conozca; expediente existente; caracterización/muestreo si la ruta aplicable lo exige.",
+      calculation:"Primero mapear físicamente la descarga y confirmar autoridad/operador y texto aplicable. No calcular ni afirmar cumplimiento estatal hasta contar con la publicación técnica específica y datos de muestreo requeridos.",
+      source:"https://periodicooficial.slp.gob.mx/"
+    },
     "STPS-001":{
       mode:"INSPECCIONAR + DOCUMENTAR",
       citation:"5.2-5.5 · 7.1.1-7.1.6 · 7.4",
