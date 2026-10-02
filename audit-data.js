@@ -215,6 +215,13 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     }).join('')+'</tbody></table>';
   root.querySelector('.audit-table-host').innerHTML = html;
   const normContext=document.getElementById('auditNormContext');
+  function renderAreaNormSummary(){
+    if(!normContext) return;
+    const ctx=window.ROCA_NORM_CONTEXT||{};
+    const ids=(ctx.areaToReqIds&&ctx.areaToReqIds[areaId])||[];
+    const cards=ids.map(id=>ctx.byReq&&ctx.byReq[id] ? '<div class="audit-area-norm-row"><strong>'+id+'</strong><span>'+String(ctx.byReq[id].mode||'').replaceAll('_',' ')+'</span></div>' : '<div class="audit-area-norm-row pending"><strong>'+id+'</strong><span>REFERENCIA / CITA ESPECÍFICA PENDIENTE</span></div>').join('');
+    normContext.innerHTML='<div class="audit-context-head">NORMAS DEL ÁREA</div><p class="audit-context-summary">Marco aplicable/condicional para este departamento. Selecciona VER FUNDAMENTO en un criterio para fijar cálculo, captura y cita exacta.</p>'+cards;
+  }
   function renderNormContext(ids){
     if(!normContext) return;
     const ctx=window.ROCA_NORM_CONTEXT||{};
@@ -237,6 +244,7 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       '</section>';
     }).join('');
   }
+  renderAreaNormSummary();
   root.querySelectorAll('.audit-norm-open').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const ids=String(btn.dataset.normIds||'').split(';').filter(Boolean);
