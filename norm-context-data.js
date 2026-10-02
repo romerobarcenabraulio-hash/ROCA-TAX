@@ -2,6 +2,7 @@ window.ROCA_NORM_CONTEXT = {
   version:"2026-10-02.3",
   checkedOn:"2026-10-02",
   note:"Panel de contexto para AUDITORÍA. Un numeral sólo se muestra como verificado cuando fue contrastado contra texto oficial. Las referencias pendientes nunca se inventan.",
+  globalConditionalReqIds:["STPS-024","STPS-028","STPS-033"],
   areaToReqIds:{
     "area-recepcion":["STPS-001","STPS-002","STPS-025","STPS-026","STPS-030"],
     "area-curtiduria":["STPS-001","STPS-002","STPS-005","STPS-010","STPS-015","STPS-017","STPS-018","STPS-020","STPS-025","STPS-026","STPS-030","SEM-052","SEM-WW","SLP-ENV-WW-2026","SLP-ENV-RINP","SLP-ENV-RME"],

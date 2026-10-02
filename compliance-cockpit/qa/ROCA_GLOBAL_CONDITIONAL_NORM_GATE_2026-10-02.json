@@ -1,0 +1,13 @@
+{
+  "schema": "ROCA_GLOBAL_CONDITIONAL_NORM_GATE_V1",
+  "checked_on": "2026-10-02",
+  "parent_head": "98ad92038c5a974fe0f4a6e7d6e7ddffec323621",
+  "global_conditional_ids": [
+    "STPS-024",
+    "STPS-028",
+    "STPS-033"
+  ],
+  "missing_context_ids": [],
+  "rule": "These requirements remain visible globally but are not assigned to a department until the trigger fact is evidenced.",
+  "verdict": "PASS_GLOBAL_CONDITIONAL_VISIBILITY"
+}

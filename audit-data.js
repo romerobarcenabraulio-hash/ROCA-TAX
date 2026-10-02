@@ -13,6 +13,9 @@ window.ROCA_AUDIT_SECTIONS = [
         <li>Si la corrección se cierra, la auditoría conserva el resultado y el criterio fijo sigue siendo parte del HTML.</li>
       </ol>
       <div id="auditSummary"></div>
+      <h2>Gates normativos globales condicionales</h2>
+      <p class="source-note">No se asignan a un departamento hasta que el hecho disparador exista. Se conservan visibles para no perder una obligación potencial ni fingir que ya aplica.</p>
+      <div id="auditGlobalConditionalNorms"></div>
       <h2>Qué evidencia cierra cada frente</h2>
       <div class="tablewrap"><table>
         <thead><tr><th>Frente</th><th>Evidencia mínima útil</th><th>No demuestra por sí sola</th></tr></thead>
@@ -86,6 +89,16 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       const areas = departments.length;
       const criteria = departments.reduce((sum,d)=>sum+(window.ROCA_AUDIT_ENGINE?window.ROCA_AUDIT_ENGINE.criteriaForArea(d.id).length:(Array.isArray(d.auditCriteria)?d.auditCriteria.length:0)),0);
       host.innerHTML = '<div class="callout"><strong>'+areas+' departamentos</strong> · '+criteria+' criterios específicos actualmente estructurados. La línea base se congela por departamento; la auditoría posterior cambia el resultado, no redefine automáticamente el criterio.</div>';
+    }
+    const globalHost=document.getElementById('auditGlobalConditionalNorms');
+    if(globalHost){
+      const ctx=window.ROCA_NORM_CONTEXT||{};
+      const ids=Array.isArray(ctx.globalConditionalReqIds)?ctx.globalConditionalReqIds:[];
+      globalHost.innerHTML='<div class="audit-global-grid">'+ids.map(id=>{
+        const d=ctx.byReq&&ctx.byReq[id];
+        if(!d) return '<div class="audit-global-card missing"><strong>'+id+'</strong><p>Ficha normativa faltante.</p></div>';
+        return '<div class="audit-global-card"><div class="audit-context-req">'+id+'</div><h3>'+String(d.mode||'').replaceAll('_',' ')+'</h3><p><b>Trigger / por qué:</b> '+d.why+'</p><p><b>Captura:</b> '+d.capture+'</p><p><b>Decisión:</b> '+d.calculation+'</p><div class="audit-context-citation '+(String(d.citationStatus||'').startsWith('VERIFIED')?'verified':'pending')+'"><b>Cita:</b> '+d.citation+'<br><small>'+d.citationStatus+'</small></div>'+(d.source?'<a class="audit-context-source" target="_blank" rel="noopener" href="'+d.source+'">ABRIR FUENTE OFICIAL</a>':'')+'</div>';
+      }).join('')+'</div>';
     }
     const backupStatus=document.getElementById('auditBackupStatus');
     const exportBtn=document.getElementById('auditBackupExport');
