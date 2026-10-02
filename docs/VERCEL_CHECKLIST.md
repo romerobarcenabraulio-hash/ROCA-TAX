@@ -1,24 +1,36 @@
-# ROCA Live — Vercel preview checklist
+# ROCA Audit — checklist del preview canónico
 
-## Repo
-- GitHub: `romerobarcenabraulio-hash/ROCA-TAX`
-- Branch de trabajo: `roca-live-bootstrap`
-- Tipo de proyecto: sitio estático, sin framework obligatorio.
+## Fuente única
 
-## Al conectar en Vercel
-1. Importar `ROCA-TAX`.
-2. No configurar comando de build.
-3. Root Directory: repositorio raíz.
-4. Framework Preset: `Other` / estático.
-5. Desplegar la rama `roca-live-bootstrap` como Preview antes de tocar `main`.
+- Repo: `romerobarcenabraulio-hash/ROCA-TAX`
+- Rama de preview: `codex/roca-source-reader`
+- PR operativo: `#6`
+- Proyecto Vercel: `roca-tax`
 
-## Qué revisar en Preview
-- `DOC FINAL` abre el contenido editorial.
-- `NOTAS` mantiene pendientes fuera del documento final.
-- Navegación entre Áreas, Residuos/Señalética, BIWO, Responsabilidades, Control documental, Expediente internacional y Posters.
-- `IMPRIMIR / PDF` cambia a DOC FINAL antes de lanzar impresión.
-- Escritorio y móvil sin desbordes.
-- Ningún dato real de cliente o expediente jurídico aparece en la web.
+## Antes de revisar
 
-## Regla de promoción
-No promover a producción ni fusionar a `main` hasta que Preservation + Editorial + Release Auditor den salida. La Preview sirve para revisión de composición y navegación, no equivale a liberación del manual.
+- [ ] PR #6 HEAD leído directamente.
+- [ ] Vercel reporta `success` en ese mismo SHA.
+- [ ] Audit Architecture = PASS.
+- [ ] Audit Implementation Integrity = PASS.
+- [ ] Derived Ledger Integrity = PASS.
+- [ ] Browser QA = PASS.
+- [ ] Browser Visual QA = PASS.
+
+## Qué revisar en el único preview
+
+- [ ] MANUAL navega por departamentos sin contenido duplicado.
+- [ ] AUDITORÍA abre criterios del área.
+- [ ] Rail normativo muestra NOM del área y `VER FUNDAMENTO` por criterio mapeado.
+- [ ] El fundamento muestra por qué, qué capturar, cálculo/decisión, cita y fuente.
+- [ ] FUENTES mantiene bibliografía/aplicabilidad separada de operación.
+- [ ] IMPLEMENTAR contiene sólo brechas temporales.
+- [ ] TABLERO MARTES / BUY / TRÁMITES / P0 siguen enlazados.
+- [ ] No hay datos privados publicados.
+- [ ] No existe otro preview de trabajo documentado como vigente.
+
+## Regla permanente
+
+No crear una segunda URL de preview para el mismo frente.  
+Si aparece otra rama/deployment de trabajo, se desactiva, elimina o queda claramente marcado como histórico en cuanto haya acceso administrativo para hacerlo.
+
