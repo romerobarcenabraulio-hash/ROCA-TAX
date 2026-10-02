@@ -34,6 +34,7 @@
         target:r.standard||'',
         input:r.evidence||'Evidencia observable de la condición.',
         basis:PHYS_NORM_BASIS[r.id]||'Base física ROCA',
+        normReqIds:(window.ROCA_NORM_CONTEXT&&window.ROCA_NORM_CONTEXT.physicalToReqIds&&window.ROCA_NORM_CONTEXT.physicalToReqIds[r.id])||[],
         sourceType:'physical_standard',
         sourceId:r.id
       }));
