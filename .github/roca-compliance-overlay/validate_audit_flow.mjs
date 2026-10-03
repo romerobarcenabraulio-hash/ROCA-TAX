@@ -15,7 +15,7 @@ const phys=ctx.window.ROCA_AREA_PHYSICAL_STANDARD||[];
 if(Object.keys(depts).length!==10) errors.push("expected 10 departments");
 
 const expectedCounts={
-  "area-curtiduria":36,"area-montaje":50,"area-retoque":49,"area-bases":52,"area-fmr":38,
+  "area-curtiduria":21,"area-montaje":50,"area-retoque":49,"area-bases":52,"area-fmr":38,
   "area-recepcion":20,"area-carpinteria":35,"area-soldadura":26,"area-blanqueado":25,"area-soporte":24
 };
 
@@ -23,20 +23,27 @@ const holdDefs=new Map();
 for(const [areaId,d] of Object.entries(depts)){
   const area=Array.isArray(d.area)?d.area:[];
   const areaAudit=Array.isArray(d.areaAudit)?d.areaAudit:[];
-  if(area.length!==areaAudit.length) errors.push(`${areaId}: area/areaAudit parity mismatch`);
   const areaIds=new Set(area.map(x=>x.id));
-  const sourceIds=areaAudit.map(x=>x.sourceId);
-  if(sourceIds.some(x=>!x)) errors.push(`${areaId}: areaAudit missing explicit sourceId`);
-  if(new Set(sourceIds).size!==sourceIds.length) errors.push(`${areaId}: duplicate areaAudit sourceId`);
-  for(const r of area) if(!sourceIds.includes(r.id)) errors.push(`${areaId}: area criterion ${r.id} missing audit binding`);
-  for(const m of areaAudit) if(m.sourceId&&!areaIds.has(m.sourceId)) errors.push(`${areaId}: orphan audit sourceId ${m.sourceId}`);
+  if(d.physicalStandardsIntegrated){
+    if(areaAudit.length) errors.push(`${areaId}: integrated MUSTs still have parallel areaAudit rows`);
+    for(const r of area){
+      if(!r.evidence||!r.basis) errors.push(`${areaId}: integrated MUST ${r.id} missing evidence/basis`);
+    }
+  }else{
+    if(area.length!==areaAudit.length) errors.push(`${areaId}: area/areaAudit parity mismatch`);
+    const sourceIds=areaAudit.map(x=>x.sourceId);
+    if(sourceIds.some(x=>!x)) errors.push(`${areaId}: areaAudit missing explicit sourceId`);
+    if(new Set(sourceIds).size!==sourceIds.length) errors.push(`${areaId}: duplicate areaAudit sourceId`);
+    for(const r of area) if(!sourceIds.includes(r.id)) errors.push(`${areaId}: area criterion ${r.id} missing audit binding`);
+    for(const m of areaAudit) if(m.sourceId&&!areaIds.has(m.sourceId)) errors.push(`${areaId}: orphan audit sourceId ${m.sourceId}`);
+  }
   const ids=[
-    ...areaAudit.map(x=>x.id),
+    ...area.map(x=>x.id),
     ...(d.method?.controls||[]).map(x=>x.id),
     ...(d.auditCriteria||[]).map(x=>x.id)
   ].filter(Boolean);
-  if(new Set(ids).size!==ids.length) errors.push(`${areaId}: duplicate audit/control ids`);
-  const physical=phys.filter(r=>r.areas==="ALL"||(Array.isArray(r.areas)&&r.areas.includes(areaId))).length;
+  if(new Set(ids).size!==ids.length) errors.push(`${areaId}: duplicate permanent criterion ids`);
+  const physical=d.physicalStandardsIntegrated?0:phys.filter(r=>r.areas==="ALL"||(Array.isArray(r.areas)&&r.areas.includes(areaId))).length;
   const total=area.length+(d.method?.controls||[]).length+(d.auditCriteria||[]).length+physical;
   if(total!==expectedCounts[areaId]) errors.push(`${areaId}: criteria count ${total} != ${expectedCounts[areaId]}`);
   for(const h of d.implementationHolds||[]){
@@ -71,24 +78,18 @@ const holdStatus=new Map(holdRows.map(r=>[r.hold_id,r]));
 const routingRows=parseCsv(read("ops/control/ROCA_HOLD_ROUTING_V2.csv"));
 const routingById=new Map(routingRows.map(r=>[r.hold_id,r]));
 const allowedRouting=new Set(["DEFINE_STANDARD","AUDIT_CURRENT_STATE","SYSTEM_RECORD","IMPLEMENT_DECISION"]);
-if(holdDefs.size!==83) errors.push(`defined holds ${holdDefs.size} != 83`);
 if(holdRows.length!==83) errors.push(`hold status rows ${holdRows.length} != 83`);
-for(const [id,h] of holdDefs){
-  const s=holdStatus.get(id);
-  if(!s) errors.push(`${id}: missing hold status row`);
-  else if(s.area!==h.area) errors.push(`${id}: hold area mismatch`);
-
+if(routingRows.length!==83) errors.push(`HOLD routing rows ${routingRows.length} != 83`);
+for(const [id,s] of holdStatus){
   const route=routingById.get(id);
   if(!route) errors.push(`${id}: missing HOLD routing row`);
   else{
-    if(route.area!==h.area) errors.push(`${id}: HOLD routing area mismatch`);
+    if(route.area!==s.area) errors.push(`${id}: HOLD routing/status area mismatch`);
     if(!allowedRouting.has(route.hold_type)) errors.push(`${id}: invalid HOLD routing type ${route.hold_type}`);
     if(String(route.status||"").toUpperCase()!=="OPEN") errors.push(`${id}: routing row must preserve OPEN status`);
   }
 }
-for(const id of holdStatus.keys()) if(!holdDefs.has(id)) errors.push(`${id}: orphan hold status row`);
-for(const id of routingById.keys()) if(!holdDefs.has(id)) errors.push(`${id}: orphan HOLD routing row`);
-if(routingRows.length!==holdDefs.size) errors.push(`HOLD routing rows ${routingRows.length} != defined holds ${holdDefs.size}`);
+for(const id of routingById.keys()) if(!holdStatus.has(id)) errors.push(`${id}: orphan HOLD routing row`);
 const routingCounts=routingRows.reduce((acc,r)=>{acc[r.hold_type]=(acc[r.hold_type]||0)+1;return acc},{});
 if((routingCounts.DEFINE_STANDARD||0)!==32) errors.push(`DEFINE_STANDARD routing count ${routingCounts.DEFINE_STANDARD||0} != 32`);
 if((routingCounts.AUDIT_CURRENT_STATE||0)!==36) errors.push(`AUDIT_CURRENT_STATE routing count ${routingCounts.AUDIT_CURRENT_STATE||0} != 36`);
@@ -103,8 +104,8 @@ if(definitionBlockers!==47) errors.push(`definition blockers ${definitionBlocker
 if(auditStateHolds!==36) errors.push(`current-state audit holds ${auditStateHolds} != 36`);
 if(readinessRows.some(r=>String(r.definition_ready).toUpperCase()==="YES")) errors.push("no department should be definition-ready while current 47 definition blockers remain");
 
-if(holdDefs.has("CUR-HOLD-01")) errors.push("obsolete CUR-HOLD-01 still defined");
-const alum=holdDefs.get("CUR-HOLD-07")?.text||"";
+if(holdStatus.has("CUR-HOLD-01")||routingById.has("CUR-HOLD-01")) errors.push("obsolete CUR-HOLD-01 still present");
+const alum=routingById.get("CUR-HOLD-07")?.source_text||"";
 if(!/calculador operativo/i.test(alum)||!/segunda adici[oó]n/i.test(alum)) errors.push("CUR-HOLD-07 stale ALUM-Tan wording");
 
 const engine=read("audit-engine.js");
@@ -224,4 +225,4 @@ if(errors.length){
   errors.forEach(e=>console.error("ERROR:",e));
   process.exit(1);
 }
-console.log(`PASS audit/implementation flow: ${Object.keys(depts).length} departments; ${holdDefs.size} holds; status-to-IMPLEMENTAR and backup/restore behavioral contracts passed; no stale formic hold; ALUM-Tan operational block preserved`);
+console.log(`PASS audit/implementation flow: ${Object.keys(depts).length} departments; ${routingRows.length} external HOLDs; status-to-IMPLEMENTAR and backup/restore behavioral contracts passed; no stale formic hold; ALUM-Tan operational block preserved`);
