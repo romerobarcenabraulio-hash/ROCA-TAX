@@ -518,7 +518,8 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
       {id:"BAS-CTL-03",text:"La receta de poliuretano permanece abierta hasta confirmar producto y aplicación real de Bases."},
       {id:"BAS-CTL-04",text:"Dextrina:Blanco España = 2:1 se conserva como hecho primario soportado."},
       {id:"BAS-CTL-05",text:"Malla 8x8 y 3 mm de separación pata-malla se conservan como hechos primarios soportados."},
-      {id:"BAS-CTL-06",text:"La fotografía final no sustituye una comprobación estructural."}
+      {id:"BAS-CTL-06",text:"La fotografía final no sustituye una comprobación estructural."},
+      {id:"BAS-CTL-07",text:"La base se libera por estabilidad, identidad y posibilidad de traslado, no sólo por apariencia.",evidence:"Comprobación final + identidad + transferencia.",basis:"Criterio permanente de liberación de Bases"}
     ]
   },
   toolCare:[
