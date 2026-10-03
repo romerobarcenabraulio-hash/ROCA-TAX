@@ -47,7 +47,7 @@
       '<div class="cover-main"><h1>ROCA TAXIDERMY<br>Manual maestro</h1>'+
       '<p>Operación · áreas · metodología · auditoría · criterios normativos · trazabilidad</p><div class="bronze-rule"></div></div>'+
       '<div class="cover-bottom"><strong>MANUAL MAESTRO DE OPERACIÓN</strong>'+
-      '<span>Áreas, metodología, herramientas, materiales, evidencia, auditoría y criterios de trabajo de ROCA Taxidermy.</span></div>'+
+      '<span>Áreas, metodología, herramientas, materiales, evidencia y condiciones permanentes de ROCA Taxidermy.</span></div>'+
       footer('PORTADA')+'</article>';
   }
 
@@ -217,7 +217,7 @@
       activeSections=manualSections;
       manualMode.classList.add('active');
       contentsPane.querySelector('.contents-title').textContent='Manual ROCA';
-      contentsPane.querySelector('.rule-note').textContent='Área, metodología, control, evidencia y criterio permanente se consultan en un solo lugar. IMPLEMENTAR contiene únicamente acciones temporales.';
+      contentsPane.querySelector('.rule-note').textContent='MANUAL = cómo debe ser ROCA. La auditoría se deriva de estas mismas condiciones; IMPLEMENTAR contiene únicamente brechas temporales.';
     }
     buildNav(activeSections);
     go(mode==='manual' ? 'portada' : (activeSections[0] && activeSections[0].id));
