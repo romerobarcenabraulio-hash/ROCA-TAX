@@ -224,7 +224,7 @@
     const inferred=evaluationProfile(row);
     const physical=row&&row.sourceType==='physical_standard' ? PHYSICAL_EVALUATION_PROFILE[row.id] : null;
     const method=row&&row.sourceType==='department_method_control' ? METHOD_CONTROL_EVALUATION_PROFILE[row.id] : null;
-    const auditCriterion=row&&row.sourceType==='department_audit_criteria' ? AUDIT_CRITERION_EVALUATION_PROFILE[row.id] : null;
+    const auditCriterion=row ? AUDIT_CRITERION_EVALUATION_PROFILE[row.id] : null;
     const finalProfile=Object.assign({},inferred,physical||{},method||{},auditCriterion||{});
     if(method) finalProfile.evidenceContract=methodControlEvidenceContract(row,finalProfile.evaluationKind);
     return Object.assign({},row,finalProfile);
@@ -372,7 +372,7 @@
     });
     return {
       schema:BACKUP_SCHEMA,
-      engineVersion:'1.6.1',
+      engineVersion:'1.6.2',
       exportedAt:new Date().toISOString(),
       departments:state
     };
@@ -408,7 +408,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.6.1',
+    version:'1.6.2',
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,
