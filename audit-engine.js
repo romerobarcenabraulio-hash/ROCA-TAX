@@ -31,11 +31,12 @@
   function evaluationProfile(row){
     const contexts=normContextRows(row.normReqIds);
     const modeText=contexts.map(x=>String(x.mode||'')).join(' | ');
+    const calculationText=contexts.map(x=>String(x.calculation||'')).join(' | ');
     const captureText=contexts.map(x=>String(x.capture||'').trim()).filter(Boolean);
-    const raw=[modeText,row.input,row.target,row.basis].map(x=>String(x||'')).join(' | ').toUpperCase();
+    const raw=[modeText,calculationText,row.input,row.target,row.basis].map(x=>String(x||'')).join(' | ').toUpperCase();
 
     const conditional=/CONDICIONAL|APLICABILIDAD|CUANDO APLIQUE|CUANDO CORRESPONDA|SI ACTIVA|TRIGGER|DETERMINAR SI|PRIMERO CONFIRMAR|VERIFICAR APLICABILIDAD/.test(raw);
-    const calculate=/CALCULAR|PUNTUAR|ÍNDICE|UMBRAL|CLASIFICAR|COMPARAR.*LÍMITE|SUMAR|RELACIÓN CMA|VLE|ITGBH/.test(raw);
+    const calculate=/\bCALCULAR\b|\bPUNTUAR\b|\bÍNDICE\b|\bUMBRAL\b|\bSUMAR\b|RELACIÓN CMA|\bVLE\b|ITGBH|CLASIFICACIÓN POR PRESIÓN|PROMEDIO CORPORAL|1\/300 M²|1\/200 M²/.test(raw);
     const measure=/MEDIR|MUESTREAR|LECTURA|LUX|PRESIÓN|CAUDAL|CONCENTRACIÓN|RUIDO|VIBRACIÓN|TEMPERATURA|PH\b|RESISTENCIA|DISTANCIA|TIEMPO/.test(raw);
     const document=/DOCUMENTAR|INVENTARIAR|ACTA|REGISTRO|PROGRAMA|PROCEDIMIENTO|HDS|PERMISO|LICENCIA|BITÁCORA|MANUAL|EXPEDIENTE|PLACA|FICHA/.test(raw);
 
@@ -223,7 +224,7 @@
     });
     return {
       schema:BACKUP_SCHEMA,
-      engineVersion:'1.4.0',
+      engineVersion:'1.4.1',
       exportedAt:new Date().toISOString(),
       departments:state
     };
@@ -259,7 +260,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.4.0',
+    version:'1.4.1',
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,
