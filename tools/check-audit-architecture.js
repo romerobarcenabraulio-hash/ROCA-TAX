@@ -84,8 +84,8 @@ assert(Boolean(item),'NONCONFORMING criterion must generate IMPLEMENTAR item');
 assert(item&&item.status==='NO CONFORME','dynamic IMPLEMENTAR item must preserve nonconforming status');
 assert(global.ROCA_AUDIT_ENGINE.closureDetailValid('CONFORMING','')===false,'CONFORMING without detail must not be valid');
 assert(global.ROCA_AUDIT_ENGINE.closureDetailValid('NA_JUSTIFIED','')===false,'NA_JUSTIFIED without justification must not be valid');
-const measuredCriterion=global.ROCA_AUDIT_ENGINE.criteriaForArea('area-montaje').find(r=>r.id==='PHYS-LIGHT');
-assert(Boolean(measuredCriterion),'measured PHYS-LIGHT criterion missing');
+const measuredCriterion=global.ROCA_AUDIT_ENGINE.criteriaForArea('area-montaje').find(r=>r.id==='MON-AREA-03');
+assert(Boolean(measuredCriterion),'measured MON-AREA-03 criterion missing');
 assert(global.ROCA_AUDIT_ENGINE.closureDetailValid('CONFORMING','ok',measuredCriterion)===false,'generic measured closure must be rejected');
 assert(global.ROCA_AUDIT_ENGINE.closureDetailValid('CONFORMING','350 lux medidos',measuredCriterion)===true,'numeric measured closure should be accepted');
 
