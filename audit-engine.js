@@ -21,7 +21,7 @@
 
   const PHYSICAL_EVALUATION_PROFILE={
     "PHYS-FLOW":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
-    "PHYS-EGRESS":{evaluationKind:"MEDIR",evaluationSteps:["INSPECCIONAR","MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
+    "PHYS-EGRESS":{evaluationKind:"MEDIR",evaluationSteps:["INSPECCIONAR","MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO",evidenceContract:"Recorrido completo desde el punto más alejado hasta la salida + distancia real medida en m + puerta operable desde dentro + señal visible + fecha y método/instrumento de medición; si la distancia activa el criterio temporal, registrar también tiempo real de evacuación."},
     "PHYS-FIRE":{evaluationKind:"CALCULAR",evaluationSteps:["MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
     "PHYS-SIGN":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
     "PHYS-LIGHT":{evaluationKind:"MEDIR",evaluationSteps:["MEDIR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
@@ -97,6 +97,39 @@
     "SUP-CTL-02":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
     "SUP-CTL-03":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
     "SUP-CTL-04":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"}
+  };
+
+  const AUDIT_CRITERION_EVALUATION_PROFILE={
+    "CUR-AUD-AREA-07":{
+      evaluationKind:"DOCUMENTAR",
+      evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],
+      verificationRoute:"REVISIÓN DOCUMENTAL",
+      evidenceContract:"Por cada activo/instrumento crítico: identificación inequívoca + ubicación + condición/estado conocido; para báscula y método/instrumento de pH, registrar además identificación del equipo o método y estado de verificación/servicio disponible antes de usar la lectura como evidencia."
+    },
+    "CUR-AUD-05":{
+      evaluationKind:"INSPECCIONAR",
+      evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],
+      verificationRoute:"INSPECCIÓN DE CAMPO",
+      evidenceContract:"Observar una liberación real o revisar un registro trazable de liberación: condición física que permitió avanzar + etapa de origen/destino + fecha/ID de piel o carga; el tiempo puede registrarse como referencia, no como único criterio."
+    },
+    "MON-AUD-19":{
+      evaluationKind:"INSPECCIONAR",
+      evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],
+      verificationRoute:"INSPECCIÓN DE CAMPO",
+      evidenceContract:"Pieza identificada + condición física observada al liberar (humedad/movimiento/estabilidad según corresponda) + transferencia a la siguiente etapa; registrar fecha y responsable/estación cuando exista el dato."
+    },
+    "BAS-AUD-19":{
+      evaluationKind:"INSPECCIONAR",
+      evaluationSteps:["INSPECCIONAR"],
+      verificationRoute:"INSPECCIÓN DE CAMPO",
+      evidenceContract:"Inspección física final con pieza/base identificada: comprobar estabilidad de elementos de ambientación y que ninguno invada puntos de agarre, apoyo, ruta de traslado o lectura visual prevista."
+    },
+    "FMR-AUD-05":{
+      evaluationKind:"MEDIR",
+      evaluationSteps:["MEDIR","INSPECCIONAR","DOCUMENTAR"],
+      verificationRoute:"MEDICIÓN DE CAMPO",
+      evidenceContract:"Hora de vaciado + hora de revisión/apertura + tiempo transcurrido + condición física observada antes de abrir + familia/lote cuando gobierne el comportamiento; el tiempo es referencia y la condición física decide la apertura."
+    }
   };
 
   function methodControlEvidenceContract(row,kind){
@@ -191,7 +224,8 @@
     const inferred=evaluationProfile(row);
     const physical=row&&row.sourceType==='physical_standard' ? PHYSICAL_EVALUATION_PROFILE[row.id] : null;
     const method=row&&row.sourceType==='department_method_control' ? METHOD_CONTROL_EVALUATION_PROFILE[row.id] : null;
-    const finalProfile=Object.assign({},inferred,physical||{},method||{});
+    const auditCriterion=row&&row.sourceType==='department_audit_criteria' ? AUDIT_CRITERION_EVALUATION_PROFILE[row.id] : null;
+    const finalProfile=Object.assign({},inferred,physical||{},method||{},auditCriterion||{});
     if(method) finalProfile.evidenceContract=methodControlEvidenceContract(row,finalProfile.evaluationKind);
     return Object.assign({},row,finalProfile);
   }
@@ -338,7 +372,7 @@
     });
     return {
       schema:BACKUP_SCHEMA,
-      engineVersion:'1.6.0',
+      engineVersion:'1.6.1',
       exportedAt:new Date().toISOString(),
       departments:state
     };
@@ -374,7 +408,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.6.0',
+    version:'1.6.1',
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,
