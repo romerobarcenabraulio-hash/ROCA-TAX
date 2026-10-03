@@ -39,6 +39,79 @@
     "PHYS-SUPPORT":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"}
   };
 
+  const METHOD_CONTROL_EVALUATION_PROFILE={
+    "CUR-CTL-01":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "CUR-CTL-02":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "CUR-CTL-03":{evaluationKind:"MEDIR",evaluationSteps:["MEDIR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
+    "CUR-CTL-04":{evaluationKind:"MEDIR",evaluationSteps:["MEDIR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
+    "CUR-CTL-05":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "CUR-CTL-06":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "CUR-CTL-07":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+
+    "MON-CTL-01":{evaluationKind:"MEDIR",evaluationSteps:["INSPECCIONAR","MEDIR"],verificationRoute:"MEDICIÓN DE CAMPO"},
+    "MON-CTL-02":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "MON-CTL-03":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "MON-CTL-04":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "MON-CTL-05":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "MON-CTL-06":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+
+    "RET-CTL-01":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "RET-CTL-02":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "RET-CTL-03":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "RET-CTL-04":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","INSPECCIONAR","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "RET-CTL-05":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+
+    "BAS-CTL-01":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "BAS-CTL-02":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "BAS-CTL-03":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "BAS-CTL-04":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "BAS-CTL-05":{evaluationKind:"MEDIR",evaluationSteps:["MEDIR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
+    "BAS-CTL-06":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+
+    "FMR-CTL-01":{evaluationKind:"MEDIR",evaluationSteps:["MEDIR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
+    "FMR-CTL-02":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "FMR-CTL-03":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "FMR-CTL-04":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "FMR-CTL-05":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "FMR-CTL-06":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "FMR-CTL-07":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+
+    "REC-CTL-01":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "REC-CTL-02":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "REC-CTL-03":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+
+    "CAR-CTL-01":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "CAR-CTL-02":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "CAR-CTL-03":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "CAR-CTL-04":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+
+    "SOL-CTL-01":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "SOL-CTL-02":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","INSPECCIONAR","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "SOL-CTL-03":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+
+    "BLA-CTL-01":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "BLA-CTL-02":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "BLA-CTL-03":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","INSPECCIONAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+
+    "SUP-CTL-01":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "SUP-CTL-02":{evaluationKind:"DOCUMENTAR",evaluationSteps:["DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "SUP-CTL-03":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "SUP-CTL-04":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"}
+  };
+
+  function methodControlEvidenceContract(row,kind){
+    const target=String(row.target||row.label||row.id||'el control');
+    if(kind==='MEDIR')
+      return 'Medición, lectura o demostración en operación real, identificada y fechada, que compruebe: '+target;
+    if(kind==='CALCULAR')
+      return 'Datos de entrada + cálculo trazable + resultado que compruebe: '+target;
+    if(kind==='CONDICIONAL')
+      return 'Hecho disparador + justificación APLICA/NO APLICA; si aplica, evidencia trazable que demuestre: '+target;
+    if(kind==='DOCUMENTAR')
+      return 'Registro, documento u observación trazable que demuestre específicamente: '+target;
+    return 'Observación identificada y, cuando corresponda, evidencia visual no sensible que demuestre: '+target;
+  };
+
   function departments(){
     return Object.entries(window.ROCA_DEPARTMENTS||{});
   }
@@ -116,8 +189,11 @@
 
   function enrichCriterion(row){
     const inferred=evaluationProfile(row);
-    const explicit=row&&row.sourceType==='physical_standard' ? PHYSICAL_EVALUATION_PROFILE[row.id] : null;
-    return Object.assign({},row,inferred,explicit||{}, {evidenceContract:inferred.evidenceContract});
+    const physical=row&&row.sourceType==='physical_standard' ? PHYSICAL_EVALUATION_PROFILE[row.id] : null;
+    const method=row&&row.sourceType==='department_method_control' ? METHOD_CONTROL_EVALUATION_PROFILE[row.id] : null;
+    const finalProfile=Object.assign({},inferred,physical||{},method||{});
+    if(method) finalProfile.evidenceContract=methodControlEvidenceContract(row,finalProfile.evaluationKind);
+    return Object.assign({},row,finalProfile);
   }
 
   function applicablePhysicalRows(areaId){
@@ -262,7 +338,7 @@
     });
     return {
       schema:BACKUP_SCHEMA,
-      engineVersion:'1.5.1',
+      engineVersion:'1.6.0',
       exportedAt:new Date().toISOString(),
       departments:state
     };
@@ -298,7 +374,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.5.1',
+    version:'1.6.0',
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,
