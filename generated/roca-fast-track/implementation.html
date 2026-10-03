@@ -366,15 +366,20 @@ async function renderDepartmentHolds(){
     SYSTEM_RECORD:"SISTEMA / REGISTRO",
     IMPLEMENT_DECISION:"DECISIÓN DE IMPLEMENTACIÓN"
   };
-  const blocks=Object.values(depts).map(d=>{
-    const open=(Array.isArray(d.implementationHolds)?d.implementationHolds:[]).filter(h=>{
-      const s=String(stateById.get(h.id)?.status||"OPEN").toUpperCase();
-      if(["CLOSED","CANCELLED"].includes(s)) return false;
-      const route=routingById.get(h.id);
-      return route?.hold_type==="IMPLEMENT_DECISION";
-    });
-    return {dept:d,open};
-  }).filter(x=>x.open.length);
+  const deptByArea=new Map(Object.values(depts).map(d=>[d.id,d]));
+  const blocks=[...routingById.values()]
+    .filter(route=>{
+      const s=String(stateById.get(route.hold_id)?.status||route.status||"OPEN").toUpperCase();
+      return route.hold_type==="IMPLEMENT_DECISION"&&!["CLOSED","CANCELLED"].includes(s);
+    })
+    .reduce((acc,route)=>{
+      const dept=deptByArea.get(route.area);
+      if(!dept) return acc;
+      let block=acc.find(x=>x.dept.id===dept.id);
+      if(!block){block={dept,open:[]};acc.push(block);}
+      block.open.push({id:route.hold_id,text:route.source_text||route.routing_reason||"",route});
+      return acc;
+    },[]);
   if(!blocks.length){
     host.innerHTML='<p><b>Sin decisiones de implementación abiertas.</b> Los HOLD de definir estándar, auditar estado actual o sistema/registro permanecen en su capa canónica y no se convierten en tareas de IMPLEMENTAR.</p>';
     return;
@@ -382,7 +387,7 @@ async function renderDepartmentHolds(){
   host.innerHTML=(stateError?'<div class="note"><b>Advertencia:</b> no se pudo leer el ledger de HOLD; por seguridad se muestran todos como abiertos.</div>':'')+
     (routingError?'<div class="note"><b>Advertencia:</b> no se pudo leer el routing canónico de HOLD; se usa clasificación de respaldo.</div>':'')+
     blocks.map(x=>'<div class="tool"><h3>'+esc(x.dept.code+' · '+x.dept.title)+'</h3><ul>'+
-      x.open.map(h=>{const route=routingById.get(h.id);const fallbackType=holdClosureType(h.text);const type=route?.hold_type||fallbackType;const label=routingLabel[type]||type;const routingText=route?(route.canonical_home+' · '+route.routing_reason):holdCloseRule(fallbackType);const proof=holdKnownProof(h.id);const s=stateById.get(h.id)||{};return '<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'<br><small><b>'+esc(label)+'</b> · '+esc(routingText)+(route?'<br><b>BLOQUEA DEFINICIÓN</b> · '+esc(route.blocks_standard_definition)+' · <b>BLOQUEA AUDITORÍA ACTUAL</b> · '+esc(route.blocks_current_audit):'')+(proof?'<br><b>EVIDENCIA ACTUAL</b> · '+esc(proof):'')+(s.evidence_id?'<br><b>EVIDENCIA DE CIERRE</b> · '+esc(s.evidence_id):'')+'</small></li>'}).join("")+
+      x.open.map(h=>{const route=h.route||routingById.get(h.id);const fallbackType=holdClosureType(h.text);const type=route?.hold_type||fallbackType;const label=routingLabel[type]||type;const routingText=route?(route.canonical_home+' · '+route.routing_reason):holdCloseRule(fallbackType);const proof=holdKnownProof(h.id);const s=stateById.get(h.id)||{};return '<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'<br><small><b>'+esc(label)+'</b> · '+esc(routingText)+(route?'<br><b>BLOQUEA DEFINICIÓN</b> · '+esc(route.blocks_standard_definition)+' · <b>BLOQUEA AUDITORÍA ACTUAL</b> · '+esc(route.blocks_current_audit):'')+(proof?'<br><b>EVIDENCIA ACTUAL</b> · '+esc(proof):'')+(s.evidence_id?'<br><b>EVIDENCIA DE CIERRE</b> · '+esc(s.evidence_id):'')+'</small></li>'}).join("")+
       '</ul></div>').join("");
 }
 renderDepartmentHolds();
