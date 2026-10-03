@@ -100,6 +100,16 @@ for(const vp of contract.viewports){
               const status=row.locator(".audit-status");
               const note=row.locator(".audit-note");
 
+              const evalBadge=(await row.locator(".audit-eval-badge").innerText()).trim();
+              const evalSteps=(await row.locator(".audit-eval-steps").innerText()).trim();
+              const evidenceContract=(await row.locator(".audit-evidence-contract").innerText()).trim();
+              const allowedEval=new Set(["CALCULAR","MEDIR","INSPECCIONAR","DOCUMENTAR","CONDICIONAL"]);
+              if(allowedEval.has(evalBadge)) pass(prefix+":audit-evaluation-kind","criterion exposes an allowed verification mode",{criterionId,evalBadge,evalSteps});
+              else fail(prefix+":audit-evaluation-kind","criterion verification mode missing/invalid",{criterionId,evalBadge,evalSteps});
+              if(/Demostrar con:/i.test(evidenceContract)&&evidenceContract.length>18)
+                pass(prefix+":audit-evidence-contract","criterion exposes explicit evidence contract",{criterionId,evidenceContract});
+              else fail(prefix+":audit-evidence-contract","criterion evidence contract missing/too short",{criterionId,evidenceContract});
+
               await note.fill("");
               await status.selectOption("NONCONFORMING");
               await page.waitForTimeout(100);
@@ -129,6 +139,9 @@ for(const vp of contract.viewports){
               const implBody=await page.locator("body").innerText();
               if(implBody.includes(gap)) pass(prefix+":audit-to-implementation","NONCONFORMING appears in IMPLEMENTAR");
               else fail(prefix+":audit-to-implementation","NONCONFORMING missing from IMPLEMENTAR",{criterionId});
+              if(implBody.includes(evalBadge)&&/cierre:/i.test(implBody))
+                pass(prefix+":audit-implementation-evidence-contract","IMPLEMENTAR carries verification mode and closure evidence",{criterionId,evalBadge});
+              else fail(prefix+":audit-implementation-evidence-contract","IMPLEMENTAR missing verification mode or closure evidence",{criterionId,evalBadge});
 
               await page.goto(base+"/index.html",{waitUntil:"domcontentloaded"});
               await page.locator("#auditMode").click();
