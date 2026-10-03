@@ -24,10 +24,9 @@ for(const [areaId,d] of Object.entries(depts)){
   const area=Array.isArray(d.area)?d.area:[];
   const areaAudit=Array.isArray(d.areaAudit)?d.areaAudit:[];
   const areaIds=new Set(area.map(x=>x.id));
-  if(d.physicalStandardsIntegrated){
-    if(areaAudit.length) errors.push(`${areaId}: integrated MUSTs still have parallel areaAudit rows`);
+  if(areaAudit.length===0){
     for(const r of area){
-      if(!r.evidence||!r.basis) errors.push(`${areaId}: integrated MUST ${r.id} missing evidence/basis`);
+      if(!r.evidence||!r.basis) errors.push(`${areaId}: canonical MUST ${r.id} missing evidence/basis after areaAudit retirement`);
     }
   }else{
     if(area.length!==areaAudit.length) errors.push(`${areaId}: area/areaAudit parity mismatch`);
