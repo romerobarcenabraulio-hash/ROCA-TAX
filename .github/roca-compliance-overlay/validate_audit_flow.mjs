@@ -15,7 +15,7 @@ const phys=ctx.window.ROCA_AREA_PHYSICAL_STANDARD||[];
 if(Object.keys(depts).length!==10) errors.push("expected 10 departments");
 
 const expectedCounts={
-  "area-curtiduria":21,"area-montaje":37,"area-retoque":37,"area-bases":40,"area-fmr":35,
+  "area-curtiduria":21,"area-montaje":25,"area-retoque":37,"area-bases":40,"area-fmr":35,
   "area-recepcion":19,"area-carpinteria":30,"area-soldadura":22,"area-blanqueado":23,"area-soporte":24
 };
 
@@ -175,8 +175,8 @@ if(!probeId){
   if(emptyFiltered.ignored<1) errors.push("audit import accepted terminal closure without supporting detail");
   if(ctx.window.ROCA_AUDIT_ENGINE.closureDetailValid("NA_JUSTIFIED","")!==false)
     errors.push("NA_JUSTIFIED without justification accepted");
-  const measured=ctx.window.ROCA_AUDIT_ENGINE.criteriaForArea("area-montaje").find(r=>r.id==="PHYS-LIGHT");
-  if(!measured) errors.push("PHYS-LIGHT measured criterion missing");
+  const measured=ctx.window.ROCA_AUDIT_ENGINE.criteriaForArea("area-montaje").find(r=>r.id==="MON-AREA-03");
+  if(!measured) errors.push("MON-AREA-03 measured criterion missing");
   else{
     if(ctx.window.ROCA_AUDIT_ENGINE.closureDetailValid("CONFORMING","ok",measured)!==false)
       errors.push("generic measured closure accepted");
