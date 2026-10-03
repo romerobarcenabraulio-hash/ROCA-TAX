@@ -23,6 +23,51 @@
     return Object.entries(window.ROCA_DEPARTMENTS||{});
   }
 
+  function normContextRows(ids){
+    const byReq=(window.ROCA_NORM_CONTEXT&&window.ROCA_NORM_CONTEXT.byReq)||{};
+    return (Array.isArray(ids)?ids:[]).map(id=>byReq[id]).filter(Boolean);
+  }
+
+  function evaluationProfile(row){
+    const contexts=normContextRows(row.normReqIds);
+    const modeText=contexts.map(x=>String(x.mode||'')).join(' | ');
+    const captureText=contexts.map(x=>String(x.capture||'').trim()).filter(Boolean);
+    const raw=[modeText,row.input,row.target,row.basis].map(x=>String(x||'')).join(' | ').toUpperCase();
+
+    const conditional=/CONDICIONAL|APLICABILIDAD|CUANDO APLIQUE|CUANDO CORRESPONDA|SI ACTIVA|TRIGGER|DETERMINAR SI|PRIMERO CONFIRMAR|VERIFICAR APLICABILIDAD/.test(raw);
+    const calculate=/CALCULAR|PUNTUAR|ÍNDICE|UMBRAL|CLASIFICAR|COMPARAR.*LÍMITE|SUMAR|RELACIÓN CMA|VLE|ITGBH/.test(raw);
+    const measure=/MEDIR|MUESTREAR|LECTURA|LUX|PRESIÓN|CAUDAL|CONCENTRACIÓN|RUIDO|VIBRACIÓN|TEMPERATURA|PH\b|RESISTENCIA|DISTANCIA|TIEMPO/.test(raw);
+    const document=/DOCUMENTAR|INVENTARIAR|ACTA|REGISTRO|PROGRAMA|PROCEDIMIENTO|HDS|PERMISO|LICENCIA|BITÁCORA|MANUAL|EXPEDIENTE|PLACA|FICHA/.test(raw);
+
+    let evaluationKind='INSPECCIONAR';
+    if(conditional) evaluationKind='CONDICIONAL';
+    else if(calculate) evaluationKind='CALCULAR';
+    else if(measure) evaluationKind='MEDIR';
+    else if(document) evaluationKind='DOCUMENTAR';
+
+    const steps=[];
+    if(conditional) steps.push('CONDICIONAL');
+    if(measure) steps.push('MEDIR');
+    if(calculate) steps.push('CALCULAR');
+    if(document) steps.push('DOCUMENTAR');
+    if(!steps.length) steps.push('INSPECCIONAR');
+
+    const uniqueCapture=[...new Set(captureText)];
+    const evidenceContract=uniqueCapture.length
+      ? uniqueCapture.join(' · ')
+      : String(row.input||'Evidencia observable y trazable de la condición evaluada.');
+
+    return {
+      evaluationKind,
+      evaluationSteps:[...new Set(steps)],
+      evidenceContract
+    };
+  }
+
+  function enrichCriterion(row){
+    return Object.assign({},row,evaluationProfile(row));
+  }
+
   function applicablePhysicalRows(areaId){
     const phys=Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)?window.ROCA_AREA_PHYSICAL_STANDARD:[];
     return phys
@@ -84,7 +129,7 @@
       if(!r.id||seen.has(r.id)) return false;
       seen.add(r.id);
       return true;
-    });
+    }).map(enrichCriterion);
   }
 
   function stateKey(areaId){ return 'roca.audit.'+areaId; }
@@ -127,11 +172,14 @@
           areaId,
           req:row.id,
           gap:'NO CONFORME · '+note,
-          fix:'Corregir la condición: '+row.target+' Después volver a auditar.',
+          fix:'Cerrar la brecha observada y volver a auditar. Evidencia de cierre requerida: '+row.evidenceContract,
           owner:'POR ASIGNAR',
           due:'—',
           status:'NO CONFORME',
           evidence:note,
+          evidenceNeeded:row.evidenceContract,
+          evaluationKind:row.evaluationKind,
+          evaluationSteps:row.evaluationSteps,
           basis:row.basis,
           dynamic:true
         });
@@ -161,7 +209,7 @@
     });
     return {
       schema:BACKUP_SCHEMA,
-      engineVersion:'1.2.0',
+      engineVersion:'1.3.0',
       exportedAt:new Date().toISOString(),
       departments:state
     };
@@ -197,7 +245,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.2.0',
+    version:'1.3.0',
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,

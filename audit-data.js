@@ -212,7 +212,7 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       '<div><strong>'+m.open+'</strong><span>IMPLEMENTAR</span><small>Brechas abiertas</small></div>'+
       '</div>';
   }
-  const html = promotedHtml + '<div id="auditMetricsHost">'+metricMarkup()+'</div><table class="audit-central-table"><thead><tr><th>ID</th><th>Base</th><th>Criterio fijo</th><th>Resultado</th><th>Dato / nota</th><th>Implementación</th></tr></thead><tbody>'+
+  const html = promotedHtml + '<div id="auditMetricsHost">'+metricMarkup()+'</div><table class="audit-central-table"><thead><tr><th>ID</th><th>Base</th><th>Criterio fijo</th><th>Modo / evidencia</th><th>Resultado</th><th>Dato / nota</th><th>Implementación</th></tr></thead><tbody>'+
     rows.map((row,i)=>{
       const id=row.id || (code+'-FT-'+String(i+1).padStart(2,'0'));
       const v=saved[id]||{};
@@ -220,11 +220,15 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       const dynamicOpen=(v.status==='NONCONFORMING');
       const implementationText=action
         ? '<strong>ABIERTA · REGISTRO</strong><br>'+String(action.correction||'')
-        : (dynamicOpen?'<strong>ABIERTA · AUDITORÍA</strong><br>Corregir la condición y volver a auditar.':'—');
+        : (dynamicOpen?'<strong>ABIERTA · AUDITORÍA</strong><br>'+String(row.evaluationKind||'INSPECCIONAR')+' · cerrar la brecha y demostrar con: '+String(row.evidenceContract||row.input||'evidencia objetiva'):'—');
       const normButton=(row.normReqIds&&row.normReqIds.length)
         ? '<button type="button" class="audit-norm-open" data-norm-ids="'+row.normReqIds.join(';')+'">VER FUNDAMENTO</button>'
         : '';
-      return '<tr data-audit-id="'+id+'"><td><strong>'+id+'</strong><br><small>'+row.group+' · '+row.label+'</small></td><td><small>'+String(row.basis||'Estándar ROCA')+'</small>'+normButton+'</td><td>'+row.target+'</td><td><select class="audit-status"><option value="NOT_VERIFIED">NO VERIFICADO</option><option value="CONFORMING">CONFORME</option><option value="NONCONFORMING">NO CONFORME</option><option value="NA_JUSTIFIED">NO APLICA — JUSTIFICACIÓN</option></select></td><td><textarea class="audit-note" rows="3" placeholder="'+row.input.replace(/"/g,'&quot;')+'">'+(v.note||'')+'</textarea><div class="audit-validation" role="status"></div></td><td class="audit-implementation">'+implementationText+'</td></tr>';
+      const evalKind=String(row.evaluationKind||'INSPECCIONAR');
+      const evalSteps=Array.isArray(row.evaluationSteps)&&row.evaluationSteps.length?row.evaluationSteps.join(' → '):evalKind;
+      const evidenceContract=String(row.evidenceContract||row.input||'Evidencia observable y trazable.');
+      const evalMarkup='<span class="audit-eval-badge eval-'+evalKind.toLowerCase()+'">'+evalKind+'</span><small class="audit-eval-steps">'+evalSteps+'</small><p class="audit-evidence-contract"><b>Demostrar con:</b> '+evidenceContract+'</p>';
+      return '<tr data-audit-id="'+id+'"><td><strong>'+id+'</strong><br><small>'+row.group+' · '+row.label+'</small></td><td><small>'+String(row.basis||'Estándar ROCA')+'</small>'+normButton+'</td><td>'+row.target+'</td><td class="audit-evaluation">'+evalMarkup+'</td><td><select class="audit-status"><option value="NOT_VERIFIED">NO VERIFICADO</option><option value="CONFORMING">CONFORME</option><option value="NONCONFORMING">NO CONFORME</option><option value="NA_JUSTIFIED">NO APLICA — JUSTIFICACIÓN</option></select></td><td><textarea class="audit-note" rows="3" placeholder="'+evidenceContract.replace(/"/g,'&quot;')+'">'+(v.note||'')+'</textarea><div class="audit-validation" role="status"></div></td><td class="audit-implementation">'+implementationText+'</td></tr>';
     }).join('')+'</tbody></table>';
   root.querySelector('.audit-table-host').innerHTML = html;
   const normContext=document.getElementById('auditNormContext');
@@ -307,8 +311,9 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       const cell=tr.querySelector('.audit-implementation');
       const action=openByReq.get(id);
       if(cell&&!action){
+        const rowDef=rows.find(r=>r.id===id)||{};
         cell.innerHTML=(status==='NONCONFORMING')
-          ? '<strong>ABIERTA · AUDITORÍA</strong><br>Corregir la condición y volver a auditar.'
+          ? '<strong>ABIERTA · AUDITORÍA</strong><br>'+String(rowDef.evaluationKind||'INSPECCIONAR')+' · cerrar la brecha y demostrar con: '+String(rowDef.evidenceContract||rowDef.input||'evidencia objetiva')
           : '—';
       }
     };

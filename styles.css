@@ -334,3 +334,15 @@ footer{display:none}
 .audit-global-card.missing{border-style:dashed}
 @media(max-width:900px){.audit-global-grid{grid-template-columns:1fr}}
 @media print{.audit-global-grid{display:none!important}}
+
+/* Operational audit mode: every criterion states how it is verified and what closes it. */
+.audit-evaluation{min-width:210px}
+.audit-eval-badge{display:inline-block;padding:4px 6px;border:1px solid #998b79;background:#f7f1e8;font:700 7px/1 Arial,Helvetica,sans-serif;letter-spacing:.06em}
+.audit-eval-badge.eval-calcular{border-color:#765e32}
+.audit-eval-badge.eval-medir{border-color:#526b6f}
+.audit-eval-badge.eval-documentar{border-color:#6e5f74}
+.audit-eval-badge.eval-condicional{border-color:#9a6a2f}
+.audit-eval-steps{display:block;margin-top:5px;font:700 7px/1.25 Arial,Helvetica,sans-serif;color:#766b60}
+.audit-evidence-contract{margin:7px 0 0;font:8px/1.4 Arial,Helvetica,sans-serif;color:#4f4942}
+@media(max-width:1100px){.audit-evaluation{min-width:170px}}
+@media print{.audit-eval-badge{border:1px solid #777}.audit-evaluation{min-width:0}}

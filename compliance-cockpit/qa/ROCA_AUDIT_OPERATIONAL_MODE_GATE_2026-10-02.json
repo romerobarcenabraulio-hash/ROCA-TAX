@@ -1,0 +1,15 @@
+{
+  "schema": "ROCA_AUDIT_OPERATIONAL_MODE_GATE_V1",
+  "checked_on": "2026-10-02",
+  "parent_head": "a4c99e60b8402fe16d22f41a42295aa74f4bf632",
+  "guarantees": [
+    "criteriaForArea enriches every deduplicated criterion with evaluationKind, evaluationSteps and evidenceContract",
+    "evaluationKind always resolves to CALCULAR, MEDIR, INSPECCIONAR, DOCUMENTAR or CONDICIONAL",
+    "physical normative criteria prefer structured norm-context capture requirements",
+    "NONCONFORMING creates a dynamic IMPLEMENTAR action only when a note/gap exists",
+    "dynamic IMPLEMENTAR fix no longer copies the permanent target; it requests closure of the observed gap plus the evidenceContract",
+    "CONFORMING or NA_JUSTIFIED removes the dynamic audit action while the permanent criterion remains"
+  ],
+  "engine_version": "1.3.0",
+  "status": "SOURCE_IMPLEMENTED_PENDING_RUNTIME_QA"
+}
