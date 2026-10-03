@@ -263,19 +263,6 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
     {id:"EVID-MON-08",text:"Condición final y transferencia a Retoque cuando aporte trazabilidad.",placement:"Handoff"}
   ],
   auditCriteria:[
-    {id:"MON-AUD-01",group:"Área",label:"Circulación",target:"Circulación y accesos permanecen libres.",input:"Vista general y recorrido."},
-    {id:"MON-AUD-02",group:"Área",label:"Estación",target:"Estación utilizable, almacenamiento recuperable y soporte estable.",input:"Estación real + almacenamiento."},
-    {id:"MON-AUD-03",group:"Área",label:"Iluminación",target:"Iluminación medida cuando la tarea real lo requiera.",input:"Lux + plano de tarea + instrumento."},
-    {id:"MON-AUD-04",group:"Área",label:"Ventilación",target:"Ventilación/extracción corresponde a operación y producto real.",input:"Producto/HDS + punto de uso."},
-    {id:"MON-AUD-05",group:"Área",label:"Emergencia",target:"Rutas y medios de emergencia accesibles.",input:"Recorrido físico."},
-    {id:"MON-AUD-06",group:"Área",label:"Identidad y espera",target:"Pieza activa o en espera conserva ID y siguiente acción.",input:"Muestra de trabajos."},
-    {id:"MON-AUD-07",group:"Área",label:"Estación individual",target:"Cada montador conserva estación y almacenamiento propios sin amontonamiento.",input:"Revisión por estación."},
-    {id:"MON-AUD-08",group:"Área",label:"Punzantes",target:"Punzantes y filos están protegidos y ubicados.",input:"Estado al cierre."},
-    {id:"MON-AUD-09",group:"Área",label:"Químicos",target:"Productos identificados y punto de mezcla/uso definido cuando aplique.",input:"Producto + etiqueta + ubicación."},
-    {id:"MON-AUD-10",group:"Área",label:"Secado",target:"Secado/espera estable, identificado y fuera de circulación.",input:"Zona de secado."},
-    {id:"MON-AUD-11",group:"Área",label:"Cables",target:"Cables y mangueras quedan fuera del paso o protegidos.",input:"Recorrido de estación."},
-    {id:"MON-AUD-12",group:"Área",label:"Residuos",target:"Residuos y recuperables se separan por destino real.",input:"Recipientes y corrientes."},
-    {id:"MON-AUD-13",group:"Área",label:"Reset",target:"La estación regresa a condición lista al cierre.",input:"Estado de cierre."},
     {id:"MON-AUD-14",group:"Proceso",label:"Forma",target:"Piel y forma son dimensionalmente compatibles antes del vestido.",input:"Medidas + presentación."},
     {id:"MON-AUD-15",group:"Proceso",label:"Cuernos/astas",target:"Conjunto estable y posicionado antes de cubrir la unión.",input:"Comprobación previa al vestido."},
     {id:"MON-AUD-16",group:"Proceso",label:"Orejas",target:"Oreja conserva forma sin exceso de espesor ni pérdida anatómica.",input:"Comparación visual y táctil."},
@@ -447,18 +434,6 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
     {id:"EVID-RET-06",text:"Condición final cuando aporta aceptación o trazabilidad.",placement:"Handoff"}
   ],
   auditCriteria:[
-    {id:"RET-AUD-01",group:"Área",label:"Circulación",target:"Circulación y accesos permanecen libres.",input:"Panorámica y recorrido."},
-    {id:"RET-AUD-02",group:"Área",label:"Estación",target:"Estación y almacenamiento son recuperables.",input:"Estación real."},
-    {id:"RET-AUD-03",group:"Área",label:"Iluminación",target:"Iluminación se mide cuando gobierna la tarea.",input:"Lux + punto + instrumento."},
-    {id:"RET-AUD-04",group:"Área",label:"Ventilación",target:"Ventilación/extracción corresponde a operación y producto.",input:"Producto/HDS + punto de uso."},
-    {id:"RET-AUD-05",group:"Área",label:"Emergencia",target:"Rutas y medios de emergencia permanecen accesibles.",input:"Recorrido físico."},
-    {id:"RET-AUD-06",group:"Área",label:"Identidad",target:"Pieza activa o en espera conserva ID.",input:"Muestra de piezas."},
-    {id:"RET-AUD-07",group:"Área",label:"Pintura/solventes",target:"Pintura y solventes están en punto definido e identificados.",input:"Producto + ubicación."},
-    {id:"RET-AUD-08",group:"Área",label:"Aire comprimido",target:"Compresor/línea de aire identificables y sin invadir circulación.",input:"Sistema de aire."},
-    {id:"RET-AUD-09",group:"Área",label:"Acabado fino",target:"Acabado puede inspeccionarse sin contaminación o sombras críticas.",input:"Punto de acabado."},
-    {id:"RET-AUD-10",group:"Área",label:"Polvo",target:"Resane/lijado no contamina acabado fino.",input:"Secuencia y limpieza."},
-    {id:"RET-AUD-11",group:"Área",label:"Pedacera",target:"Pedacera contenida y clasificada sólo en Retoque.",input:"Ubicación real."},
-    {id:"RET-AUD-12",group:"Área",label:"Alfileres",target:"Alfileres retirados quedan contenidos.",input:"Estado de cierre."},
     {id:"RET-AUD-13",group:"Proceso",label:"Limpieza",target:"Pieza entra al acabado limpia, sin fijaciones temporales ni residuos que impidan evaluar.",input:"Condición antes de resane."},
     {id:"RET-AUD-14",group:"Proceso",label:"Resane",target:"Defecto superficial queda nivelado antes de color.",input:"Inspección visual/táctil."},
     {id:"RET-AUD-15",group:"Proceso",label:"Color",target:"Transiciones integradas sin manchas aisladas.",input:"Comparación con referencia."},
@@ -644,18 +619,6 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
     {id:"EVID-BAS-05",text:"Incidencia/retrabajo y condición final cuando aportan trazabilidad.",placement:"Control / handoff"}
   ],
   auditCriteria:[
-    {id:"BAS-AUD-01",group:"Área",label:"Circulación",target:"Circulación y ruta de maniobra permanecen libres.",input:"Panorámica y recorrido."},
-    {id:"BAS-AUD-02",group:"Área",label:"Estación",target:"Estación y almacenamiento son recuperables.",input:"Estación real."},
-    {id:"BAS-AUD-03",group:"Área",label:"Iluminación",target:"Iluminación se verifica cuando gobierna la tarea.",input:"Lux + plano + instrumento."},
-    {id:"BAS-AUD-04",group:"Área",label:"Ventilación",target:"Ventilación/extracción corresponde a proceso/producto.",input:"Producto/HDS + punto de generación."},
-    {id:"BAS-AUD-05",group:"Área",label:"Emergencia",target:"Rutas y medios de emergencia permanecen accesibles.",input:"Recorrido físico."},
-    {id:"BAS-AUD-06",group:"Área",label:"Identidad",target:"Pieza/base en espera conserva ID y siguiente acción.",input:"Muestra de trabajos."},
-    {id:"BAS-AUD-07",group:"Área",label:"Armado",target:"Armado estable y sin apoyos improvisados.",input:"Presentación de pieza/base."},
-    {id:"BAS-AUD-08",group:"Área",label:"Poliuretano/adhesivos",target:"Productos identificados y contenidos.",input:"Producto + ubicación + mezcla."},
-    {id:"BAS-AUD-09",group:"Área",label:"Corte/acabado",target:"Zona despejada y herramienta apta.",input:"Equipo real + condición."},
-    {id:"BAS-AUD-10",group:"Área",label:"Polvo",target:"Polvo no contamina acabado químico.",input:"Secuencia y limpieza."},
-    {id:"BAS-AUD-11",group:"Área",label:"Material pesado",target:"Materiales/piezas pesadas están estables y con ruta.",input:"Almacenamiento + recorrido."},
-    {id:"BAS-AUD-12",group:"Área",label:"Maniobra",target:"Maniobra pesada tiene método o asistencia definidos.",input:"Observación de maniobra real."},
     {id:"BAS-AUD-13",group:"Proceso",label:"Plancha",target:"Dimensiones y apoyo inferior corresponden a pieza y referencia.",input:"Medidas + material + apoyo."},
     {id:"BAS-AUD-14",group:"Proceso",label:"Fijación",target:"Pieza equilibrada y sostenida antes del relleno/acabado.",input:"Comprobación estructural."},
     {id:"BAS-AUD-15",group:"Proceso",label:"Poliuretano",target:"Cuando se usa, producto y dosificación corresponden a una receta de Bases liberada.",input:"Producto + lote + receta + prueba."},
@@ -830,15 +793,12 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
     {id:"EVID-FMR-04",text:"Divisiones, gelcoat y capas cuando se construye un molde de fibra.",placement:"Metodología / Moldes"}
   ],
   auditCriteria:[
-    {id:"FMR-AUD-01",group:"Área",label:"ID/rack",target:"Forma o molde conserva ID y ubicación.",input:"Código + rack + pieza."},
-    {id:"FMR-AUD-02",group:"Área",label:"Material/lote",target:"Material y lote están identificados cuando gobiernan dosificación.",input:"Producto/lote real."},
     {id:"FMR-AUD-03",group:"Proceso",label:"Prueba de lote",target:"Lote nuevo se prueba antes de producción.",input:"Prueba 20 g + resultado."},
     {id:"FMR-AUD-04",group:"Proceso",label:"Dosificación",target:"A/B se pesan por separado y proporción se registra antes de mezclar.",input:"Pesos + relación + lote."},
     {id:"FMR-AUD-05",group:"Proceso",label:"Curado",target:"Curado cumple referencia de tiempo y condición física antes de apertura.",input:"Hora vaciado/revisión + condición."},
     {id:"FMR-AUD-06",group:"Proceso",label:"Cera",target:"10 pasadas aplican a Moldes de fibra, no como requisito automático de Formas.",input:"Familia + preparación."},
     {id:"FMR-AUD-07",group:"Proceso",label:"Gelcoat",target:"Gelcoat se aplica después del oreado y la consistencia no escurre.",input:"Oreado + mezcla."},
     {id:"FMR-AUD-08",group:"Proceso",label:"Laminado",target:"6 capas base; séptima sólo por mayor exigencia documentada.",input:"Conteo + justificación."},
-    {id:"FMR-AUD-09",group:"Área",label:"Ventilación/polvo",target:"Ventilación, polvo y fibra están controlados según proceso real.",input:"Punto de trabajo + control físico."}
   ],
   implementationHolds:[
     {id:"FMR-HOLD-01",text:"Cerrar inventario/codificación real y rack."},
@@ -954,7 +914,6 @@ window.ROCA_DEPARTMENTS["area-recepcion"] = {
   auditCriteria:[
     {id:"REC-AUD-01",group:"Proceso",label:"ID",target:"Ningún trabajo queda sin ID.",input:"Muestra de trabajos activos."},
     {id:"REC-AUD-02",group:"Proceso",label:"Foto/documento",target:"Foto y documento están ligados al mismo trabajo.",input:"ID + foto + documento."},
-    {id:"REC-AUD-03",group:"Área",label:"Espera",target:"Espera está separada y siguiente acción visible.",input:"Zona de espera."},
     {id:"REC-AUD-04",group:"Proceso",label:"Handoff",target:"Transferencia queda registrada.",input:"Trabajo transferido + registro."}
   ],
   implementationHolds:[
@@ -1074,11 +1033,6 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     {id:"EVID-CAR-02",text:"Primera demostración real: orden/pieza, requerimiento/dimensiones, secuencia, herramienta/equipo, materiales/protección, condición de salida y carga/manipulación si aplica.",placement:"Metodología"}
   ],
   auditCriteria:[
-    {id:"CAR-AUD-01",group:"Área",label:"Decisión/ubicación",target:"Existe decisión de implementar y ubicación aprobada.",input:"Decisión + ubicación."},
-    {id:"CAR-AUD-02",group:"Área",label:"Separación de polvo",target:"Polvo/aserrín queda separado de Retoque/acabados.",input:"Límite físico y punto de corte."},
-    {id:"CAR-AUD-03",group:"Área",label:"Puesto real",target:"Banco/rack/equipo real implementados y utilizables.",input:"Activo físico."},
-    {id:"CAR-AUD-04",group:"Área",label:"Almacenamiento",target:"Madera/herrajes/protecciones están estables y recuperables.",input:"Almacenamiento real."},
-    {id:"CAR-AUD-05",group:"Área",label:"Servicios/carga",target:"Electricidad y ruta de carga son compatibles con el puesto.",input:"Servicios + recorrido."},
     {id:"CAR-AUD-06",group:"Proceso",label:"Identidad de embalaje",target:"Caja/embalaje está ligado a la orden.",input:"Muestra real."},
     {id:"CAR-AUD-07",group:"Proceso",label:"Demostración real",target:"Método real fue demostrado antes de liberarse.",input:"Observación completa de una orden."},
     {id:"CAR-AUD-08",group:"Proceso",label:"Criterio de liberación",target:"Criterios de protección y liberación están definidos por pieza/destino.",input:"Regla derivada de demostración real."}
@@ -1189,10 +1143,6 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     {id:"EVID-SOL-04",text:"Primera demostración técnica completa.",placement:"Metodología"}
   ],
   auditCriteria:[
-    {id:"SOL-AUD-01",group:"Área",label:"Preparación",target:"Área está preparada antes del trabajo en caliente.",input:"Recorrido previo."},
-    {id:"SOL-AUD-02",group:"Área",label:"Terceros",target:"Terceros están protegidos cuando aplica.",input:"Pantalla/mampara + ubicación."},
-    {id:"SOL-AUD-03",group:"Área",label:"Ventilación",target:"Ventilación corresponde a la operación real.",input:"Material/recubrimiento + control."},
-    {id:"SOL-AUD-04",group:"Área",label:"Equipo",target:"Equipo y cables están en condición utilizable.",input:"Equipo real."},
     {id:"SOL-AUD-05",group:"Proceso",label:"Liberación",target:"Unión es estable antes de liberar.",input:"Comprobación de estabilidad."}
   ],
   implementationHolds:[
@@ -1300,8 +1250,6 @@ window.ROCA_DEPARTMENTS["area-blanqueado"] = {
   ],
   auditCriteria:[
     {id:"BLA-AUD-01",group:"Proceso",label:"Protección de cuernos",target:"Cuerno está protegido de zona térmica cuando aplica.",input:"Montaje real."},
-    {id:"BLA-AUD-02",group:"Área",label:"Estabilidad",target:"Recipiente y fuente de calor son estables.",input:"Condición física."},
-    {id:"BLA-AUD-03",group:"Área",label:"Ruta",target:"Ruta de agua caliente no genera derrame u obstrucción.",input:"Recorrido."},
     {id:"BLA-AUD-04",group:"Proceso",label:"Producto auxiliar",target:"Producto auxiliar está identificado sólo si realmente existe.",input:"Producto real o N/A justificado."},
     {id:"BLA-AUD-05",group:"Proceso",label:"Identidad",target:"Pieza conserva ID durante todo el tratamiento.",input:"Muestra en proceso."}
   ],
