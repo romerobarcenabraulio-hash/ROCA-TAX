@@ -220,13 +220,27 @@
     };
   }
 
+  function strengthenEvidenceContract(profile){
+    const p=Object.assign({},profile||{});
+    const route=String(p.verificationRoute||'');
+    const contract=String(p.evidenceContract||'').trim();
+    if(route==='INSPECCIÓN DE CAMPO'&&!/(observación|visual|operación real|foto|estado|condición|ubicación|recorrido|demuestre|inspección física)/i.test(contract)){
+      p.evidenceContract='Inspección física / observación de campo en operación real + '+contract;
+    }
+    if(route==='GATE DE APLICABILIDAD'&&!/(aplica|no aplica|hecho disparador|trigger|si aplica|aplicabilidad)/i.test(contract)){
+      p.evidenceContract='Aplicabilidad: documentar el hecho disparador y justificar APLICA/NO APLICA; si aplica, '+contract;
+    }
+    return p;
+  }
+
   function enrichCriterion(row){
     const inferred=evaluationProfile(row);
     const physical=row&&row.sourceType==='physical_standard' ? PHYSICAL_EVALUATION_PROFILE[row.id] : null;
     const method=row&&row.sourceType==='department_method_control' ? METHOD_CONTROL_EVALUATION_PROFILE[row.id] : null;
     const auditCriterion=row ? AUDIT_CRITERION_EVALUATION_PROFILE[row.id] : null;
-    const finalProfile=Object.assign({},inferred,physical||{},method||{},auditCriterion||{});
+    let finalProfile=Object.assign({},inferred,physical||{},method||{},auditCriterion||{});
     if(method) finalProfile.evidenceContract=methodControlEvidenceContract(row,finalProfile.evaluationKind);
+    finalProfile=strengthenEvidenceContract(finalProfile);
     return Object.assign({},row,finalProfile);
   }
 
