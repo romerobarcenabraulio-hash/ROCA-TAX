@@ -55,20 +55,21 @@
     const dept = window.ROCA_DEPARTMENTS && window.ROCA_DEPARTMENTS[section && section.id];
     if(!dept) return '';
 
-    const specificAreaRows=(dept.area||[]).map(r=>
-      '<tr><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td>'+esc(r.text)+'</td></tr>'
-    ).join('');
-    const physicalRows=(Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)?window.ROCA_AREA_PHYSICAL_STANDARD:[])
+    const specificAreaRows=(dept.area||[]).map(r=>{
+      const details=[
+        r.verify?'<p><strong>Cómo se comprueba:</strong> '+esc(r.verify)+'</p>':'',
+        r.data?'<p><strong>Dato necesario:</strong> '+esc(r.data)+'</p>':'',
+        r.calculation?'<p><strong>Cálculo / comparación:</strong> '+esc(r.calculation)+'</p>':'',
+        r.evidence?'<p><strong>Evidencia:</strong> '+esc(r.evidence)+'</p>':'',
+        r.basis?'<details><summary>Fundamento</summary><p>'+esc(r.basis)+'</p></details>':''
+      ].join('');
+      return '<tr><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td><p>'+esc(r.text)+'</p>'+details+'</td></tr>';
+    }).join('');
+    const physicalRows=dept.physicalStandardsIntegrated ? '' : (Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)?window.ROCA_AREA_PHYSICAL_STANDARD:[])
       .filter(r=>r.areas==='ALL' || (Array.isArray(r.areas)&&r.areas.includes(section.id)))
       .map(r=>'<tr class="physical-row"><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td>'+esc(r.standard)+'</td></tr>')
       .join('');
     const areaRows=specificAreaRows+physicalRows;
-    const areaAuditMeta=Array.isArray(dept.areaAudit)?dept.areaAudit:[];
-    const auditBySourceId=new Map(areaAuditMeta.filter(m=>m&&m.sourceId).map(m=>[m.sourceId,m]));
-    const auditRows=(dept.area||[]).map(r=>{
-      const meta=auditBySourceId.get(r.id)||{};
-      return '<tr><td><strong>'+esc(meta.id||r.id)+'</strong></td><td>'+esc(r.text)+'</td><td>'+esc(meta.evidence||'Evidencia observable de la condición permanente.')+'</td></tr>';
-    }).join('');
     const stages=(dept.method?.stages||[]).map(r=>
       '<section class="method-stage"><h3>'+esc(r.id)+' · '+esc(r.title)+'</h3><p>'+esc(r.text)+'</p></section>'
     ).join('');
@@ -100,10 +101,10 @@
 
     const operations = (toolCare||competencies||controlRecords||materialFlow)
       ? '<section class="department-two-col">'+
-        (toolCare?'<section class="department-block"><div class="eyebrow">06 · CUIDADO DE HERRAMIENTA</div><h2>Condición de uso</h2><ul>'+toolCare+'</ul></section>':'')+
-        (competencies?'<section class="department-block"><div class="eyebrow">07 · PERSONAS / COMPETENCIA</div><h2>Operaciones que requieren autorización</h2><ul>'+competencies+'</ul></section>':'')+
-        (controlRecords?'<section class="department-block"><div class="eyebrow">08 · CONTROL / REGISTROS</div><h2>Qué debe mantenerse ligado a la pieza</h2><ul>'+controlRecords+'</ul></section>':'')+
-        (materialFlow?'<section class="department-block"><div class="eyebrow">09 · FLUJO DE MATERIAL</div><h2>Qué se registra por tarea</h2><ul>'+materialFlow+'</ul></section>':'')+
+        (toolCare?'<section class="department-block"><div class="eyebrow">05 · CUIDADO DE HERRAMIENTA</div><h2>Condición de uso</h2><ul>'+toolCare+'</ul></section>':'')+
+        (competencies?'<section class="department-block"><div class="eyebrow">06 · PERSONAS / COMPETENCIA</div><h2>Operaciones que requieren autorización</h2><ul>'+competencies+'</ul></section>':'')+
+        (controlRecords?'<section class="department-block"><div class="eyebrow">07 · CONTROL / REGISTROS</div><h2>Qué debe mantenerse ligado a la pieza</h2><ul>'+controlRecords+'</ul></section>':'')+
+        (materialFlow?'<section class="department-block"><div class="eyebrow">08 · FLUJO DE MATERIAL</div><h2>Qué se registra por tarea</h2><ul>'+materialFlow+'</ul></section>':'')+
         '</section>' : '';
 
     return '<section class="department-canonical">'+
@@ -113,18 +114,15 @@
       '<section class="department-block"><div class="eyebrow">01 · ÁREA DE TRABAJO</div><h2>Cómo debe estar '+esc(dept.title)+'</h2>'+
       '<p class="source-note">La tabla integra las condiciones específicas del departamento y los controles físicos transversales que le aplican.</p>'+
       '<table><thead><tr><th>ID</th><th>Condición permanente</th></tr></thead><tbody>'+areaRows+'</tbody></table></section>'+
-      '<section class="department-block department-audit-block"><div class="eyebrow">02 · AUDITORÍA DEL ÁREA</div><h2>Qué se comprueba en el espacio</h2>'+
-      '<p>Esta revisión comprueba que el estado físico del departamento corresponda a las condiciones definidas en el área de trabajo.</p>'+
-      '<table><thead><tr><th>ID</th><th>Criterio</th><th>Evidencia útil</th></tr></thead><tbody>'+auditRows+'</tbody></table></section>'+
-      '<section class="department-block"><div class="eyebrow">03 · METODOLOGÍA</div><h2>Cómo se trabaja</h2>'+
+      '<section class="department-block"><div class="eyebrow">02 · METODOLOGÍA</div><h2>Cómo se trabaja</h2>'+
       '<p class="flow-line">'+esc(dept.method?.flow||'')+'</p>'+branches+stages+
       '<h3>Controles que viajan con el proceso</h3><ul>'+controls+'</ul></section>'+
       '<section class="department-two-col">'+
-        '<section class="department-block"><div class="eyebrow">04 · HERRAMIENTAS / EQUIPO</div><h2>Qué usa '+esc(dept.title)+'</h2><ul>'+tools+'</ul></section>'+
-        '<section class="department-block"><div class="eyebrow">05 · CONSUMIBLES / MATERIALES</div><h2>Qué entra al proceso</h2><ul>'+consumables+'</ul></section>'+
+        '<section class="department-block"><div class="eyebrow">03 · HERRAMIENTAS / EQUIPO</div><h2>Qué usa '+esc(dept.title)+'</h2><ul>'+tools+'</ul></section>'+
+        '<section class="department-block"><div class="eyebrow">04 · CONSUMIBLES / MATERIALES</div><h2>Qué entra al proceso</h2><ul>'+consumables+'</ul></section>'+
       '</section>'+
       operations+
-      '<section class="department-block"><div class="eyebrow">10 · EVIDENCIA</div><h2>Evidencia de referencia</h2>'+
+      '<section class="department-block"><div class="eyebrow">09 · EVIDENCIA</div><h2>Evidencia de referencia</h2>'+
       '<table><thead><tr><th>ID</th><th>Qué demuestra</th><th>Ubicación</th></tr></thead><tbody>'+evidence+'</tbody></table></section>'+
       '</section>';
   }
