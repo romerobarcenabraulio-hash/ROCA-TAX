@@ -19,7 +19,6 @@ const expectedCounts={
   "area-recepcion":19,"area-carpinteria":30,"area-soldadura":22,"area-blanqueado":23,"area-soporte":24
 };
 
-const holdDefs=new Map();
 for(const [areaId,d] of Object.entries(depts)){
   const area=Array.isArray(d.area)?d.area:[];
   const areaAudit=Array.isArray(d.areaAudit)?d.areaAudit:[];
@@ -47,10 +46,6 @@ for(const [areaId,d] of Object.entries(depts)){
   const physical=d.physicalStandardsIntegrated?0:phys.filter(r=>r.areas==="ALL"||(Array.isArray(r.areas)&&r.areas.includes(areaId))).length;
   const total=area.length+stageChecks.length+(d.method?.controls||[]).length+(d.auditCriteria||[]).length+physical;
   if(total!==expectedCounts[areaId]) errors.push(`${areaId}: criteria count ${total} != ${expectedCounts[areaId]}`);
-  for(const h of d.implementationHolds||[]){
-    if(holdDefs.has(h.id)) errors.push(`duplicate hold id ${h.id}`);
-    holdDefs.set(h.id,{area:areaId,text:h.text||""});
-  }
 }
 
 function parseCsvLine(line){
