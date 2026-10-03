@@ -350,3 +350,5 @@ footer{display:none}
 .audit-workload-table th,.audit-workload-table td{text-align:center;white-space:nowrap}
 .audit-workload-table th:first-child,.audit-workload-table td:first-child{text-align:left}
 .audit-workload-total{background:#eee8dd;border-top:2px solid #9d8f7d}
+
+.audit-route-badge{display:block;width:max-content;max-width:100%;margin-top:5px;padding:3px 5px;background:#ece5da;border-left:3px solid #877967;font:700 7px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.04em}

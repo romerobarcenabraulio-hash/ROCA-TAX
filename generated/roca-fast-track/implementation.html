@@ -271,7 +271,7 @@ async function loadImplementationActions(){
     body.innerHTML='<tr><td colspan="8"><b>Sin acciones abiertas.</b><br>Al auditar un criterio como NO CONFORME, aparecerá aquí automáticamente. Los criterios NO VERIFICADOS permanecen en AUDITORÍA.</td></tr>';
     return;
   }
-  body.innerHTML=items.map(x=>`<tr data-source="${x.dynamic?"audit":"register"}"><td><strong>${esc(x.id)}</strong>${x.req?`<br><small>${esc(x.req)}</small>`:""}</td><td>${esc(x.area)}</td><td>${esc(x.gap)}</td><td>${esc(x.fix)}</td><td>${esc(x.owner||"POR ASIGNAR")}</td><td>${esc(x.due||"—")}</td><td>${esc(x.status)}</td><td>${esc(x.evidence||"—")}${x.dynamic&&x.evaluationKind?`<br><small><b>${esc(x.evaluationKind)}</b>${x.evidenceNeeded?` · cierre: ${esc(x.evidenceNeeded)}`:""}</small>`:""}${x.dynamic&&x.basis?`<br><small>${esc(x.basis)}</small>`:""}</td></tr>`).join("");
+  body.innerHTML=items.map(x=>`<tr data-source="${x.dynamic?"audit":"register"}"><td><strong>${esc(x.id)}</strong>${x.req?`<br><small>${esc(x.req)}</small>`:""}</td><td>${esc(x.area)}</td><td>${esc(x.gap)}</td><td>${esc(x.fix)}</td><td>${esc(x.owner||"POR ASIGNAR")}</td><td>${esc(x.due||"—")}</td><td>${esc(x.status)}</td><td>${esc(x.evidence||"—")}${x.dynamic&&x.evaluationKind?`<br><small><b>${esc(x.evaluationKind)}</b>${x.verificationRoute?` · ${esc(x.verificationRoute)}`:""}${x.evidenceNeeded?` · cierre: ${esc(x.evidenceNeeded)}`:""}</small>`:""}${x.dynamic&&x.basis?`<br><small>${esc(x.basis)}</small>`:""}</td></tr>`).join("");
   if(controlledError && summary) summary.innerHTML+='<br><span class="blank">El registro CSV no pudo leerse; las brechas de AUDITORÍA sí se muestran.</span>';
 }
 loadImplementationActions();

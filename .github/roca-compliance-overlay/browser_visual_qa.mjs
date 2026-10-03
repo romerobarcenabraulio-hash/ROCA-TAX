@@ -103,6 +103,7 @@ for(const vp of contract.viewports){
             let auditedRows=0;
             const badKinds=[];
             const badContracts=[];
+            const badRoutes=[];
             for(let ai=0;ai<auditAreaCount;ai++){
               const btn=auditAreaButtons.nth(ai);
               const auditId=await btn.getAttribute("data-id");
@@ -116,10 +117,13 @@ for(const vp of contract.viewports){
                 const rid=await rr.getAttribute("data-audit-id");
                 const kind=((await rr.locator(".audit-eval-badge").innerText()).trim());
                 const contract=((await rr.locator(".audit-evidence-contract").innerText()).trim());
+                const route=((await rr.locator(".audit-route-badge").innerText()).trim());
                 if(!["CALCULAR","MEDIR","INSPECCIONAR","DOCUMENTAR","CONDICIONAL"].includes(kind))
                   badKinds.push({auditId,rid,kind});
                 if(!/Demostrar con:/i.test(contract)||contract.length<=18)
                   badContracts.push({auditId,rid,contract});
+                if(!["CÁLCULO INTERNO","MEDICIÓN DE CAMPO","LAB / ESPECIALISTA","REVISIÓN DOCUMENTAL","GATE DE APLICABILIDAD","INSPECCIÓN DE CAMPO"].includes(route))
+                  badRoutes.push({auditId,rid,route});
               }
             }
             if(auditAreaCount>0&&auditedRows>0&&!badKinds.length)
@@ -128,6 +132,9 @@ for(const vp of contract.viewports){
             if(auditAreaCount>0&&auditedRows>0&&!badContracts.length)
               pass(prefix+":audit-all-criteria-evidence-contract","all area criteria expose an explicit evidence contract",{areas:auditAreaCount,rows:auditedRows});
             else fail(prefix+":audit-all-criteria-evidence-contract","one or more area criteria have missing/invalid evidence contract",{areas:auditAreaCount,rows:auditedRows,badContracts});
+            if(auditAreaCount>0&&auditedRows>0&&!badRoutes.length)
+              pass(prefix+":audit-all-criteria-verification-route","all area criteria expose an allowed verification route",{areas:auditAreaCount,rows:auditedRows});
+            else fail(prefix+":audit-all-criteria-verification-route","one or more area criteria have missing/invalid verification route",{areas:auditAreaCount,rows:auditedRows,badRoutes});
 
             const montage=page.locator('#nav button[data-id="audit-mon"]');
             if(await montage.count()!==1){
@@ -143,12 +150,17 @@ for(const vp of contract.viewports){
               const evalBadge=(await row.locator(".audit-eval-badge").innerText()).trim();
               const evalSteps=(await row.locator(".audit-eval-steps").innerText()).trim();
               const evidenceContract=(await row.locator(".audit-evidence-contract").innerText()).trim();
+              const verificationRoute=(await row.locator(".audit-route-badge").innerText()).trim();
               const allowedEval=new Set(["CALCULAR","MEDIR","INSPECCIONAR","DOCUMENTAR","CONDICIONAL"]);
+              const allowedRoutes=new Set(["CÁLCULO INTERNO","MEDICIÓN DE CAMPO","LAB / ESPECIALISTA","REVISIÓN DOCUMENTAL","GATE DE APLICABILIDAD","INSPECCIÓN DE CAMPO"]);
               if(allowedEval.has(evalBadge)) pass(prefix+":audit-evaluation-kind","criterion exposes an allowed verification mode",{criterionId,evalBadge,evalSteps});
               else fail(prefix+":audit-evaluation-kind","criterion verification mode missing/invalid",{criterionId,evalBadge,evalSteps});
               if(/Demostrar con:/i.test(evidenceContract)&&evidenceContract.length>18)
                 pass(prefix+":audit-evidence-contract","criterion exposes explicit evidence contract",{criterionId,evidenceContract});
               else fail(prefix+":audit-evidence-contract","criterion evidence contract missing/too short",{criterionId,evidenceContract});
+              if(allowedRoutes.has(verificationRoute))
+                pass(prefix+":audit-verification-route","criterion exposes an allowed verification route",{criterionId,verificationRoute});
+              else fail(prefix+":audit-verification-route","criterion verification route missing/invalid",{criterionId,verificationRoute});
 
               await note.fill("");
               await status.selectOption("NONCONFORMING");
@@ -179,9 +191,9 @@ for(const vp of contract.viewports){
               const implBody=await page.locator("body").innerText();
               if(implBody.includes(gap)) pass(prefix+":audit-to-implementation","NONCONFORMING appears in IMPLEMENTAR");
               else fail(prefix+":audit-to-implementation","NONCONFORMING missing from IMPLEMENTAR",{criterionId});
-              if(implBody.includes(evalBadge)&&/cierre:/i.test(implBody))
-                pass(prefix+":audit-implementation-evidence-contract","IMPLEMENTAR carries verification mode and closure evidence",{criterionId,evalBadge});
-              else fail(prefix+":audit-implementation-evidence-contract","IMPLEMENTAR missing verification mode or closure evidence",{criterionId,evalBadge});
+              if(implBody.includes(evalBadge)&&implBody.includes(verificationRoute)&&/cierre:/i.test(implBody))
+                pass(prefix+":audit-implementation-evidence-contract","IMPLEMENTAR carries verification mode, route and closure evidence",{criterionId,evalBadge,verificationRoute});
+              else fail(prefix+":audit-implementation-evidence-contract","IMPLEMENTAR missing verification mode, route or closure evidence",{criterionId,evalBadge,verificationRoute});
 
               await page.goto(base+"/index.html",{waitUntil:"domcontentloaded"});
               await page.locator("#auditMode").click();
