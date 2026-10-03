@@ -14,7 +14,7 @@ global.localStorage={
   setItem:(k,v)=>{store[k]=String(v)}
 };
 
-for(const p of ['area-standard-data.js','department-data.js','audit-engine.js','audit-data.js']){
+for(const p of ['department-data.js','audit-engine.js','audit-data.js']){
   vm.runInThisContext(read(p),{filename:p});
 }
 
