@@ -206,8 +206,8 @@ for(const vp of contract.viewports){
             const monNavForMeasured=page.locator('#nav button[data-id="audit-mon"]');
             if(await monNavForMeasured.count()===1){
               await monNavForMeasured.click();
-              await page.waitForSelector('tr[data-audit-id="PHYS-LIGHT"]',{timeout:10000});
-              const mr=page.locator('tr[data-audit-id="PHYS-LIGHT"]');
+              await page.waitForSelector('tr[data-audit-id="MON-AREA-03"]',{timeout:10000});
+              const mr=page.locator('tr[data-audit-id="MON-AREA-03"]');
               const mStatus=mr.locator(".audit-status");
               const mNote=mr.locator(".audit-note");
               await mNote.fill("ok");
@@ -216,7 +216,7 @@ for(const vp of contract.viewports){
               const mSaved=await page.evaluate(()=>{
                 try{
                   const state=JSON.parse(localStorage.getItem("roca.audit.area-montaje")||"{}");
-                  return state["PHYS-LIGHT"]?.status||"NOT_SAVED";
+                  return state["MON-AREA-03"]?.status||"NOT_SAVED";
                 }catch{return "PARSE_ERROR"}
               });
               const mValidation=(await mr.locator(".audit-validation").innerText()).trim();
