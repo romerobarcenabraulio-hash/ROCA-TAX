@@ -74,9 +74,25 @@
     if(!steps.length) steps.push('INSPECCIONAR');
 
     const uniqueCapture=[...new Set(captureText)];
-    const evidenceContract=uniqueCapture.length
+    let evidenceContract=uniqueCapture.length
       ? uniqueCapture.join(' · ')
       : String(row.input||'Evidencia observable y trazable de la condición evaluada.');
+
+    const genericMethodControl=row&&row.sourceType==='department_method_control' &&
+      /Evidencia, registro o condición observable directamente ligada a este control/i.test(evidenceContract);
+    if(genericMethodControl){
+      const target=String(row.target||row.label||row.id||'el control');
+      if(evaluationKind==='MEDIR')
+        evidenceContract='Medición, lectura o demostración en operación real, identificada y fechada, que compruebe: '+target;
+      else if(evaluationKind==='CALCULAR')
+        evidenceContract='Datos de entrada + cálculo trazable + resultado que compruebe: '+target;
+      else if(evaluationKind==='CONDICIONAL')
+        evidenceContract='Hecho disparador + justificación APPLICA/NO APLICA; si aplica, evidencia trazable que demuestre: '+target;
+      else if(evaluationKind==='DOCUMENTAR')
+        evidenceContract='Registro, documento u observación trazable que demuestre específicamente: '+target;
+      else
+        evidenceContract='Observación identificada y, cuando corresponda, evidencia visual no sensible que demuestre: '+target;
+    }
 
     let verificationRoute='INSPECCIÓN DE CAMPO';
     if(conditional)
@@ -246,7 +262,7 @@
     });
     return {
       schema:BACKUP_SCHEMA,
-      engineVersion:'1.5.0',
+      engineVersion:'1.5.1',
       exportedAt:new Date().toISOString(),
       departments:state
     };
@@ -282,7 +298,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.5.0',
+    version:'1.5.1',
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,

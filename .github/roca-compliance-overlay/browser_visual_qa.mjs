@@ -103,6 +103,7 @@ for(const vp of contract.viewports){
             let auditedRows=0;
             const badKinds=[];
             const badContracts=[];
+            const genericContracts=[];
             const badRoutes=[];
             for(let ai=0;ai<auditAreaCount;ai++){
               const btn=auditAreaButtons.nth(ai);
@@ -122,6 +123,9 @@ for(const vp of contract.viewports){
                   badKinds.push({auditId,rid,kind});
                 if(!/Demostrar con:/i.test(contract)||contract.length<=18)
                   badContracts.push({auditId,rid,contract});
+                if(/Evidencia, registro o condición observable directamente ligada a este control/i.test(contract)||
+                   /Evidencia observable y trazable de la condición evaluada/i.test(contract))
+                  genericContracts.push({auditId,rid,contract});
                 if(!["CÁLCULO INTERNO","MEDICIÓN DE CAMPO","LAB / ESPECIALISTA","REVISIÓN DOCUMENTAL","GATE DE APLICABILIDAD","INSPECCIÓN DE CAMPO"].includes(route))
                   badRoutes.push({auditId,rid,route});
               }
@@ -135,6 +139,9 @@ for(const vp of contract.viewports){
             if(auditAreaCount>0&&auditedRows>0&&!badRoutes.length)
               pass(prefix+":audit-all-criteria-verification-route","all area criteria expose an allowed verification route",{areas:auditAreaCount,rows:auditedRows});
             else fail(prefix+":audit-all-criteria-verification-route","one or more area criteria have missing/invalid verification route",{areas:auditAreaCount,rows:auditedRows,badRoutes});
+            if(!genericContracts.length)
+              pass(prefix+":audit-no-generic-evidence-contracts","no audit criterion uses the banned generic evidence placeholders",{rows:auditedRows});
+            else fail(prefix+":audit-no-generic-evidence-contracts","generic evidence placeholders remain in audit criteria",{genericContracts});
 
             const montage=page.locator('#nav button[data-id="audit-mon"]');
             if(await montage.count()!==1){
