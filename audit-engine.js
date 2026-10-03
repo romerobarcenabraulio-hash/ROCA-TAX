@@ -112,19 +112,19 @@
       verificationRoute:"INSPECCIÓN DE CAMPO",
       evidenceContract:"Observar una liberación real o revisar un registro trazable de liberación: condición física que permitió avanzar + etapa de origen/destino + fecha/ID de piel o carga; el tiempo puede registrarse como referencia, no como único criterio."
     },
-    "MON-AUD-19":{
+    "MON-MET-10":{
       evaluationKind:"INSPECCIONAR",
       evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],
       verificationRoute:"INSPECCIÓN DE CAMPO",
       evidenceContract:"Pieza identificada + condición física observada al liberar (humedad/movimiento/estabilidad según corresponda) + transferencia a la siguiente etapa; registrar fecha y responsable/estación cuando exista el dato."
     },
-    "BAS-AUD-19":{
+    "BAS-MET-15":{
       evaluationKind:"INSPECCIONAR",
       evaluationSteps:["INSPECCIONAR"],
       verificationRoute:"INSPECCIÓN DE CAMPO",
       evidenceContract:"Inspección física final con pieza/base identificada: comprobar estabilidad de elementos de ambientación y que ninguno invada puntos de agarre, apoyo, ruta de traslado o lectura visual prevista."
     },
-    "FMR-AUD-05":{
+    "FMR-MET-FOR-05":{
       evaluationKind:"MEDIR",
       evaluationSteps:["MEDIR","INSPECCIONAR","DOCUMENTAR"],
       verificationRoute:"MEDICIÓN DE CAMPO",
@@ -283,13 +283,25 @@
         sourceId:r.id
       };
     });
+    const stageRows=(Array.isArray(dept.method&&dept.method.stages)?dept.method.stages:[])
+      .filter(r=>r&&r.verify)
+      .map(r=>({
+        id:r.id,
+        group:'Metodología / etapa',
+        label:r.title||r.id,
+        target:r.verify||r.text||'',
+        input:r.evidence||'Evidencia específica de la etapa.',
+        basis:r.basis||'Metodología permanente ROCA',
+        sourceType:'department_method_stage',
+        sourceId:r.id
+      }));
     const controlRows=(Array.isArray(dept.method&&dept.method.controls)?dept.method.controls:[]).map(r=>({
       id:r.id,
       group:'Control permanente',
       label:r.id,
       target:r.text||'',
-      input:'Evidencia, registro o condición observable directamente ligada a este control.',
-      basis:'Control permanente de metodología ROCA',
+      input:r.evidence||'Evidencia, registro o condición observable directamente ligada a este control.',
+      basis:r.basis||'Control permanente de metodología ROCA',
       sourceType:'department_method_control',
       sourceId:r.id
     }));
@@ -304,7 +316,7 @@
       sourceId:r.id
     }));
     const inheritedPhysical=dept.physicalStandardsIntegrated?[]:applicablePhysicalRows(areaId);
-    const merged=[...areaRows,...controlRows,...processRows,...inheritedPhysical];
+    const merged=[...areaRows,...stageRows,...controlRows,...processRows,...inheritedPhysical];
     const seen=new Set();
     return merged.filter(r=>{
       if(!r.id||seen.has(r.id)) return false;
