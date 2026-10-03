@@ -89,6 +89,37 @@ for(const vp of contract.viewports){
             if(backupControls===2) pass(prefix+":audit-backup-controls","audit backup/export controls present");
             else fail(prefix+":audit-backup-controls","audit backup/export controls missing",{count:backupControls});
 
+            const auditAreaButtons=page.locator('#nav button[data-id^="audit-"]:not([data-id="audit-inicio"])');
+            const auditAreaCount=await auditAreaButtons.count();
+            let auditedRows=0;
+            const badKinds=[];
+            const badContracts=[];
+            for(let ai=0;ai<auditAreaCount;ai++){
+              const btn=auditAreaButtons.nth(ai);
+              const auditId=await btn.getAttribute("data-id");
+              await btn.click();
+              await page.waitForSelector('tr[data-audit-id]',{timeout:10000});
+              const areaRows=page.locator('tr[data-audit-id]');
+              const rowCount=await areaRows.count();
+              auditedRows+=rowCount;
+              for(let ri=0;ri<rowCount;ri++){
+                const rr=areaRows.nth(ri);
+                const rid=await rr.getAttribute("data-audit-id");
+                const kind=((await rr.locator(".audit-eval-badge").innerText()).trim());
+                const contract=((await rr.locator(".audit-evidence-contract").innerText()).trim());
+                if(!["CALCULAR","MEDIR","INSPECCIONAR","DOCUMENTAR","CONDICIONAL"].includes(kind))
+                  badKinds.push({auditId,rid,kind});
+                if(!/Demostrar con:/i.test(contract)||contract.length<=18)
+                  badContracts.push({auditId,rid,contract});
+              }
+            }
+            if(auditAreaCount>0&&auditedRows>0&&!badKinds.length)
+              pass(prefix+":audit-all-criteria-evaluation-kind","all area criteria expose an allowed verification mode",{areas:auditAreaCount,rows:auditedRows});
+            else fail(prefix+":audit-all-criteria-evaluation-kind","one or more area criteria have missing/invalid verification mode",{areas:auditAreaCount,rows:auditedRows,badKinds});
+            if(auditAreaCount>0&&auditedRows>0&&!badContracts.length)
+              pass(prefix+":audit-all-criteria-evidence-contract","all area criteria expose an explicit evidence contract",{areas:auditAreaCount,rows:auditedRows});
+            else fail(prefix+":audit-all-criteria-evidence-contract","one or more area criteria have missing/invalid evidence contract",{areas:auditAreaCount,rows:auditedRows,badContracts});
+
             const montage=page.locator('#nav button[data-id="audit-mon"]');
             if(await montage.count()!==1){
               fail(prefix+":audit-montage-nav","audit montage navigation missing");
