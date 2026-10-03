@@ -30,9 +30,8 @@ for(const [areaId,dept] of departments){
 
   const areaIds=new Set((dept.area||[]).map(r=>r.id));
   const areaAudit=Array.isArray(dept.areaAudit)?dept.areaAudit:[];
-  if(dept.physicalStandardsIntegrated){
-    assert(areaAudit.length===0,areaId+': integrated MUSTs must not keep a parallel areaAudit copy');
-    assert((dept.area||[]).every(r=>r.evidence&&r.basis),areaId+': integrated MUST missing evidence/basis metadata');
+  if(areaAudit.length===0){
+    assert((dept.area||[]).every(r=>r.evidence&&r.basis),areaId+': canonical MUST missing evidence/basis metadata after areaAudit retirement');
   }else{
     const sourceIds=areaAudit.map(r=>r.sourceId);
     assert(sourceIds.every(Boolean),areaId+': areaAudit row missing explicit sourceId');
