@@ -262,17 +262,6 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
     {id:"EVID-MON-07",text:"Incidencia, retrabajo o excepción.",placement:"Metodología / control"},
     {id:"EVID-MON-08",text:"Condición final y transferencia a Retoque cuando aporte trazabilidad.",placement:"Handoff"}
   ],
-  implementationHolds:[
-    {id:"MON-HOLD-01",text:"Cerrar inventario real de estaciones y asignación persona ↔ estación, incluyendo Ricardo/Eugenio."},
-    {id:"MON-HOLD-02",text:"Definir el criterio de iluminación por tarea real mediante medición y Bibliografía aplicable; no fijar referencias sólo por percepción."},
-    {id:"MON-HOLD-03",text:"Cruzar HDS, inventario y ventilación real para Bondo, catalizador, fibra, adhesivos y otros productos."},
-    {id:"MON-HOLD-04",text:"Cerrar sistema exacto de fijación estructural de cuernos/astas por tipo de pieza."},
-    {id:"MON-HOLD-05",text:"Cerrar proporción Bondo/catalizador para orejas desde fuente controlada; no inventar."},
-    {id:"MON-HOLD-06",text:"Confirmar producto exacto del adhesivo/pegamento americano."},
-    {id:"MON-HOLD-07",text:"Cerrar tabla de selección de hilo/aguja por espesor, tipo de piel y zona cuando cambie."},
-    {id:"MON-HOLD-08",text:"Confirmar herramienta exacta de medición y qué medidas requieren trazabilidad metrológica formal."},
-    {id:"MON-HOLD-09",text:"Construir matriz persona × operación después de cerrar asignación real y criterio de liberación; no inventar niveles."}
-  ],
   sourceRefs:[
     "ops/areas/MONTAJE_PILOT_AREA_BOOK_V2.md"
   ]
@@ -424,18 +413,6 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
     {id:"EVID-RET-04",text:"Defecto que provoca devolución o retrabajo.",placement:"Metodología / gate"},
     {id:"EVID-RET-05",text:"Reparación superficial relevante, textura especial o excepción de producto/tono.",placement:"Metodología"},
     {id:"EVID-RET-06",text:"Condición final cuando aporta aceptación o trazabilidad.",placement:"Handoff"}
-  ],
-  implementationHolds:[
-    {id:"RET-HOLD-01",text:"Reconciliar nombre correcto Valerio/Valentino."},
-    {id:"RET-HOLD-02",text:"Confirmar estaciones reales de Rodolfo Jr., Emiliano, Valerio/Valentino y Señor Pez."},
-    {id:"RET-HOLD-03",text:"Levantar productos, marcas y HDS realmente vigentes."},
-    {id:"RET-HOLD-04",text:"Cerrar ventilación/extracción por producto y proceso."},
-    {id:"RET-HOLD-05",text:"Identificar compresor, placa, accesorios y condición; resolver la aplicabilidad técnica en Bibliografía."},
-    {id:"RET-HOLD-06",text:"Levantar iluminancia en tarea real; no usar 750/1000 lux como cierre automático."},
-    {id:"RET-HOLD-07",text:"Cerrar paleta real de pinturas/tonos y criterio de comparación."},
-    {id:"RET-HOLD-08",text:"Confirmar inventario real de aerógrafos, pistola y secadora y mantenimiento aplicable."},
-    {id:"RET-HOLD-09",text:"Cerrar criterios/estado BIWO de ingreso, devolución, terminación y transferencia."},
-    {id:"RET-HOLD-10",text:"Completar evidencia de campo y competencia."}
   ],
   sourceRefs:[
     "ops/areas/RETOQUE_AREA_BOOK_V2.md"
@@ -602,18 +579,6 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
     {id:"EVID-BAS-04",text:"Ruta técnica usada: poliuretano, malla o combinación, con materiales y condición antes del acabado.",placement:"Metodología"},
     {id:"EVID-BAS-05",text:"Incidencia/retrabajo y condición final cuando aportan trazabilidad.",placement:"Control / handoff"}
   ],
-  implementationHolds:[
-    {id:"BAS-HOLD-01",text:"Confirmar responsable y estaciones reales de Bases."},
-    {id:"BAS-HOLD-02",text:"Cerrar frontera física/operativa con Carpintería."},
-    {id:"BAS-HOLD-03",text:"Levantar inventario real de herramienta/equipo."},
-    {id:"BAS-HOLD-04",text:"Definir capacidad/criterio estructural de planchas, bancos, ruedas, tornillería y fijaciones por proyecto real."},
-    {id:"BAS-HOLD-05",text:"Identificar producto/HDS/receta real de poliuretano para Bases."},
-    {id:"BAS-HOLD-07",text:"Verificar ventilación/extracción y control de polvo."},
-    {id:"BAS-HOLD-08",text:"Observar método real de manipulación de piezas pesadas."},
-    {id:"BAS-HOLD-09",text:"Cerrar criterios/estado BIWO exactos."},
-    {id:"BAS-HOLD-10",text:"Completar evidencia de estabilidad y competencia."},
-    {id:"BAS-HOLD-11",text:"Validar si 18 mm, dos capas/ruedas y otras prácticas históricas siguen vigentes por tipo de proyecto."}
-  ],
   sourceRefs:[
     "ops/areas/BASES_AREA_BOOK_V2.md"
   ]
@@ -766,17 +731,6 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
     {id:"EVID-FMR-03",text:"Curado/desmolde: familia/tamaño, hora de vaciado, referencia usada, hora de revisión y condición física antes de abrir.",placement:"Metodología / curado"},
     {id:"EVID-FMR-04",text:"Divisiones, gelcoat y capas cuando se construye un molde de fibra.",placement:"Metodología / Moldes"}
   ],
-  implementationHolds:[
-    {id:"FMR-HOLD-01",text:"Cerrar inventario/codificación real y rack."},
-    {id:"FMR-HOLD-02",text:"Confirmar productos/HDS y formulaciones controladas vigentes."},
-    {id:"FMR-HOLD-03",text:"Verificar ventilación/extracción real."},
-    {id:"FMR-HOLD-04",text:"Completar mantenimiento e inventario real de activos."},
-    {id:"FMR-HOLD-05",text:"Cerrar criterios exactos de aceptación por familia."},
-    {id:"FMR-HOLD-06",text:"Cerrar estados BIWO exactos."},
-    {id:"FMR-HOLD-07",text:"Capturar evidencia real de prueba, dosificación y curado."},
-    {id:"FMR-HOLD-08",text:"Confirmar en campo qué referencias de tiempo/programación siguen gobernando la práctica actual antes de liberar el método."},
-    {id:"FMR-HOLD-09",text:"Definir la verificación aplicable de la báscula antes de liberar el control metrológico."}
-  ],
   sourceRefs:[
     "ops/areas/FORMAS_MOLDES_REPLICAS_AREA_BOOK_V2.md"
   ]
@@ -876,12 +830,6 @@ window.ROCA_DEPARTMENTS["area-recepcion"] = {
     {id:"EVID-REC-02",text:"Fotografía de ingreso ligada al mismo trabajo.",placement:"Metodología / ingreso"},
     {id:"EVID-REC-03",text:"Documentación asociada al trabajo sin exponer datos sensibles innecesarios.",placement:"Control / trazabilidad"},
     {id:"EVID-REC-04",text:"Transferencia registrada al siguiente proceso.",placement:"Handoff"}
-  ],
-  implementationHolds:[
-    {id:"REC-HOLD-01",text:"Confirmar responsable y estación vigente de Recepción."},
-    {id:"REC-HOLD-02",text:"Cerrar estados BIWO exactos."},
-    {id:"REC-HOLD-03",text:"Definir estándar físico de espera con evidencia real del área."},
-    {id:"REC-HOLD-04",text:"Capturar evidencia fotográfica real del área."}
   ],
   sourceRefs:[
     "ops/areas/RECEPCION_AREA_BOOK_V2.md"
@@ -996,21 +944,6 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     {id:"EVID-CAR-01",text:"Implementación física real: panorámica, límite con áreas vecinas, banco/rack/equipo, ruta de circulación/carga y separación respecto de polvo/químicos/acabado.",placement:"Área"},
     {id:"EVID-CAR-02",text:"Primera demostración real: orden/pieza, requerimiento/dimensiones, secuencia, herramienta/equipo, materiales/protección, condición de salida y carga/manipulación si aplica.",placement:"Metodología"}
   ],
-  implementationHolds:[
-    {id:"CAR-HOLD-01",text:"Decidir si ROCA implementará este frente dedicado o mantendrá parte del trabajo en Bases/Logística."},
-    {id:"CAR-HOLD-02",text:"Definir ubicación real sin invadir Retoque ni circulación."},
-    {id:"CAR-HOLD-03",text:"Definir responsable real."},
-    {id:"CAR-HOLD-04",text:"Definir estación/layout."},
-    {id:"CAR-HOLD-05",text:"Levantar herramientas/equipo existentes."},
-    {id:"CAR-HOLD-06",text:"Observar método primario demostrado; no inventar secuencia."},
-    {id:"CAR-HOLD-07",text:"Cerrar criterio de dimensionado/protección por pieza/destino."},
-    {id:"CAR-HOLD-08",text:"Confirmar materiales y uniones reales."},
-    {id:"CAR-HOLD-09",text:"Observar manipulación/carga."},
-    {id:"CAR-HOLD-10",text:"Cerrar interfaz con Bases y Logística."},
-    {id:"CAR-HOLD-11",text:"Cerrar BIWO real."},
-    {id:"CAR-HOLD-12",text:"Capturar evidencia de campo."},
-    {id:"CAR-HOLD-13",text:"Demostrar competencia."}
-  ],
   sourceRefs:[
     "ops/areas/CARPINTERIA_EMBALAJE_AREA_BOOK_V2.md"
   ]
@@ -1101,15 +1034,6 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     {id:"EVID-SOL-02",text:"Equipo/cables/protección a terceros y ventilación real.",placement:"Área"},
     {id:"EVID-SOL-03",text:"Condición antes/después de adaptación estructural.",placement:"Control / pieza"},
     {id:"EVID-SOL-04",text:"Primera demostración técnica completa.",placement:"Metodología"}
-  ],
-  implementationHolds:[
-    {id:"SOL-HOLD-01",text:"Realizar entrevista/demostración técnica del responsable."},
-    {id:"SOL-HOLD-02",text:"Identificar proceso de soldadura real."},
-    {id:"SOL-HOLD-03",text:"Levantar consumibles reales."},
-    {id:"SOL-HOLD-04",text:"Definir EPP según proceso real."},
-    {id:"SOL-HOLD-05",text:"Verificar ventilación/extracción."},
-    {id:"SOL-HOLD-06",text:"Cerrar protección contra incendio y autorización de trabajo en caliente según aplicabilidad."},
-    {id:"SOL-HOLD-07",text:"Cerrar mantenimiento y evidencia de equipo real."}
   ],
   sourceRefs:[
     "ops/areas/SOLDADURA_AREA_BOOK_V2.md"
@@ -1206,15 +1130,6 @@ window.ROCA_DEPARTMENTS["area-blanqueado"] = {
     {id:"EVID-BLA-02",text:"Condición antes/después del elemento.",placement:"Metodología"},
     {id:"EVID-BLA-03",text:"Incidencia o excepción cuando ocurra.",placement:"Control"}
   ],
-  implementationHolds:[
-    {id:"BLA-HOLD-01",text:"Confirmar responsable operativo."},
-    {id:"BLA-HOLD-02",text:"Capturar secuencia completa real."},
-    {id:"BLA-HOLD-03",text:"Confirmar si tiempos/temperaturas gobiernan realmente el proceso antes de fijarlos."},
-    {id:"BLA-HOLD-04",text:"Verificar ventilación real."},
-    {id:"BLA-HOLD-05",text:"Verificar drenaje y ruta de agua."},
-    {id:"BLA-HOLD-06",text:"Confirmar si existe producto auxiliar."},
-    {id:"BLA-HOLD-07",text:"Completar evidencia de campo."}
-  ],
   sourceRefs:[
     "ops/areas/BLANQUEADO_AREA_BOOK_V2.md"
   ]
@@ -1257,16 +1172,6 @@ window.ROCA_DEPARTMENTS["area-soporte"] = {
     {id:"SUP-CIR",label:"Circulaciones",text:"Rutas y accesos permanecen libres; piezas en espera no invaden paso; señalización y emergencia permanecen visibles según evaluación aplicable.",evidence:"Recorrido completo.",basis:"Estándar permanente del departamento"},
     {id:"SUP-EXT",label:"Exterior / carga",text:"Carga y descarga no mezclan residuos, piezas terminadas y químicos; acceso, maniobra y protección climática se validan contra condición real; embalaje conserva ID hasta salida.",evidence:"Zona de carga/descarga.",basis:"Estándar permanente del departamento"},
     {id:"SUP-RES",label:"Residuos",text:"La separación ocurre en punto de generación; contenedor e identificación corresponden al material real; almacenamiento temporal está controlado; material útil o recuperable no se descarta por comodidad.",evidence:"Puntos de generación y almacenamiento temporal.",basis:"Estándar permanente del departamento"}
-  ],
-  method:[
-    {id:"SUP-AUD-01",sourceId:"SUP-BOD",criterion:"Bodegas conservan ID, estabilidad y pasillos accesibles.",evidence:"Recorrido de almacenamiento."},
-    {id:"SUP-AUD-02",sourceId:"SUP-ERP",criterion:"Oficina/BIWO protege datos y documentos sensibles.",evidence:"Condición de estación/archivo sin exponer información privada."},
-    {id:"SUP-AUD-03",sourceId:"SUP-EXH",criterion:"Exhibición no invade operación ni funciona como bodega.",evidence:"Recorrido y piezas exhibidas."},
-    {id:"SUP-AUD-04",sourceId:"SUP-COM",criterion:"Comedor permanece separado de químicos, residuos y piezas.",evidence:"Condición física."},
-    {id:"SUP-AUD-05",sourceId:"SUP-SAN",criterion:"Sanitarios conservan higiene, privacidad y no almacenan químicos/equipo.",evidence:"Condición física sin capturar personas ni pertenencias."},
-    {id:"SUP-AUD-06",sourceId:"SUP-CIR",criterion:"Circulaciones permanecen libres.",evidence:"Recorrido completo."},
-    {id:"SUP-AUD-07",sourceId:"SUP-EXT",criterion:"Exterior/carga conserva separación y ruta de maniobra.",evidence:"Zona de carga/descarga."},
-    {id:"SUP-AUD-08",sourceId:"SUP-RES",criterion:"Residuos se separan y almacenan según material real.",evidence:"Puntos de generación y almacenamiento temporal."}
   ],
   method:{
     flow:"No aplica una metodología única. Cada subzona conserva su condición, rutina real y evidencia propia.",
@@ -1325,16 +1230,6 @@ window.ROCA_DEPARTMENTS["area-soporte"] = {
     {id:"EVID-SUP-03",text:"Condición de privacidad/archivo sin exponer datos sensibles.",placement:"Oficina / BIWO"},
     {id:"EVID-SUP-04",text:"Ruta de circulación y carga/descarga.",placement:"Circulaciones / exterior"},
     {id:"EVID-SUP-05",text:"Separación y almacenamiento temporal de residuos.",placement:"Residuos"}
-  ],
-  auditCriteria:[],
-  implementationHolds:[
-    {id:"SUP-HOLD-01",text:"Completar levantamiento físico y fotografías de subzonas."},
-    {id:"SUP-HOLD-02",text:"Cerrar inventarios y ubicaciones reales."},
-    {id:"SUP-HOLD-03",text:"Verificar rutas y condiciones de circulación/carga."},
-    {id:"SUP-HOLD-04",text:"Cerrar privacidad y archivo real de Oficina/BIWO."},
-    {id:"SUP-HOLD-05",text:"Levantar residuos reales y destinos."},
-    {id:"SUP-HOLD-06",text:"Verificar condiciones de carga/descarga."},
-    {id:"SUP-HOLD-07",text:"Cerrar mantenimiento y servicios aplicables."}
   ],
   sourceRefs:[
     "ops/areas/ESPACIOS_SOPORTE_V2.md"
