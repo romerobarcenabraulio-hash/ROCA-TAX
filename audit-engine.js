@@ -159,7 +159,7 @@
     const modeText=contexts.map(x=>String(x.mode||'')).join(' | ');
     const calculationText=contexts.map(x=>String(x.calculation||'')).join(' | ');
     const captureText=contexts.map(x=>String(x.capture||'').trim()).filter(Boolean);
-    const raw=[modeText,calculationText,row.input,row.target,row.basis].map(x=>String(x||'')).join(' | ').toUpperCase();
+    const raw=[modeText,calculationText,row.calculation,row.requiredData,row.evaluationHint,row.input,row.target,row.basis].map(x=>String(x||'')).join(' | ').toUpperCase();
 
     const conditional=/CONDICIONAL|APLICABILIDAD|CUANDO APLIQUE|CUANDO CORRESPONDA|SI ACTIVA|TRIGGER|DETERMINAR SI|PRIMERO CONFIRMAR|VERIFICAR APLICABILIDAD/.test(raw);
     const calculate=/\bCALCULAR\b|\bPUNTUAR\b|\bÍNDICE\b|\bUMBRAL\b|\bSUMAR\b|RELACIÓN CMA|\bVLE\b|ITGBH|CLASIFICACIÓN POR PRESIÓN|PROMEDIO CORPORAL|1\/300 M²|1\/200 M²/.test(raw);
