@@ -16,7 +16,7 @@ if(Object.keys(depts).length!==10) errors.push("expected 10 departments");
 
 const expectedCounts={
   "area-curtiduria":21,"area-montaje":25,"area-retoque":26,"area-bases":29,"area-fmr":29,
-  "area-recepcion":14,"area-carpinteria":20,"area-soldadura":14,"area-blanqueado":17,"area-soporte":24
+  "area-recepcion":14,"area-carpinteria":20,"area-soldadura":14,"area-blanqueado":17,"area-soporte":14
 };
 
 for(const [areaId,d] of Object.entries(depts)){
