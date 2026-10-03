@@ -59,10 +59,10 @@
       : String(row.input||'Evidencia observable y trazable de la condición evaluada.');
 
     let verificationRoute='INSPECCIÓN DE CAMPO';
-    if(/LABORATORIO|MUESTREAR|MUESTRA SIMPLE|MUESTRA COMPUESTA|CONCENTRACIÓN MEDIDA|DOSIMETRÍA|ANÁLISIS TÉCNICO|PRUEBAS DE LABORATORIO/.test(raw))
-      verificationRoute='LAB / ESPECIALISTA';
-    else if(conditional)
+    if(conditional)
       verificationRoute='GATE DE APLICABILIDAD';
+    else if(/LABORATORIO|MUESTREAR|MUESTRA SIMPLE|MUESTRA COMPUESTA|CONCENTRACIÓN MEDIDA|DOSIMETRÍA|ANÁLISIS TÉCNICO|PRUEBAS DE LABORATORIO/.test(raw))
+      verificationRoute='LAB / ESPECIALISTA';
     else if(measure)
       verificationRoute='MEDICIÓN DE CAMPO';
     else if(calculate)
@@ -224,7 +224,7 @@
     });
     return {
       schema:BACKUP_SCHEMA,
-      engineVersion:'1.4.1',
+      engineVersion:'1.4.2',
       exportedAt:new Date().toISOString(),
       departments:state
     };
@@ -260,7 +260,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.4.1',
+    version:'1.4.2',
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,
