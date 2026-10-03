@@ -29,11 +29,17 @@ for(const [areaId,dept] of departments){
   assert(rows.every(r=>r.target&&r.basis),areaId+': criterion missing target/basis');
 
   const areaIds=new Set((dept.area||[]).map(r=>r.id));
-  const sourceIds=(dept.areaAudit||[]).map(r=>r.sourceId);
-  assert(sourceIds.every(Boolean),areaId+': areaAudit row missing explicit sourceId');
-  assert(new Set(sourceIds).size===sourceIds.length,areaId+': duplicate areaAudit sourceId');
-  assert((dept.area||[]).every(r=>sourceIds.includes(r.id)),areaId+': permanent area criterion missing audit binding');
-  assert((dept.areaAudit||[]).every(r=>areaIds.has(r.sourceId)),areaId+': orphan areaAudit sourceId');
+  const areaAudit=Array.isArray(dept.areaAudit)?dept.areaAudit:[];
+  if(dept.physicalStandardsIntegrated){
+    assert(areaAudit.length===0,areaId+': integrated MUSTs must not keep a parallel areaAudit copy');
+    assert((dept.area||[]).every(r=>r.evidence&&r.basis),areaId+': integrated MUST missing evidence/basis metadata');
+  }else{
+    const sourceIds=areaAudit.map(r=>r.sourceId);
+    assert(sourceIds.every(Boolean),areaId+': areaAudit row missing explicit sourceId');
+    assert(new Set(sourceIds).size===sourceIds.length,areaId+': duplicate areaAudit sourceId');
+    assert((dept.area||[]).every(r=>sourceIds.includes(r.id)),areaId+': permanent area criterion missing audit binding');
+    assert(areaAudit.every(r=>areaIds.has(r.sourceId)),areaId+': orphan areaAudit sourceId');
+  }
 }
 
 const sections=global.ROCA_AUDIT_SECTIONS||[];
