@@ -169,7 +169,7 @@
     <thead><tr><th>ID</th><th>Área</th><th>Brecha observada</th><th>Corrección concreta</th><th>Responsable</th><th>Fecha objetivo</th><th>Estado</th><th>Evidencia</th></tr></thead>
     <tbody id="implementationRows"><tr><td colspan="8"><span class="blank">CARGANDO REGISTRO...</span></td></tr></tbody>
   </table></div>
-</section></main><script src="../../area-standard-data.js"></script><script src="../../department-data.js"></script><script src="../../audit-engine.js"></script><script>function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+</section></main><script src="../../department-data.js"></script><script src="../../audit-engine.js"></script><script>function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function parseCsv(text){
   const rows=[]; let row=[],field="",quoted=false;
   for(let i=0;i<text.length;i++){
@@ -186,31 +186,6 @@ function parseCsv(text){
   }
   if(field!==""||row.length){row.push(field);if(row.some(v=>v!==""))rows.push(row)}
   return rows;
-}
-const PHYS_NORM_BASIS={
-  "PHYS-FLOW":"NOM-001-STPS-2008",
-  "PHYS-EGRESS":"NOM-002-STPS-2010",
-  "PHYS-FIRE":"NOM-002-STPS-2010",
-  "PHYS-SIGN":"NOM-026-STPS-2008",
-  "PHYS-LIGHT":"NOM-025-STPS-2008",
-  "PHYS-STATION":"NOM-001-STPS-2008",
-  "PHYS-STORAGE":"ROCA + NOM-006-STPS-2023 cuando aplique",
-  "PHYS-ELECTRIC":"NOM-029-STPS-2011 cuando aplique",
-  "PHYS-CHEM":"NOM-018-STPS-2015 + NOM-005-STPS-1998",
-  "PHYS-VENT":"NOM-010-STPS-2014 + HDS aplicable",
-  "PHYS-MACHINE":"NOM-004-STPS-1999",
-  "PHYS-NOISE":"NOM-011-STPS-2001 cuando aplique",
-  "PHYS-MANUALLOAD":"NOM-036-1-STPS-2018 cuando aplique",
-  "PHYS-PRESSURE":"NOM-020-STPS-2011 cuando aplique",
-  "PHYS-WASTE":"NOM-052-SEMARNAT-2005 + ruta aplicable",
-  "PHYS-WASTEWATER":"NOM-002-SEMARNAT-1996 + NTE-SLP-AR-001/2026 cuando aplique",
-  "PHYS-SUPPORT":"NOM-001-STPS-2008 + RFSST"
-};
-function applicablePhysicalRows(areaId){
-  const phys=Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)?window.ROCA_AREA_PHYSICAL_STANDARD:[];
-  return phys.filter(r=>r.areas==="ALL"||(Array.isArray(r.areas)&&r.areas.includes(areaId))).map(r=>({
-    id:r.id,label:r.label,target:r.standard,evidence:r.evidence||"Evidencia observable.",basis:PHYS_NORM_BASIS[r.id]||"Base física ROCA"
-  }));
 }
 function implementationCriterionMap(areaId,dept){
   const rows=window.ROCA_AUDIT_ENGINE
