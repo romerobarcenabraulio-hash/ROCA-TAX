@@ -346,3 +346,7 @@ footer{display:none}
 .audit-evidence-contract{margin:7px 0 0;font:8px/1.4 Arial,Helvetica,sans-serif;color:#4f4942}
 @media(max-width:1100px){.audit-evaluation{min-width:170px}}
 @media print{.audit-eval-badge{border:1px solid #777}.audit-evaluation{min-width:0}}
+
+.audit-workload-table th,.audit-workload-table td{text-align:center;white-space:nowrap}
+.audit-workload-table th:first-child,.audit-workload-table td:first-child{text-align:left}
+.audit-workload-total{background:#eee8dd;border-top:2px solid #9d8f7d}

@@ -89,6 +89,15 @@ for(const vp of contract.viewports){
             if(backupControls===2) pass(prefix+":audit-backup-controls","audit backup/export controls present");
             else fail(prefix+":audit-backup-controls","audit backup/export controls missing",{count:backupControls});
 
+            const workloadRows=page.locator('#auditWorkloadMatrix tr[data-audit-workload-area]');
+            const workloadCount=await workloadRows.count();
+            const workloadTotals=await page.locator('#auditWorkloadMatrix tr.audit-workload-total td').allTextContents();
+            const numericTotals=workloadTotals.slice(1).map(x=>Number(String(x).trim()||0));
+            const matrixArithmeticOk=numericTotals.length===6 && numericTotals[0]===numericTotals.slice(1).reduce((a,b)=>a+b,0);
+            if(workloadCount>0&&matrixArithmeticOk)
+              pass(prefix+":audit-workload-matrix","audit workload matrix renders and totals reconcile",{areas:workloadCount,totals:numericTotals});
+            else fail(prefix+":audit-workload-matrix","audit workload matrix missing or totals do not reconcile",{areas:workloadCount,totals:numericTotals});
+
             const auditAreaButtons=page.locator('#nav button[data-id^="audit-"]:not([data-id="audit-inicio"])');
             const auditAreaCount=await auditAreaButtons.count();
             let auditedRows=0;

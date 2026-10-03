@@ -13,6 +13,9 @@ window.ROCA_AUDIT_SECTIONS = [
         <li>Si la corrección se cierra, la auditoría conserva el resultado y el criterio fijo sigue siendo parte del HTML.</li>
       </ol>
       <div id="auditSummary"></div>
+      <h2>Mapa de levantamiento por departamento</h2>
+      <p class="source-note">Cada criterio se clasifica por el trabajo necesario para cerrarlo: calcular, medir, inspeccionar, documentar o resolver primero su aplicabilidad.</p>
+      <div id="auditWorkloadMatrix">Cargando mapa de levantamiento...</div>
       <h2>Gates normativos globales condicionales</h2>
       <p class="source-note">No se asignan a un departamento hasta que el hecho disparador exista. Se conservan visibles para no perder una obligación potencial ni fingir que ya aplica.</p>
       <div id="auditGlobalConditionalNorms"></div>
@@ -89,6 +92,22 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       const areas = departments.length;
       const criteria = departments.reduce((sum,d)=>sum+(window.ROCA_AUDIT_ENGINE?window.ROCA_AUDIT_ENGINE.criteriaForArea(d.id).length:(Array.isArray(d.auditCriteria)?d.auditCriteria.length:0)),0);
       host.innerHTML = '<div class="callout"><strong>'+areas+' departamentos</strong> · '+criteria+' criterios específicos actualmente estructurados. La línea base se congela por departamento; la auditoría posterior cambia el resultado, no redefine automáticamente el criterio.</div>';
+    }
+    const workloadHost=document.getElementById('auditWorkloadMatrix');
+    if(workloadHost&&window.ROCA_AUDIT_ENGINE){
+      const kinds=["CALCULAR","MEDIR","INSPECCIONAR","DOCUMENTAR","CONDICIONAL"];
+      const records=Object.entries(window.ROCA_DEPARTMENTS||{}).map(([areaId,d])=>{
+        const criteria=window.ROCA_AUDIT_ENGINE.criteriaForArea(areaId);
+        const counts=Object.fromEntries(kinds.map(k=>[k,0]));
+        criteria.forEach(r=>{const k=String(r.evaluationKind||"INSPECCIONAR"); if(Object.prototype.hasOwnProperty.call(counts,k)) counts[k]++;});
+        return {areaId,title:d.title||areaId,total:criteria.length,counts};
+      });
+      const totals=Object.fromEntries(kinds.map(k=>[k,records.reduce((s,r)=>s+r.counts[k],0)]));
+      const grand=records.reduce((s,r)=>s+r.total,0);
+      workloadHost.innerHTML='<div class="tablewrap"><table class="audit-workload-table"><thead><tr><th>Departamento</th><th>Total</th>'+kinds.map(k=>'<th>'+k+'</th>').join('')+'</tr></thead><tbody>'+
+        records.map(r=>'<tr data-audit-workload-area="'+r.areaId+'"><td><strong>'+r.title+'</strong></td><td>'+r.total+'</td>'+kinds.map(k=>'<td>'+r.counts[k]+'</td>').join('')+'</tr>').join('')+
+        '<tr class="audit-workload-total"><td><strong>TOTAL</strong></td><td><strong>'+grand+'</strong></td>'+kinds.map(k=>'<td><strong>'+totals[k]+'</strong></td>').join('')+'</tr>'+
+        '</tbody></table></div>';
     }
     const globalHost=document.getElementById('auditGlobalConditionalNorms');
     if(globalHost){
