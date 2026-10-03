@@ -7,11 +7,9 @@ const errors=[];
 const ctx={window:{}};
 vm.createContext(ctx);
 vm.runInContext(read("department-data.js"),ctx,{filename:"department-data.js"});
-vm.runInContext(read("area-standard-data.js"),ctx,{filename:"area-standard-data.js"});
 vm.runInContext(read("norm-context-data.js"),ctx,{filename:"norm-context-data.js"});
 
 const depts=ctx.window.ROCA_DEPARTMENTS||{};
-const phys=ctx.window.ROCA_AREA_PHYSICAL_STANDARD||[];
 if(Object.keys(depts).length!==10) errors.push("expected 10 departments");
 
 const expectedCounts={
@@ -43,8 +41,7 @@ for(const [areaId,d] of Object.entries(depts)){
     ...(d.auditCriteria||[]).map(x=>x.id)
   ].filter(Boolean);
   if(new Set(ids).size!==ids.length) errors.push(`${areaId}: duplicate permanent criterion ids`);
-  const physical=d.physicalStandardsIntegrated?0:phys.filter(r=>r.areas==="ALL"||(Array.isArray(r.areas)&&r.areas.includes(areaId))).length;
-  const total=area.length+stageChecks.length+(d.method?.controls||[]).length+(d.auditCriteria||[]).length+physical;
+  const total=area.length+stageChecks.length+(d.method?.controls||[]).length+(d.auditCriteria||[]).length;
   if(total!==expectedCounts[areaId]) errors.push(`${areaId}: criteria count ${total} != ${expectedCounts[areaId]}`);
 }
 
