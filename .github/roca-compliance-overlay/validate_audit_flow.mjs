@@ -36,14 +36,16 @@ for(const [areaId,d] of Object.entries(depts)){
     for(const r of area) if(!sourceIds.includes(r.id)) errors.push(`${areaId}: area criterion ${r.id} missing audit binding`);
     for(const m of areaAudit) if(m.sourceId&&!areaIds.has(m.sourceId)) errors.push(`${areaId}: orphan audit sourceId ${m.sourceId}`);
   }
+  const stageChecks=(d.method?.stages||[]).filter(x=>x&&x.verify);
   const ids=[
     ...area.map(x=>x.id),
+    ...stageChecks.map(x=>x.id),
     ...(d.method?.controls||[]).map(x=>x.id),
     ...(d.auditCriteria||[]).map(x=>x.id)
   ].filter(Boolean);
   if(new Set(ids).size!==ids.length) errors.push(`${areaId}: duplicate permanent criterion ids`);
   const physical=d.physicalStandardsIntegrated?0:phys.filter(r=>r.areas==="ALL"||(Array.isArray(r.areas)&&r.areas.includes(areaId))).length;
-  const total=area.length+(d.method?.controls||[]).length+(d.auditCriteria||[]).length+physical;
+  const total=area.length+stageChecks.length+(d.method?.controls||[]).length+(d.auditCriteria||[]).length+physical;
   if(total!==expectedCounts[areaId]) errors.push(`${areaId}: criteria count ${total} != ${expectedCounts[areaId]}`);
   for(const h of d.implementationHolds||[]){
     if(holdDefs.has(h.id)) errors.push(`duplicate hold id ${h.id}`);
