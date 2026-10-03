@@ -1,0 +1,23 @@
+{
+  "schema": "ROCA_AREA_NORM_CONTEXT_COVERAGE_V1",
+  "checked_on": "2026-10-02",
+  "parent_head": "8656f16027eaf81c0a8563465884db4993fbc72b",
+  "scope": "References visible in the area audit rail must resolve to a structured context card. This is a UI/context coverage gate, not a legal-compliance finding.",
+  "counts": {
+    "unique_area_reference_ids": 27,
+    "structured_context_ids": 31,
+    "missing_visible_context_ids": 0
+  },
+  "missing_visible_context_ids": [],
+  "interaction": {
+    "area_reference_rows_clickable": true,
+    "criterion_ver_fundamento_clickable": true,
+    "source_link_present_in_context_card": true
+  },
+  "caveats": [
+    "SLP-ENV-WW-2026 keeps specific clause pending until the technical publication text is directly reconciled.",
+    "Presence of a context card does not prove applicability or compliance.",
+    "RFSST-2014 is a framework control and does not replace the technical NOM criteria."
+  ],
+  "verdict": "PASS_CONTEXT_COVERAGE"
+}

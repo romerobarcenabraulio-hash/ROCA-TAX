@@ -90,3 +90,86 @@ El paquete se considera cerrado sólo cuando cada Evidence ID queda como:
 RECEIVED / NOT_APPLICABLE-JUSTIFIED / BLOCKED-EXTERNAL.
 
 REQUEST_DEFINED no significa evidencia recibida.
+
+
+## Cierre técnico por departamento
+
+Usar una operación real cuando exista. No escenificar trabajo. Si no puede observarse, registrar NOT_IMPLEMENTED, NOT_VERIFIED o BLOCKED-EXTERNAL y conservar el HOLD.
+
+### Recepción
+- Seguir una orden real: ingreso → identificación → fotografía → espera/transferencia.
+- Confirmar responsable, estación y evento/campo BIWO exacto.
+- Fotografiar espera sin exponer datos de cliente.
+
+### Curtiduría
+- Observar una carga/baño real.
+- Resolver receta vigente y cantidad real de ácido fórmico; registrar qué documento gobierna.
+- Identificar método/instrumento de pH y su estado.
+- Capturar productos/HDS, agua/drenaje, ventilación y activos.
+- Verificar fuente ALUM-Tan y confirmar que el piloto de agua a presión siga fuera de rutina salvo liberación documentada.
+
+### Formas / Moldes / Réplicas
+- Relacionar código ↔ rack ↔ forma/molde.
+- Capturar productos/lotes/HDS y ventilación real.
+- Identificar báscula, mezclador y moldes con su condición.
+- Demostrar prueba/dosificación/curado cuando ocurra.
+- Cerrar aceptación por familia, tiempos que realmente siguen vigentes y eventos BIWO exactos.
+
+### Montaje
+- Mapear persona ↔ estación, incluyendo Ricardo/Eugenio.
+- Medir iluminación donde realmente se hace detalle.
+- Identificar Bondo, catalizador, fibra, adhesivo, HDS y ventilación.
+- Documentar fijación real de cuernos/astas antes de cubrirla.
+- Observar preparación Bondo-catalizador y registrar cómo se decide la mezcla sin inventar porcentajes.
+- Identificar el producto exacto del pegamento.
+- Registrar hilo + aguja + zona + tipo/espesor de piel en una costura real.
+- Identificar herramienta de medición y qué medidas gobiernan selección/corrección.
+- Demostrar por persona operaciones que puede ejecutar sin acompañamiento y criterio de paro/liberación.
+
+### Retoque
+- Reconciliar Valerio/Valentino y persona ↔ estación.
+- Capturar productos/marcas/HDS vigentes y ventilación/extracción.
+- Capturar compresor/placa, regulador, mangueras, aerógrafo/pistola/secadora.
+- Medir iluminación donde se compara color/detalle.
+- Documentar paleta real y criterio de tono.
+- Capturar eventos BIWO de ingreso, devolución, terminación y transferencia.
+
+### Bases
+- Confirmar responsable y frontera real con Carpintería.
+- Inventariar herramienta/equipo.
+- En una base real registrar peso/escala/geometría y cómo se decide plancha, bancos, ruedas, tornillería y fijaciones.
+- Identificar producto/HDS y dosificación real del poliuretano de Bases.
+- Resolver 50/50 vs 30/70 sólo con producto/aplicación de Bases.
+- Observar polvo/ventilación, manejo pesado, BIWO y evidencia de estabilidad.
+- Confirmar en qué casos siguen vigentes 18 mm, doble capa y ruedas.
+
+### Carpintería / Corte / Embalaje
+- Decidir primero si el frente existe como área dedicada.
+- Si no existe, registrar NOT_IMPLEMENTED y mantener método NO LIBERADO.
+- Si existe, observar una orden completa: requerimiento → dimensionado → material/unión → corte → armado/protección → carga → salida.
+- Registrar responsable, estación, herramientas, materiales, polvo, interfaz con Bases/Logística y BIWO real.
+
+### Soldadura / Adaptación
+- No liberar método sin demostración real.
+- Identificar responsable, proceso, equipo, consumibles y material.
+- Registrar EPP, ventilación/extracción, chispas/combustibles, protección contra incendio y mantenimiento.
+- Si no puede observarse una intervención real, mantener NO LIBERADO.
+
+### Blanqueado / Tratamiento de cráneos
+- Observar un ciclo real completo.
+- Confirmar responsable y secuencia.
+- Registrar tiempo/temperatura sólo si gobiernan la decisión; si manda una condición física, documentarla.
+- Capturar recipiente/fuente de calor, apoyo, nivel de agua, protección de cuernos, drenaje, ventilación y producto auxiliar si existe.
+
+### Espacios de soporte
+- Cerrar por subzona: bodegas, Oficina/BIWO, exhibición, comedor/sanitarios, circulaciones, exterior/carga y residuos.
+- Registrar inventario, rutas, privacidad, destinos reales y mantenimiento/servicios aplicables.
+
+## Regla de cierre del HOLD
+
+Un HOLD se retira sólo cuando:
+1. existe evidencia o fuente controlada suficiente;
+2. la respuesta queda integrada en su casa canónica;
+3. la auditoría puede verificarla con un criterio observable;
+4. una brecha real pasa a IMPLEMENTAR;
+5. una ausencia de observación permanece NO VERIFICADO y no crea una acción ficticia.

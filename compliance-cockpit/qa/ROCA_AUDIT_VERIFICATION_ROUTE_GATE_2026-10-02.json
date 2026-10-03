@@ -1,0 +1,16 @@
+{
+  "schema": "ROCA_AUDIT_VERIFICATION_ROUTE_GATE_V1",
+  "checked_on": "2026-10-02",
+  "parent_head": "0f6424653bfedec5abb397f608c11439ae022fbf",
+  "allowed_routes": [
+    "CÁLCULO INTERNO",
+    "MEDICIÓN DE CAMPO",
+    "LAB / ESPECIALISTA",
+    "REVISIÓN DOCUMENTAL",
+    "GATE DE APLICABILIDAD",
+    "INSPECCIÓN DE CAMPO"
+  ],
+  "rule": "evaluationKind says what the criterion requires; verificationRoute says where/how it can actually be closed, so the UI never implies every calculation or measurement is solvable inside the HTML.",
+  "engine_version": "1.4.0",
+  "status": "SOURCE_IMPLEMENTED_PENDING_RUNTIME_QA"
+}

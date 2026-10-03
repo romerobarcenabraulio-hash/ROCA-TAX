@@ -14,37 +14,52 @@
       <div class="title">Documento maestro</div>
     </div>
     <div class="workspace-switch" aria-label="Vista de trabajo">
-      <button id="finalMode" class="mode active" type="button">DOC FINAL</button>
-      <button id="compendiumMode" class="mode" type="button">COMPENDIO</button>
-      <button id="fieldMode" class="mode" type="button">CAMPO</button>
-      <button id="notesMode" class="mode" type="button">NOTAS</button>
-      <button id="printDoc" class="mode print-action" type="button">IMPRIMIR / PDF</button>
+      <button id="manualMode" class="mode active" type="button">MANUAL</button>
+      <button id="auditMode" class="mode" type="button">AUDITORÍA</button>
+      <button id="normsMode" class="mode" type="button">FUENTES</button>
+      <a class="mode" href="generated/roca-fast-track/implementation.html">IMPLEMENTAR</a>
+      <a class="mode" href="compliance-cockpit/index.html">COMPLIANCE</a>
+      <button id="printDoc" class="mode print-action" type="button" disabled>IMPRESIÓN FINAL · BLOQUEADA</button>
+      <span id="printGateNote" class="print-gate-note">Requiere todos los departamentos congelados.</span>
     </div>
   </header>
 
   <div class="layout">
     <aside id="contentsPane" class="contents" aria-label="Índice">
-      <div class="contents-title">Documento final</div>
+      <div class="contents-title">Manual ROCA</div>
       <nav id="nav"></nav>
-      <div class="rule-note">Esta es la vista que importa. Las notas de trabajo quedan separadas.</div>
+      <div class="rule-note">MANUAL = cómo debe ser ROCA. AUDITORÍA se deriva de estas mismas condiciones. IMPLEMENTAR contiene únicamente brechas temporales.</div>
     </aside>
 
     <main id="page" class="page" tabindex="-1"></main>
+    <aside id="controlRail" class="control-rail" aria-label="Estado del departamento">
+      <div class="control-rail-head">ESTADO</div>
+      <div id="controlDepartment" class="control-department">Sin departamento</div>
+      <div id="controlStatus" class="control-status">—</div>
+      <div class="control-meta"><span>Versión</span><strong id="controlVersion">—</strong></div>
+      <div class="control-meta"><span>Congelado</span><strong id="controlFrozenAt">—</strong></div>
+      <div id="controlLockNote" class="control-note">Abre un departamento para ver el estado de su línea base.</div>
+      <hr>
+      <div class="control-rail-head">IMÁGENES</div>
+      <div class="control-note">Las fotografías finales se colocan donde explican o demuestran una condición, operación, herramienta o evidencia. Este panel no forma parte de la impresión.</div>
+      <div id="imageQueue" class="image-queue"></div>
+    </aside>
   </div>
 
   <footer>
-    ROCA · Documento de trabajo controlado.
+    ROCA · Manual controlado.
   </footer>
 
-  <script src="data.js"></script>
-  <script src="master-data.js"></script>
+  <script src="core-data.js"></script>
   <script src="editorial-data.js"></script>
-  <script src="workshop-data.js"></script>
-  <script src="control-data.js"></script>
-  <script src="assurance-data.js"></script>
-  <script src="field-data.js"></script>
-  <script src="extra-data.js"></script>
-  <script src="legal-data.js"></script>
+  <script src="manual-sections.js"></script>
+  <script src="norm-context-data.js"></script>
+  <script src="department-data.js"></script>
+  <script src="audit-engine.js"></script>
+  <script src="fast-track-data.js"></script>
+  <script src="audit-data.js"></script>
+  <script src="norms-data.js"></script>
   <script src="app.js"></script>
+  <script src="manual-control.js"></script>
 </body>
 </html>

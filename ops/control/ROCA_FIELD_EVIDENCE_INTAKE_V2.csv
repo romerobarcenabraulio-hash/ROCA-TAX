@@ -3,14 +3,20 @@ EVID-REC-01,AREA-REC,NOT_VERIFIED,,,,,,,Ingreso/espera e identificación visible
 EVID-CUR-01,AREA-CUR,NOT_VERIFIED,,,,,,,Distribución física y accesibilidad,,,,,,NOT_REVIEWED
 EVID-CUR-02,AREA-CUR,NOT_VERIFIED,,,,,,,Identidad de producto y HDS disponible,,,,,,NOT_REVIEWED
 EVID-CUR-03,AREA-CUR,NOT_VERIFIED,,,,,,,Condición medida de iluminación/ventilación/servicios,,,,,,NOT_REVIEWED
+EVID-CUR-04,AREA-CUR,NOT_VERIFIED,,,,,,,Peso/pH de proceso con punto de medición e instrumento/método trazable,,,,,,NOT_REVIEWED
 EVID-FMR-01,AREA-FMR,NOT_VERIFIED,,,,,,,Ubicación e identificación de formas/moldes,,,,,,NOT_REVIEWED
 EVID-FMR-02,AREA-FMR,NOT_VERIFIED,,,,,,,Ejecución de prueba/dosificación documentada,,,,,,NOT_REVIEWED
+EVID-FMR-03,AREA-FMR,NOT_VERIFIED,,,,,,,Curado/desmolde con referencia y condición física documentadas,,,,,,NOT_REVIEWED
 EVID-MON-01,AREA-MON,NOT_VERIFIED,,,,,,,Condición real de estaciones de Montaje,,,,,,NOT_REVIEWED
 EVID-MON-02,AREA-MON,NOT_VERIFIED,,,,,,,Secado/espera estable e identificada,,,,,,NOT_REVIEWED
 EVID-RET-01,AREA-RET,NOT_VERIFIED,,,,,,,Punto real de pintura/solventes/pedacera,,,,,,NOT_REVIEWED
 EVID-RET-02,AREA-RET,NOT_VERIFIED,,,,,,,Iluminación medida en plano de detalle/color,,,,,,NOT_REVIEWED
+EVID-RET-03,AREA-RET,NOT_VERIFIED,,,,,,,Compresor/placa regulador mangueras/conexiones y punto de pintura,,,,,,NOT_REVIEWED
 EVID-BAS-01,AREA-BAS,NOT_VERIFIED,,,,,,,Condición observable de soporte/estabilidad,,,,,,NOT_REVIEWED
-EVID-CAR-01,AREA-CAR,NOT_IMPLEMENTED,,,,,,,Existencia y separación del puesto si aplica,,,,,,NOT_REVIEWED
+EVID-BAS-02,AREA-BAS,NOT_VERIFIED,,,,,,,Estación materiales herramienta y punto de poliuretano/adhesivo,,,,,,NOT_REVIEWED
+EVID-BAS-03,AREA-BAS,NOT_VERIFIED,,,,,,,Método real de maniobra de pieza/base pesada cuando aplique,,,,,,NOT_REVIEWED
+EVID-CAR-01,AREA-CAR,NOT_IMPLEMENTED,,,,,,,Existencia ubicación límites banco/rack/equipo/ruta si se implementa,,,,,,NOT_REVIEWED
+EVID-CAR-02,AREA-CAR,NOT_IMPLEMENTED,,,,,,,Primera orden real demostrada con secuencia equipo materiales criterio de salida y carga,,,,,,NOT_REVIEWED
 EVID-SOL-01,AREA-SOL,NOT_VERIFIED,,,,,,,Condición física del trabajo en caliente/equipo real,,,,,,NOT_REVIEWED
 EVID-BLA-01,AREA-BLA,NOT_VERIFIED,,,,,,,Montaje real de tratamiento térmico,,,,,,NOT_REVIEWED
 EVID-SUP-01,AREA-SUP,NOT_VERIFIED,,,,,,,Condición física y segregación de soportes,,,,,,NOT_REVIEWED

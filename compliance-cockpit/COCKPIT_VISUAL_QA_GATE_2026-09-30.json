@@ -1,0 +1,78 @@
+{
+  "schema": "ROCA_COCKPIT_VISUAL_QA_GATE_V1",
+  "date": "2026-09-30",
+  "tested_head": "54556378f58eab8f9467941fdf20f81e0d6eb385",
+  "github_actions": {
+    "browser_visual_qa": {
+      "run_id": 36687330308,
+      "conclusion": "success"
+    },
+    "browser_qa": {
+      "run_id": 36687330147,
+      "conclusion": "success"
+    },
+    "audit_architecture": {
+      "run_id": 36687330183,
+      "conclusion": "success"
+    },
+    "audit_implementation_integrity": {
+      "run_id": 36687330207,
+      "conclusion": "success"
+    },
+    "derived_ledger_integrity": {
+      "run_id": 36687330342,
+      "conclusion": "success"
+    }
+  },
+  "visual_contract": {
+    "viewports": [
+      "1440x900 desktop",
+      "1024x768 tablet",
+      "390x844 mobile"
+    ],
+    "routes": [
+      "/index.html",
+      "/generated/roca-fast-track/audit.html",
+      "/generated/roca-fast-track/implementation.html",
+      "/generated/roca-fast-track/field-walk.html",
+      "/compliance-cockpit/index.html"
+    ],
+    "checks": [
+      "render",
+      "horizontal overflow",
+      "console/page errors",
+      "local HTTP errors",
+      "audit controls",
+      "implementation markers",
+      "FORM_MASTER shell/privacy",
+      "root compliance/source entry"
+    ]
+  },
+  "local_interactive_reproduction": {
+    "method": "Chromium Playwright via page.set_content because direct localhost navigation is blocked by environment administrator policy",
+    "cockpit_views": [
+      "HOY",
+      "TRAMITES",
+      "CAPTURA_BASE"
+    ],
+    "viewports": [
+      "1440x900",
+      "1024x768",
+      "390x844"
+    ],
+    "document_overflow_failures": 0,
+    "console_or_page_errors": 0,
+    "mobile_document_width": "390/390",
+    "note": "Local interactive QA independently reproduced the cockpit overlay. GitHub Actions performed the authoritative HTTP-served browser run."
+  },
+  "discovered_and_resolved_during_qa": [
+    "HOY runtime contract was missing F/effStatus/applyInboxFilters; current tested head contains the repaired filter contract.",
+    "Mobile cockpit previously expanded to 623px at 390px viewport; current tested stylesheet wraps topbar/actions and keeps wide tables in internal scroll containers."
+  ],
+  "master": {
+    "rows": 4469,
+    "sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c"
+  },
+  "compliance_claim": "NOT_AUTHORIZED",
+  "verdict": "PASS_VISUAL_QA"
+}

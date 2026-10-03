@@ -1,0 +1,2 @@
+load_id,area,task,object_or_piece,weight_kg_if_known,dimensions_or_shape,route_clear,one_person_team_or_mechanical_aid,storage_height,handling_method,evidence_ids,reviewer,status,notes
+LOAD-001,,,,,,,,,,,,NOT_CHECKED,

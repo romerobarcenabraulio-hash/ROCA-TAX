@@ -1,0 +1,48 @@
+{
+  "schema": "ROCA_AUDIT_IMPLEMENTATION_FLOW_GATE_V2",
+  "date": "2026-09-30",
+  "departments": 10,
+  "criteria_counts": {
+    "area-curtiduria": 36,
+    "area-montaje": 50,
+    "area-retoque": 49,
+    "area-bases": 52,
+    "area-fmr": 38,
+    "area-recepcion": 20,
+    "area-carpinteria": 35,
+    "area-soldadura": 26,
+    "area-blanqueado": 25,
+    "area-soporte": 24
+  },
+  "holds": {
+    "defined": 84,
+    "status_rows": 84,
+    "missing_status": 0,
+    "orphan_status": 0,
+    "area_mismatch": 0
+  },
+  "checks": {
+    "area_conditions_have_1_to_1_audit_metadata": true,
+    "duplicate_audit_ids": 0,
+    "not_verified_not_implementation": true,
+    "nonconforming_creates_dynamic_implementation": true,
+    "conforming_removes_dynamic_implementation": true,
+    "permanent_standard_survives_state_change": true,
+    "controlled_closed_cancelled_filtered": true,
+    "controlled_area_id_normalization": true,
+    "controlled_area_variants_tested": [
+      "area-curtiduria",
+      "CUR",
+      "Curtiduría",
+      "curtiduria"
+    ],
+    "audit_dynamic_vs_controlled_dedup_key_normalized": true,
+    "implementation_inline_js_syntax": true,
+    "hold_status_parity": true,
+    "alum_tan_hold_current": true,
+    "formic_false_hold_absent": true
+  },
+  "errors": [],
+  "verdict": "PASS",
+  "rule": "El estándar permanente vive en department-data/area-standard. AUDITAR cambia estado. NO VERIFICADO no es falla. Sólo NO CONFORME o una acción controlada abierta llega a IMPLEMENTAR. Al cerrar/corregir desaparece el pendiente; el estándar no se borra."
+}

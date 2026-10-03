@@ -1,30 +1,38 @@
-# Vercel — conexión de ROCA Live
+# Vercel — ROCA Audit / preview controlado
 
 Repositorio: `romerobarcenabraulio-hash/ROCA-TAX`
 
-Rama de trabajo: `roca-live-bootstrap`
+## Regla vigente
 
-## Primera conexión
-1. En Vercel, elegir **Add New → Project**.
-2. Importar `ROCA-TAX` desde GitHub.
-3. Framework Preset: **Other**.
-4. Root Directory: `.`.
-5. Build Command: dejar vacío.
-6. Output Directory: dejar vacío.
-7. Deploy.
+- Preview canónico único: rama `codex/roca-source-reader`.
+- `main` se conserva como rama de producción y no se usa como preview de trabajo.
+- Cualquier otra rama queda bloqueada para despliegue automático por `vercel.json`.
+- No crear previews manuales adicionales salvo recuperación controlada.
+- No reutilizar URLs de previews antiguos en documentación, Linear o handoffs.
+- Si Vercel conserva deployments históricos en su panel, tratarlos como históricos; el único preview operativo es el asociado al HEAD vigente de `codex/roca-source-reader`.
 
-El repositorio contiene un sitio estático en la raíz. No necesita Node ni variables de entorno.
+## Configuración del proyecto
 
-## Revisión segura
-No usar `main` como fuente editorial hasta que el bootstrap pase revisión. La rama `roca-live-bootstrap` contiene el trabajo activo. Si Vercel crea producción desde `main`, usar el deployment de Preview correspondiente a `roca-live-bootstrap` para revisar.
+- Project: `roca-tax`
+- Framework Preset: `Other`
+- Root Directory: `.`
+- Sitio estático; sin comando de build obligatorio.
+- `vercel.json` contiene headers de seguridad/noindex y la política de ramas desplegables.
 
-## Datos que NO deben entrar al repo público
-- clientes de BIWO;
-- contratos o expedientes laborales reales;
-- documentos de abogados;
-- pedimentos/CITES con datos personales o números sensibles;
-- identificaciones;
-- información fiscal o bancaria;
-- archivos privados de trabajadores.
+## Validación
 
-ROCA Live público sólo contiene estructura, estándares sanitizados y contenido expresamente liberable.
+Antes de usar un preview como referencia:
+1. Leer PR #6 / HEAD real.
+2. Confirmar estado Vercel `success` en ese mismo commit.
+3. Confirmar los cinco gates ROCA del HEAD.
+4. Usar sólo el preview generado por la rama canónica.
+
+## Regla de limpieza
+
+Orden y limpieza son parte del control de release:
+- un solo preview operativo;
+- un solo HEAD de referencia;
+- documentación sin ramas/URLs obsoletas;
+- producción intacta;
+- no tocar proyectos Vercel ajenos.
+

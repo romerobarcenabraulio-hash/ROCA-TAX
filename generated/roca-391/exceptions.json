@@ -1,0 +1,594 @@
+[
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "GLOBAL",
+    "area": "Global / Governance",
+    "source_page": 30,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "REC",
+    "area": "Recepción",
+    "source_page": 47,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": 57,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": 59,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": 63,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": 64,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": 65,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": 67,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": 74,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": 75,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": 76,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": 78,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "FMR",
+    "area": "Formas, Moldes y Réplicas",
+    "source_page": 94,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "FMR",
+    "area": "Formas, Moldes y Réplicas",
+    "source_page": 96,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "FMR",
+    "area": "Formas, Moldes y Réplicas",
+    "source_page": 100,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "FMR",
+    "area": "Formas, Moldes y Réplicas",
+    "source_page": 105,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "FMR",
+    "area": "Formas, Moldes y Réplicas",
+    "source_page": 107,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "FMR",
+    "area": "Formas, Moldes y Réplicas",
+    "source_page": 108,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "FMR",
+    "area": "Formas, Moldes y Réplicas",
+    "source_page": 112,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "MON",
+    "area": "Montaje",
+    "source_page": 142,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "MON",
+    "area": "Montaje",
+    "source_page": 144,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "RET",
+    "area": "Retoque",
+    "source_page": 167,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "RET",
+    "area": "Retoque",
+    "source_page": 168,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "RET",
+    "area": "Retoque",
+    "source_page": 172,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "PROPOSAL_NOT_REQUIREMENT",
+    "area_code": "RET",
+    "area": "Retoque",
+    "source_page": 180,
+    "risk": "R2",
+    "detail": "Historical planning proposal; do not auto-convert to purchase."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "RET",
+    "area": "Retoque",
+    "source_page": 180,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "BAS",
+    "area": "Bases",
+    "source_page": 192,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "PROPOSAL_NOT_REQUIREMENT",
+    "area_code": "BAS",
+    "area": "Bases",
+    "source_page": 202,
+    "risk": "R2",
+    "detail": "Historical planning proposal; do not auto-convert to purchase."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "BAS",
+    "area": "Bases",
+    "source_page": 202,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "BAS",
+    "area": "Bases",
+    "source_page": 203,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "PROPOSAL_NOT_REQUIREMENT",
+    "area_code": "BAS",
+    "area": "Bases",
+    "source_page": 204,
+    "risk": "R2",
+    "detail": "Historical planning proposal; do not auto-convert to purchase."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "BAS",
+    "area": "Bases",
+    "source_page": 204,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CAR",
+    "area": "Carpintería / Embalaje",
+    "source_page": 216,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "CAR",
+    "area": "Carpintería / Embalaje",
+    "source_page": 219,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "METHOD_UNRELEASED",
+    "area_code": "CAR",
+    "area": "Carpintería / Embalaje",
+    "source_page": 222,
+    "risk": "R1",
+    "detail": "Source explicitly blocks the technical method."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "SOL",
+    "area": "Soldadura / Adaptación",
+    "source_page": 230,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "SOL",
+    "area": "Soldadura / Adaptación",
+    "source_page": 232,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "METHOD_UNRELEASED",
+    "area_code": "SOL",
+    "area": "Soldadura / Adaptación",
+    "source_page": 236,
+    "risk": "R1",
+    "detail": "Source explicitly blocks the technical method."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "BLA",
+    "area": "Blanqueado",
+    "source_page": 244,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "EXT",
+    "area": "EXT",
+    "source_page": 258,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "ERP",
+    "area": "ERP",
+    "source_page": 269,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "BOD",
+    "area": "BOD",
+    "source_page": 279,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "HIGH_RISK_PARAMETER",
+    "area_code": "EXH",
+    "area": "EXH",
+    "source_page": 288,
+    "risk": "R1",
+    "detail": "Numeric parameter in high-risk context; manual source review required."
+  },
+  {
+    "type": "CANONICAL_CONTROL_ADDED_AFTER_SOURCE",
+    "area_code": "BAS",
+    "area": "Bases",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "BAS-AREA-10"
+  },
+  {
+    "type": "CANONICAL_CONTROL_ADDED_AFTER_SOURCE",
+    "area_code": "BAS",
+    "area": "Bases",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "BAS-AREA-11"
+  },
+  {
+    "type": "CANONICAL_CONTROL_ADDED_AFTER_SOURCE",
+    "area_code": "BAS",
+    "area": "Bases",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "BAS-AREA-12"
+  },
+  {
+    "type": "CANONICAL_OPEN_BLOCKER",
+    "area_code": "BAS",
+    "area": "Bases",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "Canonical area book contains an explicit blocker."
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "BLA",
+    "area": "Blanqueado",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "BLA-AREA-06"
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "BLA",
+    "area": "Blanqueado",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "BLA-AREA-07"
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "BLA",
+    "area": "Blanqueado",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "BLA-AREA-08"
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "BLA",
+    "area": "Blanqueado",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "BLA-AREA-09"
+  },
+  {
+    "type": "CANONICAL_OPEN_BLOCKER",
+    "area_code": "CAR",
+    "area": "Carpintería / Embalaje",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "Canonical area book contains an explicit blocker."
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "CUR-AREA-08"
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "CUR-AREA-09"
+  },
+  {
+    "type": "CANONICAL_OPEN_BLOCKER",
+    "area_code": "CUR",
+    "area": "Curtiduría",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "Canonical area book contains an explicit blocker."
+  },
+  {
+    "type": "CANONICAL_OPEN_BLOCKER",
+    "area_code": "SUP",
+    "area": "Espacios de soporte",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "Canonical area book contains an explicit blocker."
+  },
+  {
+    "type": "CANONICAL_OPEN_BLOCKER",
+    "area_code": "FMR",
+    "area": "Formas, Moldes y Réplicas",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "Canonical area book contains an explicit blocker."
+  },
+  {
+    "type": "CANONICAL_CONTROL_ADDED_AFTER_SOURCE",
+    "area_code": "MON",
+    "area": "Montaje",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "MON-AREA-11"
+  },
+  {
+    "type": "CANONICAL_CONTROL_ADDED_AFTER_SOURCE",
+    "area_code": "MON",
+    "area": "Montaje",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "MON-AREA-12"
+  },
+  {
+    "type": "CANONICAL_CONTROL_ADDED_AFTER_SOURCE",
+    "area_code": "MON",
+    "area": "Montaje",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "MON-AREA-13"
+  },
+  {
+    "type": "CANONICAL_OPEN_BLOCKER",
+    "area_code": "MON",
+    "area": "Montaje",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "Canonical area book contains an explicit blocker."
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "REC",
+    "area": "Recepción",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "REC-AREA-05"
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "REC",
+    "area": "Recepción",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "REC-AREA-06"
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "REC",
+    "area": "Recepción",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "REC-AREA-07"
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "REC",
+    "area": "Recepción",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "REC-AREA-08"
+  },
+  {
+    "type": "CANONICAL_OPEN_BLOCKER",
+    "area_code": "REC",
+    "area": "Recepción",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "Canonical area book contains an explicit blocker."
+  },
+  {
+    "type": "CANONICAL_CONTROL_ADDED_AFTER_SOURCE",
+    "area_code": "RET",
+    "area": "Retoque",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "RET-AREA-10"
+  },
+  {
+    "type": "CANONICAL_CONTROL_ADDED_AFTER_SOURCE",
+    "area_code": "RET",
+    "area": "Retoque",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "RET-AREA-11"
+  },
+  {
+    "type": "CANONICAL_CONTROL_ADDED_AFTER_SOURCE",
+    "area_code": "RET",
+    "area": "Retoque",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "RET-AREA-12"
+  },
+  {
+    "type": "CANONICAL_OPEN_BLOCKER",
+    "area_code": "RET",
+    "area": "Retoque",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "Canonical area book contains an explicit blocker."
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "SOL",
+    "area": "Soldadura / Adaptación",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "SOL-AREA-06"
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "SOL",
+    "area": "Soldadura / Adaptación",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "SOL-AREA-07"
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "SOL",
+    "area": "Soldadura / Adaptación",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "SOL-AREA-08"
+  },
+  {
+    "type": "SOURCE_CONTROL_MISSING_IN_CANONICAL",
+    "area_code": "SOL",
+    "area": "Soldadura / Adaptación",
+    "source_page": null,
+    "risk": "R2",
+    "detail": "SOL-AREA-09"
+  }
+]

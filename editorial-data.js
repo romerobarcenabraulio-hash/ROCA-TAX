@@ -1,28 +1,26 @@
 window.ROCA_EDITORIAL_SECTIONS = [
   {
-    id:"roca", nav:"ROCA Taxidermy", title:"ROCA Taxidermy", eyebrow:"Empresa · taller · oficio",
-    lead:"ROCA TAXIDERMY es un taller especializado donde el oficio, la operación y el control documental se conectan alrededor de cada pieza. El master resume la empresa; Drive conserva el respaldo profundo.",
+    id:"roca", nav:"ROCA Taxidermy", title:"ROCA Taxidermy", eyebrow:"Gobernanza · empresa, taller y oficio",
+    lead:"ROCA TAXIDERMY es un taller especializado donde el oficio, la operación y el control documental se conectan alrededor de cada pieza.",
     body:`
       <h2>Qué reúne ROCA</h2>
       <p>La operación integra dirección de taller, curtiduría, formas y moldes, montaje, retoque, soldadura y adaptación, carpintería/embalaje, bodegas, control de materiales, trazabilidad y entrega.</p>
-      <h2>Qué debe permitir este master</h2>
+      <h2>Cómo se organiza</h2>
       <ul>
-        <li>Entender qué funciones integran la empresa y cómo se conectan.</li>
-        <li>Entender cómo está dividido el taller y para qué sirve cada área.</li>
-        <li>Seguir el recorrido general de una pieza desde que entra hasta que se entrega.</li>
-        <li>Conservar la forma correcta de ejecutar decisiones y tareas mediante machotes y guías.</li>
-        <li>Mostrar qué normas, licencias y controles externos gobiernan la operación sin convertir el documento en un expediente legal.</li>
-        <li>Preservar la historia, el oficio y la evidencia visual de ROCA.</li>
+        <li>Cada pieza conserva una identidad única desde el ingreso hasta la entrega.</li>
+        <li>Cada departamento concentra su área de trabajo, auditoría, metodología, herramientas, consumibles y evidencia.</li>
+        <li>BIWO mantiene la operación comercial y el estado del trabajo; los documentos y comprobantes permanecen en sus expedientes controlados.</li>
+        <li>Las normas y autorizaciones se traducen a condiciones y acciones que puedan ejecutarse en el taller.</li>
+        <li>La historia, el oficio y la evidencia visual se conservan como parte de la continuidad de ROCA.</li>
       </ul>
-      <div class="callout">Regla editorial: el HTML explica ROCA. Los expedientes, originales, comprobantes y evidencia de cada caso viven en Drive, BIWO o el repositorio que corresponda.</div>
     `
   },
   {
-    id:"heritage", nav:"Historia / Heritage", title:"Historia, oficio y continuidad", eyebrow:"Heritage ROCA",
+    id:"heritage", nav:"Historia / Heritage", title:"Historia, oficio y continuidad", eyebrow:"Anexo editorial · Heritage ROCA",
     lead:"La historia de ROCA no se presenta como decoración. Se conserva a través de personas, herramientas, áreas, técnicas, piezas, fotografías y cambios reales del taller.",
     body:`
       <h2>Referencia histórica</h2>
-      <p>El master aprobado conserva la identidad editorial “Arte y tradición · desde 1946”. La cronología detallada sólo se amplía cuando exista evidencia suficiente para sostener fechas, personas y etapas.</p>
+      <p>ROCA conserva la identidad “Arte y tradición · desde 1946”. La cronología se amplía únicamente con fechas, personas y etapas respaldadas por evidencia.</p>
       <h2>Qué entra a Heritage</h2>
       <ul>
         <li>Fotografías históricas del taller y de sus áreas.</li>
@@ -35,19 +33,43 @@ window.ROCA_EDITORIAL_SECTIONS = [
     `
   },
   {
-    id:"personas", nav:"Personas y estructura", title:"Cómo se organiza ROCA", eyebrow:"Estructura funcional actual",
-    lead:"La estructura pública se presenta por funciones reales y por el trabajo que ocurre en el taller. Los nombres y expedientes individuales permanecen en las fuentes privadas controladas.",
+    id:"personas", nav:"Taller y equipo", title:"Taller y equipo", eyebrow:"Gobernanza · estructura funcional actual",
+    lead:"El taller se organiza por áreas y funciones reales. Esta es la única vista global del equipo; los libros de área sólo repiten nombres cuando una estación, decisión, autorización o handoff lo requiere.",
     body:`
-      <table><thead><tr><th>Función / área</th><th>Referencia pública</th><th>Papel dentro de ROCA</th></tr></thead><tbody>
-        <tr><td>Dirección de taller / Producción</td><td>Dirección operativa</td><td>Coordina producción, decisiones de montaje, compras programadas, cobranza operativa y seguimiento del taller.</td></tr>
-        <tr><td>ERP / Compras / Inventarios</td><td>Responsable administrativo-operativo</td><td>Control de inventarios, compras, ERP y seguimiento de cuentas por cobrar junto con dirección.</td></tr>
-        <tr><td>Curtiduría</td><td>Responsable de curtiduría + equipo</td><td>Preparación, hidratación, pickle, rebajado, bateado y control físico del proceso de curtido.</td></tr>
-        <tr><td>Montaje</td><td>Dirección de taller + equipo de montaje</td><td>Medición, selección/modificación de formas, preparación, colocación de piel, reparación y armado de la pieza.</td></tr>
-        <tr><td>Retoque</td><td>Responsable de retoque + equipo</td><td>Limpieza, resane, color, aerografía, acabado y preparación final.</td></tr>
-        <tr><td>Formas y Moldes</td><td>Responsable de formas y moldes</td><td>Fabricación y ajuste de formas, moldes, fibra, resina, insertos y componentes.</td></tr>
-        <tr><td>Soldadura / Adaptación</td><td>Responsable de soldadura y adaptación</td><td>Adaptaciones metálicas, estructuras y trabajo de soldadura requerido por las piezas o formas.</td></tr>
-      </tbody></table>
-      <div class="callout">Los nombres completos, expedientes personales, identificaciones, comprobantes, contratos firmados y demás documentación individual se conservan fuera del repositorio público. El master público conserva únicamente la matriz funcional.</div>
+      <h2>Dirección operativa y BIWO / ERP</h2>
+      <p><strong>Guicho</strong> — dirección del taller / coordinación de Montaje / seguimiento operativo.</p>
+      <p><strong>César</strong> — ERP / compras / inventarios.</p>
+
+      <h2>Curtiduría</h2>
+      <p><strong>Rodolfo Sr.</strong> — referencia técnica.</p>
+      <p><strong>David</strong> — equipo de Curtiduría.</p>
+      <p><strong>Lalo / Eduardo</strong> — equipo de Curtiduría; alias operativo por reconciliar.</p>
+
+      <h2>Formas, Moldes y Réplicas</h2>
+      <p><strong>Omar</strong> — encargado.</p>
+
+      <h2>Montaje</h2>
+      <p><strong>Guicho</strong> — dirección del taller / coordinación de Montaje.</p>
+      <p><strong>Don Gustavo</strong> — montador.</p>
+      <p><strong>Ezequiel</strong> — montador.</p>
+      <p><strong>Manuel Rivera</strong> — montador.</p>
+      <p><strong>Rodolfo</strong> — montador.</p>
+      <p><strong>Raimundo</strong> — montador.</p>
+      <p><strong>Rubén</strong> — montador.</p>
+      <p><strong>Lalo</strong> — Montaje / taxidermia.</p>
+      <p><strong>Ricardo</strong> — montador.</p>
+      <p><strong>Eugenio</strong> — asistente directo de Ricardo.</p>
+
+      <h2>Retoque</h2>
+      <p><strong>Rodolfo Jr.</strong> — encargado.</p>
+      <p><strong>Emiliano</strong> — equipo de Retoque.</p>
+      <p><strong>Valerio / Valentino</strong> — equipo de Retoque; nombre operativo por reconciliar.</p>
+      <p><strong>Señor Pez</strong> — Retoque / pedacera.</p>
+
+      <h2>Soldadura / Adaptación</h2>
+      <p><strong>Flaco</strong> — soldadura / adaptación; alias operativo.</p>
+
+      <div class="callout"><strong>Responsabilidad aún por cerrar:</strong> Recepción, Bases y Blanqueado todavía no tienen responsable vigente confirmado. Carpintería / Embalaje sigue como frente no implementado. Los espacios de soporte se asignan por función cuando la operación real queda confirmada.</div>
     `
   },
   {
@@ -86,16 +108,16 @@ window.ROCA_EDITORIAL_SECTIONS = [
     id:"cumplimiento", nav:"Normas y licencias", title:"Normas, estándares, licencias y permisos", eyebrow:"Requisitos externos traducidos a ROCA",
     lead:"Las normas y autorizaciones se controlan por vigencia y aplicabilidad. El personal recibe instrucciones ejecutables; la trazabilidad legal permanece detrás en la matriz de cumplimiento.",
     body:`
-      <table><thead><tr><th>Familia</th><th>Qué controla ROCA</th><th>Cómo aparece en el master</th></tr></thead><tbody>
+      <table><thead><tr><th>Familia</th><th>Qué controla ROCA</th><th>Cómo aparece en el manual</th></tr></thead><tbody>
         <tr><td>Municipal / funcionamiento</td><td>Uso de suelo, licencia o refrendo y requisitos ligados al inmueble y actividad.</td><td>Estado, siguiente acción y condición física/documental necesaria.</td></tr>
         <tr><td>Protección Civil / incendio</td><td>Rutas, extintores, brigadas, señalización, programa u opinión cuando aplique.</td><td>Acciones observables del taller + evidencia requerida.</td></tr>
         <tr><td>STPS / seguridad y salud</td><td>EPP, químicos, exposición, iluminación, señalización y controles aplicables.</td><td>Reglas simples por área; nunca texto legal descargado sobre el personal.</td></tr>
         <tr><td>Ambiental / residuos</td><td>Clasificación, almacenamiento, manejo y disposición según las corrientes reales.</td><td>Qué separar, dónde, cómo identificar y qué evidencia conservar.</td></tr>
         <tr><td>Vida silvestre / comercio exterior</td><td>CITES, PROFEPA, SENASICA, TRACES y documentación de importación/exportación cuando el caso lo requiera.</td><td>Decisión por especie/origen/operación; no checklist universal.</td></tr>
       </tbody></table>
-      <div class="callout">Una norma o estándar puede cambiar. ROCA conserva la fuente oficial, su versión y aplicabilidad; si cambia el requisito, se actualiza la guía asociada sin alterar innecesariamente el resto del master.</div>
+      <div class="callout">Una norma o estándar puede cambiar. ROCA conserva la fuente oficial, su versión y aplicabilidad; si cambia el requisito, se actualiza la guía asociada sin alterar innecesariamente el resto del manual.</div>
       <h2>Estado de preauditoría</h2>
-      <p>La matriz de revisión contiene 106 candidatos de control: 80 permanecen NOT_CHECKED y 26 APPLICABILITY_PENDING; todavía no existe ningún renglón marcado VERIFIED. Estos estados describen preparación de auditoría, no cumplimiento.</p>
+      <p>La matriz de revisión contiene 106 controles candidatos: 80 aún no han sido verificados y 26 requieren confirmar aplicabilidad. Ningún control debe presentarse como cumplido hasta contar con evidencia suficiente.</p>
     `
   },
   {
@@ -103,7 +125,7 @@ window.ROCA_EDITORIAL_SECTIONS = [
     lead:"El tipo de documento depende de cuánto cambia y de la acción que debe resolver. No todo se convierte en procedimiento y no todo se archiva como si fuera permanente.",
     body:`
       <table><thead><tr><th>Tipo</th><th>Uso</th><th>Ejemplo</th><th>Regla</th></tr></thead><tbody>
-        <tr><td>Documento base</td><td>Constituye o acredita a la empresa.</td><td>Acta, reforma, poder, licencia obtenida.</td><td>Preservar original/vigente en Drive; resumir en el master.</td></tr>
+        <tr><td>Documento base</td><td>Constituye o acredita a la empresa.</td><td>Acta, reforma, poder, licencia obtenida.</td><td>Preservar original/vigente en Drive; resumir en el manual.</td></tr>
         <tr><td>Norma / estándar</td><td>Impone un requisito externo.</td><td>NOM, reglamento, CITES, criterio municipal.</td><td>Controlar versión/aplicabilidad y traducir a acciones.</td></tr>
         <tr><td>Machote</td><td>Resolver una decisión o evento.</td><td>Contrato, finiquito, renuncia, entrega de EPP, autorización.</td><td>Conservar plantilla, cuándo se usa, quién llena/firma y qué evidencia queda.</td></tr>
         <tr><td>Guía operativa</td><td>Ejecutar una tarea repetitiva o mutable.</td><td>Curtiduría, montaje, mantenimiento, orden de área.</td><td>Mantener viva, simple y ajustada a la operación real.</td></tr>

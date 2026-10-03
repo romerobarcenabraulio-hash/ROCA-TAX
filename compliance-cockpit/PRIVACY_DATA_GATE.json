@@ -1,0 +1,26 @@
+{
+  "schema": "ROCA_COCKPIT_INTEGRITY_GATE_V1",
+  "generated_date": "2026-09-29",
+  "master_rows": 4469,
+  "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "checks": {
+    "generic_restricted_class_guard": true,
+    "evid_reference_validator": true,
+    "restricted_setup_requires_reference": true,
+    "restricted_form_raw_rejected": true,
+    "restricted_setup_raw_rejected": true,
+    "no_fake_role_security_claim": true,
+    "verified_requires_reviewer_evidence": true,
+    "clinical_psych_raw_not_required_in_dashboard": true,
+    "restricted_financial_supported": true,
+    "restricted_legal_wildlife_supported": true,
+    "current_master_bound": true
+  },
+  "passed": 11,
+  "total": 11,
+  "errors": [],
+  "visual_runtime_test": "BLOCKED_BY_BROWSER_POLICY",
+  "verdict": "PASS",
+  "scope": "Data-minimization and restricted-evidence behavior in the local cockpit.",
+  "security_boundary": "Local cockpit does NOT claim multi-user authentication/authorization. Restricted raw evidence stays outside cockpit; cockpit stores EVID-ID references only."
+}

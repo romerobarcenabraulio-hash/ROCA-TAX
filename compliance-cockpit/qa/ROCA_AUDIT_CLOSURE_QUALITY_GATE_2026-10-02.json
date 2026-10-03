@@ -1,0 +1,13 @@
+{
+  "schema": "ROCA_AUDIT_CLOSURE_QUALITY_GATE_V1",
+  "checked_on": "2026-10-02",
+  "parent_head": "af1f0634a693a4b4a6d987035689d935095a23e4",
+  "rules": [
+    "Generic notes such as ok/cumple/listo cannot close an assessed criterion.",
+    "CONFORMING on MEDIR or CALCULAR requires at least one numeric datum/result.",
+    "NA_JUSTIFIED requires a concrete justification.",
+    "NONCONFORMING requires enough detail to create a correctable gap.",
+    "Backup export/import uses the same row-aware closure validation."
+  ],
+  "status": "SOURCE_IMPLEMENTED_PENDING_RUNTIME_QA"
+}

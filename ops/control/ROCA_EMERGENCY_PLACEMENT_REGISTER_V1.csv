@@ -1,0 +1,4 @@
+placement_id,zone,control_type,candidate_location,final_location,fire_class_or_route_type,risk_class,max_allowed_travel_m,measured_travel_m,mounting_height_m,sign_id,route_or_exit_id,equipment_id,evidence_ids,reviewer,status,notes
+EP-001,,EXTINGUISHER,,,,,,,,,,,,,NOT_CHECKED,
+EP-002,,EXIT,,,,,,,,,,,,,NOT_CHECKED,
+EP-003,,PANEL_DISCONNECT,,,,,,,,,,,,,NOT_CHECKED,

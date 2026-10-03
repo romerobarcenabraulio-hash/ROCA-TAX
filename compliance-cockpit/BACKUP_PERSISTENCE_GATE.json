@@ -1,0 +1,29 @@
+{
+  "schema": "ROCA_COCKPIT_INTEGRITY_GATE_V1",
+  "generated_date": "2026-09-29",
+  "master_rows": 4469,
+  "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "checks": {
+    "state_schema_v2": true,
+    "backup_schema_v2": true,
+    "export_full_backup": true,
+    "import_full_backup": true,
+    "backup_manifest_present": true,
+    "backup_master_hash_written": true,
+    "backup_master_hash_enforced": true,
+    "progress_import_validation": true,
+    "state_previous_fallback": true,
+    "indexeddb_state_store": true,
+    "localstorage_mirror": true,
+    "evidence_blob_hashing": true,
+    "runtime_manifest_matches_master": true,
+    "app_manifest_matches_master": true
+  },
+  "passed": 14,
+  "total": 14,
+  "errors": [],
+  "visual_runtime_test": "BLOCKED_BY_BROWSER_POLICY",
+  "verdict": "PASS",
+  "scope": "Persistence, restore compatibility, evidence blob integrity and canonical-master coupling.",
+  "note": "This gate validates deterministic code/data contracts. Browser storage behavior still requires a supported visual/browser runner."
+}

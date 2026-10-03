@@ -1,0 +1,94 @@
+{
+  "schema": "ROCA_HOLD_ROUTING_GATE_V2",
+  "date": "2026-09-30",
+  "defined_holds": 83,
+  "routed_holds": 83,
+  "orphan_holds": 0,
+  "duplicate_hold_ids": 0,
+  "counts_by_type": {
+    "DEFINE_STANDARD": 32,
+    "AUDIT_CURRENT_STATE": 36,
+    "SYSTEM_RECORD": 8,
+    "IMPLEMENT_DECISION": 7
+  },
+  "counts_by_area": {
+    "area-curtiduria": {
+      "total": 7,
+      "DEFINE_STANDARD": 4,
+      "AUDIT_CURRENT_STATE": 3,
+      "SYSTEM_RECORD": 0,
+      "IMPLEMENT_DECISION": 0
+    },
+    "area-montaje": {
+      "total": 9,
+      "DEFINE_STANDARD": 7,
+      "AUDIT_CURRENT_STATE": 2,
+      "SYSTEM_RECORD": 0,
+      "IMPLEMENT_DECISION": 0
+    },
+    "area-retoque": {
+      "total": 10,
+      "DEFINE_STANDARD": 1,
+      "AUDIT_CURRENT_STATE": 7,
+      "SYSTEM_RECORD": 2,
+      "IMPLEMENT_DECISION": 0
+    },
+    "area-bases": {
+      "total": 10,
+      "DEFINE_STANDARD": 3,
+      "AUDIT_CURRENT_STATE": 5,
+      "SYSTEM_RECORD": 1,
+      "IMPLEMENT_DECISION": 1
+    },
+    "area-fmr": {
+      "total": 9,
+      "DEFINE_STANDARD": 4,
+      "AUDIT_CURRENT_STATE": 4,
+      "SYSTEM_RECORD": 1,
+      "IMPLEMENT_DECISION": 0
+    },
+    "area-recepcion": {
+      "total": 4,
+      "DEFINE_STANDARD": 0,
+      "AUDIT_CURRENT_STATE": 2,
+      "SYSTEM_RECORD": 1,
+      "IMPLEMENT_DECISION": 1
+    },
+    "area-carpinteria": {
+      "total": 13,
+      "DEFINE_STANDARD": 5,
+      "AUDIT_CURRENT_STATE": 1,
+      "SYSTEM_RECORD": 2,
+      "IMPLEMENT_DECISION": 5
+    },
+    "area-soldadura": {
+      "total": 7,
+      "DEFINE_STANDARD": 5,
+      "AUDIT_CURRENT_STATE": 2,
+      "SYSTEM_RECORD": 0,
+      "IMPLEMENT_DECISION": 0
+    },
+    "area-blanqueado": {
+      "total": 7,
+      "DEFINE_STANDARD": 3,
+      "AUDIT_CURRENT_STATE": 4,
+      "SYSTEM_RECORD": 0,
+      "IMPLEMENT_DECISION": 0
+    },
+    "area-soporte": {
+      "total": 7,
+      "DEFINE_STANDARD": 0,
+      "AUDIT_CURRENT_STATE": 6,
+      "SYSTEM_RECORD": 1,
+      "IMPLEMENT_DECISION": 0
+    }
+  },
+  "rules": [
+    "A HOLD receives one canonical routing class; routing does not close the HOLD.",
+    "AUDIT_CURRENT_STATE belongs to current-condition verification/evidence and must not be copied into the permanent standard as a current fact.",
+    "DEFINE_STANDARD blocks the exact permanent criterion/method it governs until supported.",
+    "IMPLEMENT_DECISION blocks the target design/organization decision before implementation.",
+    "SYSTEM_RECORD blocks the exact governance/BIWO/record layer, not unrelated physical-area criteria."
+  ],
+  "verdict": "PASS_ROUTING_ONLY_NOT_CLOSURE"
+}

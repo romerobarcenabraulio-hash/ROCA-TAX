@@ -1,0 +1,38 @@
+{
+  "schema": "ROCA_RECONSTRUCTED_SOURCE_GATE_V1",
+  "module": "SLP_MUN_FUNCTION",
+  "source_id": "SLP-MUN-FUNCTION-2026",
+  "ledger_path": "SLP_MUN_FUNCTION/SLP_MUN_FUNCTION_requirement_ledger.csv",
+  "ledger_rows": 25,
+  "ledger_sha256": "78a2cf3aed0e22926eebc6cdd5e405c3b242f95f59e4ad14cc6db03617d7db61",
+  "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "reconstruction_date": "2026-09-30",
+  "status": "PASS_SOURCE_INTEGRITY_RECONSTRUCTED",
+  "original_source_gate_recovered": false,
+  "sources": [
+    {
+      "authority": "Ayuntamiento de San Luis Potosi",
+      "url": "https://municipiodeslp.gob.mx/",
+      "verified_on": "2026-09-30",
+      "supports": "Current municipal portal exposes Factibilidad de Uso de Suelo para Funcionamiento, SARE for eligible low-impact businesses, and 2026 operating-license renewal information."
+    },
+    {
+      "authority": "Congreso del Estado de San Luis Potosi",
+      "url": "https://congresosanluis.gob.mx/legislacion/leyes?page=2",
+      "verified_on": "2026-09-30",
+      "supports": "Current legislative catalog lists Ley de Ordenamiento Territorial y Desarrollo Urbano del Estado de San Luis Potosi with latest reform dated 2026-07-01."
+    }
+  ],
+  "gates": [
+    "Ledger path/count/SHA match the canonical module lock and frozen 4,469-row master.",
+    "Current official municipal portal exposes land-use feasibility and operating-license routes.",
+    "Current state legislative catalog identifies the land-use/development framework as updated in 2026.",
+    "Exact route remains site/activity/surface dependent; SARE or another filing route must not be assumed without verified facts."
+  ],
+  "limitations": [
+    "Original source-gate artifact was not recovered.",
+    "This reconstructed gate verifies source integrity and current route existence, not ROCA applicability, permit issuance, or legal compliance."
+  ],
+  "verdict": "PASS_SOURCE_INTEGRITY_RECONSTRUCTED",
+  "compliance_claim": "NOT_AUTHORIZED"
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "ROCA_PRINT_RELEASE_GATE_V2",
+  "date": "2026-09-30",
+  "checks": {
+    "js_syntax": true,
+    "implementation_register_loaded": true,
+    "frozen_requires_baseline_metadata": true,
+    "frozen_requires_terminal_audit": true,
+    "zero_open_implementation_required": true,
+    "normative_terminal_required": true,
+    "ten_baseline_departments_present": true,
+    "controlled_action_register_readable": true,
+    "current_state_blocks_print": true,
+    "normative_registry_present": true
+  },
+  "passed": 10,
+  "total": 10,
+  "errors": [],
+  "verdict": "PASS_GATE_CURRENTLY_BLOCKED",
+  "current": {
+    "baseline_departments": 10,
+    "controlled_actions": 0,
+    "normative_rows": 41,
+    "print_ready": false
+  },
+  "rule": "Printing requires every department FROZEN with closure metadata, all canonical audit criteria CONFORMING or NA_JUSTIFIED in the active audit state, zero open controlled implementation actions, and all normative applicability rows VERIFIED or JUSTIFIED_NA."
+}
