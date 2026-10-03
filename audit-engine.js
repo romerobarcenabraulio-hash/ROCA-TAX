@@ -394,7 +394,7 @@
     });
     return {
       schema:BACKUP_SCHEMA,
-      engineVersion:'1.7.0',
+      engineVersion:'1.7.1',
       exportedAt:new Date().toISOString(),
       departments:state
     };
@@ -409,8 +409,8 @@
     const knownAreas=new Map(departments());
     for(const [areaId,rawState] of Object.entries(data.departments)){
       if(!knownAreas.has(areaId)||!rawState||typeof rawState!=='object'){ignored++;continue;}
-      const criteria=criteriaForArea(areaId);
-      const rowById=new Map(criteria.map(r=>[r.id,r]));
+      const criteriaRows=criteriaForArea(areaId);
+      const rowById=new Map(criteriaRows.map(r=>[r.id,r]));
       const allowedIds=new Set(rowById.keys());
       const clean={};
       for(const [id,value] of Object.entries(rawState)){
@@ -432,7 +432,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.7.0',
+    version:'1.7.1',
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,

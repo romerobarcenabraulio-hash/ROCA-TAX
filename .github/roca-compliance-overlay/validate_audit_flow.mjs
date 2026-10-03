@@ -8,6 +8,7 @@ const ctx={window:{}};
 vm.createContext(ctx);
 vm.runInContext(read("department-data.js"),ctx,{filename:"department-data.js"});
 vm.runInContext(read("area-standard-data.js"),ctx,{filename:"area-standard-data.js"});
+vm.runInContext(read("norm-context-data.js"),ctx,{filename:"norm-context-data.js"});
 
 const depts=ctx.window.ROCA_DEPARTMENTS||{};
 const phys=ctx.window.ROCA_AREA_PHYSICAL_STANDARD||[];
@@ -177,6 +178,14 @@ if(!probeId){
   if(emptyFiltered.ignored<1) errors.push("audit import accepted terminal closure without supporting detail");
   if(ctx.window.ROCA_AUDIT_ENGINE.closureDetailValid("NA_JUSTIFIED","")!==false)
     errors.push("NA_JUSTIFIED without justification accepted");
+  const measured=ctx.window.ROCA_AUDIT_ENGINE.criteriaForArea("area-montaje").find(r=>r.id==="PHYS-LIGHT");
+  if(!measured) errors.push("PHYS-LIGHT measured criterion missing");
+  else{
+    if(ctx.window.ROCA_AUDIT_ENGINE.closureDetailValid("CONFORMING","ok",measured)!==false)
+      errors.push("generic measured closure accepted");
+    if(ctx.window.ROCA_AUDIT_ENGINE.closureDetailValid("CONFORMING","350 lux medidos",measured)!==true)
+      errors.push("numeric measured closure rejected");
+  }
   memory.clear();
 }
 

@@ -51,9 +51,8 @@ assert(app.includes("closureDetailValid"),'final print gate must validate closur
 assert(app.includes("terminal&&evidenceValid"),'final print gate must keep unsupported legacy closures open');
 
 const auditUi=read('audit-data.js');
-assert(auditUi.includes("status==='CONFORMING'&&!detail"),'audit UI must require detail for CONFORMING');
-assert(auditUi.includes("status==='NONCONFORMING'&&!detail"),'audit UI must require observed gap for NONCONFORMING');
-assert(auditUi.includes("status==='NA_JUSTIFIED'&&!detail"),'audit UI must require justification for NA');
+assert(auditUi.includes("ROCA_AUDIT_ENGINE.closureValidation"),'audit UI must use criterion-aware closure validation');
+assert(auditUi.includes("error=result.valid?'':result.error"),'audit UI must surface closure validation result');
 assert(auditUi.includes("auditBackupExport")&&auditUi.includes("auditBackupImport"),'audit backup controls missing');
 
 const index=read('index.html');
@@ -80,6 +79,10 @@ assert(Boolean(item),'NONCONFORMING criterion must generate IMPLEMENTAR item');
 assert(item&&item.status==='NO CONFORME','dynamic IMPLEMENTAR item must preserve nonconforming status');
 assert(global.ROCA_AUDIT_ENGINE.closureDetailValid('CONFORMING','')===false,'CONFORMING without detail must not be valid');
 assert(global.ROCA_AUDIT_ENGINE.closureDetailValid('NA_JUSTIFIED','')===false,'NA_JUSTIFIED without justification must not be valid');
+const measuredCriterion=global.ROCA_AUDIT_ENGINE.criteriaForArea('area-montaje').find(r=>r.id==='PHYS-LIGHT');
+assert(Boolean(measuredCriterion),'measured PHYS-LIGHT criterion missing');
+assert(global.ROCA_AUDIT_ENGINE.closureDetailValid('CONFORMING','ok',measuredCriterion)===false,'generic measured closure must be rejected');
+assert(global.ROCA_AUDIT_ENGINE.closureDetailValid('CONFORMING','350 lux medidos',measuredCriterion)===true,'numeric measured closure should be accepted');
 
 global.ROCA_AUDIT_ENGINE.saveCriterion(area,criterion.id,{status:'CONFORMING',note:'EVID-TEST'});
 const backup=global.ROCA_AUDIT_ENGINE.exportAuditState();
