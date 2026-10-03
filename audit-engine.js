@@ -255,12 +255,16 @@
     const areaRows=(Array.isArray(dept.area)?dept.area:[]).map(r=>{
       const meta=auditBySourceId.get(r.id)||{};
       return {
-        id:meta.id||r.id,
+        id:r.id,
         group:'Área de trabajo',
         label:r.label||meta.criterion||r.id,
         target:r.text||meta.criterion||'',
-        input:meta.evidence||'Evidencia observable de la condición permanente.',
-        basis:'Estándar permanente del departamento',
+        input:r.evidence||meta.evidence||'Evidencia observable de la condición permanente.',
+        basis:r.basis||'Estándar permanente del departamento',
+        normReqIds:Array.isArray(r.normReqIds)?r.normReqIds:[],
+        evaluationHint:r.verify||'',
+        requiredData:r.data||'',
+        calculation:r.calculation||'',
         sourceType:'department_area',
         sourceId:r.id
       };
@@ -285,7 +289,8 @@
       sourceType:'department_audit_criteria',
       sourceId:r.id
     }));
-    const merged=[...areaRows,...controlRows,...processRows,...applicablePhysicalRows(areaId)];
+    const inheritedPhysical=dept.physicalStandardsIntegrated?[]:applicablePhysicalRows(areaId);
+    const merged=[...areaRows,...controlRows,...processRows,...inheritedPhysical];
     const seen=new Set();
     return merged.filter(r=>{
       if(!r.id||seen.has(r.id)) return false;
