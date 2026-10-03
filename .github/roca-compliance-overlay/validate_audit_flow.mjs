@@ -15,7 +15,7 @@ const phys=ctx.window.ROCA_AREA_PHYSICAL_STANDARD||[];
 if(Object.keys(depts).length!==10) errors.push("expected 10 departments");
 
 const expectedCounts={
-  "area-curtiduria":21,"area-montaje":25,"area-retoque":37,"area-bases":40,"area-fmr":35,
+  "area-curtiduria":21,"area-montaje":25,"area-retoque":26,"area-bases":40,"area-fmr":35,
   "area-recepcion":19,"area-carpinteria":30,"area-soldadura":22,"area-blanqueado":23,"area-soporte":24
 };
 
