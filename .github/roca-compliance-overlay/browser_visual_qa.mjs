@@ -104,6 +104,7 @@ for(const vp of contract.viewports){
             const badKinds=[];
             const badContracts=[];
             const genericContracts=[];
+            const weakEvidenceContracts=[];
             const badRoutes=[];
             for(let ai=0;ai<auditAreaCount;ai++){
               const btn=auditAreaButtons.nth(ai);
@@ -128,6 +129,16 @@ for(const vp of contract.viewports){
                   genericContracts.push({auditId,rid,contract});
                 if(!["CÁLCULO INTERNO","MEDICIÓN DE CAMPO","LAB / ESPECIALISTA","REVISIÓN DOCUMENTAL","GATE DE APLICABILIDAD","INSPECCIÓN DE CAMPO"].includes(route))
                   badRoutes.push({auditId,rid,route});
+                if(kind==="MEDIR"&&!/(medici|lectura|instrument|fecha|distancia|peso|pH|lux|presi|tiempo|dimensi|caudal|temperatura|resistencia|concentraci|hora)/i.test(contract))
+                  weakEvidenceContracts.push({auditId,rid,kind,route,reason:"measurement detail missing",contract});
+                if(kind==="CALCULAR"&&!/(cálculo|superficie|inventario|distancia|recorrido|área|datos de entrada|resultado)/i.test(contract))
+                  weakEvidenceContracts.push({auditId,rid,kind,route,reason:"calculation inputs missing",contract});
+                if(route==="REVISIÓN DOCUMENTAL"&&!/(registro|documento|bitácora|hds|versión|fecha|responsable|expediente|foto|orden|id|lote|estado de verificación)/i.test(contract))
+                  weakEvidenceContracts.push({auditId,rid,kind,route,reason:"documentary proof missing",contract});
+                if(route==="INSPECCIÓN DE CAMPO"&&!/(observación|visual|operación real|foto|estado|condición|ubicación|recorrido|demuestre|inspección física)/i.test(contract))
+                  weakEvidenceContracts.push({auditId,rid,kind,route,reason:"field proof missing",contract});
+                if(route==="GATE DE APLICABILIDAD"&&!/(aplica|no aplica|hecho disparador|trigger|si aplica|aplicabilidad)/i.test(contract))
+                  weakEvidenceContracts.push({auditId,rid,kind,route,reason:"applicability trigger missing",contract});
               }
             }
             if(auditAreaCount>0&&auditedRows>0&&!badKinds.length)
@@ -142,6 +153,9 @@ for(const vp of contract.viewports){
             if(!genericContracts.length)
               pass(prefix+":audit-no-generic-evidence-contracts","no audit criterion uses the banned generic evidence placeholders",{rows:auditedRows});
             else fail(prefix+":audit-no-generic-evidence-contracts","generic evidence placeholders remain in audit criteria",{genericContracts});
+            if(!weakEvidenceContracts.length)
+              pass(prefix+":audit-evidence-sufficiency","all audit criteria carry evidence sufficient for their mode/route",{rows:auditedRows});
+            else fail(prefix+":audit-evidence-sufficiency","one or more audit criteria have evidence too weak for their mode/route",{weakEvidenceContracts});
 
             const calcStepChecks=[
               {id:"PHYS-LIGHT",required:["MEDIR","CALCULAR","DOCUMENTAR"]},
