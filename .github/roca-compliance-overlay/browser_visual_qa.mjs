@@ -199,6 +199,33 @@ for(const vp of contract.viewports){
               pass(prefix+":audit-normative-calculation-steps","measurement criteria retain required downstream calculation steps",{checks:calcStepChecks.map(x=>x.id)});
             else fail(prefix+":audit-normative-calculation-steps","required downstream calculation steps are missing",{calcStepFailures});
 
+            const measuredClosureFailures=[];
+            const monNavForMeasured=page.locator('#nav button[data-id="audit-mon"]');
+            if(await monNavForMeasured.count()===1){
+              await monNavForMeasured.click();
+              await page.waitForSelector('tr[data-audit-id="PHYS-LIGHT"]',{timeout:10000});
+              const mr=page.locator('tr[data-audit-id="PHYS-LIGHT"]');
+              const mStatus=mr.locator(".audit-status");
+              const mNote=mr.locator(".audit-note");
+              await mNote.fill("ok");
+              await mStatus.selectOption("CONFORMING");
+              await page.waitForTimeout(100);
+              const mSaved=await page.evaluate(()=>{
+                try{
+                  const state=JSON.parse(localStorage.getItem("roca.audit.area-montaje")||"{}");
+                  return state["PHYS-LIGHT"]?.status||"NOT_SAVED";
+                }catch{return "PARSE_ERROR"}
+              });
+              const mValidation=(await mr.locator(".audit-validation").innerText()).trim();
+              if(mSaved==="CONFORMING"||!/numérico|genérica|evidencia/i.test(mValidation))
+                measuredClosureFailures.push({saved:mSaved,validation:mValidation});
+              await mStatus.selectOption("NOT_VERIFIED");
+              await mNote.fill("");
+            }else measuredClosureFailures.push({reason:"montage audit nav missing"});
+            if(!measuredClosureFailures.length)
+              pass(prefix+":audit-measured-conforming-requires-data","measured criterion rejects generic CONFORMING note");
+            else fail(prefix+":audit-measured-conforming-requires-data","measured criterion accepted weak CONFORMING evidence",{measuredClosureFailures});
+
             const montage=page.locator('#nav button[data-id="audit-mon"]');
             if(await montage.count()!==1){
               fail(prefix+":audit-montage-nav","audit montage navigation missing");

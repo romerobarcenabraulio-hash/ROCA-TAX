@@ -206,7 +206,7 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       const v=saved[row.id]||{};
       const status=String(v.status||'NOT_VERIFIED').toUpperCase();
       if(window.ROCA_AUDIT_ENGINE&&typeof window.ROCA_AUDIT_ENGINE.closureDetailValid==='function'){
-        return window.ROCA_AUDIT_ENGINE.closureDetailValid(status,v.note)?status:'NOT_VERIFIED';
+        return window.ROCA_AUDIT_ENGINE.closureDetailValid(status,v.note,row)?status:'NOT_VERIFIED';
       }
       if(status!=='NOT_VERIFIED'&&!String(v.note||'').trim()) return 'NOT_VERIFIED';
       return status;
@@ -381,7 +381,7 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     const note=tr.querySelector('.audit-note');
     const storedStatus=String(v.status||'NOT_VERIFIED').toUpperCase();
     const storedValid=window.ROCA_AUDIT_ENGINE&&typeof window.ROCA_AUDIT_ENGINE.closureDetailValid==='function'
-      ? window.ROCA_AUDIT_ENGINE.closureDetailValid(storedStatus,v.note)
+      ? window.ROCA_AUDIT_ENGINE.closureDetailValid(storedStatus,v.note,rows.find(r=>r.id===id))
       : (storedStatus==='NOT_VERIFIED'||Boolean(String(v.note||'').trim()));
     sel.value=storedValid?storedStatus:'NOT_VERIFIED';
     const validation=tr.querySelector('.audit-validation');
@@ -391,9 +391,15 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       const status=sel.value;
       const detail=String(note.value||'').trim();
       let error='';
-      if(status==='CONFORMING'&&!detail) error='Para cerrar CONFORME registra el dato, observación o evidencia que lo demuestra.';
-      if(status==='NONCONFORMING'&&!detail) error='Describe la brecha observada antes de abrir IMPLEMENTAR.';
-      if(status==='NA_JUSTIFIED'&&!detail) error='NO APLICA requiere una justificación concreta.';
+      const rowDef=rows.find(r=>r.id===id)||{};
+      if(window.ROCA_AUDIT_ENGINE&&typeof window.ROCA_AUDIT_ENGINE.closureValidation==='function'){
+        const result=window.ROCA_AUDIT_ENGINE.closureValidation(status,detail,rowDef);
+        error=result.valid?'':result.error;
+      }else{
+        if(status==='CONFORMING'&&!detail) error='Para cerrar CONFORME registra el dato, observación o evidencia que lo demuestra.';
+        if(status==='NONCONFORMING'&&!detail) error='Describe la brecha observada antes de abrir IMPLEMENTAR.';
+        if(status==='NA_JUSTIFIED'&&!detail) error='NO APLICA requiere una justificación concreta.';
+      }
       if(validation) validation.textContent=error;
       tr.classList.toggle('audit-invalid',Boolean(error));
       if(error) return;
@@ -409,7 +415,6 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
       const cell=tr.querySelector('.audit-implementation');
       const action=openByReq.get(id);
       if(cell&&!action){
-        const rowDef=rows.find(r=>r.id===id)||{};
         cell.innerHTML=(status==='NONCONFORMING')
           ? '<strong>ABIERTA · AUDITORÍA</strong><br>'+String(rowDef.evaluationKind||'INSPECCIONAR')+' · '+String(rowDef.verificationRoute||'INSPECCIÓN DE CAMPO')+' · cerrar la brecha y demostrar con: '+String(rowDef.evidenceContract||rowDef.input||'evidencia objetiva')
           : '—';

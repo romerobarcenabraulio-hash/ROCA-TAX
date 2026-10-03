@@ -311,12 +311,32 @@
   const BACKUP_SCHEMA='ROCA_AUDIT_STATE_V1';
   const ALLOWED_STATUSES=new Set(['NOT_VERIFIED','CONFORMING','NONCONFORMING','NA_JUSTIFIED']);
 
-  function closureDetailValid(status,note){
+  function closureValidation(status,note,row){
     const s=String(status||'NOT_VERIFIED').toUpperCase();
     const detail=String(note||'').trim();
-    if(!ALLOWED_STATUSES.has(s)) return false;
-    if(s==='NOT_VERIFIED') return true;
-    return Boolean(detail);
+    if(!ALLOWED_STATUSES.has(s)) return {valid:false,error:'Estado de auditoría inválido.'};
+    if(s==='NOT_VERIFIED') return {valid:true,error:''};
+    if(!detail) return {valid:false,error:s==='NA_JUSTIFIED'?'NO APLICA requiere una justificación concreta.':(s==='NONCONFORMING'?'Describe la brecha observada antes de abrir IMPLEMENTAR.':'Para cerrar CONFORME registra el dato, observación o evidencia que lo demuestra.')};
+
+    const generic=/^(ok|bien|todo bien|cumple|conforme|listo|correcto|si|sí|aplica)$/i;
+    if(generic.test(detail)) return {valid:false,error:'La nota es demasiado genérica; registra evidencia o dato concreto.'};
+
+    if(s==='NA_JUSTIFIED' && detail.length<12)
+      return {valid:false,error:'NO APLICA requiere una justificación concreta, no una etiqueta corta.'};
+    if(s==='NONCONFORMING' && detail.length<8)
+      return {valid:false,error:'Describe la brecha con detalle suficiente para poder corregirla.'};
+
+    if(s==='CONFORMING'){
+      if(detail.length<8) return {valid:false,error:'Registra evidencia concreta suficiente para sostener CONFORME.'};
+      const kind=String(row&&row.evaluationKind||'').toUpperCase();
+      if((kind==='MEDIR'||kind==='CALCULAR')&&!/[0-9]/.test(detail))
+        return {valid:false,error:'Este criterio requiere dato numérico o resultado medido/calculado para cerrar CONFORME.'};
+    }
+    return {valid:true,error:''};
+  }
+
+  function closureDetailValid(status,note,row){
+    return closureValidation(status,note,row).valid;
   }
 
   function dynamicImplementationItems(){
@@ -327,7 +347,7 @@
         const v=saved[row.id]||{};
         if(String(v.status||'NOT_VERIFIED').toUpperCase()!=='NONCONFORMING') return;
         const note=String(v.note||'').trim();
-        if(!note) return;
+        if(!closureDetailValid('NONCONFORMING',note,row)) return;
         items.push({
           id:'AUD-'+String(dept.code||areaId).toUpperCase()+'-'+row.id,
           area:dept.title||areaId,
@@ -354,14 +374,16 @@
   function exportAuditState(){
     const state={};
     departments().forEach(([areaId])=>{
-      const known=new Set(criteriaForArea(areaId).map(r=>r.id));
+      const criteria=criteriaForArea(areaId);
+      const rowById=new Map(criteria.map(r=>[r.id,r]));
+      const known=new Set(rowById.keys());
       const raw=loadState(areaId);
       const clean={};
       Object.entries(raw||{}).forEach(([id,value])=>{
         if(!known.has(id)||!value||typeof value!=='object') return;
         const status=String(value.status||'NOT_VERIFIED').toUpperCase();
         const note=String(value.note||'');
-        if(!closureDetailValid(status,note)) return;
+        if(!closureDetailValid(status,note,rowById.get(id))) return;
         clean[id]={
           status,
           note,
@@ -372,7 +394,7 @@
     });
     return {
       schema:BACKUP_SCHEMA,
-      engineVersion:'1.6.3',
+      engineVersion:'1.7.0',
       exportedAt:new Date().toISOString(),
       departments:state
     };
@@ -387,13 +409,15 @@
     const knownAreas=new Map(departments());
     for(const [areaId,rawState] of Object.entries(data.departments)){
       if(!knownAreas.has(areaId)||!rawState||typeof rawState!=='object'){ignored++;continue;}
-      const allowedIds=new Set(criteriaForArea(areaId).map(r=>r.id));
+      const criteria=criteriaForArea(areaId);
+      const rowById=new Map(criteria.map(r=>[r.id,r]));
+      const allowedIds=new Set(rowById.keys());
       const clean={};
       for(const [id,value] of Object.entries(rawState)){
         if(!allowedIds.has(id)||!value||typeof value!=='object'){ignored++;continue;}
         const status=String(value.status||'NOT_VERIFIED').toUpperCase();
         const note=String(value.note||'');
-        if(!closureDetailValid(status,note)){ignored++;continue;}
+        if(!closureDetailValid(status,note,rowById.get(id))){ignored++;continue;}
         clean[id]={
           status,
           note,
@@ -408,7 +432,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.6.3',
+    version:'1.7.0',
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,
@@ -418,6 +442,7 @@
     dynamicImplementationItems,
     exportAuditState,
     importAuditState,
+    closureValidation,
     closureDetailValid,
     stateKey
   };
