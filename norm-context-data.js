@@ -1,8 +1,87 @@
 window.ROCA_NORM_CONTEXT = {
-  version:"2026-10-02.3",
+  version:"2026-10-02.4",
   checkedOn:"2026-10-02",
   note:"Panel de contexto para AUDITORÍA. Un numeral sólo se muestra como verificado cuando fue contrastado contra texto oficial. Las referencias pendientes nunca se inventan.",
   globalConditionalReqIds:["STPS-024","STPS-028","STPS-033"],
+  calculators:{
+    "STPS-002":{
+      type:"fire",
+      title:"Cálculo guiado · incendio / recorrido",
+      note:"No clasifica el riesgo por sí solo. Selecciona ORDINARIO/ALTO únicamente después de resolver Apéndice A con el inventario real.",
+      fields:[
+        {id:"area",label:"Superficie construida (m²)",type:"number",min:"0",step:"0.01"},
+        {id:"risk",label:"Riesgo ya clasificado",type:"select",options:[["","— seleccionar —"],["ordinario","ORDINARIO"],["alto","ALTO"]]},
+        {id:"route",label:"Recorrido real a salida (m)",type:"number",min:"0",step:"0.01"},
+        {id:"evac",label:"Tiempo real evacuación (min, si recorrido >40 m)",type:"number",min:"0",step:"0.01"}
+      ]
+    },
+    "STPS-015":{
+      type:"thermal",
+      title:"Cálculo guiado · ITGBH",
+      note:"Calcula el índice. No decide cumplimiento sin el límite aplicable por carga de trabajo/exposición.",
+      fields:[
+        {id:"solar",label:"Condición",type:"select",options:[["indoor","Interior / exterior sin sol"],["sun","Exterior con carga solar"]]},
+        {id:"wet",label:"t_bhn · bulbo húmedo natural (°C)",type:"number",step:"0.01"},
+        {id:"globe",label:"t_g · globo (°C)",type:"number",step:"0.01"},
+        {id:"dry",label:"t_s · bulbo seco (°C; sólo con sol)",type:"number",step:"0.01"}
+      ]
+    },
+    "STPS-020":{
+      type:"pressure",
+      title:"Chequeo guiado · presión / manómetro",
+      note:"Evalúa relaciones numéricas verificadas; no sustituye la clasificación completa de categoría I/II/III.",
+      fields:[
+        {id:"op",label:"Presión de operación",type:"number",min:"0",step:"0.01"},
+        {id:"max",label:"Presión máxima de trabajo",type:"number",min:"0",step:"0.01"},
+        {id:"relief",label:"Presión calibración alivio",type:"number",min:"0",step:"0.01"},
+        {id:"gauge",label:"Máximo de escala del manómetro",type:"number",min:"0",step:"0.01"}
+      ]
+    },
+    "STPS-022":{
+      type:"ground",
+      title:"Chequeo guiado · resistencia a tierra",
+      note:"Compara la lectura con el límite del tipo seleccionado.",
+      fields:[
+        {id:"kind",label:"Tipo",type:"select",options:[["lightning","Electrodo de pararrayos"],["ground","Red de puesta a tierra"]]},
+        {id:"ohms",label:"Resistencia medida (ohms)",type:"number",min:"0",step:"0.01"}
+      ]
+    },
+    "STPS-025":{
+      type:"lux",
+      title:"Chequeo guiado · iluminación",
+      note:"El nivel requerido debe provenir de la Tabla 1 para la tarea real; esta herramienta sólo compara la lectura.",
+      fields:[
+        {id:"required",label:"Nivel mínimo aplicable (lux)",type:"number",min:"0",step:"1"},
+        {id:"measured",label:"Lectura en plano de trabajo (lux)",type:"number",min:"0",step:"1"}
+      ]
+    },
+    "STPS-033":{
+      type:"confined",
+      title:"Chequeo guiado · atmósfera de espacio confinado",
+      note:"Sólo evalúa O₂ y %LII. Las sustancias químicas deben compararse por separado con su nivel de acción/VLE.",
+      fields:[
+        {id:"o2",label:"Oxígeno (% v/v)",type:"number",min:"0",step:"0.01"},
+        {id:"lel",label:"Inflamables (% del LII)",type:"number",min:"0",step:"0.01"}
+      ]
+    },
+    "STPS-036":{
+      type:"ergonomic",
+      title:"Interpretación guiada · puntuación ergonómica",
+      note:"No genera la puntuación del Apéndice. Interpreta una puntuación obtenida con el método aplicable.",
+      fields:[
+        {id:"score",label:"Puntuación obtenida",type:"number",min:"0",max:"32",step:"1"}
+      ]
+    },
+    "SEM-WW":{
+      type:"wastewater",
+      title:"Chequeo guiado · pH / temperatura de descarga",
+      note:"Sólo evalúa pH y temperatura. Grasas, sólidos, metales, cianuro y condiciones particulares requieren sus resultados/tabla aplicable.",
+      fields:[
+        {id:"ph",label:"pH medido",type:"number",step:"0.01"},
+        {id:"temp",label:"Temperatura instantánea (°C)",type:"number",step:"0.01"}
+      ]
+    }
+  },
   areaToReqIds:{
     "area-recepcion":["STPS-001","STPS-002","STPS-025","STPS-026","STPS-030"],
     "area-curtiduria":["STPS-001","STPS-002","STPS-005","STPS-010","STPS-015","STPS-017","STPS-018","STPS-020","STPS-025","STPS-026","STPS-030","SEM-052","SEM-WW","SLP-ENV-WW-2026","SLP-ENV-RINP","SLP-ENV-RME"],

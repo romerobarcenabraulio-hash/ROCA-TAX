@@ -259,6 +259,82 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
     const cards=ids.map(id=>ctx.byReq&&ctx.byReq[id] ? '<button type="button" class="audit-area-norm-row audit-area-norm-open" data-norm-id="'+id+'"><strong>'+id+'</strong><span>'+String(ctx.byReq[id].mode||'').replaceAll('_',' ')+'</span></button>' : '<button type="button" class="audit-area-norm-row audit-area-norm-open pending" data-norm-id="'+id+'"><strong>'+id+'</strong><span>REFERENCIA / CITA ESPECÍFICA PENDIENTE</span></button>').join('');
     normContext.innerHTML='<div class="audit-context-head">NORMAS DEL ÁREA</div><p class="audit-context-summary">Marco aplicable/condicional para este departamento. Selecciona VER FUNDAMENTO en un criterio para fijar cálculo, captura y cita exacta.</p>'+cards;
   }
+  function calculatorMarkup(reqId,spec){
+    if(!spec) return '';
+    const fields=(spec.fields||[]).map(f=>{
+      if(f.type==='select'){
+        return '<label class="audit-calc-field">'+f.label+'<select data-calc-field="'+f.id+'">'+(f.options||[]).map(o=>'<option value="'+o[0]+'">'+o[1]+'</option>').join('')+'</select></label>';
+      }
+      return '<label class="audit-calc-field">'+f.label+'<input data-calc-field="'+f.id+'" type="number"'+(f.min!=null?' min="'+f.min+'"':'')+(f.max!=null?' max="'+f.max+'"':'')+(f.step!=null?' step="'+f.step+'"':'')+'></label>';
+    }).join('');
+    return '<div class="audit-norm-calc" data-calc-req="'+reqId+'" data-calc-type="'+spec.type+'"><h4>'+spec.title+'</h4><p>'+spec.note+'</p><div class="audit-calc-fields">'+fields+'</div><button type="button" class="audit-calc-run">CALCULAR / EVALUAR</button><div class="audit-calc-result" role="status">Sin cálculo.</div></div>';
+  }
+  function calcNumber(box,id){
+    const el=box.querySelector('[data-calc-field="'+id+'"]');
+    if(!el||String(el.value).trim()==='') return NaN;
+    return Number(el.value);
+  }
+  function bindNormCalculators(){
+    normContext.querySelectorAll('.audit-norm-calc').forEach(box=>{
+      const btn=box.querySelector('.audit-calc-run');
+      const out=box.querySelector('.audit-calc-result');
+      if(!btn||!out) return;
+      btn.addEventListener('click',()=>{
+        const type=box.dataset.calcType;
+        const val=id=>calcNumber(box,id);
+        const field=id=>box.querySelector('[data-calc-field="'+id+'"]')?.value||'';
+        const fmt=n=>Number.isFinite(n)?String(Math.round(n*100)/100):'—';
+        let html='';
+        if(type==='fire'){
+          const area=val('area'),route=val('route'),evac=val('evac'),risk=field('risk');
+          if(!(area>0)||!risk||!(route>=0)){html='Faltan superficie, clasificación de riesgo o recorrido real.';}
+          else{
+            const divisor=risk==='alto'?200:300;
+            const minExt=Math.ceil(area/divisor);
+            let routeMsg=route<=40?'Recorrido ≤40 m: condición numérica satisfecha.':(Number.isFinite(evac)?(evac<=3?'Recorrido >40 m y tiempo ≤3 min: documentar el supuesto y la evidencia de tiempo.':'Recorrido >40 m y tiempo >3 min: condición numérica no satisfecha.'):'Recorrido >40 m: falta medir tiempo de evacuación.');
+            html='<b>Extintores mínimos por superficie:</b> '+minExt+' (antes de compatibilidad/clase/ubicación).<br><b>Ruta:</b> '+routeMsg;
+          }
+        }else if(type==='thermal'){
+          const solar=field('solar'),wet=val('wet'),globe=val('globe'),dry=val('dry');
+          if(!Number.isFinite(wet)||!Number.isFinite(globe)||(solar==='sun'&&!Number.isFinite(dry))) html='Faltan temperaturas requeridas.';
+          else{
+            const itgbh=solar==='sun'?(0.7*wet+0.2*globe+0.1*dry):(0.7*wet+0.3*globe);
+            html='<b>ITGBH calculado:</b> '+fmt(itgbh)+' °C.<br>Falta comparar con el límite aplicable por carga/exposición.';
+          }
+        }else if(type==='pressure'){
+          const op=val('op'),max=val('max'),relief=val('relief'),gauge=val('gauge');
+          if(!(op>0)||!Number.isFinite(max)||!Number.isFinite(relief)||!Number.isFinite(gauge)) html='Faltan presiones/escala.';
+          else{
+            const ratio=gauge/op;
+            html='<b>Relación escala/operación:</b> '+fmt(ratio)+' → '+(ratio>=1.5&&ratio<=4?'dentro de 1.5–4':'fuera de 1.5–4')+'.<br><b>Alivio:</b> '+((relief<=max&&relief>op)?'calibración > operación y ≤ máxima de trabajo':'relación de presiones no satisfecha')+'.';
+          }
+        }else if(type==='ground'){
+          const kind=field('kind'),ohms=val('ohms'),limit=kind==='lightning'?10:25;
+          html=Number.isFinite(ohms)?'<b>Límite:</b> '+limit+' Ω · <b>Lectura:</b> '+fmt(ohms)+' Ω → '+(ohms<=limit?'dentro del límite':'fuera del límite')+'.':'Falta lectura de resistencia.';
+        }else if(type==='lux'){
+          const req=val('required'),meas=val('measured');
+          if(!(req>0)||!Number.isFinite(meas)) html='Falta nivel mínimo aplicable o lectura.';
+          else html='<b>Requerido:</b> '+fmt(req)+' lux · <b>Medido:</b> '+fmt(meas)+' lux · <b>Diferencia:</b> '+fmt(meas-req)+' lux → '+(meas>=req?'lectura ≥ mínimo':'lectura < mínimo')+'.';
+        }else if(type==='confined'){
+          const o2=val('o2'),lel=val('lel');
+          if(!Number.isFinite(o2)||!Number.isFinite(lel)) html='Faltan O₂ o %LII.';
+          else html='<b>O₂:</b> '+fmt(o2)+'% → '+(o2>=19.5&&o2<=23.5?'dentro de 19.5–23.5%':'fuera de 19.5–23.5%')+'.<br><b>Inflamables:</b> '+fmt(lel)+'% LII → '+(lel<10?'por debajo de 10% LII':'igual/superior a 10% LII')+'.<br>Falta evaluar contaminantes químicos específicos cuando existan.';
+        }else if(type==='ergonomic'){
+          const score=val('score');
+          if(!Number.isFinite(score)||score<0||score>32) html='Puntuación inválida; usa 0–32.';
+          else{
+            const band=score<=4?'BAJO':score<=12?'MEDIO':score<=20?'ALTO':'MUY ALTO';
+            html='<b>Nivel por puntuación:</b> '+band+' ('+fmt(score)+'). La puntuación debe provenir del método/apéndice aplicable.';
+          }
+        }else if(type==='wastewater'){
+          const ph=val('ph'),temp=val('temp');
+          if(!Number.isFinite(ph)||!Number.isFinite(temp)) html='Faltan pH o temperatura.';
+          else html='<b>pH:</b> '+fmt(ph)+' → '+(ph>=5.5&&ph<=10?'dentro de 5.5–10':'fuera de 5.5–10')+'.<br><b>Temperatura:</b> '+fmt(temp)+' °C → '+(temp<=40?'≤40 °C':'>40 °C')+'.<br>No evalúa los demás parámetros ni condiciones particulares.';
+        }else html='Calculadora no disponible.';
+        out.innerHTML=html;
+      });
+    });
+  }
   function renderNormContext(ids){
     if(!normContext) return;
     const ctx=window.ROCA_NORM_CONTEXT||{};
@@ -278,8 +354,10 @@ window.ROCA_AUDIT_ENHANCE = async function(sectionId){
         '<p><b>Cálculo / decisión:</b> '+d.calculation+'</p>'+
         '<div class="audit-context-citation '+citationClass+'"><b>Cita:</b> '+d.citation+'<br><small>'+d.citationStatus+'</small></div>'+
         (d.source?'<a class="audit-context-source" target="_blank" rel="noopener" href="'+d.source+'">ABRIR FUENTE OFICIAL</a>':'')+
+        calculatorMarkup(x.id,ctx.calculators&&ctx.calculators[x.id])+
       '</section>';
     }).join('');
+    bindNormCalculators();
   }
   renderAreaNormSummary();
   root.querySelectorAll('.audit-area-norm-open').forEach(btn=>{

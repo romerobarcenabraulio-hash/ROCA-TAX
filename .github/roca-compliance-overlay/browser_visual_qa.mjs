@@ -157,6 +157,27 @@ for(const vp of contract.viewports){
               pass(prefix+":audit-evidence-sufficiency","all audit criteria carry evidence sufficient for their mode/route",{rows:auditedRows});
             else fail(prefix+":audit-evidence-sufficiency","one or more audit criteria have evidence too weak for their mode/route",{weakEvidenceContracts});
 
+            const curCalcNav=page.locator('#nav button[data-id="audit-cur"]');
+            const calcFailures=[];
+            if(await curCalcNav.count()===1){
+              await curCalcNav.click();
+              const luxNormButton=page.locator('.audit-area-norm-open[data-norm-id="STPS-025"]');
+              if(await luxNormButton.count()===1){
+                await luxNormButton.click();
+                const calc=page.locator('.audit-norm-calc[data-calc-req="STPS-025"]');
+                if(await calc.count()===1){
+                  await calc.locator('[data-calc-field="required"]').fill("300");
+                  await calc.locator('[data-calc-field="measured"]').fill("350");
+                  await calc.locator('.audit-calc-run').click();
+                  const result=(await calc.locator('.audit-calc-result').innerText()).trim();
+                  if(!/350/.test(result)||!/lectura ≥ mínimo/i.test(result)) calcFailures.push({id:"STPS-025",result});
+                }else calcFailures.push({id:"STPS-025",reason:"calculator missing"});
+              }else calcFailures.push({id:"STPS-025",reason:"norm button missing"});
+            }else calcFailures.push({id:"area-curtiduria",reason:"audit nav missing"});
+            if(!calcFailures.length)
+              pass(prefix+":audit-guided-calculator","guided normative calculator executes deterministic check",{calculator:"STPS-025"});
+            else fail(prefix+":audit-guided-calculator","guided normative calculator missing or incorrect",{calcFailures});
+
             const calcStepChecks=[
               {id:"PHYS-LIGHT",required:["MEDIR","CALCULAR","DOCUMENTAR"]},
               {id:"PHYS-VENT",required:["CONDICIONAL","MEDIR","CALCULAR","DOCUMENTAR"]}
