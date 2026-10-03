@@ -161,6 +161,8 @@ for(const vp of contract.viewports){
             const calcFailures=[];
             if(await curCalcNav.count()===1){
               await curCalcNav.click();
+              await page.waitForSelector('.audit-area-shell[data-audit-area="area-curtiduria"]',{timeout:10000});
+              await page.waitForSelector('.audit-area-norm-open[data-norm-id="STPS-025"]',{timeout:10000});
               const luxNormButton=page.locator('.audit-area-norm-open[data-norm-id="STPS-025"]');
               if(await luxNormButton.count()===1){
                 await luxNormButton.click();
@@ -179,14 +181,15 @@ for(const vp of contract.viewports){
             else fail(prefix+":audit-guided-calculator","guided normative calculator missing or incorrect",{calcFailures});
 
             const calcStepChecks=[
-              {id:"PHYS-LIGHT",required:["MEDIR","CALCULAR","DOCUMENTAR"]},
-              {id:"PHYS-VENT",required:["CONDICIONAL","MEDIR","CALCULAR","DOCUMENTAR"]}
+              {id:"CUR-AREA-03",required:["MEDIR","CALCULAR","DOCUMENTAR"]},
+              {id:"CUR-AREA-04",required:["CONDICIONAL","MEDIR","CALCULAR","DOCUMENTAR"]}
             ];
             const calcStepFailures=[];
             const curNav=page.locator('#nav button[data-id="audit-cur"]');
             if(await curNav.count()===1){
               await curNav.click();
-              await page.waitForSelector('tr[data-audit-id]',{timeout:10000});
+              await page.waitForSelector('.audit-area-shell[data-audit-area="area-curtiduria"]',{timeout:10000});
+              await page.waitForSelector('tr[data-audit-id="CUR-AREA-03"]',{timeout:10000});
               for(const spec of calcStepChecks){
                 const rr=page.locator('tr[data-audit-id="'+spec.id+'"]');
                 if(await rr.count()!==1){calcStepFailures.push({id:spec.id,reason:"missing row"});continue;}
