@@ -1,44 +1,4 @@
 (function(){
-  const PHYS_NORM_BASIS={
-    "PHYS-FLOW":"NOM-001-STPS-2008",
-    "PHYS-EGRESS":"NOM-002-STPS-2010",
-    "PHYS-FIRE":"NOM-002-STPS-2010",
-    "PHYS-SIGN":"NOM-026-STPS-2008",
-    "PHYS-LIGHT":"NOM-025-STPS-2008",
-    "PHYS-STATION":"NOM-001-STPS-2008",
-    "PHYS-STORAGE":"ROCA + NOM-006-STPS-2023 cuando aplique",
-    "PHYS-ELECTRIC":"NOM-029-STPS-2011 cuando aplique",
-    "PHYS-CHEM":"NOM-018-STPS-2015 + NOM-005-STPS-1998",
-    "PHYS-VENT":"NOM-010-STPS-2014 + HDS aplicable",
-    "PHYS-MACHINE":"NOM-004-STPS-1999",
-    "PHYS-NOISE":"NOM-011-STPS-2001 cuando aplique",
-    "PHYS-MANUALLOAD":"NOM-036-1-STPS-2018 cuando aplique",
-    "PHYS-PRESSURE":"NOM-020-STPS-2011 cuando aplique",
-    "PHYS-WASTE":"NOM-052-SEMARNAT-2005 + ruta aplicable",
-    "PHYS-WASTEWATER":"NOM-002-SEMARNAT-1996 + NTE-SLP-AR-001/2026 cuando aplique",
-    "PHYS-SUPPORT":"NOM-001-STPS-2008 + RFSST"
-  };
-
-  const PHYSICAL_EVALUATION_PROFILE={
-    "PHYS-FLOW":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
-    "PHYS-EGRESS":{evaluationKind:"MEDIR",evaluationSteps:["INSPECCIONAR","MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO",evidenceContract:"Recorrido completo desde el punto más alejado hasta la salida + distancia real medida en m + puerta operable desde dentro + señal visible + fecha y método/instrumento de medición; si la distancia activa el criterio temporal, registrar también tiempo real de evacuación."},
-    "PHYS-FIRE":{evaluationKind:"CALCULAR",evaluationSteps:["MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
-    "PHYS-SIGN":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
-    "PHYS-LIGHT":{evaluationKind:"MEDIR",evaluationSteps:["MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
-    "PHYS-STATION":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
-    "PHYS-STORAGE":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","CONDICIONAL","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
-    "PHYS-ELECTRIC":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","CONDICIONAL","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
-    "PHYS-CHEM":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
-    "PHYS-VENT":{evaluationKind:"CONDICIONAL",evaluationSteps:["INSPECCIONAR","CONDICIONAL","MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
-    "PHYS-MACHINE":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
-    "PHYS-NOISE":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","MEDIR","CALCULAR"],verificationRoute:"GATE DE APLICABILIDAD"},
-    "PHYS-MANUALLOAD":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","MEDIR","CALCULAR"],verificationRoute:"GATE DE APLICABILIDAD"},
-    "PHYS-PRESSURE":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
-    "PHYS-WASTE":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR","CONDICIONAL"],verificationRoute:"REVISIÓN DOCUMENTAL"},
-    "PHYS-WASTEWATER":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
-    "PHYS-SUPPORT":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"}
-  };
-
   const METHOD_CONTROL_EVALUATION_PROFILE={
     "CUR-CTL-01":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
     "CUR-CTL-02":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
@@ -236,30 +196,12 @@
 
   function enrichCriterion(row){
     const inferred=evaluationProfile(row);
-    const physical=row&&row.sourceType==='physical_standard' ? PHYSICAL_EVALUATION_PROFILE[row.id] : null;
     const method=row&&row.sourceType==='department_method_control' ? METHOD_CONTROL_EVALUATION_PROFILE[row.id] : null;
     const auditCriterion=row ? AUDIT_CRITERION_EVALUATION_PROFILE[row.id] : null;
-    let finalProfile=Object.assign({},inferred,physical||{},method||{},auditCriterion||{});
+    let finalProfile=Object.assign({},inferred,method||{},auditCriterion||{});
     if(method) finalProfile.evidenceContract=methodControlEvidenceContract(row,finalProfile.evaluationKind);
     finalProfile=strengthenEvidenceContract(finalProfile);
     return Object.assign({},row,finalProfile);
-  }
-
-  function applicablePhysicalRows(areaId){
-    const phys=Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)?window.ROCA_AREA_PHYSICAL_STANDARD:[];
-    return phys
-      .filter(r=>r.areas==='ALL'||(Array.isArray(r.areas)&&r.areas.includes(areaId)))
-      .map(r=>({
-        id:r.id,
-        group:'Normativa / condición física',
-        label:r.label||r.id,
-        target:r.standard||'',
-        input:r.evidence||'Evidencia observable de la condición.',
-        basis:PHYS_NORM_BASIS[r.id]||'Base física ROCA',
-        normReqIds:(window.ROCA_NORM_CONTEXT&&window.ROCA_NORM_CONTEXT.physicalToReqIds&&window.ROCA_NORM_CONTEXT.physicalToReqIds[r.id])||[],
-        sourceType:'physical_standard',
-        sourceId:r.id
-      }));
   }
 
   function criteriaForArea(areaId){
@@ -316,8 +258,7 @@
       sourceType:'department_audit_criteria',
       sourceId:r.id
     }));
-    const inheritedPhysical=dept.physicalStandardsIntegrated?[]:applicablePhysicalRows(areaId);
-    const merged=[...areaRows,...stageRows,...controlRows,...processRows,...inheritedPhysical];
+    const merged=[...areaRows,...stageRows,...controlRows,...processRows];
     const seen=new Set();
     return merged.filter(r=>{
       if(!r.id||seen.has(r.id)) return false;
@@ -468,7 +409,6 @@
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,
-    applicablePhysicalRows,
     loadState,
     saveCriterion,
     dynamicImplementationItems,
