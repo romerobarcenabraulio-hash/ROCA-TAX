@@ -65,11 +65,7 @@
       ].join('');
       return '<tr><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td><p>'+esc(r.text)+'</p>'+details+'</td></tr>';
     }).join('');
-    const physicalRows=dept.physicalStandardsIntegrated ? '' : (Array.isArray(window.ROCA_AREA_PHYSICAL_STANDARD)?window.ROCA_AREA_PHYSICAL_STANDARD:[])
-      .filter(r=>r.areas==='ALL' || (Array.isArray(r.areas)&&r.areas.includes(section.id)))
-      .map(r=>'<tr class="physical-row"><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td>'+esc(r.standard)+'</td></tr>')
-      .join('');
-    const areaRows=specificAreaRows+physicalRows;
+    const areaRows=specificAreaRows;
     const stages=(dept.method?.stages||[]).map(r=>
       '<section class="method-stage"><h3>'+esc(r.id)+' · '+esc(r.title)+'</h3><p>'+esc(r.text)+'</p></section>'
     ).join('');
