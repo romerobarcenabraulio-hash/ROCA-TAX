@@ -169,15 +169,15 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
     branches:[],
     stages:[
       {id:"MON-MET-01",title:"Recuperar flexibilidad y levantar medidas",text:"Relajar la piel hasta recuperar flexibilidad; cerrar desde el interior cortes o balazos que deban repararse; retirar carnaza, grasa, tejido sobrante y huesos residuales; limpiar interior de pezuñas o garras cuando corresponda; terminar cartílagos de oreja, nariz y belfos. Antes de medir, jalar la piel con la mano: debe desplazarse y recuperar forma sin quedar al límite de tensión. Registrar ojo-nariz, contorno inmediatamente detrás de las órbitas y las medidas corporales que correspondan. Si una modificación de forma se prolongará varios días, congelar la piel para resguardarla."},
-      {id:"MON-MET-02",title:"Seleccionar, presentar y corregir la forma",text:"Comparar medidas de piel, inventario de formas y pose. Elegir la forma que reduzca correcciones y presentar la piel antes de cortar. Si sobra volumen, retirar o perfilar poliuretano con serrote, escofina o cuchillo y volver a presentar. Si falta volumen, corregir de manera localizada con barro, poliuretano o yeso cuando la pieza lo exija; no compensar una forma general incorrecta en largo, ancho o proporción. Después de cada modificación volver a comprobar cara, cuello, largo, ancho y volumen como conjunto."},
+      {id:"MON-MET-02",title:"Seleccionar, presentar y corregir la forma",text:"Comparar medidas de piel, inventario de formas y pose. Elegir la forma que reduzca correcciones y presentar la piel antes de cortar. Si sobra volumen, retirar o perfilar poliuretano con serrote, escofina o cuchillo y volver a presentar. Si falta volumen, corregir de manera localizada con barro, poliuretano o yeso cuando la pieza lo exija; no compensar una forma general incorrecta en largo, ancho o proporción. Después de cada modificación volver a comprobar cara, cuello, largo, ancho y volumen como conjunto.",verify:"Piel y forma son dimensionalmente compatibles antes del vestido.",evidence:"Medidas registradas + presentación física de piel sobre forma.",basis:"Metodología permanente ROCA"},
       {id:"MON-MET-03",title:"Preparar boca, nariz y canales",text:"Abrir y perfilar alojamientos para boca, nariz, belfos y piel de nariz. El criterio de salida es que entren sin forzar la piel ni desplazar la cara."},
-      {id:"MON-MET-04",title:"Preparar y posicionar cuernos o astas",text:"Presentar la base sobre la forma y resolver posición con frente, ojos y orejas. Comparar altura, inclinación, separación y simetría desde frente, perfil y vista superior. No cubrir la unión mientras exista movimiento o una diferencia corregible. Registrar los componentes reales del sistema de fijación antes de cubrir la unión; liberar esta etapa sólo con el conjunto estable y posicionado."},
-      {id:"MON-MET-05",title:"Preparar y conformar orejas",text:"Voltear y limpiar la oreja. Preparar fibra cortada y mezclar con Bondo y catalizador hasta obtener una masa homogénea; distribuir mientras permanece trabajable. Modelar borde, concavidad y volumen y detener cuando la oreja conserve forma por sí misma, sin exceso de espesor ni acumulación que borre anatomía. La proporción Bondo/catalizador permanece fuera del estándar hasta validarse."},
-      {id:"MON-MET-06",title:"Posicionar ojos",text:"Colocar los ojos y usar barro LR300 para sostener y modelar posición. Trabajar ambos lados simultáneamente y comparar altura, profundidad, orientación y relación con frente, cuernos y párpados desde frente y perfil. No vestir hasta que la alineación y simetría permanezcan estables."},
+      {id:"MON-MET-04",title:"Preparar y posicionar cuernos o astas",text:"Presentar la base sobre la forma y resolver posición con frente, ojos y orejas. Comparar altura, inclinación, separación y simetría desde frente, perfil y vista superior. No cubrir la unión mientras exista movimiento o una diferencia corregible. Registrar los componentes reales del sistema de fijación antes de cubrir la unión; liberar esta etapa sólo con el conjunto estable y posicionado.",verify:"Cuernos o astas quedan estables y posicionados antes de cubrir la unión.",evidence:"Comprobación física previa al vestido + componentes de fijación registrados.",basis:"Metodología permanente ROCA"},
+      {id:"MON-MET-05",title:"Preparar y conformar orejas",text:"Voltear y limpiar la oreja. Preparar fibra cortada y mezclar con Bondo y catalizador hasta obtener una masa homogénea; distribuir mientras permanece trabajable. Modelar borde, concavidad y volumen y detener cuando la oreja conserve forma por sí misma, sin exceso de espesor ni acumulación que borre anatomía. La proporción Bondo/catalizador permanece fuera del estándar hasta validarse.",verify:"La oreja conserva forma sin exceso de espesor ni pérdida anatómica.",evidence:"Inspección visual y táctil antes del vestido.",basis:"Metodología permanente ROCA"},
+      {id:"MON-MET-06",title:"Posicionar ojos",text:"Colocar los ojos y usar barro LR300 para sostener y modelar posición. Trabajar ambos lados simultáneamente y comparar altura, profundidad, orientación y relación con frente, cuernos y párpados desde frente y perfil. No vestir hasta que la alineación y simetría permanezcan estables.",verify:"Alineación y simetría de ojos permanecen estables antes del vestido.",evidence:"Comparación desde frente y perfil.",basis:"Metodología permanente ROCA"},
       {id:"MON-MET-07",title:"Correcciones localizadas con barro",text:"Usar barro para corregir volumen y transición sólo después de que la forma principal coincide con la piel. Presentar la piel inmediatamente después de modelar."},
       {id:"MON-MET-08",title:"Aplicar adhesivo y vestir la piel",text:"Aplicar adhesivo en superficies de contacto y vestir mientras permanece trabajable. Asentar primero ojos, nariz, belfos, orejas, cuernos/astas y líneas de costura. Corregir posición antes del cierre. El adhesivo fija contacto; no corrige una cavidad, falta de volumen o forma incompatible. Liberar con la piel centrada y asentada sin pliegues generados por posición incorrecta."},
-      {id:"MON-MET-09",title:"Coser y controlar abultamientos",text:"Cerrar con el hilo que corresponda al espesor y la zona. Usar una de cuatro familias de hilo según espesor y zona: zapatero grueso, zapatero delgado, pesca trenzado grueso o pesca trenzado delgado. Cuando el hilo de zapatero entero resulte demasiado grueso, separarlo en tiras. Acomodar la piel conforme avanza la costura, corregir abultamientos antes de perder movilidad del adhesivo y usar alfileres sólo como fijación temporal."},
-      {id:"MON-MET-10",title:"Secar y transferir a Retoque",text:"Mantener inmóvil durante secado. Usar 24 h como referencia mínima para primera revisión, no como liberación automática. Liberar cuando no exista humedad apreciable ni recuperación de desplazamiento en zonas fijadas."}
+      {id:"MON-MET-09",title:"Coser y controlar abultamientos",text:"Cerrar con el hilo que corresponda al espesor y la zona. Usar una de cuatro familias de hilo según espesor y zona: zapatero grueso, zapatero delgado, pesca trenzado grueso o pesca trenzado delgado. Cuando el hilo de zapatero entero resulte demasiado grueso, separarlo en tiras. Acomodar la piel conforme avanza la costura, corregir abultamientos antes de perder movilidad del adhesivo y usar alfileres sólo como fijación temporal.",verify:"Costura cerrada, piel asentada y fijaciones temporales controladas antes de secado.",evidence:"Inspección física previa a secado.",basis:"Metodología permanente ROCA"},
+      {id:"MON-MET-10",title:"Secar y transferir a Retoque",text:"Mantener inmóvil durante secado. Usar 24 h como referencia mínima para primera revisión, no como liberación automática. Liberar cuando no exista humedad apreciable ni recuperación de desplazamiento en zonas fijadas.",verify:"La pieza se libera por condición física y no únicamente por tiempo.",evidence:"Pieza identificada + humedad/movimiento/estabilidad observada + transferencia registrada.",basis:"Metodología permanente ROCA"}
     ],
     controls:[
       {id:"MON-CTL-01",text:"No seleccionar ni cortar una forma con la piel rígida o sin las medidas que gobiernan la selección."},
@@ -262,14 +262,6 @@ window.ROCA_DEPARTMENTS["area-montaje"] = {
     {id:"EVID-MON-07",text:"Incidencia, retrabajo o excepción.",placement:"Metodología / control"},
     {id:"EVID-MON-08",text:"Condición final y transferencia a Retoque cuando aporte trazabilidad.",placement:"Handoff"}
   ],
-  auditCriteria:[
-    {id:"MON-AUD-14",group:"Proceso",label:"Forma",target:"Piel y forma son dimensionalmente compatibles antes del vestido.",input:"Medidas + presentación."},
-    {id:"MON-AUD-15",group:"Proceso",label:"Cuernos/astas",target:"Conjunto estable y posicionado antes de cubrir la unión.",input:"Comprobación previa al vestido."},
-    {id:"MON-AUD-16",group:"Proceso",label:"Orejas",target:"Oreja conserva forma sin exceso de espesor ni pérdida anatómica.",input:"Comparación visual y táctil."},
-    {id:"MON-AUD-17",group:"Proceso",label:"Ojos",target:"Alineación y simetría estables antes del vestido.",input:"Frente y perfil."},
-    {id:"MON-AUD-18",group:"Proceso",label:"Costura",target:"Costura cerrada, piel asentada y fijaciones temporales controladas.",input:"Revisión previa a secado."},
-    {id:"MON-AUD-19",group:"Proceso",label:"Liberación",target:"La pieza se libera por condición física y no únicamente por tiempo.",input:"Humedad/movimiento + transferencia."}
-  ],
   implementationHolds:[
     {id:"MON-HOLD-01",text:"Cerrar inventario real de estaciones y asignación persona ↔ estación, incluyendo Ricardo/Eugenio."},
     {id:"MON-HOLD-02",text:"Definir el criterio de iluminación por tarea real mediante medición y Bibliografía aplicable; no fijar referencias sólo por percepción."},
@@ -347,13 +339,13 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
       {title:"Gate de defecto",text:"Costura abierta, anatomía incorrecta, fijación inestable o defecto estructural regresan a Montaje/Formas según origen. Retoque sólo continúa con imperfecciones compatibles con acabado."}
     ],
     stages:[
-      {id:"RET-MET-01",title:"Retiro de alfileres y limpieza",text:"Retirar todos los alfileres y fijaciones temporales sin desgarrar piel ni pelo. Iniciar con limpieza general y cepillado. Para retirar grasa, usar jabón Salvo + jabón Roma. Suavitel es condicional y sólo se usa cuando el pelo requiere ablandamiento."},
-      {id:"RET-MET-02",title:"Resane de imperfecciones",text:"Cerrar o nivelar pequeñas imperfecciones antes de pintar. Usar resanador automotriz, barro según zona o aserrín + Resistol según el soporte. Lijar o perfilar hasta continuar el volumen sin borde perceptible."},
-      {id:"RET-MET-03",title:"Pintura del animal",text:"Recuperar ojos, nariz, boca, costuras y zonas que perdieron tono, construyendo el color de tonos oscuros a claros y comparando continuamente con la coloración natural o referencia aprobada."},
-      {id:"RET-MET-04",title:"Cepillado y acabado del pelo",text:"Cepillar en dirección natural y retirar residuos. Usar gasolina blanca por zonas para soltar o ablandar pelo y recuperar apariencia natural; no fijar una dosis volumétrica universal."},
-      {id:"RET-MET-05",title:"Brillo de ojos, nariz y boca",text:"Aplicar barniz brillante en spray de forma localizada cuando corresponda, sin escurrimientos ni película excesiva sobre pelo o piel vecina."},
-      {id:"RET-MET-06",title:"Textura de nariz en cérvidos",text:"Usar Resistol blanco 800 en jeringa, una gota por marca, siguiendo el patrón de referencia. Usar 1–2 h sólo como referencia de secado; liberar cuando las gotas conserven relieve individual y no se deformen durante el acabado."},
-      {id:"RET-MET-07",title:"Acabado de cuernos",text:"Aplicar aceite al final para recuperar brillo. Usar manchas para madera según especie o tono cuando corresponda; referencias de taller incluyen roble, encino / Encino Americano y roble oscuro. Distribuir sin escurrimientos, acumulación en la base ni contaminación del pelo."}
+      {id:"RET-MET-01",title:"Retiro de alfileres y limpieza",text:"Retirar todos los alfileres y fijaciones temporales sin desgarrar piel ni pelo. Iniciar con limpieza general y cepillado. Para retirar grasa, usar jabón Salvo + jabón Roma. Suavitel es condicional y sólo se usa cuando el pelo requiere ablandamiento.",verify:"La pieza entra al acabado limpia, sin fijaciones temporales ni residuos que impidan evaluar.",evidence:"Inspección física antes de resane.",basis:"Metodología permanente ROCA"},
+      {id:"RET-MET-02",title:"Resane de imperfecciones",text:"Cerrar o nivelar pequeñas imperfecciones antes de pintar. Usar resanador automotriz, barro según zona o aserrín + Resistol según el soporte. Lijar o perfilar hasta continuar el volumen sin borde perceptible.",verify:"El defecto superficial queda nivelado antes de aplicar color.",evidence:"Inspección visual y táctil de la reparación.",basis:"Metodología permanente ROCA"},
+      {id:"RET-MET-03",title:"Pintura del animal",text:"Recuperar ojos, nariz, boca, costuras y zonas que perdieron tono, construyendo el color de tonos oscuros a claros y comparando continuamente con la coloración natural o referencia aprobada.",verify:"Las transiciones de color quedan integradas sin manchas aisladas.",evidence:"Comparación visual contra referencia aprobada.",basis:"Metodología permanente ROCA"},
+      {id:"RET-MET-04",title:"Cepillado y acabado del pelo",text:"Cepillar en dirección natural y retirar residuos. Usar gasolina blanca por zonas para soltar o ablandar pelo y recuperar apariencia natural; no fijar una dosis volumétrica universal.",verify:"El pelo queda separado, limpio y con caída natural.",evidence:"Inspección física final del pelo.",basis:"Metodología permanente ROCA"},
+      {id:"RET-MET-05",title:"Brillo de ojos, nariz y boca",text:"Aplicar barniz brillante en spray de forma localizada cuando corresponda, sin escurrimientos ni película excesiva sobre pelo o piel vecina.",verify:"El brillo queda localizado y sin escurrimientos.",evidence:"Inspección visual final de ojos, nariz y boca.",basis:"Metodología permanente ROCA"},
+      {id:"RET-MET-06",title:"Textura de nariz en cérvidos",text:"Usar Resistol blanco 800 en jeringa, una gota por marca, siguiendo el patrón de referencia. Usar 1–2 h sólo como referencia de secado; liberar cuando las gotas conserven relieve individual y no se deformen durante el acabado.",verify:"El relieve individual de nariz se conserva cuando esta técnica aplica.",evidence:"Inspección de detalle después del secado.",basis:"Metodología permanente ROCA"},
+      {id:"RET-MET-07",title:"Acabado de cuernos",text:"Aplicar aceite al final para recuperar brillo. Usar manchas para madera según especie o tono cuando corresponda; referencias de taller incluyen roble, encino / Encino Americano y roble oscuro. Distribuir sin escurrimientos, acumulación en la base ni contaminación del pelo.",verify:"El tono/acabado de cuernos queda integrado y el brillo uniforme.",evidence:"Inspección visual final contra referencia.",basis:"Metodología permanente ROCA"}
     ],
     controls:[
       {id:"RET-CTL-01",text:"Retoque no usa pintura o resane para ocultar un defecto estructural."},
@@ -433,15 +425,6 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
     {id:"EVID-RET-05",text:"Reparación superficial relevante, textura especial o excepción de producto/tono.",placement:"Metodología"},
     {id:"EVID-RET-06",text:"Condición final cuando aporta aceptación o trazabilidad.",placement:"Handoff"}
   ],
-  auditCriteria:[
-    {id:"RET-AUD-13",group:"Proceso",label:"Limpieza",target:"Pieza entra al acabado limpia, sin fijaciones temporales ni residuos que impidan evaluar.",input:"Condición antes de resane."},
-    {id:"RET-AUD-14",group:"Proceso",label:"Resane",target:"Defecto superficial queda nivelado antes de color.",input:"Inspección visual/táctil."},
-    {id:"RET-AUD-15",group:"Proceso",label:"Color",target:"Transiciones integradas sin manchas aisladas.",input:"Comparación con referencia."},
-    {id:"RET-AUD-16",group:"Proceso",label:"Pelo",target:"Pelo queda separado y con caída natural.",input:"Inspección final."},
-    {id:"RET-AUD-17",group:"Proceso",label:"Brillo",target:"Brillo localizado sin escurrimientos.",input:"Inspección final."},
-    {id:"RET-AUD-18",group:"Proceso",label:"Textura nariz",target:"Relieve individual conservado cuando aplique.",input:"Inspección de detalle."},
-    {id:"RET-AUD-19",group:"Proceso",label:"Cuernos",target:"Tono/acabado integrado y brillo uniforme.",input:"Inspección final."}
-  ],
   implementationHolds:[
     {id:"RET-HOLD-01",text:"Reconciliar nombre correcto Valerio/Valentino."},
     {id:"RET-HOLD-02",text:"Confirmar estaciones reales de Rodolfo Jr., Emiliano, Valerio/Valentino y Señor Pez."},
@@ -520,14 +503,14 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
       {title:"Ruta malla/costal",text:"Usa costillas, malla 8x8, costal, dextrina y terreno. Conservar 3 mm de separación entre pata y malla."}
     ],
     stages:[
-      {id:"BAS-MET-08",title:"Medición y plancha de base",text:"Con la pieza completa y la referencia del proyecto, definir ancho y largo antes de cortar. Referencia de taller: triplay industrial de 18 mm. Para bases mayores a ~1 m o piezas pesadas pueden requerirse dos capas y ruedas. Verificar siempre contra peso, geometría, transporte, material real y fijación."},
-      {id:"BAS-MET-09",title:"Bancos y fijación del animal",text:"Cortar bancos a la altura que exige la postura, presentar la pieza antes de cerrar la fijación y hacer coincidir varillas o puntos estructurales con los apoyos. Retirar varilla sobrante cuando corresponda y reservar clavos para condiciones donde la fijación lo permita. Los montajes apoyados en una o dos patas requieren una fijación mecánica capaz de conservar postura y resistir el esfuerzo. Referencia observada: tornillos #8 × 2 in; no usar esta medida como especificación universal."},
-      {id:"BAS-MET-10",title:"Poliuretano: protección y vertido",text:"Proteger patas y zonas sensibles, construir límites de expansión, identificar componentes y dosificar sólo en el punto preparado. NO LIBERADO — dosificación de poliuretano en Bases. No usar una relación fija hasta confirmar producto, HDS, aplicación y prueba controlada específica de Bases."},
+      {id:"BAS-MET-08",title:"Medición y plancha de base",text:"Con la pieza completa y la referencia del proyecto, definir ancho y largo antes de cortar. Referencia de taller: triplay industrial de 18 mm. Para bases mayores a ~1 m o piezas pesadas pueden requerirse dos capas y ruedas. Verificar siempre contra peso, geometría, transporte, material real y fijación.",verify:"Dimensiones y apoyo inferior corresponden a la pieza y a la referencia del proyecto.",evidence:"Medidas reales + material + apoyo inferior.",basis:"Metodología permanente ROCA"},
+      {id:"BAS-MET-09",title:"Bancos y fijación del animal",text:"Cortar bancos a la altura que exige la postura, presentar la pieza antes de cerrar la fijación y hacer coincidir varillas o puntos estructurales con los apoyos. Retirar varilla sobrante cuando corresponda y reservar clavos para condiciones donde la fijación lo permita. Los montajes apoyados en una o dos patas requieren una fijación mecánica capaz de conservar postura y resistir el esfuerzo. Referencia observada: tornillos #8 × 2 in; no usar esta medida como especificación universal.",verify:"La pieza queda equilibrada y sostenida antes del relleno o acabado.",evidence:"Comprobación estructural física antes de continuar.",basis:"Metodología permanente ROCA"},
+      {id:"BAS-MET-10",title:"Poliuretano: protección y vertido",text:"Proteger patas y zonas sensibles, construir límites de expansión, identificar componentes y dosificar sólo en el punto preparado. NO LIBERADO — dosificación de poliuretano en Bases. No usar una relación fija hasta confirmar producto, HDS, aplicación y prueba controlada específica de Bases.",verify:"Cuando se usa poliuretano, producto y dosificación corresponden a una receta de Bases liberada.",evidence:"Producto + lote + receta liberada + prueba controlada cuando aplique.",basis:"Metodología permanente ROCA"},
       {id:"BAS-MET-11",title:"Poliuretano: recorte y pintura",text:"Una vez firme el volumen, recortar con herramienta compatible hasta aproximar terreno o referencia. Corregir huecos físicos antes de pintar; la pintura no oculta vacíos, apoyos inseguros ni transiciones deficientes. Mantener libres patas y puntos de contacto. Liberar esta etapa con un volumen continuo, estable y legible contra la referencia."},
-      {id:"BAS-MET-12",title:"Dextrina y terreno",text:"Usar 2 partes de dextrina por 1 de Blanco España. Preparar sólo lo necesario; ~1 h es una referencia de tiempo útil, no un criterio automático de liberación."},
-      {id:"BAS-MET-13",title:"Costillas y malla 8x8",text:"Usar malla 8x8 y conservar 3 mm de separación entre pata y malla. Fijar y modelar hasta cerrar volumen sin invadir la pata."},
-      {id:"BAS-MET-14",title:"Costal, dextrina y terreno",text:"Cubrir la malla con costal de manta humedecido en dextrina y después aplicar dextrina más espesa con Blanco España y terreno. El costal limita el paso excesivo de adhesivo por la malla y aporta continuidad. Completar el volumen conservando los 3 mm junto a la pata sin cubrirla. Usar la consistencia necesaria para cubrir y modelar; no fijar una receta volumétrica universal."},
-      {id:"BAS-MET-15",title:"Vegetación y detalles finales",text:"Agregar ambientación sólo después de resolver estructura y terreno. Según el proyecto pueden entrar troncos, piedras, grava, pastos, musgo, plantas naturales o sintéticas, ramas, hojas, huesos u otros elementos aprobados. Fijar cualquier elemento cuyo peso, altura o posibilidad de movimiento lo exija. Liberar cuando la composición corresponda a la referencia y permanezca estable sin interferir con patas, limpieza, traslado o lectura del ejemplar."}
+      {id:"BAS-MET-12",title:"Dextrina y terreno",text:"Usar 2 partes de dextrina por 1 de Blanco España. Preparar sólo lo necesario; ~1 h es una referencia de tiempo útil, no un criterio automático de liberación.",verify:"La mezcla de dextrina usa la relación 2:1 documentada cuando esta ruta aplica.",evidence:"Preparación real identificada y proporción registrada.",basis:"Metodología permanente ROCA"},
+      {id:"BAS-MET-13",title:"Costillas y malla 8x8",text:"Usar malla 8x8 y conservar 3 mm de separación entre pata y malla. Fijar y modelar hasta cerrar volumen sin invadir la pata.",verify:"Malla 8x8 y separación de 3 mm se conservan cuando esa ruta aplica.",evidence:"Detalle físico antes del recubrimiento.",basis:"Metodología permanente ROCA"},
+      {id:"BAS-MET-14",title:"Costal, dextrina y terreno",text:"Cubrir la malla con costal de manta humedecido en dextrina y después aplicar dextrina más espesa con Blanco España y terreno. El costal limita el paso excesivo de adhesivo por la malla y aporta continuidad. Completar el volumen conservando los 3 mm junto a la pata sin cubrirla. Usar la consistencia necesaria para cubrir y modelar; no fijar una receta volumétrica universal.",verify:"El recubrimiento mantiene continuidad sin invadir la pata.",evidence:"Detalle físico antes de ambientación.",basis:"Metodología permanente ROCA"},
+      {id:"BAS-MET-15",title:"Vegetación y detalles finales",text:"Agregar ambientación sólo después de resolver estructura y terreno. Según el proyecto pueden entrar troncos, piedras, grava, pastos, musgo, plantas naturales o sintéticas, ramas, hojas, huesos u otros elementos aprobados. Fijar cualquier elemento cuyo peso, altura o posibilidad de movimiento lo exija. Liberar cuando la composición corresponda a la referencia y permanezca estable sin interferir con patas, limpieza, traslado o lectura del ejemplar.",verify:"La ambientación permanece estable y no interfiere con traslado, limpieza o lectura.",evidence:"Inspección física final de la base terminada.",basis:"Metodología permanente ROCA"}
     ],
     controls:[
       {id:"BAS-CTL-01",text:"La base no compensa una fijación estructural deficiente."},
@@ -618,16 +601,6 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
     {id:"EVID-BAS-04",text:"Ruta técnica usada: poliuretano, malla o combinación, con materiales y condición antes del acabado.",placement:"Metodología"},
     {id:"EVID-BAS-05",text:"Incidencia/retrabajo y condición final cuando aportan trazabilidad.",placement:"Control / handoff"}
   ],
-  auditCriteria:[
-    {id:"BAS-AUD-13",group:"Proceso",label:"Plancha",target:"Dimensiones y apoyo inferior corresponden a pieza y referencia.",input:"Medidas + material + apoyo."},
-    {id:"BAS-AUD-14",group:"Proceso",label:"Fijación",target:"Pieza equilibrada y sostenida antes del relleno/acabado.",input:"Comprobación estructural."},
-    {id:"BAS-AUD-15",group:"Proceso",label:"Poliuretano",target:"Cuando se usa, producto y dosificación corresponden a una receta de Bases liberada.",input:"Producto + lote + receta + prueba."},
-    {id:"BAS-AUD-16",group:"Proceso",label:"Dextrina",target:"La mezcla usa la relación 2:1 soportada cuando aplica.",input:"Preparación real."},
-    {id:"BAS-AUD-17",group:"Proceso",label:"Malla",target:"Malla 8x8 y separación de 3 mm se conservan cuando esa ruta aplica.",input:"Detalle antes del recubrimiento."},
-    {id:"BAS-AUD-18",group:"Proceso",label:"Costal/terreno",target:"Recubrimiento mantiene continuidad sin invadir la pata.",input:"Detalle antes de ambientación."},
-    {id:"BAS-AUD-19",group:"Proceso",label:"Ambientación",target:"Elementos finales permanecen estables y no interfieren con traslado o lectura.",input:"Inspección final."},
-    {id:"BAS-AUD-20",group:"Proceso",label:"Liberación",target:"La base se libera por estabilidad, identidad y posibilidad de traslado, no sólo por apariencia.",input:"Comprobación final + transferencia."}
-  ],
   implementationHolds:[
     {id:"BAS-HOLD-01",text:"Confirmar responsable y estaciones reales de Bases."},
     {id:"BAS-HOLD-02",text:"Cerrar frontera física/operativa con Carpintería."},
@@ -704,12 +677,12 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
       {id:"FMR-MET-FOR-01",title:"Preparar estructura/molde",text:"Referencia de taller: triplay de 18 mm; en formas de gran escala puede usarse doble triplay. No tratar estas referencias como capacidad estructural universal."},
       {id:"FMR-MET-FOR-02",title:"Encerar y orear",text:"En Formas la cera cubre toda superficie de contacto. El oreado documentado es 20–30 min y no se cierra antes de 20 min. La referencia de 10 pasadas pertenece a Moldes de fibra."},
       {id:"FMR-MET-FOR-02B",title:"Cerrar y sellar",text:"Cerrar y sellar el conjunto antes de prueba o vaciado. Detener si el cierre no contiene la mezcla o no permite una apertura controlada después del curado."},
-      {id:"FMR-MET-FOR-03",title:"Prueba de lote",text:"Usar 20 g totales en botella patrón de aproximadamente 600 mL. Cálido: 10 g base + 10 g catalizador. Fresco/húmedo: 6 g base + 14 g catalizador. Un lote nuevo no entra a producción sin prueba de expansión previa."},
-      {id:"FMR-MET-FOR-04",title:"Dosificar A/B",text:"Cálido: 50% base / 50% catalizador. Fresco, húmedo o lluvia: 30% base / 70% catalizador. Pesar cada componente por separado con misma báscula/unidad antes de juntarlos; no corregir proporciones a ojo después de iniciar mezcla."},
-      {id:"FMR-MET-FOR-05",title:"Curar y desmoldar forma",text:"Cabeza: mínimo 1 h 30 min como referencia; cuerpo completo: mínimo 4 h y puede permanecer toda la noche. Usar también como referencia aproximada 1 h/kg con calor y 1 h 20 min/kg con frío. El reloj no libera la pieza: no abrir mientras esté caliente, blanda, deformable o con zona aguadita. No enfriar bruscamente una forma que todavía esté caliente."},
-      {id:"FMR-MET-MOL-01",title:"Definir divisiones y encerar",text:"La línea de partición se decide antes de laminar. Para Moldes de fibra aplicar 10 pasadas uniformes de cera desmoldante y dejar orear 20–30 min."},
-      {id:"FMR-MET-MOL-02",title:"Preparar y aplicar gelcoat",text:"Referencia del taller: 1 kg de resina por aproximadamente 2 kg de talco, incorporado progresivamente hasta pasta muy espesa que no escurra. Es referencia de consistencia del taller, no formulación universal."},
-      {id:"FMR-MET-MOL-03",title:"Laminar fibra/resina",text:"Base documentada: 6 capas continuas. Séptima capa sólo cuando el molde sea grande, requiera mayor espesor o vaya a soportar mayor presión."},
+      {id:"FMR-MET-FOR-03",title:"Prueba de lote",text:"Usar 20 g totales en botella patrón de aproximadamente 600 mL. Cálido: 10 g base + 10 g catalizador. Fresco/húmedo: 6 g base + 14 g catalizador. Un lote nuevo no entra a producción sin prueba de expansión previa.",verify:"Un lote nuevo se prueba antes de entrar a producción.",evidence:"Prueba de 20 g + identificación del lote + resultado.",basis:"Metodología permanente ROCA"},
+      {id:"FMR-MET-FOR-04",title:"Dosificar A/B",text:"Cálido: 50% base / 50% catalizador. Fresco, húmedo o lluvia: 30% base / 70% catalizador. Pesar cada componente por separado con misma báscula/unidad antes de juntarlos; no corregir proporciones a ojo después de iniciar mezcla.",verify:"A/B se pesan por separado y la proporción queda registrada antes de mezclar.",evidence:"Pesos de cada componente + relación + lote + báscula/unidad.",basis:"Metodología permanente ROCA"},
+      {id:"FMR-MET-FOR-05",title:"Curar y desmoldar forma",text:"Cabeza: mínimo 1 h 30 min como referencia; cuerpo completo: mínimo 4 h y puede permanecer toda la noche. Usar también como referencia aproximada 1 h/kg con calor y 1 h 20 min/kg con frío. El reloj no libera la pieza: no abrir mientras esté caliente, blanda, deformable o con zona aguadita. No enfriar bruscamente una forma que todavía esté caliente.",verify:"La pieza se abre sólo después de cumplir referencia de tiempo y condición física.",evidence:"Hora de vaciado + hora de revisión/apertura + tiempo transcurrido + condición física observada.",basis:"Metodología permanente ROCA"},
+      {id:"FMR-MET-MOL-01",title:"Definir divisiones y encerar",text:"La línea de partición se decide antes de laminar. Para Moldes de fibra aplicar 10 pasadas uniformes de cera desmoldante y dejar orear 20–30 min.",verify:"Las 10 pasadas corresponden a Moldes de fibra y no se transfieren automáticamente a Formas.",evidence:"Familia identificada + preparación de desmolde documentada.",basis:"Metodología permanente ROCA"},
+      {id:"FMR-MET-MOL-02",title:"Preparar y aplicar gelcoat",text:"Referencia del taller: 1 kg de resina por aproximadamente 2 kg de talco, incorporado progresivamente hasta pasta muy espesa que no escurra. Es referencia de consistencia del taller, no formulación universal.",verify:"Gelcoat se aplica después del oreado y con consistencia que no escurre.",evidence:"Tiempo de oreado + mezcla/consistencia observada.",basis:"Metodología permanente ROCA"},
+      {id:"FMR-MET-MOL-03",title:"Laminar fibra/resina",text:"Base documentada: 6 capas continuas. Séptima capa sólo cuando el molde sea grande, requiera mayor espesor o vaya a soportar mayor presión.",verify:"Se usan 6 capas base; una séptima sólo por mayor exigencia documentada.",evidence:"Conteo de capas + justificación cuando exista séptima.",basis:"Metodología permanente ROCA"},
       {id:"FMR-MET-MOL-04",title:"Liberar molde",text:"Liberar cuando la carcasa es rígida, abre sin destruir detalle y puede volver a cerrar de forma reproducible."},
       {id:"FMR-MET-REP-01",title:"Réplicas",text:"Preparar molde → preparar mezcla de resina/carga → vaciar/distribuir → curar/desmoldar → corregir línea/rebabas → pintar contra referencia. No trasladar relaciones o tiempos de otras familias sin validación específica de Réplicas."}
     ],
@@ -792,14 +765,6 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
     {id:"EVID-FMR-03",text:"Curado/desmolde: familia/tamaño, hora de vaciado, referencia usada, hora de revisión y condición física antes de abrir.",placement:"Metodología / curado"},
     {id:"EVID-FMR-04",text:"Divisiones, gelcoat y capas cuando se construye un molde de fibra.",placement:"Metodología / Moldes"}
   ],
-  auditCriteria:[
-    {id:"FMR-AUD-03",group:"Proceso",label:"Prueba de lote",target:"Lote nuevo se prueba antes de producción.",input:"Prueba 20 g + resultado."},
-    {id:"FMR-AUD-04",group:"Proceso",label:"Dosificación",target:"A/B se pesan por separado y proporción se registra antes de mezclar.",input:"Pesos + relación + lote."},
-    {id:"FMR-AUD-05",group:"Proceso",label:"Curado",target:"Curado cumple referencia de tiempo y condición física antes de apertura.",input:"Hora vaciado/revisión + condición."},
-    {id:"FMR-AUD-06",group:"Proceso",label:"Cera",target:"10 pasadas aplican a Moldes de fibra, no como requisito automático de Formas.",input:"Familia + preparación."},
-    {id:"FMR-AUD-07",group:"Proceso",label:"Gelcoat",target:"Gelcoat se aplica después del oreado y la consistencia no escurre.",input:"Oreado + mezcla."},
-    {id:"FMR-AUD-08",group:"Proceso",label:"Laminado",target:"6 capas base; séptima sólo por mayor exigencia documentada.",input:"Conteo + justificación."},
-  ],
   implementationHolds:[
     {id:"FMR-HOLD-01",text:"Cerrar inventario/codificación real y rack."},
     {id:"FMR-HOLD-02",text:"Confirmar productos/HDS y formulaciones controladas vigentes."},
@@ -860,11 +825,11 @@ window.ROCA_DEPARTMENTS["area-recepcion"] = {
     stages:[
       {id:"REC-MET-01",title:"Inspección inicial",text:"Recibir la pieza y observar su condición de ingreso sin perder la relación con la documentación disponible."},
       {id:"REC-MET-02",title:"Registrar referencia",text:"Registrar especie, referencia de trabajo y documentación disponible usando la identidad común del trabajo."},
-      {id:"REC-MET-03",title:"Etiquetar",text:"Aplicar una identificación no ambigua antes de separar pieza, documentos o fotografías."},
-      {id:"REC-MET-04",title:"Fotografiar",text:"Capturar evidencia útil de ingreso vinculada al mismo ID del trabajo."},
+      {id:"REC-MET-03",title:"Etiquetar",text:"Aplicar una identificación no ambigua antes de separar pieza, documentos o fotografías.",verify:"Ningún trabajo queda sin identificación antes de separarse pieza, documentos o fotografías.",evidence:"Muestra de trabajos activos con ID visible.",basis:"Metodología permanente ROCA"},
+      {id:"REC-MET-04",title:"Fotografiar",text:"Capturar evidencia útil de ingreso vinculada al mismo ID del trabajo.",verify:"Foto y documento quedan ligados al mismo trabajo.",evidence:"ID común + fotografía + documento correspondiente.",basis:"Metodología permanente ROCA"},
       {id:"REC-MET-05",title:"Registrar condición",text:"Dejar visible la condición física de ingreso y cualquier discrepancia que afecte el siguiente paso."},
       {id:"REC-MET-06",title:"Espera controlada",text:"Ubicar la pieza en espera sin perder ID, condición ni destino."},
-      {id:"REC-MET-07",title:"Transferir",text:"Entregar a Curtiduría u otra ruta aplicable conservando la misma identidad y registrando el handoff."}
+      {id:"REC-MET-07",title:"Transferir",text:"Entregar a Curtiduría u otra ruta aplicable conservando la misma identidad y registrando el handoff.",verify:"La transferencia conserva identidad y queda registrada.",evidence:"Trabajo transferido + registro de handoff.",basis:"Metodología permanente ROCA"}
     ],
     controls:[
       {id:"REC-CTL-01",text:"Recepción no inventa criterios legales de aceptación; la aplicabilidad documental se resuelve en Bibliografía."},
@@ -910,11 +875,6 @@ window.ROCA_DEPARTMENTS["area-recepcion"] = {
     {id:"EVID-REC-02",text:"Fotografía de ingreso ligada al mismo trabajo.",placement:"Metodología / ingreso"},
     {id:"EVID-REC-03",text:"Documentación asociada al trabajo sin exponer datos sensibles innecesarios.",placement:"Control / trazabilidad"},
     {id:"EVID-REC-04",text:"Transferencia registrada al siguiente proceso.",placement:"Handoff"}
-  ],
-  auditCriteria:[
-    {id:"REC-AUD-01",group:"Proceso",label:"ID",target:"Ningún trabajo queda sin ID.",input:"Muestra de trabajos activos."},
-    {id:"REC-AUD-02",group:"Proceso",label:"Foto/documento",target:"Foto y documento están ligados al mismo trabajo.",input:"ID + foto + documento."},
-    {id:"REC-AUD-04",group:"Proceso",label:"Handoff",target:"Transferencia queda registrada.",input:"Trabajo transferido + registro."}
   ],
   implementationHolds:[
     {id:"REC-HOLD-01",text:"Confirmar responsable y estación vigente de Recepción."},
@@ -987,7 +947,10 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
       {id:"CAR-CTL-01",text:"No operar este frente hasta que exista una metodología liberada para una orden real completa."},
       {id:"CAR-CTL-02",text:"No usar una secuencia teórica como instrucción de trabajo."},
       {id:"CAR-CTL-03",text:"No duplicar automáticamente madera/herrajes controlados en Bases; definir propiedad y stock cuando se implemente."},
-      {id:"CAR-CTL-04",text:"No asignar mantenimiento ni manuales a activos imaginarios."}
+      {id:"CAR-CTL-04",text:"No asignar mantenimiento ni manuales a activos imaginarios."},
+      {id:"CAR-CTL-05",text:"Toda caja o embalaje implementado conserva vínculo con la orden correspondiente.",evidence:"Caja/embalaje identificado + orden asociada.",basis:"Trazabilidad interna ROCA"},
+      {id:"CAR-CTL-06",text:"La metodología de Carpintería/Embalaje sólo se libera después de observar una orden real completa.",evidence:"Demostración documentada de una orden completa.",basis:"Gate de liberación de método ROCA"},
+      {id:"CAR-CTL-07",text:"Los criterios de protección y liberación se definen por pieza y destino antes de cerrar el embalaje.",evidence:"Regla documentada derivada de demostración real + pieza/destino.",basis:"Criterio permanente de liberación"}
     ]
   },
   competencies:[
@@ -1031,11 +994,6 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
   evidence:[
     {id:"EVID-CAR-01",text:"Implementación física real: panorámica, límite con áreas vecinas, banco/rack/equipo, ruta de circulación/carga y separación respecto de polvo/químicos/acabado.",placement:"Área"},
     {id:"EVID-CAR-02",text:"Primera demostración real: orden/pieza, requerimiento/dimensiones, secuencia, herramienta/equipo, materiales/protección, condición de salida y carga/manipulación si aplica.",placement:"Metodología"}
-  ],
-  auditCriteria:[
-    {id:"CAR-AUD-06",group:"Proceso",label:"Identidad de embalaje",target:"Caja/embalaje está ligado a la orden.",input:"Muestra real."},
-    {id:"CAR-AUD-07",group:"Proceso",label:"Demostración real",target:"Método real fue demostrado antes de liberarse.",input:"Observación completa de una orden."},
-    {id:"CAR-AUD-08",group:"Proceso",label:"Criterio de liberación",target:"Criterios de protección y liberación están definidos por pieza/destino.",input:"Regla derivada de demostración real."}
   ],
   implementationHolds:[
     {id:"CAR-HOLD-01",text:"Decidir si ROCA implementará este frente dedicado o mantendrá parte del trabajo en Bases/Logística."},
@@ -1105,7 +1063,8 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     controls:[
       {id:"SOL-CTL-01",text:"No sustituir el método específico del proceso real con una secuencia genérica de soldadura."},
       {id:"SOL-CTL-02",text:"La autorización se define por proceso/equipo real y control de trabajo en caliente."},
-      {id:"SOL-CTL-03",text:"La modificación estructural conserva condición antes/después y vínculo con la orden."}
+      {id:"SOL-CTL-03",text:"La modificación estructural conserva condición antes/después y vínculo con la orden."},
+      {id:"SOL-CTL-04",text:"La unión se libera únicamente cuando es estable para la función prevista.",evidence:"Comprobación física de estabilidad + pieza/orden identificada.",basis:"Criterio permanente de liberación de Soldadura"}
     ]
   },
   competencies:[
@@ -1141,9 +1100,6 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     {id:"EVID-SOL-02",text:"Equipo/cables/protección a terceros y ventilación real.",placement:"Área"},
     {id:"EVID-SOL-03",text:"Condición antes/después de adaptación estructural.",placement:"Control / pieza"},
     {id:"EVID-SOL-04",text:"Primera demostración técnica completa.",placement:"Metodología"}
-  ],
-  auditCriteria:[
-    {id:"SOL-AUD-05",group:"Proceso",label:"Liberación",target:"Unión es estable antes de liberar.",input:"Comprobación de estabilidad."}
   ],
   implementationHolds:[
     {id:"SOL-HOLD-01",text:"Realizar entrevista/demostración técnica del responsable."},
@@ -1202,14 +1158,15 @@ window.ROCA_DEPARTMENTS["area-blanqueado"] = {
     flow:"Tratamiento con agua caliente sobre el cráneo manteniendo cuernos fuera de la zona que pueda alterar color o superficie → limpieza → enfriamiento/espera → transferencia.",
     branches:[],
     stages:[
-      {id:"BLA-MET-01",title:"Preparar pieza y apoyo",text:"Identificar la pieza, preparar recipiente/fuente de calor y colocar el sistema de apoyo/protección necesario para mantener cuernos fuera de la zona térmica cuando corresponda."},
+      {id:"BLA-MET-01",title:"Preparar pieza y apoyo",text:"Identificar la pieza, preparar recipiente/fuente de calor y colocar el sistema de apoyo/protección necesario para mantener cuernos fuera de la zona térmica cuando corresponda.",verify:"Los cuernos quedan protegidos de la zona térmica cuando aplica.",evidence:"Montaje real antes del tratamiento.",basis:"Metodología permanente ROCA"},
       {id:"BLA-MET-02",title:"Tratamiento con agua caliente",text:"Aplicar tratamiento con agua caliente sobre el cráneo manteniendo cuernos fuera de la zona capaz de alterar color o superficie. Temperatura y tiempo sólo se usan cuando estén definidos en el método controlado vigente; la condición física de la pieza gobierna la salida."},
-      {id:"BLA-MET-03",title:"Limpieza y salida",text:"Limpiar el elemento tratado, conservar identidad y llevarlo a condición estable para Montaje/acabado. Cualquier producto auxiliar se documenta sólo si realmente se usa."}
+      {id:"BLA-MET-03",title:"Limpieza y salida",text:"Limpiar el elemento tratado, conservar identidad y llevarlo a condición estable para Montaje/acabado. Cualquier producto auxiliar se documenta sólo si realmente se usa.",verify:"Cualquier producto auxiliar está identificado únicamente si realmente se usa.",evidence:"Producto real identificado o N/A justificado.",basis:"Metodología permanente ROCA"}
     ],
     controls:[
       {id:"BLA-CTL-01",text:"No añadir químicos ni fijar concentraciones, tiempos o temperaturas que todavía no estén liberados como parte del método."},
       {id:"BLA-CTL-02",text:"Cualquier producto auxiliar se documenta únicamente si existe en la operación real."},
-      {id:"BLA-CTL-03",text:"La protección de cuernos gobierna el montaje del tratamiento cuando aplica."}
+      {id:"BLA-CTL-03",text:"La protección de cuernos gobierna el montaje del tratamiento cuando aplica."},
+      {id:"BLA-CTL-04",text:"La pieza conserva su identificación durante todo el tratamiento y hasta la salida.",evidence:"ID visible durante proceso + registro de salida.",basis:"Trazabilidad interna ROCA"}
     ]
   },
   competencies:[
@@ -1247,11 +1204,6 @@ window.ROCA_DEPARTMENTS["area-blanqueado"] = {
     {id:"EVID-BLA-01",text:"Montaje real del tratamiento mostrando recipiente, fuente de calor y protección de cuernos cuando aplique.",placement:"Área / metodología"},
     {id:"EVID-BLA-02",text:"Condición antes/después del elemento.",placement:"Metodología"},
     {id:"EVID-BLA-03",text:"Incidencia o excepción cuando ocurra.",placement:"Control"}
-  ],
-  auditCriteria:[
-    {id:"BLA-AUD-01",group:"Proceso",label:"Protección de cuernos",target:"Cuerno está protegido de zona térmica cuando aplica.",input:"Montaje real."},
-    {id:"BLA-AUD-04",group:"Proceso",label:"Producto auxiliar",target:"Producto auxiliar está identificado sólo si realmente existe.",input:"Producto real o N/A justificado."},
-    {id:"BLA-AUD-05",group:"Proceso",label:"Identidad",target:"Pieza conserva ID durante todo el tratamiento.",input:"Muestra en proceso."}
   ],
   implementationHolds:[
     {id:"BLA-HOLD-01",text:"Confirmar responsable operativo."},
