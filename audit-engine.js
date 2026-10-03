@@ -19,6 +19,26 @@
     "PHYS-SUPPORT":"NOM-001-STPS-2008 + RFSST"
   };
 
+  const PHYSICAL_EVALUATION_PROFILE={
+    "PHYS-FLOW":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "PHYS-EGRESS":{evaluationKind:"MEDIR",evaluationSteps:["INSPECCIONAR","MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
+    "PHYS-FIRE":{evaluationKind:"CALCULAR",evaluationSteps:["MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
+    "PHYS-SIGN":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "PHYS-LIGHT":{evaluationKind:"MEDIR",evaluationSteps:["MEDIR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
+    "PHYS-STATION":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "PHYS-STORAGE":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","CONDICIONAL","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "PHYS-ELECTRIC":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","CONDICIONAL","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "PHYS-CHEM":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "PHYS-VENT":{evaluationKind:"CONDICIONAL",evaluationSteps:["INSPECCIONAR","CONDICIONAL","MEDIR","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "PHYS-MACHINE":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
+    "PHYS-NOISE":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","MEDIR","CALCULAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "PHYS-MANUALLOAD":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","MEDIR","CALCULAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "PHYS-PRESSURE":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "PHYS-WASTE":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR","CONDICIONAL"],verificationRoute:"REVISIÓN DOCUMENTAL"},
+    "PHYS-WASTEWATER":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "PHYS-SUPPORT":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"}
+  };
+
   function departments(){
     return Object.entries(window.ROCA_DEPARTMENTS||{});
   }
@@ -79,7 +99,9 @@
   }
 
   function enrichCriterion(row){
-    return Object.assign({},row,evaluationProfile(row));
+    const inferred=evaluationProfile(row);
+    const explicit=row&&row.sourceType==='physical_standard' ? PHYSICAL_EVALUATION_PROFILE[row.id] : null;
+    return Object.assign({},row,inferred,explicit||{}, {evidenceContract:inferred.evidenceContract});
   }
 
   function applicablePhysicalRows(areaId){
@@ -224,7 +246,7 @@
     });
     return {
       schema:BACKUP_SCHEMA,
-      engineVersion:'1.4.2',
+      engineVersion:'1.5.0',
       exportedAt:new Date().toISOString(),
       departments:state
     };
@@ -260,7 +282,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.4.2',
+    version:'1.5.0',
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,
