@@ -143,6 +143,27 @@ for(const vp of contract.viewports){
               pass(prefix+":audit-no-generic-evidence-contracts","no audit criterion uses the banned generic evidence placeholders",{rows:auditedRows});
             else fail(prefix+":audit-no-generic-evidence-contracts","generic evidence placeholders remain in audit criteria",{genericContracts});
 
+            const calcStepChecks=[
+              {id:"PHYS-LIGHT",required:["MEDIR","CALCULAR","DOCUMENTAR"]},
+              {id:"PHYS-VENT",required:["CONDICIONAL","MEDIR","CALCULAR","DOCUMENTAR"]}
+            ];
+            const calcStepFailures=[];
+            const curNav=page.locator('#nav button[data-id="audit-cur"]');
+            if(await curNav.count()===1){
+              await curNav.click();
+              await page.waitForSelector('tr[data-audit-id]',{timeout:10000});
+              for(const spec of calcStepChecks){
+                const rr=page.locator('tr[data-audit-id="'+spec.id+'"]');
+                if(await rr.count()!==1){calcStepFailures.push({id:spec.id,reason:"missing row"});continue;}
+                const steps=((await rr.locator(".audit-eval-steps").innerText())||"").split("→").map(x=>x.trim());
+                const missing=spec.required.filter(x=>!steps.includes(x));
+                if(missing.length) calcStepFailures.push({id:spec.id,steps,missing});
+              }
+            }else calcStepFailures.push({id:"area-curtiduria",reason:"missing audit nav"});
+            if(!calcStepFailures.length)
+              pass(prefix+":audit-normative-calculation-steps","measurement criteria retain required downstream calculation steps",{checks:calcStepChecks.map(x=>x.id)});
+            else fail(prefix+":audit-normative-calculation-steps","required downstream calculation steps are missing",{calcStepFailures});
+
             const montage=page.locator('#nav button[data-id="audit-mon"]');
             if(await montage.count()!==1){
               fail(prefix+":audit-montage-nav","audit montage navigation missing");

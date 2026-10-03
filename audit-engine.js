@@ -24,12 +24,12 @@
     "PHYS-EGRESS":{evaluationKind:"MEDIR",evaluationSteps:["INSPECCIONAR","MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO",evidenceContract:"Recorrido completo desde el punto más alejado hasta la salida + distancia real medida en m + puerta operable desde dentro + señal visible + fecha y método/instrumento de medición; si la distancia activa el criterio temporal, registrar también tiempo real de evacuación."},
     "PHYS-FIRE":{evaluationKind:"CALCULAR",evaluationSteps:["MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
     "PHYS-SIGN":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
-    "PHYS-LIGHT":{evaluationKind:"MEDIR",evaluationSteps:["MEDIR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
+    "PHYS-LIGHT":{evaluationKind:"MEDIR",evaluationSteps:["MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"MEDICIÓN DE CAMPO"},
     "PHYS-STATION":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
     "PHYS-STORAGE":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","CONDICIONAL","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
     "PHYS-ELECTRIC":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","CONDICIONAL","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
     "PHYS-CHEM":{evaluationKind:"DOCUMENTAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"REVISIÓN DOCUMENTAL"},
-    "PHYS-VENT":{evaluationKind:"CONDICIONAL",evaluationSteps:["INSPECCIONAR","CONDICIONAL","MEDIR","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
+    "PHYS-VENT":{evaluationKind:"CONDICIONAL",evaluationSteps:["INSPECCIONAR","CONDICIONAL","MEDIR","CALCULAR","DOCUMENTAR"],verificationRoute:"GATE DE APLICABILIDAD"},
     "PHYS-MACHINE":{evaluationKind:"INSPECCIONAR",evaluationSteps:["INSPECCIONAR","DOCUMENTAR"],verificationRoute:"INSPECCIÓN DE CAMPO"},
     "PHYS-NOISE":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","MEDIR","CALCULAR"],verificationRoute:"GATE DE APLICABILIDAD"},
     "PHYS-MANUALLOAD":{evaluationKind:"CONDICIONAL",evaluationSteps:["CONDICIONAL","MEDIR","CALCULAR"],verificationRoute:"GATE DE APLICABILIDAD"},
@@ -372,7 +372,7 @@
     });
     return {
       schema:BACKUP_SCHEMA,
-      engineVersion:'1.6.2',
+      engineVersion:'1.6.3',
       exportedAt:new Date().toISOString(),
       departments:state
     };
@@ -408,7 +408,7 @@
   }
 
   window.ROCA_AUDIT_ENGINE={
-    version:'1.6.2',
+    version:'1.6.3',
     backupSchema:BACKUP_SCHEMA,
     departments,
     criteriaForArea,
