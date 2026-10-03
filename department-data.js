@@ -327,20 +327,20 @@ window.ROCA_DEPARTMENTS["area-retoque"] = {
     "Pieza identificada y lista para Bases/Revisión"
   ],
   area:[
-    {id:"RET-AREA-01",label:"Circulación y accesos",text:"Pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Piezas, cajas, cables, mangueras y herramienta temporal no se almacenan en circulación."},
-    {id:"RET-AREA-02",label:"Estación y almacenamiento",text:"Herramienta, material y consumible tienen ubicación definida. La superficie vuelve a condición utilizable al cerrar la tarea y lo dañado o fuera de servicio se separa del uso."},
-    {id:"RET-AREA-03",label:"Iluminación",text:"La iluminación se verifica en el plano real donde se compara color, textura y detalle. Cuando una lectura gobierne la decisión se conserva punto, fecha, valor e instrumento identificado."},
-    {id:"RET-AREA-04",label:"Ventilación y extracción",text:"La ventilación o extracción corresponde a la operación y al producto real; pintura, aerosol, gasolina blanca u otro solvente se controlan contra producto/HDS, punto de generación y exposición real."},
-    {id:"RET-AREA-05",label:"Emergencia",text:"Rutas, señalización y medios de respuesta aplicables permanecen visibles, accesibles y sin bloqueo."},
-    {id:"RET-AREA-06",label:"Identidad y espera",text:"Toda pieza activa o en espera conserva identificación y siguiente acción. La espera no bloquea circulación ni mezcla proyectos."},
-    {id:"RET-AREA-07",label:"Pintura y solventes",text:"Aerógrafo, pistola, barnices, gasolina blanca, pinturas y otros productos de acabado se usan en un punto definido; inflamables permanecen cerrados y separados de fuentes de ignición según el producto real."},
-    {id:"RET-AREA-08",label:"Aire comprimido",text:"Compresor, reguladores, mangueras y conexiones se identifican y se inspeccionan por condición visible; las mangueras no atraviesan circulación sin protección."},
-    {id:"RET-AREA-09",label:"Acabado fino",text:"La estación de pintura y detalle permite inspeccionar la pieza sin sombras, contaminación de polvo o condiciones que oculten defectos."},
-    {id:"RET-AREA-10",label:"Separación resane/lijado y acabado",text:"Resane, perfilado o lijado que genere polvo no contamina el punto donde se aplica color o acabado final. Si comparten espacio, la secuencia y limpieza impiden arrastre de polvo."},
-    {id:"RET-AREA-11",label:"Pedacera",text:"La pedacera queda contenida, clasificada y ubicada únicamente en Retoque. Material útil se distingue de residuo y no se usa como depósito general."},
-    {id:"RET-AREA-12",label:"Alfileres retirados",text:"Los alfileres y fijaciones temporales retirados al inicio de Retoque se concentran en recipiente o lugar definido y no quedan dispersos."}
+    {id:"RET-AREA-01",label:"Circulación y accesos",text:"Pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Piezas, cajas, cables, mangueras y herramienta temporal no se almacenan en circulación.",evidence:"Panorámica y recorrido real.",basis:"Estándar permanente del departamento"},
+    {id:"RET-AREA-02",label:"Estación y almacenamiento",text:"Herramienta, material y consumible tienen ubicación definida. La superficie vuelve a condición utilizable al cerrar la tarea y lo dañado o fuera de servicio se separa del uso.",evidence:"Vista de estación y almacenamiento.",basis:"Estándar permanente del departamento"},
+    {id:"RET-AREA-03",label:"Iluminación",text:"La iluminación se verifica en el plano real donde se compara color, textura y detalle. Cuando una lectura gobierne la decisión se conserva punto, fecha, valor e instrumento identificado.",evidence:"Lux en plano de tarea cuando aplique.",basis:"Estándar permanente del departamento"},
+    {id:"RET-AREA-04",label:"Ventilación y extracción",text:"La ventilación o extracción corresponde a la operación y al producto real; pintura, aerosol, gasolina blanca u otro solvente se controlan contra producto/HDS, punto de generación y exposición real.",evidence:"Producto/HDS + punto de uso + control físico.",basis:"Estándar permanente del departamento"},
+    {id:"RET-AREA-05",label:"Emergencia",text:"Rutas, señalización y medios de respuesta aplicables permanecen visibles, accesibles y sin bloqueo.",evidence:"Recorrido físico de emergencia.",basis:"Estándar permanente del departamento"},
+    {id:"RET-AREA-06",label:"Identidad y espera",text:"Toda pieza activa o en espera conserva identificación y siguiente acción. La espera no bloquea circulación ni mezcla proyectos.",evidence:"Muestra de piezas en estación/espera.",basis:"Estándar permanente del departamento"},
+    {id:"RET-AREA-07",label:"Pintura y solventes",text:"Aerógrafo, pistola, barnices, gasolina blanca, pinturas y otros productos de acabado se usan en un punto definido; inflamables permanecen cerrados y separados de fuentes de ignición según el producto real.",evidence:"Producto real + ubicación + condición.",basis:"Estándar permanente del departamento"},
+    {id:"RET-AREA-08",label:"Aire comprimido",text:"Compresor, reguladores, mangueras y conexiones se identifican y se inspeccionan por condición visible; las mangueras no atraviesan circulación sin protección.",evidence:"Sistema de aire completo.",basis:"Estándar permanente del departamento"},
+    {id:"RET-AREA-09",label:"Acabado fino",text:"La estación de pintura y detalle permite inspeccionar la pieza sin sombras, contaminación de polvo o condiciones que oculten defectos.",evidence:"Punto real de acabado fino.",basis:"Estándar permanente del departamento"},
+    {id:"RET-AREA-10",label:"Separación resane/lijado y acabado",text:"Resane, perfilado o lijado que genere polvo no contamina el punto donde se aplica color o acabado final. Si comparten espacio, la secuencia y limpieza impiden arrastre de polvo.",evidence:"Secuencia/limpieza y condición del punto de acabado.",basis:"Estándar permanente del departamento"},
+    {id:"RET-AREA-11",label:"Pedacera",text:"La pedacera queda contenida, clasificada y ubicada únicamente en Retoque. Material útil se distingue de residuo y no se usa como depósito general.",evidence:"Ubicación y clasificación visible.",basis:"Estándar permanente del departamento"},
+    {id:"RET-AREA-12",label:"Alfileres retirados",text:"Los alfileres y fijaciones temporales retirados al inicio de Retoque se concentran en recipiente o lugar definido y no quedan dispersos.",evidence:"Recipiente y estado de cierre.",basis:"Estándar permanente del departamento"}
   ],
-  areaAudit:[
+  method:[
     {id:"RET-AUD-AREA-01",sourceId:"RET-AREA-01",criterion:"Circulación y accesos permanecen libres.",evidence:"Panorámica y recorrido real."},
     {id:"RET-AUD-AREA-02",sourceId:"RET-AREA-02",criterion:"Estación y almacenamiento son utilizables y recuperables.",evidence:"Vista de estación y almacenamiento."},
     {id:"RET-AUD-AREA-03",sourceId:"RET-AREA-03",criterion:"Iluminación corresponde a la tarea cuando gobierna color/detalle.",evidence:"Lux en plano de tarea cuando aplique."},
@@ -511,20 +511,20 @@ window.ROCA_DEPARTMENTS["area-bases"] = {
     "Terminación coherente con la referencia aprobada"
   ],
   area:[
-    {id:"BAS-AREA-01",label:"Circulación y accesos",text:"Pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Plancha, base, pieza, cables y herramienta temporal no ocupan la ruta de maniobra."},
-    {id:"BAS-AREA-02",label:"Estación y almacenamiento",text:"Herramienta, triplay/madera, malla, herrajes y consumibles tienen ubicación definida. La estación vuelve a condición utilizable al cerrar la tarea y lo dañado o fuera de servicio se separa del uso."},
-    {id:"BAS-AREA-03",label:"Iluminación",text:"La iluminación se verifica sobre el plano real de corte, armado o acabado cuando la tarea lo requiera. La percepción visual sola no sustituye una medición que gobierne una decisión."},
-    {id:"BAS-AREA-04",label:"Ventilación y extracción",text:"La ventilación corresponde a corte, polvo, pintura, poliuretano/adhesivos y cualquier producto real. Producto/HDS y exposición real gobiernan la necesidad de extracción localizada."},
-    {id:"BAS-AREA-05",label:"Emergencia",text:"Rutas, señalización y medios de respuesta aplicables permanecen visibles, accesibles y sin bloqueo."},
-    {id:"BAS-AREA-06",label:"Identidad y espera",text:"Toda base, pieza o trabajo en espera conserva identificación y siguiente acción. Materiales y piezas en espera no bloquean circulación ni mezclan proyectos."},
-    {id:"BAS-AREA-07",label:"Armado estructural",text:"Triplay, bancos, varillas y fijaciones se trabajan sobre superficie estable. La pieza se presenta antes de cerrar la fijación y no depende de apoyos improvisados."},
-    {id:"BAS-AREA-08",label:"Poliuretano y adhesivos",text:"Los componentes se mantienen identificados; mezcla y expansión se contienen en el punto de trabajo. Producto útil, mezcla reaccionada, recortes y envases se separan por destino real."},
-    {id:"BAS-AREA-09",label:"Corte y acabado",text:"Caladora, sierra, pulidor, taladro y grapadora —cuando existan en la operación real— se usan con condición, guarda y accesorio compatibles con su función y sobre una zona despejada."},
-    {id:"BAS-AREA-10",label:"Separación polvo / acabado químico",text:"Corte, lijado o recorte que genere polvo no contamina pintura, adhesivos, poliuretano ni acabado final. Si comparten espacio, secuencia y limpieza impiden el arrastre."},
-    {id:"BAS-AREA-11",label:"Material pesado y ruta de maniobra",text:"Planchas, bases y piezas pesadas se almacenan estables, sin riesgo de vuelco o deslizamiento, y conservan ruta suficiente para presentarlas, girarlas o retirarlas."},
-    {id:"BAS-AREA-12",label:"Manipulación y asistencia",text:"Cuando peso, volumen, altura o postura creen riesgo de manejo, se define método de maniobra, número de personas o ayuda mecánica antes de mover la pieza."}
+    {id:"BAS-AREA-01",label:"Circulación y accesos",text:"Pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Plancha, base, pieza, cables y herramienta temporal no ocupan la ruta de maniobra.",evidence:"Panorámica y recorrido con pieza/base presentes.",basis:"Estándar permanente del departamento"},
+    {id:"BAS-AREA-02",label:"Estación y almacenamiento",text:"Herramienta, triplay/madera, malla, herrajes y consumibles tienen ubicación definida. La estación vuelve a condición utilizable al cerrar la tarea y lo dañado o fuera de servicio se separa del uso.",evidence:"Vista de estación + almacenamiento de madera/malla/herrajes.",basis:"Estándar permanente del departamento"},
+    {id:"BAS-AREA-03",label:"Iluminación",text:"La iluminación se verifica sobre el plano real de corte, armado o acabado cuando la tarea lo requiera. La percepción visual sola no sustituye una medición que gobierne una decisión.",evidence:"Lux en plano real de trabajo cuando aplique.",basis:"Estándar permanente del departamento"},
+    {id:"BAS-AREA-04",label:"Ventilación y extracción",text:"La ventilación corresponde a corte, polvo, pintura, poliuretano/adhesivos y cualquier producto real. Producto/HDS y exposición real gobiernan la necesidad de extracción localizada.",evidence:"Producto/HDS + punto de generación + control físico.",basis:"Estándar permanente del departamento"},
+    {id:"BAS-AREA-05",label:"Emergencia",text:"Rutas, señalización y medios de respuesta aplicables permanecen visibles, accesibles y sin bloqueo.",evidence:"Recorrido físico de emergencia.",basis:"Estándar permanente del departamento"},
+    {id:"BAS-AREA-06",label:"Identidad y espera",text:"Toda base, pieza o trabajo en espera conserva identificación y siguiente acción. Materiales y piezas en espera no bloquean circulación ni mezclan proyectos.",evidence:"Muestra de trabajos y espera.",basis:"Estándar permanente del departamento"},
+    {id:"BAS-AREA-07",label:"Armado estructural",text:"Triplay, bancos, varillas y fijaciones se trabajan sobre superficie estable. La pieza se presenta antes de cerrar la fijación y no depende de apoyos improvisados.",evidence:"Pieza presentada sobre base antes del cierre.",basis:"Estándar permanente del departamento"},
+    {id:"BAS-AREA-08",label:"Poliuretano y adhesivos",text:"Los componentes se mantienen identificados; mezcla y expansión se contienen en el punto de trabajo. Producto útil, mezcla reaccionada, recortes y envases se separan por destino real.",evidence:"Producto real + mezcla + zona de trabajo.",basis:"Estándar permanente del departamento"},
+    {id:"BAS-AREA-09",label:"Corte y acabado",text:"Caladora, sierra, pulidor, taladro y grapadora —cuando existan en la operación real— se usan con condición, guarda y accesorio compatibles con su función y sobre una zona despejada.",evidence:"Equipo real + condición visible + espacio de trabajo.",basis:"Estándar permanente del departamento"},
+    {id:"BAS-AREA-10",label:"Separación polvo / acabado químico",text:"Corte, lijado o recorte que genere polvo no contamina pintura, adhesivos, poliuretano ni acabado final. Si comparten espacio, secuencia y limpieza impiden el arrastre.",evidence:"Secuencia/limpieza y separación real.",basis:"Estándar permanente del departamento"},
+    {id:"BAS-AREA-11",label:"Material pesado y ruta de maniobra",text:"Planchas, bases y piezas pesadas se almacenan estables, sin riesgo de vuelco o deslizamiento, y conservan ruta suficiente para presentarlas, girarlas o retirarlas.",evidence:"Almacenamiento + recorrido.",basis:"Estándar permanente del departamento"},
+    {id:"BAS-AREA-12",label:"Manipulación y asistencia",text:"Cuando peso, volumen, altura o postura creen riesgo de manejo, se define método de maniobra, número de personas o ayuda mecánica antes de mover la pieza.",evidence:"Observación de maniobra real cuando aplique.",basis:"Estándar permanente del departamento"}
   ],
-  areaAudit:[
+  method:[
     {id:"BAS-AUD-AREA-01",sourceId:"BAS-AREA-01",criterion:"Circulación y ruta de maniobra permanecen libres.",evidence:"Panorámica y recorrido con pieza/base presentes."},
     {id:"BAS-AUD-AREA-02",sourceId:"BAS-AREA-02",criterion:"Estación y almacenamiento son utilizables y recuperables.",evidence:"Vista de estación + almacenamiento de madera/malla/herrajes."},
     {id:"BAS-AUD-AREA-03",sourceId:"BAS-AREA-03",criterion:"Iluminación corresponde a corte, armado o acabado cuando gobierna la tarea.",evidence:"Lux en plano real de trabajo cuando aplique."},
@@ -709,17 +709,17 @@ window.ROCA_DEPARTMENTS["area-fmr"] = {
     "Ubicación de rack registrada cuando corresponda"
   ],
   area:[
-    {id:"FMR-AREA-01",label:"Zonas de trabajo",text:"Corte/armado, encerado, mezcla/vaciado, curado y acabado permanecen diferenciados para evitar contaminación y errores de secuencia."},
-    {id:"FMR-AREA-02",label:"Materiales reactivos",text:"Resina, catalizadores, poliuretano, fibra y cargas permanecen identificados según producto/lote real."},
-    {id:"FMR-AREA-03",label:"Polvo, fibra y vapores",text:"Polvo, fibra y vapores se controlan para no migrar hacia áreas de acabado u otras operaciones incompatibles."},
-    {id:"FMR-AREA-04",label:"Código y rack",text:"Moldes y formas conservan código, especie, postura/tipo y ubicación de rack reconocible."},
-    {id:"FMR-AREA-05",label:"Báscula y recipientes de prueba",text:"Báscula y recipientes patrón permanecen identificados y en condición conocida antes de usarse para una decisión de dosificación."},
-    {id:"FMR-AREA-06",label:"Curado",text:"Reacción y curado disponen de espacio estable, sin manipulación prematura ni interferencia con otras piezas."},
-    {id:"FMR-AREA-07",label:"Punto de mezcla",text:"La mezcla se realiza en un punto dedicado, protegido y ventilado según producto y proceso real."},
-    {id:"FMR-AREA-08",label:"Resguardo de moldes/formas",text:"Moldes y formas se almacenan estables, identificados y sin condición que favorezca deformación."},
-    {id:"FMR-AREA-09",label:"Divisiones / salida de molde",text:"La línea de partición y las divisiones se definen antes de laminar cuando la geometría pueda quedar atrapada."}
+    {id:"FMR-AREA-01",label:"Zonas de trabajo",text:"Corte/armado, encerado, mezcla/vaciado, curado y acabado permanecen diferenciados para evitar contaminación y errores de secuencia.",evidence:"Recorrido del área y puntos de transición.",basis:"Estándar permanente del departamento"},
+    {id:"FMR-AREA-02",label:"Materiales reactivos",text:"Resina, catalizadores, poliuretano, fibra y cargas permanecen identificados según producto/lote real.",evidence:"Producto/lote real + etiqueta + ubicación.",basis:"Estándar permanente del departamento"},
+    {id:"FMR-AREA-03",label:"Polvo, fibra y vapores",text:"Polvo, fibra y vapores se controlan para no migrar hacia áreas de acabado u otras operaciones incompatibles.",evidence:"Condición del punto de trabajo + ventilación/extracción cuando aplique.",basis:"Estándar permanente del departamento"},
+    {id:"FMR-AREA-04",label:"Código y rack",text:"Moldes y formas conservan código, especie, postura/tipo y ubicación de rack reconocible.",evidence:"Código + rack + pieza física.",basis:"Estándar permanente del departamento"},
+    {id:"FMR-AREA-05",label:"Báscula y recipientes de prueba",text:"Báscula y recipientes patrón permanecen identificados y en condición conocida antes de usarse para una decisión de dosificación.",evidence:"Activo real + condición visible.",basis:"Estándar permanente del departamento"},
+    {id:"FMR-AREA-06",label:"Curado",text:"Reacción y curado disponen de espacio estable, sin manipulación prematura ni interferencia con otras piezas.",evidence:"Pieza en curado + hora de vaciado/revisión.",basis:"Estándar permanente del departamento"},
+    {id:"FMR-AREA-07",label:"Punto de mezcla",text:"La mezcla se realiza en un punto dedicado, protegido y ventilado según producto y proceso real.",evidence:"Punto de mezcla + control de derrame/ventilación.",basis:"Estándar permanente del departamento"},
+    {id:"FMR-AREA-08",label:"Resguardo de moldes/formas",text:"Moldes y formas se almacenan estables, identificados y sin condición que favorezca deformación.",evidence:"Rack/resguardo + condición física.",basis:"Estándar permanente del departamento"},
+    {id:"FMR-AREA-09",label:"Divisiones / salida de molde",text:"La línea de partición y las divisiones se definen antes de laminar cuando la geometría pueda quedar atrapada.",evidence:"Forma original + divisiones antes de laminado.",basis:"Estándar permanente del departamento"}
   ],
-  areaAudit:[
+  method:[
     {id:"FMR-AUD-AREA-01",sourceId:"FMR-AREA-01",criterion:"Corte, mezcla, curado y acabado están diferenciados.",evidence:"Recorrido del área y puntos de transición."},
     {id:"FMR-AUD-AREA-02",sourceId:"FMR-AREA-02",criterion:"Materiales reactivos y lotes están identificados.",evidence:"Producto/lote real + etiqueta + ubicación."},
     {id:"FMR-AUD-AREA-03",sourceId:"FMR-AREA-03",criterion:"Polvo, fibra y vapores no migran a acabados.",evidence:"Condición del punto de trabajo + ventilación/extracción cuando aplique."},
@@ -883,12 +883,12 @@ window.ROCA_DEPARTMENTS["area-recepcion"] = {
     "Transferencia registrada"
   ],
   area:[
-    {id:"REC-AREA-01",label:"Ingreso y espera",text:"La zona de ingreso y espera evita mezclar trabajos y conserva separación física suficiente entre piezas."},
-    {id:"REC-AREA-02",label:"Captura inicial",text:"Etiquetas, fotos y documentos se capturan antes de perder el contexto de ingreso."},
-    {id:"REC-AREA-03",label:"Identidad en espera",text:"Toda pieza en espera conserva ID, condición registrada y destino o siguiente acción."},
-    {id:"REC-AREA-04",label:"Separación húmedo/documental",text:"Material húmedo o salado no contamina documentos, equipo de captura ni circulación."}
+    {id:"REC-AREA-01",label:"Ingreso y espera",text:"La zona de ingreso y espera evita mezclar trabajos y conserva separación física suficiente entre piezas.",evidence:"Panorámica del área y piezas en espera.",basis:"Estándar permanente del departamento"},
+    {id:"REC-AREA-02",label:"Captura inicial",text:"Etiquetas, fotos y documentos se capturan antes de perder el contexto de ingreso.",evidence:"Muestra de trabajo recién ingresado.",basis:"Estándar permanente del departamento"},
+    {id:"REC-AREA-03",label:"Identidad en espera",text:"Toda pieza en espera conserva ID, condición registrada y destino o siguiente acción.",evidence:"Muestra de piezas en espera.",basis:"Estándar permanente del departamento"},
+    {id:"REC-AREA-04",label:"Separación húmedo/documental",text:"Material húmedo o salado no contamina documentos, equipo de captura ni circulación.",evidence:"Condición física del punto de ingreso.",basis:"Estándar permanente del departamento"}
   ],
-  areaAudit:[
+  method:[
     {id:"REC-AUD-AREA-01",sourceId:"REC-AREA-01",criterion:"Zona de ingreso y espera separa trabajos sin mezcla.",evidence:"Panorámica del área y piezas en espera."},
     {id:"REC-AUD-AREA-02",sourceId:"REC-AREA-02",criterion:"Etiquetas, fotos y documentos se capturan antes de perder contexto.",evidence:"Muestra de trabajo recién ingresado."},
     {id:"REC-AUD-AREA-03",sourceId:"REC-AREA-03",criterion:"Toda pieza en espera conserva ID, condición y siguiente acción.",evidence:"Muestra de piezas en espera."},
@@ -995,18 +995,18 @@ window.ROCA_DEPARTMENTS["area-carpinteria"] = {
     "La carga puede manipularse sin retirar protecciones esenciales ni bloquear la ruta"
   ],
   area:[
-    {id:"CAR-AREA-01",label:"Circulación y accesos",text:"Cuando exista el puesto, pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Piezas, cajas, madera, cables y herramienta temporal no ocupan circulación."},
-    {id:"CAR-AREA-02",label:"Estación y almacenamiento",text:"Herramientas, materiales y consumibles tienen ubicación definida. El puesto vuelve a condición utilizable al cerrar la tarea y el equipo dañado se separa del uso."},
-    {id:"CAR-AREA-03",label:"Iluminación",text:"La iluminación se verifica en el plano real de corte, trazo y armado cuando la tarea lo requiera."},
-    {id:"CAR-AREA-04",label:"Ventilación y extracción",text:"Ventilación/extracción se define contra las operaciones reales de corte, lijado, polvo de madera, adhesivos o acabados efectivamente usados; no se instala antes de confirmar equipo, material y generación real."},
-    {id:"CAR-AREA-05",label:"Emergencia",text:"Rutas y medios de respuesta aplicables permanecen visibles y accesibles; cobertura y ubicación se resuelven contra la evaluación vigente."},
-    {id:"CAR-AREA-06",label:"Identidad y espera",text:"Toda pieza, caja, corte o trabajo en espera conserva ID de orden/proyecto y siguiente acción; material de embalaje no mezcla proyectos."},
-    {id:"CAR-AREA-07",label:"Ubicación y separación",text:"La ubicación del puesto no puede ocupar la pedacera ni la estación de Señor Pez en Retoque; debe separar polvo/aserrín de pintura, gasolina blanca, solventes y acabados, permitir ruta de madera/cajas y contar con servicios compatibles con el equipo real."},
-    {id:"CAR-AREA-08",label:"Corte y polvo",text:"Banco y equipo de corte, cuando existan, permanecen estables y con protecciones/accesorios correspondientes al equipo real. Polvo/aserrín se captura o retira en origen."},
-    {id:"CAR-AREA-09",label:"Madera y herrajes",text:"Madera/triplay se almacena estable; paneles pesados evitan vuelco/deslizamiento. Tornillos, clavos, bisagras y herrajes se separan por tipo/tamaño suficiente para recuperarlos sin vaciar contenedores."},
-    {id:"CAR-AREA-10",label:"Embalaje y carga",text:"Cartón, madera, película/protección y fijaciones tienen zona definida. Caja/embalaje conserva ID de orden y puede manipularse/cargarse sin retirar protecciones esenciales ni bloquear la ruta."}
+    {id:"CAR-AREA-01",label:"Circulación y accesos",text:"Cuando exista el puesto, pasillos, salidas, tableros, extintores y puntos de operación permanecen libres. Piezas, cajas, madera, cables y herramienta temporal no ocupan circulación.",evidence:"Recorrido físico completo.",basis:"Estándar permanente del departamento"},
+    {id:"CAR-AREA-02",label:"Estación y almacenamiento",text:"Herramientas, materiales y consumibles tienen ubicación definida. El puesto vuelve a condición utilizable al cerrar la tarea y el equipo dañado se separa del uso.",evidence:"Puesto real + almacenamiento.",basis:"Estándar permanente del departamento"},
+    {id:"CAR-AREA-03",label:"Iluminación",text:"La iluminación se verifica en el plano real de corte, trazo y armado cuando la tarea lo requiera.",evidence:"Lux + plano de tarea + instrumento cuando aplique.",basis:"Estándar permanente del departamento"},
+    {id:"CAR-AREA-04",label:"Ventilación y extracción",text:"Ventilación/extracción se define contra las operaciones reales de corte, lijado, polvo de madera, adhesivos o acabados efectivamente usados; no se instala antes de confirmar equipo, material y generación real.",evidence:"Operación real + polvo/producto + control físico.",basis:"Estándar permanente del departamento"},
+    {id:"CAR-AREA-05",label:"Emergencia",text:"Rutas y medios de respuesta aplicables permanecen visibles y accesibles; cobertura y ubicación se resuelven contra la evaluación vigente.",evidence:"Recorrido físico de emergencia.",basis:"Estándar permanente del departamento"},
+    {id:"CAR-AREA-06",label:"Identidad y espera",text:"Toda pieza, caja, corte o trabajo en espera conserva ID de orden/proyecto y siguiente acción; material de embalaje no mezcla proyectos.",evidence:"Muestra de trabajos y embalajes.",basis:"Estándar permanente del departamento"},
+    {id:"CAR-AREA-07",label:"Ubicación y separación",text:"La ubicación del puesto no puede ocupar la pedacera ni la estación de Señor Pez en Retoque; debe separar polvo/aserrín de pintura, gasolina blanca, solventes y acabados, permitir ruta de madera/cajas y contar con servicios compatibles con el equipo real.",evidence:"Límite físico con áreas vecinas + ruta de materiales/carga.",basis:"Estándar permanente del departamento"},
+    {id:"CAR-AREA-08",label:"Corte y polvo",text:"Banco y equipo de corte, cuando existan, permanecen estables y con protecciones/accesorios correspondientes al equipo real. Polvo/aserrín se captura o retira en origen.",evidence:"Puesto de corte real + condición del equipo + manejo de polvo.",basis:"Estándar permanente del departamento"},
+    {id:"CAR-AREA-09",label:"Madera y herrajes",text:"Madera/triplay se almacena estable; paneles pesados evitan vuelco/deslizamiento. Tornillos, clavos, bisagras y herrajes se separan por tipo/tamaño suficiente para recuperarlos sin vaciar contenedores.",evidence:"Almacenamiento real.",basis:"Estándar permanente del departamento"},
+    {id:"CAR-AREA-10",label:"Embalaje y carga",text:"Cartón, madera, película/protección y fijaciones tienen zona definida. Caja/embalaje conserva ID de orden y puede manipularse/cargarse sin retirar protecciones esenciales ni bloquear la ruta.",evidence:"Caja/embalaje real + recorrido de carga.",basis:"Estándar permanente del departamento"}
   ],
-  areaAudit:[
+  method:[
     {id:"CAR-AUD-AREA-01",sourceId:"CAR-AREA-01",criterion:"Cuando exista el puesto, circulación, salidas, tableros y medios de emergencia permanecen libres.",evidence:"Recorrido físico completo."},
     {id:"CAR-AUD-AREA-02",sourceId:"CAR-AREA-02",criterion:"Estación, herramientas, materiales y consumibles tienen ubicación definida y recuperable.",evidence:"Puesto real + almacenamiento."},
     {id:"CAR-AUD-AREA-03",sourceId:"CAR-AREA-03",criterion:"La iluminación corresponde al plano real de corte, trazo y armado cuando gobierna la tarea.",evidence:"Lux + plano de tarea + instrumento cuando aplique."},
@@ -1129,13 +1129,13 @@ window.ROCA_DEPARTMENTS["area-soldadura"] = {
     "Incidencia/adaptación ligada a la orden cuando afecta la pieza"
   ],
   area:[
-    {id:"SOL-AREA-01",label:"Proyección y combustibles",text:"Combustibles, cartón, solventes y pieza sensible permanecen fuera de proyección durante trabajo en caliente."},
-    {id:"SOL-AREA-02",label:"Protección a terceros",text:"Pantalla o mampara protege a terceros cuando la operación o ubicación lo requiere."},
-    {id:"SOL-AREA-03",label:"Ventilación y humos",text:"Ventilación/extracción responde al humo, material y recubrimiento real de la operación."},
-    {id:"SOL-AREA-04",label:"Equipo y cables",text:"Cables, pinza, antorcha/porta-electrodo, esmeril y equipo asociado permanecen en condición utilizable."},
-    {id:"SOL-AREA-05",label:"Extinción / trabajo en caliente",text:"Medios de respuesta y autorización aplicables se definen según evaluación vigente; no se cierran por apariencia."}
+    {id:"SOL-AREA-01",label:"Proyección y combustibles",text:"Combustibles, cartón, solventes y pieza sensible permanecen fuera de proyección durante trabajo en caliente.",evidence:"Recorrido previo a la operación.",basis:"Estándar permanente del departamento"},
+    {id:"SOL-AREA-02",label:"Protección a terceros",text:"Pantalla o mampara protege a terceros cuando la operación o ubicación lo requiere.",evidence:"Pantalla/mampara y ubicación real.",basis:"Estándar permanente del departamento"},
+    {id:"SOL-AREA-03",label:"Ventilación y humos",text:"Ventilación/extracción responde al humo, material y recubrimiento real de la operación.",evidence:"Material/recubrimiento + control físico.",basis:"Estándar permanente del departamento"},
+    {id:"SOL-AREA-04",label:"Equipo y cables",text:"Cables, pinza, antorcha/porta-electrodo, esmeril y equipo asociado permanecen en condición utilizable.",evidence:"Equipo real + condición visible.",basis:"Estándar permanente del departamento"},
+    {id:"SOL-AREA-05",label:"Extinción / trabajo en caliente",text:"Medios de respuesta y autorización aplicables se definen según evaluación vigente; no se cierran por apariencia.",evidence:"Condición física + criterio aplicable definido en Bibliografía.",basis:"Estándar permanente del departamento"}
   ],
-  areaAudit:[
+  method:[
     {id:"SOL-AUD-AREA-01",sourceId:"SOL-AREA-01",criterion:"Área preparada antes de trabajo en caliente.",evidence:"Recorrido previo a la operación."},
     {id:"SOL-AUD-AREA-02",sourceId:"SOL-AREA-02",criterion:"Terceros están protegidos cuando aplica.",evidence:"Pantalla/mampara y ubicación real."},
     {id:"SOL-AUD-AREA-03",sourceId:"SOL-AREA-03",criterion:"Ventilación corresponde a la operación real.",evidence:"Material/recubrimiento + control físico."},
@@ -1235,13 +1235,13 @@ window.ROCA_DEPARTMENTS["area-blanqueado"] = {
     "Condición antes/después registrada cuando aporta trazabilidad"
   ],
   area:[
-    {id:"BLA-AREA-01",label:"Recipiente y fuente de calor",text:"Recipiente y fuente de calor permanecen estables durante el tratamiento."},
-    {id:"BLA-AREA-02",label:"Protección de cuernos",text:"Nivel de agua y sistema de apoyo mantienen los cuernos fuera de la zona térmica cuando corresponda."},
-    {id:"BLA-AREA-03",label:"Ruta de agua caliente",text:"La manipulación de agua caliente y vapor no cruza circulación ni obliga a maniobras improvisadas."},
-    {id:"BLA-AREA-04",label:"Ventilación",text:"La ventilación corresponde al calor, vapor y cualquier producto auxiliar realmente usado."},
-    {id:"BLA-AREA-05",label:"Drenaje, enfriamiento y espera",text:"Drenaje, enfriamiento y espera conservan ID y evitan derrames o mezcla de piezas."}
+    {id:"BLA-AREA-01",label:"Recipiente y fuente de calor",text:"Recipiente y fuente de calor permanecen estables durante el tratamiento.",evidence:"Montaje real del tratamiento.",basis:"Estándar permanente del departamento"},
+    {id:"BLA-AREA-02",label:"Protección de cuernos",text:"Nivel de agua y sistema de apoyo mantienen los cuernos fuera de la zona térmica cuando corresponda.",evidence:"Condición física durante preparación.",basis:"Estándar permanente del departamento"},
+    {id:"BLA-AREA-03",label:"Ruta de agua caliente",text:"La manipulación de agua caliente y vapor no cruza circulación ni obliga a maniobras improvisadas.",evidence:"Recorrido de manipulación.",basis:"Estándar permanente del departamento"},
+    {id:"BLA-AREA-04",label:"Ventilación",text:"La ventilación corresponde al calor, vapor y cualquier producto auxiliar realmente usado.",evidence:"Condición física y producto si existe.",basis:"Estándar permanente del departamento"},
+    {id:"BLA-AREA-05",label:"Drenaje, enfriamiento y espera",text:"Drenaje, enfriamiento y espera conservan ID y evitan derrames o mezcla de piezas.",evidence:"Muestra de pieza en proceso.",basis:"Estándar permanente del departamento"}
   ],
-  areaAudit:[
+  method:[
     {id:"BLA-AUD-AREA-01",sourceId:"BLA-AREA-01",criterion:"Cuernos quedan protegidos de la zona térmica cuando aplica.",evidence:"Montaje real del tratamiento."},
     {id:"BLA-AUD-AREA-02",sourceId:"BLA-AREA-02",criterion:"Recipiente y fuente de calor permanecen estables.",evidence:"Condición física durante preparación."},
     {id:"BLA-AUD-AREA-03",sourceId:"BLA-AREA-03",criterion:"Ruta de agua caliente no crea derrame u obstrucción.",evidence:"Recorrido de manipulación."},
@@ -1348,16 +1348,16 @@ window.ROCA_DEPARTMENTS["area-soporte"] = {
     "Residuos y materiales con destino reconocido"
   ],
   area:[
-    {id:"SUP-BOD",label:"Bodegas",text:"Ubicación y categoría son reconocibles; pieza/material conserva ID y siguiente acción; pesado o inestable se almacena abajo y estable; racks/pasillos permanecen accesibles; químicos incompatibles se separan según producto real."},
-    {id:"SUP-ERP",label:"Oficina / BIWO",text:"Estación y archivo evitan exposición innecesaria de datos; acceso responde a necesidad; documentos sensibles permanecen fuera del HTML/repositorio público; BIWO es sistema operativo, no almacén físico paralelo."},
-    {id:"SUP-EXH",label:"Exhibición",text:"Pieza permanece estable y protegida; circulación de visitante/cliente no invade operación; exhibición no se usa como bodega temporal; identificación comercial no expone datos privados."},
-    {id:"SUP-COM",label:"Comedor",text:"Comedor permanece separado de químicos, residuos y piezas de proceso; superficies limpias y alimentos almacenados de forma diferenciada."},
-    {id:"SUP-SAN",label:"Sanitarios",text:"Sanitarios conservan condición higiénica, insumos, drenaje/ventilación y privacidad; no se usan como almacenamiento de químicos o equipo."},
-    {id:"SUP-CIR",label:"Circulaciones",text:"Rutas y accesos permanecen libres; piezas en espera no invaden paso; señalización y emergencia permanecen visibles según evaluación aplicable."},
-    {id:"SUP-EXT",label:"Exterior / carga",text:"Carga y descarga no mezclan residuos, piezas terminadas y químicos; acceso, maniobra y protección climática se validan contra condición real; embalaje conserva ID hasta salida."},
-    {id:"SUP-RES",label:"Residuos",text:"La separación ocurre en punto de generación; contenedor e identificación corresponden al material real; almacenamiento temporal está controlado; material útil o recuperable no se descarta por comodidad."}
+    {id:"SUP-BOD",label:"Bodegas",text:"Ubicación y categoría son reconocibles; pieza/material conserva ID y siguiente acción; pesado o inestable se almacena abajo y estable; racks/pasillos permanecen accesibles; químicos incompatibles se separan según producto real.",evidence:"Recorrido de almacenamiento.",basis:"Estándar permanente del departamento"},
+    {id:"SUP-ERP",label:"Oficina / BIWO",text:"Estación y archivo evitan exposición innecesaria de datos; acceso responde a necesidad; documentos sensibles permanecen fuera del HTML/repositorio público; BIWO es sistema operativo, no almacén físico paralelo.",evidence:"Condición de estación/archivo sin exponer información privada.",basis:"Estándar permanente del departamento"},
+    {id:"SUP-EXH",label:"Exhibición",text:"Pieza permanece estable y protegida; circulación de visitante/cliente no invade operación; exhibición no se usa como bodega temporal; identificación comercial no expone datos privados.",evidence:"Recorrido y piezas exhibidas.",basis:"Estándar permanente del departamento"},
+    {id:"SUP-COM",label:"Comedor",text:"Comedor permanece separado de químicos, residuos y piezas de proceso; superficies limpias y alimentos almacenados de forma diferenciada.",evidence:"Condición física.",basis:"Estándar permanente del departamento"},
+    {id:"SUP-SAN",label:"Sanitarios",text:"Sanitarios conservan condición higiénica, insumos, drenaje/ventilación y privacidad; no se usan como almacenamiento de químicos o equipo.",evidence:"Condición física sin capturar personas ni pertenencias.",basis:"Estándar permanente del departamento"},
+    {id:"SUP-CIR",label:"Circulaciones",text:"Rutas y accesos permanecen libres; piezas en espera no invaden paso; señalización y emergencia permanecen visibles según evaluación aplicable.",evidence:"Recorrido completo.",basis:"Estándar permanente del departamento"},
+    {id:"SUP-EXT",label:"Exterior / carga",text:"Carga y descarga no mezclan residuos, piezas terminadas y químicos; acceso, maniobra y protección climática se validan contra condición real; embalaje conserva ID hasta salida.",evidence:"Zona de carga/descarga.",basis:"Estándar permanente del departamento"},
+    {id:"SUP-RES",label:"Residuos",text:"La separación ocurre en punto de generación; contenedor e identificación corresponden al material real; almacenamiento temporal está controlado; material útil o recuperable no se descarta por comodidad.",evidence:"Puntos de generación y almacenamiento temporal.",basis:"Estándar permanente del departamento"}
   ],
-  areaAudit:[
+  method:[
     {id:"SUP-AUD-01",sourceId:"SUP-BOD",criterion:"Bodegas conservan ID, estabilidad y pasillos accesibles.",evidence:"Recorrido de almacenamiento."},
     {id:"SUP-AUD-02",sourceId:"SUP-ERP",criterion:"Oficina/BIWO protege datos y documentos sensibles.",evidence:"Condición de estación/archivo sin exponer información privada."},
     {id:"SUP-AUD-03",sourceId:"SUP-EXH",criterion:"Exhibición no invade operación ni funciona como bodega.",evidence:"Recorrido y piezas exhibidas."},
