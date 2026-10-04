@@ -362,3 +362,118 @@ footer{display:none}
 .audit-calc-run{margin-top:7px;border:0;background:var(--navy);color:#fff;padding:6px 7px;font:700 7px/1 Arial,Helvetica,sans-serif;letter-spacing:.05em;cursor:pointer}
 .audit-calc-result{margin-top:7px;padding:7px;background:#f4efe7;border-left:3px solid #8c7c69;font:8px/1.45 Arial,Helvetica,sans-serif}
 @media print{.audit-norm-calc{display:none!important}}
+
+
+/* PDF MASTER REPLICA
+   MANUAL follows the 391-page source in original order. The original PDF remains
+   visually authoritative; these pages preserve source text and host controlled inserts. */
+.pdf-loading{
+  width:min(816px,100%);
+  margin:0 auto;
+  padding:70px 54px;
+  background:#f6f1e7;
+  font:600 13px/1.5 Arial,Helvetica,sans-serif;
+  color:#5b5147;
+}
+.pdf-replica-section{display:flex;flex-direction:column;gap:24px}
+.pdf-original-viewer{
+  position:relative;
+  width:min(1000px,100%);
+  margin:0 auto 10px;
+  background:#171411;
+  border:1px solid #6f6256;
+  box-shadow:0 10px 34px rgba(0,0,0,.2);
+}
+.pdf-original-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:12px 16px;
+  background:#171411;
+  color:#f5f0e6;
+  font:700 10px/1.3 Arial,Helvetica,sans-serif;
+  letter-spacing:.08em;
+}
+.pdf-original-head div{display:flex;flex-direction:column;gap:3px}
+.pdf-original-head span{font-weight:400;color:#c7beb2;letter-spacing:0}
+.pdf-original-head a{
+  color:#f5f0e6;
+  text-decoration:none;
+  border-bottom:1px solid #9a6b47;
+  white-space:nowrap;
+}
+.pdf-original-frame{
+  display:block;
+  width:100%;
+  height:min(78vh,980px);
+  min-height:680px;
+  border:0;
+  background:#2b2825;
+}
+.pdf-replica-page{
+  background:#f7f3ea;
+  color:#211d19;
+}
+.pdf-replica-page .page-head{
+  margin-bottom:24px;
+}
+.pdf-replica-heading{
+  max-width:100%;
+  font-size:25px;
+  line-height:1.12;
+  padding-bottom:11px;
+  border-bottom:1px solid #a98a70;
+}
+.pdf-replica-text{
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  margin:22px 0 34px;
+  font:11.5px/1.52 Arial,Helvetica,sans-serif;
+  color:#292520;
+  background:transparent;
+}
+.pdf-page-source-jump{
+  appearance:none;
+  border:0;
+  border-top:1px solid #c6b8aa;
+  background:transparent;
+  padding:11px 0 0;
+  color:#80583a;
+  font:700 9px/1.2 Arial,Helvetica,sans-serif;
+  letter-spacing:.08em;
+  cursor:pointer;
+}
+.pdf-evaluation-insert{
+  border-top:6px solid #7f5536;
+  background:#f5f0e6;
+}
+.pdf-evaluation-insert .lead{max-width:72ch}
+.pdf-evaluation-table td:first-child{width:165px}
+.pdf-evaluation-table td div{
+  margin:5px 0;
+  color:#433c35;
+}
+.pdf-evaluation-table td p{margin-bottom:9px}
+body:not(.audit-mode):not(.norms-mode) .control-rail{
+  display:none;
+}
+body:not(.audit-mode):not(.norms-mode) .layout{
+  grid-template-columns:248px minmax(0,1fr);
+}
+body:not(.audit-mode):not(.norms-mode) .page{
+  padding-left:3vw;
+  padding-right:3vw;
+}
+@media(max-width:900px){
+  .pdf-original-head{align-items:flex-start;flex-direction:column}
+  .pdf-original-frame{min-height:560px;height:68vh}
+}
+@media print{
+  .pdf-original-viewer{display:none!important}
+  .pdf-replica-section{gap:0}
+  .pdf-replica-page,.pdf-evaluation-insert{
+    box-shadow:none!important;
+    page-break-after:always;
+  }
+}
