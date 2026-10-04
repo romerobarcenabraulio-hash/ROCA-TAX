@@ -105,30 +105,161 @@
       footer('EVALUACIÓN · '+(dept.code||''))+'</article>';
   }
 
+  function cleanSourceLines(raw){
+    return String(raw||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean).filter(t=>
+      !/^ROCA TAXIDERMY · (MASTER INTEGRAL|PRE-CAMPO)/.test(t) &&
+      !/^\d+\s*\/\s*(325|346|367|391|474)$/.test(t) &&
+      !/^LIBRO [IVX]+\s*\//.test(t)
+    );
+  }
+
   function sourceLineMarkup(line,index){
     const t=String(line||'').trim();
     if(!t) return '';
     const upper=t===t.toUpperCase() && /[A-ZÁÉÍÓÚÑ]/.test(t);
     const numbered=/^(0?[0-9]{1,2}[\.\s]|[A-Z]{2,5}-AREA-|TS-[0-9]+)/.test(t);
+    const field=/^(Evidencia:|Archivo \/ Evidence ID:|Evidence ID:|RESULTADO:|CIERRE)/i.test(t);
     if(index===0) return '<div class="pdf-source-kicker">'+esc(t)+'</div>';
-    if(upper && t.length<80) return '<h2 class="pdf-source-section">'+esc(t)+'</h2>';
+    if(field) return '<div class="pdf-source-field">'+esc(t)+'</div>';
+    if(upper && t.length<95) return '<h2 class="pdf-source-section">'+esc(t)+'</h2>';
     if(numbered) return '<p class="pdf-source-control">'+esc(t)+'</p>';
     return '<p>'+esc(t)+'</p>';
   }
 
+  function splitByHeadings(lines,headings){
+    const out={}; let current='intro'; out[current]=[];
+    lines.forEach(line=>{
+      const key=headings.find(h=>line===h);
+      if(key){current=key; out[current]=[];} else out[current].push(line);
+    });
+    return out;
+  }
+
+  function sourceCoverMarkup(p){
+    const lines=cleanSourceLines(p.text);
+    const iReceive=lines.indexOf('RECIBE');
+    const iDeliver=lines.indexOf('ENTREGA');
+    const iTail=lines.findIndex(x=>/^ÁREA DE TRABAJO/.test(x));
+    const title=String(p.area||lines[1]||'').toUpperCase();
+    const lead=(iReceive>1?lines.slice(2,iReceive):[]).join(' ');
+    const receives=(iReceive>=0&&iDeliver>iReceive?lines.slice(iReceive+1,iDeliver):[]).join(' ');
+    const delivers=(iDeliver>=0?lines.slice(iDeliver+1,iTail>iDeliver?iTail:lines.length):[]).join(' ');
+    return '<article class="paper pdf-native-page pdf-native-cover" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="pdf-cover-photo-gap"><span>FOTOGRAFÍA FUENTE · PENDIENTE DE INTEGRAR COMO ASSET HTML</span></div>'+
+      '<div class="pdf-cover-overlay">'+
+        '<div class="pdf-cover-kicker">'+esc(lines[0]||p.area_code||'MÓDULO OPERATIVO')+'</div>'+
+        '<h1>'+esc(title)+'</h1><div class="pdf-cover-rule"></div>'+
+        '<p class="pdf-cover-lead">'+esc(lead)+'</p>'+
+        '<div class="pdf-cover-handoff"><div><strong>RECIBE</strong><span>'+esc(receives)+'</span></div><div><strong>ENTREGA</strong><span>'+esc(delivers)+'</span></div></div>'+
+        '<div class="pdf-cover-band">ÁREA DE TRABAJO · VERIFICACIÓN · METODOLOGÍA</div>'+
+      '</div>'+footer('MASTER · '+p.page+' / 391')+'</article>';
+  }
+
+  function sourceContentsMarkup(p){
+    const lines=cleanSourceLines(p.text);
+    const titleIndex=lines.findIndex(x=>/Contenido del módulo/i.test(x));
+    const lead=titleIndex>=0?lines[titleIndex+1]||'':'';
+    const rows=[];
+    for(let i=Math.max(titleIndex+2,0);i<lines.length;i++){
+      if(/^[0A-E]$/.test(lines[i])){
+        rows.push({key:lines[i],title:lines[i+1]||'',desc:lines[i+2]||''});
+        i+=2;
+      }
+    }
+    const note=lines.slice(Math.max(titleIndex+2,0)).find(x=>/^La gobernanza no repite/i.test(x))||'';
+    return '<article class="paper pdf-native-page pdf-contents-page" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="page-head"><span>'+esc(p.area_code||'ROCA')+'</span><span>'+esc(p.page)+' / 391</span></div>'+
+      '<h1>Contenido del módulo</h1><div class="bronze-rule short"></div><p class="lead">'+esc(lead)+'</p>'+
+      '<div class="pdf-module-index">'+rows.map(r=>'<div class="pdf-module-row"><div class="pdf-module-key">'+esc(r.key)+'</div><div><strong>'+esc(r.title)+'</strong><span>'+esc(r.desc)+'</span></div></div>').join('')+'</div>'+
+      (note?'<div class="pdf-bottom-note">'+esc(note)+'</div>':'')+footer('MASTER · '+p.page+' / 391')+'</article>';
+  }
+
+  function sourceGovernanceMarkup(p){
+    const lines=cleanSourceLines(p.text);
+    const heads=['EQUIPO Y LÍNEA LOCAL','HANDOFF DEL ÁREA','DECISIONES / GATES','EVENTOS ERP / REGISTRO','RECURSOS CRÍTICOS','PENDIENTES DE CIERRE'];
+    const parts=splitByHeadings(lines,heads);
+    const intro=(parts.intro||[]).filter(x=>!/^(ROCA \/|GOBERNANZA DEL ÁREA|CURTIDURÍA|RECEPCIÓN|FORMAS|MONTAJE|RETOQUE|BASES|CARPINTERÍA|SOLDADURA|BLANQUEADO)/.test(x));
+    const renderList=(arr)=>'<ul>'+arr.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>';
+    const renderHandoff=(arr)=>{
+      const out=[]; for(let i=0;i<arr.length;i+=2) out.push('<div><strong>'+esc(arr[i]||'')+'</strong><span>'+esc(arr[i+1]||'')+'</span></div>');
+      return out.join('');
+    };
+    return '<article class="paper pdf-native-page pdf-governance-page" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="page-head"><span>GOBERNANZA DEL ÁREA</span><span>'+esc(p.page)+' / 391</span></div>'+
+      '<h1>'+esc(String(p.area||'').toUpperCase())+'</h1><div class="bronze-rule short"></div>'+
+      (intro.length?'<p class="lead">'+esc(intro.join(' '))+'</p>':'')+
+      '<div class="pdf-gov-top"><section><div class="pdf-mini-head">EQUIPO Y LÍNEA LOCAL</div>'+renderList(parts['EQUIPO Y LÍNEA LOCAL']||[])+'</section>'+
+      '<section class="pdf-handoff"><div class="pdf-mini-head">HANDOFF DEL ÁREA</div>'+renderHandoff(parts['HANDOFF DEL ÁREA']||[])+'</section></div>'+
+      '<div class="pdf-gov-bottom">'+
+        '<section><div class="pdf-mini-head">DECISIONES / GATES</div>'+renderList(parts['DECISIONES / GATES']||[])+'</section>'+
+        '<section><div class="pdf-mini-head blue">EVENTOS ERP / REGISTRO</div>'+renderList(parts['EVENTOS ERP / REGISTRO']||[])+'</section>'+
+        '<section><div class="pdf-mini-head green">RECURSOS CRÍTICOS</div>'+renderList(parts['RECURSOS CRÍTICOS']||[])+'</section>'+
+      '</div>'+
+      ((parts['PENDIENTES DE CIERRE']||[]).length?'<div class="pdf-pending-box"><div class="pdf-mini-head red">PENDIENTES DE CIERRE</div>'+renderList(parts['PENDIENTES DE CIERRE'])+'</div>':'')+
+      footer('MASTER · '+p.page+' / 391')+'</article>';
+  }
+
+  function sourceAreaMarkup(p){
+    const lines=cleanSourceLines(p.text);
+    const reqRx=/^[A-Z]{3}-AREA-\d{2}\b/;
+    const intro=[];
+    const reqs=[]; let current=null;
+    lines.forEach(line=>{
+      if(reqRx.test(line)){
+        if(current) reqs.push(current);
+        const m=line.match(/^([A-Z]{3}-AREA-\d{2})\s*(.*)$/);
+        current={id:m?m[1]:'',label:m?m[2]:'',text:[]};
+      }else if(current && !/^EVIDENCIA PARA CIERRE/.test(line)) current.text.push(line);
+      else if(!current) intro.push(line);
+    });
+    if(current) reqs.push(current);
+    const evidenceAt=lines.findIndex(x=>/^EVIDENCIA PARA CIERRE/.test(x));
+    const evidence=evidenceAt>=0?lines.slice(evidenceAt+1).join(' '):'';
+    return '<article class="paper pdf-native-page pdf-area-page" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="page-head"><span>'+esc(p.area_code||'ÁREA')+' / ÁREA DE TRABAJO</span><span>'+esc(p.page)+' / 391</span></div>'+
+      '<h1>'+esc(intro.find(x=>/^Área de trabajo/.test(x))||'Área de trabajo')+'</h1>'+
+      '<p class="lead">'+esc(intro.find(x=>/^Cómo debe quedar/.test(x))||'')+'</p><div class="bronze-rule short"></div>'+
+      '<div class="pdf-requirements">'+reqs.map(r=>'<section class="pdf-requirement"><div class="pdf-req-id">'+esc(r.id)+'</div><div><h3>'+esc(r.label)+'</h3><p>'+esc(r.text.join(' '))+'</p></div></section>').join('')+'</div>'+
+      (evidence?'<div class="pdf-evidence-principle"><strong>EVIDENCIA PARA CIERRE</strong><span>'+esc(evidence)+'</span></div>':'')+
+      footer('MASTER · '+p.page+' / 391')+'</article>';
+  }
+
+  function sourceVerificationMarkup(p){
+    const lines=cleanSourceLines(p.text);
+    const items=[]; let current=null;
+    lines.forEach(line=>{
+      if(/^TS-\d+\b/.test(line)){
+        if(current) items.push(current);
+        const m=line.match(/^(TS-\d+)\s*(.*)$/); current={id:m[1],title:m[2],text:[],evidence:''};
+      }else if(current && /^Evidencia:/i.test(line)){current.evidence=line;}
+      else if(current){current.text.push(line);}
+    });
+    if(current) items.push(current);
+    const sub=lines.find(x=>/^Verificación del área/.test(x))||'Verificación del área';
+    return '<article class="paper pdf-native-page pdf-verification-page" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="page-head"><span>'+esc(p.area_code||'ÁREA')+' / VERIFICACIÓN</span><span>'+esc(p.page)+' / 391</span></div>'+
+      '<h1>'+esc(sub)+'</h1><p class="lead">La auditoría confirma la implementación de estándares ya definidos. No crea un estándar nuevo.</p>'+
+      '<div class="pdf-status-key">C = Conforme &nbsp;&nbsp; NC = No conforme &nbsp;&nbsp; NA = No aplica (justificar) &nbsp;&nbsp; NV = No verificado</div>'+
+      '<div class="pdf-verify-list">'+items.map(it=>'<section class="pdf-verify-row"><div class="pdf-verify-head"><strong>'+esc(it.id+' '+it.title.replace(/□.*$/,''))+'</strong><span>□ C &nbsp; □ NC &nbsp; □ NA &nbsp; □ NV</span></div><p>'+esc(it.text.filter(x=>!/^RESULTADO:/.test(x)).join(' '))+'</p><div class="pdf-verify-evidence">'+esc(it.evidence||'Evidencia: __________________ Hallazgo/acción: __________________ Resp.: ______ Fecha: ______')+'</div></section>').join('')+'</div>'+
+      footer('MASTER · '+p.page+' / 391')+'</article>';
+  }
+
   function htmlMasterPageMarkup(p){
-    const raw=String(p.text||'');
-    const lines=raw.split(/\r?\n/);
-    const heading=String(p.heading||lines[0]||'').trim();
-    const bodyLines=lines.filter((line,i)=>!(i===0&&line.trim()===heading));
+    const heading=String(p.heading||'');
+    if(/^MÓDULO OPERATIVO/.test(heading)) return sourceCoverMarkup(p);
+    if(/\/ CONTENIDO$/.test(heading)) return sourceContentsMarkup(p);
+    if(/\/ GOBERNANZA$/.test(heading)) return sourceGovernanceMarkup(p);
+    if(/\/ ÁREA DE TRABAJO$/.test(heading)) return sourceAreaMarkup(p);
+    if(/\/ VERIFICACIÓN$/.test(heading)) return sourceVerificationMarkup(p);
+    const lines=cleanSourceLines(p.text);
     const mediaGap=SOURCE_IMAGE_PAGES.has(Number(p.page))
-      ? '<div class="pdf-source-media-gap"><strong>FOTOGRAFÍA / VISUAL DEL MASTER</strong><span>Asset recuperable del PDF fuente; reservado aquí hasta integrarlo en HTML sin usar visor.</span></div>'
+      ? '<div class="pdf-source-media-gap"><strong>FOTOGRAFÍA / VISUAL DEL MASTER</strong><span>Asset del PDF fuente pendiente de insertar como imagen HTML.</span></div>'
       : '';
     return '<article class="paper pdf-native-page" data-pdf-page="'+esc(p.page)+'">'+
       '<div class="page-head"><span>'+esc(p.area_code||'ROCA')+' · MASTER INTEGRAL</span><span>'+esc(p.page)+' / 391</span></div>'+
-      '<div class="pdf-native-heading">'+esc(heading)+'</div>'+
+      '<div class="pdf-native-heading">'+esc(heading||lines[0]||'')+'</div>'+
       mediaGap+
-      '<div class="pdf-native-body">'+bodyLines.map(sourceLineMarkup).join('')+'</div>'+
+      '<div class="pdf-native-body">'+lines.filter((line,i)=>!(i===0&&line===heading)).map(sourceLineMarkup).join('')+'</div>'+
       footer('MASTER · '+p.page+' / 391')+
       '</article>';
   }
