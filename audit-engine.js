@@ -145,11 +145,13 @@
       ? uniqueCapture.join(' · ')
       : String(row.input||'Evidencia observable y trazable de la condición evaluada.');
     if(explicitCalculation){
-      const calcBits=[
-        String(row.requiredData||'').trim(),
-        String(row.calculation||'').trim()
-      ].filter(Boolean);
-      if(calcBits.length) evidenceContract=[evidenceContract,...calcBits].join(' · ');
+      const required=String(row.requiredData||'').trim();
+      const calculation=String(row.calculation||'').trim();
+      const calcBits=[];
+      if(required) calcBits.push('Datos de entrada: '+required);
+      if(calculation) calcBits.push('Cálculo / comparación: '+calculation);
+      calcBits.push('Resultado: registrar el valor o decisión obtenida y su comparación contra el criterio aplicable.');
+      evidenceContract=[evidenceContract,...calcBits].join(' · ');
     }
 
     const genericMethodControl=row&&row.sourceType==='department_method_control' &&
