@@ -17,14 +17,29 @@
     'responsabilidades','documentos','internacional','legal','master-exacto',
     'procesos','trazabilidad','cumplimiento','machotes-guias','controles-transversales','assurance'
   ]);
-  const manualOrder = [
-    'indice','personas','roca','taller',
-    'area-recepcion','area-curtiduria','area-fmr','area-montaje','area-retoque','area-bases',
-    'area-carpinteria','area-soldadura','area-blanqueado','area-soporte','heritage'
+  const PDF_MASTER_SECTIONS=[
+    {id:'pdf-global',nav:'Gobernanza / taller',start:1,end:38},
+    {id:'area-recepcion',nav:'Recepción',start:39,end:48,deptId:'area-recepcion'},
+    {id:'area-curtiduria',nav:'Curtiduría',start:49,end:86,deptId:'area-curtiduria'},
+    {id:'area-fmr',nav:'Formas, Moldes y Réplicas',start:87,end:129,deptId:'area-fmr'},
+    {id:'area-montaje',nav:'Montaje',start:130,end:159,deptId:'area-montaje'},
+    {id:'area-retoque',nav:'Retoque',start:160,end:183,deptId:'area-retoque'},
+    {id:'area-bases',nav:'Bases',start:184,end:208,deptId:'area-bases'},
+    {id:'area-carpinteria',nav:'Carpintería / Embalaje',start:209,end:222,deptId:'area-carpinteria'},
+    {id:'area-soldadura',nav:'Soldadura / Adaptación',start:223,end:236,deptId:'area-soldadura'},
+    {id:'area-blanqueado',nav:'Blanqueado',start:237,end:251,deptId:'area-blanqueado'},
+    {id:'pdf-ext',nav:'Exterior / carga',start:252,end:261,deptId:'area-soporte',rowIds:['SUP-EXT']},
+    {id:'pdf-erp',nav:'Oficina / BIWO',start:262,end:272,deptId:'area-soporte',rowIds:['SUP-ERP']},
+    {id:'pdf-bod',nav:'Bodegas',start:273,end:281,deptId:'area-soporte',rowIds:['SUP-BOD']},
+    {id:'pdf-exh',nav:'Exhibición',start:282,end:291,deptId:'area-soporte',rowIds:['SUP-EXH']},
+    {id:'pdf-com',nav:'Comedor',start:292,end:300,deptId:'area-soporte',rowIds:['SUP-COM']},
+    {id:'pdf-san',nav:'Sanitarios',start:301,end:309,deptId:'area-soporte',rowIds:['SUP-SAN']},
+    {id:'pdf-rut',nav:'Circulaciones / rutas',start:310,end:318,deptId:'area-soporte',rowIds:['SUP-CIR']},
+    {id:'pdf-res',nav:'Residuos',start:319,end:331,deptId:'area-soporte',rowIds:['SUP-RES']},
+    {id:'pdf-assurance',nav:'Assurance / anexos',start:332,end:391}
   ];
-  const manualCandidates = data.sections.filter(s => s && !hiddenLegacy.has(s.id) && !String(s.id||'').startsWith('campo-'));
-  const manualById = new Map(manualCandidates.map(s=>[s.id,s]));
-  const manualSections = manualOrder.map(id=>manualById.get(id)).filter(Boolean);
+  const manualSections = PDF_MASTER_SECTIONS;
+  let pdfMasterPromise=null;
   const auditSections = Array.isArray(window.ROCA_AUDIT_SECTIONS) ? window.ROCA_AUDIT_SECTIONS : [];
   const normSections = Array.isArray(window.ROCA_NORM_SECTIONS) ? window.ROCA_NORM_SECTIONS : [];
 
@@ -49,6 +64,92 @@
       '<div class="cover-bottom"><strong>MANUAL MAESTRO DE OPERACIÓN</strong>'+
       '<span>Áreas, metodología, herramientas, materiales, evidencia y condiciones permanentes de ROCA Taxidermy.</span></div>'+
       footer('PORTADA')+'</article>';
+  }
+
+  async function loadPdfMaster(){
+    if(!pdfMasterPromise){
+      pdfMasterPromise=fetch('generated/roca-391/raw-index.json',{cache:'no-store'}).then(async res=>{
+        if(!res.ok) throw new Error('PDF master index '+res.status);
+        return res.json();
+      });
+    }
+    return pdfMasterPromise;
+  }
+
+  function pdfSourceUrl(driveId,pageNumber){
+    const hash=pageNumber?'#page='+encodeURIComponent(pageNumber):'';
+    return 'https://drive.google.com/file/d/'+encodeURIComponent(driveId)+'/preview'+hash;
+  }
+
+  function evaluationInsertMarkup(section){
+    if(!section.deptId) return '';
+    const dept=window.ROCA_DEPARTMENTS&&window.ROCA_DEPARTMENTS[section.deptId];
+    if(!dept) return '';
+    const allowed=Array.isArray(section.rowIds)?new Set(section.rowIds):null;
+    const rows=(Array.isArray(dept.area)?dept.area:[]).filter(r=>!allowed||allowed.has(r.id));
+    if(!rows.length) return '';
+    const rowHtml=rows.map(r=>{
+      const verify=r.verify?'<div><b>Cómo se comprueba:</b> '+esc(r.verify)+'</div>':'';
+      const data=r.data?'<div><b>Dato necesario:</b> '+esc(r.data)+'</div>':'';
+      const calc=r.calculation?'<div><b>Cálculo / comparación:</b> '+esc(r.calculation)+'</div>':'';
+      const evidence=r.evidence?'<div><b>Evidencia:</b> '+esc(r.evidence)+'</div>':'';
+      const basis=r.basis?'<div><b>Por qué / fundamento:</b> '+esc(r.basis)+'</div>':'';
+      return '<tr><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td><p>'+esc(r.text||'')+'</p>'+verify+data+calc+evidence+basis+'</td></tr>';
+    }).join('');
+    return '<article class="paper pdf-evaluation-insert" data-evaluation-for="'+esc(section.id)+'">'+
+      '<div class="page-head"><span>INSERTADO SOBRE EL PDF MAESTRO</span><span>ROCA TAXIDERMY</span></div>'+
+      '<div class="eyebrow">EVALUACIÓN / CÓMO DEBE ESTAR EL ÁREA</div>'+
+      '<h1>'+esc(dept.title)+'</h1>'+
+      '<p class="lead">Este bloque se agrega al master sin sustituir, resumir ni reordenar las páginas fuente anteriores. Cada requisito queda aterrizado y listo para observar, medir, calcular o documentar según corresponda.</p>'+
+      '<div class="bronze-rule short"></div>'+
+      '<table class="pdf-evaluation-table"><thead><tr><th>Requisito</th><th>Qué debe quedar / cómo se demuestra</th></tr></thead><tbody>'+rowHtml+'</tbody></table>'+
+      footer('EVALUACIÓN · '+(dept.code||''))+'</article>';
+  }
+
+  async function pdfReplicaMarkup(section){
+    const master=await loadPdfMaster();
+    const pages=(Array.isArray(master.pages)?master.pages:[]).filter(p=>p.page>=section.start&&p.page<=section.end);
+    const driveId=master.source&&master.source.drive_id?master.source.drive_id:'1ZbBmnudrO7m7aGCtFGTSXuljy1Sg5AJO';
+    const sourceViewer='<section class="pdf-original-viewer" data-pdf-viewer>'+
+      '<div class="pdf-original-head"><div><strong>PDF MAESTRO ORIGINAL</strong><span>Fotos, diagramas, composición y texto fuente · pp. '+section.start+'-'+section.end+'</span></div>'+
+      '<a target="_blank" rel="noopener" href="https://drive.google.com/file/d/'+esc(driveId)+'/view">ABRIR ORIGINAL</a></div>'+
+      '<iframe class="pdf-original-frame" title="PDF maestro original" src="'+esc(pdfSourceUrl(driveId,section.start))+'" loading="eager"></iframe>'+
+      '</section>';
+    const pageHtml=pages.map(p=>
+      '<article class="paper pdf-replica-page" data-pdf-page="'+esc(p.page)+'">'+
+        '<div class="page-head"><span>PDF MAESTRO · PÁGINA '+esc(p.page)+' / 391</span><span>'+esc(p.area||p.area_code||'ROCA')+'</span></div>'+
+        '<h1 class="pdf-replica-heading">'+esc(p.heading||'')+'</h1>'+
+        '<pre class="pdf-replica-text">'+esc(p.text||'')+'</pre>'+
+        '<button type="button" class="pdf-page-source-jump" data-page="'+esc(p.page)+'" data-drive="'+esc(driveId)+'">VER ESTA PÁGINA EN EL ORIGINAL</button>'+
+        footer('PDF '+p.page+' / 391')+
+      '</article>'
+    ).join('');
+    return '<section class="pdf-replica-section" data-section="'+esc(section.id)+'">'+sourceViewer+pageHtml+evaluationInsertMarkup(section)+'</section>';
+  }
+
+  function bindPdfReplicaViewer(){
+    const frame=page.querySelector('.pdf-original-frame');
+    if(!frame) return;
+    page.querySelectorAll('.pdf-page-source-jump').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        frame.src=pdfSourceUrl(btn.dataset.drive,btn.dataset.page);
+        const viewer=page.querySelector('.pdf-original-viewer');
+        if(viewer) viewer.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+  }
+
+  async function renderPdfReplica(section){
+    page.innerHTML='<div class="pdf-loading">Cargando réplica del PDF maestro…</div>';
+    try{
+      page.innerHTML=await pdfReplicaMarkup(section);
+      document.title=(section.nav||'PDF maestro')+' · ROCA TAXIDERMY';
+      markActive(section.id);
+      bindPdfReplicaViewer();
+    }catch(err){
+      page.innerHTML='<article class="paper"><h1>No se pudo cargar el PDF maestro</h1><p>'+esc(err.message||String(err))+'</p></article>';
+      markActive(section.id);
+    }
   }
 
   function departmentMarkup(section){
@@ -139,12 +240,6 @@
 
   function buildNav(sections){
     nav.innerHTML='';
-    if(activeMode==='manual'){
-      const cover=document.createElement('button');
-      cover.type='button'; cover.dataset.id='portada'; cover.textContent='00  Portada';
-      cover.addEventListener('click',()=>go('portada'));
-      nav.appendChild(cover);
-    }
     sections.forEach((section,i)=>{
       const b=document.createElement('button');
       b.type='button'; b.dataset.id=section.id;
@@ -180,15 +275,11 @@
   }
 
   function go(id){
-    if(activeMode==='manual' && (!id || id==='portada')){
-      history.replaceState(null,'','#portada');
-      renderCover();
-      return;
-    }
     const target=activeSections.find(s=>s.id===id) || activeSections[0];
-    if(!target){ renderCover(); return; }
+    if(!target){ return; }
     history.replaceState(null,'','#'+target.id);
-    render(target);
+    if(activeMode==='manual') renderPdfReplica(target);
+    else render(target);
   }
 
   function setMode(mode){
@@ -212,8 +303,8 @@
       activeMode='manual';
       activeSections=manualSections;
       manualMode.classList.add('active');
-      contentsPane.querySelector('.contents-title').textContent='Manual ROCA';
-      contentsPane.querySelector('.rule-note').textContent='MANUAL = cómo debe ser ROCA. La auditoría se deriva de estas mismas condiciones; IMPLEMENTAR contiene únicamente brechas temporales.';
+      contentsPane.querySelector('.contents-title').textContent='PDF maestro · 391 páginas';
+      contentsPane.querySelector('.rule-note').textContent='MANUAL = réplica textual en el mismo orden del PDF maestro, con el original visual visible y bloques de evaluación insertados al cierre de cada área. No se resume ni se reinterpreta la fuente.';
     }
     buildNav(activeSections);
     go(mode==='manual' ? 'portada' : (activeSections[0] && activeSections[0].id));
@@ -378,11 +469,9 @@
       return;
     }
 
-    const heritage=manualSections.find(s=>s.id==='heritage');
-    const coreSections=manualSections.filter(s=>s.id!=='heritage');
-    const bibliography=await buildNormativePrintMarkup();
-    page.innerHTML=coverMarkup()+coreSections.map(sectionMarkup).join('')+bibliography+(heritage?sectionMarkup(heritage):'');
-    document.title='ROCA TAXIDERMY · Manual maestro';
+    const replicaPages=await Promise.all(manualSections.map(pdfReplicaMarkup));
+    page.innerHTML=replicaPages.join('');
+    document.title='ROCA TAXIDERMY · Réplica del PDF maestro';
   }
 
   manualMode.addEventListener('click',()=>setMode('manual'));
