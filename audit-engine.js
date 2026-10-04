@@ -144,6 +144,13 @@
     let evidenceContract=uniqueCapture.length
       ? uniqueCapture.join(' · ')
       : String(row.input||'Evidencia observable y trazable de la condición evaluada.');
+    if(explicitCalculation){
+      const calcBits=[
+        String(row.requiredData||'').trim(),
+        String(row.calculation||'').trim()
+      ].filter(Boolean);
+      if(calcBits.length) evidenceContract=[evidenceContract,...calcBits].join(' · ');
+    }
 
     const genericMethodControl=row&&row.sourceType==='department_method_control' &&
       /Evidencia, registro o condición observable directamente ligada a este control/i.test(evidenceContract);
