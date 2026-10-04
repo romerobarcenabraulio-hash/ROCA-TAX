@@ -18,28 +18,29 @@
     'procesos','trazabilidad','cumplimiento','machotes-guias','controles-transversales','assurance'
   ]);
   const PDF_MASTER_SECTIONS=[
-    {id:'pdf-global',nav:'Gobernanza / taller',start:1,end:38},
-    {id:'area-recepcion',nav:'Recepción',start:39,end:48,deptId:'area-recepcion'},
-    {id:'area-curtiduria',nav:'Curtiduría',start:49,end:86,deptId:'area-curtiduria'},
-    {id:'area-fmr',nav:'Formas, Moldes y Réplicas',start:87,end:129,deptId:'area-fmr'},
-    {id:'area-montaje',nav:'Montaje',start:130,end:159,deptId:'area-montaje'},
-    {id:'area-retoque',nav:'Retoque',start:160,end:183,deptId:'area-retoque'},
-    {id:'area-bases',nav:'Bases',start:184,end:208,deptId:'area-bases'},
-    {id:'area-carpinteria',nav:'Carpintería / Embalaje',start:209,end:222,deptId:'area-carpinteria'},
-    {id:'area-soldadura',nav:'Soldadura / Adaptación',start:223,end:236,deptId:'area-soldadura'},
-    {id:'area-blanqueado',nav:'Blanqueado',start:237,end:251,deptId:'area-blanqueado'},
-    {id:'pdf-ext',nav:'Exterior / carga',start:252,end:261,deptId:'area-soporte',rowIds:['SUP-EXT']},
-    {id:'pdf-erp',nav:'Oficina / BIWO',start:262,end:272,deptId:'area-soporte',rowIds:['SUP-ERP']},
-    {id:'pdf-bod',nav:'Bodegas',start:273,end:281,deptId:'area-soporte',rowIds:['SUP-BOD']},
-    {id:'pdf-exh',nav:'Exhibición',start:282,end:291,deptId:'area-soporte',rowIds:['SUP-EXH']},
-    {id:'pdf-com',nav:'Comedor',start:292,end:300,deptId:'area-soporte',rowIds:['SUP-COM']},
-    {id:'pdf-san',nav:'Sanitarios',start:301,end:309,deptId:'area-soporte',rowIds:['SUP-SAN']},
-    {id:'pdf-rut',nav:'Circulaciones / rutas',start:310,end:318,deptId:'area-soporte',rowIds:['SUP-CIR']},
-    {id:'pdf-res',nav:'Residuos',start:319,end:331,deptId:'area-soporte',rowIds:['SUP-RES']},
-    {id:'pdf-assurance',nav:'Assurance / anexos',start:332,end:391}
+    {id:'pdf-global',nav:'Gobernanza / taller',start:1,end:38,layoutKey:'global'},
+    {id:'area-recepcion',nav:'Recepción',start:39,end:48,layoutKey:'recepcion',deptId:'area-recepcion'},
+    {id:'area-curtiduria',nav:'Curtiduría',start:49,end:86,layoutKey:'curtiduria',deptId:'area-curtiduria'},
+    {id:'area-fmr',nav:'Formas, Moldes y Réplicas',start:87,end:129,layoutKey:'fmr',deptId:'area-fmr'},
+    {id:'area-montaje',nav:'Montaje',start:130,end:159,layoutKey:'montaje',deptId:'area-montaje'},
+    {id:'area-retoque',nav:'Retoque',start:160,end:183,layoutKey:'retoque',deptId:'area-retoque'},
+    {id:'area-bases',nav:'Bases',start:184,end:208,layoutKey:'bases',deptId:'area-bases'},
+    {id:'area-carpinteria',nav:'Carpintería / Embalaje',start:209,end:222,layoutKey:'carpinteria',deptId:'area-carpinteria'},
+    {id:'area-soldadura',nav:'Soldadura / Adaptación',start:223,end:236,layoutKey:'soldadura',deptId:'area-soldadura'},
+    {id:'area-blanqueado',nav:'Blanqueado',start:237,end:251,layoutKey:'blanqueado',deptId:'area-blanqueado'},
+    {id:'pdf-ext',nav:'Exterior / carga',start:252,end:261,layoutKey:'exterior',deptId:'area-soporte',rowIds:['SUP-EXT']},
+    {id:'pdf-erp',nav:'Oficina / BIWO',start:262,end:272,layoutKey:'erp',deptId:'area-soporte',rowIds:['SUP-ERP']},
+    {id:'pdf-bod',nav:'Bodegas',start:273,end:281,layoutKey:'bodegas',deptId:'area-soporte',rowIds:['SUP-BOD']},
+    {id:'pdf-exh',nav:'Exhibición',start:282,end:291,layoutKey:'exhibicion',deptId:'area-soporte',rowIds:['SUP-EXH']},
+    {id:'pdf-com',nav:'Comedor',start:292,end:300,layoutKey:'comedor',deptId:'area-soporte',rowIds:['SUP-COM']},
+    {id:'pdf-san',nav:'Sanitarios',start:301,end:309,layoutKey:'sanitarios',deptId:'area-soporte',rowIds:['SUP-SAN']},
+    {id:'pdf-rut',nav:'Circulaciones / rutas',start:310,end:318,layoutKey:'rutas',deptId:'area-soporte',rowIds:['SUP-CIR']},
+    {id:'pdf-res',nav:'Residuos',start:319,end:331,layoutKey:'residuos',deptId:'area-soporte',rowIds:['SUP-RES']},
+    {id:'pdf-assurance',nav:'Assurance / anexos',start:332,end:391,layoutKey:'assurance'}
   ];
   const manualSections = PDF_MASTER_SECTIONS;
-  let pdfMasterPromise=null;
+  const htmlLayoutCache=new Map();
+  let photoMapPromise=null;
   const auditSections = Array.isArray(window.ROCA_AUDIT_SECTIONS) ? window.ROCA_AUDIT_SECTIONS : [];
   const normSections = Array.isArray(window.ROCA_NORM_SECTIONS) ? window.ROCA_NORM_SECTIONS : [];
 
@@ -66,19 +67,26 @@
       footer('PORTADA')+'</article>';
   }
 
-  async function loadPdfMaster(){
-    if(!pdfMasterPromise){
-      pdfMasterPromise=fetch('generated/roca-391/raw-index.json',{cache:'no-store'}).then(async res=>{
-        if(!res.ok) throw new Error('PDF master index '+res.status);
+  async function loadHtmlLayout(section){
+    const key=section&&section.layoutKey;
+    if(!key) return {pages:[]};
+    if(!htmlLayoutCache.has(key)){
+      htmlLayoutCache.set(key,fetch('generated/roca-html-master/layout/'+key+'.json',{cache:'no-store'}).then(async res=>{
+        if(!res.ok) throw new Error('HTML layout '+key+' '+res.status);
+        return res.json();
+      }));
+    }
+    return htmlLayoutCache.get(key);
+  }
+
+  async function loadPhotoMap(){
+    if(!photoMapPromise){
+      photoMapPromise=fetch('generated/roca-html-master/photo-map.json',{cache:'no-store'}).then(async res=>{
+        if(!res.ok) throw new Error('photo map '+res.status);
         return res.json();
       });
     }
-    return pdfMasterPromise;
-  }
-
-  function pdfSourceUrl(driveId,pageNumber){
-    const hash=pageNumber?'#page='+encodeURIComponent(pageNumber):'';
-    return 'https://drive.google.com/file/d/'+encodeURIComponent(driveId)+'/preview'+hash;
+    return photoMapPromise;
   }
 
   function evaluationInsertMarkup(section){
@@ -97,57 +105,71 @@
       return '<tr><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td><p>'+esc(r.text||'')+'</p>'+verify+data+calc+evidence+basis+'</td></tr>';
     }).join('');
     return '<article class="paper pdf-evaluation-insert" data-evaluation-for="'+esc(section.id)+'">'+
-      '<div class="page-head"><span>INSERTADO SOBRE EL PDF MAESTRO</span><span>ROCA TAXIDERMY</span></div>'+
-      '<div class="eyebrow">EVALUACIÓN / CÓMO DEBE ESTAR EL ÁREA</div>'+
+      '<div class="page-head"><span>ROCA / '+esc(dept.code||'ÁREA')+' / EVALUACIÓN</span><span>ROCA TAXIDERMY</span></div>'+
+      '<div class="eyebrow">CÓMO DEBE ESTAR ESTA ÁREA</div>'+
       '<h1>'+esc(dept.title)+'</h1>'+
-      '<p class="lead">Este bloque se agrega al master sin sustituir, resumir ni reordenar las páginas fuente anteriores. Cada requisito queda aterrizado y listo para observar, medir, calcular o documentar según corresponda.</p>'+
+      '<p class="lead">Evaluación añadida al HTML del master. El contenido fuente anterior permanece en su secuencia; aquí se aterrizan los requisitos para poder observarlos, medirlos, calcularlos o documentarlos.</p>'+
       '<div class="bronze-rule short"></div>'+
-      '<table class="pdf-evaluation-table"><thead><tr><th>Requisito</th><th>Qué debe quedar / cómo se demuestra</th></tr></thead><tbody>'+rowHtml+'</tbody></table>'+
+      '<table class="pdf-evaluation-table"><thead><tr><th>Requisito</th><th>Condición y comprobación</th></tr></thead><tbody>'+rowHtml+'</tbody></table>'+
       footer('EVALUACIÓN · '+(dept.code||''))+'</article>';
   }
 
-  async function pdfReplicaMarkup(section){
-    const master=await loadPdfMaster();
-    const pages=(Array.isArray(master.pages)?master.pages:[]).filter(p=>p.page>=section.start&&p.page<=section.end);
-    const driveId=master.source&&master.source.drive_id?master.source.drive_id:'1ZbBmnudrO7m7aGCtFGTSXuljy1Sg5AJO';
-    const sourceViewer='<section class="pdf-original-viewer" data-pdf-viewer>'+
-      '<div class="pdf-original-head"><div><strong>PDF MAESTRO ORIGINAL</strong><span>Fotos, diagramas, composición y texto fuente · pp. '+section.start+'-'+section.end+'</span></div>'+
-      '<a target="_blank" rel="noopener" href="https://drive.google.com/file/d/'+esc(driveId)+'/view">ABRIR ORIGINAL</a></div>'+
-      '<iframe class="pdf-original-frame" title="PDF maestro original" src="'+esc(pdfSourceUrl(driveId,section.start))+'" loading="eager"></iframe>'+
-      '</section>';
-    const pageHtml=pages.map(p=>
-      '<article class="paper pdf-replica-page" data-pdf-page="'+esc(p.page)+'">'+
-        '<div class="page-head"><span>PDF MAESTRO · PÁGINA '+esc(p.page)+' / 391</span><span>'+esc(p.area||p.area_code||'ROCA')+'</span></div>'+
-        '<h1 class="pdf-replica-heading">'+esc(p.heading||'')+'</h1>'+
-        '<pre class="pdf-replica-text">'+esc(p.text||'')+'</pre>'+
-        '<button type="button" class="pdf-page-source-jump" data-page="'+esc(p.page)+'" data-drive="'+esc(driveId)+'">VER ESTA PÁGINA EN EL ORIGINAL</button>'+
-        footer('PDF '+p.page+' / 391')+
-      '</article>'
-    ).join('');
-    return '<section class="pdf-replica-section" data-section="'+esc(section.id)+'">'+sourceViewer+pageHtml+evaluationInsertMarkup(section)+'</section>';
+  function htmlRuleMarkup(rule){
+    const S=4/3;
+    const style='left:'+(rule.x*S)+'px;top:'+(rule.y*S)+'px;width:'+(rule.w*S)+'px;height:'+(Math.max(rule.h||.5,.5)*S)+'px;background:'+esc(rule.c||'#c9c0b3')+';';
+    return '<i class="pdf-html-rule" style="'+style+'"></i>';
   }
 
-  function bindPdfReplicaViewer(){
-    const frame=page.querySelector('.pdf-original-frame');
-    if(!frame) return;
-    page.querySelectorAll('.pdf-page-source-jump').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        frame.src=pdfSourceUrl(btn.dataset.drive,btn.dataset.page);
-        const viewer=page.querySelector('.pdf-original-viewer');
-        if(viewer) viewer.scrollIntoView({behavior:'smooth',block:'start'});
-      });
-    });
+  function htmlPhotoMarkup(im,photos){
+    const S=4/3;
+    const entry=photos&&photos.map&&photos.map[String(im.r)];
+    if(!entry) return '<div class="pdf-photo-gap" style="left:'+(im.x*S)+'px;top:'+(im.y*S)+'px;width:'+(im.w*S)+'px;height:'+(im.h*S)+'px"><span>FOTO PENDIENTE DE RECUPERAR · '+esc(im.r)+'</span></div>';
+    const atlas=photos.atlases&&photos.atlases[entry.a];
+    if(!atlas) return '';
+    const rw=im.w*S, rh=im.h*S;
+    const bgW=atlas.w*(rw/entry.w), bgH=atlas.h*(rh/entry.h);
+    const bgX=-entry.x*(rw/entry.w), bgY=-entry.y*(rh/entry.h);
+    const style='left:'+(im.x*S)+'px;top:'+(im.y*S)+'px;width:'+rw+'px;height:'+rh+'px;'+
+      'background-image:url(generated/roca-html-master/assets/'+esc(atlas.file)+');'+
+      'background-size:'+bgW+'px '+bgH+'px;background-position:'+bgX+'px '+bgY+'px;';
+    return '<div class="pdf-html-photo" role="img" aria-label="Fotografía del master" style="'+style+'"></div>';
+  }
+
+  function htmlTextMarkup(line){
+    const S=4/3;
+    const family=line.f==='serif'?'Georgia,Times New Roman,serif':'Arial,Helvetica,sans-serif';
+    const style='left:'+(line.x*S)+'px;top:'+(line.y*S)+'px;width:'+(Math.max(line.w,1)*S)+'px;min-height:'+(Math.max(line.h,1)*S)+'px;'+
+      'font-family:'+family+';font-size:'+(line.s*S)+'px;font-weight:'+(line.b?700:400)+';font-style:'+(line.i?'italic':'normal')+';color:'+esc(line.c||'#171717')+';';
+    return '<span class="pdf-html-text" style="'+style+'">'+esc(line.t||'')+'</span>';
+  }
+
+  function htmlMasterPageMarkup(p,photos){
+    const rules=(p.ru||[]).map(htmlRuleMarkup).join('');
+    const images=(p.im||[]).map(im=>htmlPhotoMarkup(im,photos)).join('');
+    const text=(p.l||[]).map(htmlTextMarkup).join('');
+    return '<article class="pdf-html-page" data-pdf-page="'+esc(p.n)+'" style="background:'+esc(p.bg||'#fbfaf6')+'">'+
+      '<div class="pdf-html-canvas">'+rules+images+text+'</div>'+
+      '<div class="pdf-html-page-index">'+esc(p.n)+' / 391</div>'+
+      '</article>';
+  }
+
+  async function pdfReplicaMarkup(section){
+    const [layout,photos]=await Promise.all([loadHtmlLayout(section),loadPhotoMap()]);
+    const pages=Array.isArray(layout.pages)?layout.pages:[];
+    return '<section class="pdf-html-section" data-section="'+esc(section.id)+'">'+
+      pages.map(p=>htmlMasterPageMarkup(p,photos)).join('')+
+      evaluationInsertMarkup(section)+
+      '</section>';
   }
 
   async function renderPdfReplica(section){
-    page.innerHTML='<div class="pdf-loading">Cargando réplica del PDF maestro…</div>';
+    page.innerHTML='<div class="pdf-loading">Construyendo HTML del master…</div>';
     try{
       page.innerHTML=await pdfReplicaMarkup(section);
-      document.title='ROCA TAXIDERMY · Manual maestro · '+(section.nav||'PDF maestro');
+      document.title='ROCA TAXIDERMY · Manual maestro · '+(section.nav||'');
       markActive(section.id);
-      bindPdfReplicaViewer();
     }catch(err){
-      page.innerHTML='<article class="paper"><h1>No se pudo cargar el PDF maestro</h1><p>'+esc(err.message||String(err))+'</p></article>';
+      page.innerHTML='<article class="paper"><h1>No se pudo cargar el HTML del master</h1><p>'+esc(err.message||String(err))+'</p></article>';
       markActive(section.id);
     }
   }
