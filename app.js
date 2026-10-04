@@ -2,206 +2,634 @@
   const data = window.ROCA_DATA;
   if (Array.isArray(window.ROCA_EDITORIAL_SECTIONS)) data.sections.push(...window.ROCA_EDITORIAL_SECTIONS);
   if (Array.isArray(window.ROCA_WORKSHOP_SECTIONS)) data.sections.push(...window.ROCA_WORKSHOP_SECTIONS);
-  if (Array.isArray(window.ROCA_CONTROL_SECTIONS)) data.sections.push(...window.ROCA_CONTROL_SECTIONS);
-  if (Array.isArray(window.ROCA_ASSURANCE_SECTIONS)) data.sections.push(...window.ROCA_ASSURANCE_SECTIONS);
-  if (Array.isArray(window.ROCA_FIELD_SECTIONS)) data.sections.push(...window.ROCA_FIELD_SECTIONS);
-  if (Array.isArray(window.ROCA_EXTRA_SECTIONS)) data.sections.push(...window.ROCA_EXTRA_SECTIONS);
 
   const nav = document.getElementById('nav');
   const page = document.getElementById('page');
   const contentsPane = document.getElementById('contentsPane');
-  const finalMode = document.getElementById('finalMode');
-  const compendiumMode = document.getElementById('compendiumMode');
-  const fieldMode = document.getElementById('fieldMode');
-  const notesMode = document.getElementById('notesMode');
+  const manualMode = document.getElementById('manualMode');
+  const auditMode = document.getElementById('auditMode');
+  const normsMode = document.getElementById('normsMode');
   const printDoc = document.getElementById('printDoc');
+  const printGateNote = document.getElementById('printGateNote');
 
-  const finalOrder = [
-    'roca',
-    'heritage',
-    'personas',
-    'taller',
-    'procesos',
-    'trazabilidad',
-    'cumplimiento',
-    'machotes-guias'
+  const hiddenLegacy = new Set([
+    'estado','implementacion','areas','residuos','erp','evidencia','editorial','posters',
+    'responsabilidades','documentos','internacional','legal','master-exacto',
+    'procesos','trazabilidad','cumplimiento','machotes-guias','controles-transversales','assurance'
+  ]);
+  const PDF_MASTER_SECTIONS=[
+    {id:'pdf-global',nav:'Gobernanza / taller',start:1,end:38,layoutKey:'global'},
+    {id:'area-recepcion',nav:'Recepción',start:39,end:48,layoutKey:'recepcion',deptId:'area-recepcion'},
+    {id:'area-curtiduria',nav:'Curtiduría',start:49,end:86,layoutKey:'curtiduria',deptId:'area-curtiduria'},
+    {id:'area-fmr',nav:'Formas, Moldes y Réplicas',start:87,end:129,layoutKey:'fmr',deptId:'area-fmr'},
+    {id:'area-montaje',nav:'Montaje',start:130,end:159,layoutKey:'montaje',deptId:'area-montaje'},
+    {id:'area-retoque',nav:'Retoque',start:160,end:183,layoutKey:'retoque',deptId:'area-retoque'},
+    {id:'area-bases',nav:'Bases',start:184,end:208,layoutKey:'bases',deptId:'area-bases'},
+    {id:'area-carpinteria',nav:'Carpintería / Embalaje',start:209,end:222,layoutKey:'carpinteria',deptId:'area-carpinteria'},
+    {id:'area-soldadura',nav:'Soldadura / Adaptación',start:223,end:236,layoutKey:'soldadura',deptId:'area-soldadura'},
+    {id:'area-blanqueado',nav:'Blanqueado',start:237,end:251,layoutKey:'blanqueado',deptId:'area-blanqueado'},
+    {id:'pdf-ext',nav:'Exterior / carga',start:252,end:261,layoutKey:'exterior',deptId:'area-soporte',rowIds:['SUP-EXT']},
+    {id:'pdf-erp',nav:'Oficina / BIWO',start:262,end:272,layoutKey:'erp',deptId:'area-soporte',rowIds:['SUP-ERP']},
+    {id:'pdf-bod',nav:'Bodegas',start:273,end:281,layoutKey:'bodegas',deptId:'area-soporte',rowIds:['SUP-BOD']},
+    {id:'pdf-exh',nav:'Exhibición',start:282,end:291,layoutKey:'exhibicion',deptId:'area-soporte',rowIds:['SUP-EXH']},
+    {id:'pdf-com',nav:'Comedor',start:292,end:300,layoutKey:'comedor',deptId:'area-soporte',rowIds:['SUP-COM']},
+    {id:'pdf-san',nav:'Sanitarios',start:301,end:309,layoutKey:'sanitarios',deptId:'area-soporte',rowIds:['SUP-SAN']},
+    {id:'pdf-rut',nav:'Circulaciones / rutas',start:310,end:318,layoutKey:'rutas',deptId:'area-soporte',rowIds:['SUP-CIR']},
+    {id:'pdf-res',nav:'Residuos',start:319,end:331,layoutKey:'residuos',deptId:'area-soporte',rowIds:['SUP-RES']},
+    {id:'pdf-assurance',nav:'Assurance / anexos',start:332,end:391,layoutKey:'assurance'}
   ];
+  const manualSections = PDF_MASTER_SECTIONS;
+  const htmlLayoutCache=new Map();
+  let photoMapPromise=null;
+  const auditSections = Array.isArray(window.ROCA_AUDIT_SECTIONS) ? window.ROCA_AUDIT_SECTIONS : [];
+  const normSections = Array.isArray(window.ROCA_NORM_SECTIONS) ? window.ROCA_NORM_SECTIONS : [];
 
-  const byId = new Map(data.sections.map(s => [s.id, s]));
-  const finalSections = finalOrder.map(id => byId.get(id)).filter(Boolean);
-  const compendiumExcluded = ['estado','implementacion','evidencia','editorial','areas','residuos','erp','posters','responsabilidades','documentos','internacional','legal'];
-  const compendiumSections = data.sections.filter(s => !compendiumExcluded.includes(s.id) && !s.id.startsWith('campo-'));
-  const fieldSections = Array.isArray(window.ROCA_FIELD_SECTIONS) ? window.ROCA_FIELD_SECTIONS : [];
-  let activeMode = 'final';
+  let activeMode = 'manual';
+  let activeSections = manualSections;
 
-  function buildNav(sections = finalSections){
+  function esc(v){
+    return String(v == null ? '' : v)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  }
+
+  function footer(label){
+    return '<div class="folio"><span>ROCA TAXIDERMY · MANUAL MAESTRO</span><span>'+esc(label||'')+'</span></div>';
+  }
+
+  function coverMarkup(){
+    return '<article class="paper cover-paper" data-section="portada">'+
+      '<div class="cover-kicker">ROCA TAXIDERMY · ARTE Y TRADICIÓN · DESDE 1946</div>'+
+      '<div class="cover-main"><h1>ROCA TAXIDERMY<br>Manual maestro</h1>'+
+      '<p>Operación · áreas · metodología · auditoría · criterios normativos · trazabilidad</p><div class="bronze-rule"></div></div>'+
+      '<div class="cover-bottom"><strong>MANUAL MAESTRO DE OPERACIÓN</strong>'+
+      '<span>Áreas, metodología, herramientas, materiales, evidencia y condiciones permanentes de ROCA Taxidermy.</span></div>'+
+      footer('PORTADA')+'</article>';
+  }
+
+  let pdfMasterPromise=null;
+  const SOURCE_IMAGE_PAGES=new Set([28,31,39,49,62,66,68,70,79,80,81,87,98,99,101,102,105,106,111,113,115,118,120,130,146,147,148,149,150,153,160,171,172,174,176,177,179,184,199,201,372,373,374,375,377]);
+
+  async function loadPdfMaster(){
+    if(!pdfMasterPromise){
+      pdfMasterPromise=fetch('generated/roca-391/raw-index.json',{cache:'no-store'}).then(async res=>{
+        if(!res.ok) throw new Error('PDF master index '+res.status);
+        return res.json();
+      });
+    }
+    return pdfMasterPromise;
+  }
+
+  function evaluationInsertMarkup(section){
+    if(!section.deptId) return '';
+    const dept=window.ROCA_DEPARTMENTS&&window.ROCA_DEPARTMENTS[section.deptId];
+    if(!dept) return '';
+    const allowed=Array.isArray(section.rowIds)?new Set(section.rowIds):null;
+    const rows=(Array.isArray(dept.area)?dept.area:[]).filter(r=>!allowed||allowed.has(r.id));
+    if(!rows.length) return '';
+    const rowHtml=rows.map(r=>{
+      const verify=r.verify?'<div><b>Cómo se comprueba:</b> '+esc(r.verify)+'</div>':'';
+      const data=r.data?'<div><b>Dato necesario:</b> '+esc(r.data)+'</div>':'';
+      const calc=r.calculation?'<div><b>Cálculo / comparación:</b> '+esc(r.calculation)+'</div>':'';
+      const evidence=r.evidence?'<div><b>Evidencia:</b> '+esc(r.evidence)+'</div>':'';
+      const basis=r.basis?'<div><b>Por qué / fundamento:</b> '+esc(r.basis)+'</div>':'';
+      return '<tr><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td><p>'+esc(r.text||'')+'</p>'+verify+data+calc+evidence+basis+'</td></tr>';
+    }).join('');
+    return '<article class="paper pdf-evaluation-insert" data-evaluation-for="'+esc(section.id)+'">'+
+      '<div class="page-head"><span>ROCA / '+esc(dept.code||'ÁREA')+' / EVALUACIÓN</span><span>ROCA TAXIDERMY</span></div>'+
+      '<div class="eyebrow">CÓMO DEBE ESTAR ESTA ÁREA</div>'+
+      '<h1>'+esc(dept.title)+'</h1>'+
+      '<p class="lead">Este bloque se añade al HTML del master sin sustituir ni reordenar el contenido fuente.</p>'+
+      '<div class="bronze-rule short"></div>'+
+      '<table class="pdf-evaluation-table"><thead><tr><th>Requisito</th><th>Condición y comprobación</th></tr></thead><tbody>'+rowHtml+'</tbody></table>'+
+      footer('EVALUACIÓN · '+(dept.code||''))+'</article>';
+  }
+
+  function cleanSourceLines(raw){
+    return String(raw||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean).filter(t=>
+      !/^ROCA TAXIDERMY · (MASTER INTEGRAL|PRE-CAMPO)/.test(t) &&
+      !/^\d+\s*\/\s*(325|346|367|391|474)$/.test(t) &&
+      !/^LIBRO [IVX]+\s*\//.test(t)
+    );
+  }
+
+  function sourceLineMarkup(line,index){
+    const t=String(line||'').trim();
+    if(!t) return '';
+    const upper=t===t.toUpperCase() && /[A-ZÁÉÍÓÚÑ]/.test(t);
+    const numbered=/^(0?[0-9]{1,2}[\.\s]|[A-Z]{2,5}-AREA-|TS-[0-9]+)/.test(t);
+    const field=/^(Evidencia:|Archivo \/ Evidence ID:|Evidence ID:|RESULTADO:|CIERRE)/i.test(t);
+    if(index===0) return '<div class="pdf-source-kicker">'+esc(t)+'</div>';
+    if(field) return '<div class="pdf-source-field">'+esc(t)+'</div>';
+    if(upper && t.length<95) return '<h2 class="pdf-source-section">'+esc(t)+'</h2>';
+    if(numbered) return '<p class="pdf-source-control">'+esc(t)+'</p>';
+    return '<p>'+esc(t)+'</p>';
+  }
+
+  function splitByHeadings(lines,headings){
+    const out={}; let current='intro'; out[current]=[];
+    lines.forEach(line=>{
+      const key=headings.find(h=>line===h);
+      if(key){current=key; out[current]=[];} else out[current].push(line);
+    });
+    return out;
+  }
+
+  function sourceCoverMarkup(p){
+    const lines=cleanSourceLines(p.text);
+    const iReceive=lines.indexOf('RECIBE');
+    const iDeliver=lines.indexOf('ENTREGA');
+    const iTail=lines.findIndex(x=>/^ÁREA DE TRABAJO/.test(x));
+    const title=String(p.area||lines[1]||'').toUpperCase();
+    const lead=(iReceive>1?lines.slice(2,iReceive):[]).join(' ');
+    const receives=(iReceive>=0&&iDeliver>iReceive?lines.slice(iReceive+1,iDeliver):[]).join(' ');
+    const delivers=(iDeliver>=0?lines.slice(iDeliver+1,iTail>iDeliver?iTail:lines.length):[]).join(' ');
+    return '<article class="paper pdf-native-page pdf-native-cover" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="pdf-cover-photo-gap"><span>FOTOGRAFÍA FUENTE · PENDIENTE DE INTEGRAR COMO ASSET HTML</span></div>'+
+      '<div class="pdf-cover-overlay">'+
+        '<div class="pdf-cover-kicker">'+esc(lines[0]||p.area_code||'MÓDULO OPERATIVO')+'</div>'+
+        '<h1>'+esc(title)+'</h1><div class="pdf-cover-rule"></div>'+
+        '<p class="pdf-cover-lead">'+esc(lead)+'</p>'+
+        '<div class="pdf-cover-handoff"><div><strong>RECIBE</strong><span>'+esc(receives)+'</span></div><div><strong>ENTREGA</strong><span>'+esc(delivers)+'</span></div></div>'+
+        '<div class="pdf-cover-band">ÁREA DE TRABAJO · VERIFICACIÓN · METODOLOGÍA</div>'+
+      '</div>'+footer('MASTER · '+p.page+' / 391')+'</article>';
+  }
+
+  function sourceContentsMarkup(p){
+    const lines=cleanSourceLines(p.text);
+    const titleIndex=lines.findIndex(x=>/Contenido del módulo/i.test(x));
+    const lead=titleIndex>=0?lines[titleIndex+1]||'':'';
+    const rows=[];
+    for(let i=Math.max(titleIndex+2,0);i<lines.length;i++){
+      if(/^[0A-E]$/.test(lines[i])){
+        rows.push({key:lines[i],title:lines[i+1]||'',desc:lines[i+2]||''});
+        i+=2;
+      }
+    }
+    const note=lines.slice(Math.max(titleIndex+2,0)).find(x=>/^La gobernanza no repite/i.test(x))||'';
+    return '<article class="paper pdf-native-page pdf-contents-page" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="page-head"><span>'+esc(p.area_code||'ROCA')+'</span><span>'+esc(p.page)+' / 391</span></div>'+
+      '<h1>Contenido del módulo</h1><div class="bronze-rule short"></div><p class="lead">'+esc(lead)+'</p>'+
+      '<div class="pdf-module-index">'+rows.map(r=>'<div class="pdf-module-row"><div class="pdf-module-key">'+esc(r.key)+'</div><div><strong>'+esc(r.title)+'</strong><span>'+esc(r.desc)+'</span></div></div>').join('')+'</div>'+
+      (note?'<div class="pdf-bottom-note">'+esc(note)+'</div>':'')+footer('MASTER · '+p.page+' / 391')+'</article>';
+  }
+
+  function sourceGovernanceMarkup(p){
+    const lines=cleanSourceLines(p.text);
+    const heads=['EQUIPO Y LÍNEA LOCAL','HANDOFF DEL ÁREA','DECISIONES / GATES','EVENTOS ERP / REGISTRO','RECURSOS CRÍTICOS','PENDIENTES DE CIERRE'];
+    const parts=splitByHeadings(lines,heads);
+    const intro=(parts.intro||[]).filter(x=>!/^(ROCA \/|GOBERNANZA DEL ÁREA|CURTIDURÍA|RECEPCIÓN|FORMAS|MONTAJE|RETOQUE|BASES|CARPINTERÍA|SOLDADURA|BLANQUEADO)/.test(x));
+    const renderList=(arr)=>'<ul>'+arr.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>';
+    const renderHandoff=(arr)=>{
+      const out=[]; for(let i=0;i<arr.length;i+=2) out.push('<div><strong>'+esc(arr[i]||'')+'</strong><span>'+esc(arr[i+1]||'')+'</span></div>');
+      return out.join('');
+    };
+    return '<article class="paper pdf-native-page pdf-governance-page" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="page-head"><span>GOBERNANZA DEL ÁREA</span><span>'+esc(p.page)+' / 391</span></div>'+
+      '<h1>'+esc(String(p.area||'').toUpperCase())+'</h1><div class="bronze-rule short"></div>'+
+      (intro.length?'<p class="lead">'+esc(intro.join(' '))+'</p>':'')+
+      '<div class="pdf-gov-top"><section><div class="pdf-mini-head">EQUIPO Y LÍNEA LOCAL</div>'+renderList(parts['EQUIPO Y LÍNEA LOCAL']||[])+'</section>'+
+      '<section class="pdf-handoff"><div class="pdf-mini-head">HANDOFF DEL ÁREA</div>'+renderHandoff(parts['HANDOFF DEL ÁREA']||[])+'</section></div>'+
+      '<div class="pdf-gov-bottom">'+
+        '<section><div class="pdf-mini-head">DECISIONES / GATES</div>'+renderList(parts['DECISIONES / GATES']||[])+'</section>'+
+        '<section><div class="pdf-mini-head blue">EVENTOS ERP / REGISTRO</div>'+renderList(parts['EVENTOS ERP / REGISTRO']||[])+'</section>'+
+        '<section><div class="pdf-mini-head green">RECURSOS CRÍTICOS</div>'+renderList(parts['RECURSOS CRÍTICOS']||[])+'</section>'+
+      '</div>'+
+      ((parts['PENDIENTES DE CIERRE']||[]).length?'<div class="pdf-pending-box"><div class="pdf-mini-head red">PENDIENTES DE CIERRE</div>'+renderList(parts['PENDIENTES DE CIERRE'])+'</div>':'')+
+      footer('MASTER · '+p.page+' / 391')+'</article>';
+  }
+
+  function sourceAreaMarkup(p){
+    const lines=cleanSourceLines(p.text);
+    const reqRx=/^[A-Z]{3}-AREA-\d{2}\b/;
+    const intro=[];
+    const reqs=[]; let current=null;
+    lines.forEach(line=>{
+      if(reqRx.test(line)){
+        if(current) reqs.push(current);
+        const m=line.match(/^([A-Z]{3}-AREA-\d{2})\s*(.*)$/);
+        current={id:m?m[1]:'',label:m?m[2]:'',text:[]};
+      }else if(current && !/^EVIDENCIA PARA CIERRE/.test(line)) current.text.push(line);
+      else if(!current) intro.push(line);
+    });
+    if(current) reqs.push(current);
+    const evidenceAt=lines.findIndex(x=>/^EVIDENCIA PARA CIERRE/.test(x));
+    const evidence=evidenceAt>=0?lines.slice(evidenceAt+1).join(' '):'';
+    return '<article class="paper pdf-native-page pdf-area-page" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="page-head"><span>'+esc(p.area_code||'ÁREA')+' / ÁREA DE TRABAJO</span><span>'+esc(p.page)+' / 391</span></div>'+
+      '<h1>'+esc(intro.find(x=>/^Área de trabajo/.test(x))||'Área de trabajo')+'</h1>'+
+      '<p class="lead">'+esc(intro.find(x=>/^Cómo debe quedar/.test(x))||'')+'</p><div class="bronze-rule short"></div>'+
+      '<div class="pdf-requirements">'+reqs.map(r=>'<section class="pdf-requirement"><div class="pdf-req-id">'+esc(r.id)+'</div><div><h3>'+esc(r.label)+'</h3><p>'+esc(r.text.join(' '))+'</p></div></section>').join('')+'</div>'+
+      (evidence?'<div class="pdf-evidence-principle"><strong>EVIDENCIA PARA CIERRE</strong><span>'+esc(evidence)+'</span></div>':'')+
+      footer('MASTER · '+p.page+' / 391')+'</article>';
+  }
+
+  function sourceVerificationMarkup(p){
+    const lines=cleanSourceLines(p.text);
+    const items=[]; let current=null;
+    lines.forEach(line=>{
+      if(/^TS-\d+\b/.test(line)){
+        if(current) items.push(current);
+        const m=line.match(/^(TS-\d+)\s*(.*)$/); current={id:m[1],title:m[2],text:[],evidence:''};
+      }else if(current && /^Evidencia:/i.test(line)){current.evidence=line;}
+      else if(current){current.text.push(line);}
+    });
+    if(current) items.push(current);
+    const sub=lines.find(x=>/^Verificación del área/.test(x))||'Verificación del área';
+    return '<article class="paper pdf-native-page pdf-verification-page" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="page-head"><span>'+esc(p.area_code||'ÁREA')+' / VERIFICACIÓN</span><span>'+esc(p.page)+' / 391</span></div>'+
+      '<h1>'+esc(sub)+'</h1><p class="lead">La auditoría confirma la implementación de estándares ya definidos. No crea un estándar nuevo.</p>'+
+      '<div class="pdf-status-key">C = Conforme &nbsp;&nbsp; NC = No conforme &nbsp;&nbsp; NA = No aplica (justificar) &nbsp;&nbsp; NV = No verificado</div>'+
+      '<div class="pdf-verify-list">'+items.map(it=>'<section class="pdf-verify-row"><div class="pdf-verify-head"><strong>'+esc(it.id+' '+it.title.replace(/□.*$/,''))+'</strong><span>□ C &nbsp; □ NC &nbsp; □ NA &nbsp; □ NV</span></div><p>'+esc(it.text.filter(x=>!/^RESULTADO:/.test(x)).join(' '))+'</p><div class="pdf-verify-evidence">'+esc(it.evidence||'Evidencia: __________________ Hallazgo/acción: __________________ Resp.: ______ Fecha: ______')+'</div></section>').join('')+'</div>'+
+      footer('MASTER · '+p.page+' / 391')+'</article>';
+  }
+
+  function htmlMasterPageMarkup(p){
+    const heading=String(p.heading||'');
+    if(/^MÓDULO OPERATIVO/.test(heading)) return sourceCoverMarkup(p);
+    if(/\/ CONTENIDO$/.test(heading)) return sourceContentsMarkup(p);
+    if(/\/ GOBERNANZA$/.test(heading)) return sourceGovernanceMarkup(p);
+    if(/\/ ÁREA DE TRABAJO$/.test(heading)) return sourceAreaMarkup(p);
+    if(/\/ VERIFICACIÓN$/.test(heading)) return sourceVerificationMarkup(p);
+    const lines=cleanSourceLines(p.text);
+    const mediaGap=SOURCE_IMAGE_PAGES.has(Number(p.page))
+      ? '<div class="pdf-source-media-gap"><strong>FOTOGRAFÍA / VISUAL DEL MASTER</strong><span>Asset del PDF fuente pendiente de insertar como imagen HTML.</span></div>'
+      : '';
+    return '<article class="paper pdf-native-page" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="page-head"><span>'+esc(p.area_code||'ROCA')+' · MASTER INTEGRAL</span><span>'+esc(p.page)+' / 391</span></div>'+
+      '<div class="pdf-native-heading">'+esc(heading||lines[0]||'')+'</div>'+
+      mediaGap+
+      '<div class="pdf-native-body">'+lines.filter((line,i)=>!(i===0&&line===heading)).map(sourceLineMarkup).join('')+'</div>'+
+      footer('MASTER · '+p.page+' / 391')+
+      '</article>';
+  }
+
+  async function pdfReplicaMarkup(section){
+    const master=await loadPdfMaster();
+    const pages=(Array.isArray(master.pages)?master.pages:[]).filter(p=>p.page>=section.start&&p.page<=section.end);
+    return '<section class="pdf-native-section" data-section="'+esc(section.id)+'">'+
+      pages.map(htmlMasterPageMarkup).join('')+
+      evaluationInsertMarkup(section)+
+      '</section>';
+  }
+
+  async function renderPdfReplica(section){
+    page.innerHTML='<div class="pdf-loading">Construyendo HTML del master…</div>';
+    try{
+      page.innerHTML=await pdfReplicaMarkup(section);
+      document.title='ROCA TAXIDERMY · Manual maestro · '+(section.nav||'');
+      markActive(section.id);
+    }catch(err){
+      page.innerHTML='<article class="paper"><h1>No se pudo cargar el HTML del master</h1><p>'+esc(err.message||String(err))+'</p></article>';
+      markActive(section.id);
+    }
+  }
+
+  function departmentMarkup(section){
+    const dept = window.ROCA_DEPARTMENTS && window.ROCA_DEPARTMENTS[section && section.id];
+    if(!dept) return '';
+
+    const specificAreaRows=(dept.area||[]).map(r=>{
+      const details=[
+        r.verify?'<p><strong>Cómo se comprueba:</strong> '+esc(r.verify)+'</p>':'',
+        r.data?'<p><strong>Dato necesario:</strong> '+esc(r.data)+'</p>':'',
+        r.calculation?'<p><strong>Cálculo / comparación:</strong> '+esc(r.calculation)+'</p>':'',
+        r.evidence?'<p><strong>Evidencia:</strong> '+esc(r.evidence)+'</p>':'',
+        r.basis?'<details><summary>Fundamento</summary><p>'+esc(r.basis)+'</p></details>':''
+      ].join('');
+      return '<tr><td><strong>'+esc(r.id)+'</strong><br><small>'+esc(r.label||'')+'</small></td><td><p>'+esc(r.text)+'</p>'+details+'</td></tr>';
+    }).join('');
+    const areaRows=specificAreaRows;
+    const stages=(dept.method?.stages||[]).map(r=>
+      '<section class="method-stage"><h3>'+esc(r.id)+' · '+esc(r.title)+'</h3><p>'+esc(r.text)+'</p></section>'
+    ).join('');
+    const branches=(dept.method?.branches||[]).map(r=>
+      '<div class="callout"><strong>'+esc(r.title)+':</strong> '+esc(r.text)+'</div>'
+    ).join('');
+    const controls=(dept.method?.controls||[]).map(r=>'<li><strong>'+esc(r.id)+':</strong> '+esc(r.text)+'</li>').join('');
+    const tools=(dept.tools||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const consumables=(dept.consumables||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const evidence=(dept.evidence||[]).map(r=>
+      '<tr><td><strong>'+esc(r.id)+'</strong></td><td>'+esc(r.text)+'</td><td>'+esc(r.placement)+'</td></tr>'
+    ).join('');
+    const people=(dept.people||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const entryInputs=(dept.entryInputs||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const entryStops=(dept.entryStops||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const exitCriteria=(dept.exitCriteria||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const toolCare=(dept.toolCare||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const competencies=(dept.competencies||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const controlRecords=(dept.controlRecords||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+    const materialFlow=(dept.materialFlow||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+
+    const governance = (people||entryInputs||entryStops||exitCriteria)
+      ? '<section class="department-block"><div class="eyebrow">00 · CONTEXTO OPERATIVO</div><h2>Equipo, entrada y salida</h2>'+
+        (people?'<h3>Equipo conocido</h3><ul>'+people+'</ul>':'')+
+        (entryInputs?'<h3>Debe llegar con</h3><ul>'+entryInputs+'</ul>':'')+
+        (entryStops?'<h3>Detener o devolver cuando</h3><ul>'+entryStops+'</ul>':'')+
+        (exitCriteria?'<h3>Condición de salida</h3><ul>'+exitCriteria+'</ul>':'')+
+        '</section>' : '';
+
+    const operations = (toolCare||competencies||controlRecords||materialFlow)
+      ? '<section class="department-two-col">'+
+        (toolCare?'<section class="department-block"><div class="eyebrow">05 · CUIDADO DE HERRAMIENTA</div><h2>Condición de uso</h2><ul>'+toolCare+'</ul></section>':'')+
+        (competencies?'<section class="department-block"><div class="eyebrow">06 · PERSONAS / COMPETENCIA</div><h2>Operaciones que requieren autorización</h2><ul>'+competencies+'</ul></section>':'')+
+        (controlRecords?'<section class="department-block"><div class="eyebrow">07 · CONTROL / REGISTROS</div><h2>Qué debe mantenerse ligado a la pieza</h2><ul>'+controlRecords+'</ul></section>':'')+
+        (materialFlow?'<section class="department-block"><div class="eyebrow">08 · FLUJO DE MATERIAL</div><h2>Qué se registra por tarea</h2><ul>'+materialFlow+'</ul></section>':'')+
+        '</section>' : '';
+
+    return '<section class="department-canonical">'+
+      '<div class="department-purpose"><div class="eyebrow">DEPARTAMENTO</div><h2>'+esc(dept.title)+'</h2><p>'+esc(dept.purpose)+'</p>'+
+      '<div class="department-handoff"><span><strong>Recibe de:</strong> '+esc(dept.receivesFrom||'—')+'</span><span><strong>Entrega a:</strong> '+esc(dept.handsOffTo||'—')+'</span></div></div>'+
+      governance+
+      '<section class="department-block"><div class="eyebrow">01 · ÁREA DE TRABAJO</div><h2>Cómo debe estar '+esc(dept.title)+'</h2>'+
+      '<p class="source-note">La tabla integra las condiciones específicas del departamento y los controles físicos transversales que le aplican.</p>'+
+      '<table><thead><tr><th>ID</th><th>Condición permanente</th></tr></thead><tbody>'+areaRows+'</tbody></table></section>'+
+      '<section class="department-block"><div class="eyebrow">02 · METODOLOGÍA</div><h2>Cómo se trabaja</h2>'+
+      '<p class="flow-line">'+esc(dept.method?.flow||'')+'</p>'+branches+stages+
+      '<h3>Controles que viajan con el proceso</h3><ul>'+controls+'</ul></section>'+
+      '<section class="department-two-col">'+
+        '<section class="department-block"><div class="eyebrow">03 · HERRAMIENTAS / EQUIPO</div><h2>Qué usa '+esc(dept.title)+'</h2><ul>'+tools+'</ul></section>'+
+        '<section class="department-block"><div class="eyebrow">04 · CONSUMIBLES / MATERIALES</div><h2>Qué entra al proceso</h2><ul>'+consumables+'</ul></section>'+
+      '</section>'+
+      operations+
+      '<section class="department-block"><div class="eyebrow">09 · EVIDENCIA</div><h2>Evidencia de referencia</h2>'+
+      '<table><thead><tr><th>ID</th><th>Qué demuestra</th><th>Ubicación</th></tr></thead><tbody>'+evidence+'</tbody></table></section>'+
+      '</section>';
+  }
+
+  function sectionMarkup(section){
+    const posters = section.posters ? section.posters.map(([name,items]) =>
+      '<section class="poster"><div class="poster-sub">ROCA · condición de área</div><h2>'+esc(name)+'</h2><ol>'+
+      items.map(x=>'<li>'+x+'</li>').join('')+'</ol></section>'
+    ).join('') : '';
+    return '<article class="paper master-paper" data-section="'+esc(section.id)+'">'+
+      '<div class="page-head"><span>'+esc(section.eyebrow||'ROCA / MANUAL MAESTRO')+'</span><span>ROCA TAXIDERMY</span></div>'+
+      '<div class="eyebrow">'+esc(section.eyebrow||'')+'</div>'+
+      '<h1>'+esc(section.title||section.nav||section.id)+'</h1>'+
+      '<p class="lead">'+esc(section.lead||'')+'</p><div class="bronze-rule short"></div>'+
+      '<div class="master-content">'+((window.ROCA_DEPARTMENTS&&window.ROCA_DEPARTMENTS[section.id])?departmentMarkup(section):(section.body||''))+posters+'</div>'+
+      footer(section.nav ? String(section.nav).toUpperCase() : '')+'</article>';
+  }
+
+  function buildNav(sections){
     nav.innerHTML='';
-    const cover = document.createElement('button');
-    cover.textContent='00  Portada';
-    cover.dataset.id='portada';
-    cover.addEventListener('click',()=>go('portada', sections));
-    nav.appendChild(cover);
-    sections.forEach((section, i) => {
-      const b = document.createElement('button');
-      b.textContent = `${String(i+1).padStart(2,'0')}  ${section.nav}`;
-      b.dataset.id = section.id;
-      b.addEventListener('click', () => go(section.id, sections));
+    sections.forEach((section,i)=>{
+      const b=document.createElement('button');
+      b.type='button'; b.dataset.id=section.id;
+      b.textContent=String(i+1).padStart(2,'0')+'  '+section.nav;
+      b.addEventListener('click',()=>go(section.id));
       nav.appendChild(b);
     });
   }
 
-  function footer(label){
-    return `<div class="folio"><span>ROCA TAXIDERMY · DOCUMENTO MAESTRO · EDICIÓN DE TRABAJO</span><span>${label || ''}</span></div>`;
+  function markActive(id){
+    nav.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x.dataset.id===id));
+    page.focus({preventScroll:true});
+    window.scrollTo({top:0,left:0,behavior:'auto'});
+    document.dispatchEvent(new CustomEvent('roca:sectionchange',{detail:{id,mode:activeMode}}));
   }
 
-  function coverMarkup(){
-    return `<article class="paper cover-paper" data-section="portada">
-      <div class="cover-kicker">ROCA TAXIDERMY · ARTE Y TRADICIÓN · DESDE 1946</div>
-      <div class="cover-main">
-        <h1>ROCA TAXIDERMY<br>Documento maestro</h1>
-        <p>Empresa · personas · taller · procesos · normas · machotes · heritage</p>
-        <div class="bronze-rule"></div>
-      </div>
-      <div class="cover-bottom">
-        <strong>EDICIÓN DE TRABAJO · PRE-CIERRE</strong>
-        <span>La lectura final resume ROCA; Drive conserva el respaldo integral y la evidencia de cada caso.</span>
-      </div>
-      ${footer('PORTADA')}
-    </article>`;
-  }
-
-  function sectionMarkup(section){
-    const posters = section.posters ? section.posters.map(([name, items]) => `
-      <section class="poster"><div class="poster-sub">ROCA · condición de área</div><h2>${name}</h2><ol>${items.map(x=>`<li>${x}</li>`).join('')}</ol></section>`).join('') : '';
-    return `<article class="paper master-paper" data-section="${section.id}">
-      <div class="page-head"><span>${section.eyebrow || 'ROCA / DOCUMENTO MAESTRO'}</span><span>ROCA TAXIDERMY</span></div>
-      <div class="eyebrow">${section.eyebrow || ''}</div>
-      <h1>${section.title}</h1>
-      <p class="lead">${section.lead || ''}</p>
-      <div class="bronze-rule short"></div>
-      <div class="master-content">${section.body||''}${posters}</div>
-      ${footer(section.nav ? section.nav.toUpperCase() : '')}
-    </article>`;
+  async function afterRender(section){
+    if(activeMode==='audit' && typeof window.ROCA_AUDIT_ENHANCE==='function') await window.ROCA_AUDIT_ENHANCE(section.id);
+    if(activeMode==='norms' && typeof window.ROCA_NORMS_ENHANCE==='function') await window.ROCA_NORMS_ENHANCE(section.id);
   }
 
   function renderCover(){
-    page.innerHTML = coverMarkup();
-    document.title='ROCA TAXIDERMY · Documento maestro';
+    page.innerHTML=coverMarkup();
+    document.title='ROCA TAXIDERMY · Manual maestro';
     markActive('portada');
   }
 
   function render(section){
-    page.innerHTML = sectionMarkup(section);
-    document.title = `${section.nav} · ROCA TAXIDERMY`;
+    page.innerHTML=sectionMarkup(section);
+    document.title=(section.nav||section.title)+' · ROCA TAXIDERMY';
     markActive(section.id);
+    afterRender(section);
   }
 
-  function markActive(id){
-    document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.id===id));
-    page.focus({preventScroll:true});
-    window.scrollTo({top:0,left:0,behavior:'auto'});
+  function go(id){
+    const target=activeSections.find(s=>s.id===id) || activeSections[0];
+    if(!target){ return; }
+    history.replaceState(null,'','#'+target.id);
+    if(activeMode==='manual') renderPdfReplica(target);
+    else render(target);
   }
 
-  function go(id, sections = finalSections){
-    if(id==='portada' || !id){
-      history.replaceState(null,'','#portada');
-      renderCover();
+  function setMode(mode){
+    activeMode=mode;
+    document.body.classList.remove('audit-mode','norms-mode');
+    [manualMode,auditMode,normsMode].forEach(b=>b && b.classList.remove('active'));
+
+    if(mode==='audit'){
+      activeSections=auditSections;
+      document.body.classList.add('audit-mode');
+      auditMode.classList.add('active');
+      contentsPane.querySelector('.contents-title').textContent='Auditoría';
+      contentsPane.querySelector('.rule-note').textContent='Verifica dentro del mismo HTML. Una brecha real pasa a IMPLEMENTAR; el criterio fijo permanece en el manual.';
+    }else if(mode==='norms'){
+      activeSections=normSections;
+      document.body.classList.add('norms-mode');
+      normsMode.classList.add('active');
+      contentsPane.querySelector('.contents-title').textContent='Bibliografía';
+      contentsPane.querySelector('.rule-note').textContent='Base normativa, aplicabilidad y criterio vigente. Los PDF visibles corresponden únicamente a normas o fuentes oficiales.';
+    }else{
+      activeMode='manual';
+      activeSections=manualSections;
+      manualMode.classList.add('active');
+      contentsPane.querySelector('.contents-title').textContent='Manual ROCA · HTML';
+      contentsPane.querySelector('.rule-note').textContent='El PDF maestro se convierte a HTML y esa es la UI visible. Se conserva su secuencia editorial y se enriquecen sólo los requisitos/evaluaciones que correspondan.';
+    }
+    buildNav(activeSections);
+    go(mode==='manual' ? 'portada' : (activeSections[0] && activeSections[0].id));
+  }
+
+  function parseCSV(text){
+    const rows=[]; let row=[],field='',quoted=false;
+    for(let i=0;i<text.length;i++){
+      const ch=text[i];
+      if(ch==='"'){
+        if(quoted && text[i+1]==='"'){field+='"';i++;}
+        else quoted=!quoted;
+      }else if(ch===','&&!quoted){
+        row.push(field);field='';
+      }else if((ch==='\n'||ch==='\r')&&!quoted){
+        if(ch==='\r'&&text[i+1]==='\n')i++;
+        row.push(field);field='';
+        if(row.some(v=>v!==''))rows.push(row);
+        row=[];
+      }else field+=ch;
+    }
+    if(field||row.length){row.push(field);if(row.some(v=>v!==''))rows.push(row);}
+    if(!rows.length)return[];
+    const head=rows.shift();
+    return rows.map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]||''])));
+  }
+
+  async function refreshPrintGate(){
+    try{
+      const [baselineRes,normRes,implementationRes,holdRes]=await Promise.all([
+        fetch('ops/control/ROCA_DEPARTMENT_BASELINE_V1.csv',{cache:'no-store'}),
+        fetch('ops/assurance/ROCA_NORMATIVE_APPLICABILITY_V1.csv',{cache:'no-store'}),
+        fetch('ops/control/ROCA_IMPLEMENTATION_ACTION_REGISTER_V1.csv',{cache:'no-store'}),
+        fetch('ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv',{cache:'no-store'})
+      ]);
+      if(!baselineRes.ok) throw new Error('baseline '+baselineRes.status);
+      if(!normRes.ok) throw new Error('normative '+normRes.status);
+      if(!implementationRes.ok) throw new Error('implementation '+implementationRes.status);
+      if(!holdRes.ok) throw new Error('holds '+holdRes.status);
+
+      const baselineRows=parseCSV(await baselineRes.text());
+      const normRows=parseCSV(await normRes.text());
+      const implementationRows=parseCSV(await implementationRes.text());
+      const holdRows=parseCSV(await holdRes.text());
+
+      const openDepartments=baselineRows.filter(r=>String(r.baseline_status||'').toUpperCase()!=='FROZEN');
+      const frozenMetadataErrors=baselineRows.filter(r=>{
+        if(String(r.baseline_status||'').toUpperCase()!=='FROZEN') return false;
+        return !String(r.baseline_version||'').trim() || !String(r.captured_date||'').trim() || !String(r.frozen_date||'').trim();
+      });
+      const auditOpen=[];
+      if(window.ROCA_AUDIT_ENGINE){
+        baselineRows.forEach(r=>{
+          if(String(r.baseline_status||'').toUpperCase()!=='FROZEN') return;
+          const criteria=window.ROCA_AUDIT_ENGINE.criteriaForArea(r.department_id);
+          const state=window.ROCA_AUDIT_ENGINE.loadState(r.department_id);
+          const open=criteria.filter(x=>{
+            const v=state[x.id]||{};
+            const status=String(v.status||'NOT_VERIFIED').toUpperCase();
+            const terminal=['CONFORMING','NA_JUSTIFIED'].includes(status);
+            const evidenceValid=typeof window.ROCA_AUDIT_ENGINE.closureDetailValid==='function'
+              ? window.ROCA_AUDIT_ENGINE.closureDetailValid(status,v.note)
+              : (status==='NOT_VERIFIED'||Boolean(String(v.note||'').trim()));
+            return !(terminal&&evidenceValid);
+          });
+          if(open.length) auditOpen.push({department_id:r.department_id,count:open.length});
+        });
+      }else if(baselineRows.some(r=>String(r.baseline_status||'').toUpperCase()==='FROZEN')){
+        throw new Error('audit engine unavailable');
+      }
+
+      const openImplementation=implementationRows.filter(r=>!['CLOSED','CANCELLED'].includes(String(r.status||'').toUpperCase()));
+      const openHolds=holdRows.filter(r=>!['CLOSED','CANCELLED'].includes(String(r.status||'').toUpperCase()));
+      const terminalNormStates=new Set(['VERIFIED','JUSTIFIED_NA']);
+      const openNorms=normRows.filter(r=>!terminalNormStates.has(String(r.status||'').toUpperCase()));
+
+      const departmentsReady=baselineRows.length>0 && openDepartments.length===0 && frozenMetadataErrors.length===0 && auditOpen.length===0;
+      const implementationReady=openImplementation.length===0 && openHolds.length===0;
+      const normsReady=normRows.length>0 && openNorms.length===0;
+      const ready=departmentsReady && implementationReady && normsReady;
+
+      printDoc.disabled=!ready;
+      printDoc.textContent=ready?'IMPRIMIR / PDF':'IMPRESIÓN FINAL · BLOQUEADA';
+
+      if(printGateNote){
+        if(ready){
+          printGateNote.textContent='Manual liberado para impresión.';
+        }else{
+          const parts=[];
+          if(openDepartments.length) parts.push(openDepartments.length+' departamento'+(openDepartments.length===1?'':'s')+' sin congelar');
+          if(frozenMetadataErrors.length) parts.push(frozenMetadataErrors.length+' línea'+(frozenMetadataErrors.length===1?'':'s')+' base congelada'+(frozenMetadataErrors.length===1?'':'s')+' sin metadata de cierre');
+          if(auditOpen.length) parts.push(auditOpen.reduce((n,x)=>n+x.count,0)+' criterio'+(auditOpen.reduce((n,x)=>n+x.count,0)===1?'':'s')+' de auditoría sin cierre');
+          if(openImplementation.length) parts.push(openImplementation.length+' acción'+(openImplementation.length===1?'':'es')+' de IMPLEMENTAR abierta'+(openImplementation.length===1?'':'s'));
+          if(openHolds.length) parts.push(openHolds.length+' HOLD técnico'+(openHolds.length===1?'':'s')+' abierto'+(openHolds.length===1?'':'s'));
+          if(openNorms.length) parts.push(openNorms.length+' requisito'+(openNorms.length===1?'':'s')+' normativo'+(openNorms.length===1?'':'s')+' sin cierre');
+          printGateNote.textContent=parts.join(' · ')+'.';
+        }
+      }
+      return {ready,openDepartments,frozenMetadataErrors,auditOpen,openImplementation,openHolds,openNorms};
+    }catch(err){
+      printDoc.disabled=true;
+      printDoc.textContent='IMPRESIÓN FINAL · BLOQUEADA';
+      if(printGateNote)printGateNote.textContent='No se pudo validar el cierre editorial, de auditoría, implementación, HOLD y normativo.';
+      return {ready:false,openDepartments:[],frozenMetadataErrors:[],auditOpen:[],openImplementation:[],openHolds:[],openNorms:[]};
+    }
+  }
+
+  function normStatusLabel(value){
+    const key=String(value||'').toUpperCase();
+    return ({
+      VERIFIED:'VERIFICADO',
+      JUSTIFIED_NA:'NO APLICA — JUSTIFICADO',
+      NOT_CHECKED:'NO VERIFICADO',
+      PARTIAL:'PARCIAL',
+      APPLICABILITY_PENDING:'APLICABILIDAD POR CONFIRMAR'
+    })[key]||key.replaceAll('_',' ');
+  }
+
+  function applicabilityLabel(value){
+    const key=String(value||'').toUpperCase();
+    return ({
+      CORE:'APLICA',
+      CORE_CANDIDATE:'APLICABILIDAD A CONFIRMAR',
+      CONDITIONAL:'CONDICIONAL',
+      NOT_APPLICABLE:'NO APLICA'
+    })[key]||key.replaceAll('_',' ');
+  }
+
+  async function buildNormativePrintMarkup(){
+    const res=await fetch('ops/assurance/ROCA_NORMATIVE_APPLICABILITY_V1.csv',{cache:'no-store'});
+    if(!res.ok) throw new Error('normative '+res.status);
+    const rows=parseCSV(await res.text());
+    const chunks=[];
+    for(let i=0;i<rows.length;i+=10) chunks.push(rows.slice(i,i+10));
+
+    const intro='<article class="paper master-paper" data-section="bibliografia">'+
+      '<div class="page-head"><span>BIBLIOGRAFÍA · FUNDAMENTO NORMATIVO</span><span>ROCA TAXIDERMY</span></div>'+
+      '<div class="eyebrow">Bibliografía · aplicabilidad y criterio</div>'+
+      '<h1>Fundamento normativo</h1>'+
+      '<p class="lead">Esta sección conserva las referencias externas que respaldan criterios del manual. La operación se ejecuta desde cada libro de área; aquí se documenta la referencia, su aplicabilidad y el resultado que debe producir en ROCA.</p>'+
+      '<div class="bronze-rule short"></div>'+
+      '<div class="master-content"><div class="callout">La inclusión de una referencia no equivale por sí sola a declarar cumplimiento. Cada requisito debe cerrar como VERIFIED o JUSTIFIED_NA antes de liberar la impresión final.</div></div>'+
+      footer('BIBLIOGRAFÍA')+'</article>';
+
+    const pages=chunks.map((chunk,index)=>
+      '<article class="paper master-paper normative-print-page" data-section="bibliografia-'+(index+1)+'">'+
+      '<div class="page-head"><span>BIBLIOGRAFÍA · '+esc(String(index+1).padStart(2,'0'))+'</span><span>ROCA TAXIDERMY</span></div>'+
+      '<div class="eyebrow">Referencias aplicables</div>'+
+      '<h1>'+(index===0?'Matriz normativa':'Matriz normativa · continuación')+'</h1>'+
+      '<div class="master-content"><table><thead><tr><th>Referencia</th><th>Tema</th><th>Aplicabilidad</th><th>Criterio / salida ROCA</th><th>Estado</th></tr></thead><tbody>'+
+      chunk.map(r=>'<tr><td><strong>'+esc(r.reference||r.req_id)+'</strong></td><td>'+esc(r.title)+'</td><td>'+esc(applicabilityLabel(r.applicability_class))+'</td><td>'+esc(r.roca_output)+'</td><td>'+esc(normStatusLabel(r.status))+(r.official_source?' · <a target="_blank" rel="noopener" href="'+esc(r.official_source)+'">fuente oficial</a>':'')+'</td></tr>').join('')+
+      '</tbody></table></div>'+footer('BIBLIOGRAFÍA')+'</article>'
+    ).join('');
+
+    return intro+pages;
+  }
+
+  async function renderAllForPrint(){
+    if(activeMode!=='manual'){
+      page.innerHTML=activeSections.map(sectionMarkup).join('');
+      document.title='ROCA TAXIDERMY · '+(activeMode==='audit'?'Auditoría':'Bibliografía');
       return;
     }
-    const target = sections.find(s=>s.id===id);
-    if(!target){ renderCover(); return; }
-    if(location.hash.slice(1)!==target.id) history.replaceState(null,'',`#${target.id}`);
-    render(target);
+
+    const replicaPages=await Promise.all(manualSections.map(pdfReplicaMarkup));
+    page.innerHTML=replicaPages.join('');
+    document.title='ROCA TAXIDERMY · Réplica del PDF maestro';
   }
 
-  function showFinal(){
-    activeMode='final';
-    document.body.classList.remove('notes-mode','print-all-mode','compendium-mode','field-mode');
-    finalMode.classList.add('active');
-    if(compendiumMode) compendiumMode.classList.remove('active');
-    if(fieldMode) fieldMode.classList.remove('active');
-    notesMode.classList.remove('active');
-    contentsPane.querySelector('.contents-title').textContent='Documento maestro';
-    contentsPane.querySelector('.rule-note').textContent='Recap esencial de ROCA TAXIDERMY. El respaldo profundo, originales y evidencia de cada caso permanecen fuera de esta lectura.';
-    buildNav(finalSections);
-    go(location.hash.slice(1)||'portada', finalSections);
-  }
-
-  function showCompendium(){
-    activeMode='compendium';
-    document.body.classList.remove('notes-mode','print-all-mode','field-mode');
-    document.body.classList.add('compendium-mode');
-    finalMode.classList.remove('active');
-    if(compendiumMode) compendiumMode.classList.add('active');
-    if(fieldMode) fieldMode.classList.remove('active');
-    notesMode.classList.remove('active');
-    contentsPane.querySelector('.contents-title').textContent='Compendio completo';
-    contentsPane.querySelector('.rule-note').textContent='Vista de trabajo: conserva contenido sustantivo y agrega los libros integrales V2. La autoridad se decide por tema y fuente; ningún PDF o HTML histórico manda globalmente.';
-    buildNav(compendiumSections);
-    go(location.hash.slice(1)||'portada', compendiumSections);
-  }
-
-  function showField(){
-    activeMode='field';
-    document.body.classList.remove('notes-mode','print-all-mode','compendium-mode');
-    document.body.classList.add('field-mode');
-    finalMode.classList.remove('active');
-    if(compendiumMode) compendiumMode.classList.remove('active');
-    if(fieldMode) fieldMode.classList.add('active');
-    notesMode.classList.remove('active');
-    contentsPane.querySelector('.contents-title').textContent='Cierre de campo';
-    contentsPane.querySelector('.rule-note').textContent='Vista operativa para capturar evidencia útil sin convertir el levantamiento en otro manual.';
-    buildNav(fieldSections);
-    go(location.hash.slice(1)||'campo-inicio', fieldSections);
-  }
-
-  function showNotes(){
-    activeMode='notes';
-    document.body.classList.add('notes-mode');
-    document.body.classList.remove('print-all-mode','field-mode','compendium-mode');
-    notesMode.classList.add('active');
-    finalMode.classList.remove('active');
-    if(compendiumMode) compendiumMode.classList.remove('active');
-    if(fieldMode) fieldMode.classList.remove('active');
-    contentsPane.querySelector('.contents-title').textContent='Notas para trabajo';
-    contentsPane.querySelector('.rule-note').textContent='Pendientes, evidencia, fuente maestra y validaciones que no forman parte de la lectura editorial.';
-    nav.innerHTML='';
-    page.innerHTML=`<article class="paper notes-paper">
-      <div class="page-head"><span>ROCA / NOTAS INTERNAS</span><span>NO IMPRIMIR EN FINAL</span></div>
-      <div class="eyebrow">NOTAS INTERNAS</div>
-      <h1>Lo que falta para cerrar</h1>
-      <p class="lead">Nada pasa al documento maestro como hecho cerrado sin fuente, evidencia o validación suficiente.</p>
-      <div class="bronze-rule short"></div>
-      <h2>Fuentes preservadas</h2><p>ROCA usa autoridad por tema: correcciones explícitas, entrevistas/evidencia primaria, HTML editable histórico y masters 391/367p según fortaleza. Ninguno se trata como verdad global por comodidad.</p>
-      <h2>Plano y medidas</h2><ul><li>Completar medidas dudosas y faltantes.</li><li>Puertas, vanos, pasillos, accesos, equipos fijos, tinas, drenajes, tableros, ventilación y servicios.</li></ul>
-      <h2>Fotografías / Heritage</h2><ul><li>Panorámicas por área y estaciones.</li><li>Personas, herramientas, oficio, almacenamiento, residuos, químicos, rutas, extintores y equipos críticos.</li></ul>
-      <h2>Documentos / cumplimiento</h2><ul><li>Preservar documentos base, controlar normas/estándares por versión y aplicabilidad, y cerrar licencias/permisos reales.</li><li>Conservar machotes útiles para decisiones; mantener evidencia real de cada caso en Drive/BIWO.</li></ul>
-      ${footer('NOTAS')}
-    </article>`;
-    document.title='Notas · ROCA TAXIDERMY';
-    window.scrollTo({top:0,left:0,behavior:'auto'});
-  }
-
-  function renderAllForPrint(sections){
-    document.body.classList.remove('notes-mode','field-mode','compendium-mode');
-    document.body.classList.add('print-all-mode');
-    page.innerHTML = coverMarkup() + sections.map(sectionMarkup).join('');
-    document.title='ROCA TAXIDERMY · Documento maestro';
-  }
-
-  finalMode.addEventListener('click',showFinal);
-  if(compendiumMode) compendiumMode.addEventListener('click',showCompendium);
-  if(fieldMode) fieldMode.addEventListener('click',showField);
-  notesMode.addEventListener('click',showNotes);
-  printDoc.addEventListener('click',()=>{
-    const printSections = activeMode==='compendium' ? compendiumSections : activeMode==='field' ? fieldSections : finalSections;
-    const returnMode = activeMode;
-    renderAllForPrint(printSections);
-    setTimeout(()=>{
-      window.print();
-      setTimeout(()=> returnMode==='compendium' ? showCompendium() : returnMode==='field' ? showField() : showFinal(),150);
-    },80);
+  manualMode.addEventListener('click',()=>setMode('manual'));
+  auditMode.addEventListener('click',()=>setMode('audit'));
+  normsMode.addEventListener('click',()=>setMode('norms'));
+  printDoc.addEventListener('click',async()=>{
+    const gate=await refreshPrintGate();
+    if(!gate.ready) return;
+    const mode=activeMode;
+    try{
+      await renderAllForPrint();
+      setTimeout(()=>{ window.print(); setTimeout(()=>{setMode(mode);refreshPrintGate();},120); },80);
+    }catch(err){
+      if(printGateNote) printGateNote.textContent='No se pudo preparar la Bibliografía para impresión.';
+    }
   });
-  window.addEventListener('hashchange',()=>{ if(!document.body.classList.contains('notes-mode') && !document.body.classList.contains('print-all-mode')) go(location.hash.slice(1), activeMode==='compendium' ? compendiumSections : activeMode==='field' ? fieldSections : finalSections); });
-  showFinal();
+  window.addEventListener('hashchange',()=>{
+    const id=location.hash.slice(1);
+    if(id) go(id);
+  });
+
+  const requestedMode=new URLSearchParams(location.search).get('mode');
+  const initialMode=['manual','audit','norms'].includes(requestedMode)?requestedMode:'manual';
+  const requestedSection=location.hash.slice(1);
+  setMode(initialMode);
+  if(requestedSection&&activeSections.some(s=>s.id===requestedSection)) go(requestedSection);
+  refreshPrintGate();
 })();

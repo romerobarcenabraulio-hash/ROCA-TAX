@@ -1,0 +1,7 @@
+item_id,domain,risk_class,status,owner_check,independent_check,source_integrity,determinism,cross_system,artifact_check,blocker_note
+DL-MASTER-LOCK,compliance-source-integrity,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,
+DL-GATE-SYNC,compliance-derived-ledger,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,
+DL-MODULE-HEALTH,compliance-derived-ledger,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,
+DL-MODULE-ADMISSION,compliance-derived-ledger,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,
+DL-SLP-ENV-SOURCE-GATE,environmental-source-integrity,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,
+DL-SLP-MUN-SOURCE-GATE,municipal-source-integrity,R1_CRITICAL,VERIFIED,Y,Y,Y,Y,Y,Y,

@@ -1,0 +1,79 @@
+{
+  "schema": "ROCA_PR6_RELEASE_GATE_V3",
+  "checked_on": "2026-10-02",
+  "pr": 6,
+  "branch": "codex/roca-source-reader",
+  "tested_head": "584f1d7d4ed5cb40a4a63a61646da96299ed41b3",
+  "scope": "PR #6 source-reader + audit/implementation + Tuesday execution instruments + consolidated evidence packets. Does not establish physical/legal compliance.",
+  "canonical_master": {
+    "rows": 4469,
+    "sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c"
+  },
+  "current_head_checks": {
+    "audit_architecture": {
+      "status": "PASS",
+      "run_id": 37071421385
+    },
+    "audit_implementation_integrity": {
+      "status": "PASS",
+      "run_id": 37071421324
+    },
+    "derived_ledger_integrity": {
+      "status": "PASS",
+      "run_id": 37071421399
+    },
+    "browser_qa": {
+      "status": "PASS",
+      "run_id": 37071421338
+    },
+    "browser_visual_qa": {
+      "status": "PASS",
+      "run_id": 37071421307
+    }
+  },
+  "tuesday_execution_gate": {
+    "buy_master": {
+      "path": "ops/control/ROCA_BUY_MASTER_2026-10-02.csv",
+      "rows": 45,
+      "status": "SOURCE_GROUNDED_NOT_BUY_READY"
+    },
+    "tramites_master": {
+      "path": "ops/control/ROCA_TRAMITES_MASTER_2026-10-02.csv",
+      "rows": 14,
+      "status": "PACKETS_PREPARED_NOT_READY_TO_FILE"
+    },
+    "p0_fact_gate": {
+      "path": "ops/control/ROCA_TUESDAY_P0_FACTS_2026-10-02.csv",
+      "rows": 20,
+      "status": "OPEN_FACT_CAPTURE"
+    },
+    "evidence_packets": {
+      "path": "ops/control/ROCA_TUESDAY_EVIDENCE_INTAKE_2026-10-02.csv",
+      "rows": 14,
+      "status": "FIELD_CAPTURE_READY_NOT_VERIFIED"
+    }
+  },
+  "preaudit_gate": {
+    "registry_rows": 106,
+    "r1_critical": 73,
+    "verification_state_counts": {
+      "APPLICABILITY_PENDING": 26,
+      "NOT_CHECKED": 80
+    },
+    "deterministic_format_errors": 0,
+    "verdict": "BLOCKED — NO LIBERAR as complete/compliant"
+  },
+  "canonical_drive_permissions": {
+    "status": "R1_OPEN",
+    "checked_on": "2026-10-02",
+    "root": "anyone:writer",
+    "compliance_app_data": "anyone:writer",
+    "mitigation": "GitHub hash-locked branch + owner-only recovery snapshot remain controlled continuity sources"
+  },
+  "blockers_for_pr_release": [
+    "Remove anyone:writer from canonical Drive root and COMPLIANCE_APP_DATA; then re-read permissions and rerun source-integrity release gate."
+  ],
+  "physical_legal_completion": "BLOCKED_SEPARATELY_BY_FIELD_EVIDENCE_AND_APPLICABILITY",
+  "compliance_claim": "NOT_AUTHORIZED",
+  "verdict": "BLOCKED — NO LIBERAR"
+}

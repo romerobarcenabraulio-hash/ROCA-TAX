@@ -1,0 +1,2 @@
+asset_id,area,machine,point_of_operation_guard_ok,transmission_guard_ok,emergency_stop_if_required,accidental_start_protection,energy_isolation_points_identified,out_of_service_control,last_maintenance_date,evidence_ids,reviewer,status,notes
+MACH-001,,,,,,,,,,,,NOT_CHECKED,

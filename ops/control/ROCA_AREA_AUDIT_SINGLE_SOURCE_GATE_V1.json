@@ -1,0 +1,22 @@
+{
+  "schema": "ROCA_AREA_AUDIT_SINGLE_SOURCE_GATE_V1",
+  "date": "2026-09-30",
+  "source_of_truth": "ROCA_DEPARTMENTS[*].area[*].text",
+  "audit_metadata_role": "ROCA_DEPARTMENTS[*].areaAudit[*] supplies audit ID/evidence metadata only; it no longer defines the permanent condition.",
+  "departments": 10,
+  "checks": {
+    "ten_departments": true,
+    "area_audit_metadata_parity": true,
+    "manual_uses_area_text_for_audit": true,
+    "central_audit_uses_area_as_source": true,
+    "implementation_uses_area_as_source": true,
+    "audit_js_syntax": true,
+    "app_js_syntax": true,
+    "implementation_inline_js_syntax": true,
+    "only_nonconforming_to_implement": true
+  },
+  "passed": 9,
+  "total": 9,
+  "errors": [],
+  "verdict": "PASS"
+}

@@ -1,0 +1,40 @@
+name: ROCA Audit Implementation Integrity
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/roca-source-reader
+    paths:
+      - department-data.js
+      - area-standard-data.js
+      - audit-engine.js
+      - audit-data.js
+      - generated/roca-fast-track/implementation.html
+      - ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv
+      - ops/control/ROCA_HOLD_ROUTING_V2.csv
+      - ops/control/ROCA_BASELINE_DEFINITION_READINESS_V2.csv
+      - ops/control/ROCA_BASELINE_DEFINITION_READINESS_GATE_V2.json
+      - .github/roca-compliance-overlay/validate_audit_flow.mjs
+      - .github/workflows/roca-audit-flow-integrity.yml
+  pull_request:
+    paths:
+      - department-data.js
+      - area-standard-data.js
+      - audit-engine.js
+      - audit-data.js
+      - generated/roca-fast-track/implementation.html
+      - ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv
+      - ops/control/ROCA_HOLD_ROUTING_V2.csv
+      - ops/control/ROCA_BASELINE_DEFINITION_READINESS_V2.csv
+      - ops/control/ROCA_BASELINE_DEFINITION_READINESS_GATE_V2.json
+      - .github/roca-compliance-overlay/validate_audit_flow.mjs
+      - .github/workflows/roca-audit-flow-integrity.yml
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate audit to implementation flow
+        run: node .github/roca-compliance-overlay/validate_audit_flow.mjs

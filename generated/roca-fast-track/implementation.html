@@ -1,0 +1,390 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ROCA · Implementar</title><style>body{margin:0;font-family:Arial,sans-serif;background:#ece7de;color:#171717}header{position:sticky;top:0;z-index:5;background:#17232e;color:#fff;padding:16px 20px}header a{color:#fff}.wrap{max-width:1700px;margin:auto;padding:20px}.note{background:#fff4d8;border:1px solid #d0b46f;padding:12px;margin:0 0 14px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 14px}.filters button{border:1px solid #999;background:#fff;padding:7px 10px;cursor:pointer}.filters button.active{background:#17232e;color:#fff}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;background:#fff;font-size:12px}th,td{border:1px solid #c8c2b7;padding:8px;vertical-align:top;text-align:left}th{position:sticky;top:73px;background:#f7f4ee}.blank{color:#9a6f21;font-weight:700}.small{font-size:12px;color:#ddd}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:0 0 18px}
+.tool{background:#fff;border:1px solid #c8c2b7;padding:14px}
+.tool h2{font-size:16px;margin:0 0 8px}
+.tool label{display:block;font-size:11px;font-weight:700;margin:8px 0 4px}
+.tool input,.tool select{width:100%;box-sizing:border-box;padding:8px;border:1px solid #aaa;background:#fff}
+.result{margin-top:10px;padding:10px;background:#f3efe7;min-height:36px}
+.geometry{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.geometry td,.geometry th{border:1px solid #ccc;padding:6px;text-align:left}
+.tool-links{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.tool-links a{display:inline-block;padding:8px 10px;background:#fff;border:1px solid #999;color:#17232e;text-decoration:none}
+</style></head><body><header><b>ROCA · IMPLEMENTAR</b><div class="small">Sólo brechas reales observadas. Cuando se corrige, deja de ser pendiente. <a href="../../index.html">Volver al manual central</a></div></header><main class="wrap"><div class="note"><b>Esta vista NO forma parte del estándar permanente.</b> Aquí sólo vive el trabajo temporal necesario para corregir una desviación real del “cómo debe estar”.</div>
+<section>
+  <h1>Fast Track · cálculo y preparación</h1>
+<section class="tool">
+  <h2>Orden de ataque · instalaciones</h2>
+  <ol>
+    <li><strong>Incendio:</strong> clasificar riesgo real y clases de fuego por zona; después usar superficie P-00 + recorrido real para ubicar extintores.</li>
+    <li><strong>Evacuación:</strong> medir punto más alejado → salida → lugar seguro; comprobar puerta, apertura, obstáculos y señalización.</li>
+    <li><strong>Señalización:</strong> colocar primero marcadores provisionales; sustituirlos por señal definitiva una vez cerrada ubicación/mensaje.</li>
+    <li><strong>Iluminación:</strong> definir tarea visual por estación, medir lux exactamente en el plano de trabajo y corregir sólo donde la lectura no alcanza el nivel seleccionado.</li>
+    <li><strong>Químicos/HDS:</strong> inventario real por área → HDS → compatibilidad → almacenamiento → señalización → evidencia.</li>
+    <li><strong>Ventilación/extracción:</strong> sólo después de saber producto/proceso/exposición real; no comprar extractores por intuición.</li>
+  </ol>
+  <p><small>La secuencia evita comprar primero y descubrir después que la ubicación, tipo o capacidad eran incorrectos.</small></p>
+</section>
+
+  <div class="note"><b>Estas herramientas son de implementación.</b> No cambian el estándar permanente y no sustituyen la clasificación de riesgo, el levantamiento ni la auditoría.</div>
+  <div class="tool-links">
+  <a href="../../ops/control/ROCA_MACHINE_SAFETY_REGISTER_V1.csv">REGISTRO MAQUINARIA</a>
+  <a href="../../ops/control/ROCA_ELECTRICAL_MAINTENANCE_REGISTER_V1.csv">REGISTRO ELÉCTRICO</a>
+  <a href="../../ops/control/ROCA_NOISE_RECOGNITION_REGISTER_V1.csv">REGISTRO RUIDO</a>
+  <a href="../../ops/control/ROCA_MANUAL_LOAD_REGISTER_V1.csv">REGISTRO CARGA MANUAL</a>
+  <a href="../../ops/control/ROCA_PRESSURE_EQUIPMENT_REGISTER_V1.csv">REGISTRO PRESIÓN</a>
+</div><div class="tool-links">
+  <a href="../../ops/control/ROCA_FIRE_RISK_CLASSIFICATION_V1.csv">REGISTRO INCENDIO</a>
+  <a href="../../ops/control/ROCA_EGRESS_ROUTE_REGISTER_V1.csv">REGISTRO RUTAS</a>
+  <a href="../../ops/control/ROCA_EMERGENCY_PLACEMENT_REGISTER_V1.csv">REGISTRO UBICACIONES</a>
+  <a href="../../ops/control/ROCA_ROUTE_FIRE_EVIDENCE_SHOTLIST_V1.csv">SHOTLIST RUTAS/FUEGO</a>
+  <a href="../../ops/control/ROCA_LIGHTING_MEASUREMENT_REGISTER_V1.csv">REGISTRO LUX</a>
+  <a href="../../ops/control/ROCA_CHEMICAL_HDS_REGISTER_V1.csv">REGISTRO QUÍMICOS/HDS</a>
+  <a href="../../ops/control/ROCA_VENTILATION_CONTROL_REGISTER_V1.csv">REGISTRO VENTILACIÓN</a>
+  <a href="../../ops/control/ROCA_WASTEWATER_DISCHARGE_REGISTER_V1.csv">REGISTRO DESCARGAS</a>
+</div><div class="tool-links">
+    <a href="../../ops/control/ROCA_BUY_MASTER_2026-10-02.csv">BUY MASTER MARTES</a>
+    <a href="../../ops/control/ROCA_TUESDAY_EXECUTION_BOARD_2026-10-02.csv">TABLERO MARTES</a>
+    <a href="../../ops/control/ROCA_TUESDAY_P0_FACTS_2026-10-02.csv">P0 DATOS / CAMPO</a>
+  </div>
+  <div class="tool-links">
+    <a href="field-walk.html">CAMINATA ÚNICA</a>
+    <a href="poster-pack.html">POSTERS PROVISIONALES</a>
+    <a href="../../index.html?mode=audit#audit-inicio">IR A AUDITAR</a>
+  </div>
+  <div class="tools">
+    
+<div class="tool">
+  <h2>Riesgo de incendio · pre-chequeo</h2>
+  <label>Superficie construida (m²)</label><input id="riskArea" type="number" min="0" step="0.01">
+  <label>Gases inflamables · inventario máximo anual (L)</label><input id="riskGas" type="number" min="0" step="0.1">
+  <label>Líquidos inflamables · inventario máximo anual (L)</label><input id="riskInflam" type="number" min="0" step="0.1">
+  <label>Líquidos combustibles · inventario máximo anual (L)</label><input id="riskComb" type="number" min="0" step="0.1">
+  <label>Sólidos combustibles incluido mobiliario (kg)</label><input id="riskSolid" type="number" min="0" step="0.1">
+  <label>¿Existe cualquier cantidad de material pirofórico o explosivo?</label><select id="riskPyro"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+  <div id="riskResult" class="result">Captura inventarios máximos reales; no uses existencia de un solo día si no representa el máximo anual.</div>
+  <small>Umbrales de alto riesgo: superficie ≥3000 m²; gases inflamables ≥3000 L; líquidos inflamables ≥1400 L; líquidos combustibles ≥2000 L; sólidos combustibles ≥15000 kg; cualquier cantidad pirofórica/explosiva. Si todo queda debajo, aún falta completar el cálculo oficial combinado antes de declarar “ordinario”.</small>
+</div>
+<div class="tool">
+      <h2>Extintores · mínimo por superficie</h2>
+      <label>Superficie a proteger (m²)</label><input id="fireArea" type="number" min="0" step="0.01" value="800">
+      <label>Riesgo de incendio</label><select id="fireRisk"><option value="300">Ordinario · 1 / 300 m² o fracción</option><option value="200">Alto · 1 / 200 m² o fracción</option></select>
+      <div id="fireResult" class="result"></div>
+      <small>Después hay que revisar clase de fuego, distribución y recorrido real; cualquiera de ellos puede exigir más equipos.</small>
+    </div>
+    <div class="tool">
+      <h2>Recorrido al extintor</h2>
+      <label>Clase / condición</label><select id="travelLimit">
+        <option value="23">A / C / D · máximo 23 m</option>
+        <option value="15">B riesgo ordinario · máximo 15 m</option>
+        <option value="10">B riesgo alto · máximo 10 m</option>
+        <option value="10">K · máximo 10 m</option>
+      </select>
+      <label>Recorrido real medido (m)</label><input id="travelActual" type="number" min="0" step="0.1">
+      <div id="travelResult" class="result">Mide el recorrido real, no la distancia en línea recta.</div>
+    </div>
+    <div class="tool">
+      <h2>Ruta de evacuación</h2>
+      <label>Recorrido desde punto más alejado (m)</label><input id="egressDistance" type="number" min="0" step="0.1">
+      <label>Tiempo real a lugar seguro (min)</label><input id="egressTime" type="number" min="0" step="0.1">
+      <div id="egressResult" class="result">Captura distancia y tiempo del recorrido real.</div>
+      <small>El chequeo usa el umbral de 40 m y, cuando corresponde, la demostración de evacuación a lugar seguro en máximo 3 min.</small>
+    </div>
+    <div class="tool">
+      <h2>Iluminación · tarea real</h2>
+      <label>Tipo de tarea visual</label><select id="luxTarget">
+        <option value="20">Exterior / circulación general · 20 lux</option>
+        <option value="50">Tránsito interior / almacén bajo movimiento / escaleras · 50 lux</option>
+        <option value="100">Circulación / espera / almacén / plataforma · 100 lux</option>
+        <option value="200">Tarea visual simple / recepción-despacho / compresor / pailería · 200 lux</option>
+        <option value="300">Detalle moderado / ensamble simple / oficina / empaque · 300 lux</option>
+        <option value="500">Detalle claro / laboratorio / dibujo / cómputo · 500 lux</option>
+        <option value="750">Detalle fino / pintura y acabado superficial / QC · 750 lux</option>
+        <option value="1000">Alta exactitud / partes pequeñas complejas / pulido fino · 1000 lux</option>
+        <option value="2000">Tarea especializada de muy bajo contraste · 2000 lux</option>
+      </select>
+      <label>Lectura medida en plano de trabajo (lux)</label><input id="luxActual" type="number" min="0" step="1">
+      <div id="luxResult" class="result">Mide donde realmente se ve y ejecuta la tarea.</div>
+    </div>
+  </div>
+  
+<div class="tools">
+  <div class="tool">
+    <h2>Ventilación / extracción · decisión</h2>
+    <label>¿La tarea usa/genera químico, vapor, aerosol, polvo o humo?</label>
+    <select id="ventHaz"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+    <label>¿Existe HDS o fuente técnica del producto/proceso?</label>
+    <select id="ventSds"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+    <label>¿La fuente pide control técnico / extracción local / cabina?</label>
+    <select id="ventLocal"><option value="">Selecciona</option><option value="unknown">No revisado</option><option value="no">No</option><option value="yes">Sí</option></select>
+    <div id="ventResult" class="result">Primero identifica proceso y producto.</div>
+  </div>
+  
+<div class="tool">
+  <h2>Racks / almacenamiento · chequeo</h2>
+  <label>¿Se usa maquinaria para colocar/retirar material?</label>
+  <select id="storeMachine"><option value="">Selecciona</option><option value="no">No</option><option value="yes">Sí</option></select>
+  <label>Ancho máximo de maquinaria + carga (m)</label><input id="storeMachineWidth" type="number" min="0" step="0.01">
+  <label>Dimensión más ancha del material/caja (m)</label><input id="storeMaterialWidth" type="number" min="0" step="0.01">
+  <label>Capacidad conocida del rack/plataforma</label><select id="storeCapacity"><option value="">Selecciona</option><option value="yes">Sí</option><option value="no">No</option></select>
+  <div id="storeResult" class="result">Primero define cómo se mueve realmente el material.</div>
+</div>
+<div class="tool">
+    <h2>Corriente de material / residuo</h2>
+    <label>Material o corriente</label><input id="wasteName" type="text" placeholder="Ej. trapo con gasolina blanca">
+    <label>¿Puede volver a usarse sin convertirse en residuo?</label>
+    <select id="wasteReuse"><option value="">Selecciona</option><option value="yes">Sí</option><option value="no">No</option></select>
+    <label>¿Proviene de químico/producto con HDS o proceso que requiere clasificación?</label>
+    <select id="wasteChem"><option value="">Selecciona</option><option value="yes">Sí / posible</option><option value="no">No</option></select>
+    <div id="wasteResult" class="result">No clasifiques por color del bote.</div>
+  </div>
+</div>
+<div class="tool">
+    <h2>Geometría P-00 rescatada del 391P</h2>
+    <table class="geometry"><thead><tr><th>Zona</th><th>Dimensión fuente</th><th>Superficie</th><th>Mínimo por área · ordinario</th><th>Mínimo por área · alto</th></tr></thead><tbody>
+      <tr><td>Área principal</td><td>40 × 20 m</td><td>800 m²</td><td>3</td><td>4</td></tr>
+      <tr><td>Moldes oeste</td><td>10 × 15 m</td><td>150 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Sala de exhibición</td><td>11 × 6 m</td><td>66 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Oficina</td><td>10 × 4.5 m</td><td>45 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Bodega sur</td><td>16.5 × 6.7 m</td><td>110.55 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Bodega norte A</td><td>14 × 4 m</td><td>56 m²</td><td>1</td><td>1</td></tr>
+      <tr><td>Bodega norte B</td><td>14 × 4 m</td><td>56 m²</td><td>1</td><td>1</td></tr>
+    </tbody></table>
+    <p><small>Estos mínimos son sólo el cociente por superficie. No se suman automáticamente ni definen la ubicación final: primero hay que confirmar si las zonas son independientes/continuas, clasificación de riesgo, clase de fuego y recorrido real.</small></p>
+  </div>
+</section>
+<section class="action-board">
+  <h2>HOLD técnicos por departamento</h2>
+  <div class="note"><b>Regla:</b> un HOLD es un conflicto o dato todavía no liberado. No forma parte del estándar permanente hasta resolverse.</div>
+  <div id="departmentHoldList"><span class="blank">CARGANDO HOLD...</span></div>
+</section>
+<section class="action-board">
+  <h2>Acciones abiertas reales</h2>
+  <div class="note"><b>Regla de trabajo:</b> <b>NO VERIFICADO</b> pertenece a AUDITORÍA y no se trata como una falla. IMPLEMENTAR recibe únicamente brechas reales: <b>NO CONFORME</b> o acciones controladas abiertas. Cuando la corrección queda <b>CONFORME</b> y se cierra su acción controlada, desaparece de IMPLEMENTAR; el estándar permanente permanece en el manual.</div>
+  <div class="tool-links">
+    <a href="field-walk.html">LEVANTAR EN CAMPO</a>
+    <a href="../../index.html?mode=audit#audit-inicio">AUDITAR EN EL HTML CENTRAL</a>
+    <a href="../../ops/control/ROCA_IMPLEMENTATION_ACTION_REGISTER_V1.csv">REGISTRO CONTROLADO</a>
+  </div>
+  <div id="implementationAuditSummary" class="note"><strong>Calculando brechas...</strong></div><div class="tablewrap"><table>
+    <thead><tr><th>ID</th><th>Área</th><th>Brecha observada</th><th>Corrección concreta</th><th>Responsable</th><th>Fecha objetivo</th><th>Estado</th><th>Evidencia</th></tr></thead>
+    <tbody id="implementationRows"><tr><td colspan="8"><span class="blank">CARGANDO REGISTRO...</span></td></tr></tbody>
+  </table></div>
+</section></main><script src="../../department-data.js"></script><script src="../../audit-engine.js"></script><script>function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function parseCsv(text){
+  const rows=[]; let row=[],field="",quoted=false;
+  for(let i=0;i<text.length;i++){
+    const ch=text[i];
+    if(ch==='"'){
+      if(quoted&&text[i+1]==='"'){field+='"';i++} else quoted=!quoted;
+    }else if(ch===","&&!quoted){row.push(field);field=""}
+    else if((ch==="\n"||ch==="\r")&&!quoted){
+      if(ch==="\r"&&text[i+1]==="\n")i++;
+      row.push(field);field="";
+      if(row.some(v=>v!==""))rows.push(row);
+      row=[];
+    }else field+=ch;
+  }
+  if(field!==""||row.length){row.push(field);if(row.some(v=>v!==""))rows.push(row)}
+  return rows;
+}
+function implementationCriterionMap(areaId,dept){
+  const rows=window.ROCA_AUDIT_ENGINE
+    ? window.ROCA_AUDIT_ENGINE.criteriaForArea(areaId)
+    : [];
+  return new Map(rows.map(r=>[r.id,r]));
+}
+function auditImplementationItems(){
+  if(window.ROCA_AUDIT_ENGINE) return window.ROCA_AUDIT_ENGINE.dynamicImplementationItems();
+  return [];
+}
+function normalizeImplementationArea(value){
+  const raw=String(value||"").trim();
+  const depts=window.ROCA_DEPARTMENTS||{};
+  if(depts[raw]) return {id:raw,title:depts[raw].title||raw};
+  const norm=raw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"");
+  for(const [id,d] of Object.entries(depts)){
+    const candidates=[id,d.code,d.title].map(v=>String(v||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,""));
+    if(candidates.includes(norm)) return {id,title:d.title||raw};
+  }
+  return {id:raw,title:raw};
+}
+async function loadImplementationActions(){
+  const body=document.getElementById("implementationRows");
+  let controlled=[];
+  let controlledError=false;
+  try{
+    const res=await fetch("../../ops/control/ROCA_IMPLEMENTATION_ACTION_REGISTER_V1.csv",{cache:"no-store"});
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    const rows=parseCsv(await res.text());
+    if(rows.length){
+      const head=rows.shift().map(x=>x.trim());
+      const ix=n=>head.indexOf(n);
+      controlled=rows.filter(r=>r.some(v=>v.trim()!=="")).map(r=>{
+        const area=normalizeImplementationArea(r[ix("area")]||"");
+        return {
+          id:r[ix("action_id")]||"",area:area.title,areaId:area.id,
+          gap:r[ix("observed_gap")]||"",req:r[ix("target_requirement_id")]||"",fix:r[ix("correction")]||"",
+          owner:r[ix("responsible")]||"",due:r[ix("due_date")]||"",status:r[ix("status")]||"",
+          evidence:r[ix("evidence_id")]||"",dynamic:false
+        };
+      }).filter(x=>!["CLOSED","CANCELLED"].includes(x.status.toUpperCase()));
+    }
+  }catch(err){controlledError=true}
+
+  const auditItems=auditImplementationItems();
+  const controlledReqs=new Set(controlled.filter(x=>x.req).map(x=>String(x.areaId||x.area)+"|"+x.req));
+  const dynamic=auditItems.filter(x=>!controlledReqs.has(String(x.areaId)+"|"+x.req));
+  const items=[...controlled,...dynamic];
+
+  const summary=document.getElementById("implementationAuditSummary");
+  if(summary){
+    const nc=dynamic.filter(x=>x.status==="NO CONFORME").length;
+    summary.innerHTML='<strong>'+items.length+' acciones abiertas</strong> · '+controlled.length+' del registro controlado · '+dynamic.length+' generadas por AUDITORÍA ('+nc+' no conformes).';
+  }
+
+  if(!items.length){
+    body.innerHTML='<tr><td colspan="8"><b>Sin acciones abiertas.</b><br>Al auditar un criterio como NO CONFORME, aparecerá aquí automáticamente. Los criterios NO VERIFICADOS permanecen en AUDITORÍA.</td></tr>';
+    return;
+  }
+  body.innerHTML=items.map(x=>`<tr data-source="${x.dynamic?"audit":"register"}"><td><strong>${esc(x.id)}</strong>${x.req?`<br><small>${esc(x.req)}</small>`:""}</td><td>${esc(x.area)}</td><td>${esc(x.gap)}</td><td>${esc(x.fix)}</td><td>${esc(x.owner||"POR ASIGNAR")}</td><td>${esc(x.due||"—")}</td><td>${esc(x.status)}</td><td>${esc(x.evidence||"—")}${x.dynamic&&x.evaluationKind?`<br><small><b>${esc(x.evaluationKind)}</b>${x.verificationRoute?` · ${esc(x.verificationRoute)}`:""}${x.evidenceNeeded?` · cierre: ${esc(x.evidenceNeeded)}`:""}</small>`:""}${x.dynamic&&x.basis?`<br><small>${esc(x.basis)}</small>`:""}</td></tr>`).join("");
+  if(controlledError && summary) summary.innerHTML+='<br><span class="blank">El registro CSV no pudo leerse; las brechas de AUDITORÍA sí se muestran.</span>';
+}
+loadImplementationActions();
+window.addEventListener("storage",e=>{if(e.key&&e.key.startsWith("roca.audit."))loadImplementationActions()});
+function holdClosureType(text){
+  const t=String(text||"").toLowerCase();
+  if(/estados? biwo|biwo real|estado biwo|pantalla.*biwo|biwo.*pantalla/.test(t)) return "BIWO REAL";
+  if(/reconciliar|fuente controlada|fuente histórica|recuperar|conflicto 50\/50 vs 30\/70/.test(t)) return "FUENTE";
+  if(/decidir|definir frontera|ubicación real|implementar este frente|interfaz con bases y logística/.test(t)) return "DECISIÓN";
+  if(/evidencia|fotograf|capturar/.test(t)) return "EVIDENCIA";
+  if(/aplicabilidad|normativa|bibliografía|trabajo en caliente|epp|control metrológico|verificación aplicable|capacidad\/criterio estructural/.test(t)) return "TÉCNICO / NORMATIVA";
+  if(/instrumento o método real|balance de baños|piloto de agua a presión|sistema exacto de fijación|selección de hilo|persona × operación|compresor|paleta real|prácticas históricas siguen vigentes|criterios exactos de aceptación|proceso de soldadura real|mantenimiento y servicios|frontera física|dimensionado\/protección por pieza\/destino/.test(t)) return "CAMPO";
+  if(/levantar|verificar|confirmar|observar|demostrar|medición|inventario|ventilación|drenaje|maniobra|producto|hds|equipo|responsable|estación|competencia|privacidad|archivo real/.test(t)) return "CAMPO";
+  return "CIERRE TÉCNICO";
+}
+function holdKnownProof(id){
+  return ({
+    "CUR-HOLD-07":"La lógica ALUM-Tan fue reconstruida desde v24.7, v24.8, PreEntrevistas y 31AGO/391P; el ejemplo 16.08 kg pasa verificación matemática. El Excel original no fue recuperado y la segunda adición exacta de alumbre no se infiere. operational_calculator_release=BLOCKED hasta original o validación técnica documentada.",
+    "MON-HOLD-05":"El 391, Montaje V2 y la búsqueda en Drive confirman Bondo + fibra + catalizador para orejas, pero no aparece una proporción controlada verificable.",
+    "RET-HOLD-01":"El 391, Drive y el roster controlado conservan literalmente Valerio/Valentino como nombre pendiente de reconciliar; no apareció una fuente posterior que resuelva el nombre.",
+    "RET-HOLD-09":"El mapa BIWO define eventos semánticos. Drive contiene CIERRE BIWO y Ajustes finales, pero no etiquetas exactas de estados productivos de Retoque; el documento antecedente enlazado no es accesible.",
+    "BAS-HOLD-09":"El mapa BIWO y los documentos de cierre localizados en Drive no contienen etiquetas/pantallas exactas de Bases; requiere captura del BIWO real.",
+    "FMR-HOLD-06":"El mapa BIWO y los documentos de cierre localizados en Drive no contienen etiquetas/pantallas exactas de FMR; requiere captura del BIWO real.",
+    "REC-HOLD-02":"El mapa BIWO define ingreso y transferencia semánticos; Ajustes finales aporta campos deseados, pero no los nombres exactos de estados/campos de Recepción.",
+    "CAR-HOLD-11":"Carpintería sigue NOT_IMPLEMENTED; ni el mapa BIWO ni las carpetas de cierre/automatización localizadas en Drive definen etiquetas reales de este frente.",
+    "SUP-HOLD-04":"Reclasificado: no es un HOLD de etiquetas BIWO. Exige revisar privacidad, acceso y archivo real de Oficina/BIWO en campo/evidencia.",
+    "CAR-HOLD-01":"El 391 define Carpintería/Corte/Embalaje como puesto nuevo por contratar y estado futuro propuesto; el V2 conserva NOT_IMPLEMENTED. No existe decisión posterior que autorice presentarlo como frente implementado.",
+    "CAR-HOLD-02":"La ubicación histórica asociada a Señor Pez quedó invalidada por la gobernanza vigente de Retoque. No existe ubicación sustituta aprobada en el corpus revisado.",
+    "CUR-HOLD-06":"EVIDENCE_PLAN define qué capturar; FIELD_EVIDENCE_INTAKE mantiene EVID-CUR-01..04 en NOT_VERIFIED y sin archivo/fecha/revisor. Las páginas del 391 son marcos de evidencia, no cierre.",
+    "RET-HOLD-10":"EVID-RET-01..03 están definidos, pero FIELD_EVIDENCE_INTAKE sigue NOT_VERIFIED y sin archivo/fecha/revisor. No cerrar competencia con fotos contextuales.",
+    "BAS-HOLD-10":"EVID-BAS-01..03 están definidos, pero FIELD_EVIDENCE_INTAKE sigue NOT_VERIFIED. La estabilidad visible no prueba capacidad estructural ni competencia.",
+    "FMR-HOLD-07":"EVID-FMR-02 y EVID-FMR-03 exigen prueba/dosificación y curado documentados; el intake sigue NOT_VERIFIED y no hay referencia de archivo capturada.",
+    "REC-HOLD-03":"EVID-REC-01 define ingreso/espera e identificación, pero no fija por sí solo capacidad, segregación ni estándar físico completo; el intake sigue NOT_VERIFIED.",
+    "REC-HOLD-04":"La página histórica EVID-REC-01 preserva el requisito fotográfico, pero FIELD_EVIDENCE_INTAKE no contiene archivo, fecha ni revisión aceptada.",
+    "CAR-HOLD-12":"EVID-CAR-01/02 están NOT_IMPLEMENTED. No existe puesto implementado ni evidencia de campo que pueda cerrar este HOLD.",
+    "SOL-HOLD-07":"EVID-SOL-01 sigue NOT_VERIFIED. La evidencia prevista prueba condición física del trabajo/equipo, no mantenimiento cerrado ni competencia.",
+    "BLA-HOLD-02":"EVID-BLA-01 sólo pide montaje real del tratamiento; para secuencia completa hace falta observación documentada de entrada, tratamiento y salida. Intake sigue NOT_VERIFIED.",
+    "BLA-HOLD-07":"EVID-BLA-01 está definido pero sin archivo/fecha/revisor en FIELD_EVIDENCE_INTAKE. La página histórica no equivale a captura aceptada.",
+    "SUP-HOLD-01":"EVID-SUP-01 exige panorámicas por subespacio. FIELD_EVIDENCE_INTAKE sigue NOT_VERIFIED y Drive no devolvió imágenes recuperables por ID/nombre de evidencia.",
+    "CUR-HOLD-02":"NOM/STPS no fija por sí sola un modelo de pHmetro para este proceso. CENAM permite calibración interna con patrón trazable y, para magnitudes fisicoquímicas, recomienda materiales de referencia certificados. Cierre: identificar método/instrumento real, rango/resolución, buffers o MRC usados, verificación previa al uso y criterio de rechazo.",
+    "MON-HOLD-02":"NOM-025-STPS-2008 exige niveles mínimos por tarea visual: 200 lux para requerimiento simple; 300 lux para distinción moderada; 500 lux para distinción clara; 750 lux para detalle fino/pintura-acabado; 1,000 lux para alta exactitud. Cierre: clasificar cada tarea real de Montaje y medir lux en su plano de trabajo; no asignar un valor por nombre del área.",
+    "RET-HOLD-05":"NOM-020-STPS-2011 aplica a recipientes sujetos a presión en centros de trabajo y su categoría depende, entre otros datos, de presión, volumen y fluido. Cierre: fotografiar placa del tanque receptor, registrar fluido, presión máxima/operación o ajuste de seguridad, volumen, dispositivos de relevo y condición; después clasificar aplicabilidad/categoría. No confundir el compresor mecánico con el recipiente de aire.",
+    "BAS-HOLD-04":"No existe en el corpus una capacidad universal demostrada para 18 mm, dos capas, ruedas, bancos o tornillos. Cierre técnico por proyecto: documentar peso y centro de gravedad de la pieza, geometría y luces de la base, material/espesor real, apoyos, fijaciones, ruedas si existen, maniobra/transporte y criterio de estabilidad/capacidad; calcular o ensayar cuando el riesgo lo exija. Las referencias históricas no son capacidad certificada.",
+    "FMR-HOLD-09":"La verificación comercial periódica de básculas se vincula a instrumentos usados como base de transacciones comerciales. Para la báscula interna de formulación, no asumir automáticamente ese régimen; sí debe existir control metrológico acorde al uso. Cierre: identificar báscula, rango/división, tolerancia aceptable para la receta, comprobación con masa/patrón trazable y frecuencia basada en uso/riesgo; escalar a verificación legal sólo si su uso real activa ese régimen.",
+    "SOL-HOLD-04":"NOM-017-STPS-2024 exige seleccionar EPP a partir de los factores de riesgo/agentes reales y mantener instrucciones de uso, revisión, reposición, limpieza, limitaciones, mantenimiento y resguardo. NOM-027-STPS-2008 exige EPP en soldadura/corte. Cierre: identificar proceso real (p. ej. arco, MIG/MAG, TIG, oxicorte), materiales, radiación/proyección/humo/ruido y entonces definir protección ocular/facial, manos, cuerpo, pies, respiratoria y auditiva cuando corresponda.",
+    "SOL-HOLD-06":"NOM-027-STPS-2008 exige análisis de riesgos y procedimiento de autorización por escrito para soldadura/corte en áreas con riesgo de incendio, espacios confinados y áreas no designadas; NOM-002-STPS-2010 exige clasificar riesgo de incendio por centro o área. Cierre: identificar área real y proceso, inventario/material combustible e inflamable, clasificación de riesgo de incendio, área designada o permiso de trabajo en caliente, ventilación/extracción, medios contra incendio y responsable que autoriza/supervisa.",
+    "CAR-HOLD-07":"No existe un criterio universal demostrado de holgura/protección para embalaje. Cierre observando una orden real y registrando dimensiones de pieza, destino, modo de transporte, puntos frágiles, holguras, inmovilización y condición de salida."
+  })[id]||"";
+}
+function holdCloseRule(type){
+  return ({
+    "FUENTE":"Cierra sólo con la fuente material recuperada/reconciliada y el criterio actualizado en el manual.",
+    "BIWO REAL":"Cierra al comprobar en BIWO real nombre, pantalla/campo y evento operativo correspondiente.",
+    "DECISIÓN":"Cierra con una decisión explícita aplicada al layout/operación y reflejada en el estándar permanente.",
+    "EVIDENCIA":"Cierra cuando la evidencia objetiva requerida existe, es aceptada y demuestra la condición.",
+    "CAMPO":"Cierra con observación, medición o demostración real; después el dato confirmado se incorpora al estándar permanente.",
+    "TÉCNICO / NORMATIVA":"Cierra cuando se resuelve la aplicabilidad/criterio técnico con fuente oficial o cálculo válido y, cuando corresponda, evidencia del equipo/condición real.",
+    "CIERRE TÉCNICO":"Cierra cuando el criterio técnico queda definido con evidencia suficiente y se incorpora al estándar permanente."
+  })[type];
+}
+async function renderDepartmentHolds(){
+  const host=document.getElementById("departmentHoldList");
+  if(!host)return;
+  const depts=window.ROCA_DEPARTMENTS||{};
+  let stateRows=[];
+  let routingRows=[];
+  let stateError=false;
+  let routingError=false;
+  try{
+    const res=await fetch("../../ops/control/ROCA_DEPARTMENT_HOLD_STATUS_V1.csv",{cache:"no-store"});
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    const rows=parseCsv(await res.text());
+    if(rows.length){
+      const head=rows.shift().map(x=>x.trim());
+      stateRows=rows.filter(r=>r.some(v=>v.trim()!=="")).map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]||""])));
+    }
+  }catch(e){stateError=true}
+  try{
+    const res=await fetch("../../ops/control/ROCA_HOLD_ROUTING_V2.csv",{cache:"no-store"});
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    const rows=parseCsv(await res.text());
+    if(rows.length){
+      const head=rows.shift().map(x=>x.trim());
+      routingRows=rows.filter(r=>r.some(v=>v.trim()!=="")).map(r=>Object.fromEntries(head.map((h,i)=>[h,r[i]||""])));
+    }
+  }catch(e){routingError=true}
+  const stateById=new Map(stateRows.map(r=>[r.hold_id,r]));
+  const routingById=new Map(routingRows.map(r=>[r.hold_id,r]));
+  const routingLabel={
+    DEFINE_STANDARD:"DEFINIR ESTÁNDAR",
+    AUDIT_CURRENT_STATE:"AUDITAR ESTADO ACTUAL",
+    SYSTEM_RECORD:"SISTEMA / REGISTRO",
+    IMPLEMENT_DECISION:"DECISIÓN DE IMPLEMENTACIÓN"
+  };
+  const deptByArea=new Map(Object.values(depts).map(d=>[d.id,d]));
+  const blocks=[...routingById.values()]
+    .filter(route=>{
+      const s=String(stateById.get(route.hold_id)?.status||route.status||"OPEN").toUpperCase();
+      return route.hold_type==="IMPLEMENT_DECISION"&&!["CLOSED","CANCELLED"].includes(s);
+    })
+    .reduce((acc,route)=>{
+      const dept=deptByArea.get(route.area);
+      if(!dept) return acc;
+      let block=acc.find(x=>x.dept.id===dept.id);
+      if(!block){block={dept,open:[]};acc.push(block);}
+      block.open.push({id:route.hold_id,text:route.source_text||route.routing_reason||"",route});
+      return acc;
+    },[]);
+  if(!blocks.length){
+    host.innerHTML='<p><b>Sin decisiones de implementación abiertas.</b> Los HOLD de definir estándar, auditar estado actual o sistema/registro permanecen en su capa canónica y no se convierten en tareas de IMPLEMENTAR.</p>';
+    return;
+  }
+  host.innerHTML=(stateError?'<div class="note"><b>Advertencia:</b> no se pudo leer el ledger de HOLD; por seguridad se muestran todos como abiertos.</div>':'')+
+    (routingError?'<div class="note"><b>Advertencia:</b> no se pudo leer el routing canónico de HOLD; se usa clasificación de respaldo.</div>':'')+
+    blocks.map(x=>'<div class="tool"><h3>'+esc(x.dept.code+' · '+x.dept.title)+'</h3><ul>'+
+      x.open.map(h=>{const route=h.route||routingById.get(h.id);const fallbackType=holdClosureType(h.text);const type=route?.hold_type||fallbackType;const label=routingLabel[type]||type;const routingText=route?(route.canonical_home+' · '+route.routing_reason):holdCloseRule(fallbackType);const proof=holdKnownProof(h.id);const s=stateById.get(h.id)||{};return '<li><strong>'+esc(h.id)+'</strong> · '+esc(h.text)+'<br><small><b>'+esc(label)+'</b> · '+esc(routingText)+(route?'<br><b>BLOQUEA DEFINICIÓN</b> · '+esc(route.blocks_standard_definition)+' · <b>BLOQUEA AUDITORÍA ACTUAL</b> · '+esc(route.blocks_current_audit):'')+(proof?'<br><b>EVIDENCIA ACTUAL</b> · '+esc(proof):'')+(s.evidence_id?'<br><b>EVIDENCIA DE CIERRE</b> · '+esc(s.evidence_id):'')+'</small></li>'}).join("")+
+      '</ul></div>').join("");
+}
+renderDepartmentHolds();
+
+
+function calcRisk(){const a=Number(document.getElementById("riskArea").value||0),g=Number(document.getElementById("riskGas").value||0),i=Number(document.getElementById("riskInflam").value||0),c=Number(document.getElementById("riskComb").value||0),s=Number(document.getElementById("riskSolid").value||0),p=document.getElementById("riskPyro").value;const hit=[];if(a>=3000)hit.push("superficie");if(g>=3000)hit.push("gases inflamables");if(i>=1400)hit.push("líquidos inflamables");if(c>=2000)hit.push("líquidos combustibles");if(s>=15000)hit.push("sólidos combustibles");if(p==="yes")hit.push("pirofóricos/explosivos");document.getElementById("riskResult").innerHTML=hit.length?"<b>RIESGO ALTO DISPARADO</b> por: "+hit.join(", ")+". Pasar a requisitos de alto riesgo y documentar clasificación.":"No se activó un umbral individual. <b>NO declarar ordinario todavía:</b> completar el cálculo oficial combinado y conservar inventarios máximos."}
+["riskArea","riskGas","riskInflam","riskComb","riskSolid","riskPyro"].forEach(id=>document.getElementById(id).addEventListener("input",calcRisk));
+function calcFire(){const a=Number(document.getElementById("fireArea").value||0),d=Number(document.getElementById("fireRisk").value);document.getElementById("fireResult").innerHTML=a>0?"Mínimo por superficie: <b>"+Math.ceil(a/d)+" extintor(es)</b>. Falta validar recorrido, clase y distribución.":"Captura superficie."}
+function calcTravel(){const lim=Number(document.getElementById("travelLimit").value),a=Number(document.getElementById("travelActual").value||0);document.getElementById("travelResult").innerHTML=!a?"Mide el recorrido real, no la distancia en línea recta.":a<=lim?"Recorrido dentro del límite de referencia: <b>"+a+" m ≤ "+lim+" m</b>.":"<b>REUBICAR / AÑADIR COBERTURA:</b> "+a+" m > "+lim+" m."}
+function calcEgress(){const d=Number(document.getElementById("egressDistance").value||0),t=Number(document.getElementById("egressTime").value||0);let s="";if(!d)s="Captura distancia real.";else if(d<=40)s="Recorrido capturado: <b>"+d+" m</b>. Revisar además continuidad, señalización, puerta y obstrucciones.";else s="<b>Recorrido mayor de 40 m.</b> Documentar que el recorrido a lugar seguro se realiza en ≤ 3 min.";if(d>40&&t)s+=" Tiempo medido: <b>"+t+" min</b> → "+(t<=3?"dentro":"fuera")+" de la referencia.";document.getElementById("egressResult").innerHTML=s}
+function calcLux(){const tar=Number(document.getElementById("luxTarget").value),a=Number(document.getElementById("luxActual").value||0);document.getElementById("luxResult").innerHTML=!a?"Mide donde realmente se ejecuta la tarea.":a>=tar?"Lectura <b>"+a+" lux</b> frente a referencia <b>"+tar+" lux</b>: alcanza el nivel seleccionado.":"<b>MEJORAR / REUBICAR / MEDIR DE NUEVO:</b> "+a+" lux frente a "+tar+" lux."}
+["fireArea","fireRisk"].forEach(id=>document.getElementById(id).addEventListener("input",calcFire));
+["travelLimit","travelActual"].forEach(id=>document.getElementById(id).addEventListener("input",calcTravel));
+["egressDistance","egressTime"].forEach(id=>document.getElementById(id).addEventListener("input",calcEgress));
+["luxTarget","luxActual"].forEach(id=>document.getElementById(id).addEventListener("input",calcLux));
+calcFire();
+function calcVent(){const h=document.getElementById("ventHaz").value,s=document.getElementById("ventSds").value,l=document.getElementById("ventLocal").value;let x="";if(!h)x="Primero identifica proceso y producto.";else if(h==="no")x="No aparece una fuente aérea evidente en esta tarea. Verifica operación real antes de cerrar.";else if(s!=="yes")x="<b>PRIMERO HDS / FUENTE TÉCNICA.</b> No comprar extractor todavía.";else if(l==="yes")x="<b>DISEÑAR CAPTURA EN ORIGEN.</b> Definir punto de generación, descarga, operación y mantenimiento.";else if(l==="unknown"||!l)x="<b>REVISAR SECCIÓN DE CONTROLES DE EXPOSICIÓN.</b> No decidir por intuición.";else x="La fuente revisada no pide extracción local; confirmar si evaluación de exposición u otro control técnico aplica.";document.getElementById("ventResult").innerHTML=x}
+
+function calcStore(){const m=document.getElementById("storeMachine").value,mw=Number(document.getElementById("storeMachineWidth").value||0),w=Number(document.getElementById("storeMaterialWidth").value||0),c=document.getElementById("storeCapacity").value;let s="";if(!m)s="Primero define cómo se mueve realmente el material.";else if(m==="yes"){const g=Math.max(mw,w);s="<b>NOM-006 CONDICIONAL ACTIVADA.</b> "+(g?("Dimensión gobernante capturada: <b>"+g.toFixed(2)+" m</b>. El pasillo final debe responder a la técnica real de colocación/extracción; no inventar holgura."):"Mide maquinaria+carga y material más ancho.");if(c==="no")s+=" <b>NO CARGAR RACK SIN CAPACIDAD DEFINIDA.</b>";}else{s="Manejo manual: no usar NOM-006 como obligación automática. Mantener estabilidad, pesado abajo, acceso recuperable y rutas libres.";if(c==="no")s+=" Aun así, definir capacidad del mobiliario si la carga puede comprometerlo.";}document.getElementById("storeResult").innerHTML=s}
+["storeMachine","storeMachineWidth","storeMaterialWidth","storeCapacity"].forEach(id=>document.getElementById(id).addEventListener("input",calcStore));
+function calcWaste(){const n=document.getElementById("wasteName").value.trim(),r=document.getElementById("wasteReuse").value,c=document.getElementById("wasteChem").value;let x="";if(!n)x="Nombra la corriente real.";else if(r==="yes")x="<b>RECUPERABLE / MATERIAL ÚTIL CANDIDATO.</b> Sepáralo del residuo y define ubicación de retorno.";else if(!r)x="Define primero si realmente es recuperable.";else if(c==="yes")x="<b>CLASIFICACIÓN PENDIENTE.</b> Revisar producto/HDS/proceso y ruta ambiental antes de etiquetar como residuo peligroso.";else if(c==="no")x="Definir corriente y destino real aplicable; conservarla separada de recuperables y otras corrientes.";document.getElementById("wasteResult").innerHTML=x}
+["ventHaz","ventSds","ventLocal"].forEach(id=>document.getElementById(id).addEventListener("input",calcVent));
+["wasteName","wasteReuse","wasteChem"].forEach(id=>document.getElementById(id).addEventListener("input",calcWaste));
+
+</script></body></html>

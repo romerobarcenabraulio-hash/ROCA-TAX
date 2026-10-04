@@ -1,0 +1,100 @@
+{
+  "schema": "ROCA_PR6_RELEASE_GATE_V1",
+  "date": "2026-09-30",
+  "scope": "PR #6 integrated source-reader + audit/implementation surfaces + compliance cockpit integration. This gate does not certify physical/legal compliance.",
+  "canonical_master": {
+    "rows": 4469,
+    "sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c"
+  },
+  "checks": {
+    "derived_ledger_integrity": {
+      "status": "PASS",
+      "modules_locked": 43,
+      "gate_sync": 43,
+      "health": 43,
+      "legal_source_admission": "42/42",
+      "issues": 0
+    },
+    "form_master": {
+      "status": "PASS",
+      "keys": 14,
+      "gate": "10/10"
+    },
+    "javascript_static": {
+      "status": "PASS_WITH_ESM_HANDLING",
+      "classic_scripts_checked": 19,
+      "classic_scripts_failed": 0,
+      "auth_control": "ES module import present; module body syntax PASS after excluding import declaration from classic-script parser"
+    },
+    "html_local_references": {
+      "status": "PASS",
+      "missing": 0,
+      "note": "All root and compliance-cockpit local src/href targets checked on current branch exist."
+    },
+    "large_runtime_data": {
+      "status": "PASS_BY_LOCKED_MANIFEST",
+      "note": "compliance-cockpit/data.js exists but is too large for inline connector fetch; runtime/master count+SHA are governed by locked manifest/snapshot."
+    },
+    "controlled_snapshot": {
+      "status": "PASS",
+      "permissions": "OWNER_ONLY",
+      "artifact_count": 10
+    },
+    "formic_acid_source_reconciliation": {
+      "status": "PASS",
+      "canonical_value_l": 6.4,
+      "note": "Literal Ricardo interview states 6 L + 400 mL; later source chain matches 6.4 L."
+    },
+    "alum_tan": {
+      "status": "DOMAIN_HOLD_NOT_PR_BLOCKER",
+      "original_excel_recovered": false,
+      "operational_calculator_release": "BLOCKED",
+      "active_calculator_exposed": false
+    },
+    "v22_1": {
+      "status": "HISTORICAL_SOURCE_NOT_RECOVERED_NOT_PR_BLOCKER",
+      "exclusive_active_dependency_identified": false
+    },
+    "current_browser_visual_qa": {
+      "status": "PASS",
+      "tested_branch_head": "86f334bb48d1904d1e4785f55e3bb06b8ad0fb00",
+      "tested_pr_merge_ref": "c1530f1d3da670690f07266e03552a2ac0d320ea",
+      "workflow_run_id": 36687883324,
+      "artifact_id": 11084477544,
+      "automated_checks": "108/108 PASS",
+      "console_error_groups": 0,
+      "network_error_groups": 0,
+      "screenshots": 14,
+      "human_review": "PASS_WITH_USABILITY_REFINEMENT_APPLIED",
+      "evidence": "compliance-cockpit/qa/ROCA_BROWSER_VISUAL_QA_RESULT_2026-09-30.json"
+    },
+    "canonical_drive_permissions": {
+      "status": "R1_OPEN",
+      "root": "anyone:writer",
+      "compliance_app_data": "anyone:writer",
+      "mitigation": "owner-only controlled snapshot + hash-locked GitHub sync; permission revocation unavailable in current connector"
+    },
+    "github_head_ci": {
+      "status": "PASS_TESTED_CODE_HEAD",
+      "tested_branch_head": "86f334bb48d1904d1e4785f55e3bb06b8ad0fb00",
+      "checks": [
+        "ROCA Audit Architecture PASS",
+        "ROCA Audit Implementation Integrity PASS",
+        "ROCA Derived Ledger Integrity PASS",
+        "ROCA Browser QA PASS",
+        "ROCA Browser Visual QA PASS"
+      ],
+      "note": "Subsequent QA-metadata/workflow-trigger refinements do not modify tested UI/runtime bytes."
+    }
+  },
+  "blockers_for_pr_release": [
+    "Remove anyone:writer from canonical Drive root/COMPLIANCE_APP_DATA and re-read permissions, or formally re-designate an owner-only controlled source as canonical operational source with governance approval."
+  ],
+  "non_blocking_domain_holds": [
+    "ALUM-Tan operational calculator remains blocked until original Excel or documented technical-owner validation; current PR does not expose the calculator.",
+    "v22.1 editable remains unrecovered historical source; no exclusive active dependency identified."
+  ],
+  "physical_legal_completion": "BLOCKED_SEPARATELY",
+  "compliance_claim": "NOT_AUTHORIZED",
+  "verdict": "BLOCKED — NO LIBERAR"
+}

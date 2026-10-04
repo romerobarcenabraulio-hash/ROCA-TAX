@@ -1,0 +1,3 @@
+discharge_id,area,source_process,domestic_pluvial_or_process,drain_route,destination_operator,point_identified,separate_drain_confirmed,products_or_contaminants_possible,sampling_or_characterization_needed,permit_or_conditions_status,last_sample_date,laboratory,evidence_ids,reviewer,status,notes
+WW-001,Curtiduría,,PROCESS,,,,,,,,,,,,NOT_CHECKED,
+WW-002,Servicios sanitarios,,DOMESTIC,,,,,,,,,,,,NOT_CHECKED,

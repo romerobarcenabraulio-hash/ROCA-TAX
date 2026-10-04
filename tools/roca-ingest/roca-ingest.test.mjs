@@ -1,0 +1,15 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import { split391, segment, actions, exceptions } from "./roca-ingest.mjs";
+const rules=JSON.parse(fs.readFileSync(new URL("./rules.json",import.meta.url),"utf8"));
+const sample="MÓDULO OPERATIVO · CAR\nCAR-AREA-01 Circulación\nMétodo no liberado\n1 / 3MÓDULO OPERATIVO · BAS\nBAS-AREA-01\nStock objetivo inicial 4 kits\n2 / 3ENTREVISTA DE PROCESO\nLa relación es 50% y 50%.\n3 / 3";
+assert.equal(split391(sample,3).length,3);
+const p=segment(sample,rules,3);
+assert.equal(p[0].area_code,"CAR");
+assert.equal(p[1].area_code,"BAS");
+assert(actions(p,rules).some(x=>x.action_class==="BUY_CANDIDATE"));
+const ex=exceptions(p,{CAR:"CAR-AREA-01\nHOLD",BAS:"BAS-AREA-01"},rules);
+assert(ex.some(x=>x.type==="METHOD_UNRELEASED"));
+assert(ex.some(x=>x.type==="PROPOSAL_NOT_REQUIREMENT"));
+assert(ex.some(x=>x.type==="PRIMARY_INTERVIEW"));
+console.log("ROCA ingest tests: PASS");

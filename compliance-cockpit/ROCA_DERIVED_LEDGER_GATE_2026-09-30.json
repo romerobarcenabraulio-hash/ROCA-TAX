@@ -1,0 +1,16 @@
+{
+  "schema": "ROCA_DERIVED_LEDGER_GATE_V1",
+  "checked_on": "2026-09-30",
+  "master_rows": 4469,
+  "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "module_lock_count": 43,
+  "gate_sync_count": 43,
+  "health_count": 43,
+  "admission_count": 42,
+  "legal_admission_expected": 42,
+  "internal_exclusion": ["ADMIN_FORM"],
+  "reconstructed_source_gates": ["SLP_ENV_IMPACT","SLP_MUN_FUNCTION"],
+  "errors": [],
+  "verdict": "PASS",
+  "rule": "Structural/source-integrity consistency only; does not equal applicability, field, legal, or physical compliance."
+}

@@ -1,0 +1,38 @@
+name: ROCA Audit Architecture
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/roca-source-reader
+    paths:
+      - department-data.js
+      - area-standard-data.js
+      - audit-engine.js
+      - audit-data.js
+      - app.js
+      - styles.css
+      - index.html
+      - generated/roca-fast-track/implementation.html
+      - tools/check-audit-architecture.js
+      - .github/workflows/roca-audit-architecture.yml
+  pull_request:
+    paths:
+      - department-data.js
+      - area-standard-data.js
+      - audit-engine.js
+      - audit-data.js
+      - app.js
+      - styles.css
+      - index.html
+      - generated/roca-fast-track/implementation.html
+      - tools/check-audit-architecture.js
+      - .github/workflows/roca-audit-architecture.yml
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate one-engine audit architecture
+        run: node tools/check-audit-architecture.js

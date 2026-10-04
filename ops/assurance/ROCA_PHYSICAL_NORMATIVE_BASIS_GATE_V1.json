@@ -1,0 +1,14 @@
+{
+  "schema": "ROCA_PHYSICAL_NORMATIVE_BASIS_GATE_V1",
+  "date": "2026-09-30",
+  "normative_rows": 42,
+  "physical_basis_references": 17,
+  "missing": [],
+  "checks": {
+    "all_engine_physical_bases_represented_in_normative_matrix": true,
+    "rfsst_official_basis_present": true
+  },
+  "passed": 2,
+  "total": 2,
+  "verdict": "PASS"
+}

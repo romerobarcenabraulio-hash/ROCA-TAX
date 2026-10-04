@@ -1,0 +1,15 @@
+{
+  "schema": "ROCA_EVIDENCE_SUFFICIENCY_PATCH_V1",
+  "checked_on": "2026-10-02",
+  "parent_head": "c596b33954805d68c9126b2ede09d772e9ed842f",
+  "corrected_unique_criteria": [
+    "PHYS-EGRESS",
+    "CUR-AUD-AREA-07",
+    "CUR-AUD-05",
+    "MON-AUD-19",
+    "BAS-AUD-19",
+    "FMR-AUD-05"
+  ],
+  "principle": "Evidence must prove the criterion. A measurement criterion requires the measured value/context; a release-by-condition criterion is not converted into a time measurement merely because time is mentioned.",
+  "status": "SOURCE_IMPLEMENTED_PENDING_RUNTIME_QA"
+}

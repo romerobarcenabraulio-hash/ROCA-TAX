@@ -1,0 +1,93 @@
+name: ROCA Browser Visual QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/roca-source-reader
+    paths:
+      - index.html
+      - app.js
+      - styles.css
+      - source-reader.js
+      - source-data.js
+      - department-data.js
+      - area-standard-data.js
+      - audit-data.js
+      - audit-engine.js
+      - generated/roca-fast-track/**
+      - compliance-cockpit/index.html
+      - compliance-cockpit/app.js
+      - compliance-cockpit/styles.css
+      - compliance-cockpit/data.js
+      - compliance-cockpit/state_guards.js
+      - compliance-cockpit/form-master-data.js
+      - .github/roca-compliance-overlay/browser_visual_qa.mjs
+      - .github/workflows/roca-browser-visual-qa.yml
+  pull_request:
+    paths:
+      - index.html
+      - app.js
+      - styles.css
+      - source-reader.js
+      - source-data.js
+      - department-data.js
+      - area-standard-data.js
+      - audit-data.js
+      - audit-engine.js
+      - generated/roca-fast-track/**
+      - compliance-cockpit/index.html
+      - compliance-cockpit/app.js
+      - compliance-cockpit/styles.css
+      - compliance-cockpit/data.js
+      - compliance-cockpit/state_guards.js
+      - compliance-cockpit/form-master-data.js
+      - .github/roca-compliance-overlay/browser_visual_qa.mjs
+      - .github/workflows/roca-browser-visual-qa.yml
+
+permissions:
+  contents: read
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright
+        run: |
+          npm_config_package_lock=false npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Start static server
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/roca-http.log 2>&1 &
+          echo $! > /tmp/roca-http.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/roca-http.log
+          exit 1
+
+      - name: Execute browser QA
+        env:
+          ROCA_QA_BASE_URL: http://127.0.0.1:4173
+          ROCA_QA_OUT: qa-browser-artifacts
+        run: node .github/roca-compliance-overlay/browser_visual_qa.mjs
+
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: roca-browser-visual-qa-${{ github.sha }}
+          path: |
+            qa-browser-artifacts/**
+            /tmp/roca-http.log
+          if-no-files-found: warn
+          retention-days: 30

@@ -1,0 +1,8 @@
+zone_id,zone_name,source_geometry,area_m2,max_inflammable_gas_l,max_flammable_liquid_l,max_combustible_liquid_l,max_combustible_solids_kg,pyrophoric_or_explosive,combined_formula_result,fire_risk_class,responsible,date,evidence_ids,notes
+P00-MAIN,Área principal,40x20 m,800,,,,,,,,,,, 
+P00-MOLDES,Moldes oeste,10x15 m,150,,,,,,,,,,, 
+P00-EXH,Sala de exhibición,11x6 m,66,,,,,,,,,,, 
+P00-OFFICE,Oficina,10x4.5 m,45,,,,,,,,,,, 
+P00-WH-S,Bodega sur,16.5x6.7 m,110.55,,,,,,,,,,, 
+P00-WH-NA,Bodega norte A,14x4 m,56,,,,,,,,,,, 
+P00-WH-NB,Bodega norte B,14x4 m,56,,,,,,,,,,, 

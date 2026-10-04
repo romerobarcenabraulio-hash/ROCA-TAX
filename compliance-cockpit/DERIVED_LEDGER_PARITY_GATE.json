@@ -1,0 +1,44 @@
+{
+  "schema": "ROCA_DERIVED_LEDGER_PARITY_GATE_V1",
+  "generated_date": "2026-09-30",
+  "canonical_master": {
+    "rows": 4469,
+    "sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c"
+  },
+  "module_lock_count": 43,
+  "health": {
+    "rows": 43,
+    "sha256": "15571adc930be1af6d897da8032379b7904ba294d11f7d2e9178bc6c1423a768",
+    "path_count_sha_mismatches": 0
+  },
+  "gate_sync": {
+    "rows": 43,
+    "sha256": "847759ee6960dab093893a7d8a144ce5a93a451323bbd6e5b31d94d90109032a",
+    "path_count_sha_mismatches": 0
+  },
+  "admission": {
+    "rows": 42,
+    "sha256": "f0f0c23d280e7ab62f46c35efb80932b4780ac6d0d10b17f6edfe1d27dc80a44",
+    "missing_legal_or_external_modules": 0,
+    "intentionally_excluded": [
+      "ADMIN_FORM"
+    ]
+  },
+  "reconstructed_source_gates": [
+    {
+      "module": "SLP_ENV_IMPACT",
+      "file": "SLP_ENV_IMPACT_SOURCE_GATE_RECON_2026-09-30.json",
+      "original_source_gate_recovered": false,
+      "admission": "ADMITTED_RECONSTRUCTED"
+    },
+    {
+      "module": "SLP_MUN_FUNCTION",
+      "file": "SLP_MUN_FUNCTION_SOURCE_GATE_RECON_2026-09-30.json",
+      "original_source_gate_recovered": false,
+      "admission": "ADMITTED_RECONSTRUCTED"
+    }
+  ],
+  "drive_integrity_blocker": "Canonical Drive root remains observed as anyone:writer; GitHub/private mirror are the controlled continuity copies until that permission is revoked.",
+  "compliance_claim": "NOT_AUTHORIZED",
+  "verdict": "PASS_DERIVED_LEDGER_PARITY"
+}

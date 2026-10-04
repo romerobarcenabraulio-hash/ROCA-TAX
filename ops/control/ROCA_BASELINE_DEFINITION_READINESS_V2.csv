@@ -1,0 +1,11 @@
+department_id,department_name,current_baseline_status,definition_ready,standard_definition_blockers,define_standard,implement_decision,system_record,audit_current_state,interpretation
+"area-recepcion","Recepción","CAPTURE_PENDING","NO","2","0","1","1","2","No congelar el libro integral hasta cerrar los blockers de definición/decisión/registro. Los HOLD de estado actual permanecen en AUDITORÍA."
+"area-curtiduria","Curtiduría","PARTIAL","NO","4","4","0","0","3","No congelar el libro integral hasta cerrar los blockers de definición/decisión/registro. Los HOLD de estado actual permanecen en AUDITORÍA."
+"area-fmr","Formas Moldes y Réplicas","PARTIAL","NO","5","4","0","1","4","No congelar el libro integral hasta cerrar los blockers de definición/decisión/registro. Los HOLD de estado actual permanecen en AUDITORÍA."
+"area-montaje","Montaje","PARTIAL","NO","7","7","0","0","2","No congelar el libro integral hasta cerrar los blockers de definición/decisión/registro. Los HOLD de estado actual permanecen en AUDITORÍA."
+"area-retoque","Retoque","PARTIAL","NO","3","1","0","2","7","No congelar el libro integral hasta cerrar los blockers de definición/decisión/registro. Los HOLD de estado actual permanecen en AUDITORÍA."
+"area-bases","Bases","PARTIAL","NO","5","3","1","1","5","No congelar el libro integral hasta cerrar los blockers de definición/decisión/registro. Los HOLD de estado actual permanecen en AUDITORÍA."
+"area-carpinteria","Carpintería / Embalaje","NOT_RELEASED","NO","12","5","5","2","1","No congelar el libro integral hasta cerrar los blockers de definición/decisión/registro. Los HOLD de estado actual permanecen en AUDITORÍA."
+"area-soldadura","Soldadura / Adaptación","NOT_RELEASED","NO","5","5","0","0","2","No congelar el libro integral hasta cerrar los blockers de definición/decisión/registro. Los HOLD de estado actual permanecen en AUDITORÍA."
+"area-blanqueado","Blanqueado","PARTIAL","NO","3","3","0","0","4","No congelar el libro integral hasta cerrar los blockers de definición/decisión/registro. Los HOLD de estado actual permanecen en AUDITORÍA."
+"area-soporte","Espacios de soporte","PARTIAL","NO","1","0","0","1","6","No congelar el libro integral hasta cerrar los blockers de definición/decisión/registro. Los HOLD de estado actual permanecen en AUDITORÍA."

@@ -1,0 +1,26 @@
+{
+  "schema": "ROCA_FORM_MASTER_GATE_V1",
+  "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "canonical_key_count": 14,
+  "checks": {
+    "form_master_14_keys": true,
+    "state_persistence": true,
+    "import_guard": true,
+    "restricted_raw_block": true,
+    "setup_surface": true,
+    "live_prefill": true,
+    "verified_gate": true,
+    "restricted_reference_only": true,
+    "runtime_loads_overlay": true,
+    "runtime_manifest_overlay": true
+  },
+  "passed": 10,
+  "total": 10,
+  "errors": [],
+  "app_sha256": "4290e93282dd9dd51f982211e727d705f239ac5418e737a2b1b13002ecd90bd7",
+  "index_sha256": "a9731a7e5fcaad86467be79de96126862f8c6144bcf8e41dd89890e2458c77e9",
+  "form_master_data_sha256": "049bc89ebc143a888c9d2bb5f1fee571c12c2407067fc61b32cdf4264af9e82d",
+  "verdict": "PASS",
+  "scope": "FORM_MASTER persistence, privacy guards and live prefill wiring. Does not prove browser visual QA or physical/legal compliance.",
+  "note": "FORM_MASTER gate refreshed after P0 walk restoration. Visual QA and physical/legal compliance remain outside scope."
+}

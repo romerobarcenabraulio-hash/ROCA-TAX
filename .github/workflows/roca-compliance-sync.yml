@@ -1,0 +1,110 @@
+name: ROCA Compliance Sync
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/roca-source-reader
+    paths:
+      - .github/workflows/roca-compliance-sync.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout controlled branch
+        uses: actions/checkout@v4
+        with:
+          ref: codex/roca-source-reader
+          fetch-depth: 0
+
+      - name: Download and verify locked cockpit release
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="compliance-cockpit"
+          mkdir -p "$out"
+
+          download_locked() {
+            id="$1"
+            file="$2"
+            expected="$3"
+            url="https://drive.usercontent.google.com/download?id=${id}&export=download&confirm=t"
+            curl -fL --retry 4 --retry-delay 2 --retry-all-errors "$url" -o "$out/$file"
+            printf '%s  %s\n' "$expected" "$out/$file" | sha256sum -c -
+          }
+
+          download_locked "1i_8sqHIbCLujMjJKtwrTWat414JRnV51" "index.html" "80ba03ae8e32a756c1001e5585602d4f7a3fbcfd1cf80a2d50be7e84df0cc6a2"
+          download_locked "19bw8xt-x14TRHrYna3Oq9S_0gSMoxoRs" "styles.css" "c43b074145c1cc974a3891163680b8cffc07fff89ee8fd1799ac7da010ec0744"
+          download_locked "1DaEziGrmtmsUA9Lg960sFtTV-hUw1Bvi" "app.js" "6a5497b586bc0fc1fd8661540017a5a2f349394baa2dc45557967ac2320e32e3"
+          download_locked "1Vkb9uRxVP4pINCx-4Bs_wV9zXfFZ-ZtZ" "state_guards.js" "68794f8ec4a5b7f8b092ed84615b1f698628fd9d8696819166462816106b85b6"
+          download_locked "1IJDAQzWwGcN1eap2DvkIPJkAjT3XFygz" "data.js" "7bcd8e88ac5d2bac1d276d21fcc4a1c4033145e5de0f9fc3759bc448a829128c"
+          download_locked "1vwAfscdlAgYKf2-cDPfUC3ZC5nP8YY_z" "runtime-requirements.json" "159be20ec9991f49350a174968f1264505c0e31c81aa65284834a03825e2dc40"
+          download_locked "1T7b7pwF9JcP-ObzpYQF_O2ynP2FGPzwM" "RUNTIME_MANIFEST.json" "2731a3c69523a4115cce869001141eaa9281e19a805d5db9db8bd74a2652280d"
+          download_locked "1b8Lsbg5CkmnctDTHmB2stsxRXBOi2Hba" "COCKPIT_STATIC_QA.json" "70f8f827e37685decea764b13449988f1da62dd04629f56f8650ccb78b9655b9"
+          download_locked "1MVXd9LvXqRSbQhmqOmbwSmaxq0uekGKB" "FIELD_OPERATION_READINESS_GATE.json" "6464a88f14134bf2cac8c35fcb58b97cf2b3d6c57c234de0f4c639761c648b6e"
+          download_locked "1gmTPNx6R29rQdfRpVu_PkzNzhU8GShXE" "BACKUP_PERSISTENCE_GATE.json" "cf681ecbbf866d9fca3dc38ba5e3e52419634a0218c8dcb2787488c77dac7df9"
+          download_locked "10aGvd9F1zMCIiPO86a66imgmf7VK6Uaa" "PRIVACY_DATA_GATE.json" "4b4494138f9c4e448e1c9f04cff7f0b53eed37ede6508a5d2892f198a6c44745"
+
+          # Reapply the controlled FORM_MASTER overlay after every base sync.
+          cp .github/roca-compliance-overlay/form-master-data.js "$out/form-master-data.js"
+          python .github/roca-compliance-overlay/patch_compliance_form_master.py "$out"
+          node --check "$out/app.js"
+          node --check "$out/form-master-data.js"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          g=json.loads(Path("compliance-cockpit/FORM_MASTER_GATE.json").read_text())
+          if g.get("verdict")!="PASS" or g.get("canonical_key_count")!=14:
+              raise SystemExit("FORM_MASTER overlay gate failed")
+          print("FORM_MASTER overlay OK:",g["passed"],"/",g["total"])
+          PY
+
+          node - <<'NODE'
+          global.window=global;
+          require('./compliance-cockpit/data.js');
+          const d=global.ROCA_DATA;
+          if(!d) throw new Error('ROCA_DATA missing');
+          if(d.requirements.length!==4469) throw new Error('requirement count mismatch: '+d.requirements.length);
+          if(d.meta?.master_sha256!=='0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c') throw new Error('master hash mismatch');
+          console.log('ROCA Compliance runtime OK:', d.requirements.length, d.meta.master_sha256);
+          NODE
+
+          # Validate derived ledgers against the frozen module lock before any sync commit.
+          python .github/roca-compliance-overlay/validate_derived_ledgers.py
+
+          cat > "$out/SYNC_PROVENANCE.json" <<'JSON'
+          {
+            "schema": "ROCA_COMPLIANCE_GITHUB_SYNC_V1",
+            "release_id": "ROCA-COMPLIANCE-2026-09-29-0a6b58c7",
+            "source_drive_folder_id": "1VV0yIovX7DxtNFKxRU2oLcOiTEk0h0MR",
+            "master_rows": 4469,
+            "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+            "source_permission_observation": "Drive root and COMPLIANCE_APP_DATA re-read as anyone:writer on 2026-09-30.",
+            "source_authority": "GITHUB_HASH_LOCKED_PLUS_OWNER_ONLY_RECOVERY_MIRROR",
+            "shared_drive_authority": "NON_AUTHORITATIVE_WHILE_ANYONE_WRITER",
+            "promotion_rule": "Reject any Drive byte that does not match a pre-approved exact SHA-256; Drive mutations alone never establish new canon.",
+            "drive_permission_risk": "R1_MITIGATED_NOT_CLOSED",
+            "compliance_claim": "NOT_AUTHORIZED",
+            "visual_qa": "NOT_VISUALLY_VERIFIED",
+            "overlay": "FORM_MASTER_V1",
+            "form_master_gate": "PASS_EXPECTED"
+          }
+          JSON
+
+      - name: Commit verified cockpit release
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add compliance-cockpit
+          if git diff --cached --quiet; then
+            echo "No cockpit changes."
+            exit 0
+          fi
+          git commit -m "Sync locked ROCA Compliance cockpit release"
+          git push origin HEAD:codex/roca-source-reader

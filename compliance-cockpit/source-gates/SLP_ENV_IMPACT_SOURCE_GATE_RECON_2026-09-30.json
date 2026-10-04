@@ -1,0 +1,44 @@
+{
+  "schema": "ROCA_RECONSTRUCTED_SOURCE_GATE_V1",
+  "module": "SLP_ENV_IMPACT",
+  "source_id": "SLP-ENV-IMPACT-2026",
+  "ledger_path": "SLP_ENV_IMPACT/SLP_ENV_IMPACT_requirement_ledger.csv",
+  "ledger_rows": 56,
+  "ledger_sha256": "efeb14c72190ee85535fa30d055f2d6f890d61a49dbf9f61e369a5345bd26b04",
+  "reconstruction_date": "2026-09-30",
+  "status": "PASS_SOURCE_INTEGRITY_RECONSTRUCTED",
+  "original_source_gate_recovered": false,
+  "sources": [
+    {
+      "authority": "SEGAM San Luis Potosi",
+      "url": "https://segam.slp.gob.mx/impacto/",
+      "verified_on": "2026-09-30",
+      "supports": "Current environmental-impact service route, guides, forms, checklists and September 2026 publication."
+    },
+    {
+      "authority": "SEGAM San Luis Potosi",
+      "url": "https://segam.slp.gob.mx/legislacion/",
+      "verified_on": "2026-09-30",
+      "supports": "Current state environmental-impact/risk regulation listing."
+    },
+    {
+      "authority": "Congreso del Estado de San Luis Potosi",
+      "url": "https://congresosanluis.gob.mx/legislacion/leyes",
+      "verified_on": "2026-09-30",
+      "supports": "Ley Ambiental del Estado listed with latest reform 2026-06-24."
+    }
+  ],
+  "gates": [
+    "Ledger path/count/SHA match canonical module lock.",
+    "Current official SEGAM impact route is live.",
+    "Current state environmental law is listed by the state congress.",
+    "Applicability/jurisdiction remains fact-dependent; this source gate does not authorize a project or establish that ROCA requires a specific filing."
+  ],
+  "verdict": "PASS_SOURCE_INTEGRITY_RECONSTRUCTED",
+  "compliance_claim": "NOT_AUTHORIZED",
+  "master_sha256": "0a6b58c77783cf74bbd0a66ea0d4dff5aec18e9ef6a6defbde37b995f45eed9c",
+  "limitations": [
+    "Original source-gate artifact was not recovered.",
+    "This reconstructed gate verifies source integrity/current official route existence; it does not establish that ROCA requires a particular environmental-impact filing or that any project is authorized."
+  ]
+}

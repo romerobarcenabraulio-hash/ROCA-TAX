@@ -1,0 +1,11 @@
+department_id,department_name,baseline_status,baseline_version,captured_date,frozen_date,review_trigger,last_review_date,notes
+area-recepcion,Recepción,CAPTURE_PENDING,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,
+area-curtiduria,Curtiduría,PARTIAL,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,Metodología avanzada; faltan cierres de campo y conflictos técnicos
+area-fmr,Formas Moldes y Réplicas,PARTIAL,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,Metodología avanzada; faltan cierres de campo
+area-montaje,Montaje,PARTIAL,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,Libro profundo integrado; línea base aún no congelada
+area-retoque,Retoque,PARTIAL,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,Libro profundo integrado; línea base aún no congelada
+area-bases,Bases,PARTIAL,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,Libro profundo integrado; línea base aún no congelada
+area-carpinteria,Carpintería / Embalaje,NOT_RELEASED,V1,,,Implementación física; primera demostración; cambio normativo,,Área aún no liberada
+area-soldadura,Soldadura / Adaptación,NOT_RELEASED,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,Método técnico no liberado hasta entrevista/demostración primaria
+area-blanqueado,Blanqueado,PARTIAL,V1,,,Cambio de proceso/equipo/layout; hallazgo crítico; cambio normativo,,Método mínimo soportado; parámetros operativos críticos siguen abiertos
+area-soporte,Espacios de soporte,PARTIAL,V1,,,Cambio de uso/layout; hallazgo crítico; cambio normativo,,Subzonas estructuradas; faltan levantamientos y evidencia de campo
