@@ -143,7 +143,7 @@
     page.innerHTML='<div class="pdf-loading">Cargando réplica del PDF maestro…</div>';
     try{
       page.innerHTML=await pdfReplicaMarkup(section);
-      document.title=(section.nav||'PDF maestro')+' · ROCA TAXIDERMY';
+      document.title='ROCA TAXIDERMY · Manual maestro · '+(section.nav||'PDF maestro');
       markActive(section.id);
       bindPdfReplicaViewer();
     }catch(err){
