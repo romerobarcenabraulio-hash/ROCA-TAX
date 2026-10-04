@@ -567,3 +567,16 @@ body:not(.audit-mode):not(.norms-mode) .page{padding-left:3vw;padding-right:3vw}
   }
   .pdf-source-media-gap{min-height:210px}
 }
+
+
+/* Manual mobile containment must override the desktop two-column manual rule above. */
+@media(max-width:900px){
+  body:not(.audit-mode):not(.norms-mode) .layout{display:block;grid-template-columns:1fr;max-width:100%;overflow-x:hidden}
+  body:not(.audit-mode):not(.norms-mode) .contents{width:100%;max-width:100%;border-right:0;border-bottom:1px solid #c7beb0}
+  body:not(.audit-mode):not(.norms-mode) .page{width:100%;max-width:100%;padding:10px;overflow-x:hidden}
+  .pdf-native-section,.pdf-native-page,.pdf-evaluation-insert{width:100%;max-width:100%;min-width:0}
+  .pdf-native-page{padding:34px 22px 50px}
+  .pdf-native-heading,.pdf-native-body,.pdf-source-section,.pdf-source-control,.page-head,.folio{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:normal}
+  .pdf-native-heading{white-space:normal}
+  .page-head,.folio{gap:8px}
+}
