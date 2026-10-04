@@ -477,3 +477,93 @@ body:not(.audit-mode):not(.norms-mode) .page{
     page-break-after:always;
   }
 }
+
+
+/* Native HTML manual reconstructed from the 391-page master.
+   No PDF iframe, no raw mirror UI. */
+.pdf-native-section{display:flex;flex-direction:column;gap:24px}
+.pdf-native-page{
+  background:#fbfaf6;
+  color:#211d19;
+  min-height:1056px;
+  padding:54px 58px 60px;
+}
+.pdf-native-heading{
+  max-width:690px;
+  margin:6px 0 22px;
+  font:700 29px/1.08 Georgia,"Times New Roman",serif;
+  letter-spacing:-.012em;
+  white-space:pre-line;
+}
+.pdf-native-body{
+  max-width:100%;
+  font:12px/1.48 Arial,Helvetica,sans-serif;
+}
+.pdf-native-body p{margin:0 0 10px}
+.pdf-source-kicker{
+  margin:0 0 12px;
+  font:700 9px/1.25 Arial,Helvetica,sans-serif;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--bronze);
+}
+.pdf-source-section{
+  margin:21px 0 9px;
+  padding-top:8px;
+  border-top:1px solid #c7bbaa;
+  font:700 16px/1.2 Georgia,"Times New Roman",serif;
+}
+.pdf-source-control{
+  margin:12px 0 5px!important;
+  font-weight:700;
+}
+.pdf-source-media-gap{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-height:250px;
+  margin:0 0 22px;
+  padding:18px;
+  border:1px solid #c7bbaa;
+  background:
+    linear-gradient(135deg,rgba(23,35,46,.06),rgba(138,90,52,.08)),
+    #eee9df;
+  color:#62584f;
+}
+.pdf-source-media-gap strong{
+  font:700 9px/1.2 Arial,Helvetica,sans-serif;
+  letter-spacing:.1em;
+  color:#54483e;
+}
+.pdf-source-media-gap span{
+  margin-top:5px;
+  max-width:52ch;
+  font:10px/1.4 Arial,Helvetica,sans-serif;
+}
+.pdf-evaluation-insert{
+  border-top:5px solid var(--bronze);
+  background:#f7f2e8;
+}
+.pdf-evaluation-table td:first-child{width:165px}
+.pdf-evaluation-table td div{margin:5px 0;color:#433c35}
+.pdf-evaluation-table td p{margin-bottom:8px}
+body:not(.audit-mode):not(.norms-mode) .control-rail{display:none}
+body:not(.audit-mode):not(.norms-mode) .layout{grid-template-columns:248px minmax(0,1fr)}
+body:not(.audit-mode):not(.norms-mode) .page{padding-left:3vw;padding-right:3vw}
+/* Kill the abandoned iframe/raw-replica experiment even if stale markup survives cache. */
+.pdf-original-viewer,.pdf-original-frame,.pdf-page-source-jump,.pdf-replica-text{display:none!important}
+@media(max-width:900px){
+  .pdf-native-page{min-height:auto;padding:38px 26px 52px}
+  .pdf-native-heading{font-size:25px}
+  .pdf-native-body{font-size:11.5px}
+  .pdf-source-media-gap{min-height:190px}
+}
+@media print{
+  .pdf-native-section{gap:0}
+  .pdf-native-page,.pdf-evaluation-insert{
+    box-shadow:none!important;
+    page-break-after:always;
+    break-after:page;
+  }
+  .pdf-source-media-gap{min-height:210px}
+}
