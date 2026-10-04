@@ -67,26 +67,17 @@
       footer('PORTADA')+'</article>';
   }
 
-  async function loadHtmlLayout(section){
-    const key=section&&section.layoutKey;
-    if(!key) return {pages:[]};
-    if(!htmlLayoutCache.has(key)){
-      htmlLayoutCache.set(key,fetch('generated/roca-html-master/layout/'+key+'.json',{cache:'no-store'}).then(async res=>{
-        if(!res.ok) throw new Error('HTML layout '+key+' '+res.status);
-        return res.json();
-      }));
-    }
-    return htmlLayoutCache.get(key);
-  }
+  let pdfMasterPromise=null;
+  const SOURCE_IMAGE_PAGES=new Set([28,31,39,49,62,66,68,70,79,80,81,87,98,99,101,102,105,106,111,113,115,118,120,130,146,147,148,149,150,153,160,171,172,174,176,177,179,184,199,201,372,373,374,375,377]);
 
-  async function loadPhotoMap(){
-    if(!photoMapPromise){
-      photoMapPromise=fetch('generated/roca-html-master/photo-map.json',{cache:'no-store'}).then(async res=>{
-        if(!res.ok) throw new Error('photo map '+res.status);
+  async function loadPdfMaster(){
+    if(!pdfMasterPromise){
+      pdfMasterPromise=fetch('generated/roca-391/raw-index.json',{cache:'no-store'}).then(async res=>{
+        if(!res.ok) throw new Error('PDF master index '+res.status);
         return res.json();
       });
     }
-    return photoMapPromise;
+    return pdfMasterPromise;
   }
 
   function evaluationInsertMarkup(section){
@@ -108,56 +99,45 @@
       '<div class="page-head"><span>ROCA / '+esc(dept.code||'ÁREA')+' / EVALUACIÓN</span><span>ROCA TAXIDERMY</span></div>'+
       '<div class="eyebrow">CÓMO DEBE ESTAR ESTA ÁREA</div>'+
       '<h1>'+esc(dept.title)+'</h1>'+
-      '<p class="lead">Evaluación añadida al HTML del master. El contenido fuente anterior permanece en su secuencia; aquí se aterrizan los requisitos para poder observarlos, medirlos, calcularlos o documentarlos.</p>'+
+      '<p class="lead">Este bloque se añade al HTML del master sin sustituir ni reordenar el contenido fuente.</p>'+
       '<div class="bronze-rule short"></div>'+
       '<table class="pdf-evaluation-table"><thead><tr><th>Requisito</th><th>Condición y comprobación</th></tr></thead><tbody>'+rowHtml+'</tbody></table>'+
       footer('EVALUACIÓN · '+(dept.code||''))+'</article>';
   }
 
-  function htmlRuleMarkup(rule){
-    const S=4/3;
-    const style='left:'+(rule.x*S)+'px;top:'+(rule.y*S)+'px;width:'+(rule.w*S)+'px;height:'+(Math.max(rule.h||.5,.5)*S)+'px;background:'+esc(rule.c||'#c9c0b3')+';';
-    return '<i class="pdf-html-rule" style="'+style+'"></i>';
+  function sourceLineMarkup(line,index){
+    const t=String(line||'').trim();
+    if(!t) return '';
+    const upper=t===t.toUpperCase() && /[A-ZÁÉÍÓÚÑ]/.test(t);
+    const numbered=/^(0?[0-9]{1,2}[\.\s]|[A-Z]{2,5}-AREA-|TS-[0-9]+)/.test(t);
+    if(index===0) return '<div class="pdf-source-kicker">'+esc(t)+'</div>';
+    if(upper && t.length<80) return '<h2 class="pdf-source-section">'+esc(t)+'</h2>';
+    if(numbered) return '<p class="pdf-source-control">'+esc(t)+'</p>';
+    return '<p>'+esc(t)+'</p>';
   }
 
-  function htmlPhotoMarkup(im,photos){
-    const S=4/3;
-    const entry=photos&&photos.map&&photos.map[String(im.r)];
-    if(!entry) return '<div class="pdf-photo-gap" style="left:'+(im.x*S)+'px;top:'+(im.y*S)+'px;width:'+(im.w*S)+'px;height:'+(im.h*S)+'px"><span>FOTO PENDIENTE DE RECUPERAR · '+esc(im.r)+'</span></div>';
-    const atlas=photos.atlases&&photos.atlases[entry.a];
-    if(!atlas) return '';
-    const rw=im.w*S, rh=im.h*S;
-    const bgW=atlas.w*(rw/entry.w), bgH=atlas.h*(rh/entry.h);
-    const bgX=-entry.x*(rw/entry.w), bgY=-entry.y*(rh/entry.h);
-    const style='left:'+(im.x*S)+'px;top:'+(im.y*S)+'px;width:'+rw+'px;height:'+rh+'px;'+
-      'background-image:url(generated/roca-html-master/assets/'+esc(atlas.file)+');'+
-      'background-size:'+bgW+'px '+bgH+'px;background-position:'+bgX+'px '+bgY+'px;';
-    return '<div class="pdf-html-photo" role="img" aria-label="Fotografía del master" style="'+style+'"></div>';
-  }
-
-  function htmlTextMarkup(line){
-    const S=4/3;
-    const family=line.f==='serif'?'Georgia,Times New Roman,serif':'Arial,Helvetica,sans-serif';
-    const style='left:'+(line.x*S)+'px;top:'+(line.y*S)+'px;width:'+(Math.max(line.w,1)*S)+'px;min-height:'+(Math.max(line.h,1)*S)+'px;'+
-      'font-family:'+family+';font-size:'+(line.s*S)+'px;font-weight:'+(line.b?700:400)+';font-style:'+(line.i?'italic':'normal')+';color:'+esc(line.c||'#171717')+';';
-    return '<span class="pdf-html-text" style="'+style+'">'+esc(line.t||'')+'</span>';
-  }
-
-  function htmlMasterPageMarkup(p,photos){
-    const rules=(p.ru||[]).map(htmlRuleMarkup).join('');
-    const images=(p.im||[]).map(im=>htmlPhotoMarkup(im,photos)).join('');
-    const text=(p.l||[]).map(htmlTextMarkup).join('');
-    return '<article class="pdf-html-page" data-pdf-page="'+esc(p.n)+'" style="background:'+esc(p.bg||'#fbfaf6')+'">'+
-      '<div class="pdf-html-canvas">'+rules+images+text+'</div>'+
-      '<div class="pdf-html-page-index">'+esc(p.n)+' / 391</div>'+
+  function htmlMasterPageMarkup(p){
+    const raw=String(p.text||'');
+    const lines=raw.split(/\r?\n/);
+    const heading=String(p.heading||lines[0]||'').trim();
+    const bodyLines=lines.filter((line,i)=>!(i===0&&line.trim()===heading));
+    const mediaGap=SOURCE_IMAGE_PAGES.has(Number(p.page))
+      ? '<div class="pdf-source-media-gap"><strong>FOTOGRAFÍA / VISUAL DEL MASTER</strong><span>Asset recuperable del PDF fuente; reservado aquí hasta integrarlo en HTML sin usar visor.</span></div>'
+      : '';
+    return '<article class="paper pdf-native-page" data-pdf-page="'+esc(p.page)+'">'+
+      '<div class="page-head"><span>'+esc(p.area_code||'ROCA')+' · MASTER INTEGRAL</span><span>'+esc(p.page)+' / 391</span></div>'+
+      '<div class="pdf-native-heading">'+esc(heading)+'</div>'+
+      mediaGap+
+      '<div class="pdf-native-body">'+bodyLines.map(sourceLineMarkup).join('')+'</div>'+
+      footer('MASTER · '+p.page+' / 391')+
       '</article>';
   }
 
   async function pdfReplicaMarkup(section){
-    const [layout,photos]=await Promise.all([loadHtmlLayout(section),loadPhotoMap()]);
-    const pages=Array.isArray(layout.pages)?layout.pages:[];
-    return '<section class="pdf-html-section" data-section="'+esc(section.id)+'">'+
-      pages.map(p=>htmlMasterPageMarkup(p,photos)).join('')+
+    const master=await loadPdfMaster();
+    const pages=(Array.isArray(master.pages)?master.pages:[]).filter(p=>p.page>=section.start&&p.page<=section.end);
+    return '<section class="pdf-native-section" data-section="'+esc(section.id)+'">'+
+      pages.map(htmlMasterPageMarkup).join('')+
       evaluationInsertMarkup(section)+
       '</section>';
   }
@@ -325,8 +305,8 @@
       activeMode='manual';
       activeSections=manualSections;
       manualMode.classList.add('active');
-      contentsPane.querySelector('.contents-title').textContent='PDF maestro · 391 páginas';
-      contentsPane.querySelector('.rule-note').textContent='MANUAL = réplica textual en el mismo orden del PDF maestro, con el original visual visible y bloques de evaluación insertados al cierre de cada área. No se resume ni se reinterpreta la fuente.';
+      contentsPane.querySelector('.contents-title').textContent='Manual ROCA · HTML';
+      contentsPane.querySelector('.rule-note').textContent='El PDF maestro se convierte a HTML y esa es la UI visible. Se conserva su secuencia editorial y se enriquecen sólo los requisitos/evaluaciones que correspondan.';
     }
     buildNav(activeSections);
     go(mode==='manual' ? 'portada' : (activeSections[0] && activeSections[0].id));
